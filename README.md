@@ -22,3 +22,7 @@ Then open http://localhost:8080. Note: the Python server doesn't do clean URLs, 
 
 - Add a project: duplicate a file in `projects/`, then add a `.card` in `index.html` with the right `data-cat` (`product`, `engineering`, `design`).
 - Resume: drop a PDF at `assets/pdf/resume.pdf` and point the two "Resume" links in `index.html` to it.
+
+## Photo credits
+
+Project thumbnails are from Unsplash (free license): suitcases, sick-day kit, golden retriever, library study group, students with laptop, red house, meditation dock. Case-study imagery is Chae's own work.

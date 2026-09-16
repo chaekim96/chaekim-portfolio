@@ -106,10 +106,10 @@
     }
     function seed() {
       orbs = PALETTE.map((c, i) => ({
-        c, r: (0.22 + Math.random() * 0.18) * Math.max(w, h),
+        c, r: (0.20 + Math.random() * 0.16) * Math.max(w, h),
         x: Math.random() * w, y: Math.random() * h,
         vx: (Math.random() - 0.5) * 0.25 * dpr, vy: (Math.random() - 0.5) * 0.25 * dpr,
-        a: 0.16 + (i % 2) * 0.06
+        a: 0.30 + (i % 2) * 0.10
       }));
     }
     const isDark = () => root.getAttribute('data-theme') === 'dark';
@@ -122,6 +122,8 @@
         if (!reduce) {
           o.x += o.vx + Math.sin(t / 4000 + i) * 0.15 * dpr;
           o.y += o.vy + Math.cos(t / 5000 + i * 1.7) * 0.15 * dpr;
+          // orbs lean toward the cursor
+          if (mouse.tx > -9000) { o.x += (mouse.x - o.x) * 0.0015 * (i % 3 + 1); o.y += (mouse.y - o.y) * 0.0015 * (i % 3 + 1); }
           if (o.x < -o.r) o.x = w + o.r; if (o.x > w + o.r) o.x = -o.r;
           if (o.y < -o.r) o.y = h + o.r; if (o.y > h + o.r) o.y = -o.r;
         }
@@ -135,13 +137,13 @@
       // dot grid, gently pushed by the cursor
       ctx.globalCompositeOperation = 'source-over';
       mouse.x += (mouse.tx - mouse.x) * 0.08; mouse.y += (mouse.ty - mouse.y) * 0.08;
-      const step = 28 * dpr, R = 160 * dpr;
+      const step = 28 * dpr, R = 220 * dpr;
       ctx.fillStyle = dark ? 'rgba(242,240,234,0.16)' : 'rgba(16,18,35,0.14)';
       for (let y = step / 2; y < h; y += step) {
         for (let x = step / 2; x < w; x += step) {
           const dx = x - mouse.x, dy = y - mouse.y, d = Math.hypot(dx, dy);
           let px = x, py = y, s = 1;
-          if (d < R) { const k = (1 - d / R); px += (dx / (d || 1)) * k * 14 * dpr; py += (dy / (d || 1)) * k * 14 * dpr; s = 1 + k * 1.6; }
+          if (d < R) { const k = (1 - d / R); px += (dx / (d || 1)) * k * 22 * dpr; py += (dy / (d || 1)) * k * 22 * dpr; s = 1 + k * 2.2; }
           ctx.beginPath(); ctx.arc(px, py, 1.1 * dpr * s, 0, Math.PI * 2); ctx.fill();
         }
       }
