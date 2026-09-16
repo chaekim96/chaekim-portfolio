@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/style.css?v=5">
+  <link rel="stylesheet" href="/assets/css/style.css?v=6">
   <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
 </head>
 <body>
@@ -194,25 +194,40 @@
       <div class="container">
         <div class="section__head reveal">
           <div>
-            <p class="label">Take a break</p>
-            <h2 class="display section__title">Play <span class="hl">something</span>.</h2>
+            <p class="label">Arcade</p>
+            <h2 class="display section__title">Games I <span class="hl">grew up</span> playing.</h2>
           </div>
-          <p class="section__sub">A game and a soundtrack, because portfolios don't have to be homework.</p>
+          <p class="section__sub">Rebuilt from memory, plus a soundtrack. Portfolios don't have to be homework.</p>
         </div>
         <div class="break">
-          <!-- Snake -->
-          <div class="panel reveal" id="snake-panel">
+          <!-- Games: Snake / Galaga -->
+          <div class="panel reveal" id="games-panel">
             <div class="panel__head">
-              <div><p class="label" style="margin:0">Snake</p><h3 class="panel__title">Arrows · WASD · swipe</h3></div>
-              <div class="panel__score"><span>Score <b id="snake-score">0</b></span><span>Best <b id="snake-best">0</b></span></div>
+              <div class="gametabs" role="tablist" aria-label="Choose a game">
+                <button class="gametab is-active" data-game="snake" role="tab" aria-selected="true">Snake</button>
+                <button class="gametab" data-game="galaga" role="tab" aria-selected="false">Galaga</button>
+              </div>
+              <div class="panel__score"><span>Score <b id="game-score">0</b></span><span>Best <b id="game-best">0</b></span></div>
             </div>
-            <div class="snake">
-              <canvas id="snake" width="400" height="400" tabindex="0" aria-label="Snake game"></canvas>
-              <button class="snake__overlay btn btn--primary" id="snake-start" type="button">Play</button>
+
+            <div class="game" id="snake-game" data-game="snake">
+              <div class="snake">
+                <canvas id="snake" width="400" height="400" tabindex="0" aria-label="Snake game"></canvas>
+                <button class="snake__overlay btn btn--primary" id="snake-start" type="button">Play</button>
+              </div>
+              <p class="game__hint">Arrows · WASD · swipe</p>
+              <div class="snake__dpad" aria-hidden="true">
+                <button data-dir="0,-1">▲</button>
+                <div><button data-dir="-1,0">◀</button><button data-dir="0,1">▼</button><button data-dir="1,0">▶</button></div>
+              </div>
             </div>
-            <div class="snake__dpad" aria-hidden="true">
-              <button data-dir="0,-1">▲</button>
-              <div><button data-dir="-1,0">◀</button><button data-dir="0,1">▼</button><button data-dir="1,0">▶</button></div>
+
+            <div class="game is-hidden" id="galaga-game" data-game="galaga">
+              <div class="snake galaga">
+                <canvas id="galaga" width="400" height="400" tabindex="0" aria-label="Galaga game"></canvas>
+                <button class="snake__overlay btn btn--primary" id="galaga-start" type="button">Play</button>
+              </div>
+              <p class="game__hint">← → or drag to move · space / tap to fire</p>
             </div>
           </div>
 
@@ -343,6 +358,6 @@
     </div>
   </footer>
 
-  <script src="/assets/js/main.js?v=5"></script>
+  <script src="/assets/js/main.js?v=6"></script>
 </body>
 </html>

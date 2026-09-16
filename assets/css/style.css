@@ -492,3 +492,12 @@ details > *:not(summary) { padding-bottom: 16px; }
   [data-stagger] .w, .reveal-up { animation: none; opacity: 1; transform: none; }
   .section__title .hl::after { transform: scaleX(1); }
 }
+
+/* ---- Arcade panel ---- */
+.gametabs { display: inline-flex; gap: 4px; padding: 4px; border-radius: 999px; background: var(--bg-soft); }
+.gametab { padding: 8px 16px; border-radius: 999px; font-family: var(--font-display); font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); transition: .2s; }
+.gametab.is-active { background: var(--ink); color: var(--bg); }
+.game { display: flex; flex-direction: column; gap: 10px; }
+.game.is-hidden { display: none; }
+.game__hint { font-size: 13px; color: var(--ink-3); text-align: center; }
+.galaga { background: #0e1120; }
