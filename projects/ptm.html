@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PTM — Perpetual Thermal Monitor — Chae Kim</title>
+  <meta name="description" content="A non-invasive sleep mask with embedded thermal and push sensors that tracks temperature patterns overnight and syncs to a health app.">
+  <meta property="og:title" content="PTM — Perpetual Thermal Monitor — Chae Kim">
+  <meta property="og:description" content="A non-invasive sleep mask with embedded thermal and push sensors that tracks temperature patterns overnight and syncs to a health app.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="/assets/img/projects/ptm/storyboard.png">
+  <link rel="icon" href="/assets/img/memoji.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="/" class="wordmark" aria-label="Chae Kim — home">c<span>.</span> kim</a>
+      <button class="nav__burger" aria-label="Open menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="/#work">Work</a>
+        <a href="/#experience">Experience</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+        <a class="nav__cta" href="https://www.linkedin.com/in/chaekim/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="case-hero">
+      <div class="container">
+        <a class="case-hero__back" href="/#work">← All work</a>
+        <div class="case-hero__emoji" aria-hidden="true">🤒</div>
+        <p class="eyebrow" style="margin-top:14px">INFO-I300 Human-Computer Interaction · Nov – Dec 2019</p>
+        <h1 class="display case-hero__title">A sleep mask that notices your <em>fever</em> before you do.</h1>
+        <p class="lede">A non-invasive way to catch a fever early: thermal and push sensors embedded in an ordinary sleep mask, tracking temperature patterns overnight and syncing to your phone's health app.</p>
+        <dl class="case-meta">
+          <div><dt>Role</dt><dd>Creator · Researcher · Designer</dd></div>
+          <div><dt>Type</dt><dd>Individual · Academic</dd></div>
+          <div><dt>Duration</dt><dd>4 weeks</dd></div>
+          <div><dt>Toolkit</dt><dd>Adobe InDesign · Illustration · UI Design</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="case-cover case-cover--contain"><img src="/assets/img/projects/ptm/storyboard.png" alt="PTM storyboard"></div>
+    </section>
+
+    <section class="container case-body">
+      <nav class="toc" aria-label="On this page">
+        <a href="#problem">The problem</a>
+        <a href="#research">Research</a>
+        <a href="#solution">Solution</a>
+        <a href="#next">Limitations & next</a>
+      </nav>
+      <article class="prose">
+
+<h2 id="problem">The problem</h2>
+<div class="callout callout--accent"><span class="ico">💡</span><div><p><strong>You're already sick, and you don't know when the fever will strike again.</strong> Was it a sudden spike or a slow climb? By the time you notice, the useful data is gone.</p><p>Sleep masks are already on your face for eight hours a night — and studies show they improve REM sleep and melatonin levels. What if something that non-invasive could do more than block light?</p></div></div>
+<p>Topic space: medicine and health. The brief was to conceptualize an idea that solves a problem within it.</p>
+
+<h2 id="research">Research</h2>
+<div class="two">
+<div>
+<p>Sleep masks had already started branching into functionality: masks that light up gradually to wake you, masks with built-in low-frequency speakers. The high-profile example was <strong>Dreamlight</strong> at CES 2018 — a wrap-around mask with heart-rate monitors, accelerometers, gyroscopes, and four speakers.</p>
+<p style="margin-top:12px">On the physiology side: body temperature fluctuates through the night and the body regulates heat less effectively during sleep, which is why the sleeping environment's temperature matters so much for REM quality. The forehead is one of the best non-invasive sites for a reading.</p>
+</div>
+<figure><img src="/assets/img/projects/ptm/dreamlight.png" alt="Dreamlight mask, CES 2018" loading="lazy"><figcaption>Dreamlight mask, CES 2018</figcaption></figure>
+</div>
+
+<h2 id="solution">Solution</h2>
+<p class="pull">Install thermal and push sensors inside a sleep mask to create a perpetual, non-invasive thermal monitor.</p>
+<ul>
+  <li><strong>Thermal sensors</strong> near the forehead for the best telemetry.</li>
+  <li><strong>Push sensor</strong> as the initiator — putting the mask on wakes the system, taking it off shuts it down to save battery.</li>
+  <li><strong>NFC chip</strong> in the center to sync with the phone.</li>
+  <li><strong>App integration</strong> — third-party apps feed the device's native health app, so temperature sits alongside existing health data.</li>
+</ul>
+<div class="two">
+<figure class="contain"><img src="/assets/img/projects/ptm/mockup.png" alt="Mask schematic: (1,2) thermal sensors, (3) NFC chip, (4) cushioned mask body" loading="lazy"><figcaption>Mask schematic: (1,2) thermal sensors, (3) NFC chip, (4) cushioned mask body</figcaption></figure>
+<figure class="contain"><img src="/assets/img/projects/ptm/sensor-layers.png" alt="Sensor layers: foam, heat sensors on both sides, push sensor" loading="lazy"><figcaption>Sensor layers: foam, heat sensors on both sides, push sensor</figcaption></figure>
+</div>
+<figure class="contain"><img src="/assets/img/projects/ptm/storyboard.png" alt="How it works: put on the mask → push sensor triggers thermal sensors → readings sync over NFC to the health app" loading="lazy"><figcaption>How it works: put on the mask → push sensor triggers thermal sensors → readings sync over NFC to the health app</figcaption></figure>
+<figure class="contain"><img src="/assets/img/projects/ptm/health-app.png" alt="Health app interface — track the exact minutes and hours when temperature began to change" loading="lazy"><figcaption>Health app interface — track the exact minutes and hours when temperature began to change</figcaption></figure>
+
+<h2 id="next">Limitations &amp; next</h2>
+<p>Both short and long sleep durations correlate with cardiovascular risk, and skin temperature correlates with blood-flow velocity — so a temperature trace is a richer signal than it looks. If PTM could detect an incoming irregularity (machine learning in a future iteration), a subtle change to a sleep mask could have an outsized effect.</p>
+<ul>
+  <li>Sensor overheating and long-term durability are open questions.</li>
+  <li>Replacing a failed sensor means opening the whole mask — a cost and reuse problem.</li>
+  <li>Battery life versus weight on the face.</li>
+  <li>Infrared sensing of a facial region is worth exploring beyond contact thermal sensors.</li>
+  <li>Market research is needed on who actually wants a smarter sleep mask.</li>
+</ul>
+
+      </article>
+    </section>
+
+    <section class="next">
+      <div class="container next__grid">
+        <a href="/projects/luc"><small>← Previous</small><strong>LUC — Luggage Under Control</strong></a>
+        <a href="/projects/coursera" style="text-align:right"><small>Next →</small><strong>Re-envisioning Coursera</strong></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© <span data-year>2026</span> Chae Woon Kim · 김채운</span>
+      <span><a href="/#contact">Get in touch</a> · <a href="https://github.com/chaekim96/chaekim-portfolio" target="_blank" rel="noopener">Source ↗</a></span>
+    </div>
+  </footer>
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>

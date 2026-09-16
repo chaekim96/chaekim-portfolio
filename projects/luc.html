@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LUC — Luggage Under Control — Chae Kim</title>
+  <meta name="description" content="A self-weighing luggage concept using force sensors in each wheel, inspired by tire-pressure monitoring systems and Wi-Fi mesh networks.">
+  <meta property="og:title" content="LUC — Luggage Under Control — Chae Kim">
+  <meta property="og:description" content="A self-weighing luggage concept using force sensors in each wheel, inspired by tire-pressure monitoring systems and Wi-Fi mesh networks.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="/assets/img/projects/luc/suitcase.png">
+  <link rel="icon" href="/assets/img/memoji.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="/" class="wordmark" aria-label="Chae Kim — home">c<span>.</span> kim</a>
+      <button class="nav__burger" aria-label="Open menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="/#work">Work</a>
+        <a href="/#experience">Experience</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+        <a class="nav__cta" href="https://www.linkedin.com/in/chaekim/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="case-hero">
+      <div class="container">
+        <a class="case-hero__back" href="/#work">← All work</a>
+        <div class="case-hero__emoji" aria-hidden="true">🧳</div>
+        <p class="eyebrow" style="margin-top:14px">INFO-I300 Human-Computer Interaction · Sep 2019</p>
+        <h1 class="display case-hero__title">Luggage that <em>weighs itself</em> before the check-in counter does.</h1>
+        <p class="lede">A self-weighing luggage technology: force sensors in each wheel report to a processing unit that reconciles the readings into one accurate weight on a display at the top of the bag.</p>
+        <dl class="case-meta">
+          <div><dt>Role</dt><dd>Creator · Researcher · Designer</dd></div>
+          <div><dt>Type</dt><dd>Individual · Academic</dd></div>
+          <div><dt>Duration</dt><dd>4 weeks</dd></div>
+          <div><dt>Toolkit</dt><dd>Adobe InDesign · Illustration</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="case-cover case-cover--contain"><img src="/assets/img/projects/luc/suitcase.png" alt="LUC mockup sketch of sensors on a suitcase"></div>
+    </section>
+
+    <section class="container case-body">
+      <nav class="toc" aria-label="On this page">
+        <a href="#problem">The problem</a>
+        <a href="#research">Research</a>
+        <a href="#solution">Solution</a>
+        <a href="#next">What's next</a>
+      </nav>
+      <article class="prose">
+
+<h2 id="problem">The problem</h2>
+<div class="callout callout--accent"><span class="ico">💡</span><div><p><strong>You only find out your bag is overweight when it's too late to do anything about it.</strong> I love traveling, but with my life crammed into two suitcases every small thing I can bring matters — and I couldn't stand being told at the counter to pay up or unpack.</p><p>Cars solved a similar sensing problem years ago with tire-pressure monitoring. Why not luggage?</p></div></div>
+<p>The brief: conceptualize an idea that solves a problem within a topic space (mine: travel).</p>
+
+<h2 id="research">Research</h2>
+<div class="two">
+<div>
+<p>As of 2019, only a handful of airlines allowed checked bags over 50 lbs, and carriers had good reason not to budge — the Washington Post reported roughly <strong>$3.1 billion</strong> in luggage fees, with escalating charges past each weight tier.</p>
+<p style="margin-top:12px">Self-weighing suitcases had been tried: the TUL Kickstarter got press from Gizmodo and ABC but missed its funding goal, and Samsonite and Panasonic announced an alliance around biometric locks and integrated scales. None had reached the mainstream. Most people still used hand-held pulley scales — and the one-star reviews showed how much they disliked them.</p>
+</div>
+<figure><img src="/assets/img/projects/luc/luggage-weight.jpg" alt="2019 airline weight limits" loading="lazy"><figcaption>2019 airline weight limits</figcaption></figure>
+</div>
+
+<h2 id="solution">Solution</h2>
+<p>Two technologies inspired the design: <strong>TPMS</strong> (mandated on all US cars after the 2000 TREAD Act) and <strong>Wi-Fi mesh networks</strong>, where multiple access points cooperate to cover an area better than one could alone.</p>
+<p class="pull">Force sensors in every wheel, working together like a mesh — so uneven packing still produces one accurate number.</p>
+<div class="two">
+<figure class="contain"><img src="/assets/img/projects/luc/tire-forces.png" alt="Forces exerted on a wheel: connector, downward force, locked position, force sensor" loading="lazy"><figcaption>Forces exerted on a wheel: connector, downward force, locked position, force sensor</figcaption></figure>
+<figure class="contain"><img src="/assets/img/projects/luc/processing.png" alt="All four sensors converge on a processing computer that drives the display" loading="lazy"><figcaption>All four sensors converge on a processing computer that drives the display</figcaption></figure>
+</div>
+<figure class="contain"><img src="/assets/img/projects/luc/mockup.png" alt="Mockup: (1) digital display, (2) telemetry connector routed along the side, (3) sensor coverage areas, (4) processing computer, (5) sensor-equipped wheels" loading="lazy"><figcaption>Mockup: (1) digital display, (2) telemetry connector routed along the side, (3) sensor coverage areas, (4) processing computer, (5) sensor-equipped wheels</figcaption></figure>
+<figure class="contain"><img src="/assets/img/projects/luc/heatmap.png" alt="Real-time heat map with weight pressed on the left side — the sensors compensate for the tilt" loading="lazy"><figcaption>Real-time heat map with weight pressed on the left side — the sensors compensate for the tilt</figcaption></figure>
+
+<h2 id="next">What's next</h2>
+<ul>
+  <li><strong>Prototype it.</strong> The project was about the sensing technology, not the bag; the next step is building the sensor package and retrofitting a suitcase.</li>
+  <li><strong>Durability.</strong> Luggage wheels fail unpredictably; the sensors would too. Real-world wear testing is required.</li>
+  <li><strong>Function.</strong> Weighing only works standing still; retractable wheels or motion compensation could handle sloshing weight while rolling.</li>
+  <li><strong>Power.</strong> A small battery charged by wheel motion (kinetic) is the most promising option.</li>
+  <li><strong>Other applications.</strong> The same comparative-sensor approach could flag tire weight imbalances on manufacturing lines.</li>
+</ul>
+
+      </article>
+    </section>
+
+    <section class="next">
+      <div class="container next__grid">
+        <a href="/projects/alab"><small>← Previous</small><strong>aLab — Automatic Level-Adjusting Bowl</strong></a>
+        <a href="/projects/ptm" style="text-align:right"><small>Next →</small><strong>PTM — Perpetual Thermal Monitor</strong></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© <span data-year>2026</span> Chae Woon Kim · 김채운</span>
+      <span><a href="/#contact">Get in touch</a> · <a href="https://github.com/chaekim96/chaekim-portfolio" target="_blank" rel="noopener">Source ↗</a></span>
+    </div>
+  </footer>
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>

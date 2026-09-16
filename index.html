@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chae Kim — Product, Data &amp; Design</title>
+  <meta name="description" content="Chae Kim is an MBA candidate at UC Berkeley Haas and former EY Senior Technology Consultant (AI & Data) building products at the intersection of data, design, and people.">
+  <meta property="og:title" content="Chae Kim — Product, Data & Design">
+  <meta property="og:description" content="MBA candidate at Berkeley Haas · ex-EY AI & Data consultant · Informatics @ Indiana University. Selected product, UX, and engineering work.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/assets/img/memoji.png">
+  <link rel="icon" href="/assets/img/memoji.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script>
+    /* Prevent theme flash before main.js runs */
+    try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+  </script>
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="/" class="wordmark" aria-label="Chae Kim — home">c<span>.</span> kim</a>
+      <button class="nav__burger" aria-label="Open menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#work">Work</a>
+        <a href="#experience">Experience</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+        <a class="nav__cta" href="https://www.linkedin.com/in/chaekim/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="container hero__grid">
+        <div>
+          <p class="hero__hi"><span class="wave">👋</span> Hey there, I'm Chae.</p>
+          <h1 class="display hero__title">I build products at the intersection of <em>data</em>, <em>design</em>, and <span class="mark">people</span>.</h1>
+          <p class="lede hero__lede">MBA candidate at <strong>UC Berkeley Haas</strong>. Previously a Senior Technology Consultant in <strong>AI &amp; Data at EY</strong>, where I ran a cloud-migration program for a Fortune 500 life-sciences company. Informatics + HCI grad from Indiana University. Aspiring product manager who still sketches on paper first.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#work">See my work
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+            </a>
+            <a class="btn btn--ghost" href="https://app.notion.com/p/chaekim/Chae-Kim-611fd082d2014eb5bc50ae3fd5d37b19" target="_blank" rel="noopener">Resume ↗</a>
+            <a class="btn btn--ghost" href="mailto:brian123kim@gmail.com">Email me</a>
+          </div>
+          <div class="hero__meta">
+            <span>📍 Berkeley, CA</span>
+            <span>🎓 Haas MBA · IU Informatics</span>
+            <span>🪖 ROK Army veteran</span>
+          </div>
+        </div>
+        <div class="hero__art" aria-hidden="true">
+          <div class="blob"></div>
+          <img class="memoji" src="/assets/img/memoji.png" alt="" width="421" height="421">
+          <span class="hero__badge hero__badge--tl"><span class="dot"></span> Open to PM roles</span>
+          <span class="hero__badge hero__badge--br">🧠 Mind: currently blown</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Product Management</span><span>AI &amp; Data Strategy</span><span>Program Management</span><span>UX Research</span><span>Cloud Migration</span><span>Prototyping</span><span>Human-Centered Design</span><span>Vibe Coding</span><span>3D Printing</span>
+        <span>Product Management</span><span>AI &amp; Data Strategy</span><span>Program Management</span><span>UX Research</span><span>Cloud Migration</span><span>Prototyping</span><span>Human-Centered Design</span><span>Vibe Coding</span><span>3D Printing</span>
+      </div>
+    </div>
+
+    <!-- ============ WORK ============ -->
+    <section class="section" id="work">
+      <div class="container">
+        <div class="section__head reveal">
+          <div>
+            <p class="eyebrow">Selected work</p>
+            <h2 class="display section__title">Things I've <em>built</em>, shipped, and sketched.</h2>
+          </div>
+          <div class="filters" role="tablist" aria-label="Filter projects">
+            <button class="chip is-active" data-filter="all">All</button>
+            <button class="chip" data-filter="product">Product &amp; UX</button>
+            <button class="chip" data-filter="engineering">Engineering</button>
+            <button class="chip" data-filter="design">Design &amp; Motion</button>
+          </div>
+        </div>
+
+        <div class="grid">
+          <!-- IU Study Assistant (featured) -->
+          <article class="card card--wide reveal" data-cat="product engineering">
+            <div class="card__media card__media--pad">
+              <img src="/assets/img/projects/iusa/home.png" alt="IU Study Assistant home page" loading="lazy">
+              <span class="card__emoji">📚</span>
+            </div>
+            <div class="card__body">
+              <div class="card__kicker"><span>Capstone · 1 year</span><span>2020–21</span></div>
+              <h3 class="card__title">IU Study Assistant</h3>
+              <p class="card__desc">A streamlined study platform for Indiana University students — one place for notes, study groups, tutors, and textbooks. I led the project, designed the UX, and built the notes feature and database.</p>
+              <div class="card__tags"><span class="tag">Project Management</span><span class="tag">UX/UI</span><span class="tag">SQL · PHP</span><span class="tag">Figma</span></div>
+            </div>
+            <a class="card__link" href="/projects/iu-study-assistant" aria-label="Read the IU Study Assistant case study"></a>
+          </article>
+
+          <!-- aLab -->
+          <article class="card reveal" data-cat="product">
+            <div class="card__media">
+              <img src="/assets/img/projects/alab/screens-7-10.png" alt="aLab app screens" loading="lazy">
+              <span class="card__emoji">🐶</span>
+            </div>
+            <div class="card__body">
+              <div class="card__kicker"><span>Team lead · 6 weeks</span><span>2020</span></div>
+              <h3 class="card__title">aLab — Level-Adjusting Dog Bowl</h3>
+              <p class="card__desc">A companion app for a height- and temperature-adjustable dog bowl, born from watching my dog recover from a neck injury.</p>
+              <div class="card__tags"><span class="tag">HCC Methods</span><span class="tag">Adobe XD</span><span class="tag">Usability Testing</span></div>
+            </div>
+            <a class="card__link" href="/projects/alab" aria-label="Read the aLab case study"></a>
+          </article>
+
+          <!-- LUC -->
+          <article class="card reveal" data-cat="product">
+            <div class="card__media card__media--contain">
+              <img src="/assets/img/projects/luc/suitcase.png" alt="LUC luggage sketch" loading="lazy">
+              <span class="card__emoji">🧳</span>
+            </div>
+            <div class="card__body">
+              <div class="card__kicker"><span>Concept · 4 weeks</span><span>2019</span></div>
+              <h3 class="card__title">LUC — Luggage Under Control</h3>
+              <p class="card__desc">Self-weighing luggage using force sensors in each wheel, inspired by tire-pressure monitoring systems and Wi-Fi mesh networks.</p>
+              <div class="card__tags"><span class="tag">HCI</span><span class="tag">Research</span><span class="tag">Illustration</span></div>
+            </div>
+            <a class="card__link" href="/projects/luc" aria-label="Read the LUC case study"></a>
+          </article>
+
+          <!-- PTM -->
+          <article class="card reveal" data-cat="product">
+            <div class="card__media card__media--contain">
+              <img src="/assets/img/projects/ptm/mockup.png" alt="PTM sleep-mask sketch" loading="lazy">
+              <span class="card__emoji">🤒</span>
+            </div>
+            <div class="card__body">
+              <div class="card__kicker"><span>Concept · 4 weeks</span><span>2019</span></div>
+              <h3 class="card__title">PTM — Perpetual Thermal Monitor</h3>
+              <p class="card__desc">A sleep mask with embedded thermal and push sensors that quietly tracks fever patterns overnight and syncs to your health app.</p>
+              <div class="card__tags"><span class="tag">HCI</span><span class="tag">Health Tech</span><span class="tag">UI Design</span></div>
+            </div>
+            <a class="card__link" href="/projects/ptm" aria-label="Read the PTM case study"></a>
+          </article>
+
+          <!-- Coursera -->
+          <article class="card reveal" data-cat="product">
+            <div class="card__media card__media--contain">
+              <img src="/assets/img/projects/coursera-cover.jpg" alt="PMP4 Coursera dossier cover" loading="lazy">
+              <span class="card__emoji">🎓</span>
+            </div>
+            <div class="card__body">
+              <div class="card__kicker"><span>Product Management</span><span>2020</span></div>
+              <h3 class="card__title">Re-envisioning Coursera</h3>
+              <p class="card__desc">A 27-page product dossier proposing features that make Coursera learning transferable to real careers.</p>
+              <div class="card__tags"><span class="tag">Product Strategy</span><span class="tag">PRD</span><span class="tag">Team of 3</span></div>
+            </div>
+            <a class="card__link" href="/projects/coursera" aria-label="Read the Coursera case study"></a>
+          </article>
+
+          <!-- Home GIF -->
+          <article class="card reveal" data-cat="design">
+            <div class="card__media">
+              <img src="/assets/img/projects/home.gif" alt="Home during COVID animated GIF" loading="lazy">
+              <span class="card__emoji">🏠</span>
+            </div>
+            <div class="card__body">
+              <div class="card__kicker"><span>Digital Imagery</span><span>2020</span></div>
+              <h3 class="card__title">Home (during COVID)</h3>
+              <p class="card__desc">A pixel-art GIF built around a Swiss Army knife — a metaphor for a house that keeps growing new tools.</p>
+              <div class="card__tags"><span class="tag">Photoshop</span><span class="tag">Pixel Art</span><span class="tag">GIF</span></div>
+            </div>
+            <a class="card__link" href="/projects/home-gif" aria-label="View the Home GIF project"></a>
+          </article>
+
+          <!-- Yin Yang -->
+          <article class="card reveal" data-cat="design">
+            <div class="card__media">
+              <img src="/assets/img/projects/yin-yang.gif" alt="Yin Yang animated GIF" loading="lazy">
+              <span class="card__emoji">☯️</span>
+            </div>
+            <div class="card__body">
+              <div class="card__kicker"><span>Digital Imagery</span><span>2020</span></div>
+              <h3 class="card__title">Yin Yang in Motion</h3>
+              <p class="card__desc">A rotating clockwork take on the yin-yang — Eden on one panel, the underworld on the other, each needing the other to exist.</p>
+              <div class="card__tags"><span class="tag">Photoshop</span><span class="tag">Illustrator</span><span class="tag">Motion</span></div>
+            </div>
+            <a class="card__link" href="/projects/yin-yang" aria-label="View the Yin Yang project"></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PLAYGROUND ============ -->
+    <section class="section section--tight" id="playground">
+      <div class="container">
+        <div class="section__head reveal">
+          <div>
+            <p class="eyebrow">Playground</p>
+            <h2 class="display section__title">Smaller experiments &amp; <em>vibe-coded</em> things.</h2>
+          </div>
+          <p class="section__sub">Weekend builds, AI-assisted prototypes, and early HCI concept work. Less polish, more curiosity.</p>
+        </div>
+        <div class="tiles reveal">
+          <a class="tile" href="https://www.figma.com/make/jM7KyUTe5uojF6qOMhuF6U/Color-Palette-Generator?node-id=0-4" target="_blank" rel="noopener">
+            <span class="tile__icon">🎨</span>
+            <span><span class="tile__title">Color Palette Generator ↗</span><span class="tile__meta">Vibe-coded in Figma Make · 2025</span></span>
+          </a>
+          <div class="tile">
+            <span class="tile__icon">🐦</span>
+            <span><span class="tile__title">Flappy Bird clone</span><span class="tile__meta">One-day vibe-coding sprint · 2025</span></span>
+          </div>
+          <div class="tile">
+            <span class="tile__icon">🌍</span>
+            <span><span class="tile__title">World Time Converter</span><span class="tile__meta">Vibe-coded time-zone utility · 2025</span></span>
+          </div>
+          <a class="tile" href="/assets/pdf/WMCS-Weight-Machine-Cross-Sync.pdf" target="_blank" rel="noopener">
+            <span class="tile__icon">🏋️</span>
+            <span><span class="tile__title">WMCS — Weight Machine Cross-Sync ↗</span><span class="tile__meta">Gym-set tracking via NFC · HCI/d concept, PDF · 2019</span></span>
+          </a>
+          <a class="tile" href="/assets/pdf/AAV-Auto-Adjusting-Volume.pdf" target="_blank" rel="noopener">
+            <span class="tile__icon">🔊</span>
+            <span><span class="tile__title">AAV — Auto-Adjusting Volume ↗</span><span class="tile__meta">Ambient-noise-aware volume · HCI/d concept, PDF · 2019</span></span>
+          </a>
+          <a class="tile" href="/assets/pdf/I308-Lime-Scooter-Poster.pdf" target="_blank" rel="noopener">
+            <span class="tile__icon">🛴</span>
+            <span><span class="tile__title">Fake News — Lime Scooters ↗</span><span class="tile__meta">Media-literacy poster experiment · 2020</span></span>
+          </a>
+          <div class="tile">
+            <span class="tile__icon">🖨️</span>
+            <span><span class="tile__title">3D prints</span><span class="tile__meta">Keychains, a desk organizer, stackable containers, a card holder with lid — Fusion 360 → PLA</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section__head reveal">
+          <div>
+            <p class="eyebrow">Experience</p>
+            <h2 class="display section__title">From the barracks to the <em>boardroom</em>.</h2>
+          </div>
+          <p class="section__sub">Consulting taught me to ship under pressure. HCI taught me to listen first. The army taught me to lead when things are uncertain.</p>
+        </div>
+
+        <div class="stats reveal" style="margin-bottom: 40px;">
+          <div class="stat"><div class="stat__num">13<em>+</em></div><div class="stat__label">years growing up overseas</div></div>
+          <div class="stat"><div class="stat__num">2</div><div class="stat__label">Fortune 500 clients led end-to-end</div></div>
+          <div class="stat"><div class="stat__num">1<em>yr</em></div><div class="stat__label">capstone shipped as PM, designer &amp; developer</div></div>
+          <div class="stat"><div class="stat__num">∞</div><div class="stat__label">paper sketches before any pixel</div></div>
+        </div>
+
+        <div class="timeline reveal">
+          <div class="tl">
+            <div class="tl__when">Present</div>
+            <div>
+              <div class="tl__org">UC Berkeley, Haas School of Business <span class="tl__now">Now</span></div>
+              <div class="tl__role">MBA Candidate</div>
+              <ul class="tl__body">
+                <li>Focusing on product management and AI &amp; data strategy.</li>
+                <li>Building and shipping side projects with AI tooling between case comps and coffee chats.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="tl">
+            <div class="tl__when">New York, NY</div>
+            <div>
+              <div class="tl__org">EY — Technology Consulting</div>
+              <div class="tl__role">Senior Consultant, AI &amp; Data · Enterprise Data</div>
+              <ul class="tl__body">
+                <li><strong>Cloud Migration Program Manager</strong> for a Fortune 500 life-sciences company — owned the plan, the risks, and the room.</li>
+                <li><strong>Logistics Lead</strong> for a Fortune 500 consumer-foods company's data &amp; analytics transformation.</li>
+                <li><strong>Data Architect</strong> for an internal EY initiative — modeled the data, then made it usable for people who aren't data people.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="tl">
+            <div class="tl__when">Bloomington, IN</div>
+            <div>
+              <div class="tl__org">Indiana University Bloomington</div>
+              <div class="tl__role">B.S. Informatics · Minors in HCI &amp; Entrepreneurship</div>
+              <ul class="tl__body">
+                <li>Year-long capstone as project manager, UX designer, and back-end developer for <a href="/projects/iu-study-assistant" class="em">IU Study Assistant</a>.</li>
+                <li>Human-Centered Computing coursework: design research, prototyping, usability testing.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="tl">
+            <div class="tl__when">Gangwon, South Korea</div>
+            <div>
+              <div class="tl__org">Republic of Korea Army</div>
+              <div class="tl__role">Staff Sergeant · Squad Leader</div>
+              <ul class="tl__body">
+                <li>Led a squad as a non-commissioned officer — the original crash course in ownership, logistics, and staying calm.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section" id="about">
+      <div class="container about">
+        <div class="reveal">
+          <p class="eyebrow">Beyond work</p>
+          <h2 class="display section__title" style="margin: 8px 0 22px;">Adventurer by <em>default</em>.</h2>
+          <div class="about__text">
+            <p>I spent 13+ years growing up overseas, which made me an adventurer by default and a problem-solver by necessity. After studying Informatics and Entrepreneurship at Indiana, I followed that itch into technology consulting — and then into an MBA to get closer to the products I'd been building systems for.</p>
+            <p>I'm happiest when I'm making something: a wireframe, a 3D-printed keychain for a friend, a pixel-art GIF, or a weekend app that only I will ever use. I take a lot of photos of coconuts.</p>
+          </div>
+          <div class="about__facts">
+            <div class="fact">🖨️ <span><b>3D printing</b> — desk organizers, containers, and gifts, designed in Fusion 360</span></div>
+            <div class="fact">🎨 <span><b>Graphic design &amp; pixel art</b> — Photoshop, Illustrator, InDesign since undergrad</span></div>
+            <div class="fact">✈️ <span><b>Favorite places</b> — Bonifacio High Street, Gangnam, Seminyak</span></div>
+            <div class="fact">🎧 <span><b>On repeat</b> — Youth by Troye Sivan (the site's spiritual predecessor said so)</span></div>
+          </div>
+        </div>
+        <div class="polaroids reveal" aria-label="Travel photos">
+          <figure class="polaroid"><img src="/assets/img/profile.jpg" alt="Chae waving next to an elephant in Phuket" loading="lazy"><figcaption>Phuket, calmer times</figcaption></figure>
+          <figure class="polaroid"><img src="/assets/img/travel-1.jpg" alt="A pink coconut by a pool in Bali" loading="lazy"><figcaption>Seminyak, Bali</figcaption></figure>
+          <figure class="polaroid"><img src="/assets/img/travel-3.jpg" alt="Limestone cliffs over green water" loading="lazy"><figcaption>Ha Long Bay</figcaption></figure>
+          <figure class="polaroid"><img src="/assets/img/travel-2.jpg" alt="Travel photo" loading="lazy"><figcaption>Somewhere warm</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact reveal">
+          <p class="eyebrow">Contact</p>
+          <h2 class="display contact__title">Let's build something <em>useful</em>.</h2>
+          <p class="lede">Recruiting for a PM, product-strategy, or AI &amp; data role? Want to trade notes on Haas, consulting, or 3D printing? My inbox is open.</p>
+          <div class="contact__links">
+            <a class="btn btn--primary" href="mailto:brian123kim@gmail.com">brian123kim@gmail.com</a>
+            <a class="btn btn--ghost" href="mailto:chaewoonkim@berkeley.edu">chaewoonkim@berkeley.edu</a>
+            <a class="btn btn--ghost" href="https://www.linkedin.com/in/chaekim/" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a class="btn btn--ghost" href="https://app.notion.com/p/chaekim/Chae-Kim-611fd082d2014eb5bc50ae3fd5d37b19" target="_blank" rel="noopener">Notion portfolio ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© <span data-year>2026</span> Chae Woon Kim · 김채운</span>
+      <span>Built by hand in Berkeley · <a href="https://github.com/chaekim96/chaekim-portfolio" target="_blank" rel="noopener">Source on GitHub ↗</a></span>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>
