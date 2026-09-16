@@ -12,7 +12,7 @@
   <link rel="icon" href="/assets/img/memoji.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css">
   <script>
     /* Prevent theme flash before main.js runs */
@@ -20,6 +20,7 @@
   </script>
 </head>
 <body>
+  <canvas id="bg" aria-hidden="true"></canvas>
 
   <!-- ============ NAV ============ -->
   <header class="nav">
@@ -97,8 +98,8 @@
         <div class="grid">
           <!-- IU Study Assistant (featured) -->
           <article class="card card--wide reveal" data-cat="product engineering">
-            <div class="card__media card__media--pad">
-              <img src="/assets/img/projects/iusa/home.png" alt="IU Study Assistant home page" loading="lazy">
+            <div class="card__media card__media--contain card__media--line">
+              <img src="/assets/img/projects/iusa/erd.png" alt="IU Study Assistant entity-relationship diagram" loading="lazy">
               <span class="card__emoji">📚</span>
             </div>
             <div class="card__body">
@@ -112,8 +113,8 @@
 
           <!-- aLab -->
           <article class="card reveal" data-cat="product">
-            <div class="card__media">
-              <img src="/assets/img/projects/alab/screens-7-10.png" alt="aLab app screens" loading="lazy">
+            <div class="card__media card__media--contain card__media--line">
+              <img src="/assets/img/projects/alab/sketches-final.png" alt="aLab final sketches" loading="lazy">
               <span class="card__emoji">🐶</span>
             </div>
             <div class="card__body">
@@ -127,7 +128,7 @@
 
           <!-- LUC -->
           <article class="card reveal" data-cat="product">
-            <div class="card__media card__media--contain">
+            <div class="card__media card__media--contain card__media--line">
               <img src="/assets/img/projects/luc/suitcase.png" alt="LUC luggage sketch" loading="lazy">
               <span class="card__emoji">🧳</span>
             </div>
@@ -142,7 +143,7 @@
 
           <!-- PTM -->
           <article class="card reveal" data-cat="product">
-            <div class="card__media card__media--contain">
+            <div class="card__media card__media--contain card__media--line">
               <img src="/assets/img/projects/ptm/mockup.png" alt="PTM sleep-mask sketch" loading="lazy">
               <span class="card__emoji">🤒</span>
             </div>
