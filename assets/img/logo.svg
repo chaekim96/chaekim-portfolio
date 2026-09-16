@@ -1,6 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Chae Kim">
-  <rect width="64" height="64" rx="16" fill="#101223"/>
-  <path d="M30 20.5a12 12 0 1 0 0 23" fill="none" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/>
-  <path d="M38 19v26M52 19L39.5 31.5M52 45L39.5 32.5" fill="none" stroke="#fff" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="30" cy="32" r="3.6" fill="#ffe234"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 48"><text x="4" y="36" font-family="Poppins, Arial, sans-serif" font-weight="800" font-size="34" letter-spacing="-1.5" fill="#101223">chae</text><circle cx="124" cy="31" r="6" fill="#ffe234"/></svg>

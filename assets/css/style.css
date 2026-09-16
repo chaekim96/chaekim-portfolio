@@ -501,3 +501,8 @@ details > *:not(summary) { padding-bottom: 16px; }
 .game.is-hidden { display: none; }
 .game__hint { font-size: 13px; color: var(--ink-3); text-align: center; }
 .galaga { background: #0e1120; }
+
+/* ---- Wordmark logo (option G) ---- */
+.wordmark { font-family: var(--font-display); font-weight: 800; font-size: 26px; letter-spacing: -0.045em; line-height: 1; color: var(--ink); display: inline-flex; align-items: baseline; gap: 3px; }
+.wordmark__dot { width: 9px; height: 9px; border-radius: 50%; background: var(--marker); display: inline-block; transform: translateY(-1px); transition: transform .35s cubic-bezier(.2,.7,.2,1); }
+.wordmark:hover .wordmark__dot { transform: translateY(-1px) scale(1.5); }
