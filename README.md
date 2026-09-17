@@ -18,10 +18,18 @@ python3 -m http.server 8080
 
 Then open http://localhost:8080. Note: the Python server doesn't do clean URLs, so project links resolve to `/projects/luc.html` on Vercel but need the `.html` locally — use `npx serve .` for parity.
 
+## Case studies
+
+Featured / more-work pages are generated from one template: edit `scripts/build-cases.py` (content lives in the `CASES` list), run `python3 scripts/build-cases.py`, commit the HTML in `projects/`. `projects/_template.html` is the rendered empty shell for reference. The five college pages are hand-edited HTML.
+
+Anything not yet confirmed is marked in the copy as `[CONFIRM: ...]` (styled yellow). Grep: `grep -rn "CONFIRM:" index.html projects/`.
+
 ## Updating content
 
 - Add a project: duplicate a file in `projects/`, then add a `.card` in `index.html` with the right `data-cat` (`product`, `engineering`, `design`).
-- Resume: drop a PDF at `assets/pdf/resume.pdf` and point the two "Resume" links in `index.html` to it.
+- Resume: replace `assets/pdf/chae-kim-resume.pdf`. Every resume link already points there.
+- Email is assembled at runtime from `data-user` / `data-domain` attributes (see `main.js`) so it isn't in the HTML.
+- Analytics: `/_vercel/insights/script.js` is included; enable Web Analytics in the Vercel dashboard for it to record.
 
 ## Photo credits
 
