@@ -3,22 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Home (during COVID) — Chae Kim</title>
-  <meta name="description" content="A pixel-art animated GIF depicting home during COVID, built around a Swiss Army knife as a metaphor for a perpetually growing house.">
-  <meta property="og:title" content="Home (during COVID) — Chae Kim">
-  <meta property="og:description" content="A pixel-art animated GIF depicting home during COVID, built around a Swiss Army knife as a metaphor for a perpetually growing house.">
+  <title>{{title}} · Chae Kim</title>
+  <meta name="description" content="{{desc}}">
+  <meta property="og:title" content="{{title}} · Chae Kim">
+  <meta property="og:description" content="{{desc}}">
   <meta property="og:type" content="article">
-  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/projects/home.gif">
+  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og.png">
+  <link rel="canonical" href="https://chaekim-portfolio.vercel.app/projects/{{slug}}">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" onload="this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap"></noscript>
   <link rel="stylesheet" href="/assets/css/style.css?v=8">
-  <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
+  <script>try {{{{ var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); }}}} catch (e) {{{{}}}}</script>
 </head>
 <body>
-
   <a class="skip" href="#main">Skip to content</a>
   <canvas id="bg" aria-hidden="true"></canvas>
   <header class="nav">
@@ -41,49 +41,48 @@
     </div>
   </header>
 
-    <main id="main">
+  <main id="main">
     <section class="case-hero">
       <div class="container">
         <a class="case-hero__back" href="/#work">← All work</a>
-        <div class="case-hero__emoji" aria-hidden="true">🏠</div>
-        <p class="eyebrow" style="margin-top:14px">SOAD-N130 Digital Imagery · Apr – May 2020</p>
-        <h1 class="display case-hero__title">A house as a <em>Swiss Army knife</em>.</h1>
-        <p class="lede">A depiction of what home felt like during COVID: a pixel-art GIF in which a plant pot keeps growing and a Swiss Army knife keeps unfolding new tools.</p>
-        <dl class="case-meta">
-          <div><dt>Role</dt><dd>Creator · Designer</dd></div>
-          <div><dt>Type</dt><dd>Individual · Academic</dd></div>
-          <div><dt>Duration</dt><dd>4 weeks</dd></div>
-          <div><dt>Toolkit</dt><dd>Photoshop · Illustrator · Pixel Art</dd></div>
-        </dl>
+        <div class="case-hero__emoji" aria-hidden="true">{{emoji}}</div>
+        <p class="eyebrow" style="margin-top:14px">{{kicker}}</p>
+        <h1 class="display case-hero__title">{{heading}}{{badge}}</h1>
+        <p class="tldr">{{tldr}}</p>
+        <p class="meta-line"><b>Role</b> {{role}} · <b>Team</b> {{team}} · <b>Timeline</b> {{timeline}}</p>
       </div>
     </section>
 
     <section class="container">
-      <div class="case-cover case-cover--contain"><img src="/assets/img/projects/home.gif" alt="Home during COVID animated GIF"></div>
+      <div class="case-cover {{cover_class}}">{{cover}}</div>
     </section>
 
     <section class="container case-body">
       <nav class="toc" aria-label="On this page">
-        <a href="#idea">The idea</a>
-        <a href="#craft">Craft</a>
+        <a href="#problem">The problem</a>
+        <a href="#did">What I did</a>
+        <a href="#results">Results</a>
+        <a href="#differently">What I'd do differently</a>
+        <a href="#artifacts">Artifacts</a>
       </nav>
       <article class="prose">
-
-<h2 id="idea">The idea</h2>
-<p>The plant pot is a metaphor for the house as a perpetually growing entity. The Swiss Army knife is the foundation — it embodies all the different tools and appliances inside the house that suddenly had to do everything during lockdown.</p>
-<p class="pull">Since the knife is the foundation for all the movement in the GIF, it sits dead-center so the eye stays on what's unfolding above it.</p>
-
-<h2 id="craft">Craft</h2>
-<p>Drawn as pixel art in Photoshop and Illustrator and assembled frame-by-frame into a looping GIF. The constraint of a tiny canvas forced every element to earn its pixels.</p>
-<figure class="contain"><img src="/assets/img/projects/home.gif" alt="Home (during COVID) — the loop" loading="lazy"><figcaption>Home (during COVID) — the loop</figcaption></figure>
-
+        <h2 id="problem">The problem</h2>
+{{problem}}
+        <h2 id="did">What I did</h2>
+{{did}}
+        <h2 id="results">Results</h2>
+{{results}}
+        <h2 id="differently">What I'd do differently</h2>
+{{differently}}
+        <h2 id="artifacts">Artifacts</h2>
+{{artifacts}}
       </article>
     </section>
 
     <section class="next">
       <div class="container next__grid">
-        <a href="/projects/coursera"><small>← Previous</small><strong>Re-envisioning Coursera</strong></a>
-        <a href="/projects/yin-yang" style="text-align:right"><small>Next →</small><strong>Yin Yang in Motion</strong></a>
+        <a href="/projects/{{prev_slug}}"><small>← Previous</small><strong>{{prev_title}}</strong></a>
+        <a href="/projects/{{next_slug}}" style="text-align:right"><small>Next →</small><strong>{{next_title}}</strong></a>
       </div>
     </section>
   </main>
