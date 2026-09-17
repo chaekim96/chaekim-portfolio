@@ -569,3 +569,7 @@ details > *:not(summary) { padding-bottom: 16px; }
 .artifacts img { border-radius: 12px; border: 1px solid var(--line); background: var(--bg-elev); width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
 .artifacts .ph { aspect-ratio: 4 / 3; border-radius: 12px; border: 1px dashed var(--line-strong); display: grid; place-items: center; text-align: center; padding: 16px; font-size: 13px; color: var(--ink-3); background: var(--bg-soft); }
 .stealth { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--line); color: var(--ink-2); vertical-align: middle; margin-left: 8px; }
+html { overflow-x: hidden; }
+.card__media.feat__media--type { display: grid; place-items: end start; padding: 64px 22px 22px; background-image: none; border-bottom: 1px solid var(--line); }
+.card__media.feat__media--type::before, .card__media.feat__media--type::after { display: none; }
+.card__media.feat__media--type .big { font-size: clamp(26px, 2.6vw, 34px); }
