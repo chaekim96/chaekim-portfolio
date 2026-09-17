@@ -3,26 +3,49 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Chae Kim — Product, Data &amp; Design</title>
-  <meta name="description" content="Chae Kim — MBA candidate at UC Berkeley Haas, former EY AI & Data consultant. Product, data, and design work.">
-  <meta property="og:title" content="Chae Kim — Product, Data & Design">
-  <meta property="og:description" content="MBA candidate at Berkeley Haas · ex-EY AI & Data · IU Informatics. Selected product, UX, and engineering work.">
+  <title>Chae Kim · Product, strategy, and things that ship</title>
+  <meta name="description" content="Chae Kim: MBA at Berkeley Haas, co-founder of Lucent (NSF I-Corps), ex-EY AI & Data. I turn messy problems into products and plans that ship.">
+  <meta property="og:title" content="Chae Kim · Product, strategy, and things that ship">
+  <meta property="og:description" content="MBA at Berkeley Haas. Co-founder of Lucent. Ex-EY AI & Data. Founder, operator, and builder.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="/assets/img/thumbs/luc.jpg">
+  <meta property="og:url" content="https://chaekim-portfolio.vercel.app/">
+  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://chaekim-portfolio.vercel.app/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/style.css?v=7">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap"></noscript>
+  <link rel="preload" as="image" href="/assets/img/memoji.png">
+  <link rel="stylesheet" href="/assets/css/style.css?v=8">
   <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Chae Woon Kim",
+    "alternateName": "Chae Kim",
+    "url": "https://chaekim-portfolio.vercel.app/",
+    "image": "https://chaekim-portfolio.vercel.app/assets/img/memoji.png",
+    "jobTitle": "Co-founder & CEO, Lucent; MBA Candidate, UC Berkeley Haas",
+    "worksFor": { "@type": "Organization", "name": "Lucent", "url": "https://trylucent.ai" },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "UC Berkeley, Haas School of Business" },
+      { "@type": "CollegeOrUniversity", "name": "Indiana University Bloomington" }
+    ],
+    "sameAs": ["https://www.linkedin.com/in/chaekim/", "https://github.com/chaekim96"]
+  }
+  </script>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
   <canvas id="bg" aria-hidden="true"></canvas>
 
   <!-- ============ NAV ============ -->
   <header class="nav">
     <div class="container nav__inner">
-      <a href="/" class="brand wordmark" aria-label="Chae Kim — home">chae<span class="wordmark__dot"></span></a>
+      <a href="/" class="brand wordmark" aria-label="Chae Kim, home">chae<span class="wordmark__dot"></span></a>
       <button class="nav__burger" aria-label="Open menu" aria-expanded="false">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -30,6 +53,7 @@
         <a href="#work">Work</a>
         <a href="#experience">Experience</a>
         <a href="#about">About</a>
+        <a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
         <a href="#contact">Contact</a>
         <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
@@ -39,22 +63,27 @@
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <!-- ============ HERO ============ -->
     <section class="hero">
       <div class="container hero__grid">
         <div class="hero__copy">
-          <p class="label">Product · Data · Design</p>
-          <h1 class="display hero__title" data-stagger>Hi, I'm Chae.<br>I build <span class="mark">products people use</span>.</h1>
-          <p class="lede hero__lede reveal-up">MBA @ Berkeley Haas · ex-EY AI &amp; Data · IU Informatics</p>
-          <div class="hero__actions reveal-up" style="--d:.35s">
-            <a class="btn btn--primary" href="#work">View work</a>
-            <a class="btn btn--ghost" href="https://app.notion.com/p/chaekim/Chae-Kim-611fd082d2014eb5bc50ae3fd5d37b19" target="_blank" rel="noopener">Resume</a>
+          <p class="label">Founder · Operator · Builder</p>
+          <h1 class="display hero__title" data-stagger>I turn messy problems into <span class="mark">products and plans that ship</span>.</h1>
+          <p class="lede hero__lede reveal-up">MBA at Berkeley Haas. Co-founder of Lucent. Ex-EY AI &amp; Data.</p>
+          <ul class="proofs reveal-up" style="--d:.3s">
+            <li>Founded an NSF I-Corps-backed AI startup</li>
+            <li>Led cloud programs for Fortune 500 clients</li>
+            <li>Ran operations at a precision manufacturer</li>
+          </ul>
+          <div class="hero__actions reveal-up" style="--d:.4s">
+            <a class="btn btn--primary" href="#work">See my work</a>
+            <a class="btn btn--ghost" href="/assets/pdf/chae-kim-resume.pdf" download="Chae-Kim-Resume.pdf">Download resume</a>
           </div>
         </div>
         <div class="hero__art" aria-hidden="true">
           <div class="blob"></div>
-          <img class="memoji" src="/assets/img/memoji.png" alt="" width="421" height="421">
+          <img class="memoji" src="/assets/img/memoji.png" alt="" width="421" height="421" fetchpriority="high">
         </div>
       </div>
       <a class="hero__scroll" href="#work" aria-label="Scroll to work"><span></span></a>
@@ -62,105 +91,115 @@
 
     <div class="marquee" aria-hidden="true">
       <div class="marquee__track">
-        <span>Now — MBA @ Berkeley Haas</span><span>Then — EY, AI &amp; Data, NYC</span><span>Roots — IU Informatics</span><span>Service — ROK Army</span><span>Weekends — 3D printing</span><span>Open to — PM roles</span><span>Say hi — brian123kim@gmail.com</span>
-        <span>Now — MBA @ Berkeley Haas</span><span>Then — EY, AI &amp; Data, NYC</span><span>Roots — IU Informatics</span><span>Service — ROK Army</span><span>Weekends — 3D printing</span><span>Open to — PM roles</span><span>Say hi — brian123kim@gmail.com</span>
+        <span>Now: MBA at Berkeley Haas</span><span>Building: Lucent</span><span>Then: EY, AI &amp; Data, NYC</span><span>Operated: Tritooling, Philippines</span><span>Roots: IU Informatics</span><span>Service: ROK Army</span><span>Weekends: 3D printing</span>
+        <span>Now: MBA at Berkeley Haas</span><span>Building: Lucent</span><span>Then: EY, AI &amp; Data, NYC</span><span>Operated: Tritooling, Philippines</span><span>Roots: IU Informatics</span><span>Service: ROK Army</span><span>Weekends: 3D printing</span>
       </div>
     </div>
 
-    <!-- ============ WORK ============ -->
+    <!-- ============ FEATURED WORK ============ -->
     <section class="section" id="work">
       <div class="container">
         <div class="section__head reveal">
           <div>
-            <p class="label">Selected work</p>
-            <h2 class="display section__title"><span class="hl">Work</span> I'm proud of.</h2>
+            <p class="label">Featured work</p>
+            <h2 class="display section__title">Three things I <span class="hl">shipped</span>.</h2>
           </div>
-          <div class="filters" role="tablist" aria-label="Filter projects">
-            <button class="chip is-active" data-filter="all">All</button>
-            <button class="chip" data-filter="product">Product</button>
-            <button class="chip" data-filter="engineering">Engineering</button>
-            <button class="chip" data-filter="design">Design</button>
+          <p class="section__sub">A startup, a stealth hardware company, and a Fortune 500 program. Each one a full case study.</p>
+        </div>
+        <div class="featured">
+          <article class="feat reveal">
+            <div class="feat__media feat__media--type"><div class="big">Lucent<small>AI search visibility · NSF I-Corps</small></div></div>
+            <div class="feat__body">
+              <h3 class="feat__title">Lucent</h3>
+              <p class="feat__desc">AI search visibility for small businesses. See how you show up in ChatGPT, Perplexity, Gemini, and Claude, then fix it.</p>
+              <p class="feat__result"><b>First paying pilot</b> · 5 LOIs in 30 days</p>
+            </div>
+            <a class="card__link" href="/projects/lucent" aria-label="Read the Lucent case study"></a>
+          </article>
+          <article class="feat reveal">
+            <div class="feat__media feat__media--type"><div class="big">Stealth<small>Mobility devices for older adults</small></div></div>
+            <div class="feat__body">
+              <h3 class="feat__title">Mobility devices for older adults</h3>
+              <p class="feat__desc">Premium, design-forward mobility products that help older adults stay independent longer. Co-founder, leading GTM and brand.</p>
+              <p class="feat__result"><b>14+ operator conversations</b> · brand-as-moat thesis</p>
+            </div>
+            <a class="card__link" href="/projects/mobility" aria-label="Read the mobility startup case study"></a>
+          </article>
+          <article class="feat reveal">
+            <div class="feat__media feat__media--type"><div class="big">$200M+<small>cloud migration · EY</small></div></div>
+            <div class="feat__body">
+              <h3 class="feat__title">EY, AI &amp; Data</h3>
+              <p class="feat__desc">Risk, OKRs, and the first executive QBR for a Fortune 500 life sciences cloud migration across 25+ teams.</p>
+              <p class="feat__result"><b>$14M extension</b> · −30% executive escalations</p>
+            </div>
+            <a class="card__link" href="/projects/ey" aria-label="Read the EY case study"></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MORE WORK ============ -->
+    <section class="section section--tight" id="more">
+      <div class="container">
+        <div class="section__head reveal">
+          <div>
+            <p class="label">More work</p>
+            <h2 class="display section__title">Sold, run, and <span class="hl">built</span>.</h2>
           </div>
         </div>
-
         <div class="grid">
-          <article class="card card--wide reveal" data-cat="product engineering">
-            <div class="card__media"><img src="/assets/img/thumbs/iusa.jpg" alt="Students studying together in a library" loading="lazy"><span class="card__emoji">📚</span></div>
+          <article class="card reveal">
+            <div class="card__media card__media--contain card__media--line"><img src="/assets/img/projects/mirrorme/card-question.png" alt="MirrorMe question card" loading="lazy"><span class="card__emoji">🃏</span></div>
             <div class="card__body">
-              <div class="card__kicker"><span>Capstone · 1 year</span><span>2020–21</span></div>
-              <h3 class="card__title">IU Study Assistant</h3>
-              <p class="card__desc">One focused study platform for IU students. I led the team, designed the UX, and built the notes feature and database.</p>
-              <div class="card__tags"><span class="tag">PM</span><span class="tag">UX</span><span class="tag">SQL · PHP</span></div>
+              <div class="card__kicker"><span>Co-founder · GTM</span><span>2024</span></div>
+              <h3 class="card__title">MirrorMe</h3>
+              <p class="card__desc">An icebreaker card game for people who host. 150+ pre-launch commitments, zero paid budget.</p>
+              <div class="card__tags"><span class="tag">GTM</span><span class="tag">User research</span></div>
             </div>
-            <a class="card__link" href="/projects/iu-study-assistant" aria-label="Read the IU Study Assistant case study"></a>
+            <a class="card__link" href="/projects/mirrorme" aria-label="Read the MirrorMe case study"></a>
           </article>
-
-          <article class="card reveal" data-cat="product">
-            <div class="card__media"><img src="/assets/img/thumbs/alab.jpg" alt="Golden retriever holding a flower" loading="lazy"><span class="card__emoji">🐶</span></div>
+          <article class="card reveal">
+            <div class="card__media feat__media--type"><div class="big" style="font-size:34px">+15% OTD<small>−30% defects</small></div><span class="card__emoji">🏭</span></div>
             <div class="card__body">
-              <div class="card__kicker"><span>Team lead · 6 weeks</span><span>2020</span></div>
-              <h3 class="card__title">aLab</h3>
-              <p class="card__desc">A self-adjusting dog bowl and its companion app, for pups recovering from injury.</p>
-              <div class="card__tags"><span class="tag">HCC</span><span class="tag">Adobe XD</span><span class="tag">Usability</span></div>
+              <div class="card__kicker"><span>Director of Operations</span><span>2024–25</span></div>
+              <h3 class="card__title">Tritooling</h3>
+              <p class="card__desc">Ran operations at a precision manufacturer in the Philippines. Board-approved APAC market entry case.</p>
+              <div class="card__tags"><span class="tag">Operations</span><span class="tag">Strategy</span></div>
             </div>
-            <a class="card__link" href="/projects/alab" aria-label="Read the aLab case study"></a>
+            <a class="card__link" href="/projects/tritooling" aria-label="Read the Tritooling case study"></a>
           </article>
-
-          <article class="card reveal" data-cat="product">
-            <div class="card__media"><img src="/assets/img/thumbs/luc.jpg" alt="Stack of colorful vintage suitcases" loading="lazy"><span class="card__emoji">🧳</span></div>
+          <article class="card reveal">
+            <div class="card__media feat__media--type"><div class="big" style="font-size:30px">End to end<small>React Native · NestJS · Stripe</small></div><span class="card__emoji">📱</span></div>
             <div class="card__body">
-              <div class="card__kicker"><span>Concept · 4 weeks</span><span>2019</span></div>
-              <h3 class="card__title">LUC — Luggage Under Control</h3>
-              <p class="card__desc">Luggage that weighs itself, with force sensors in every wheel.</p>
-              <div class="card__tags"><span class="tag">HCI</span><span class="tag">Research</span></div>
+              <div class="card__kicker"><span>Engineering · solo</span><span class="confirm">[CONFIRM: year]</span></div>
+              <h3 class="card__title">Events app</h3>
+              <p class="card__desc">A full-stack events app built to learn how production systems fit together.</p>
+              <div class="card__tags"><span class="tag">TypeScript</span><span class="tag">Postgres</span><span class="tag">AWS</span></div>
             </div>
-            <a class="card__link" href="/projects/luc" aria-label="Read the LUC case study"></a>
+            <a class="card__link" href="/projects/events-app" aria-label="Read the events app case study"></a>
           </article>
-
-          <article class="card reveal" data-cat="product">
-            <div class="card__media"><img src="/assets/img/thumbs/ptm.jpg" alt="Thermometer, pills, and a stethoscope" loading="lazy"><span class="card__emoji">🤒</span></div>
+          <article class="card reveal">
+            <div class="card__media feat__media--type"><div class="big" style="font-size:30px">Builders<small>summer accelerator · Haas</small></div><span class="card__emoji">🛠️</span></div>
             <div class="card__body">
-              <div class="card__kicker"><span>Concept · 4 weeks</span><span>2019</span></div>
-              <h3 class="card__title">PTM — Perpetual Thermal Monitor</h3>
-              <p class="card__desc">A sleep mask that catches a fever overnight and logs it to your health app.</p>
-              <div class="card__tags"><span class="tag">HCI</span><span class="tag">Health</span></div>
+              <div class="card__kicker"><span>Organizer</span><span class="confirm">[CONFIRM: year]</span></div>
+              <h3 class="card__title">Berkeley Builders Summer Program</h3>
+              <p class="card__desc">Organized a structured summer accelerator for founders at Haas.</p>
+              <div class="card__tags"><span class="tag">Community</span><span class="tag">Founders</span></div>
             </div>
-            <a class="card__link" href="/projects/ptm" aria-label="Read the PTM case study"></a>
-          </article>
-
-          <article class="card reveal" data-cat="product">
-            <div class="card__media"><img src="/assets/img/thumbs/coursera.jpg" alt="Students collaborating around a laptop" loading="lazy"><span class="card__emoji">🎓</span></div>
-            <div class="card__body">
-              <div class="card__kicker"><span>Product management</span><span>2020</span></div>
-              <h3 class="card__title">Re-envisioning Coursera</h3>
-              <p class="card__desc">A product dossier on making online learning transfer to real careers.</p>
-              <div class="card__tags"><span class="tag">Strategy</span><span class="tag">PRD</span></div>
-            </div>
-            <a class="card__link" href="/projects/coursera" aria-label="Read the Coursera case study"></a>
-          </article>
-
-          <article class="card reveal" data-cat="design">
-            <div class="card__media"><img src="/assets/img/thumbs/home.jpg" alt="Small red house in a meadow" loading="lazy"><span class="card__emoji">🏠</span></div>
-            <div class="card__body">
-              <div class="card__kicker"><span>Motion · pixel art</span><span>2020</span></div>
-              <h3 class="card__title">Home (during COVID)</h3>
-              <p class="card__desc">A pixel-art GIF of a house that keeps growing new tools.</p>
-              <div class="card__tags"><span class="tag">Photoshop</span><span class="tag">GIF</span></div>
-            </div>
-            <a class="card__link" href="/projects/home-gif" aria-label="View the Home GIF project"></a>
-          </article>
-
-          <article class="card reveal" data-cat="design">
-            <div class="card__media"><img src="/assets/img/thumbs/yinyang.jpg" alt="Person meditating on a dock by a mountain lake" loading="lazy"><span class="card__emoji">☯️</span></div>
-            <div class="card__body">
-              <div class="card__kicker"><span>Motion · illustration</span><span>2020</span></div>
-              <h3 class="card__title">Yin Yang in Motion</h3>
-              <p class="card__desc">A clockwork yin-yang: Eden on one side, the underworld on the other.</p>
-              <div class="card__tags"><span class="tag">Illustrator</span><span class="tag">Motion</span></div>
-            </div>
-            <a class="card__link" href="/projects/yin-yang" aria-label="View the Yin Yang project"></a>
+            <a class="card__link" href="/projects/berkeley-builders" aria-label="Read the Berkeley Builders case study"></a>
           </article>
         </div>
+
+        <details class="earlier reveal" style="margin-top:22px">
+          <summary>Earlier work (Indiana University, 2019 to 2021)</summary>
+          <div class="earlier__list">
+            <a href="/projects/iu-study-assistant"><span class="e">📚</span><span>IU Study Assistant<span>Capstone · PM, UX, back end</span></span></a>
+            <a href="/projects/alab"><span class="e">🐶</span><span>aLab<span>Adjustable dog bowl + app</span></span></a>
+            <a href="/projects/luc"><span class="e">🧳</span><span>LUC<span>Self-weighing luggage</span></span></a>
+            <a href="/projects/ptm"><span class="e">🤒</span><span>PTM<span>Fever-sensing sleep mask</span></span></a>
+            <a href="/projects/coursera"><span class="e">🎓</span><span>Re-envisioning Coursera<span>PM dossier</span></span></a>
+          </div>
+        </details>
       </div>
     </section>
 
@@ -175,9 +214,10 @@
           <p class="section__sub">Weekend builds and early concept work. Less polish, more curiosity.</p>
         </div>
         <div class="tiles reveal">
+          <div class="tile"><span class="tile__icon">🗂️</span><span><span class="tile__title">Personal CRM</span><span class="tile__meta">~310 professional contacts, enriched with AI research and paired with outreach tracking</span></span></div>
           <a class="tile" href="https://www.figma.com/make/jM7KyUTe5uojF6qOMhuF6U/Color-Palette-Generator?node-id=0-4" target="_blank" rel="noopener"><span class="tile__icon">🎨</span><span><span class="tile__title">Color Palette Generator ↗</span><span class="tile__meta">Figma Make · 2025</span></span></a>
-          <div class="tile"><span class="tile__icon">🐦</span><span><span class="tile__title">Flappy Bird clone</span><span class="tile__meta">One-day build · 2025</span></span></div>
-          <div class="tile"><span class="tile__icon">🌍</span><span><span class="tile__title">World Time Converter</span><span class="tile__meta">Utility · 2025</span></span></div>
+          <a class="tile" href="/projects/home-gif"><span class="tile__icon">🏠</span><span><span class="tile__title">Home (during COVID)</span><span class="tile__meta">Pixel-art GIF · 2020</span></span></a>
+          <a class="tile" href="/projects/yin-yang"><span class="tile__icon">☯️</span><span><span class="tile__title">Yin Yang in Motion</span><span class="tile__meta">Animated illustration · 2020</span></span></a>
           <a class="tile" href="/assets/pdf/WMCS-Weight-Machine-Cross-Sync.pdf" target="_blank" rel="noopener"><span class="tile__icon">🏋️</span><span><span class="tile__title">WMCS ↗</span><span class="tile__meta">Gym sets over NFC · PDF · 2019</span></span></a>
           <a class="tile" href="/assets/pdf/AAV-Auto-Adjusting-Volume.pdf" target="_blank" rel="noopener"><span class="tile__icon">🔊</span><span><span class="tile__title">AAV ↗</span><span class="tile__meta">Noise-aware volume · PDF · 2019</span></span></a>
           <a class="tile" href="/assets/pdf/I308-Lime-Scooter-Poster.pdf" target="_blank" rel="noopener"><span class="tile__icon">🛴</span><span><span class="tile__title">Fake News poster ↗</span><span class="tile__meta">Media literacy · 2020</span></span></a>
@@ -194,7 +234,7 @@
             <p class="label">Arcade</p>
             <h2 class="display section__title">Games I <span class="hl">grew up</span> playing.</h2>
           </div>
-          <p class="section__sub">Rebuilt from memory, plus a soundtrack. Portfolios don't have to be homework.</p>
+          <p class="section__sub">Rebuilt from memory, plus a soundtrack. Nothing here autoplays. <a href="#experience" class="em">Skip the arcade →</a></p>
         </div>
         <div class="break">
           <!-- Games: Snake / Galaga -->
@@ -209,7 +249,7 @@
 
             <div class="game" id="snake-game" data-game="snake">
               <div class="snake">
-                <canvas id="snake" width="400" height="400" tabindex="0" aria-label="Snake game"></canvas>
+                <canvas id="snake" width="400" height="400" tabindex="0" aria-label="Snake game. Use arrow keys or WASD."></canvas>
                 <button class="snake__overlay btn btn--primary" id="snake-start" type="button">Play</button>
               </div>
               <p class="game__hint">Arrows · WASD · swipe</p>
@@ -221,7 +261,7 @@
 
             <div class="game is-hidden" id="galaga-game" data-game="galaga">
               <div class="snake galaga">
-                <canvas id="galaga" width="400" height="400" tabindex="0" aria-label="Galaga game"></canvas>
+                <canvas id="galaga" width="400" height="400" tabindex="0" aria-label="Galaga game. Left and right arrows move, space fires."></canvas>
                 <button class="snake__overlay btn btn--primary" id="galaga-start" type="button">Play</button>
               </div>
               <p class="game__hint">← → or drag to move · space / tap to fire</p>
@@ -232,7 +272,7 @@
           <div class="panel reveal" id="music-panel">
             <div class="panel__head">
               <div><p class="label" style="margin:0">Now playing</p><h3 class="panel__title" id="music-title">Cloud Nine</h3></div>
-              <span class="panel__note">Generative lo-fi · synthesized live in your browser</span>
+              <span class="panel__note">Generative lo-fi, synthesized live in your browser. Starts only when you press play.</span>
             </div>
             <canvas class="music__viz" id="music-viz" width="600" height="140" aria-hidden="true"></canvas>
             <div class="music__controls">
@@ -265,42 +305,67 @@
             <p class="label">Experience</p>
             <h2 class="display section__title">Where I've <span class="hl">been</span>.</h2>
           </div>
+          <p class="section__sub">Results, not duties.</p>
         </div>
         <div class="timeline reveal">
           <div class="tl">
-            <div class="tl__when">Present</div>
+            <div class="tl__when">2025 to 2027</div>
             <div>
               <div class="tl__org">UC Berkeley Haas <span class="tl__now">Now</span></div>
               <div class="tl__role">MBA Candidate</div>
-              <ul class="tl__body"><li>Product management and AI &amp; data strategy.</li></ul>
-            </div>
-          </div>
-          <div class="tl">
-            <div class="tl__when">New York</div>
-            <div>
-              <div class="tl__org">EY — Technology Consulting</div>
-              <div class="tl__role">Senior Consultant, AI &amp; Data</div>
               <ul class="tl__body">
-                <li>Cloud-migration program manager, Fortune 500 life sciences.</li>
-                <li>Logistics lead, Fortune 500 consumer foods.</li>
-                <li>Data architect, internal EY initiative.</li>
+                <li>Merit Scholarship recipient.</li>
+                <li>Co-President, Asian Business Club (300+ members). VP, Digital Media Entertainment Club.</li>
               </ul>
             </div>
           </div>
           <div class="tl">
-            <div class="tl__when">Bloomington</div>
+            <div class="tl__when">Oct 2025 to present</div>
             <div>
-              <div class="tl__org">Indiana University</div>
-              <div class="tl__role">B.S. Informatics · HCI &amp; Entrepreneurship</div>
-              <ul class="tl__body"><li>Capstone PM, designer, and developer — <a href="/projects/iu-study-assistant" class="em">IU Study Assistant</a>.</li></ul>
+              <div class="tl__org">Lucent</div>
+              <div class="tl__role">Co-founder &amp; CEO</div>
+              <ul class="tl__body">
+                <li>First paying pilot. 5 LOIs in 30 days after testing 10 positioning strategies across 65 prospects.</li>
+                <li>100+ customer interviews across U.S. and APAC SMBs. NSF I-Corps backing.</li>
+              </ul>
             </div>
           </div>
           <div class="tl">
-            <div class="tl__when">Gangwon</div>
+            <div class="tl__when">Jul 2024 to Jul 2025</div>
+            <div>
+              <div class="tl__org">Tritooling Precision Corporation, Philippines</div>
+              <div class="tl__role">Director of Operations</div>
+              <ul class="tl__body">
+                <li>On-time delivery +15%, defects −30% after a new performance-management framework.</li>
+                <li>$1.5M projected annual savings (ERP insourcing case). $800K+ revenue potential in a board-approved APAC market entry.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="tl">
+            <div class="tl__when">Aug 2021 to Jul 2024</div>
+            <div>
+              <div class="tl__org">EY, New York</div>
+              <div class="tl__role">Senior Consultant, AI &amp; Data Strategy (Staff Consultant, 2021 to 2023)</div>
+              <ul class="tl__body">
+                <li>$14M contract extension after launching a Fortune 500 client's first QBR. −30% executive escalations on a $200M+ cloud program.</li>
+                <li>90% adoption of a new PM methodology across 4,000 users. $10M+ savings identified in portfolio prioritization.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="tl">
+            <div class="tl__when">Class of 2021</div>
+            <div>
+              <div class="tl__org">Indiana University Bloomington</div>
+              <div class="tl__role">B.S. Informatics, minors in HCI &amp; Entrepreneurship</div>
+              <ul class="tl__body"><li>GPA 3.74. Board of Aeons (top 1% of class). VP, Alpha Kappa Psi. <span class="confirm">[CONFIRM: start year]</span></li></ul>
+            </div>
+          </div>
+          <div class="tl">
+            <div class="tl__when">Gangwon, Korea</div>
             <div>
               <div class="tl__org">Republic of Korea Army</div>
               <div class="tl__role">Staff Sergeant · Squad Leader</div>
-              <ul class="tl__body"><li>Led a squad. Learned ownership and calm.</li></ul>
+              <ul class="tl__body"><li>Led a squad. Learned ownership and calm. <span class="confirm">[CONFIRM: years]</span></li></ul>
             </div>
           </div>
         </div>
@@ -314,19 +379,20 @@
           <p class="label">Beyond work</p>
           <h2 class="display section__title" style="margin: 8px 0 22px;">Off the <span class="hl">clock</span>.</h2>
           <div class="about__text">
-            <p>Thirteen-plus years growing up overseas made me curious by default and resourceful by necessity. I'm happiest making things — a wireframe, a 3D-printed gift, a pixel-art GIF.</p>
+            <p>Thirteen-plus years growing up overseas made me curious by default and resourceful by necessity. I'm happiest making things: a wireframe, a 3D-printed gift, a card game.</p>
+            <p>I'm also writing a memoir, <em>The Treaded Path</em>. <span class="confirm">[CONFIRM: include or cut]</span> <span class="confirm">[CONFIRM: link to Medium writing, if any]</span></p>
           </div>
           <div class="about__facts">
-            <div class="fact">🖨️ <span><b>3D printing</b> — Fusion 360 → PLA</span></div>
-            <div class="fact">🎨 <span><b>Graphic design</b> — Photoshop, Illustrator, InDesign</span></div>
-            <div class="fact">✈️ <span><b>Favorite places</b> — Bonifacio, Gangnam, Seminyak</span></div>
+            <div class="fact">🖨️ <span><b>3D printing</b>, design and prototyping</span></div>
+            <div class="fact">🎾 <span><b>Competitive tennis</b> and latte art</span></div>
+            <div class="fact">🤝 <span><b>Big Brothers Big Sisters</b> mentor, 4+ year match</span></div>
           </div>
         </div>
         <div class="polaroids reveal" aria-label="Travel photos">
-          <figure class="polaroid"><img src="/assets/img/profile.jpg" alt="Chae waving next to an elephant in Phuket" loading="lazy"><figcaption>Phuket</figcaption></figure>
-          <figure class="polaroid"><img src="/assets/img/travel-1.jpg" alt="A pink coconut by a pool in Bali" loading="lazy"><figcaption>Bali</figcaption></figure>
-          <figure class="polaroid"><img src="/assets/img/travel-3.jpg" alt="Limestone cliffs over green water" loading="lazy"><figcaption>Ha Long Bay</figcaption></figure>
-          <figure class="polaroid"><img src="/assets/img/travel-2.jpg" alt="Boat at sunset" loading="lazy"><figcaption>Golden hour</figcaption></figure>
+          <figure class="polaroid"><img src="/assets/img/profile.jpg" alt="Chae waving next to an elephant in Phuket" loading="lazy" width="1200" height="1600"><figcaption>Phuket</figcaption></figure>
+          <figure class="polaroid"><img src="/assets/img/travel-1.jpg" alt="A pink coconut by a pool in Bali" loading="lazy" width="900" height="1200"><figcaption>Bali</figcaption></figure>
+          <figure class="polaroid"><img src="/assets/img/travel-3.jpg" alt="Limestone cliffs over green water" loading="lazy" width="900" height="1200"><figcaption>Ha Long Bay</figcaption></figure>
+          <figure class="polaroid"><img src="/assets/img/travel-2.jpg" alt="Boat at sunset" loading="lazy" width="900" height="1200"><figcaption>Golden hour</figcaption></figure>
         </div>
       </div>
     </section>
@@ -337,11 +403,11 @@
         <div class="contact reveal">
           <p class="label">Contact</p>
           <h2 class="display contact__title">Say <span class="hl">hello</span>.</h2>
-          <p class="lede">Hiring for PM or AI &amp; data roles? Want to talk Haas, consulting, or 3D printing?</p>
+          <p class="lede">Hiring, investing, or building something in AI search or mobility? I'd like to hear about it.</p>
           <div class="contact__links">
-            <a class="btn btn--primary" href="mailto:brian123kim@gmail.com">Email</a>
+            <a class="btn btn--primary" data-user="chaewoonkim" data-domain="berkeley.edu" data-show href="#">Email</a>
             <a class="btn btn--ghost" href="https://www.linkedin.com/in/chaekim/" target="_blank" rel="noopener">LinkedIn</a>
-            <a class="btn btn--ghost" href="https://app.notion.com/p/chaekim/Chae-Kim-611fd082d2014eb5bc50ae3fd5d37b19" target="_blank" rel="noopener">Notion</a>
+            <a class="btn btn--ghost" href="/assets/pdf/chae-kim-resume.pdf">Resume (PDF)</a>
           </div>
         </div>
       </div>
@@ -355,6 +421,7 @@
     </div>
   </footer>
 
-  <script src="/assets/js/main.js?v=7"></script>
+  <script src="/assets/js/main.js?v=8"></script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
