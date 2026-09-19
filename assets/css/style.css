@@ -573,3 +573,7 @@ html { overflow-x: hidden; }
 .card__media.feat__media--type { display: grid; place-items: end start; padding: 64px 22px 22px; background-image: none; border-bottom: 1px solid var(--line); }
 .card__media.feat__media--type::before, .card__media.feat__media--type::after { display: none; }
 .card__media.feat__media--type .big { font-size: clamp(26px, 2.6vw, 34px); }
+
+.earlier__list a .e { width: 48px; height: 48px; border-radius: 10px; object-fit: cover; flex: none; }
+.feat__title .stealth { font-size: 11px; margin-left: 6px; }
+.feat__media img { aspect-ratio: 4 / 3; }
