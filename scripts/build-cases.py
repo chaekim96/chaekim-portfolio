@@ -9,7 +9,7 @@ import os, html
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 OUT = os.path.join(ROOT, "projects")
-V = "9"  # asset version (cache-bust)
+V = "10"  # asset version (cache-bust)
 
 def C(msg):  # visible confirm tag
     return f'<span class="confirm">[CONFIRM: {html.escape(msg)}]</span>'
@@ -145,8 +145,8 @@ CASES = [
   dict(slug="lucent", emoji="🔦", title="Lucent",
     kicker="Featured · Co-founder & CEO · NSF I-Corps",
     heading="Lucent",
-    desc="AI search visibility for small businesses. Lucent shows brands how they appear in ChatGPT, Perplexity, Gemini, and Claude answers, then helps them fix it.",
-    tldr="AI search visibility for small businesses. See how your brand shows up in ChatGPT, Perplexity, Gemini, and Claude, then fix it.",
+    desc="Lucent is an AI search observability platform and consultancy. It shows brands how they rank in ChatGPT, Perplexity, and Gemini, then helps them fix it.",
+    tldr="An AI search observability platform and a consultancy. Lucent shows brands how they rank in ChatGPT, Perplexity, and Gemini, then helps them fix it, through the product and hands-on GEO and SEO work.",
     role="Co-founder & CEO", team="Co-founder/CTO + a data science intern", timeline="October 2025 to present",
     cover='<a href="https://trylucent.ai" target="_blank" rel="noopener" aria-label="Open trylucent.ai"><img src="/assets/img/thumbs/lucent-wide.jpg" alt="Lucent homepage: The AI Search Console" width="1600" height="900"></a>', cover_class="",
     problem=p("Customers now ask AI instead of Google. Small businesses can't see whether AI recommends them, and GEO tools are priced for enterprises."),
@@ -162,7 +162,7 @@ CASES = [
     artifacts=art(("", "artifact image: product screenshot (no client data)"), ("", "artifact image: pitch deck excerpt, e.g. SAM or GTM slide")),
   ),
   dict(slug="mobility", emoji="🦯", title="Mobility devices for older adults (stealth)",
-    kicker="Featured · Co-founder · Stealth",
+    kicker="In progress · Co-founder · Stealth",
     heading="Mobility devices for older adults",
     badge='<span class="stealth">Stealth</span>',
     desc="Premium, design-forward mobility products that help older adults stay independent longer.",
@@ -176,9 +176,9 @@ CASES = [
       "Built the brand-as-moat thesis and a decision framework for the first product.",
       "Set an operating cadence for a team 16 time zones apart.",
     ),
-    results=p(C("what's shareable, e.g. advisors onboarded, prototype stage")),
-    differently=p(C("what you'd do differently")),
-    artifacts=art(("", "artifact image (nothing that shows the mechanism)")),
+    results=p("Early stage and in progress. Results will be added as they're shareable. " + C("anything shareable now, e.g. advisors onboarded, prototype stage")),
+    differently=p("Too early to say. This section fills in once there's a first product decision to look back on."),
+    artifacts=p("None yet that don't show the mechanism."),
   ),
   dict(slug="ey", emoji="☁️", title="EY, AI & Data",
     kicker="Featured · Senior Consultant · New York · 2021 to 2024",
@@ -231,37 +231,6 @@ CASES = [
     results=results(("+15%", "on-time delivery"), ("−30%", "defects"), ("$1.5M", "projected annual savings (ERP insourcing)"), ("$800K+", "revenue potential, board-approved launch")),
     differently=p(C("what you'd do differently")),
     artifacts=art(("", "artifact image: sanitized dashboard or shop-floor photo")),
-  ),
-  dict(slug="events-app", emoji="📱", title="Events app",
-    kicker="More work · Engineering · Solo build",
-    heading="Events app",
-    desc="A full-stack events app built to learn how production systems fit together, end to end. React Native, NestJS, PostgreSQL, Stripe, Twilio, and more.",
-    tldr=C("what the app does in one sentence") + " Built to learn how production systems fit together, end to end.",
-    role="Solo developer", team="Just me", timeline=C("timeline"),
-    cover='<img src="/assets/img/thumbs/events-app-wide.jpg" alt="Confetti falling over a crowd at a night event" width="1600" height="900">', cover_class="",
-    problem=p("Tutorials teach one layer at a time. I wanted to see where a real product breaks: auth, payments, notifications, uploads, observability, wired together."),
-    did=ul(
-      "Mobile: React Native, Expo, TypeScript.",
-      "API: NestJS with PostgreSQL and Prisma, Redis for caching and queues.",
-      "Integrations: Stripe (payments), Twilio (SMS), SendGrid (email), AWS S3 (uploads).",
-      "Observability: PostHog for product analytics, Sentry for errors.",
-    ),
-    results=p("Status: " + C("status, demo link or screenshots")),
-    differently=p(C("what you'd do differently")),
-    artifacts=art(("", "artifact image: app screenshots")),
-  ),
-  dict(slug="berkeley-builders", emoji="🛠️", title="Berkeley Builders Summer Program",
-    kicker="More work · Organizer · Haas",
-    heading="Berkeley Builders Summer Program",
-    desc="Organized a structured summer accelerator for founders at Haas.",
-    tldr="Organized a structured summer accelerator for founders at Haas.",
-    role="Organizer", team=C("co-organizers"), timeline=C("dates, e.g. summer 2026"),
-    cover='<img src="/assets/img/thumbs/berkeley-builders-wide.jpg" alt="A team planning at a whiteboard covered in sticky notes" width="1600" height="900">', cover_class="",
-    problem=p("Haas founders lose the summer to unstructured time. The program gave them cadence, peers, and accountability."),
-    did=ul(C("2 to 4 bullets: format, cadence, sessions, who you recruited")),
-    results=p(C("number of teams/participants, outcomes")),
-    differently=p(C("what you'd do differently")),
-    artifacts=art(("", "artifact image: program schedule or cohort photo")),
   ),
 ]
 

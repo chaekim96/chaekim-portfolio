@@ -224,7 +224,7 @@
     let loaded = false;
     const load = () => {
       if (loaded) return; loaded = true;
-      ['/assets/js/arcade.js?v=9', '/assets/js/music.js?v=9'].forEach(src => { const sc = document.createElement('script'); sc.src = src; sc.defer = true; document.body.appendChild(sc); });
+      ['/assets/js/arcade.js?v=10', '/assets/js/music.js?v=10'].forEach(src => { const sc = document.createElement('script'); sc.src = src; sc.defer = true; document.body.appendChild(sc); });
     };
     if ('IntersectionObserver' in window) {
       const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { load(); io.disconnect(); } }, { rootMargin: '600px 0px' });
