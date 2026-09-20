@@ -15,10 +15,10 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" onload="this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap"></noscript>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"></noscript>
   <link rel="preload" as="image" href="/assets/img/memoji.png">
-  <link rel="stylesheet" href="/assets/css/style.css?v=10">
+  <link rel="stylesheet" href="/assets/css/style.css?v=11">
   <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
   <script type="application/ld+json">
   {
@@ -35,7 +35,7 @@
       { "@type": "CollegeOrUniversity", "name": "UC Berkeley, Haas School of Business" },
       { "@type": "CollegeOrUniversity", "name": "Indiana University Bloomington" }
     ],
-    "sameAs": ["https://www.linkedin.com/in/chaekim/", "https://github.com/chaekim96"]
+    "sameAs": ["https://www.linkedin.com/in/chaekim/", "https://github.com/chaekim96", "https://medium.com/@chaewoonkim"]
   }
   </script>
 </head>
@@ -65,45 +65,52 @@
   </header>
 
   <main id="main">
-    <!-- ============ HERO ============ -->
-    <section class="hero">
-      <div class="container hero__grid">
-        <div class="hero__copy">
-          <p class="label">Product · Strategy · Haas MBA '27</p>
-          <h1 class="display hero__title" data-stagger>I turn messy problems into <span class="mark">products and plans that ship</span>.</h1>
-          <p class="lede hero__lede reveal-up">MBA at Berkeley Haas. Co-founder of Lucent. Ex-EY AI &amp; Data. <strong>Looking for PM and strategy roles.</strong></p>
-          <ul class="proofs reveal-up" style="--d:.3s">
-            <li>Founded an NSF I-Corps AI startup</li>
-            <li>Led Fortune 500 cloud programs</li>
-            <li>Ran a precision manufacturer's operations</li>
-          </ul>
-          <div class="hero__actions reveal-up" style="--d:.4s">
-            <a class="btn btn--primary" href="#work">See my work</a>
-            <a class="btn btn--ghost" href="/assets/pdf/chae-kim-resume.pdf" download="Chae-Kim-Resume.pdf">Download resume</a>
+    <!-- ============ DESKTOP (hero) ============ -->
+    <section class="hero desktop" aria-label="Desktop">
+      <div class="container desktop__grid">
+        <nav class="icons" aria-label="Desktop shortcuts">
+          <a class="icon" href="#work"><img src="/assets/img/ui/folder.svg" alt=""><span>work<small>3 case studies</small></span></a>
+          <a class="icon" href="#more"><img src="/assets/img/ui/folder.svg" alt=""><span>more work<small>in progress and earlier</small></span></a>
+          <a class="icon" href="#playground"><img src="/assets/img/ui/folder.svg" alt=""><span>side quests<small>weekend builds</small></span></a>
+          <a class="icon" href="#break"><img src="/assets/img/ui/app.svg" alt=""><span>arcade.app<small>snake, galaga, lo-fi</small></span></a>
+          <a class="icon" href="#experience"><img src="/assets/img/ui/txt.svg" alt=""><span>experience.txt<small>2021 to now</small></span></a>
+          <a class="icon" href="/assets/pdf/chae-kim-resume.pdf" download="Chae-Kim-Resume.pdf"><img src="/assets/img/ui/pdf.svg" alt=""><span>resume.pdf<small>1 page</small></span></a>
+          <a class="icon" href="#about"><img src="/assets/img/ui/folder.svg" alt=""><span>photo album<small>off the clock</small></span></a>
+          <a class="icon icon--memoji" href="#about"><img src="/assets/img/memoji.png" alt=""><span>memoji.png<small>mind, blown</small></span></a>
+          <a class="icon" href="/logo-options"><img src="/assets/img/ui/trash.svg" alt=""><span>trash<small>don't look in here</small></span></a>
+        </nav>
+
+        <div class="win" id="about-txt">
+          <div class="win__bar"><span class="win__dots"><i></i><i></i><i></i></span><span class="win__title">about me.txt</span></div>
+          <div class="win__body about-txt">
+            <p class="h" data-stagger>Hi, I'm Chae. I turn messy problems into <span class="mark">products and plans that ship</span>.</p>
+            <p>MBA at Berkeley Haas ('27). Co-founder of Lucent. Ex-EY AI &amp; Data.</p>
+            <ul>
+              <li>Founded an NSF I-Corps AI startup</li>
+              <li>Led Fortune 500 cloud programs</li>
+              <li>Ran a precision manufacturer's operations</li>
+            </ul>
+            <p><strong>Looking for PM and strategy roles.</strong> For roles or collabs, email <a class="em" data-user="chaewoonkim" data-domain="berkeley.edu" data-show href="#">chaewoonkim@berkeley.edu</a> ↗</p>
+            <p>I write on <a class="em" href="https://medium.com/@chaewoonkim" target="_blank" rel="noopener">Medium ↗</a>. Thanks for visiting. 👋</p>
+            <div class="actions">
+              <a class="btn btn--primary" href="#work">See my work</a>
+              <a class="btn btn--ghost" href="/assets/pdf/chae-kim-resume.pdf" download="Chae-Kim-Resume.pdf">Download resume</a>
+            </div>
           </div>
         </div>
-        <div class="hero__art" aria-hidden="true">
-          <div class="blob"></div>
-          <img class="memoji" src="/assets/img/memoji.png" alt="" width="421" height="421" fetchpriority="high">
-        </div>
       </div>
-      <a class="hero__scroll" href="#work" aria-label="Scroll to work"><span></span></a>
     </section>
-
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee__track">
-        <span>Now: MBA at Berkeley Haas</span><span>Building: Lucent</span><span>Then: EY, AI &amp; Data, NYC</span><span>Operated: Tritooling, Philippines</span><span>Roots: IU Informatics</span><span>Service: ROK Army</span><span>Weekends: 3D printing</span><span>Open to: PM and strategy roles</span>
-        <span>Now: MBA at Berkeley Haas</span><span>Building: Lucent</span><span>Then: EY, AI &amp; Data, NYC</span><span>Operated: Tritooling, Philippines</span><span>Roots: IU Informatics</span><span>Service: ROK Army</span><span>Weekends: 3D printing</span><span>Open to: PM and strategy roles</span>
-      </div>
-    </div>
 
     <!-- ============ FEATURED WORK ============ -->
     <section class="section" id="work">
       <div class="container">
+        <div class="win">
+          <div class="win__bar"><span class="win__dots"><i></i><i></i><i></i></span><span class="win__title">work</span></div>
+          <div class="win__body">
         <div class="section__head reveal">
           <div>
-            <p class="label">Featured work</p>
-            <h2 class="display section__title">Three things I <span class="hl">shipped</span>.</h2>
+            <p class="label">featured</p>
+            <h2 class="display section__title">Work I'm <span class="hl">proudest</span> of.</h2>
           </div>
           <p class="section__sub">A startup, a Fortune 500 program, a factory floor.</p>
         </div>
@@ -136,16 +143,21 @@
             <a class="card__link" href="/projects/tritooling" aria-label="Read the Tritooling case study"></a>
           </article>
         </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- ============ MORE WORK ============ -->
-    <section class="section section--tight" id="more">
+    <section class="section" id="more">
       <div class="container">
+        <div class="win">
+          <div class="win__bar"><span class="win__dots"><i></i><i></i><i></i></span><span class="win__title">more work</span></div>
+          <div class="win__body">
         <div class="section__head reveal">
           <div>
-            <p class="label">More work</p>
-            <h2 class="display section__title">Sold, and <span class="hl">in progress</span>.</h2>
+            <p class="label">more</p>
+            <h2 class="display section__title">Also on my <span class="hl">desk</span>.</h2>
           </div>
         </div>
         <div class="grid">
@@ -154,7 +166,7 @@
             <div class="card__body">
               <div class="card__kicker"><span>Co-founder · GTM</span><span>2024</span></div>
               <h3 class="card__title">MirrorMe</h3>
-              <p class="card__desc">An icebreaker card game for hosts. 150+ pre-orders, $0 ad spend.</p>
+              <p class="card__desc">An icebreaker card game for hosts. 150+ pre-orders with $0 ad spend.</p>
               <div class="card__tags"><span class="tag">GTM</span><span class="tag">User research</span></div>
             </div>
             <a class="card__link" href="/projects/mirrorme" aria-label="Read the MirrorMe case study"></a>
@@ -181,15 +193,20 @@
             <a href="/projects/coursera"><img class="e" src="/assets/img/thumbs/coursera.jpg" alt="" loading="lazy"><span>Re-envisioning Coursera<span>PM dossier</span></span></a>
           </div>
         </details>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- ============ PLAYGROUND ============ -->
-    <section class="section section--tight" id="playground">
+    <section class="section" id="playground">
       <div class="container">
+        <div class="win">
+          <div class="win__bar"><span class="win__dots"><i></i><i></i><i></i></span><span class="win__title">side quests</span></div>
+          <div class="win__body">
         <div class="section__head reveal">
           <div>
-            <p class="label">Playground</p>
+            <p class="label">weekends</p>
             <h2 class="display section__title">Side <span class="hl">quests</span>.</h2>
           </div>
           <p class="section__sub">Weekend builds and early concepts.</p>
@@ -204,18 +221,23 @@
           <a class="tile" href="/assets/pdf/I308-Lime-Scooter-Poster.pdf" target="_blank" rel="noopener"><span class="tile__icon">🛴</span><span><span class="tile__title">Fake News poster ↗</span><span class="tile__meta">Media literacy · 2020</span></span></a>
           <div class="tile"><span class="tile__icon">🖨️</span><span><span class="tile__title">3D prints</span><span class="tile__meta">Keychains, organizers, containers</span></span></div>
         </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- ============ BREAK: game + music ============ -->
     <section class="section" id="break">
       <div class="container">
+        <div class="win">
+          <div class="win__bar"><span class="win__dots"><i></i><i></i><i></i></span><span class="win__title">arcade.app</span></div>
+          <div class="win__body">
         <div class="section__head reveal">
           <div>
-            <p class="label">Arcade</p>
+            <p class="label">nothing autoplays</p>
             <h2 class="display section__title">Games I <span class="hl">grew up</span> playing.</h2>
           </div>
-          <p class="section__sub">Rebuilt from memory, with a soundtrack. Nothing autoplays. <a href="#experience" class="em">Skip →</a></p>
+          <p class="section__sub">Rebuilt from memory, with a soundtrack. <a href="#experience" class="em">Skip →</a></p>
         </div>
         <div class="break">
           <!-- Games: Snake / Galaga -->
@@ -275,19 +297,23 @@
             <ul class="music__list" id="music-list"></ul>
           </div>
         </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- ============ EXPERIENCE ============ -->
     <section class="section" id="experience">
       <div class="container">
+        <div class="win">
+          <div class="win__bar"><span class="win__dots"><i></i><i></i><i></i></span><span class="win__title">experience.txt</span></div>
+          <div class="win__body">
         <div class="section__head reveal">
           <div>
-            <p class="label">Experience</p>
+            <p class="label">results, not duties</p>
             <h2 class="display section__title">Where I've <span class="hl">been</span>.</h2>
           </div>
-          <p class="section__sub">Results, not duties.</p>
-        </div>
+                  </div>
         <div class="timeline reveal">
           <div class="tl">
             <div class="tl__when">2025 to 2027</div>
@@ -349,18 +375,23 @@
             </div>
           </div>
         </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- ============ ABOUT ============ -->
     <section class="section" id="about">
-      <div class="container about">
+      <div class="container">
+        <div class="win">
+          <div class="win__bar"><span class="win__dots"><i></i><i></i><i></i></span><span class="win__title">photo album</span></div>
+          <div class="win__body about">
         <div class="reveal">
-          <p class="label">Beyond work</p>
+          <p class="label">off the clock</p>
           <h2 class="display section__title" style="margin: 8px 0 22px;">Off the <span class="hl">clock</span>.</h2>
           <div class="about__text">
             <p>Thirteen years growing up overseas made me curious by default. I'm happiest making things: a wireframe, a 3D print, a card game.</p>
-            <p>I'm also writing a memoir, <em>The Treaded Path</em>. <span class="confirm">[CONFIRM: link to Medium writing, if any]</span></p>
+            <p>I'm also writing a memoir, <em>The Treaded Path</em>, and essays on <a class="em" href="https://medium.com/@chaewoonkim" target="_blank" rel="noopener">Medium ↗</a>.</p>
           </div>
           <div class="about__facts">
             <div class="fact">🖨️ <span><b>3D printing</b>, design and prototyping</span></div>
@@ -369,10 +400,12 @@
           </div>
         </div>
         <div class="polaroids reveal" aria-label="Travel photos">
-          <figure class="polaroid"><img src="/assets/img/profile.jpg" alt="Chae waving next to an elephant in Phuket" loading="lazy" width="1200" height="1600"><figcaption>Phuket</figcaption></figure>
-          <figure class="polaroid"><img src="/assets/img/travel-1.jpg" alt="A pink coconut by a pool in Bali" loading="lazy" width="900" height="1200"><figcaption>Bali</figcaption></figure>
-          <figure class="polaroid"><img src="/assets/img/travel-3.jpg" alt="Limestone cliffs over green water" loading="lazy" width="900" height="1200"><figcaption>Ha Long Bay</figcaption></figure>
-          <figure class="polaroid"><img src="/assets/img/travel-2.jpg" alt="Boat at sunset" loading="lazy" width="900" height="1200"><figcaption>Golden hour</figcaption></figure>
+          <figure class="polaroid"><img src="/assets/img/profile.jpg" alt="Chae waving next to an elephant in Phuket" loading="lazy" width="1200" height="1600"><figcaption>phuket.jpg</figcaption></figure>
+          <figure class="polaroid"><img src="/assets/img/travel-1.jpg" alt="A pink coconut by a pool in Bali" loading="lazy" width="900" height="1200"><figcaption>bali.jpg</figcaption></figure>
+          <figure class="polaroid"><img src="/assets/img/travel-3.jpg" alt="Limestone cliffs over green water" loading="lazy" width="900" height="1200"><figcaption>ha-long-bay.jpg</figcaption></figure>
+          <figure class="polaroid"><img src="/assets/img/travel-2.jpg" alt="Boat at sunset" loading="lazy" width="900" height="1200"><figcaption>golden-hour.jpg</figcaption></figure>
+        </div>
+          </div>
         </div>
       </div>
     </section>
@@ -380,14 +413,20 @@
     <!-- ============ CONTACT ============ -->
     <section class="section" id="contact">
       <div class="container">
-        <div class="contact reveal">
-          <p class="label">Contact</p>
-          <h2 class="display contact__title">Say <span class="hl">hello</span>.</h2>
+        <div class="win">
+          <div class="win__bar"><span class="win__dots"><i></i><i></i><i></i></span><span class="win__title">contact</span></div>
+          <div class="win__body">
+        <div class="reveal">
+          <p class="label">say hello</p>
+          <h2 class="display section__title">Say <span class="hl">hello</span>.</h2>
           <p class="lede">Hiring for a PM or strategy role? Or building in AI search? Let's talk.</p>
           <div class="contact__links">
             <a class="btn btn--primary" data-user="chaewoonkim" data-domain="berkeley.edu" data-show href="#">Email</a>
             <a class="btn btn--ghost" href="https://www.linkedin.com/in/chaekim/" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn btn--ghost" href="https://medium.com/@chaewoonkim" target="_blank" rel="noopener">Medium</a>
             <a class="btn btn--ghost" href="/assets/pdf/chae-kim-resume.pdf">Resume (PDF)</a>
+          </div>
+        </div>
           </div>
         </div>
       </div>
@@ -401,7 +440,7 @@
     </div>
   </footer>
 
-  <script src="/assets/js/main.js?v=10"></script>
+  <script src="/assets/js/main.js?v=11"></script>
   <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

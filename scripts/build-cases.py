@@ -9,7 +9,7 @@ import os, html
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 OUT = os.path.join(ROOT, "projects")
-V = "10"  # asset version (cache-bust)
+V = "11"  # asset version (cache-bust)
 
 def C(msg):  # visible confirm tag
     return f'<span class="confirm">[CONFIRM: {html.escape(msg)}]</span>'
@@ -56,8 +56,8 @@ SHELL = """<!DOCTYPE html>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" onload="this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap"></noscript>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"></noscript>
   <link rel="stylesheet" href="/assets/css/style.css?v={v}">
   <script>try {{ var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); }} catch (e) {{}}</script>
 </head>
@@ -69,12 +69,17 @@ SHELL = """<!DOCTYPE html>
   <main id="main">
     <section class="case-hero">
       <div class="container">
+        <div class="win case-win">
+          <div class="win__bar"><span class="win__dots"><i></i><i></i><i></i></span><span class="win__title">{slug}.md</span></div>
+          <div class="win__body">
         <a class="case-hero__back" href="/#work">← All work</a>
         <div class="case-hero__emoji" aria-hidden="true">{emoji}</div>
         <p class="eyebrow" style="margin-top:14px">{kicker}</p>
         <h1 class="display case-hero__title">{heading}{badge}</h1>
         <p class="tldr">{tldr}</p>
         <p class="meta-line"><b>Role</b> {role} · <b>Team</b> {team} · <b>Timeline</b> {timeline}</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -143,7 +148,7 @@ def typecover(big, small):
 
 CASES = [
   dict(slug="lucent", emoji="🔦", title="Lucent",
-    kicker="Featured · Co-founder & CEO · NSF I-Corps",
+    kicker="featured · co-founder & CEO · NSF I-Corps",
     heading="Lucent",
     desc="Lucent is an AI search observability platform and consultancy. It shows brands how they rank in ChatGPT, Perplexity, and Gemini, then helps them fix it.",
     tldr="An AI search observability platform and a consultancy. Lucent shows brands how they rank in ChatGPT, Perplexity, and Gemini, then helps them fix it, through the product and hands-on GEO and SEO work.",
@@ -162,7 +167,7 @@ CASES = [
     artifacts=art(("", "artifact image: product screenshot (no client data)"), ("", "artifact image: pitch deck excerpt, e.g. SAM or GTM slide")),
   ),
   dict(slug="mobility", emoji="🦯", title="Mobility devices for older adults (stealth)",
-    kicker="In progress · Co-founder · Stealth",
+    kicker="in progress · co-founder · stealth",
     heading="Mobility devices for older adults",
     badge='<span class="stealth">Stealth</span>',
     desc="Premium, design-forward mobility products that help older adults stay independent longer.",
@@ -181,7 +186,7 @@ CASES = [
     artifacts=p("None yet that don't show the mechanism."),
   ),
   dict(slug="ey", emoji="☁️", title="EY, AI & Data",
-    kicker="Featured · Senior Consultant · New York · 2021 to 2024",
+    kicker="featured · senior consultant · New York · 2021 to 2024",
     heading="Cloud migration at Fortune 500 scale",
     desc="Program-wide risk, OKRs, and the first QBR for a $200M+ cloud migration at a Fortune 500 life sciences client, which contributed to a $14M contract extension.",
     tldr="Ran the operating system for a $200M+ cloud migration at a Fortune 500 life sciences client: risk, OKRs, and the first executive QBR. It helped secure a $14M extension.",
@@ -199,7 +204,7 @@ CASES = [
     artifacts=art(("", "artifact image: sanitized QBR or OKR dashboard excerpt")),
   ),
   dict(slug="mirrorme", emoji="🃏", title="MirrorMe",
-    kicker="More work · Co-founder, GTM · 2024",
+    kicker="more work · co-founder, GTM · 2024",
     heading="MirrorMe",
     desc="An icebreaker card game for people who host. 150+ pre-launch purchase commitments with zero paid budget.",
     tldr="An icebreaker card game for hosts. 150+ pre-launch commitments at $30 to 40, with zero paid budget.",
@@ -216,7 +221,7 @@ CASES = [
     artifacts=art(("/assets/img/projects/mirrorme/card-category.png", "Category card"), ("/assets/img/projects/mirrorme/card-question.png", "Question card"), ("/assets/img/projects/mirrorme/card-rules.png", "Setup and rules card"), ("/assets/img/projects/mirrorme/card-alt.png", "Alternative card design")),
   ),
   dict(slug="tritooling", emoji="🏭", title="Tritooling",
-    kicker="More work · Director of Operations · Philippines · 2024 to 2025",
+    kicker="featured · director of operations · Philippines · 2024 to 2025",
     heading="Running operations at a precision manufacturer",
     desc="Director of Operations at a family-owned precision manufacturer serving semiconductor, medical device, and industrial clients across APAC.",
     tldr="A year running operations at a family-owned precision manufacturer serving semiconductor, medical device, and industrial clients. Fewer defects, faster delivery, a board-approved market entry.",
