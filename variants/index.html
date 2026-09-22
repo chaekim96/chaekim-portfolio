@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Design variants · Chae Kim</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/assets/css/style.css?v=12">
+  <style>
+    .pick { max-width: 860px; margin: 0 auto; padding: clamp(40px, 8vw, 96px) var(--gutter); }
+    .pick h1 { font-size: clamp(28px, 4vw, 40px); margin-bottom: 8px; }
+    .pick p { color: var(--ink-2); margin-bottom: 28px; }
+    .pick__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; }
+    .pick a.opt { display: block; padding: 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-elev); transition: .25s; }
+    .pick a.opt:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: var(--shadow-lg); }
+    .pick a.opt b { display: block; font-size: 18px; margin-bottom: 4px; }
+    .pick a.opt span { font-size: 14px; color: var(--ink-3); }
+    .pick a.opt small { display: block; margin-top: 10px; font-size: 12px; color: var(--accent); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <main class="pick">
+    <p class="label">variants</p>
+    <h1>One portfolio, four metaphors.</h1>
+    <p>Same content, different framing. Pick one to compare.</p>
+    <div class="pick__grid">
+      <a class="opt" href="/"><b>Desktop</b><span>macOS desktop, folders, and windows. The current v2.</span><small>current →</small></a>
+      <a class="opt" href="/variants/prd"><b>PRD</b><span>A product requirements document with status, requirements, and sign-off.</span><small>open →</small></a>
+      <a class="opt" href="/variants/notebook"><b>Field notebook</b><span>Dated entries on ruled paper, taped-in specimens, stamps.</span><small>open →</small></a>
+      <a class="opt" href="/variants/schematic"><b>Schematic</b><span>An engineering drawing: parts list, revision history, title block.</span><small>open →</small></a>
+    </div>
+  </main>
+</body>
+</html>
