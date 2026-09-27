@@ -673,3 +673,387 @@ body { font-size: 16px; line-height: 1.6; }
 
 /* smaller, calmer buttons in nav */
 .nav__cta { padding: 8px 14px !important; }
+
+/* ==================================================================
+   v5 — Apple Human Interface Guidelines
+   Sources: developer.apple.com/design/human-interface-guidelines
+            github.com/dickwu/apple-design-skill (extracted HIG reference set)
+
+   Typeface stays Poppins by choice. Apple shows up as:
+   materials (two-layer Liquid Glass discipline), semantic color,
+   an 8pt grid, the system type scale, system motion, and controls.
+   ================================================================== */
+
+/* ---------- Semantic color (color.md › System colors)
+   Apple names colors by purpose, not appearance, so every surface keeps
+   its meaning when the appearance changes. Light, dark, and increased
+   contrast each get real values. ---------- */
+:root {
+  /* Labels: four levels of foreground emphasis */
+  --label: #1c1c1e;
+  --label-2: rgba(60, 60, 67, 0.72);
+  --label-3: rgba(60, 60, 67, 0.48);
+  --label-4: rgba(60, 60, 67, 0.28);
+
+  /* Backgrounds: grouped, by depth */
+  --surface: #ffffff;
+  --surface-2: #f2f2f7;
+  --surface-3: #e5e5ea;
+
+  /* Separators */
+  --separator: rgba(60, 60, 67, 0.16);
+  --separator-opaque: #d8d8dc;
+
+  /* Fills, for shapes behind content */
+  --fill: rgba(120, 120, 128, 0.12);
+  --fill-2: rgba(120, 120, 128, 0.08);
+
+  /* systemBlue, Apple's accent */
+  --accent: #007aff;
+  --accent-ink: #ffffff;
+  --accent-soft: rgba(0, 122, 255, 0.10);
+
+  /* Map the existing tokens onto the semantic set so every component
+     inherits this without a rewrite. */
+  --ink: var(--label);
+  --ink-2: var(--label-2);
+  --ink-3: var(--label-3);
+  --bg-elev: var(--surface);
+  --bg-soft: var(--surface-2);
+  --line: var(--separator);
+  --line-strong: rgba(60, 60, 67, 0.28);
+
+  /* Liquid Glass (liquid-glass.md › Cross-platform translation) */
+  --glass-blur: 28px;
+  --glass-saturate: 1.8;
+  --glass-fill: rgba(255, 255, 255, 0.72);
+  --glass-highlight: rgba(255, 255, 255, 0.9);
+  /* Standard material for the content layer — thicker, no saturation boost */
+  --material: rgba(255, 255, 255, 0.86);
+  --material-blur: 20px;
+
+  /* 8pt grid */
+  --s1: 4px;  --s2: 8px;  --s3: 12px; --s4: 16px;
+  --s5: 20px; --s6: 24px; --s8: 32px; --s10: 40px; --s12: 48px; --s16: 64px;
+
+  /* Corner radii */
+  --r-sm: 6px; --r-md: 10px; --r-lg: 14px; --r-xl: 20px;
+
+  /* Motion (motion.md › Best practices: brief, precise, purposeful) */
+  --ease: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --t-fast: 0.2s; --t-base: 0.3s; --t-slow: 0.4s;
+
+  /* Elevation: Apple shadows are soft, low-contrast, and tight */
+  --shadow: 0 1px 2px rgba(0, 0, 0, .04), 0 4px 12px rgba(0, 0, 0, .06);
+  --shadow-lg: 0 2px 6px rgba(0, 0, 0, .05), 0 16px 40px rgba(0, 0, 0, .10);
+}
+
+:root[data-theme="dark"] {
+  --label: #ffffff;
+  --label-2: rgba(235, 235, 245, 0.68);
+  --label-3: rgba(235, 235, 245, 0.44);
+  --label-4: rgba(235, 235, 245, 0.26);
+  --surface: #1c1c1e;
+  --surface-2: #2c2c2e;
+  --surface-3: #3a3a3c;
+  --separator: rgba(84, 84, 88, 0.6);
+  --separator-opaque: #38383a;
+  --fill: rgba(120, 120, 128, 0.24);
+  --fill-2: rgba(120, 120, 128, 0.16);
+  --accent: #0a84ff;
+  --accent-ink: #ffffff;
+  --accent-soft: rgba(10, 132, 255, 0.18);
+  --line-strong: rgba(235, 235, 245, 0.3);
+  --bg: #000000;
+  --glass-fill: rgba(30, 30, 32, 0.68);
+  --glass-highlight: rgba(255, 255, 255, 0.14);
+  --material: rgba(28, 28, 30, 0.86);
+  --shadow: 0 1px 2px rgba(0, 0, 0, .5), 0 4px 12px rgba(0, 0, 0, .4);
+  --shadow-lg: 0 2px 6px rgba(0, 0, 0, .6), 0 16px 40px rgba(0, 0, 0, .55);
+}
+
+/* Increase Contrast: stronger separators and fills, no faint labels
+   (color.md › Best practices; accessibility.md) */
+@media (prefers-contrast: more) {
+  :root {
+    --label-2: rgba(60, 60, 67, 0.9);
+    --label-3: rgba(60, 60, 67, 0.7);
+    --separator: rgba(60, 60, 67, 0.4);
+    --line-strong: rgba(60, 60, 67, 0.6);
+    --glass-fill: rgba(255, 255, 255, 0.96);
+    --material: rgba(255, 255, 255, 0.98);
+  }
+  :root[data-theme="dark"] {
+    --label-2: rgba(235, 235, 245, 0.92);
+    --label-3: rgba(235, 235, 245, 0.75);
+    --separator: rgba(235, 235, 245, 0.45);
+    --glass-fill: rgba(20, 20, 22, 0.96);
+    --material: rgba(28, 28, 30, 0.98);
+  }
+}
+
+/* ---------- Type scale (typography.md › Specifications)
+   Apple's size/weight/leading relationships, rendered in Poppins.
+   Negative tracking on large sizes, per the macOS tracking table. ---------- */
+.display, h1, h2, h3, .about-txt .h { font-weight: 700; }
+.about-txt .h { font-size: clamp(26px, 3vw, 34px); line-height: 1.21; letter-spacing: -0.021em; }
+.section__title { font-size: clamp(22px, 2.6vw, 28px); line-height: 1.21; letter-spacing: -0.019em; font-weight: 700; }
+.feat__title, .card__title, .tl__org, .panel__title { font-size: 17px; line-height: 1.29; letter-spacing: -0.013em; font-weight: 600; }
+body { font-size: 17px; line-height: 1.47; letter-spacing: -0.004em; }
+.feat__desc, .card__desc, .tl__body, .about__text, .lede, .section__sub { font-size: 15px; line-height: 1.33; letter-spacing: -0.002em; }
+.label, .eyebrow, .card__kicker, .tl__when, .win__title, .tile__meta, .feat__result,
+.polaroid figcaption, .prose figcaption { font-size: 13px; line-height: 1.38; letter-spacing: 0; font-weight: 500; }
+.tag, .icon small, .panel__note, .game__hint { font-size: 12px; line-height: 1.33; }
+/* Never light weights (typography.md › Ensuring legibility) */
+.muted, .label, .eyebrow { font-weight: 500; }
+
+/* ---------- Liquid Glass: the functional layer only
+   "Don't use Liquid Glass in the content layer." (liquid-glass.md › Layer
+   discipline) The nav is this site's toolbar, so it is the one glass surface. */
+.nav {
+  background: var(--glass-fill);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border-bottom: 0.5px solid var(--separator);
+  box-shadow: inset 0 0.5px 0 var(--glass-highlight);
+}
+/* Scroll edge effect: content fades and blurs where it meets the bar,
+   instead of colliding with a solid band. (layout.md › Visual hierarchy) */
+.nav::after {
+  content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 24px;
+  pointer-events: none;
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  -webkit-mask-image: linear-gradient(to bottom, #000, transparent);
+  mask-image: linear-gradient(to bottom, #000, transparent);
+}
+.nav__inner { height: 52px; }
+
+/* Content layer: standard materials, never glass. Thicker and calmer than
+   the bar — no saturation boost, no specular highlight. (materials.md) */
+.win, .panel, .card, .feat, .tile, .stat, .earlier, .contact {
+  background: var(--material);
+  backdrop-filter: blur(var(--material-blur));
+  -webkit-backdrop-filter: blur(var(--material-blur));
+}
+.win { border: 0.5px solid var(--separator); border-radius: var(--r-xl); box-shadow: var(--shadow); }
+.card, .feat { border: 0.5px solid var(--separator); border-radius: var(--r-lg); }
+.panel, .tile, .earlier { border: 0.5px solid var(--separator); }
+.panel { border-radius: var(--r-lg); }
+.tile { border-radius: var(--r-md); }
+
+/* Reduce Transparency: opaque fallbacks everywhere
+   (liquid-glass.md › Review checklist, item 5) */
+@media (prefers-reduced-transparency: reduce) {
+  .nav, .win, .panel, .card, .feat, .tile, .stat, .earlier, .contact {
+    backdrop-filter: none; -webkit-backdrop-filter: none;
+  }
+  .nav { background: var(--surface); }
+  .win, .panel, .card, .feat, .tile, .stat, .earlier, .contact { background: var(--surface); }
+  .nav::after { display: none; }
+  #bg { opacity: 0.35; }
+}
+
+/* ---------- Window chrome: real macOS proportions ---------- */
+.win__bar {
+  height: 38px; padding: 0 var(--s3);
+  background: transparent;
+  border-bottom: 0.5px solid var(--separator);
+}
+.win__dots { gap: var(--s2); }
+.win__dots i {
+  width: 12px; height: 12px; box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, .12);
+  display: grid; place-items: center;
+  transition: background var(--t-fast) var(--ease);
+}
+/* Inactive windows go gray until hovered, as on the desktop */
+.win:not(:hover) .win__dots i { background: var(--label-4); box-shadow: none; }
+.win__title { font-weight: 500; color: var(--label-2); }
+
+/* ---------- Controls (buttons.md, accessibility.md › Hit targets)
+   Desktop minimum 28x28pt, touch minimum 44x44pt. ---------- */
+.btn {
+  min-height: 34px; padding: var(--s2) var(--s4);
+  border-radius: var(--r-md);
+  font-size: 15px; font-weight: 500; letter-spacing: -0.002em; text-transform: none;
+  transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease),
+              border-color var(--t-fast) var(--ease), transform 0.1s var(--ease);
+}
+/* Prominent: the tinted one. Apple colors the background, not the label,
+   and allows one or two per view. (liquid-glass.md › Color budget) */
+.btn--primary { background: var(--accent); color: var(--accent-ink); border-color: transparent; }
+.btn--primary:hover { background: color-mix(in srgb, var(--accent) 88%, #000); color: var(--accent-ink); box-shadow: none; }
+/* Bordered: the neutral one */
+.btn--ghost { background: var(--fill-2); border-color: var(--separator); color: var(--label); }
+.btn--ghost:hover { background: var(--fill); border-color: var(--separator); }
+.btn:active { transform: scale(0.97); }
+.nav__links a, .nav__links button {
+  min-height: 28px; padding: var(--s1) var(--s3); border-radius: var(--r-sm);
+  font-size: 13px; font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--label-2);
+}
+.nav__links a:hover, .nav__links button:hover { background: var(--fill); color: var(--label); }
+.nav__cta { background: var(--accent) !important; color: var(--accent-ink) !important; padding: var(--s1) var(--s3) !important; }
+.nav__cta:hover { background: color-mix(in srgb, var(--accent) 88%, #000) !important; }
+.theme-toggle { width: 28px; height: 28px; }
+.music__btn, .snake__dpad button, .nav__burger { min-width: 44px; min-height: 44px; }
+.gametab { min-height: 28px; font-size: 13px; letter-spacing: 0; text-transform: none; font-weight: 500; }
+.gametab.is-active { background: var(--surface); color: var(--label); box-shadow: var(--shadow); }
+.gametabs { background: var(--fill); border-radius: var(--r-md); padding: 2px; }
+.chip, .tag { border-radius: var(--r-sm); background: var(--fill); color: var(--label-2); }
+
+/* Focus ring: systemBlue, offset, on keyboard focus only */
+:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 60%, transparent);
+  outline-offset: 2px; border-radius: var(--r-sm);
+}
+
+/* ---------- Motion (motion.md)
+   "Aim for brevity and precision." "Generally avoid adding motion to UI
+   interactions that occur frequently." The card tilt becomes a lift: the
+   rotation read as decoration, the lift reads as feedback. ---------- */
+.card, .feat, .tile {
+  transform: translateY(0) scale(1);
+  transition: transform var(--t-base) var(--ease), box-shadow var(--t-base) var(--ease),
+              border-color var(--t-base) var(--ease);
+}
+.card:hover, .feat:hover, .feat:focus-within {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--separator);
+}
+.tile:hover { transform: translateY(-2px); box-shadow: var(--shadow); border-color: var(--separator); }
+.icon { transition: background var(--t-fast) var(--ease), transform var(--t-fast) var(--ease); }
+.icon:hover { background: var(--fill); transform: none; }
+.icon:active { transform: scale(0.96); }
+.polaroid { transition: transform var(--t-base) var(--ease); }
+.btn { transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .card, .feat, .tile, .polaroid, .icon, .btn { transition: none !important; transform: none !important; }
+  .nav::after { display: none; }
+}
+
+/* ---------- Layout: 8pt grid ---------- */
+.section { padding: var(--s12) 0; }
+.win__body { padding: var(--s6); }
+.section__head { margin-bottom: var(--s5); }
+.card__body { padding: var(--s4); gap: var(--s2); }
+.feat__body { padding: var(--s4); gap: var(--s2); }
+.grid, .featured { gap: var(--s4); }
+.tiles { gap: var(--s3); }
+.contact__links, .about-txt .actions { gap: var(--s2); }
+@media (min-width: 768px) { .win__body { padding: var(--s8); } }
+
+/* ---------- v5 fixes from the HIG review pass ---------- */
+
+/* Contrast: white on systemBlue is 3.65:1, which clears Apple's 3:1 bold
+   threshold but not the 4.5:1 regular one. Prominent labels go semibold and
+   the fill darkens a step. (accessibility.md › Contrast) */
+:root { --accent-strong: #0063d8; }
+:root[data-theme="dark"] { --accent-strong: #0a84ff; }
+.btn--primary, .nav__cta { background: var(--accent-strong) !important; font-weight: 600; }
+.btn--primary:hover, .nav__cta:hover { background: color-mix(in srgb, var(--accent-strong) 86%, #000) !important; }
+
+/* Desktop icon sublabels sat at ~3.2:1 against the sky. Raise a level and
+   give the labels a legibility shadow, the way the Finder does on a wallpaper. */
+.icon small { color: var(--label-2); }
+.icon span { text-shadow: 0 1px 2px rgba(255, 255, 255, .55); }
+:root[data-theme="dark"] .icon span { text-shadow: 0 1px 3px rgba(0, 0, 0, .8); }
+
+/* Material discipline: one material per stack. Cards sit on the window's
+   material, so they stop blurring and become plain surfaces — material on
+   material flattens the hierarchy the material exists to create.
+   (liquid-glass.md › Restraint) */
+.card, .feat, .tile, .earlier, .stat {
+  backdrop-filter: none; -webkit-backdrop-filter: none;
+  background: var(--surface);
+}
+.card__media, .feat__media { border-radius: var(--r-lg) var(--r-lg) 0 0; }
+
+/* Targets: slider and wordmark to the 28pt desktop minimum
+   (accessibility.md › Hit targets) */
+.music__vol input[type="range"] { height: 24px; }
+.music__vol { min-height: 28px; }
+.brand { min-height: 28px; }
+
+/* Brand color lives in the content layer, where the glass can pick it up.
+   Soften the marker so it reads as highlight, not as a control.
+   (branding.md › Best practices) */
+:root { --marker-bg: rgba(255, 214, 10, 0.42); }
+:root[data-theme="dark"] { --marker-bg: rgba(255, 214, 10, 0.26); --marker-ink: #ffffff; }
+.mark { border-radius: 4px; }
+
+/* Contrast pass 2, measured with alpha compositing against real backdrops.
+   (accessibility.md › Contrast: 4.5:1 under 18pt, 3:1 for bold/large) */
+
+/* Tertiary labels are Apple's faintest level and too light for 13px section
+   eyebrows at 2.6:1. Move them up one level. */
+.label, .eyebrow { color: var(--label-2); }
+
+/* systemBlue as text on white is 3.99:1. Apple ships it as a fill color;
+   for text it needs the darker variant. Fills keep the true systemBlue. */
+.em, .display em, .hl, .feat__result b, .tl__role, .about-txt li::before,
+.prose figcaption::before, .label::before, .eyebrow::before,
+.toc a.is-active, .results b, .qs li b { color: var(--accent-strong); }
+.section__title .hl { color: var(--accent-strong); }
+.tag { color: var(--label); background: var(--fill); }
+.card__emoji { background: var(--surface); box-shadow: var(--shadow); }
+
+/* Contrast pass 3 */
+
+/* Tertiary labels are Apple's faintest tier, meant for decorative text. These
+   carry real metadata (roles, dates, project subtitles) and measured 2.6:1,
+   so the token moves up to a readable alpha in both appearances. */
+:root { --label-3: rgba(60, 60, 67, 0.66); }
+:root[data-theme="dark"] { --label-3: rgba(235, 235, 245, 0.6); }
+
+/* The yellow marker: translucent wash behind normal label text. The solid
+   yellow status badge keeps dark ink — white on yellow measured 1.4:1. */
+:root, :root[data-theme="dark"] { --marker-ink: #1c1c1e; }
+.mark { color: var(--label); }
+.tl__now, .stealth { color: var(--marker-ink); }
+.stealth { background: var(--fill); color: var(--label-2); }
+
+/* Filled controls carry semibold labels, which is the weight Apple's own
+   prominent buttons use and the threshold where 3:1 applies. */
+.btn--primary, .nav__cta, .snake__overlay { font-weight: 600; }
+/* 0.66 alpha landed at 4.02:1, just under. Final values clear 4.5:1 on both
+   the window material and the plain surface. */
+:root { --label-3: rgba(60, 60, 67, 0.75); }
+:root[data-theme="dark"] { --label-3: rgba(235, 235, 245, 0.66); }
+.gametab { color: var(--label-2); }
+.gametabs { background: var(--fill-2); }
+.nav__links a.nav__cta { font-weight: 600; }
+
+/* Touch: Apple's minimum is 44x44pt, versus 28x28pt for a pointer.
+   (accessibility.md › Hit targets) */
+@media (pointer: coarse) {
+  .btn, .gametab, .theme-toggle, .nav__links a, .nav__links button, .music__btn { min-height: 44px; }
+  .btn { padding: var(--s3) var(--s5); }
+  .theme-toggle { width: 44px; }
+  .nav__links a, .nav__links button { display: flex; align-items: center; }
+}
+
+/* Case studies: the prose was floating directly on the sky. Give it the same
+   content-layer material as a window so long text has a legible surface,
+   and style the contents list like a macOS sidebar. */
+.case-body {
+  background: var(--material);
+  backdrop-filter: blur(var(--material-blur));
+  -webkit-backdrop-filter: blur(var(--material-blur));
+  border: 0.5px solid var(--separator);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow);
+  padding: var(--s8);
+  margin-bottom: var(--s12);
+}
+@media (max-width: 880px) { .case-body { padding: var(--s5); } }
+.toc a { border-left: 0; border-radius: var(--r-sm); font-size: 13px; font-weight: 500; color: var(--label-2); padding: var(--s1) var(--s2); }
+.toc a:hover { background: var(--fill-2); color: var(--label); }
+.toc a.is-active { background: var(--fill); color: var(--label); }
+.prose h2 { font-size: clamp(20px, 2.2vw, 24px); letter-spacing: -0.017em; padding-top: var(--s6); margin-top: var(--s6); }
+.prose > * + * { margin-top: var(--s3); }
+.next a { border-radius: var(--r-lg); border-color: var(--separator); background: var(--surface); }
+@media (prefers-reduced-transparency: reduce) {
+  .case-body { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--surface); }
+}

@@ -9,7 +9,7 @@ import os, html
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 OUT = os.path.join(ROOT, "projects")
-V = "11"  # asset version (cache-bust)
+V = "13"  # asset version (cache-bust)
 
 def C(msg):  # visible confirm tag
     return f'<span class="confirm">[CONFIRM: {html.escape(msg)}]</span>'

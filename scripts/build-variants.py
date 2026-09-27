@@ -10,7 +10,7 @@ import os
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 OUT = os.path.join(ROOT, "variants")
-V = "12"
+V = "13"
 TODAY = "2026-09-21"
 
 # ----------------------------------------------------------------------------
