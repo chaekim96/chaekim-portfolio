@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>OG card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap">
+<style>
+  /* Social card, 1200x630. Rendered by scripts/make-og.sh with headless Chrome.
+     Mirrors the site: cloud sky, one macOS window, Apple materials and color. */
+  * { box-sizing: border-box; margin: 0; }
+  :root {
+    --label: #1c1c1e;
+    --label-2: rgba(60, 60, 67, 0.72);
+    --label-3: rgba(60, 60, 67, 0.75);
+    --separator: rgba(60, 60, 67, 0.16);
+    --accent: #0063d8;
+    --marker: rgba(255, 214, 10, 0.55);
+  }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    font-family: Poppins, system-ui, sans-serif;
+    color: var(--label);
+    display: grid; place-items: center;
+    background:
+      radial-gradient(90% 70% at 18% 12%, #ffffff 0%, transparent 55%),
+      radial-gradient(70% 60% at 82% 82%, #dbe7ff 0%, transparent 60%),
+      linear-gradient(170deg, #eef4ff 0%, #f7faff 52%, #ffffff 100%);
+    position: relative;
+  }
+  /* soft cloud puffs, echoing the live canvas */
+  .puff { position: absolute; border-radius: 50%; filter: blur(28px); background: #fff; }
+  .p1 { width: 420px; height: 240px; left: -80px; bottom: -70px; opacity: .95; }
+  .p2 { width: 300px; height: 170px; left: 180px; bottom: -50px; opacity: .8; }
+  .p3 { width: 360px; height: 200px; right: -60px; top: -60px; opacity: .7; }
+  .p4 { width: 220px; height: 130px; right: 260px; bottom: -40px; opacity: .65; }
+
+  .win {
+    position: relative; width: 1064px; height: 494px;
+    border-radius: 22px; overflow: hidden;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--separator);
+    box-shadow: 0 2px 6px rgba(16, 18, 35, .05), 0 40px 80px -30px rgba(16, 18, 35, .30);
+  }
+  .bar {
+    height: 46px; display: flex; align-items: center; gap: 10px; padding: 0 16px;
+    border-bottom: 1px solid var(--separator);
+  }
+  .dots { display: inline-flex; gap: 8px; }
+  .dots i { width: 13px; height: 13px; border-radius: 50%; display: block; box-shadow: inset 0 0 0 .5px rgba(0,0,0,.1); }
+  .dots i:nth-child(1) { background: #ff5f57; }
+  .dots i:nth-child(2) { background: #febc2e; }
+  .dots i:nth-child(3) { background: #28c840; }
+  .title { flex: 1; text-align: center; font-size: 15px; font-weight: 500; color: var(--label-2); margin-right: 62px; }
+
+  .body { display: grid; grid-template-columns: 1fr 330px; height: calc(100% - 46px); }
+  .left { padding: 40px 8px 36px 44px; display: flex; flex-direction: column; }
+
+  .brand { display: inline-flex; align-items: baseline; font-size: 30px; font-weight: 800; letter-spacing: -0.04em; }
+  .brand i { width: 11px; height: 11px; border-radius: 50%; background: #ffd60a; margin-left: 4px; display: inline-block; }
+
+  h1 { font-size: 52px; line-height: 1.1; font-weight: 700; letter-spacing: -0.032em; margin-top: 22px; }
+  .mark { background: var(--marker); border-radius: 5px; padding: 0 .08em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+
+  .sub { margin-top: 18px; font-size: 21px; font-weight: 500; color: var(--label-2); letter-spacing: -0.01em; }
+
+  .stats { margin-top: auto; display: flex; gap: 34px; padding-top: 26px; border-top: 1px solid var(--separator); }
+  .stat b { display: block; font-size: 27px; font-weight: 700; letter-spacing: -0.028em; color: var(--accent); line-height: 1.1; }
+  .stat span { display: block; font-size: 15px; font-weight: 500; color: var(--label-3); margin-top: 3px; }
+
+  .right { position: relative; display: grid; place-items: center; }
+  .right img { width: 300px; filter: drop-shadow(0 26px 34px rgba(16, 18, 35, .22)); }
+</style>
+</head>
+<body>
+  <div class="puff p1"></div><div class="puff p2"></div><div class="puff p3"></div><div class="puff p4"></div>
+
+  <div class="win">
+    <div class="bar">
+      <span class="dots"><i></i><i></i><i></i></span>
+      <span class="title">about me.txt</span>
+    </div>
+    <div class="body">
+      <div class="left">
+        <span class="brand">chae<i></i></span>
+        <h1>I turn messy problems into <span class="mark">products and plans that ship</span>.</h1>
+        <p class="sub">MBA at Berkeley Haas · Co-founder of Lucent · Ex-EY AI &amp; Data</p>
+        <div class="stats">
+          <div class="stat"><b>$14M</b><span>program extension</span></div>
+          <div class="stat"><b>+15%</b><span>on-time delivery</span></div>
+          <div class="stat"><b>150+</b><span>pre-orders, $0 ads</span></div>
+        </div>
+      </div>
+      <div class="right"><img src="../assets/img/memoji.png" alt=""></div>
+    </div>
+  </div>
+</body>
+</html>
