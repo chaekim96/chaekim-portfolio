@@ -1057,3 +1057,9 @@ body { font-size: 17px; line-height: 1.47; letter-spacing: -0.004em; }
 @media (prefers-reduced-transparency: reduce) {
   .case-body { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--surface); }
 }
+
+/* Open questions are tracked in the markup but not shown to visitors. Find them
+   with `grep -rn "CONFIRM:" index.html projects/`; to see them while editing,
+   add `data-confirm` to <html> or delete this rule. */
+.confirm { display: none; }
+:root[data-confirm] .confirm { display: inline-block; }
