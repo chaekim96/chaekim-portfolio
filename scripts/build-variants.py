@@ -65,7 +65,7 @@ NAV = """  <header class="nav">
 """
 
 def switcher(current):
-    opts = [("desktop", "/"), ("prd", "/variants/prd"), ("notebook", "/variants/notebook"), ("schematic", "/variants/schematic")]
+    opts = [("desktop", "/"), ("prd", "/variants/prd"), ("notebook", "/variants/notebook"), ("schematic", "/variants/schematic"), ("stamp", "/variants/stamp")]
     links = "".join(f'<a href="{h}"{" class=is-active aria-current=page" if k == current else ""}>{k}</a>' for k, h in opts)
     return f'  <nav class="switch" aria-label="Design variants"><span>design</span>{links}</nav>\n'
 
@@ -685,6 +685,386 @@ f'''        <p class="zone__sub">Hiring for a PM or strategy role? Or building i
 """ + tail("schematic")
 
 # ----------------------------------------------------------------------------
+# 4) Stamp — quiet, gallery-like, artifact-first. One saturated element: a 도장.
+#    Standalone stylesheet (v-stamp.css); does not load style.css.
+#    Plain string with %%TOKENS%% rather than an f-string, since the inline JS is brace-heavy.
+# ----------------------------------------------------------------------------
+
+STAMP_CHANGELOG = "10-04-26"
+
+# 김채운 as a vertical name seal, intaglio: paper-coloured glyphs cut out of red.
+def seal(cls="", label=True):
+    aria = 'role="img" aria-label="김채운, Chae Kim\'s name seal"' if label else 'aria-hidden="true"'
+    return (f'<svg class="{cls}" viewBox="0 0 40 72" {aria}><g filter="url(#ink)">'
+            '<rect x="1.5" y="1.5" width="37" height="69" rx="4" fill="#c63d2f"/>'
+            '<rect x="4.2" y="4.2" width="31.6" height="63.6" rx="2.4" fill="none" stroke="#fbf6ee" stroke-width=".9"/>'
+            '<text x="20" y="22.4" text-anchor="middle" font-size="18" fill="#fbf6ee">김</text>'
+            '<text x="20" y="43.6" text-anchor="middle" font-size="18" fill="#fbf6ee">채</text>'
+            '<text x="20" y="64.6" text-anchor="middle" font-size="18" fill="#fbf6ee">운</text>'
+            '</g></svg>')
+
+INK_DEFS = ('<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>'
+            '<filter id="ink" x="-8%" y="-8%" width="116%" height="116%">'
+            '<feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="4" result="noise"/>'
+            '<feDisplacementMap in="SourceGraphic" in2="noise" scale="1.3" xChannelSelector="R" yChannelSelector="G" result="d"/>'
+            '<feTurbulence type="fractalNoise" baseFrequency="2.2" numOctaves="1" seed="11" result="grain"/>'
+            '<feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -6 0 0 0 4.6" result="mask"/>'
+            '<feComposite in="d" in2="mask" operator="in"/>'
+            '</filter></defs></svg>')
+
+def _snake():
+    body = [(2,6),(3,6),(4,6),(5,6),(5,5),(5,4),(6,4),(7,4),(8,4),(9,4),(9,5),(10,5)]
+    cell = lambda c, r, fill: f'<rect x="{c*10+1}" y="{r*10+1}" width="8" height="8" rx="1.6" fill="{fill}"/>'
+    return ('<svg class="snake-art" viewBox="0 0 160 100" aria-hidden="true">'
+            '<defs><pattern id="px" width="10" height="10" patternUnits="userSpaceOnUse">'
+            '<path d="M10 0H0V10" fill="none" stroke="rgba(255,255,255,.07)"/></pattern></defs>'
+            '<rect width="160" height="100" fill="url(#px)"/>'
+            + "".join(cell(c, r, "#58cf86") for c, r in body)
+            + cell(11, 5, "#a6f0bf") + cell(13, 5, "#ffd60a") + '</svg>')
+
+STAMP = r"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stamp · Chae Kim</title>
+  <meta name="description" content="Chae Kim: co-founder of Lucent, previously at EY and Tritooling, MBA at Berkeley Haas. Looking for PM and strategy roles.">
+  <meta name="robots" content="noindex">
+  <meta property="og:title" content="Chae Kim · Product and strategy">
+  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@900&text=%EA%B9%80%EC%B1%84%EC%9A%B4&display=block">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
+  <link rel="preload" as="image" href="/assets/img/thumbs/lucent-wide.jpg">
+  <link rel="stylesheet" href="/assets/css/v-stamp.css?v=%%V%%">
+  <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
+</head>
+<body class="v v-stamp">
+  <a class="skip" href="#main">Skip to content</a>
+  %%INK%%
+  <div class="aurora" aria-hidden="true"></div>
+
+  <header class="top wrap">
+    <a class="seal" href="#work">%%SEAL%%</a>
+    <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </header>
+
+  <main id="main" class="wrap">
+    <section class="intro" aria-label="Introduction">
+      <h1 class="name">chae kim</h1>
+      <p class="thesis">Turning messy problems into products and plans that ship.</p>
+      <p class="cred">Co-founder of <a href="/projects/lucent">Lucent</a>. Previously at <a href="/projects/ey">EY</a> &amp; <a href="/projects/tritooling">Tritooling</a>. MBA at Berkeley Haas ('27).<br>
+        <span class="status"><i aria-hidden="true"></i>Looking for PM and strategy roles.</span> <a data-user="chaewoonkim" data-domain="berkeley.edu" href="#">Say hello</a></p>
+    </section>
+
+    <div class="tabs" role="tablist" aria-label="Sections">
+      <button class="tab" role="tab" id="tab-work" data-tab="work" aria-controls="work" aria-selected="true">Work</button>
+      <button class="tab" role="tab" id="tab-side-quests" data-tab="side-quests" aria-controls="side-quests" aria-selected="false" tabindex="-1">Side quests</button>
+      <button class="tab" role="tab" id="tab-about" data-tab="about" aria-controls="about" aria-selected="false" tabindex="-1">About</button>
+    </div>
+
+    <!-- ============ WORK ============ -->
+    <section class="panel" id="work" role="tabpanel" aria-labelledby="tab-work">
+      <div class="grid">
+        <a class="w w--wide reveal" href="/projects/lucent">
+          <div class="stage" style="--g: var(--g-lucent)">
+            <div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>trylucent.ai</span></div><img src="/assets/img/thumbs/lucent-wide.jpg" alt="Lucent's homepage: The AI Search Console" width="1440" height="810"></div></div>
+            <span class="pill">Lucent <em>2025–now</em></span>
+          </div>
+          <p class="meta">AI search observability platform and consultancy. <b>First paying pilot, 5 LOIs in 30 days.</b></p>
+        </a>
+
+        <a class="w reveal" href="/projects/ey">
+          <div class="stage" style="--g: var(--g-ey)">
+            <div class="art"><div class="glass"><b>$14M</b><span>program extension</span></div></div>
+            <span class="pill">EY <em>2021–24</em></span>
+          </div>
+          <p class="meta">Risk, OKRs, and the first executive QBR for a $200M+ cloud migration. <b>−30% executive escalations.</b></p>
+        </a>
+
+        <a class="w reveal" href="/projects/tritooling">
+          <div class="stage" style="--g: var(--g-tri)">
+            <div class="art"><div class="glass"><b>+15%</b><span>on-time delivery</span></div></div>
+            <span class="pill">Tritooling <em>2024–25</em></span>
+          </div>
+          <p class="meta">A year running operations at a precision manufacturer. <b>−30% defects.</b></p>
+        </a>
+
+        <a class="w reveal" href="/projects/mirrorme">
+          <div class="stage" style="--g: var(--g-mirror)">
+            <div class="art"><div class="fan"><img src="/assets/img/projects/mirrorme/card-category.png" alt="MirrorMe card: Openness to experience, pink" width="714" height="1000" loading="lazy"><img src="/assets/img/projects/mirrorme/card-alt.png" alt="MirrorMe card: Openness to experience, orange" width="733" height="1000" loading="lazy"></div></div>
+            <span class="pill">MirrorMe <em>2024</em></span>
+          </div>
+          <p class="meta">An icebreaker card game for hosts. <b>150+ pre-orders, $0 ad spend.</b></p>
+        </a>
+
+        <a class="w reveal" href="/projects/mobility">
+          <div class="stage" style="--g: var(--g-mobility)">
+            <div class="art"><div class="glass glass--status"><b>Stealth</b><span><i aria-hidden="true"></i>in progress</span></div></div>
+            <span class="pill">Mobility <em>now</em></span>
+          </div>
+          <p class="meta">Design-forward mobility products that keep older adults independent longer.</p>
+        </a>
+      </div>
+
+      <h2 class="sub-h">Earlier, at Indiana University (2019 to 2021)</h2>
+      <div class="grid grid--5">
+        <a class="w reveal" href="/projects/iu-study-assistant">
+          <div class="stage"><div class="art fill"><img src="/assets/img/projects/iusa/home.jpg" alt="IU Study Assistant home screen" width="1400" height="720" loading="lazy"></div><span class="pill">Study Assistant</span></div>
+          <p class="meta">Capstone: PM, UX, back end.</p>
+        </a>
+        <a class="w reveal" href="/projects/alab">
+          <div class="stage" style="--g: linear-gradient(160deg,#eaf6fb,#d9eef7)"><div class="art fill fill--contain"><img src="/assets/img/projects/alab/cover-intro.png" alt="aLab app login screen" width="418" height="823" loading="lazy"></div><span class="pill">aLab</span></div>
+          <p class="meta">Adjustable dog bowl and app.</p>
+        </a>
+        <a class="w reveal" href="/projects/luc">
+          <div class="stage"><div class="art fill"><img src="/assets/img/projects/luc/mockup.jpg" alt="Pencil schematic of LUC's luggage wheels" width="1400" height="1208" loading="lazy"></div><span class="pill">LUC</span></div>
+          <p class="meta">Self-weighing luggage.</p>
+        </a>
+        <a class="w reveal" href="/projects/ptm">
+          <div class="stage"><div class="art fill"><img src="/assets/img/projects/ptm/mockup.jpg" alt="Pencil schematic of the PTM sleep mask" width="1400" height="614" loading="lazy"></div><span class="pill">PTM</span></div>
+          <p class="meta">Fever-sensing sleep mask.</p>
+        </a>
+        <a class="w reveal" href="/projects/coursera">
+          <div class="stage"><div class="art fill fill--contain"><img src="/assets/img/projects/coursera-cover.jpg" alt="Cover of the Coursera PM dossier" width="464" height="600" loading="lazy"></div><span class="pill">Coursera</span></div>
+          <p class="meta">A PM dossier.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ SIDE QUESTS ============ -->
+    <section class="panel" id="side-quests" role="tabpanel" aria-labelledby="tab-side-quests">
+      <div class="grid grid--3">
+        <a class="w reveal" href="/#break">
+          <div class="stage" style="--g: var(--g-arcade)"><div class="art">%%SNAKE%%</div><span class="pill">Arcade <em>play</em></span></div>
+          <p class="meta">Snake and Galaga, rebuilt from memory, plus a generative lo-fi radio.</p>
+        </a>
+        <a class="w reveal" href="/projects/home-gif">
+          <div class="stage"><div class="art fill fill--pixel"><img src="/assets/img/projects/home.gif" alt="Pixel-art house at dusk" width="1067" height="600" loading="lazy"></div><span class="pill">Home <em>2020</em></span></div>
+          <p class="meta">A pixel-art GIF, made during COVID.</p>
+        </a>
+        <a class="w reveal" href="/projects/yin-yang">
+          <div class="stage"><div class="art fill"><img src="/assets/img/projects/yin-yang.gif" alt="Animated yin yang over a framed painting" width="1067" height="600" loading="lazy"></div><span class="pill">Yin Yang <em>2020</em></span></div>
+          <p class="meta">An animated illustration.</p>
+        </a>
+        <a class="w reveal" href="https://www.figma.com/make/jM7KyUTe5uojF6qOMhuF6U/Color-Palette-Generator?node-id=0-4" target="_blank" rel="noopener">
+          <div class="stage"><div class="art"><div class="swatches" aria-hidden="true"><i style="background:#1e5bff"></i><i style="background:#7ea6ff"></i><i style="background:#ffd60a"></i><i style="background:#f4a261"></i><i style="background:#161618"></i></div></div><span class="pill">Palette Generator ↗ <em>2025</em></span></div>
+          <p class="meta">A color palette generator, built in Figma Make.</p>
+        </a>
+        <div class="w reveal">
+          <div class="stage" style="--g: var(--g-lucent)"><div class="art"><div class="glass"><b>~310</b><span>contacts</span></div></div><span class="pill">Personal CRM</span></div>
+          <p class="meta">AI-enriched contacts, with outreach tracking.</p>
+        </div>
+        <div class="w reveal">
+          <div class="stage" style="--g: var(--g-mobility)"><div class="art"><div class="glass"><b>3D</b><span>printing</span></div></div><span class="pill">3D prints</span></div>
+          <p class="meta">Keychains, organizers, and containers.</p>
+        </div>
+        <a class="w reveal" href="/assets/pdf/I308-Lime-Scooter-Poster.pdf" target="_blank" rel="noopener">
+          <div class="stage"><div class="art fill"><img src="/assets/img/projects/fake-news.jpg" alt="A phone showing a news app, held over a scooter" width="489" height="601" loading="lazy"></div><span class="pill">Poster ↗ <em>2020</em></span></div>
+          <p class="meta">A media literacy poster.</p>
+        </a>
+        <a class="w reveal" href="/assets/pdf/WMCS-Weight-Machine-Cross-Sync.pdf" target="_blank" rel="noopener">
+          <div class="stage" style="--g: var(--g-ey)"><div class="art"><div class="glass"><b>NFC</b><span>gym sets, synced</span></div></div><span class="pill">WMCS ↗ <em>2019</em></span></div>
+          <p class="meta">Weight Machine Cross Sync: log gym sets over NFC.</p>
+        </a>
+        <a class="w reveal" href="/assets/pdf/AAV-Auto-Adjusting-Volume.pdf" target="_blank" rel="noopener">
+          <div class="stage" style="--g: var(--g-tri)"><div class="art"><div class="glass"><b>dB</b><span>auto volume</span></div></div><span class="pill">AAV ↗ <em>2019</em></span></div>
+          <p class="meta">Auto-Adjusting Volume: noise-aware volume.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="panel" id="about" role="tabpanel" aria-labelledby="tab-about">
+      <div class="about">
+        <nav class="toc" aria-label="About sections">
+          <a href="#hi">Hi!</a><a href="#experience">Experience</a><a href="#off-the-clock">Off the clock</a><a href="#elsewhere">Elsewhere</a>
+        </nav>
+        <div class="about__body">
+          <section id="hi">
+            <h2>Hi, I'm Chae.</h2>
+            <div class="facts">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Berkeley, CA</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg>MBA, Berkeley Haas '27</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg>B.S. Informatics, Indiana University</span>
+            </div>
+            <p>Thirteen years growing up overseas made me curious by default. I'm happiest making things: a wireframe, a 3D print, a card game.</p>
+            <p>I've founded an NSF I-Corps AI startup, led Fortune 500 cloud programs, and run a precision manufacturer's operations. Now I'm looking for <b>PM and strategy roles</b>.</p>
+            <p>I'm also writing a memoir, <em>The Treaded Path</em>, and essays on <a href="https://medium.com/@chaewoonkim" target="_blank" rel="noopener">Medium ↗</a>.</p>
+          </section>
+
+          <section id="experience">
+            <h3>Experience</h3>
+            <ul class="xp">
+              <li><b>UC Berkeley Haas</b><small>2025–27</small><span><em>MBA Candidate.</em> Merit Scholarship. Co-President, Asian Business Club (300+ members).</span></li>
+              <li><b>Lucent</b><small>Oct 2025–now</small><span><em>Co-founder &amp; CEO.</em> First paying pilot. 5 LOIs in 30 days. 100+ customer interviews. NSF I-Corps backed.</span></li>
+              <li><b>Tritooling Precision Corporation</b><small>Jul 2024–Jul 2025</small><span><em>Director of Operations, Philippines.</em> On-time delivery +15%, defects −30%. $1.5M savings case (ERP). $800K+ board-approved APAC market entry.</span></li>
+              <li><b>EY</b><small>Aug 2021–Jul 2024</small><span><em>Senior Consultant, AI &amp; Data Strategy, New York.</em> $14M extension after launching a Fortune 500 client's first QBR. −30% escalations on a $200M+ program. 90% tool adoption across 4,000 users.</span></li>
+              <li><b>Indiana University Bloomington</b><small>Class of 2021</small><span><em>B.S. Informatics, minors in HCI &amp; Entrepreneurship.</em> Board of Aeons (top 1%). GPA 3.74. <span class="confirm">[CONFIRM: start year]</span></span></li>
+              <li><b>Republic of Korea Army</b><small>Gangwon, Korea</small><span><em>Staff Sergeant, Squad Leader.</em> Led a squad. <span class="confirm">[CONFIRM: years]</span></span></li>
+            </ul>
+          </section>
+
+          <section id="off-the-clock">
+            <h3>Off the clock</h3>
+            <ul class="likes">
+              <li><b>3D printing</b>, design and prototyping</li>
+              <li><b>Competitive tennis</b> and latte art</li>
+              <li><b>Big Brothers Big Sisters</b> mentor, 4+ year match</li>
+            </ul>
+            <div class="photos">
+              <figure><img src="/assets/img/profile.jpg" alt="Chae waving next to an elephant in Phuket" width="1200" height="1600" loading="lazy"></figure>
+              <figure><img src="/assets/img/travel-1.jpg" alt="A pink coconut by a pool in Bali" width="900" height="1200" loading="lazy"></figure>
+              <figure><img src="/assets/img/travel-3.jpg" alt="Limestone cliffs over green water in Ha Long Bay" width="900" height="1200" loading="lazy"></figure>
+              <figure><img src="/assets/img/travel-2.jpg" alt="A boat at sunset" width="900" height="1200" loading="lazy"></figure>
+            </div>
+          </section>
+
+          <section id="elsewhere">
+            <h3>Elsewhere</h3>
+            <div class="links">
+              <a data-user="chaewoonkim" data-domain="berkeley.edu" href="#">Email</a>
+              <a href="https://www.linkedin.com/in/chaekim/" target="_blank" rel="noopener">LinkedIn ↗</a>
+              <a href="https://medium.com/@chaewoonkim" target="_blank" rel="noopener">Medium ↗</a>
+              <a href="https://github.com/chaekim96" target="_blank" rel="noopener">GitHub ↗</a>
+              <a href="/assets/pdf/chae-kim-resume.pdf">Resume (PDF)</a>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot wrap">
+    <div>
+      <a class="foot__id" href="#work">%%SEAL_SMALL%%chae kim</a>
+      <p class="clock">
+        <svg id="clock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <g class="sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g>
+          <g class="moon"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></g>
+        </svg>
+        <time id="clock"></time><span>Berkeley, CA</span>
+      </p>
+    </div>
+    <nav aria-label="Footer">
+      <a href="#work">Work</a><a href="#side-quests">Side quests</a><a href="#about">About</a><a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
+    </nav>
+    <div class="foot__cta">
+      <b>Let's work together.</b>
+      <a data-user="chaewoonkim" data-domain="berkeley.edu" data-show href="#">chaewoonkim@berkeley.edu</a>
+      <div class="foot__small">
+        <span>Built by hand in plain HTML, between latte art attempts.</span>
+        <span><code>CHANGELOG: %%CHANGELOG%%</code></span>
+      </div>
+    </div>
+  </footer>
+
+%%SWITCHER%%  <script src="/assets/js/main.js?v=%%V%%"></script>
+  <script>
+  (function () {
+    var THESIS = {
+      'work': 'Turning messy problems into products and plans that ship.',
+      'side-quests': 'Weekend builds, early concepts, and games I grew up playing.',
+      'about': 'Product, strategy, operations, and the occasional 3D print.'
+    };
+    var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var tabs = [].slice.call(document.querySelectorAll('.tab'));
+    var panels = [].slice.call(document.querySelectorAll('.panel'));
+    var thesis = document.querySelector('.thesis');
+    var current = null;
+
+    function show(id, opts) {
+      opts = opts || {};
+      if (!THESIS[id]) id = 'work';
+      tabs.forEach(function (t) {
+        var on = t.dataset.tab === id;
+        t.setAttribute('aria-selected', on);
+        t.tabIndex = on ? 0 : -1;
+        if (on && opts.focus) t.focus();
+      });
+      panels.forEach(function (p) { p.hidden = p.id !== id; });
+      if (current && current !== id && !reduce) {
+        thesis.classList.add('is-swapping');
+        setTimeout(function () { thesis.textContent = THESIS[id]; thesis.classList.remove('is-swapping'); }, 180);
+      } else {
+        thesis.textContent = THESIS[id];
+      }
+      current = id;
+      if (opts.scroll) document.querySelector('.tabs').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    }
+    function go(id, opts) { show(id, opts); history.replaceState(null, '', '#' + id); }
+
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { go(t.dataset.tab); });
+      t.addEventListener('keydown', function (e) {
+        var j = { ArrowRight: (i + 1) % tabs.length, ArrowLeft: (i - 1 + tabs.length) % tabs.length, Home: 0, End: tabs.length - 1 }[e.key];
+        if (j === undefined) return;
+        e.preventDefault(); go(tabs[j].dataset.tab, { focus: true });
+      });
+    });
+
+    // in-page links to a tab (footer, seal) switch tabs instead of jumping
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a[href^="#"]');
+      if (!a) return;
+      var id = a.getAttribute('href').slice(1);
+      if (THESIS[id]) { e.preventDefault(); go(id, { scroll: true }); }
+    });
+
+    // deep links: #work, #about, or a section inside About such as #experience
+    function fromHash() {
+      var h = location.hash.slice(1), el = h && document.getElementById(h);
+      if (THESIS[h]) show(h);
+      else if (el && el.closest('#about')) { show('about'); requestAnimationFrame(function () { el.scrollIntoView(); }); }
+      else show('work');
+    }
+    addEventListener('hashchange', fromHash);
+    fromHash();
+
+    // local time in Berkeley, with a sun or a moon
+    var clock = document.getElementById('clock'), icon = document.getElementById('clock-icon');
+    var fmt = new Intl.DateTimeFormat('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'America/Los_Angeles' });
+    var hr = new Intl.DateTimeFormat('en-US', { hour: 'numeric', hourCycle: 'h23', timeZone: 'America/Los_Angeles' });
+    function tick() {
+      var d = new Date(), h = parseInt(hr.format(d), 10);
+      clock.textContent = fmt.format(d);
+      clock.dateTime = d.toISOString();
+      icon.dataset.night = String(h < 6 || h >= 19);
+    }
+    tick(); setInterval(tick, 30000);
+
+    // About: highlight the section in view
+    var links = [].slice.call(document.querySelectorAll('.toc a'));
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          links.forEach(function (a) { a.classList.toggle('is-active', a.getAttribute('href') === '#' + en.target.id); });
+        });
+      }, { rootMargin: '-15% 0px -70% 0px' });
+      links.forEach(function (a) { var s = document.querySelector(a.getAttribute('href')); if (s) io.observe(s); });
+    }
+  })();
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
+"""
+
+STAMP = (STAMP.replace("%%V%%", V)
+              .replace("%%INK%%", INK_DEFS)
+              .replace("%%SEAL%%", seal())
+              .replace("%%SEAL_SMALL%%", seal(label=False))
+              .replace("%%SNAKE%%", _snake())
+              .replace("%%CHANGELOG%%", STAMP_CHANGELOG)
+              .replace("%%SWITCHER%%", switcher("stamp")))
+
+# ----------------------------------------------------------------------------
 # picker
 # ----------------------------------------------------------------------------
 
@@ -713,13 +1093,14 @@ INDEX = f"""<!DOCTYPE html>
 <body>
   <main class="pick">
     <p class="label">variants</p>
-    <h1>One portfolio, four metaphors.</h1>
+    <h1>One portfolio, five metaphors.</h1>
     <p>Same content, different framing. Pick one to compare.</p>
     <div class="pick__grid">
       <a class="opt" href="/"><b>Desktop</b><span>macOS desktop, folders, and windows. The current v2.</span><small>current →</small></a>
       <a class="opt" href="/variants/prd"><b>PRD</b><span>A product requirements document with status, requirements, and sign-off.</span><small>open →</small></a>
       <a class="opt" href="/variants/notebook"><b>Field notebook</b><span>Dated entries on ruled paper, taped-in specimens, stamps.</span><small>open →</small></a>
       <a class="opt" href="/variants/schematic"><b>Schematic</b><span>An engineering drawing: parts list, revision history, title block.</span><small>open →</small></a>
+      <a class="opt" href="/variants/stamp"><b>Stamp</b><span>Quiet and gallery-like. Real artifacts, pill tabs, a 도장 name seal.</span><small>open →</small></a>
     </div>
   </main>
 </body>
@@ -727,7 +1108,7 @@ INDEX = f"""<!DOCTYPE html>
 """
 
 os.makedirs(OUT, exist_ok=True)
-for name, html_ in (("index", INDEX), ("prd", PRD), ("notebook", NOTEBOOK), ("schematic", SCHEMATIC)):
+for name, html_ in (("index", INDEX), ("prd", PRD), ("notebook", NOTEBOOK), ("schematic", SCHEMATIC), ("stamp", STAMP)):
     with open(os.path.join(OUT, f"{name}.html"), "w") as f:
         f.write(html_)
     print("wrote variants/%s.html" % name)
