@@ -313,3 +313,7 @@ a.w:hover .swatches i:nth-child(3) { flex: 1.8; }
 :root[data-theme="dark"] .browser__bar { background: #2a2a2e; border-bottom-color: rgba(255, 255, 255, .06); }
 .cred a[data-user] { white-space: nowrap; }
 :root[data-theme="dark"] .browser__bar span { color: #a1a1a6; }
+
+/* project headline: what the project is, in a sentence. Stats stay in the line below. */
+.w-title { margin-top: 14px; font-size: 17px; font-weight: 500; line-height: 1.35; letter-spacing: -0.015em; color: var(--ink); max-width: 46ch; text-wrap: balance; }
+.w-title + .meta { margin-top: 4px; }
