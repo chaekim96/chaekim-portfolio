@@ -98,7 +98,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .top { display: flex; align-items: center; justify-content: space-between; padding-top: 28px; }
 .seal { display: inline-block; line-height: 0; border-radius: 6px; }
 .seal svg { width: 34px; height: auto; transform: rotate(-2deg); }
-.seal text { font-family: "Noto Serif KR", "Apple SD Gothic Neo", "Malgun Gothic", serif; font-weight: 900; }
 @media (prefers-reduced-motion: no-preference) {
   .top .seal svg { animation: press .75s var(--ease) .15s both; }
   @keyframes press {
@@ -191,7 +190,7 @@ a.w:focus-visible .stage { outline: 3px solid rgba(0, 122, 255, .55); outline-of
 .browser__bar { height: 26px; display: flex; align-items: center; gap: 6px; padding: 0 11px; background: #f2f2f5; border-bottom: 1px solid rgba(0, 0, 0, .06); }
 .browser__bar i { width: 9px; height: 9px; border-radius: 50%; background: #d9d9de; }
 .browser__bar i:nth-child(1) { background: #ff5f57; } .browser__bar i:nth-child(2) { background: #febc2e; } .browser__bar i:nth-child(3) { background: #28c840; }
-.browser__bar span { flex: 1; text-align: center; font-size: 11px; color: #8a8a90; margin-right: 40px; }
+.browser__bar span { flex: 1; text-align: center; font-size: 11px; color: #63636a; margin-right: 40px; }
 @media (max-width: 680px) { .browser { width: 88%; } }
 
 /* frosted tile carrying a number */
@@ -313,3 +312,4 @@ a.w:hover .swatches i:nth-child(3) { flex: 1.8; }
 :root[data-theme="dark"] .browser { background: #1c1c1e; box-shadow: 0 0 0 1px rgba(255, 255, 255, .08), 0 30px 60px -20px rgba(0, 0, 0, .7); }
 :root[data-theme="dark"] .browser__bar { background: #2a2a2e; border-bottom-color: rgba(255, 255, 255, .06); }
 .cred a[data-user] { white-space: nowrap; }
+:root[data-theme="dark"] .browser__bar span { color: #a1a1a6; }
