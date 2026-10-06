@@ -146,7 +146,6 @@ CONTACT_LINKS = """            <a class="btn btn--primary" data-user="chaewoonki
 EMAIL = '<a class="em" data-user="chaewoonkim" data-domain="berkeley.edu" data-show href="#">chaewoonkim@berkeley.edu</a>'
 MEDIUM = '<a class="em" href="https://medium.com/@chaewoonkim" target="_blank" rel="noopener">Medium ↗</a>'
 CONFIRM_IU = '<span class="confirm">[CONFIRM: start year]</span>'
-CONFIRM_ROK = '<span class="confirm">[CONFIRM: years]</span>'
 
 def tail(current):
     return f"""{switcher(current)}  <script src="/assets/js/main.js?v={V}"></script>
@@ -259,7 +258,7 @@ PRD = head("prd", "PRD", "Chae Kim, specified as a product requirements document
                 <img class="req__thumb" src="/assets/img/thumbs/ey.jpg" alt="" loading="lazy" width="1200" height="900">
                 <span><b>EY, AI &amp; Data</b><span class="req__desc">Risk, OKRs, and the first executive QBR for a $200M+ cloud migration across 25+ teams.</span></span>
               </span>
-              <span class="req__ac"><b>$14M extension</b><span>−30% executive escalations</span></span>
+              <span class="req__ac"><b>$10M+ savings realized</b><span>−30% executive escalations</span></span>
             </a>
             <a class="req reveal" href="/projects/tritooling">
               <span class="req__id mono">REQ-03</span>
@@ -309,11 +308,11 @@ PRD = head("prd", "PRD", "Chae Kim, specified as a product requirements document
             <thead><tr><th>Date</th><th>Milestone</th><th>Outcome</th></tr></thead>
             <tbody>
               <tr><td class="mono">2025 to 2027</td><td><b>UC Berkeley Haas</b> <span class="pill pill--live"><i></i>Now</span><br><span class="ms__role">MBA Candidate</span></td><td>Merit Scholarship. Co-President, Asian Business Club (300+ members).</td></tr>
-              <tr><td class="mono">Oct 2025 to present</td><td><b>Lucent</b><br><span class="ms__role">Co-founder &amp; CEO</span></td><td>First paying pilot. 5 LOIs in 30 days. 100+ customer interviews. NSF I-Corps backed.</td></tr>
-              <tr><td class="mono">Jul 2024 to Jul 2025</td><td><b>Tritooling Precision Corporation, Philippines</b><br><span class="ms__role">Director of Operations</span></td><td>On-time delivery +15%, defects −30%. $1.5M savings case (ERP). $800K+ board-approved APAC market entry.</td></tr>
-              <tr><td class="mono">Aug 2021 to Jul 2024</td><td><b>EY, New York</b><br><span class="ms__role">Senior Consultant, AI &amp; Data Strategy (Staff Consultant, 2021 to 2023)</span></td><td>$14M extension after launching a Fortune 500 client's first QBR. −30% escalations on a $200M+ program. 90% tool adoption across 4,000 users.</td></tr>
-              <tr><td class="mono">Class of 2021</td><td><b>Indiana University Bloomington</b><br><span class="ms__role">B.S. Informatics, minors in HCI &amp; Entrepreneurship</span></td><td>Board of Aeons (top 1%). GPA 3.74. {CONFIRM_IU}</td></tr>
-              <tr><td class="mono">Gangwon, Korea</td><td><b>Republic of Korea Army</b><br><span class="ms__role">Staff Sergeant · Squad Leader</span></td><td>Led a squad. {CONFIRM_ROK}</td></tr>
+              <tr><td class="mono">2025 to 2026</td><td><b>Lucent</b><br><span class="ms__role">Co-founder &amp; CEO</span></td><td>First paying pilot. 5 LOIs in 30 days. 100+ customer interviews. NSF I-Corps backed.</td></tr>
+              <tr><td class="mono">Jul 2024 to Jul 2025</td><td><b>Tritooling Precision Corporation, Philippines</b><br><span class="ms__role">Director of Operations</span></td><td>On-time delivery +15%, defects −30%. ERP make-vs-buy case approved, $100K in annual savings. Board approval to launch in Japan, a $300K+ revenue opportunity.</td></tr>
+              <tr><td class="mono">Aug 2021 to Jul 2024</td><td><b>EY, New York</b><br><span class="ms__role">Senior Technology Consultant, AI &amp; Data Strategy (Staff Technology Consultant, 2021 to 2023)</span></td><td>Redirected $3M to priority initiatives after launching a Fortune 500 client's first QBR. $10M+ in realized savings over 2 years. −30% escalations on a $200M+ program. 90% tool adoption across 4,000 users.</td></tr>
+              <tr><td class="mono">Class of 2021</td><td><b>Indiana University Bloomington</b><br><span class="ms__role">B.S. Informatics, minors in HCI &amp; Entrepreneurship</span></td><td>Dean's List. GPA 3.74. {CONFIRM_IU}</td></tr>
+              <tr><td class="mono">2017 to 2019</td><td><b>Republic of Korea Army, Gangwon</b><br><span class="ms__role">Sergeant, 2nd Artillery Brigade</span></td><td>Ran 15 high-stakes artillery operations, leading 10 soldiers and interpreting for ROK and U.S. commanders.</td></tr>
             </tbody>
           </table>
         </section>
@@ -444,7 +443,7 @@ f'''        <p class="hand note">a startup, a Fortune 500 program, a factory flo
             <span class="specimen__body">
               <b>EY, AI &amp; Data</b>
               <span>Risk, OKRs, and the first executive QBR for a $200M+ cloud migration across 25+ teams.</span>
-              <span class="hand result">→ $14M extension · −30% escalations</span>
+              <span class="hand result">→ $10M+ savings realized · −30% escalations</span>
             </span>
           </a>
           <a class="specimen reveal" href="/projects/tritooling">
@@ -500,11 +499,11 @@ f'''        <p class="hand note">rebuilt from memory, with a soundtrack. nothing
 f'''        <p class="hand note">results, not duties.</p>
         <div class="timeline reveal">
           <div class="tl"><div class="tl__when">2025 to 2027</div><div><div class="tl__org">UC Berkeley Haas <span class="tl__now">Now</span></div><div class="tl__role">MBA Candidate</div><ul class="tl__body"><li>Merit Scholarship. Co-President, Asian Business Club (300+ members).</li></ul></div></div>
-          <div class="tl"><div class="tl__when">Oct 2025 to present</div><div><div class="tl__org">Lucent</div><div class="tl__role">Co-founder &amp; CEO</div><ul class="tl__body"><li>First paying pilot. 5 LOIs in 30 days.</li><li>100+ customer interviews. NSF I-Corps backed.</li></ul></div></div>
-          <div class="tl"><div class="tl__when">Jul 2024 to Jul 2025</div><div><div class="tl__org">Tritooling Precision Corporation, Philippines</div><div class="tl__role">Director of Operations</div><ul class="tl__body"><li>On-time delivery +15%, defects −30%.</li><li>$1.5M savings case (ERP). $800K+ board-approved APAC market entry.</li></ul></div></div>
-          <div class="tl"><div class="tl__when">Aug 2021 to Jul 2024</div><div><div class="tl__org">EY, New York</div><div class="tl__role">Senior Consultant, AI &amp; Data Strategy (Staff Consultant, 2021 to 2023)</div><ul class="tl__body"><li>$14M extension after launching a Fortune 500 client's first QBR.</li><li>−30% escalations on a $200M+ program. 90% tool adoption across 4,000 users.</li></ul></div></div>
-          <div class="tl"><div class="tl__when">Class of 2021</div><div><div class="tl__org">Indiana University Bloomington</div><div class="tl__role">B.S. Informatics, minors in HCI &amp; Entrepreneurship</div><ul class="tl__body"><li>Board of Aeons (top 1%). GPA 3.74. {CONFIRM_IU}</li></ul></div></div>
-          <div class="tl"><div class="tl__when">Gangwon, Korea</div><div><div class="tl__org">Republic of Korea Army</div><div class="tl__role">Staff Sergeant · Squad Leader</div><ul class="tl__body"><li>Led a squad. {CONFIRM_ROK}</li></ul></div></div>
+          <div class="tl"><div class="tl__when">2025 to 2026</div><div><div class="tl__org">Lucent</div><div class="tl__role">Co-founder &amp; CEO</div><ul class="tl__body"><li>First paying pilot. 5 LOIs in 30 days.</li><li>100+ customer interviews. NSF I-Corps backed.</li></ul></div></div>
+          <div class="tl"><div class="tl__when">Jul 2024 to Jul 2025</div><div><div class="tl__org">Tritooling Precision Corporation, Philippines</div><div class="tl__role">Director of Operations</div><ul class="tl__body"><li>On-time delivery +15%, defects −30%.</li><li>ERP make-vs-buy case approved, $100K in annual savings. Board approval to launch in Japan, a $300K+ revenue opportunity.</li></ul></div></div>
+          <div class="tl"><div class="tl__when">Aug 2021 to Jul 2024</div><div><div class="tl__org">EY, New York</div><div class="tl__role">Senior Technology Consultant, AI &amp; Data Strategy (Staff Technology Consultant, 2021 to 2023)</div><ul class="tl__body"><li>Redirected $3M to priority initiatives after launching a Fortune 500 client's first QBR. $10M+ in realized savings over 2 years.</li><li>−30% escalations on a $200M+ program. 90% tool adoption across 4,000 users.</li></ul></div></div>
+          <div class="tl"><div class="tl__when">Class of 2021</div><div><div class="tl__org">Indiana University Bloomington</div><div class="tl__role">B.S. Informatics, minors in HCI &amp; Entrepreneurship</div><ul class="tl__body"><li>Dean's List. GPA 3.74. {CONFIRM_IU}</li></ul></div></div>
+          <div class="tl"><div class="tl__when">2017 to 2019</div><div><div class="tl__org">Republic of Korea Army, Gangwon</div><div class="tl__role">Sergeant, 2nd Artillery Brigade</div><ul class="tl__body"><li>Ran 15 high-stakes artillery operations, leading 10 soldiers and interpreting for ROK and U.S. commanders.</li></ul></div></div>
         </div>
 ''', "experience")}
 {entry(7, "off the clock", "Off the clock",
@@ -596,7 +595,7 @@ f'''        <table class="bom reveal">
               <td class="mono">2</td>
               <td><img class="bom__thumb" src="/assets/img/thumbs/ey.jpg" alt="" loading="lazy" width="1200" height="900"><span class="mono">EY-02</span></td>
               <td><b>EY, AI &amp; Data</b><span>Risk, OKRs, and the first executive QBR for a $200M+ cloud migration across 25+ teams.</span></td>
-              <td><b>$14M extension</b><span>−30% executive escalations</span></td>
+              <td><b>$10M+ savings realized</b><span>−30% executive escalations</span></td>
               <td><a class="mono dwg" href="/projects/ey" aria-label="Read the EY case study">→</a></td>
             </tr>
             <tr class="bom__row" onclick="location.href='/projects/tritooling'">
@@ -633,11 +632,11 @@ f'''        <table class="rev reveal">
           <thead><tr><th class="mono">REV</th><th class="mono">DATE</th><th class="mono">DESCRIPTION</th><th class="mono">RESULT</th></tr></thead>
           <tbody>
             <tr><td class="mono">F</td><td class="mono">2025 to 2027</td><td><b>UC Berkeley Haas</b> <span class="tl__now">Now</span><br><span class="role">MBA Candidate</span></td><td>Merit Scholarship. Co-President, Asian Business Club (300+ members).</td></tr>
-            <tr><td class="mono">E</td><td class="mono">Oct 2025 to present</td><td><b>Lucent</b><br><span class="role">Co-founder &amp; CEO</span></td><td>First paying pilot. 5 LOIs in 30 days. 100+ customer interviews. NSF I-Corps backed.</td></tr>
-            <tr><td class="mono">D</td><td class="mono">Jul 2024 to Jul 2025</td><td><b>Tritooling Precision Corporation, Philippines</b><br><span class="role">Director of Operations</span></td><td>On-time delivery +15%, defects −30%. $1.5M savings case (ERP). $800K+ board-approved APAC market entry.</td></tr>
-            <tr><td class="mono">C</td><td class="mono">Aug 2021 to Jul 2024</td><td><b>EY, New York</b><br><span class="role">Senior Consultant, AI &amp; Data Strategy (Staff Consultant, 2021 to 2023)</span></td><td>$14M extension after launching a Fortune 500 client's first QBR. −30% escalations on a $200M+ program. 90% tool adoption across 4,000 users.</td></tr>
-            <tr><td class="mono">B</td><td class="mono">Class of 2021</td><td><b>Indiana University Bloomington</b><br><span class="role">B.S. Informatics, minors in HCI &amp; Entrepreneurship</span></td><td>Board of Aeons (top 1%). GPA 3.74. {CONFIRM_IU}</td></tr>
-            <tr><td class="mono">A</td><td class="mono">Gangwon, Korea</td><td><b>Republic of Korea Army</b><br><span class="role">Staff Sergeant · Squad Leader</span></td><td>Led a squad. {CONFIRM_ROK}</td></tr>
+            <tr><td class="mono">E</td><td class="mono">2025 to 2026</td><td><b>Lucent</b><br><span class="role">Co-founder &amp; CEO</span></td><td>First paying pilot. 5 LOIs in 30 days. 100+ customer interviews. NSF I-Corps backed.</td></tr>
+            <tr><td class="mono">D</td><td class="mono">Jul 2024 to Jul 2025</td><td><b>Tritooling Precision Corporation, Philippines</b><br><span class="role">Director of Operations</span></td><td>On-time delivery +15%, defects −30%. ERP make-vs-buy case approved, $100K in annual savings. Board approval to launch in Japan, a $300K+ revenue opportunity.</td></tr>
+            <tr><td class="mono">C</td><td class="mono">Aug 2021 to Jul 2024</td><td><b>EY, New York</b><br><span class="role">Senior Technology Consultant, AI &amp; Data Strategy (Staff Technology Consultant, 2021 to 2023)</span></td><td>Redirected $3M to priority initiatives after launching a Fortune 500 client's first QBR. $10M+ in realized savings over 2 years. −30% escalations on a $200M+ program. 90% tool adoption across 4,000 users.</td></tr>
+            <tr><td class="mono">B</td><td class="mono">Class of 2021</td><td><b>Indiana University Bloomington</b><br><span class="role">B.S. Informatics, minors in HCI &amp; Entrepreneurship</span></td><td>Dean's List. GPA 3.74. {CONFIRM_IU}</td></tr>
+            <tr><td class="mono">A</td><td class="mono">2017 to 2019</td><td><b>Republic of Korea Army, Gangwon</b><br><span class="role">Sergeant, 2nd Artillery Brigade</span></td><td>Ran 15 high-stakes artillery operations, leading 10 soldiers and interpreting for ROK and U.S. commanders.</td></tr>
           </tbody>
         </table>
 ''')}
@@ -775,9 +774,9 @@ STAMP = r"""<!DOCTYPE html>
         <a class="w w--wide reveal" href="/projects/lucent">
           <div class="stage" style="--g: var(--g-lucent)">
             <div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>trylucent.ai</span></div><img src="/assets/img/thumbs/lucent-wide.jpg" alt="Lucent's homepage: The AI Search Console" width="1440" height="810"></div></div>
-            <span class="pill">Lucent <em>2025–now</em></span>
+            <span class="pill">Lucent <em>2025–26</em></span>
           </div>
-          <h3 class="w-title">Helping brands get found when people ask AI, not Google.</h3>
+          <h3 class="w-title">Making small businesses visible in AI search.</h3>
           <p class="meta">AI search observability platform and consultancy. <b>First paying pilot, 5 LOIs in 30 days.</b></p>
         </a>
 
@@ -786,7 +785,7 @@ STAMP = r"""<!DOCTYPE html>
             <div class="art"><div class="glass"><b>Cloud</b><span>migration program</span></div></div>
             <span class="pill">EY <em>2021–24</em></span>
           </div>
-          <h3 class="w-title">Turning escalations into decisions on a Fortune 500 cloud migration.</h3>
+          <h3 class="w-title">Giving leaders one clear view of a sprawling cloud migration.</h3>
           <p class="meta">Risk, OKRs, and the first executive QBR for a $200M+ cloud migration. <b>−30% executive escalations.</b></p>
         </a>
 
@@ -795,7 +794,7 @@ STAMP = r"""<!DOCTYPE html>
             <div class="art"><div class="glass"><b>Factory</b><span>operations</span></div></div>
             <span class="pill">Tritooling <em>2024–25</em></span>
           </div>
-          <h3 class="w-title">Clearing the bottlenecks on a precision factory floor.</h3>
+          <h3 class="w-title">Fixing late deliveries and defects at a precision manufacturer.</h3>
           <p class="meta">A year running operations at a precision manufacturer. <b>−30% defects.</b></p>
         </a>
 
@@ -804,7 +803,7 @@ STAMP = r"""<!DOCTYPE html>
             <div class="art"><div class="fan"><img src="/assets/img/projects/mirrorme/card-category.png" alt="MirrorMe card: Openness to experience, pink" width="714" height="1000" loading="lazy"><img src="/assets/img/projects/mirrorme/card-alt.png" alt="MirrorMe card: Openness to experience, orange" width="733" height="1000" loading="lazy"></div></div>
             <span class="pill">MirrorMe <em>2024</em></span>
           </div>
-          <h3 class="w-title">A card game that gets near-strangers actually talking.</h3>
+          <h3 class="w-title">Icebreakers that go deeper without getting awkward.</h3>
           <p class="meta">An icebreaker card game for hosts. <b>150+ pre-orders, $0 ad spend.</b></p>
         </a>
 
@@ -813,7 +812,7 @@ STAMP = r"""<!DOCTYPE html>
             <div class="art"><div class="glass glass--status"><b>Stealth</b><span><i aria-hidden="true"></i>in progress</span></div></div>
             <span class="pill">Mobility <em>now</em></span>
           </div>
-          <h3 class="w-title">Mobility aids that don't look like medical equipment.</h3>
+          <h3 class="w-title">Mobility aids people aren't embarrassed to use.</h3>
           <p class="meta">Design-forward mobility products that keep older adults independent longer.</p>
         </a>
       </div>
@@ -908,11 +907,11 @@ STAMP = r"""<!DOCTYPE html>
             <h3>Experience</h3>
             <ul class="xp">
               <li><b>UC Berkeley Haas</b><small>2025–27</small><span><em>MBA Candidate.</em> Merit Scholarship. Co-President, Asian Business Club (300+ members).</span></li>
-              <li><b>Lucent</b><small>Oct 2025–now</small><span><em>Co-founder &amp; CEO.</em> First paying pilot. 5 LOIs in 30 days. 100+ customer interviews. NSF I-Corps backed.</span></li>
-              <li><b>Tritooling Precision Corporation</b><small>Jul 2024–Jul 2025</small><span><em>Director of Operations, Philippines.</em> On-time delivery +15%, defects −30%. $1.5M savings case (ERP). $800K+ board-approved APAC market entry.</span></li>
-              <li><b>EY</b><small>Aug 2021–Jul 2024</small><span><em>Senior Consultant, AI &amp; Data Strategy, New York.</em> $14M extension after launching a Fortune 500 client's first QBR. −30% escalations on a $200M+ program. 90% tool adoption across 4,000 users.</span></li>
-              <li><b>Indiana University Bloomington</b><small>Class of 2021</small><span><em>B.S. Informatics, minors in HCI &amp; Entrepreneurship.</em> Board of Aeons (top 1%). GPA 3.74. <span class="confirm">[CONFIRM: start year]</span></span></li>
-              <li><b>Republic of Korea Army</b><small>Gangwon, Korea</small><span><em>Staff Sergeant, Squad Leader.</em> Led a squad. <span class="confirm">[CONFIRM: years]</span></span></li>
+              <li><b>Lucent</b><small>2025–26</small><span><em>Co-founder &amp; CEO.</em> First paying pilot. 5 LOIs in 30 days. 100+ customer interviews. NSF I-Corps backed.</span></li>
+              <li><b>Tritooling Precision Corporation</b><small>Jul 2024–Jul 2025</small><span><em>Director of Operations, Philippines.</em> On-time delivery +15%, defects −30%. ERP make-vs-buy case approved, $100K in annual savings. Board approval to launch in Japan, a $300K+ revenue opportunity.</span></li>
+              <li><b>EY</b><small>Aug 2021–Jul 2024</small><span><em>Senior Technology Consultant, AI &amp; Data Strategy, New York.</em> Redirected $3M to priority initiatives after launching a Fortune 500 client's first QBR. $10M+ in realized savings over 2 years. −30% escalations on a $200M+ program. 90% tool adoption across 4,000 users.</span></li>
+              <li><b>Indiana University Bloomington</b><small>Class of 2021</small><span><em>B.S. Informatics, minors in HCI &amp; Entrepreneurship.</em> Dean's List. GPA 3.74. <span class="confirm">[CONFIRM: start year]</span></span></li>
+              <li><b>Republic of Korea Army, Gangwon</b><small>2017–19</small><span><em>Sergeant, 2nd Artillery Brigade.</em> Ran 15 high-stakes artillery operations, leading 10 soldiers and interpreting for ROK and U.S. commanders.</span></li>
             </ul>
           </section>
 
