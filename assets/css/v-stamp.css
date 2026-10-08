@@ -1,7 +1,7 @@
 /* ------------------------------------------------------------------
    Variant: stamp — quiet, gallery-like, artifact-first.
    Standalone: does not load style.css. Poppins at regular weight,
-   one saturated element (the 도장 name seal), work shown as real artifacts.
+   one signature element (김채운 in Korean calligraphy on hanji), work shown as real artifacts.
    ------------------------------------------------------------------ */
 
 :root {
@@ -94,17 +94,17 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 :root[data-theme="dark"] .aurora { opacity: .35; }
 
-/* ---------- top: the seal ---------- */
+/* ---------- top: 김채운 in calligraphy, ink on hanji ---------- */
 .top { display: flex; align-items: center; justify-content: space-between; padding-top: 28px; }
-.seal { display: inline-block; line-height: 0; border-radius: 6px; }
-.seal svg { width: 34px; height: auto; transform: rotate(-2deg); }
+.seal { display: inline-block; line-height: 0; border-radius: 4px; }
+.cal { display: block; width: 38px; height: auto; transform: rotate(-1.5deg);
+  filter: drop-shadow(0 1px 1px rgba(40, 30, 10, .08)) drop-shadow(0 8px 14px rgba(60, 40, 10, .12)); }
+:root[data-theme="dark"] .cal { filter: drop-shadow(0 8px 18px rgba(0, 0, 0, .55)); }
 @media (prefers-reduced-motion: no-preference) {
-  .top .seal svg { animation: press .75s var(--ease) .15s both; }
-  @keyframes press {
-    0%   { transform: scale(1.5) rotate(-9deg); opacity: 0; }
-    55%  { transform: scale(.93) rotate(-1deg); opacity: 1; }
-    100% { transform: scale(1) rotate(-2deg); }
-  }
+  .top .cal .paper { animation: paper-in .5s var(--ease) both; }
+  .top .cal .ink { animation: write 1.5s cubic-bezier(.45, .05, .3, 1) .3s both; }
+  @keyframes paper-in { from { opacity: 0; } }
+  @keyframes write { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }
 }
 .theme-toggle { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 999px; color: var(--ink-2); transition: background .2s, color .2s; }
 .theme-toggle:hover { background: var(--fill); color: var(--ink); }
@@ -118,7 +118,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .thesis.is-swapping { opacity: 0; }
 .cred a { color: var(--ink); font-weight: 500; background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; transition: background-size .25s var(--ease); }
 .cred a:hover, .cred a:focus-visible { background-size: 100% 1px; }
-.status { display: inline-flex; align-items: center; gap: 7px; color: var(--ink); white-space: nowrap; }
+.status { display: inline-flex; align-items: baseline; gap: 7px; color: var(--ink); }
+.status i { flex: none; transform: translateY(-1px); }
 .status i { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 0 rgba(48, 177, 88, .45); }
 @media (prefers-reduced-motion: no-preference) {
   .status i { animation: ping 2.4s ease-out infinite; }
@@ -277,7 +278,7 @@ a.w:hover .swatches i:nth-child(3) { flex: 1.8; }
 }
 @media (max-width: 760px) { .foot { grid-template-columns: 1fr; } }
 .foot__id { display: flex; align-items: center; gap: 10px; font-size: 22px; font-weight: 500; letter-spacing: -0.02em; }
-.foot__id svg { width: 22px; height: auto; }
+.foot__id .cal { width: 17px; transform: rotate(-1.5deg); }
 .clock { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; color: var(--ink-2); font-size: 14px; font-variant-numeric: tabular-nums; }
 .clock svg { width: 13px; height: 13px; }
 .foot nav { display: grid; gap: 4px; align-content: start; }
@@ -317,3 +318,32 @@ a.w:hover .swatches i:nth-child(3) { flex: 1.8; }
 /* project headline: what the project is, in a sentence. Stats stay in the line below. */
 .w-title { margin-top: 14px; font-size: 17px; font-weight: 500; line-height: 1.35; letter-spacing: -0.015em; color: var(--ink); max-width: 46ch; text-wrap: balance; }
 .w-title + .meta { margin-top: 4px; }
+
+/* ---------- builds: small browser frames, a terminal, a gauge ---------- */
+.grid--3 .browser { width: 84%; bottom: -12%; border-radius: 9px 9px 0 0; }
+.grid--3 .browser__bar { height: 18px; gap: 4px; padding: 0 8px; }
+.grid--3 .browser__bar i { width: 6px; height: 6px; }
+.grid--3 .browser__bar span { font-size: 9px; margin-right: 26px; }
+.fill--top img { object-position: top left; }
+.term { width: 76%; padding: 14px 16px; border-radius: 12px; background: #0d1020; box-shadow: 0 0 0 1px rgba(255, 255, 255, .08), 0 18px 40px -16px rgba(0, 0, 0, .6);
+  font: 500 11.5px/1.5 ui-monospace, "SF Mono", Menlo, monospace; color: #c9d1e8; }
+.term p:first-child { color: #fff; }
+.term ul { margin-top: 8px; display: grid; gap: 3px; }
+.term li::before { content: "○ "; color: #7d86a8; }
+.term li.on { color: #8fd4a8; }
+.term li.on::before { content: "● "; color: #8fd4a8; }
+.gauge { width: 68%; display: grid; gap: 8px; }
+.gauge span { font-size: 12px; font-weight: 500; color: var(--ink); letter-spacing: .02em; }
+.gauge i { display: block; height: 18px; border-radius: 999px; background: var(--glass); box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .06), 0 10px 26px -12px rgba(80, 50, 10, .35); padding: 3px; }
+.gauge b { display: block; height: 100%; width: 62%; border-radius: 999px; background: linear-gradient(90deg, #34c759, #ffcc00 70%, #ff9500); }
+@media (prefers-reduced-motion: no-preference) {
+  a.w:hover .gauge b, div.w:hover .gauge b { width: 38%; transition: width 1.2s var(--ease); }
+  .gauge b { transition: width .6s var(--ease); }
+}
+#builds .sub-h:first-child { margin-top: 0; }
+
+/* five variants: let the switcher scroll on narrow screens instead of overflowing */
+@media (max-width: 560px) { .switch { justify-content: flex-start; overflow-x: auto; scrollbar-width: none; } .switch::-webkit-scrollbar { display: none; } .switch a { flex: none; } }
+
+/* the corner wash is wider than a phone; clip at the root so mobile browsers never widen the layout viewport to fit it */
+html { overflow-x: clip; }

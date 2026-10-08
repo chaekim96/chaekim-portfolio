@@ -1066,3 +1066,4 @@ body { font-size: 17px; line-height: 1.47; letter-spacing: -0.004em; }
 
 /* headlines are sentences now: balance their lines */
 .case-hero__title, .feat__title, .card__title { text-wrap: balance; }
+.builds__label { margin: 22px 0 10px; } .builds__label:first-of-type { margin-top: 0; }

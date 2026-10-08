@@ -183,3 +183,6 @@
 
 /* long email button on narrow screens */
 .contact__links .btn { max-width: 100%; white-space: normal; overflow-wrap: anywhere; text-align: center; }
+
+/* five variants: let the switcher scroll on narrow screens instead of overflowing */
+@media (max-width: 560px) { .switch { justify-content: flex-start; overflow-x: auto; scrollbar-width: none; } .switch::-webkit-scrollbar { display: none; } .switch a { flex: none; } }
