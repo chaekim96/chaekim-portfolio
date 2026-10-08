@@ -785,6 +785,7 @@ STAMP = r"""<!DOCTYPE html>
 
     <!-- ============ WORK ============ -->
     <section class="panel" id="work" role="tabpanel" aria-labelledby="tab-work">
+      <h2 class="visually-hidden">Work</h2>
       <div class="grid">
         <a class="w w--wide reveal" href="/projects/lucent">
           <div class="stage" style="--g: var(--g-lucent)">
