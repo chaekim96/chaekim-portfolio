@@ -65,7 +65,7 @@ NAV = """  <header class="nav">
 """
 
 def switcher(current):
-    opts = [("desktop", "/"), ("prd", "/variants/prd"), ("notebook", "/variants/notebook"), ("schematic", "/variants/schematic"), ("stamp", "/variants/stamp"), ("ink", "/variants/ink")]
+    opts = [("desktop", "/"), ("prd", "/variants/prd"), ("notebook", "/variants/notebook"), ("schematic", "/variants/schematic"), ("stamp", "/variants/stamp"), ("ink", "/variants/ink"), ("craft", "/variants/craft")]
     links = "".join(f'<a href="{h}"{" class=is-active aria-current=page" if k == current else ""}>{k}</a>' for k, h in opts)
     return f'  <nav class="switch" aria-label="Design variants"><span>design</span>{links}</nav>\n'
 
@@ -1174,7 +1174,7 @@ INDEX = f"""<!DOCTYPE html>
 <body>
   <main class="pick">
     <p class="label">variants</p>
-    <h1>One portfolio, six metaphors.</h1>
+    <h1>One portfolio, seven metaphors.</h1>
     <p>Same content, different framing. Pick one to compare.</p>
     <div class="pick__grid">
       <a class="opt" href="/"><b>Desktop</b><span>macOS desktop, folders, and windows. The current v2.</span><small>current →</small></a>
@@ -1183,6 +1183,7 @@ INDEX = f"""<!DOCTYPE html>
       <a class="opt" href="/variants/schematic"><b>Schematic</b><span>An engineering drawing: parts list, revision history, title block.</span><small>open →</small></a>
       <a class="opt" href="/variants/stamp"><b>Stamp</b><span>Quiet and gallery-like. Real artifacts, pill tabs, my name in Korean calligraphy.</span><small>open →</small></a>
       <a class="opt" href="/variants/ink"><b>Ink</b><span>Black and off-white only. Desktop windows, brush-calligraphy name, Fraunces headings.</span><small>open →</small></a>
+      <a class="opt" href="/variants/craft"><b>Desktop Craft</b><span>Apple-style polish. Glass menu bar, colored window dots, soft shadows, one blue accent.</span><small>open →</small></a>
     </div>
   </main>
 </body>
