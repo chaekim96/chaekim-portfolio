@@ -5,15 +5,15 @@
    ------------------------------------------------------------------ */
 
 :root {
-  --bg: #FAFAF7;        /* window surface (off-white) */
-  --paper: #F2F1EC;     /* desktop background */
-  --hairline: #E3E1DA;  /* borders */
+  --bg: #FEFEFC;        /* window surface (near-white) */
+  --paper: #F8F8F6;     /* desktop background */
+  --hairline: #E8E7E3;  /* borders */
   --stone: #8A8780;     /* decorative stone: outlines, rules (3.3:1, not for small text) */
   --graphite: #3A3835;  /* body text */
   --ink: #111110;       /* headings, wordmark, fills */
-  --muted: #6B6862;     /* small secondary text, 5.2:1 on --bg */
-  --on-ink: #FAFAF7;    /* text on ink fills */
-  --bar: #F2F1EC;       /* window title bar */
+  --muted: #6B6862;     /* small secondary text, 5.4:1 on --bg */
+  --on-ink: #FEFEFC;    /* text on ink fills */
+  --bar: #F8F8F6;       /* window title bar */
   --shadow: 0 1px 2px rgba(17,17,16,.05), 0 18px 48px rgba(17,17,16,.08);
   --gutter: clamp(16px, 4vw, 48px);
   --serif: 'Fraunces', Georgia, serif;
