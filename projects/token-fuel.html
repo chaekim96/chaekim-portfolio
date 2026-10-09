@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lucent · Chae Kim</title>
-  <meta name="description" content="Lucent is an AI search observability platform and consultancy. It shows brands how they rank in ChatGPT, Perplexity, and Gemini, then helps them fix it.">
-  <meta property="og:title" content="Lucent · Chae Kim">
-  <meta property="og:description" content="Lucent is an AI search observability platform and consultancy. It shows brands how they rank in ChatGPT, Perplexity, and Gemini, then helps them fix it.">
+  <title>Token-Fuel · Chae Kim</title>
+  <meta name="description" content="A menu-bar fuel gauge for Claude Code and Codex sessions, built from the exact token counts each tool already writes to disk.">
+  <meta property="og:title" content="Token-Fuel · Chae Kim">
+  <meta property="og:description" content="A menu-bar fuel gauge for Claude Code and Codex sessions, built from the exact token counts each tool already writes to disk.">
   <meta property="og:type" content="article">
   <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og.png">
-  <link rel="canonical" href="https://chaekim-portfolio.vercel.app/projects/lucent">
+  <link rel="canonical" href="https://chaekim-portfolio.vercel.app/projects/token-fuel">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,21 +45,21 @@
     <section class="case-hero">
       <div class="container">
         <div class="win case-win">
-          <div class="win__bar"><span class="win__dots"><i></i><i></i><i></i></span><span class="win__title">lucent.md</span></div>
+          <div class="win__bar"><span class="win__dots"><i></i><i></i><i></i></span><span class="win__title">token-fuel.md</span></div>
           <div class="win__body">
         <a class="case-hero__back" href="/#work">← All work</a>
-        <div class="case-hero__emoji" aria-hidden="true">🔦</div>
-        <p class="eyebrow" style="margin-top:14px">featured · co-founder & CEO · NSF I-Corps</p>
-        <h1 class="display case-hero__title">Making small businesses visible in AI search.</h1>
-        <p class="tldr">An AI search observability platform and a consultancy. Lucent shows brands how they rank in ChatGPT, Perplexity, and Gemini, then helps them fix it, through the product and hands-on GEO and SEO work.</p>
-        <p class="meta-line"><b>Role</b> Co-founder & CEO · <b>Team</b> Co-founder/CTO + a data science intern · <b>Timeline</b> 2025 to 2026</p>
+        <div class="case-hero__emoji" aria-hidden="true">⛽</div>
+        <p class="eyebrow" style="margin-top:14px">claude code mod · macOS app · 2026</p>
+        <h1 class="display case-hero__title">Seeing how much context is left before a session runs out.</h1>
+        <p class="tldr">Running out of context is invisible until answers get worse or the session compacts. Token-Fuel makes it visible: a fuel bar in the menu bar and a floating window, with percent left, turns left, and a 12-turn chart, for Claude Code and Codex.</p>
+        <p class="meta-line"><b>Role</b> Product owner and builder · <b>Team</b> Solo, built with Claude Code · <b>Timeline</b> October 2026</p>
           </div>
         </div>
       </div>
     </section>
 
     <section class="container">
-      <div class="case-cover "><a href="https://trylucent.ai" target="_blank" rel="noopener" aria-label="Open trylucent.ai"><img src="/assets/img/thumbs/lucent-wide.jpg" alt="Lucent homepage: The AI Search Console" width="1600" height="900"></a></div>
+      <div class="case-cover "><img src="/assets/img/thumbs/token-fuel-wide.jpg" alt="Token-Fuel's menu-bar gauge and floating window showing context left for Claude Code and Codex" width="1600" height="900"></div>
     </section>
 
     <section class="container case-body">
@@ -72,29 +72,29 @@
       </nav>
       <article class="prose">
         <h2 id="problem">The problem</h2>
-        <p>Customers now ask AI instead of Google. Small businesses can't see whether AI recommends them, and GEO tools are priced for enterprises.</p>
+        <p>Context runs out silently. The Claude desktop Code tab ignores the status-line setting, so there was nowhere to put a gauge, and chat apps keep no token counts at all.</p>
         <h2 id="did">What I did</h2>
         <ul>
-          <li>21 NSF I-Corps discovery interviews narrowed the ICP from "everyone" to digitally native SMBs and marketing agencies. 100+ interviews across U.S. and APAC SMBs tested willingness to pay.</li>
-          <li>Positioned around the one-person marketing team: GEO plus SEO execution, not just citation tracking. 5 positioning hypotheses tested across 65 outbound prospects picked the message.</li>
-          <li>Designed cheap tracking: statistical sampling, and re-running prompts only when models or rankings change.</li>
-          <li>Led a paid pilot: multi-site SEO and AI visibility audits turned into an engineering action plan.</li>
-          <li>Built the investor pitch: bottom-up SAM, phased GTM, 100+ question diligence bank.</li>
+          <li>v0.1: a status-line gauge with a 10-cell fuel bar, turns left, a 12-turn chart, and a "Refueled" notice after /compact.</li>
+          <li>v0.2: a floating pill on the Claude window, because the desktop Code tab ignores status lines.</li>
+          <li>Fixed the window size. Opus 5 sessions have a 1M window, so assuming 200k made the gauge wrong by 5x.</li>
+          <li>Tore it all down and ran a feasibility review with one rule: exact sources only. Claude Code and Codex log real token counts, chat apps don't, so chat apps are out.</li>
+          <li>v1.1: rebuilt as a native Swift menu-bar app with a floating window. Live every 2 seconds, across Claude Code and Codex, launched at login, restarted after a crash.</li>
         </ul>
         <h2 id="results">Results</h2>
-        <div class="results"><div><b>1</b><span>first paying pilot</span></div><div><b>5</b><span>LOIs in 30 days</span></div><div><b>+50%</b><span>discovery response rate</span></div><div><b>NSF</b><span>I-Corps backing</span></div></div>
-        <p>The pilot became an ongoing advisory relationship. <span class="confirm">[CONFIRM: any usage or revenue metric you&#x27;re comfortable sharing]</span></p>
+        <div class="results"><div><b>2</b><span>tools gauged from exact logs</span></div><div><b>2 sec</b><span>refresh, near 0% CPU</span></div><div><b>~40MB</b><span>memory</span></div><div><b>12</b><span>turns charted per session</span></div></div>
+        <p>Checked against the logs themselves: the numbers match what each tool records.</p>
         <h2 id="differently">What I'd do differently</h2>
-        <p>Lock the GTM motion earlier. Investors flagged it as the biggest gap. Positioning tests and pilots should have run in parallel, not in sequence.</p>
+        <p>Write the acceptance checks before the build. One rebuild looked done but wasn't. The menu-bar icon hid behind the MacBook notch, the window never updated, and it counted output tokens as context. A checklist drawn from the milestones would have caught all of it on day one.</p>
         <h2 id="artifacts">Artifacts</h2>
-        <div class="artifacts"><div class="ph"><span class="confirm">[CONFIRM: artifact image: product screenshot (no client data)]</span></div><div class="ph"><span class="confirm">[CONFIRM: artifact image: pitch deck excerpt, e.g. SAM or GTM slide]</span></div></div>
+        <p>Not published yet. A native Swift app with a README that records every milestone: what changed, why, and the tradeoff.</p>
       </article>
     </section>
 
     <section class="next">
       <div class="container next__grid">
-        <a href="/projects/code-improver"><small>← Previous</small><strong>Code Improver</strong></a>
-        <a href="/projects/mobility" style="text-align:right"><small>Next →</small><strong>Mobility devices for older adults (stealth)</strong></a>
+        <a href="/projects/smartmodel"><small>← Previous</small><strong>SmartModel</strong></a>
+        <a href="/projects/code-improver" style="text-align:right"><small>Next →</small><strong>Code Improver</strong></a>
       </div>
     </section>
   </main>

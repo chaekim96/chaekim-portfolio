@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lucent · Chae Kim</title>
-  <meta name="description" content="Lucent is an AI search observability platform and consultancy. It shows brands how they rank in ChatGPT, Perplexity, and Gemini, then helps them fix it.">
-  <meta property="og:title" content="Lucent · Chae Kim">
-  <meta property="og:description" content="Lucent is an AI search observability platform and consultancy. It shows brands how they rank in ChatGPT, Perplexity, and Gemini, then helps them fix it.">
+  <title>Code Improver · Chae Kim</title>
+  <meta name="description" content="A custom Claude Code subagent that reviews changed files for readability, performance, and best practices.">
+  <meta property="og:title" content="Code Improver · Chae Kim">
+  <meta property="og:description" content="A custom Claude Code subagent that reviews changed files for readability, performance, and best practices.">
   <meta property="og:type" content="article">
   <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og.png">
-  <link rel="canonical" href="https://chaekim-portfolio.vercel.app/projects/lucent">
+  <link rel="canonical" href="https://chaekim-portfolio.vercel.app/projects/code-improver">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,21 +45,21 @@
     <section class="case-hero">
       <div class="container">
         <div class="win case-win">
-          <div class="win__bar"><span class="win__dots"><i></i><i></i><i></i></span><span class="win__title">lucent.md</span></div>
+          <div class="win__bar"><span class="win__dots"><i></i><i></i><i></i></span><span class="win__title">code-improver.md</span></div>
           <div class="win__body">
         <a class="case-hero__back" href="/#work">← All work</a>
-        <div class="case-hero__emoji" aria-hidden="true">🔦</div>
-        <p class="eyebrow" style="margin-top:14px">featured · co-founder & CEO · NSF I-Corps</p>
-        <h1 class="display case-hero__title">Making small businesses visible in AI search.</h1>
-        <p class="tldr">An AI search observability platform and a consultancy. Lucent shows brands how they rank in ChatGPT, Perplexity, and Gemini, then helps them fix it, through the product and hands-on GEO and SEO work.</p>
-        <p class="meta-line"><b>Role</b> Co-founder & CEO · <b>Team</b> Co-founder/CTO + a data science intern · <b>Timeline</b> 2025 to 2026</p>
+        <div class="case-hero__emoji" aria-hidden="true">🔍</div>
+        <p class="eyebrow" style="margin-top:14px">claude code mod · subagent · 2026</p>
+        <h1 class="display case-hero__title">A second reviewer that reads every file I touch.</h1>
+        <p class="tldr">A read-only reviewer I can call after any change. It explains each issue, shows the current code, and proposes an improved version, without touching a file itself.</p>
+        <p class="meta-line"><b>Role</b> Builder · <b>Team</b> Solo · <b>Timeline</b> October 2026</p>
           </div>
         </div>
       </div>
     </section>
 
     <section class="container">
-      <div class="case-cover "><a href="https://trylucent.ai" target="_blank" rel="noopener" aria-label="Open trylucent.ai"><img src="/assets/img/thumbs/lucent-wide.jpg" alt="Lucent homepage: The AI Search Console" width="1600" height="900"></a></div>
+      <div class="case-cover "><img src="/assets/img/thumbs/code-improver-wide.jpg" alt="The code-improver subagent definition file" width="1600" height="900"></div>
     </section>
 
     <section class="container case-body">
@@ -72,29 +72,27 @@
       </nav>
       <article class="prose">
         <h2 id="problem">The problem</h2>
-        <p>Customers now ask AI instead of Google. Small businesses can't see whether AI recommends them, and GEO tools are priced for enterprises.</p>
+        <p>Code written fast with an AI pair often gets reviewed by nobody. I wanted a second pass that is consistent, quick, and safe to run anywhere.</p>
         <h2 id="did">What I did</h2>
         <ul>
-          <li>21 NSF I-Corps discovery interviews narrowed the ICP from "everyone" to digitally native SMBs and marketing agencies. 100+ interviews across U.S. and APAC SMBs tested willingness to pay.</li>
-          <li>Positioned around the one-person marketing team: GEO plus SEO execution, not just citation tracking. 5 positioning hypotheses tested across 65 outbound prospects picked the message.</li>
-          <li>Designed cheap tracking: statistical sampling, and re-running prompts only when models or rankings change.</li>
-          <li>Led a paid pilot: multi-site SEO and AI visibility audits turned into an engineering action plan.</li>
-          <li>Built the investor pitch: bottom-up SAM, phased GTM, 100+ question diligence bank.</li>
+          <li>Defined a subagent with one job: scan files for readability, performance, and best-practice issues.</li>
+          <li>Limited it to read-only tools (Read, Grep, Glob), so it can suggest changes but never make them.</li>
+          <li>Required the same shape for every finding: the problem, the current code, and an improved version.</li>
+          <li>Wrote its description so Claude Code knows to reach for it right after code is written or changed.</li>
         </ul>
         <h2 id="results">Results</h2>
-        <div class="results"><div><b>1</b><span>first paying pilot</span></div><div><b>5</b><span>LOIs in 30 days</span></div><div><b>+50%</b><span>discovery response rate</span></div><div><b>NSF</b><span>I-Corps backing</span></div></div>
-        <p>The pilot became an ongoing advisory relationship. <span class="confirm">[CONFIRM: any usage or revenue metric you&#x27;re comfortable sharing]</span></p>
+        <p>Small by design. Eight lines of configuration change how every review goes, and because it can't edit, I can run it on anything.</p>
         <h2 id="differently">What I'd do differently</h2>
-        <p>Lock the GTM motion earlier. Investors flagged it as the biggest gap. Positioning tests and pilots should have run in parallel, not in sequence.</p>
+        <p>Give it a severity ranking and permission to say "no issues." Without one, a reviewer always finds something, and small nits crowd out real bugs.</p>
         <h2 id="artifacts">Artifacts</h2>
-        <div class="artifacts"><div class="ph"><span class="confirm">[CONFIRM: artifact image: product screenshot (no client data)]</span></div><div class="ph"><span class="confirm">[CONFIRM: artifact image: pitch deck excerpt, e.g. SAM or GTM slide]</span></div></div>
+        <p>The file above is the whole thing, verbatim.</p>
       </article>
     </section>
 
     <section class="next">
       <div class="container next__grid">
-        <a href="/projects/code-improver"><small>← Previous</small><strong>Code Improver</strong></a>
-        <a href="/projects/mobility" style="text-align:right"><small>Next →</small><strong>Mobility devices for older adults (stealth)</strong></a>
+        <a href="/projects/token-fuel"><small>← Previous</small><strong>Token-Fuel</strong></a>
+        <a href="/projects/lucent" style="text-align:right"><small>Next →</small><strong>Lucent</strong></a>
       </div>
     </section>
   </main>

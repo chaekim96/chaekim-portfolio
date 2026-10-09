@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SmartModel · Chae Kim</title>
+  <meta name="description" content="A Claude Code hook that scores how hard each prompt is and recommends the cheapest model that can handle it.">
+  <meta property="og:title" content="SmartModel · Chae Kim">
+  <meta property="og:description" content="A Claude Code hook that scores how hard each prompt is and recommends the cheapest model that can handle it.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og.png">
+  <link rel="canonical" href="https://chaekim-portfolio.vercel.app/projects/smartmodel">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"></noscript>
+  <link rel="stylesheet" href="/assets/css/style.css?v=13">
+  <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <canvas id="bg" aria-hidden="true"></canvas>
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="/" class="brand wordmark" aria-label="Chae Kim, home">chae<span class="wordmark__dot"></span></a>
+      <button class="nav__burger" aria-label="Open menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="/#work">Work</a>
+        <a href="/#experience">Experience</a>
+        <a href="/#about">About</a>
+        <a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
+        <a href="/#contact">Contact</a>
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+        <a class="nav__cta" href="https://www.linkedin.com/in/chaekim/" target="_blank" rel="noopener">LinkedIn</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="case-hero">
+      <div class="container">
+        <div class="win case-win">
+          <div class="win__bar"><span class="win__dots"><i></i><i></i><i></i></span><span class="win__title">smartmodel.md</span></div>
+          <div class="win__body">
+        <a class="case-hero__back" href="/#work">← All work</a>
+        <div class="case-hero__emoji" aria-hidden="true">🧭</div>
+        <p class="eyebrow" style="margin-top:14px">claude code mod · solo build · 2026</p>
+        <h1 class="display case-hero__title">Matching each prompt to the right model, so easy work costs less.</h1>
+        <p class="tldr">A model router built into Claude Code. Before Claude acts, a hook scores the prompt's effort from 0 to 100 and recommends Haiku, Sonnet, Opus, or Fable. Ask mode shows a picker, auto routes on its own, and block stops the prompt before any tokens are spent.</p>
+        <p class="meta-line"><b>Role</b> Designer and builder · <b>Team</b> Solo, built with Claude Code · <b>Timeline</b> October 2026</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="case-cover "><img src="/assets/img/thumbs/smartmodel-wide.jpg" alt="SmartModel's picker in Claude Code: rates a prompt medium-effort and recommends Sonnet" width="1600" height="900"></div>
+    </section>
+
+    <section class="container case-body">
+      <nav class="toc" aria-label="On this page">
+        <a href="#problem">The problem</a>
+        <a href="#did">What I did</a>
+        <a href="#results">Results</a>
+        <a href="#differently">What I'd do differently</a>
+        <a href="#artifacts">Artifacts</a>
+      </nav>
+      <article class="prose">
+        <h2 id="problem">The problem</h2>
+        <p>Every prompt ran on the most expensive model, renames and git chores included. Switching by hand meant remembering to, and a fresh session meant losing the conversation.</p>
+        <h2 id="did">What I did</h2>
+        <ul>
+          <li>Wrote a hook that runs before Claude reads each prompt and scores its effort from 0 to 100 on keywords and structure. Under 20 is Haiku, up to 44 is Sonnet, up to 84 is Opus, and above that is Fable.</li>
+          <li>Built three modes. Ask shows a picker with the recommendation first. Auto routes silently. Block rejects the prompt before the current model spends a token on it.</li>
+          <li>Picking a different model hands the whole task to a subagent on that model, with a self-contained brief.</li>
+          <li>Added inline tags (sm:skip, sm:haiku, sm:opus) and skips for approvals, slash commands, and short acknowledgments like "thanks".</li>
+          <li>Taught it to ignore text the harness injects, like subagent reports and shell output, which kept opening the picker for messages nobody typed.</li>
+          <li>Logged every decision to a file, so the routing can be audited and tuned.</li>
+        </ul>
+        <h2 id="results">Results</h2>
+        <div class="results"><div><b>66</b><span>prompts scored across 18 sessions</span></div><div><b>15</b><span>flagged as Haiku-sized</span></div><div><b>44</b><span>flagged as Sonnet-sized</span></div><div><b>35</b><span>non-prompts correctly skipped</span></div></div>
+        <p>59 of those 66 prompts arrived in a session running Opus. Each Haiku or Sonnet recommendation was a chance to do the same work for less.</p>
+        <h2 id="differently">What I'd do differently</h2>
+        <p>Score the work, not the wording. A keyword heuristic reads a short request that mentions git as a chore, even when it means building three pages. Next: let Haiku classify (the hook already supports it when an API key is set) and log which model I actually pick, so the thresholds learn from my overrides.</p>
+        <h2 id="artifacts">Artifacts</h2>
+        <p>Not published yet. It lives in my own Claude Code setup as a hook, a small config file, a README, and the decision log. The picker above is a capture of what it shows.</p>
+      </article>
+    </section>
+
+    <section class="next">
+      <div class="container next__grid">
+        <a href="/projects/tritooling"><small>← Previous</small><strong>Tritooling</strong></a>
+        <a href="/projects/token-fuel" style="text-align:right"><small>Next →</small><strong>Token-Fuel</strong></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© <span data-year>2026</span> Chae Woon Kim · 김채운</span>
+      <span><a data-user="chaewoonkim" data-domain="berkeley.edu" href="#">Email</a> · <a href="https://github.com/chaekim96/chaekim-portfolio" target="_blank" rel="noopener">Source</a></span>
+    </div>
+  </footer>
+  <script src="/assets/js/main.js?v=13"></script>
+</body>
+</html>

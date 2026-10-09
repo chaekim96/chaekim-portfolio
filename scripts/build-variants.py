@@ -127,9 +127,9 @@ TILES = """
             <a class="tile" href="https://typerace.typerace.workers.dev" target="_blank" rel="noopener"><span class="tile__icon">⌨️</span><span><span class="tile__title">TypeRace ↗</span><span class="tile__meta">Live typing races with classmates, no sign-up</span></span></a>
             <a class="tile" href="https://networking-tracker-five-sage.vercel.app" target="_blank" rel="noopener"><span class="tile__icon">🗂️</span><span><span class="tile__title">Networking Tracker ↗</span><span class="tile__meta">Coffee chats tracked privately, with row-level security</span></span></a>
             <a class="tile" href="https://github.com/chaekim96/VoicePrompter" target="_blank" rel="noopener"><span class="tile__icon">🎙️</span><span><span class="tile__title">VoicePrompter ↗</span><span class="tile__meta">A macOS teleprompter that hides from screen share</span></span></a>
-            <div class="tile"><span class="tile__icon">🧭</span><span><span class="tile__title">SmartModel</span><span class="tile__meta">Claude Code mod: routes each prompt to the right model</span></span></div>
-            <div class="tile"><span class="tile__icon">⛽</span><span><span class="tile__title">Token-Fuel</span><span class="tile__meta">Claude Code mod: a context gauge for Claude Code and Codex</span></span></div>
-            <div class="tile"><span class="tile__icon">🔍</span><span><span class="tile__title">Code Improver</span><span class="tile__meta">Claude Code mod: a subagent that reviews every file I change</span></span></div>
+            <a class="tile" href="/projects/smartmodel"><span class="tile__icon">🧭</span><span><span class="tile__title">SmartModel</span><span class="tile__meta">Claude Code mod: routes each prompt to the right model</span></span></a>
+            <a class="tile" href="/projects/token-fuel"><span class="tile__icon">⛽</span><span><span class="tile__title">Token-Fuel</span><span class="tile__meta">Claude Code mod: a context gauge for Claude Code and Codex</span></span></a>
+            <a class="tile" href="/projects/code-improver"><span class="tile__icon">🔍</span><span><span class="tile__title">Code Improver</span><span class="tile__meta">Claude Code mod: a subagent that reviews every file I change</span></span></a>
             <a class="tile" href="https://github.com/chaekim96/personal-wiki" target="_blank" rel="noopener"><span class="tile__icon">📚</span><span><span class="tile__title">Personal Wiki ↗</span><span class="tile__meta">Ask my own notes questions, fully offline</span></span></a>
             <a class="tile" href="https://github.com/chaekim96/pacman-dqn" target="_blank" rel="noopener"><span class="tile__icon">👾</span><span><span class="tile__title">Pac-Man DQN ↗</span><span class="tile__meta">An agent that learned Ms. Pac-Man by trial and error</span></span></a>
             <a class="tile" href="https://github.com/chaekim96/custom-llm" target="_blank" rel="noopener"><span class="tile__icon">🧠</span><span><span class="tile__title">Custom LLM ↗</span><span class="tile__meta">A tiny language model trained on a laptop CPU</span></span></a>
@@ -891,21 +891,21 @@ STAMP = r"""<!DOCTYPE html>
 
       <h2 class="sub-h">Claude Code mods</h2>
       <div class="grid grid--3">
-        <div class="w reveal">
+        <a class="w reveal" href="/projects/smartmodel">
           <div class="stage" style="--g: var(--g-arcade)"><div class="art"><div class="term" aria-hidden="true"><p>SmartModel rates this medium-effort.</p><p>Which model should run it?</p><ul><li class="on">Sonnet (recommended)</li><li>Haiku</li><li>Opus</li><li>Fable</li></ul></div></div><span class="pill">SmartModel <em>Claude Code</em></span></div>
           <h3 class="w-title">Matching each prompt to the right model, so easy work costs less.</h3>
           <p class="meta">A hook that scores how hard a prompt is and recommends Haiku, Sonnet, Opus, or Fable. Runs in ask, auto, or block mode.</p>
-        </div>
-        <div class="w reveal">
+        </a>
+        <a class="w reveal" href="/projects/token-fuel">
           <div class="stage" style="--g: var(--g-tri)"><div class="art"><div class="gauge" aria-hidden="true"><span>context</span><i><b></b></i></div></div><span class="pill">Token-Fuel <em>macOS</em></span></div>
           <h3 class="w-title">Seeing how much context is left before a session runs out.</h3>
           <p class="meta">A floating gauge on the Claude window and a CLI status line for Claude Code and Codex.</p>
-        </div>
-        <div class="w reveal">
+        </a>
+        <a class="w reveal" href="/projects/code-improver">
           <div class="stage" style="--g: var(--g-ey)"><div class="art"><div class="glass"><b>Review</b><span>readability, performance</span></div></div><span class="pill">Code Improver <em>subagent</em></span></div>
           <h3 class="w-title">A second reviewer that reads every file I touch.</h3>
           <p class="meta">A custom Claude Code subagent that suggests readability, performance, and best-practice fixes.</p>
-        </div>
+        </a>
       </div>
 
       <h2 class="sub-h">AI and ML coursework</h2>
