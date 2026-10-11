@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VoicePrompter · Chae Kim</title>
+  <meta name="description" content="A macOS teleprompter that follows your voice as you read and stays hidden from Zoom, Meet, and screenshots.">
+  <meta property="og:title" content="VoicePrompter · Chae Kim">
+  <meta property="og:description" content="A macOS teleprompter that follows your voice as you read and stays hidden from Zoom, Meet, and screenshots.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og.png">
+  <link rel="canonical" href="https://chaekim-portfolio.vercel.app/projects/voiceprompter">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"></noscript>
+  <link rel="stylesheet" href="/assets/css/style.css?v=13">
+  <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <canvas id="bg" aria-hidden="true"></canvas>
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="/" class="brand wordmark" aria-label="Chae Kim, home">chae<span class="wordmark__dot"></span></a>
+      <button class="nav__burger" aria-label="Open menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="/#work">Work</a>
+        <a href="/#experience">Experience</a>
+        <a href="/#about">About</a>
+        <a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
+        <a href="/#contact">Contact</a>
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+        <a class="nav__cta" href="https://www.linkedin.com/in/chaekim/" target="_blank" rel="noopener">LinkedIn</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="case-hero">
+      <div class="container">
+        <div class="win case-win">
+          <div class="win__bar"><span class="win__dots"><i></i><i></i><i></i></span><span class="win__title">voiceprompter.md</span></div>
+          <div class="win__body">
+        <a class="case-hero__back" href="/#work">← All work</a>
+        <div class="case-hero__emoji" aria-hidden="true">🎙️</div>
+        <p class="eyebrow" style="margin-top:14px">product · macOS app · 2026</p>
+        <h1 class="display case-hero__title">Reading your notes on a call without anyone seeing them.</h1>
+        <p class="tldr">Your script floats above every app, even full-screen ones. As you speak, it highlights the word you're on and scrolls to keep your line near the top. Screen sharing and recordings that use ScreenCaptureKit, including Zoom, Google Meet, OBS, and QuickTime, don't see it.</p>
+        <p class="meta-line"><b>Role</b> Builder · <b>Team</b> Solo, built with Claude Code · <b>Timeline</b> September to October 2026</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="case-cover "><img src="/assets/img/builds/voiceprompter.jpg" alt="VoicePrompter listening at word 108 of 139, with the prompter highlighting the spoken word" width="800" height="600"></div>
+    </section>
+
+    <section class="container case-body">
+      <nav class="toc" aria-label="On this page">
+        <a href="#problem">The problem</a>
+        <a href="#did">What I did</a>
+        <a href="#results">Results</a>
+        <a href="#differently">What I'd do differently</a>
+        <a href="#artifacts">Artifacts</a>
+      </nav>
+      <article class="prose">
+        <h2 id="problem">The problem</h2>
+        <p>I was practicing presenting and interviewing and wanted my notes on screen, without cluttering the screen I was sharing. The teleprompters I found either fell short or wanted me to pay.</p>
+        <h2 id="did">What I did</h2>
+        <ul>
+          <li>Built a native Swift app: an overlay that floats on every Space, and a main window with every setting in a sidebar.</li>
+          <li>Transcribed speech on the device with Apple's recognizer, restarting the session about every 50 seconds so results stay short and fast.</li>
+          <li>Wrote the alignment. Each update matches the last 8 spoken words against the script, with fuzzy matching for misheard words and guards so it never jumps on weak evidence.</li>
+          <li>Hid the overlay from capture, then tested it. It's hidden from ScreenCaptureKit, screenshots, and window lists, and still visible to older recorders, which the README says plainly.</li>
+          <li>Added global hotkeys that need no Accessibility permission, double-click to jump to a word, and click-through so clicks reach the app underneath.</li>
+        </ul>
+        <h2 id="results">Results</h2>
+        <div class="results"><div><b>~0.3 ms</b><span>per update on an 8,800-word script</span></div><div><b>8</b><span>spoken words matched each update</span></div><div><b>2</b><span>permissions: mic and speech</span></div><div><b>4</b><span>capture tools it hides from</span></div></div>
+        <h2 id="differently">What I'd do differently</h2>
+        <p>Measure latency from the start. The speech recognizer dominates the delay, and I built the latency test only after the app worked. A full, uninterrupted latency run is still on my list.</p>
+        <h2 id="artifacts">Artifacts</h2>
+        <p><a href="https://github.com/chaekim96/VoicePrompter" target="_blank" rel="noopener">Source on GitHub ↗</a></p>
+        <div class="artifacts"><figure><img src="/assets/img/cases/vp-main.jpg" alt="The main window while listening: status, position in the script, and prompter settings." loading="lazy"><figcaption>The main window while listening: status, position in the script, and prompter settings.</figcaption></figure><figure><img src="/assets/img/cases/vp-prompter.jpg" alt="The prompter further in. Read text dims and the current word turns gold. Captured with protection off." loading="lazy"><figcaption>The prompter further in. Read text dims and the current word turns gold. Captured with protection off.</figcaption></figure></div>
+      </article>
+    </section>
+
+    <section class="next">
+      <div class="container next__grid">
+        <a href="/projects/networking-tracker"><small>← Previous</small><strong>Networking Tracker</strong></a>
+        <a href="/projects/smartmodel" style="text-align:right"><small>Next →</small><strong>SmartModel</strong></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© <span data-year>2026</span> Chae Woon Kim · 김채운</span>
+      <span><a data-user="chaewoonkim" data-domain="berkeley.edu" href="#">Email</a> · <a href="https://github.com/chaekim96/chaekim-portfolio" target="_blank" rel="noopener">Source</a></span>
+    </div>
+  </footer>
+  <script src="/assets/js/main.js?v=13"></script>
+</body>
+</html>

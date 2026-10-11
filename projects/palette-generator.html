@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Palette Generator · Chae Kim</title>
+  <meta name="description" content="A palette and font-pairing generator that takes a non-designer from a one-line description to a brand look they can ship.">
+  <meta property="og:title" content="Palette Generator · Chae Kim">
+  <meta property="og:description" content="A palette and font-pairing generator that takes a non-designer from a one-line description to a brand look they can ship.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og.png">
+  <link rel="canonical" href="https://chaekim-portfolio.vercel.app/projects/palette-generator">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"></noscript>
+  <link rel="stylesheet" href="/assets/css/style.css?v=13">
+  <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <canvas id="bg" aria-hidden="true"></canvas>
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="/" class="brand wordmark" aria-label="Chae Kim, home">chae<span class="wordmark__dot"></span></a>
+      <button class="nav__burger" aria-label="Open menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="/#work">Work</a>
+        <a href="/#experience">Experience</a>
+        <a href="/#about">About</a>
+        <a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
+        <a href="/#contact">Contact</a>
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+        <a class="nav__cta" href="https://www.linkedin.com/in/chaekim/" target="_blank" rel="noopener">LinkedIn</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="case-hero">
+      <div class="container">
+        <div class="win case-win">
+          <div class="win__bar"><span class="win__dots"><i></i><i></i><i></i></span><span class="win__title">palette-generator.md</span></div>
+          <div class="win__body">
+        <a class="case-hero__back" href="/#work">← All work</a>
+        <div class="case-hero__emoji" aria-hidden="true">🎨</div>
+        <p class="eyebrow" style="margin-top:14px">product · solo build · 2026</p>
+        <h1 class="display case-hero__title">Brand colors and fonts for founders who aren't designers.</h1>
+        <p class="tldr">Describe what you're building and pick a mood. You get five colors with a job for each, a font pairing, and a sample website painted in them. Contrast is checked against WCAG, and the whole result lives in a share link.</p>
+        <p class="meta-line"><b>Role</b> Product owner and builder · <b>Team</b> Solo, built with Claude Code · <b>Timeline</b> September to October 2026</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="case-cover "><img src="/assets/img/builds/palette.jpg" alt="Palette Generator turning 'coffee subscription, warm and earthy' into five roles of color and a font pairing" width="960" height="600"></div>
+    </section>
+
+    <section class="container case-body">
+      <nav class="toc" aria-label="On this page">
+        <a href="#problem">The problem</a>
+        <a href="#did">What I did</a>
+        <a href="#results">Results</a>
+        <a href="#differently">What I'd do differently</a>
+        <a href="#artifacts">Artifacts</a>
+      </nav>
+      <article class="prose">
+        <h2 id="problem">The problem</h2>
+        <p>Founders need a brand look long before they can hire a designer. Most palette tools hand you five pretty colors and stop there. Which one is the button? Which is the text? Can anyone read it?</p>
+        <h2 id="did">What I did</h2>
+        <ul>
+          <li>Started from a Figma Make export and set one rule for every feature: does it get a non-designer to a shippable palette faster? If not, it waits.</li>
+          <li>Generated palettes in OKLCH across seven moods, and tuned the Earthy and Romantic moods against a benchmark of 97 real palettes.</li>
+          <li>Gave every color a job (text, primary, supporting, accent, background) and matched it with one of 25 curated Google Fonts pairings.</li>
+          <li>Painted a sample startup homepage in the palette, and checked every color pairing for WCAG contrast, with the smallest fix suggested when one fails.</li>
+          <li>Built Explore: a weekly scan of 115 startup homepages showing which moods and brand colors are common right now. Curated public sites only, robots.txt respected.</li>
+          <li>Kept it serverless. The palette, fonts, and mood live in the URL, so sharing is copying a link. Export goes to CSS variables, Tailwind, or a PNG.</li>
+        </ul>
+        <h2 id="results">Results</h2>
+        <div class="results"><div><b>7</b><span>moods</span></div><div><b>25</b><span>curated font pairings</span></div><div><b>115</b><span>startup homepages scanned weekly</span></div><div><b>0</b><span>sign-ups</span></div></div>
+        <p>The coffee subscription palette above passes WCAG AA on all seven of its color pairings.</p>
+        <h2 id="differently">What I'd do differently</h2>
+        <p>Build the benchmark before the generator. I tuned the moods against real palettes only after the first version worked. Starting with the benchmark would have set the target on day one.</p>
+        <h2 id="artifacts">Artifacts</h2>
+        <p><a href="https://color-palette-generator-three-sand.vercel.app" target="_blank" rel="noopener">Try Palette Generator ↗</a> · <a href="https://github.com/chaekim96/ColorPaletteGenerator" target="_blank" rel="noopener">Source on GitHub ↗</a></p>
+        <div class="artifacts"><figure><img src="/assets/img/cases/palette-preview.jpg" alt="Website preview: the palette painted onto a sample startup homepage, with the contrast check above it." loading="lazy"><figcaption>Website preview: the palette painted onto a sample startup homepage, with the contrast check above it.</figcaption></figure><figure><img src="/assets/img/cases/palette-explore.jpg" alt="Explore: moods and brand colors across 115 startup homepages, refreshed weekly." loading="lazy"><figcaption>Explore: moods and brand colors across 115 startup homepages, refreshed weekly.</figcaption></figure></div>
+      </article>
+    </section>
+
+    <section class="next">
+      <div class="container next__grid">
+        <a href="/projects/tally"><small>← Previous</small><strong>Tally</strong></a>
+        <a href="/projects/typerace" style="text-align:right"><small>Next →</small><strong>TypeRace</strong></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© <span data-year>2026</span> Chae Woon Kim · 김채운</span>
+      <span><a data-user="chaewoonkim" data-domain="berkeley.edu" href="#">Email</a> · <a href="https://github.com/chaekim96/chaekim-portfolio" target="_blank" rel="noopener">Source</a></span>
+    </div>
+  </footer>
+  <script src="/assets/js/main.js?v=13"></script>
+</body>
+</html>

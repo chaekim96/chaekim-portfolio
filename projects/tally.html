@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tally · Chae Kim</title>
+  <meta name="description" content="A note-taker where every line gets a Claude time estimate, totaled in a ledger so a to-do list becomes an honest picture of the day.">
+  <meta property="og:title" content="Tally · Chae Kim">
+  <meta property="og:description" content="A note-taker where every line gets a Claude time estimate, totaled in a ledger so a to-do list becomes an honest picture of the day.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og.png">
+  <link rel="canonical" href="https://chaekim-portfolio.vercel.app/projects/tally">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"></noscript>
+  <link rel="stylesheet" href="/assets/css/style.css?v=13">
+  <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <canvas id="bg" aria-hidden="true"></canvas>
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="/" class="brand wordmark" aria-label="Chae Kim, home">chae<span class="wordmark__dot"></span></a>
+      <button class="nav__burger" aria-label="Open menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="/#work">Work</a>
+        <a href="/#experience">Experience</a>
+        <a href="/#about">About</a>
+        <a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
+        <a href="/#contact">Contact</a>
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+        <a class="nav__cta" href="https://www.linkedin.com/in/chaekim/" target="_blank" rel="noopener">LinkedIn</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="case-hero">
+      <div class="container">
+        <div class="win case-win">
+          <div class="win__bar"><span class="win__dots"><i></i><i></i><i></i></span><span class="win__title">tally.md</span></div>
+          <div class="win__body">
+        <a class="case-hero__back" href="/#work">← All work</a>
+        <div class="case-hero__emoji" aria-hidden="true">🧮</div>
+        <p class="eyebrow" style="margin-top:14px">product · solo build · 2026</p>
+        <h1 class="display case-hero__title">Knowing how long your to-do list will actually take.</h1>
+        <p class="tldr">Tally turns a to-do list into a plan. You write lines like a normal note. Claude reads the whole note and gives each line a most-likely time, a range, and a category. The ledger adds it up, and the Day view lets you drag items onto a calendar.</p>
+        <p class="meta-line"><b>Role</b> Product owner and builder · <b>Team</b> Solo, built with Claude Code · <b>Timeline</b> September to October 2026</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="case-cover "><img src="/assets/img/builds/tally.jpg" alt="Tally estimating a week of to-dos: an hour for the case memo, 30 minutes for bug reports, 3h45 in all" width="960" height="600"></div>
+    </section>
+
+    <section class="container case-body">
+      <nav class="toc" aria-label="On this page">
+        <a href="#problem">The problem</a>
+        <a href="#did">What I did</a>
+        <a href="#results">Results</a>
+        <a href="#differently">What I'd do differently</a>
+        <a href="#artifacts">Artifacts</a>
+      </nav>
+      <article class="prose">
+        <h2 id="problem">The problem</h2>
+        <p>A to-do list says what to do, not how long it will take, so a day can be overbooked before it starts. I liked Timely, a note-taker that sizes each line, and wanted my own version: a different design, with the estimates in a column on the right.</p>
+        <h2 id="did">What I did</h2>
+        <ul>
+          <li>Rebuilt the idea from scratch in React, with an estimate column beside every line.</li>
+          <li>Sent each line to Claude with the whole note as context. It returns the most likely minutes, an 80% range, a confidence level, and one of seven categories.</li>
+          <li>Built the Ledger: remaining vs. done, a finish-by time, a capacity meter, where the time goes, quick wins under 15 minutes, and deep-work blocks over 90.</li>
+          <li>Added a Day view. Drag items from an Unscheduled tray onto the calendar, resize a block to change how long it takes, or do all of it from the keyboard.</li>
+          <li>Kept the user in charge. Click any estimate to override it, write "(1h)" in a line and it's honored exactly, and ⌘B splits a big line into 3 to 7 estimated sub-tasks.</li>
+          <li>Made it work with no key at all. Estimates fall back to a keyword heuristic, marked with ~. A visitor's own key always pays for their use, and the server key needs an access code.</li>
+        </ul>
+        <h2 id="results">Results</h2>
+        <div class="results"><div><b>7</b><span>categories per estimate</span></div><div><b>80%</b><span>range around every estimate</span></div><div><b>3–7</b><span>sub-tasks per breakdown</span></div><div><b>0</b><span>accounts needed</span></div></div>
+        <p>Notes live in the browser. Requests are capped at 50 lines and 64 KB per call, so a runaway loop can't run up a bill.</p>
+        <h2 id="differently">What I'd do differently</h2>
+        <p>Test against the deployed runtime, not just the dev server. Vite and the type checker accepted imports that Node rejected once deployed, so I added a check that loads every function the way Vercel does. Next on the roadmap: an agent that does the task, not just sizes it.</p>
+        <h2 id="artifacts">Artifacts</h2>
+        <p><a href="https://tally-lake-seven.vercel.app" target="_blank" rel="noopener">Try Tally ↗</a> · <a href="https://github.com/chaekim96/tally" target="_blank" rel="noopener">Source on GitHub ↗</a></p>
+        <div class="artifacts"><figure><img src="/assets/img/cases/tally-day.jpg" alt="The Day view: a capacity meter, the Unscheduled tray, and blocks on the calendar." loading="lazy"><figcaption>The Day view: a capacity meter, the Unscheduled tray, and blocks on the calendar.</figcaption></figure><figure><img src="/assets/img/cases/tally-summary.jpg" alt="The Summary: what&#x27;s left, the finish-by time, and where the time goes." loading="lazy"><figcaption>The Summary: what's left, the finish-by time, and where the time goes.</figcaption></figure></div>
+      </article>
+    </section>
+
+    <section class="next">
+      <div class="container next__grid">
+        <a href="/projects/tritooling"><small>← Previous</small><strong>Tritooling</strong></a>
+        <a href="/projects/palette-generator" style="text-align:right"><small>Next →</small><strong>Palette Generator</strong></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© <span data-year>2026</span> Chae Woon Kim · 김채운</span>
+      <span><a data-user="chaewoonkim" data-domain="berkeley.edu" href="#">Email</a> · <a href="https://github.com/chaekim96/chaekim-portfolio" target="_blank" rel="noopener">Source</a></span>
+    </div>
+  </footer>
+  <script src="/assets/js/main.js?v=13"></script>
+</body>
+</html>

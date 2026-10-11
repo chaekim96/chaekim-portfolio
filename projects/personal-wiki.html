@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Personal Wiki · Chae Kim</title>
+  <meta name="description" content="A command-line study wiki that runs fully offline: a local Gemma model turns sources into linked Obsidian notes and answers questions with citations.">
+  <meta property="og:title" content="Personal Wiki · Chae Kim">
+  <meta property="og:description" content="A command-line study wiki that runs fully offline: a local Gemma model turns sources into linked Obsidian notes and answers questions with citations.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og.png">
+  <link rel="canonical" href="https://chaekim-portfolio.vercel.app/projects/personal-wiki">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"></noscript>
+  <link rel="stylesheet" href="/assets/css/style.css?v=13">
+  <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <canvas id="bg" aria-hidden="true"></canvas>
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="/" class="brand wordmark" aria-label="Chae Kim, home">chae<span class="wordmark__dot"></span></a>
+      <button class="nav__burger" aria-label="Open menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="/#work">Work</a>
+        <a href="/#experience">Experience</a>
+        <a href="/#about">About</a>
+        <a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
+        <a href="/#contact">Contact</a>
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+        <a class="nav__cta" href="https://www.linkedin.com/in/chaekim/" target="_blank" rel="noopener">LinkedIn</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="case-hero">
+      <div class="container">
+        <div class="win case-win">
+          <div class="win__bar"><span class="win__dots"><i></i><i></i><i></i></span><span class="win__title">personal-wiki.md</span></div>
+          <div class="win__body">
+        <a class="case-hero__back" href="/#work">← All work</a>
+        <div class="case-hero__emoji" aria-hidden="true">📚</div>
+        <p class="eyebrow" style="margin-top:14px">ai/ml coursework · mba 290t · 2026</p>
+        <h1 class="display case-hero__title">Asking my own notes questions, with no internet.</h1>
+        <p class="tldr">A study wiki for my AI course that never touches the cloud. Local Gemma, through Ollama, turns sources into linked Obsidian notes. An ask command answers from those notes with citations, or says the evidence isn't there.</p>
+        <p class="meta-line"><b>Role</b> Builder · <b>Team</b> Solo · <b>Timeline</b> September 2026</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="case-cover "><img src="/assets/img/builds/personal-wiki.jpg" alt="Obsidian graph of the wiki's linked notes" width="900" height="646"></div>
+    </section>
+
+    <section class="container case-body">
+      <nav class="toc" aria-label="On this page">
+        <a href="#problem">The problem</a>
+        <a href="#did">What I did</a>
+        <a href="#results">Results</a>
+        <a href="#differently">What I'd do differently</a>
+        <a href="#artifacts">Artifacts</a>
+      </nav>
+      <article class="prose">
+        <h2 id="problem">The problem</h2>
+        <p>Cloud assistants answer confidently from anywhere. For studying I wanted the opposite: answers only from my own sources, a citation for every claim, on a laptop with Wi-Fi off.</p>
+        <h2 id="did">What I did</h2>
+        <ul>
+          <li>Picked the model to fit the machine. Gemma 4 E2B at 4-bit, because the larger versions didn't fit in the 5 to 6 GB free on an 18 GB Mac.</li>
+          <li>Wrote the CLI and harness with only Python's standard library: ingest, search, ask, and chat modes.</li>
+          <li>Built hybrid retrieval: my own BM25 plus local embeddings, merged with reciprocal rank fusion.</li>
+          <li>Wrote the expected answers for four tests before running them, including one the wiki should refuse.</li>
+          <li>Checked every citation in code, with one automatic retry when a citation doesn't point to a retrieved passage.</li>
+          <li>Recorded an offline demo with Wi-Fi off. All four tests matched the online results.</li>
+        </ul>
+        <h2 id="results">Results</h2>
+        <div class="results"><div><b>3 of 4</b><span>tests passed, written in advance</span></div><div><b>4.4 s</b><span>per answer, warm</span></div><div><b>~1.7 GB</b><span>working memory</span></div><div><b>0</b><span>cloud calls</span></div></div>
+        <p>The failure is documented. A question in my own shorthand ("A3") missed the right passage, and the model answered a nearby question with a real citation.</p>
+        <h2 id="differently">What I'd do differently</h2>
+        <p>A citation check proves a citation exists, not that it answers the question. Next: an alias file so my shorthand expands (A3 means Assignment 3), a guaranteed slot for each source's best passage, and a second check that asks whether the answer fits the question.</p>
+        <h2 id="artifacts">Artifacts</h2>
+        <p><a href="https://github.com/chaekim96/personal-wiki" target="_blank" rel="noopener">Source and evidence on GitHub ↗</a></p>
+        <div class="artifacts"><figure><img src="/assets/img/cases/wiki-note.jpg" alt="A generated note in Obsidian, with its sources linked back to the raw files." loading="lazy"><figcaption>A generated note in Obsidian, with its sources linked back to the raw files.</figcaption></figure><figure><img src="/assets/img/cases/wiki-index.jpg" alt="The wiki&#x27;s index: concepts and projects, each with a one-line summary." loading="lazy"><figcaption>The wiki's index: concepts and projects, each with a one-line summary.</figcaption></figure></div>
+      </article>
+    </section>
+
+    <section class="next">
+      <div class="container next__grid">
+        <a href="/projects/code-improver"><small>← Previous</small><strong>Code Improver</strong></a>
+        <a href="/projects/pacman-dqn" style="text-align:right"><small>Next →</small><strong>Pac-Man DQN</strong></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© <span data-year>2026</span> Chae Woon Kim · 김채운</span>
+      <span><a data-user="chaewoonkim" data-domain="berkeley.edu" href="#">Email</a> · <a href="https://github.com/chaekim96/chaekim-portfolio" target="_blank" rel="noopener">Source</a></span>
+    </div>
+  </footer>
+  <script src="/assets/js/main.js?v=13"></script>
+</body>
+</html>

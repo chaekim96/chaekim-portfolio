@@ -122,17 +122,17 @@ EARLIER_LINKS = """            <a href="/projects/iu-study-assistant"><img class
 """
 
 TILES = """
-            <a class="tile" href="https://tally-lake-seven.vercel.app" target="_blank" rel="noopener"><span class="tile__icon">🧾</span><span><span class="tile__title">Tally ↗</span><span class="tile__meta">To-do lists with a Claude time estimate on every line</span></span></a>
-            <a class="tile" href="https://color-palette-generator-three-sand.vercel.app" target="_blank" rel="noopener"><span class="tile__icon">🎨</span><span><span class="tile__title">Palette Generator ↗</span><span class="tile__meta">Brand colors and fonts for founders who aren't designers</span></span></a>
-            <a class="tile" href="https://typerace.typerace.workers.dev" target="_blank" rel="noopener"><span class="tile__icon">⌨️</span><span><span class="tile__title">TypeRace ↗</span><span class="tile__meta">Live typing races with classmates, no sign-up</span></span></a>
-            <a class="tile" href="https://networking-tracker-five-sage.vercel.app" target="_blank" rel="noopener"><span class="tile__icon">🗂️</span><span><span class="tile__title">Networking Tracker ↗</span><span class="tile__meta">Coffee chats tracked privately, with row-level security</span></span></a>
-            <a class="tile" href="https://github.com/chaekim96/VoicePrompter" target="_blank" rel="noopener"><span class="tile__icon">🎙️</span><span><span class="tile__title">VoicePrompter ↗</span><span class="tile__meta">A macOS teleprompter that hides from screen share</span></span></a>
+            <a class="tile" href="/projects/tally"><span class="tile__icon">🧾</span><span><span class="tile__title">Tally</span><span class="tile__meta">To-do lists with a Claude time estimate on every line</span></span></a>
+            <a class="tile" href="/projects/palette-generator"><span class="tile__icon">🎨</span><span><span class="tile__title">Palette Generator</span><span class="tile__meta">Brand colors and fonts for founders who aren't designers</span></span></a>
+            <a class="tile" href="/projects/typerace"><span class="tile__icon">⌨️</span><span><span class="tile__title">TypeRace</span><span class="tile__meta">Live typing races with classmates, no sign-up</span></span></a>
+            <a class="tile" href="/projects/networking-tracker"><span class="tile__icon">🗂️</span><span><span class="tile__title">Networking Tracker</span><span class="tile__meta">Coffee chats tracked privately, with row-level security</span></span></a>
+            <a class="tile" href="/projects/voiceprompter"><span class="tile__icon">🎙️</span><span><span class="tile__title">VoicePrompter</span><span class="tile__meta">A macOS teleprompter that hides from screen share</span></span></a>
             <a class="tile" href="/projects/smartmodel"><span class="tile__icon">🧭</span><span><span class="tile__title">SmartModel</span><span class="tile__meta">Claude Code mod: routes each prompt to the right model</span></span></a>
             <a class="tile" href="/projects/token-fuel"><span class="tile__icon">⛽</span><span><span class="tile__title">Token-Fuel</span><span class="tile__meta">Claude Code mod: a context gauge for Claude Code and Codex</span></span></a>
             <a class="tile" href="/projects/code-improver"><span class="tile__icon">🔍</span><span><span class="tile__title">Code Improver</span><span class="tile__meta">Claude Code mod: a subagent that reviews every file I change</span></span></a>
-            <a class="tile" href="https://github.com/chaekim96/personal-wiki" target="_blank" rel="noopener"><span class="tile__icon">📚</span><span><span class="tile__title">Personal Wiki ↗</span><span class="tile__meta">Ask my own notes questions, fully offline</span></span></a>
-            <a class="tile" href="https://github.com/chaekim96/pacman-dqn" target="_blank" rel="noopener"><span class="tile__icon">👾</span><span><span class="tile__title">Pac-Man DQN ↗</span><span class="tile__meta">An agent that learned Ms. Pac-Man by trial and error</span></span></a>
-            <a class="tile" href="https://github.com/chaekim96/custom-llm" target="_blank" rel="noopener"><span class="tile__icon">🧠</span><span><span class="tile__title">Custom LLM ↗</span><span class="tile__meta">A tiny language model trained on a laptop CPU</span></span></a>
+            <a class="tile" href="/projects/personal-wiki"><span class="tile__icon">📚</span><span><span class="tile__title">Personal Wiki</span><span class="tile__meta">Ask my own notes questions, fully offline</span></span></a>
+            <a class="tile" href="/projects/pacman-dqn"><span class="tile__icon">👾</span><span><span class="tile__title">Pac-Man DQN</span><span class="tile__meta">An agent that learned Ms. Pac-Man by trial and error</span></span></a>
+            <a class="tile" href="/projects/custom-llm"><span class="tile__icon">🧠</span><span><span class="tile__title">Custom LLM</span><span class="tile__meta">A tiny language model trained on a laptop CPU</span></span></a>
             <a class="tile" href="/projects/home-gif"><span class="tile__icon">🏠</span><span><span class="tile__title">Home (during COVID)</span><span class="tile__meta">Pixel-art GIF · 2020</span></span></a>
             <a class="tile" href="/projects/yin-yang"><span class="tile__icon">☯️</span><span><span class="tile__title">Yin Yang in Motion</span><span class="tile__meta">Animated illustration · 2020</span></span></a>
             <a class="tile" href="/assets/pdf/WMCS-Weight-Machine-Cross-Sync.pdf" target="_blank" rel="noopener"><span class="tile__icon">🏋️</span><span><span class="tile__title">WMCS ↗</span><span class="tile__meta">Gym sets over NFC · PDF · 2019</span></span></a>
@@ -862,28 +862,28 @@ STAMP = r"""<!DOCTYPE html>
     <section class="panel" id="builds" role="tabpanel" aria-labelledby="tab-builds">
       <h2 class="sub-h">Products</h2>
       <div class="grid grid--3">
-        <a class="w reveal" href="https://tally-lake-seven.vercel.app" target="_blank" rel="noopener">
-          <div class="stage" style="--g: var(--g-tri)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>tally</span></div><img src="/assets/img/builds/tally.jpg" alt="Tally estimating a week of to-dos: an hour for the case memo, 30 minutes for bug reports, 3h45 in all" width="960" height="600" loading="lazy"></div></div><span class="pill">Tally ↗ <em>2026</em></span></div>
+        <a class="w reveal" href="/projects/tally">
+          <div class="stage" style="--g: var(--g-tri)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>tally</span></div><img src="/assets/img/builds/tally.jpg" alt="Tally estimating a week of to-dos: an hour for the case memo, 30 minutes for bug reports, 3h45 in all" width="960" height="600" loading="lazy"></div></div><span class="pill">Tally <em>2026</em></span></div>
           <h3 class="w-title">Knowing how long your to-do list will actually take.</h3>
           <p class="meta">A note-taker where every line gets a Claude time estimate, totaled in a ledger column.</p>
         </a>
-        <a class="w reveal" href="https://color-palette-generator-three-sand.vercel.app" target="_blank" rel="noopener">
-          <div class="stage" style="--g: var(--g-mirror)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>palette</span></div><img src="/assets/img/builds/palette.jpg" alt="Palette Generator turning 'coffee subscription, warm and earthy' into five roles of color and a font pairing" width="960" height="600" loading="lazy"></div></div><span class="pill">Palette Generator ↗ <em>2026</em></span></div>
+        <a class="w reveal" href="/projects/palette-generator">
+          <div class="stage" style="--g: var(--g-mirror)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>palette</span></div><img src="/assets/img/builds/palette.jpg" alt="Palette Generator turning 'coffee subscription, warm and earthy' into five roles of color and a font pairing" width="960" height="600" loading="lazy"></div></div><span class="pill">Palette Generator <em>2026</em></span></div>
           <h3 class="w-title">Brand colors and fonts for founders who aren't designers.</h3>
           <p class="meta">Palettes that pass accessibility checks, font pairings, and what real startups use right now.</p>
         </a>
-        <a class="w reveal" href="https://typerace.typerace.workers.dev" target="_blank" rel="noopener">
-          <div class="stage" style="--g: var(--g-lucent)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>typerace</span></div><img src="/assets/img/builds/typerace.jpg" alt="A TypeRace race in progress at 72 WPM, the progress bar halfway across" width="960" height="600" loading="lazy"></div></div><span class="pill">TypeRace ↗ <em>2026</em></span></div>
+        <a class="w reveal" href="/projects/typerace">
+          <div class="stage" style="--g: var(--g-lucent)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>typerace</span></div><img src="/assets/img/builds/typerace.jpg" alt="A TypeRace race in progress at 72 WPM, the progress bar halfway across" width="960" height="600" loading="lazy"></div></div><span class="pill">TypeRace <em>2026</em></span></div>
           <h3 class="w-title">Settling who types fastest, with one link and no sign-up.</h3>
           <p class="meta">Live races for classmates: share a code, type the same story, first to finish wins.</p>
         </a>
-        <a class="w reveal" href="https://networking-tracker-five-sage.vercel.app" target="_blank" rel="noopener">
-          <div class="stage" style="--g: var(--g-ey)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>networking tracker</span></div><img src="/assets/img/builds/networking-tracker.jpg" alt="Networking Tracker filtered to high-priority contacts, with demo data" width="960" height="600" loading="lazy"></div></div><span class="pill">Networking Tracker ↗ <em>2026</em></span></div>
+        <a class="w reveal" href="/projects/networking-tracker">
+          <div class="stage" style="--g: var(--g-ey)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>networking tracker</span></div><img src="/assets/img/builds/networking-tracker.jpg" alt="Networking Tracker filtered to high-priority contacts, with demo data" width="960" height="600" loading="lazy"></div></div><span class="pill">Networking Tracker <em>2026</em></span></div>
           <h3 class="w-title">Keeping track of every coffee chat, without sharing a thing.</h3>
           <p class="meta">A contact tracker where Postgres row-level security keeps each person's data their own.</p>
         </a>
-        <a class="w reveal" href="https://github.com/chaekim96/VoicePrompter" target="_blank" rel="noopener">
-          <div class="stage" style="--g: var(--g-mobility)"><div class="art fill"><img src="/assets/img/builds/voiceprompter.jpg" alt="VoicePrompter listening at word 108 of 139, with the prompter highlighting the spoken word" width="800" height="600" loading="lazy"></div><span class="pill">VoicePrompter ↗ <em>macOS</em></span></div>
+        <a class="w reveal" href="/projects/voiceprompter">
+          <div class="stage" style="--g: var(--g-mobility)"><div class="art fill"><img src="/assets/img/builds/voiceprompter.jpg" alt="VoicePrompter listening at word 108 of 139, with the prompter highlighting the spoken word" width="800" height="600" loading="lazy"></div><span class="pill">VoicePrompter <em>macOS</em></span></div>
           <h3 class="w-title">Reading your notes on a call without anyone seeing them.</h3>
           <p class="meta">A teleprompter that scrolls as you speak and stays out of Zoom, Meet, and screenshots.</p>
         </a>
@@ -910,18 +910,18 @@ STAMP = r"""<!DOCTYPE html>
 
       <h2 class="sub-h">AI and ML coursework</h2>
       <div class="grid grid--3">
-        <a class="w reveal" href="https://github.com/chaekim96/personal-wiki" target="_blank" rel="noopener">
-          <div class="stage" style="--g: var(--g-arcade)"><div class="art fill"><img src="/assets/img/builds/personal-wiki.jpg" alt="Obsidian graph of the wiki's linked notes" width="900" height="646" loading="lazy"></div><span class="pill">Personal Wiki ↗ <em>2026</em></span></div>
+        <a class="w reveal" href="/projects/personal-wiki">
+          <div class="stage" style="--g: var(--g-arcade)"><div class="art fill"><img src="/assets/img/builds/personal-wiki.jpg" alt="Obsidian graph of the wiki's linked notes" width="900" height="646" loading="lazy"></div><span class="pill">Personal Wiki <em>2026</em></span></div>
           <h3 class="w-title">Asking my own notes questions, with no internet.</h3>
           <p class="meta">Local Gemma via Ollama, plus hybrid retrieval over a course wiki. Runs fully offline.</p>
         </a>
-        <a class="w reveal" href="https://github.com/chaekim96/pacman-dqn" target="_blank" rel="noopener">
-          <div class="stage" style="--g: var(--g-arcade)"><div class="art fill fill--contain fill--pixel"><img src="/assets/img/builds/pacman-dqn.gif" alt="The trained agent playing Ms. Pac-Man" width="160" height="210" loading="lazy"></div><span class="pill">Pac-Man DQN ↗ <em>2026</em></span></div>
+        <a class="w reveal" href="/projects/pacman-dqn">
+          <div class="stage" style="--g: var(--g-arcade)"><div class="art fill fill--contain fill--pixel"><img src="/assets/img/builds/pacman-dqn.gif" alt="The trained agent playing Ms. Pac-Man" width="160" height="210" loading="lazy"></div><span class="pill">Pac-Man DQN <em>2026</em></span></div>
           <h3 class="w-title">Teaching an agent to play Ms. Pac-Man by trial and error.</h3>
           <p class="meta">A DQN agent that raised its mean evaluation score from 492 to 680.</p>
         </a>
-        <a class="w reveal" href="https://github.com/chaekim96/custom-llm" target="_blank" rel="noopener">
-          <div class="stage"><div class="art fill fill--top"><img src="/assets/img/builds/custom-llm.jpg" alt="Terminal chat with the tiny model and its odd replies" width="768" height="474" loading="lazy"></div><span class="pill">Custom LLM ↗ <em>2026</em></span></div>
+        <a class="w reveal" href="/projects/custom-llm">
+          <div class="stage"><div class="art fill fill--top"><img src="/assets/img/builds/custom-llm.jpg" alt="Terminal chat with the tiny model and its odd replies" width="768" height="474" loading="lazy"></div><span class="pill">Custom LLM <em>2026</em></span></div>
           <h3 class="w-title">Seeing how language models learn by training a tiny one.</h3>
           <p class="meta">A nanoGPT fork trained on a laptop CPU with my own teaching corpus, scored on 48 test prompts.</p>
         </a>
