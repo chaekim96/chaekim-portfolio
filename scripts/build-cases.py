@@ -274,7 +274,7 @@ CASES = [
     ),
     results=results(("2", "tools gauged from exact logs"), ("2 sec", "refresh, near 0% CPU"), ("~40MB", "memory"), ("12", "turns charted per session")) + "\n" + p("Checked against the logs themselves: the numbers match what each tool records."),
     differently=p("Write the acceptance checks before the build. One rebuild looked done but wasn't. The menu-bar icon hid behind the MacBook notch, the window never updated, and it counted output tokens as context. A checklist drawn from the milestones would have caught all of it on day one."),
-    artifacts=p("Not published yet. A native Swift app with a README that records every milestone: what changed, why, and the tradeoff."),
+    artifacts=p("Not published yet. A native Swift app with a README that records every milestone: what changed, why, and the tradeoff.") + art(("/assets/img/builds/token-fuel.jpg", "Running on my Mac: the menu-bar gauge at 67%, and the floating window for this session.")),
   ),
   dict(slug="code-improver", emoji="🔍", title="Code Improver",
     kicker="claude code mod · subagent · 2026",
