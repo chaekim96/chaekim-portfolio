@@ -22,10 +22,10 @@ NAV = """  <header class="nav">
       </button>
       <nav class="nav__links" aria-label="Primary">
         <a href="/#work">Work</a>
+        <a href="/#builds">Builds</a>
         <a href="/#experience">Experience</a>
         <a href="/#about">About</a>
         <a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
-        <a href="/#contact">Contact</a>
         <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
         </button>
@@ -72,7 +72,7 @@ SHELL = """<!DOCTYPE html>
         <div class="win case-win">
           <div class="win__bar"><span class="win__dots"><i></i><i></i><i></i></span><span class="win__title">{slug}.md</span></div>
           <div class="win__body">
-        <a class="case-hero__back" href="/#work">← All work</a>
+        <a class="case-hero__back" href="{back_href}">← {back_label}</a>
         <div class="case-hero__emoji" aria-hidden="true">{emoji}</div>
         <p class="eyebrow" style="margin-top:14px">{kicker}</p>
         <h1 class="display case-hero__title">{heading}{badge}</h1>
@@ -472,7 +472,8 @@ os.makedirs(OUT, exist_ok=True)
 n = len(CASES)
 for i, c in enumerate(CASES):
     prev, nxt = CASES[(i - 1) % n], CASES[(i + 1) % n]
-    html_out = SHELL.format(v=V, nav=NAV, footer=FOOTER, badge=c.get("badge", ""),
+    is_build = c in PRODUCTS or c in COURSEWORK or c["slug"] in ("smartmodel", "token-fuel", "code-improver")
+    html_out = SHELL.format(v=V, nav=NAV, footer=FOOTER, badge=c.get("badge", ""), back_href="/#builds" if is_build else "/#work", back_label="All builds" if is_build else "All work",
         desc=html.escape(c["desc"], quote=True), prev_slug=prev["slug"], prev_title=prev["title"], next_slug=nxt["slug"], next_title=nxt["title"], **{k: v for k, v in c.items() if k not in ("desc", "badge")})
     with open(os.path.join(OUT, c["slug"] + ".html"), "w") as f:
         f.write(html_out)

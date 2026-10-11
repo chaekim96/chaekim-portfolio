@@ -29,5 +29,12 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/variants/stamp",
+      "destination": "/",
+      "permanent": false
+    }
   ]
 }

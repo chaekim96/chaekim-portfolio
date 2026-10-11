@@ -2,7 +2,7 @@
 """Builds the three alternate homepage metaphors under /variants.
 
 Usage:  python3 scripts/build-variants.py
-Output: variants/index.html (picker), variants/prd.html, variants/notebook.html, variants/schematic.html
+Output: index.html (Stamp, the homepage), variants/index.html (picker), variants/prd.html, variants/notebook.html, variants/schematic.html
 Each page reuses assets/css/style.css for shared components and layers a variant stylesheet on top.
 Content is identical to index.html; only the framing metaphor changes.
 """
@@ -65,7 +65,7 @@ NAV = """  <header class="nav">
 """
 
 def switcher(current):
-    opts = [("desktop", "/"), ("prd", "/variants/prd"), ("notebook", "/variants/notebook"), ("schematic", "/variants/schematic"), ("stamp", "/variants/stamp")]
+    opts = [("stamp", "/"), ("desktop", "/variants/desktop"), ("prd", "/variants/prd"), ("notebook", "/variants/notebook"), ("schematic", "/variants/schematic")]
     links = "".join(f'<a href="{h}"{" class=is-active aria-current=page" if k == current else ""}>{k}</a>' for k, h in opts)
     return f'  <nav class="switch" aria-label="Design variants"><span>design</span>{links}</nav>\n'
 
@@ -743,11 +743,14 @@ STAMP = r"""<!DOCTYPE html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Stamp · Chae Kim</title>
+  <title>Chae Kim · Product and strategy</title>
   <meta name="description" content="Chae Kim: MBA at Berkeley Haas, co-founded Lucent, previously at EY and Tritooling. I like to build things. Let's chat.">
-  <meta name="robots" content="noindex">
   <meta property="og:title" content="Chae Kim · Product and strategy">
+  <meta property="og:description" content="MBA at Berkeley Haas. Co-founded Lucent. Previously at EY and Tritooling. I like to build things.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://chaekim-portfolio.vercel.app/">
   <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og.png">
+  <link rel="canonical" href="https://chaekim-portfolio.vercel.app/">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -756,6 +759,23 @@ STAMP = r"""<!DOCTYPE html>
   <link rel="preload" as="image" href="/assets/img/thumbs/lucent-wide.jpg">
   <link rel="stylesheet" href="/assets/css/v-stamp.css?v=%%V%%">
   <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Chae Woon Kim",
+    "alternateName": "Chae Kim",
+    "url": "https://chaekim-portfolio.vercel.app/",
+    "image": "https://chaekim-portfolio.vercel.app/assets/img/memoji.png",
+    "jobTitle": "MBA Candidate, UC Berkeley Haas; Co-founder & CEO, Lucent",
+    "worksFor": { "@type": "Organization", "name": "Lucent", "url": "https://trylucent.ai" },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "UC Berkeley, Haas School of Business" },
+      { "@type": "CollegeOrUniversity", "name": "Indiana University Bloomington" }
+    ],
+    "sameAs": ["https://www.linkedin.com/in/chaekim/", "https://github.com/chaekim96", "https://medium.com/@chaewoonkim"]
+  }
+  </script>
 </head>
 <body class="v v-stamp">
   <a class="skip" href="#main">Skip to content</a>
@@ -929,7 +949,7 @@ STAMP = r"""<!DOCTYPE html>
 
       <h2 class="sub-h">Side quests</h2>
       <div class="grid grid--3">
-        <a class="w reveal" href="/#break">
+        <a class="w reveal" href="/variants/desktop#break">
           <div class="stage" style="--g: var(--g-arcade)"><div class="art">%%SNAKE%%</div><span class="pill">Arcade <em>play</em></span></div>
           <p class="meta">Snake and Galaga, rebuilt from memory, plus a generative lo-fi radio.</p>
         </a>
@@ -1099,7 +1119,9 @@ STAMP = r"""<!DOCTYPE html>
 
     // deep links: #work, #about, or a section inside About such as #experience
     function fromHash() {
-      var h = location.hash.slice(1), el = h && document.getElementById(h);
+      var h = location.hash.slice(1);
+      if (h === 'contact') h = 'elsewhere'; // old desktop-page links
+      var el = h && document.getElementById(h);
       if (THESIS[h]) show(h);
       else if (el && el.closest('#about')) { show('about'); requestAnimationFrame(function () { el.scrollIntoView(); }); }
       else show('work');
@@ -1177,11 +1199,11 @@ INDEX = f"""<!DOCTYPE html>
     <h1>One portfolio, five metaphors.</h1>
     <p>Same content, different framing. Pick one to compare.</p>
     <div class="pick__grid">
-      <a class="opt" href="/"><b>Desktop</b><span>macOS desktop, folders, and windows. The current v2.</span><small>current →</small></a>
+      <a class="opt" href="/"><b>Stamp</b><span>Quiet and gallery-like. Real artifacts, pill tabs, my name in Korean calligraphy.</span><small>current →</small></a>
+      <a class="opt" href="/variants/desktop"><b>Desktop</b><span>macOS desktop, folders, and windows. The previous homepage.</span><small>open →</small></a>
       <a class="opt" href="/variants/prd"><b>PRD</b><span>A product requirements document with status, requirements, and sign-off.</span><small>open →</small></a>
       <a class="opt" href="/variants/notebook"><b>Field notebook</b><span>Dated entries on ruled paper, taped-in specimens, stamps.</span><small>open →</small></a>
       <a class="opt" href="/variants/schematic"><b>Schematic</b><span>An engineering drawing: parts list, revision history, title block.</span><small>open →</small></a>
-      <a class="opt" href="/variants/stamp"><b>Stamp</b><span>Quiet and gallery-like. Real artifacts, pill tabs, my name in Korean calligraphy.</span><small>open →</small></a>
     </div>
   </main>
 </body>
@@ -1189,7 +1211,12 @@ INDEX = f"""<!DOCTYPE html>
 """
 
 os.makedirs(OUT, exist_ok=True)
-for name, html_ in (("index", INDEX), ("prd", PRD), ("notebook", NOTEBOOK), ("schematic", SCHEMATIC), ("stamp", STAMP)):
+for name, html_ in (("index", INDEX), ("prd", PRD), ("notebook", NOTEBOOK), ("schematic", SCHEMATIC)):
     with open(os.path.join(OUT, f"{name}.html"), "w") as f:
         f.write(html_)
     print("wrote variants/%s.html" % name)
+
+# Stamp is the homepage
+with open(os.path.join(os.path.dirname(OUT), "index.html"), "w") as f:
+    f.write(STAMP)
+print("wrote index.html (stamp)")
