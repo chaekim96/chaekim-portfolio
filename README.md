@@ -20,7 +20,7 @@ Then open http://localhost:8080. Note: the Python server doesn't do clean URLs, 
 
 ## Case studies
 
-Featured / more-work pages are generated from one template: edit `scripts/build-cases.py` (content lives in the `CASES` list), run `python3 scripts/build-cases.py`, commit the HTML in `projects/`. The page template is `SHELL` in that script. The five college pages are hand-edited HTML.
+Featured / more-work pages are generated from one template: edit `scripts/build-cases.py` (content lives in the `CASES` list), run `python3 scripts/build-cases.py`, commit the HTML in `projects/`. `python3 scripts/build-cases.py --check` writes nothing and fails if a page is out of date or still has a `[CONFIRM:` tag. The page template is `SHELL` in that script. The five college pages are hand-edited HTML.
 
 Anything not yet confirmed is marked in the copy as `[CONFIRM: ...]` (styled yellow). Grep: `grep -rn "CONFIRM:" index.html projects/`.
 

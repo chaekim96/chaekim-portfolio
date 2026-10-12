@@ -47,6 +47,7 @@
 .stage.case-cover img { width: 100%; height: auto; }
 .stage.case-cover > a img { width: 100%; }
 .case-cover--contain img { width: auto !important; max-width: 100%; max-height: min(66vh, 560px); object-fit: contain; padding: clamp(16px, 4vw, 44px); }
+.stage.case-cover--pixel > img { image-rendering: pixelated; width: auto; height: clamp(260px, 40vw, 460px); margin: 0 auto; padding: 24px 0; box-sizing: content-box; }
 .stage.case-cover > a { transition: opacity .2s; }
 .stage.case-cover > a:hover { opacity: .94; }
 
@@ -108,6 +109,7 @@
 /* ---------- previous / next ---------- */
 .next { margin-top: clamp(56px, 8vw, 96px); }
 .next__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.next__forward { text-align: right; }
 @media (max-width: 640px) { .next__grid { grid-template-columns: minmax(0, 1fr); } }
 .next a {
   display: block; padding: 20px 22px 18px; border-radius: 20px;
