@@ -1140,7 +1140,7 @@ STAMP = (STAMP.replace("%%V%%", V)
               .replace("%%SEAL_SMALL%%", seal(label=False))
               .replace("%%SNAKE%%", _snake())
               .replace("%%CHANGELOG%%", STAMP_CHANGELOG)
-              .replace("%%SWITCHER%%", switcher("stamp")))
+              .replace("%%SWITCHER%%", ""))  # Stamp is the homepage: no variant switcher there
 
 # ----------------------------------------------------------------------------
 # picker
