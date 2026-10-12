@@ -129,5 +129,3 @@
 .prose h2:has(+ .artifacts > .ph:only-child) + .artifacts { display: none; }
 .case-body:has(.artifacts > .ph:only-child) .toc a[href="#artifacts"] { display: none; }
 
-/* v-stamp.css declares .toc after its small-screen rule, so hide it here for phones */
-@media (max-width: 760px) { .case-body > .toc { display: none; } }
