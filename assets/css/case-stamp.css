@@ -1,0 +1,133 @@
+/* ------------------------------------------------------------------
+   Project pages in the Stamp look. Loads after v-stamp.css, which
+   supplies the tokens, type, calligraphy mark, footer and dark mode.
+   This file only adds what a case study needs: header nav, hero,
+   cover stage, prose, result cards, artifact figures, prev/next.
+   ------------------------------------------------------------------ */
+
+/* ---------- header: calligraphy mark left, quiet nav right ---------- */
+.topnav { display: flex; align-items: center; gap: 2px; }
+.topnav > a { padding: 6px 12px 5px; border-radius: 999px; font-size: 14px; color: var(--ink-2); transition: background .2s var(--ease), color .2s var(--ease); }
+.topnav > a:hover { color: var(--ink); background: var(--fill-2); }
+.topnav .theme-toggle { margin-left: 4px; flex: none; }
+@media (max-width: 480px) {
+  .topnav > a { padding: 6px 8px 5px; font-size: 13.5px; }
+  .topnav .theme-toggle { margin-left: 0; width: 32px; }
+}
+
+/* ---------- hero ---------- */
+.case-hero { padding-top: clamp(36px, 6vw, 64px); }
+.case-hero__back { display: inline-block; font-size: 14px; color: var(--ink-2); margin-bottom: 22px; padding: 2px 0; background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; transition: color .2s, background-size .25s var(--ease); }
+.case-hero__back:hover, .case-hero__back:focus-visible { color: var(--ink); background-size: 100% 1px; }
+.eyebrow { font-size: 13px; font-weight: 500; color: var(--ink-2); margin-bottom: 8px; }
+.case-hero__title {
+  font-size: clamp(28px, 4.4vw, 44px); font-weight: 500; letter-spacing: -0.03em; line-height: 1.12;
+  max-width: 20ch; text-wrap: balance;
+}
+.case-hero__title em { font-style: normal; color: var(--ink-2); }
+.tldr, .lede { margin-top: 16px; max-width: 62ch; color: var(--ink-2); font-size: 17px; line-height: 1.6; font-weight: 400; }
+.meta-line { margin-top: 18px; max-width: 70ch; font-size: 14px; line-height: 1.6; color: var(--ink-2); }
+.meta-line b { color: var(--ink); font-weight: 500; }
+.stealth {
+  display: inline-block; vertical-align: middle; margin-left: 10px; transform: translateY(-3px);
+  padding: 3px 11px 2px; border-radius: 999px; background: var(--fill); box-shadow: inset 0 0 0 1px var(--line);
+  font-size: 12.5px; font-weight: 500; letter-spacing: 0; color: var(--ink-2);
+}
+.case-meta { display: flex; flex-wrap: wrap; gap: 12px 40px; margin-top: 22px; }
+.case-meta dt { font-size: 13px; color: var(--ink-2); }
+.case-meta dd { margin: 2px 0 0; font-size: 14.5px; font-weight: 500; color: var(--ink); }
+
+/* ---------- cover: a Stamp stage ---------- */
+.case-cover-wrap { margin-top: clamp(28px, 4vw, 44px); }
+.stage.case-cover {
+  display: grid; place-items: center; aspect-ratio: auto; max-width: 1000px;
+  background: var(--g, var(--g-plain));
+}
+.stage.case-cover > img, .stage.case-cover > a { display: block; width: 100%; }
+.stage.case-cover img { width: 100%; height: auto; }
+.stage.case-cover > a img { width: 100%; }
+.case-cover--contain img { width: auto !important; max-width: 100%; max-height: min(66vh, 560px); object-fit: contain; padding: clamp(16px, 4vw, 44px); }
+.stage.case-cover > a { transition: opacity .2s; }
+.stage.case-cover > a:hover { opacity: .94; }
+
+/* ---------- body: quiet contents on the left, prose on the right ---------- */
+.case-body { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: clamp(24px, 6vw, 96px); padding-top: clamp(44px, 6vw, 80px); }
+@media (max-width: 760px) { .case-body { grid-template-columns: minmax(0, 1fr); } }
+.prose { max-width: 680px; min-width: 0; }
+.prose > * + * { margin-top: 14px; }
+.prose h2 { font-size: 22px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.25; margin-top: 56px; scroll-margin-top: 28px; }
+.prose h2:first-child { margin-top: 0; }
+.prose h2 + * { margin-top: 12px; }
+.prose h3 { font-size: 13px; font-weight: 500; color: var(--ink-2); margin-top: 32px; letter-spacing: 0; }
+.prose h3 + * { margin-top: 10px; }
+.prose p, .prose li { color: var(--ink-2); }
+.prose strong, .prose b { color: var(--ink); font-weight: 500; }
+.prose a { color: var(--ink); font-weight: 500; background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1px no-repeat; transition: background-size .25s var(--ease); }
+.prose a:hover { background-size: 100% 2px; }
+.prose ul { display: grid; gap: 9px; }
+.prose ul li { position: relative; padding-left: 20px; }
+.prose ul li::before { content: ""; position: absolute; left: 3px; top: .72em; width: 5px; height: 5px; border-radius: 50%; background: var(--ink-2); opacity: .6; }
+.prose ol { padding-left: 22px; list-style: decimal; display: grid; gap: 9px; color: var(--ink-2); }
+.prose ol li { padding-left: 4px; }
+.prose ol li::marker { color: var(--ink-2); }
+.prose code { font: 500 .88em ui-monospace, "SF Mono", Menlo, monospace; padding: 1px 6px; border-radius: 6px; background: var(--fill); color: var(--ink); }
+.pull { padding-left: 18px; border-left: 2px solid var(--ink); font-size: 19px; line-height: 1.45; font-weight: 500; letter-spacing: -0.015em; color: var(--ink) !important; }
+.callout { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 12px; align-items: start; padding: 18px 20px; border-radius: 20px; background: var(--fill-2); box-shadow: inset 0 0 0 1px var(--line); }
+.callout .ico { font-size: 20px; line-height: 1.4; }
+.callout p { color: var(--ink-2); }
+.callout p + p { margin-top: 8px; }
+.callout strong { color: var(--ink); }
+
+/* figures: images in a soft rounded frame, captions quiet */
+.prose figure { margin-top: 24px; }
+.prose figure img { width: 100%; border-radius: 16px; background: var(--g-plain); box-shadow: 0 0 0 1px var(--line); }
+.prose figure.contain img { object-fit: contain; padding: 12px; }
+.prose figcaption, .artifacts figcaption { margin-top: 10px; font-size: 13px; line-height: 1.45; color: var(--ink-2); }
+.prose .two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 24px; align-items: start; }
+.prose .three { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 24px; align-items: start; }
+.prose .two figure, .prose .three figure { margin-top: 0; }
+@media (max-width: 640px) { .prose .two, .prose .three { grid-template-columns: minmax(0, 1fr); } }
+
+/* results: frosted number cards, like the glass tiles on the homepage */
+.results { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 16px; }
+.results div {
+  display: grid; align-content: start; gap: 4px; padding: 18px 18px 16px; border-radius: 20px;
+  background: var(--fill-2); box-shadow: inset 0 0 0 1px var(--line);
+}
+.results b { display: block; font-size: clamp(26px, 3.2vw, 32px); font-weight: 600; letter-spacing: -0.035em; line-height: 1.05; color: var(--ink); }
+.results span { font-size: 13.5px; line-height: 1.4; color: var(--ink-2); }
+
+/* artifacts: real screenshots, shown whole */
+.artifacts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 16px; margin-top: 16px; align-items: start; }
+.artifacts figure { margin: 0; }
+.artifacts img { width: 100%; height: auto; border-radius: 16px; background: var(--g-plain); box-shadow: 0 0 0 1px var(--line), var(--shadow); }
+/* an empty placeholder frame is not worth showing to visitors */
+.artifacts .ph { display: none; }
+:root[data-confirm] .artifacts .ph { display: grid; place-items: center; min-height: 160px; border-radius: 16px; border: 1px dashed var(--line); padding: 16px; }
+
+/* ---------- previous / next ---------- */
+.next { margin-top: clamp(56px, 8vw, 96px); }
+.next__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 640px) { .next__grid { grid-template-columns: minmax(0, 1fr); } }
+.next a {
+  display: block; padding: 20px 22px 18px; border-radius: 20px;
+  background: var(--fill-2); box-shadow: inset 0 0 0 1px var(--line);
+  transition: box-shadow .4s var(--ease), transform .4s var(--ease);
+}
+.next a:hover, .next a:focus-visible { box-shadow: inset 0 0 0 1px var(--line), var(--shadow-lg); transform: translateY(-3px); }
+.next small { display: block; font-size: 13px; color: var(--ink-2); margin-bottom: 4px; }
+.next strong { font-size: 17px; font-weight: 500; letter-spacing: -0.015em; line-height: 1.35; }
+@media (max-width: 640px) { .next a[style] { text-align: left !important; } }
+
+@media (prefers-reduced-motion: reduce) { .next a { transition: none; } .next a:hover { transform: none; } }
+
+/* footer on case pages sits closer to the content above it */
+.case .foot { margin-top: clamp(56px, 8vw, 88px); }
+
+/* when Artifacts holds only an unfilled placeholder, drop the empty section */
+.prose h2:has(+ .artifacts > .ph:only-child) { display: none; }
+.prose h2:has(+ .artifacts > .ph:only-child) + .artifacts { display: none; }
+.case-body:has(.artifacts > .ph:only-child) .toc a[href="#artifacts"] { display: none; }
+
+/* v-stamp.css declares .toc after its small-screen rule, so hide it here for phones */
+@media (max-width: 760px) { .case-body > .toc { display: none; } }

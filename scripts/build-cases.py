@@ -5,7 +5,9 @@ Usage:  python3 scripts/build-cases.py
 Edits:  change the CASES list below, re-run, commit the generated HTML.
 The rendered shell is also written to projects/_template.html for reference.
 """
-import os, html
+import os, sys, html
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from stamp_shared import CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 OUT = os.path.join(ROOT, "projects")
@@ -14,32 +16,12 @@ V = "13"  # asset version (cache-bust)
 def C(msg):  # visible confirm tag
     return f'<span class="confirm">[CONFIRM: {html.escape(msg)}]</span>'
 
-NAV = """  <header class="nav">
-    <div class="container nav__inner">
-      <a href="/" class="brand wordmark" aria-label="Chae Kim, home">chae<span class="wordmark__dot"></span></a>
-      <button class="nav__burger" aria-label="Open menu" aria-expanded="false">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-      </button>
-      <nav class="nav__links" aria-label="Primary">
-        <a href="/#work">Work</a>
-        <a href="/#builds">Builds</a>
-        <a href="/#experience">Experience</a>
-        <a href="/#about">About</a>
-        <a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
-        <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-        </button>
-        <a class="nav__cta" href="https://www.linkedin.com/in/chaekim/" target="_blank" rel="noopener">LinkedIn</a>
-      </nav>
-    </div>
-  </header>"""
+# Chrome (header, footer, stylesheet links, scripts) is shared with the Stamp homepage; see stamp_shared.py.
+NAV = CASE_TOP
+FOOTER = CASE_FOOT
 
-FOOTER = """  <footer class="footer">
-    <div class="container footer__inner">
-      <span>© <span data-year>2026</span> Chae Woon Kim · 김채운</span>
-      <span><a data-user="chaewoonkim" data-domain="berkeley.edu" href="#">Email</a> · <a href="https://github.com/chaekim96/chaekim-portfolio" target="_blank" rel="noopener">Source</a></span>
-    </div>
-  </footer>"""
+# stage gradient behind each cover, from the Stamp tokens
+GRAD = {"lucent": "lucent", "ey": "ey", "tritooling": "tri", "mirrorme": "mirror", "mobility": "mobility", "pacman-dqn": "arcade"}
 
 SHELL = """<!DOCTYPE html>
 <html lang="en">
@@ -56,38 +38,26 @@ SHELL = """<!DOCTYPE html>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" onload="this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"></noscript>
-  <link rel="stylesheet" href="/assets/css/style.css?v={v}">
-  <script>try {{ var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); }} catch (e) {{}}</script>
+{head_assets}
 </head>
-<body>
+<body class="v v-stamp case">
   <a class="skip" href="#main">Skip to content</a>
-  <canvas id="bg" aria-hidden="true"></canvas>
 {nav}
 
   <main id="main">
-    <section class="case-hero">
-      <div class="container">
-        <div class="win case-win">
-          <div class="win__bar"><span class="win__dots"><i></i><i></i><i></i></span><span class="win__title">{slug}.md</span></div>
-          <div class="win__body">
-        <a class="case-hero__back" href="{back_href}">← {back_label}</a>
-        <div class="case-hero__emoji" aria-hidden="true">{emoji}</div>
-        <p class="eyebrow" style="margin-top:14px">{kicker}</p>
-        <h1 class="display case-hero__title">{heading}{badge}</h1>
-        <p class="tldr">{tldr}</p>
-        <p class="meta-line"><b>Role</b> {role} · <b>Team</b> {team} · <b>Timeline</b> {timeline}</p>
-          </div>
-        </div>
-      </div>
+    <section class="case-hero wrap">
+      <a class="case-hero__back" href="{back_href}">← {back_label}</a>
+      <p class="eyebrow">{kicker}</p>
+      <h1 class="case-hero__title">{heading}{badge}</h1>
+      <p class="tldr">{tldr}</p>
+      <p class="meta-line"><b>Role</b> {role} · <b>Team</b> {team} · <b>Timeline</b> {timeline}</p>
     </section>
 
-    <section class="container">
-      <div class="case-cover {cover_class}">{cover}</div>
+    <section class="wrap case-cover-wrap">
+      <div class="stage case-cover {cover_class}" style="--g: var(--g-{grad})">{cover}</div>
     </section>
 
-    <section class="container case-body">
+    <section class="wrap case-body">
       <nav class="toc" aria-label="On this page">
         <a href="#problem">The problem</a>
         <a href="#did">What I did</a>
@@ -109,8 +79,8 @@ SHELL = """<!DOCTYPE html>
       </article>
     </section>
 
-    <section class="next">
-      <div class="container next__grid">
+    <section class="next wrap">
+      <div class="next__grid">
         <a href="/projects/{prev_slug}"><small>← Previous</small><strong>{prev_title}</strong></a>
         <a href="/projects/{next_slug}" style="text-align:right"><small>Next →</small><strong>{next_title}</strong></a>
       </div>
@@ -118,7 +88,7 @@ SHELL = """<!DOCTYPE html>
   </main>
 
 {footer}
-  <script src="/assets/js/main.js?v={v}"></script>
+{scripts}
 </body>
 </html>
 """
@@ -388,7 +358,7 @@ CASES = [
     ),
     results=results(("150+", "pre-launch purchase commitments"), ("$30 to 40", "price point"), ("$0", "paid budget"), ("50+", "decks sold")) + "\n" + p("Insight: it sold itself in rooms where people already wanted to connect. Venue partnerships became the channel."),
     differently=p(C("what you'd do differently")),
-    artifacts=art(("/assets/img/projects/mirrorme/card-category.png", "Category card"), ("/assets/img/projects/mirrorme/card-question.png", "Question card"), ("/assets/img/projects/mirrorme/card-rules.png", "Setup and rules card"), ("/assets/img/projects/mirrorme/card-alt.png", "Alternative card design")),
+    artifacts=art(("/assets/img/projects/mirrorme/card-category.png", "Category card"), ("/assets/img/projects/mirrorme/card-question.png", "Question card"), ("/assets/img/projects/mirrorme/card-rules.jpg", "Setup and rules card"), ("/assets/img/projects/mirrorme/card-alt.png", "Alternative card design")),
   ),
   dict(slug="tritooling", emoji="🏭", title="Tritooling",
     kicker="featured · director of operations · Philippines · 2024 to 2025",
@@ -473,7 +443,7 @@ n = len(CASES)
 for i, c in enumerate(CASES):
     prev, nxt = CASES[(i - 1) % n], CASES[(i + 1) % n]
     is_build = c in PRODUCTS or c in COURSEWORK or c["slug"] in ("smartmodel", "token-fuel", "code-improver")
-    html_out = SHELL.format(v=V, nav=NAV, footer=FOOTER, badge=c.get("badge", ""), back_href="/#builds" if is_build else "/#work", back_label="All builds" if is_build else "All work",
+    html_out = SHELL.format(head_assets=CASE_HEAD_ASSETS, scripts=CASE_SCRIPTS, grad=GRAD.get(c["slug"], "plain"), nav=NAV, footer=FOOTER, badge=c.get("badge", ""), back_href="/#builds" if is_build else "/#work", back_label="All builds" if is_build else "All work",
         desc=html.escape(c["desc"], quote=True), prev_slug=prev["slug"], prev_title=prev["title"], next_slug=nxt["slug"], next_title=nxt["title"], **{k: v for k, v in c.items() if k not in ("desc", "badge")})
     with open(os.path.join(OUT, c["slug"] + ".html"), "w") as f:
         f.write(html_out)
@@ -481,5 +451,5 @@ for i, c in enumerate(CASES):
 
 # reference copy of the empty template
 with open(os.path.join(OUT, "_template.html"), "w") as f:
-    f.write(SHELL.replace("{", "{{").replace("}", "}}").replace("{{v}}", V).replace("{{nav}}", NAV).replace("{{footer}}", FOOTER))
+    f.write(SHELL.replace("{", "{{").replace("}", "}}").replace("{{head_assets}}", CASE_HEAD_ASSETS).replace("{{scripts}}", CASE_SCRIPTS).replace("{{nav}}", NAV).replace("{{footer}}", FOOTER))
 print("wrote _template.html")
