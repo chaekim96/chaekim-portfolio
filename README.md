@@ -2,10 +2,12 @@
 
 Static site for Chae Kim: MBA candidate at UC Berkeley Haas, ex-EY AI & Data consultant, IU Informatics.
 
-- `index.html` — home (hero, selected work, playground, experience, about, contact)
+- `index.html` — home, the Stamp design (Work, Builds and About tabs). Generated: `python3 scripts/build-home.py`, which also writes `arcade.html`
 - `projects/*.html` — case studies (one file per project)
-- `assets/css/style.css` — design tokens + components (light/dark)
-- `assets/js/main.js` — theme toggle, mobile nav, filters, scroll reveal
+- `assets/css/v-stamp.css` — the design: tokens, background gradient, light/dark, live-preview dialog
+- `assets/css/case-stamp.css`, `assets/css/arcade.css` — project-page and arcade layers on top of it
+- `assets/js/main.js` — theme toggle, scroll reveal, email, arcade loader; `assets/js/live.js` — "Try it live" dialog
+- `scripts/stamp_shared.py` — calligraphy mark, project-page header/footer, the live-app list
 - `assets/img`, `assets/pdf` — media and downloadable deliverables
 
 No build step. Deployed on Vercel (`vercel.json` enables clean URLs so `/projects/luc` serves `projects/luc.html`).
@@ -26,7 +28,8 @@ Anything not yet confirmed is marked in the copy as `[CONFIRM: ...]` (styled yel
 
 ## Updating content
 
-- Add a project: duplicate a file in `projects/`, then add a `.card` in `index.html` with the right `data-cat` (`product`, `engineering`, `design`).
+- Add a project: add an entry to `CASES` in `scripts/build-cases.py`, a card in the Stamp template in `scripts/build-home.py`, then run both scripts. Web apps that can run in a frame go in `LIVE_APPS` (stamp_shared.py) to get a "Try it live" button.
+- The old design variants (desktop, PRD, notebook, schematic) were retired; `/variants/*` redirects home.
 - Resume: replace `assets/pdf/chae-kim-resume.pdf`. Every resume link already points there.
 - Email is assembled at runtime from `data-user` / `data-domain` attributes (see `main.js`) so it isn't in the HTML.
 - Analytics: `/_vercel/insights/script.js` is included; enable Web Analytics in the Vercel dashboard for it to record.

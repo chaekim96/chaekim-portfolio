@@ -1,0 +1,69 @@
+/* Arcade page: Snake, Galaga and the lo-fi radio, on Stamp's tokens.
+   Rules carried over from the retired desktop design (style.css); the
+   variables below map its token names onto v-stamp.css. */
+.arcade {
+  --radius: var(--r-card);
+  --bg-elev: var(--pill);
+  --bg-soft: var(--fill-2);
+  --ink-3: var(--ink-2);
+  --line-strong: rgba(0, 0, 0, .14);
+  --font-display: inherit;
+  --accent: #0a66d6;
+  --accent-soft: rgba(10, 102, 214, .1);
+  margin-top: clamp(28px, 4vw, 44px);
+  margin-bottom: clamp(56px, 8vw, 96px);
+}
+:root[data-theme="dark"] .arcade { --line-strong: rgba(255, 255, 255, .18); --accent: #4ea1ff; --accent-soft: rgba(78, 161, 255, .16); }
+.arcade .label { font-size: 12px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+.arcade .panel__title { font-weight: 600; }
+.arcade .btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 22px; border-radius: 999px; font-weight: 500; }
+.arcade .btn--primary { background: var(--ink); color: var(--bg); box-shadow: var(--shadow); }
+
+.break { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 24px; }
+.break > * { min-width: 0; }
+@media (max-width: 880px) { .break { grid-template-columns: minmax(0,1fr); } }
+.panel { border: 1px solid var(--line); border-radius: var(--radius); background: color-mix(in srgb, var(--bg-elev) 88%, transparent); backdrop-filter: blur(10px); padding: 22px; display: flex; flex-direction: column; gap: 16px; }
+.panel__head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+.panel__title { font-size: 20px; margin-top: 4px; }
+.panel__score { display: flex; gap: 14px; font-size: 13px; color: var(--ink-3); white-space: nowrap; }
+.panel__score b { color: var(--ink); font-family: var(--font-display); }
+.panel__note { font-size: 12.5px; color: var(--ink-3); text-align: right; max-width: 20ch; }
+.snake { position: relative; aspect-ratio: 1; border-radius: 14px; overflow: hidden; background: #f4f7ff; border: 1px solid var(--line); }
+.snake canvas { width: 100%; height: 100%; display: block; outline: none; touch-action: none; }
+.snake__overlay { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 2; }
+.snake.is-running .snake__overlay { display: none; }
+.snake__dpad { display: none; flex-direction: column; align-items: center; gap: 6px; }
+.snake__dpad div { display: flex; gap: 6px; }
+.snake__dpad button { width: 48px; height: 44px; border-radius: 10px; border: 1px solid var(--line-strong); background: var(--bg-elev); font-size: 14px; }
+@media (hover: none) { .snake__dpad { display: flex; } }
+.music__viz { width: 100%; max-width: 100%; height: 140px; border-radius: 14px; background: linear-gradient(180deg, #f4f7ff, #eaf0ff); border: 1px solid var(--line); }
+.music__controls { display: flex; align-items: center; gap: 10px; }
+.music__btn { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--line-strong); background: var(--bg-elev); transition: .2s; }
+.music__btn svg { width: 18px; height: 18px; }
+.music__btn:hover { border-color: var(--ink); transform: scale(1.06); }
+.music__btn--main { width: 56px; height: 56px; background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.music__btn--main:hover { background: var(--accent); border-color: var(--accent); }
+.music__btn--main .ico-pause { display: none; }
+.is-playing .music__btn--main .ico-play { display: none; }
+.is-playing .music__btn--main .ico-pause { display: block; }
+.music__vol { margin-left: auto; display: flex; align-items: center; gap: 8px; color: var(--ink-3); }
+.music__vol input { width: 110px; accent-color: var(--accent); }
+.music__list { display: grid; gap: 4px; }
+.music__list li { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; border-radius: 10px; cursor: pointer; font-size: 14px; color: var(--ink-2); transition: .2s; }
+.music__list li:hover { background: var(--bg-soft); }
+.music__list li.is-active { background: var(--accent-soft); color: var(--ink); font-weight: 700; }
+.music__list li span:last-child { font-size: 12px; color: var(--ink-3); font-weight: 400; }
+.music__list li.is-active .eq { display: inline-flex; gap: 2px; align-items: flex-end; height: 12px; margin-right: 8px; }
+.eq i { width: 3px; background: var(--accent); border-radius: 1px; animation: eq .9s ease-in-out infinite; }
+.eq i:nth-child(2) { animation-delay: .2s; } .eq i:nth-child(3) { animation-delay: .4s; }
+@keyframes eq { 0%, 100% { height: 4px; } 50% { height: 12px; } }
+.is-paused .eq i { animation-play-state: paused; }
+
+/* ---- Arcade panel ---- */
+.gametabs { display: inline-flex; gap: 4px; padding: 4px; border-radius: 999px; background: var(--bg-soft); }
+.gametab { padding: 8px 16px; border-radius: 999px; font-family: var(--font-display); font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); transition: .2s; }
+.gametab.is-active { background: var(--ink); color: var(--bg); }
+.game { display: flex; flex-direction: column; gap: 10px; }
+.game.is-hidden { display: none; }
+.game__hint { font-size: 13px; color: var(--ink-3); text-align: center; }
+.galaga { background: #0e1120; }

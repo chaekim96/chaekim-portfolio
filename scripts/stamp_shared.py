@@ -30,9 +30,38 @@ INK_DEFS = ('<svg width="0" height="0" style="position:absolute" aria-hidden="tr
 # ---------------------------------------------------------------------------
 # Case-page chrome (project pages in the Stamp look)
 # ---------------------------------------------------------------------------
-CASE_CSS_V = "15"   # bump when assets/css/case-stamp.css changes
+CASE_CSS_V = "16"   # bump when assets/css/case-stamp.css changes
 STAMP_CSS_V = "13"  # v-stamp.css version, kept in step with the homepage
 JS_V = "13"
+LIVE_V = "1"  # bump when assets/js/live.js changes
+
+# ---------------------------------------------------------------------------
+# Live previews: a "Try it live" link opens the real app in a dialog.
+# Without JS (or <dialog>) the link simply opens the app in a new tab.
+# ---------------------------------------------------------------------------
+LIVE_APPS = {
+    "tally": ("Tally", "https://tally-lake-seven.vercel.app", ""),
+    "palette-generator": ("Palette Generator", "https://color-palette-generator-three-sand.vercel.app", ""),
+    "typerace": ("TypeRace", "https://typerace.typerace.workers.dev", "Races here are real: a finished race posts to the weekly class leaderboard."),
+    "networking-tracker": ("Networking Tracker", "https://networking-tracker-five-sage.vercel.app", "Some browsers block signing in inside a frame. If it won't let you in, open it in a new tab."),
+}
+
+def live_button(slug):
+    title, url, note = LIVE_APPS[slug]
+    return (f'<a class="live-btn" href="{url}" target="_blank" rel="noopener" data-live="{url}" '
+            f'data-live-title="{title}" data-live-note="{note}" aria-label="Try {title} live"><i aria-hidden="true"></i>Try it live</a>')
+
+LIVE_DIALOG = """  <dialog class="live" id="live" aria-labelledby="live-title">
+    <div class="live__bar">
+      <i class="live__dot" aria-hidden="true"></i><b id="live-title">Live preview</b>
+      <a class="live__open" id="live-open" href="#" target="_blank" rel="noopener">Open in new tab ↗</a>
+      <button class="live__close" type="button" aria-label="Close live preview">×</button>
+    </div>
+    <p class="live__note" id="live-note" hidden></p>
+    <iframe id="live-frame" title="Live preview" allow="clipboard-write"></iframe>
+  </dialog>"""
+
+LIVE_SCRIPT = f'  <script src="/assets/js/live.js?v={LIVE_V}" defer></script>'
 
 CASE_HEAD_ASSETS = (
     '  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">\n'

@@ -1,0 +1,582 @@
+#!/usr/bin/env python3
+"""Builds the Stamp homepage (index.html) and the arcade page (arcade.html).
+
+Usage:  python3 scripts/build-home.py
+Stamp is the only design: assets/css/v-stamp.css (+ case-stamp.css on project pages, arcade.css on /arcade).
+The calligraphy name mark, case-page chrome and live-preview dialog are shared via stamp_shared.py.
+"""
+import os
+import sys
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(HERE)
+sys.path.insert(0, HERE)
+V = "13"
+
+# ----------------------------------------------------------------------------
+# Arcade: Snake, Galaga and a generative lo-fi radio. main.js loads arcade.js
+# and music.js once #break scrolls into view.
+# ----------------------------------------------------------------------------
+
+ARCADE = """          <div class="break">
+            <div class="panel reveal" id="games-panel">
+              <div class="panel__head">
+                <div class="gametabs" role="tablist" aria-label="Choose a game">
+                  <button class="gametab is-active" data-game="snake" role="tab" aria-selected="true">Snake</button>
+                  <button class="gametab" data-game="galaga" role="tab" aria-selected="false">Galaga</button>
+                </div>
+                <div class="panel__score"><span>Score <b id="game-score">0</b></span><span>Best <b id="game-best">0</b></span></div>
+              </div>
+              <div class="game" id="snake-game" data-game="snake">
+                <div class="snake">
+                  <canvas id="snake" width="400" height="400" tabindex="0" aria-label="Snake game. Use arrow keys or WASD."></canvas>
+                  <button class="snake__overlay btn btn--primary" id="snake-start" type="button">Play</button>
+                </div>
+                <p class="game__hint">Arrows · WASD · swipe</p>
+                <div class="snake__dpad" aria-label="Touch controls">
+                  <button data-dir="0,-1" aria-label="Up">▲</button>
+                  <div><button data-dir="-1,0" aria-label="Left">◀</button><button data-dir="0,1" aria-label="Down">▼</button><button data-dir="1,0" aria-label="Right">▶</button></div>
+                </div>
+              </div>
+              <div class="game is-hidden" id="galaga-game" data-game="galaga">
+                <div class="snake galaga">
+                  <canvas id="galaga" width="400" height="400" tabindex="0" aria-label="Galaga game. Left and right arrows move, space fires."></canvas>
+                  <button class="snake__overlay btn btn--primary" id="galaga-start" type="button">Play</button>
+                </div>
+                <p class="game__hint">← → or drag to move · space / tap to fire</p>
+              </div>
+            </div>
+            <div class="panel reveal" id="music-panel">
+              <div class="panel__head">
+                <div><p class="label" style="margin:0">Now playing</p><h3 class="panel__title" id="music-title">Cloud Nine</h3></div>
+                <span class="panel__note">Generative lo-fi, synthesized live in your browser. Starts only when you press play.</span>
+              </div>
+              <canvas class="music__viz" id="music-viz" width="600" height="140" aria-hidden="true"></canvas>
+              <div class="music__controls">
+                <button class="music__btn" id="music-prev" type="button" aria-label="Previous track"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zM20 6v12L9 12z"/></svg></button>
+                <button class="music__btn music__btn--main" id="music-play" type="button" aria-label="Play"><svg class="ico-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><svg class="ico-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg></button>
+                <button class="music__btn" id="music-next" type="button" aria-label="Next track"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 6h2v12h-2zM4 6v12l11-6z"/></svg></button>
+                <label class="music__vol"><span class="visually-hidden">Volume</span><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M3 9v6h4l5 5V4L7 9zM16 8a4.5 4.5 0 0 1 0 8v-2a2.5 2.5 0 0 0 0-4z"/></svg><input type="range" id="music-vol" min="0" max="1" step="0.01" value="0.6"></label>
+              </div>
+              <ul class="music__list" id="music-list"></ul>
+            </div>
+          </div>
+"""
+
+
+# ----------------------------------------------------------------------------
+# Stamp: quiet, gallery-like, artifact-first. Plain string with %%TOKENS%%
+# rather than an f-string, since the inline JS is brace-heavy.
+# ----------------------------------------------------------------------------
+
+STAMP_CHANGELOG = "10-04-26"
+
+from stamp_shared import INK_DEFS, seal, live_button, LIVE_DIALOG, LIVE_SCRIPT, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS
+
+def _snake():
+    body = [(2,6),(3,6),(4,6),(5,6),(5,5),(5,4),(6,4),(7,4),(8,4),(9,4),(9,5),(10,5)]
+    cell = lambda c, r, fill: f'<rect x="{c*10+1}" y="{r*10+1}" width="8" height="8" rx="1.6" fill="{fill}"/>'
+    return ('<svg class="snake-art" viewBox="0 0 160 100" aria-hidden="true">'
+            '<defs><pattern id="px" width="10" height="10" patternUnits="userSpaceOnUse">'
+            '<path d="M10 0H0V10" fill="none" stroke="rgba(255,255,255,.07)"/></pattern></defs>'
+            '<rect width="160" height="100" fill="url(#px)"/>'
+            + "".join(cell(c, r, "#58cf86") for c, r in body)
+            + cell(11, 5, "#a6f0bf") + cell(13, 5, "#ffd60a") + '</svg>')
+
+STAMP = r"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chae Kim · Product and strategy</title>
+  <meta name="description" content="Chae Kim: MBA at Berkeley Haas, co-founded Lucent, previously at EY and Tritooling. I like to build things. Let's chat.">
+  <meta property="og:title" content="Chae Kim · Product and strategy">
+  <meta property="og:description" content="MBA at Berkeley Haas. Co-founded Lucent. Previously at EY and Tritooling. I like to build things.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://chaekim-portfolio.vercel.app/">
+  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og.png">
+  <link rel="canonical" href="https://chaekim-portfolio.vercel.app/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
+  <link rel="preload" as="image" href="/assets/img/thumbs/lucent-wide.jpg">
+  <link rel="stylesheet" href="/assets/css/v-stamp.css?v=%%V%%">
+  <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Chae Woon Kim",
+    "alternateName": "Chae Kim",
+    "url": "https://chaekim-portfolio.vercel.app/",
+    "image": "https://chaekim-portfolio.vercel.app/assets/img/memoji.png",
+    "jobTitle": "MBA Candidate, UC Berkeley Haas; Co-founder & CEO, Lucent",
+    "worksFor": { "@type": "Organization", "name": "Lucent", "url": "https://trylucent.ai" },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "UC Berkeley, Haas School of Business" },
+      { "@type": "CollegeOrUniversity", "name": "Indiana University Bloomington" }
+    ],
+    "sameAs": ["https://www.linkedin.com/in/chaekim/", "https://github.com/chaekim96", "https://medium.com/@chaewoonkim"]
+  }
+  </script>
+</head>
+<body class="v v-stamp">
+  <a class="skip" href="#main">Skip to content</a>
+  %%INK%%
+  <div class="aurora" aria-hidden="true"></div>
+
+  <header class="top wrap">
+    <a class="seal" href="#work">%%SEAL%%</a>
+    <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </header>
+
+  <main id="main" class="wrap">
+    <section class="intro" aria-label="Introduction">
+      <h1 class="name">chae kim</h1>
+      <p class="thesis">I like to build things, from startups to card games.</p>
+      <p class="cred">MBA at Berkeley Haas. Co-founded <a href="/projects/lucent">Lucent</a>. Previously at <a href="/projects/ey">EY</a> &amp; <a href="/projects/tritooling">Tritooling</a>.<br>
+        <span class="status"><i aria-hidden="true"></i><span>Lately building <a href="#builds">TypeRace</a>, a typing race for my classmates.</span></span> <a data-user="chaewoonkim" data-domain="berkeley.edu" href="#">Let's chat</a>.</p>
+    </section>
+
+    <div class="tabs" role="tablist" aria-label="Sections">
+      <button class="tab" role="tab" id="tab-work" data-tab="work" aria-controls="work" aria-selected="true">Work</button>
+      <button class="tab" role="tab" id="tab-builds" data-tab="builds" aria-controls="builds" aria-selected="false" tabindex="-1">Builds</button>
+      <button class="tab" role="tab" id="tab-about" data-tab="about" aria-controls="about" aria-selected="false" tabindex="-1">About</button>
+    </div>
+
+    <!-- ============ WORK ============ -->
+    <section class="panel" id="work" role="tabpanel" aria-labelledby="tab-work">
+      <h2 class="visually-hidden">Work</h2>
+      <div class="grid">
+        <a class="w w--wide reveal" href="/projects/lucent">
+          <div class="stage" style="--g: var(--g-lucent)">
+            <div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>trylucent.ai</span></div><img src="/assets/img/thumbs/lucent-wide.jpg" alt="Lucent's homepage: The AI Search Console" width="1440" height="810"></div></div>
+            <span class="pill">Lucent <em>2025–26</em></span>
+          </div>
+          <h3 class="w-title">Making small businesses visible in AI search.</h3>
+          <p class="meta">AI search observability platform and consultancy. <b>First paying pilot, 5 LOIs in 30 days.</b></p>
+        </a>
+
+        <a class="w reveal" href="/projects/ey">
+          <div class="stage" style="--g: var(--g-ey)">
+            <div class="art"><div class="glass"><b>Cloud</b><span>migration program</span></div></div>
+            <span class="pill">EY <em>2021–24</em></span>
+          </div>
+          <h3 class="w-title">Giving leaders one clear view of a sprawling cloud migration.</h3>
+          <p class="meta">Risk, OKRs, and the first executive QBR for a $200M+ cloud migration. <b>−30% executive escalations.</b></p>
+        </a>
+
+        <a class="w reveal" href="/projects/tritooling">
+          <div class="stage" style="--g: var(--g-tri)">
+            <div class="art"><div class="glass"><b>Factory</b><span>operations</span></div></div>
+            <span class="pill">Tritooling <em>2024–25</em></span>
+          </div>
+          <h3 class="w-title">Fixing late deliveries and defects at a precision manufacturer.</h3>
+          <p class="meta">A year running operations at a precision manufacturer. <b>−30% defects.</b></p>
+        </a>
+
+        <a class="w reveal" href="/projects/mirrorme">
+          <div class="stage" style="--g: var(--g-mirror)">
+            <div class="art"><div class="fan"><img src="/assets/img/projects/mirrorme/card-category.png" alt="MirrorMe card: Openness to experience, pink" width="714" height="1000" loading="lazy"><img src="/assets/img/projects/mirrorme/card-alt.png" alt="MirrorMe card: Openness to experience, orange" width="733" height="1000" loading="lazy"></div></div>
+            <span class="pill">MirrorMe <em>2024</em></span>
+          </div>
+          <h3 class="w-title">Icebreakers that go deeper without getting awkward.</h3>
+          <p class="meta">An icebreaker card game for hosts. <b>150+ pre-orders, $0 ad spend.</b></p>
+        </a>
+
+        <a class="w reveal" href="/projects/mobility">
+          <div class="stage" style="--g: var(--g-mobility)">
+            <div class="art"><div class="glass glass--status"><b>Stealth</b><span><i aria-hidden="true"></i>in progress</span></div></div>
+            <span class="pill">Mobility <em>now</em></span>
+          </div>
+          <h3 class="w-title">Mobility aids people aren't embarrassed to use.</h3>
+          <p class="meta">Design-forward mobility products that keep older adults independent longer.</p>
+        </a>
+      </div>
+
+      <h2 class="sub-h">Earlier, at Indiana University (2019 to 2021)</h2>
+      <div class="grid grid--5">
+        <a class="w reveal" href="/projects/iu-study-assistant">
+          <div class="stage"><div class="art fill"><img src="/assets/img/projects/iusa/home.jpg" alt="IU Study Assistant home screen" width="1400" height="720" loading="lazy"></div><span class="pill">Study Assistant</span></div>
+          <p class="meta">One place to study, not nine tabs.</p>
+        </a>
+        <a class="w reveal" href="/projects/alab">
+          <div class="stage" style="--g: linear-gradient(160deg,#eaf6fb,#d9eef7)"><div class="art fill fill--contain"><img src="/assets/img/projects/alab/cover-intro.png" alt="aLab app login screen" width="418" height="823" loading="lazy"></div><span class="pill">aLab</span></div>
+          <p class="meta">A dog bowl that rises to meet a recovering pup.</p>
+        </a>
+        <a class="w reveal" href="/projects/luc">
+          <div class="stage"><div class="art fill"><img src="/assets/img/projects/luc/mockup.jpg" alt="Pencil schematic of LUC's luggage wheels" width="1400" height="1208" loading="lazy"></div><span class="pill">LUC</span></div>
+          <p class="meta">Luggage that weighs itself before the check-in counter does.</p>
+        </a>
+        <a class="w reveal" href="/projects/ptm">
+          <div class="stage"><div class="art fill"><img src="/assets/img/projects/ptm/mockup.jpg" alt="Pencil schematic of the PTM sleep mask" width="1400" height="614" loading="lazy"></div><span class="pill">PTM</span></div>
+          <p class="meta">A sleep mask that notices your fever before you do.</p>
+        </a>
+        <a class="w reveal" href="/projects/coursera">
+          <div class="stage"><div class="art fill fill--contain"><img src="/assets/img/projects/coursera-cover.jpg" alt="Cover of the Coursera PM dossier" width="464" height="600" loading="lazy"></div><span class="pill">Coursera</span></div>
+          <p class="meta">Making online learning transferable to real careers.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ BUILDS ============ -->
+    <section class="panel" id="builds" role="tabpanel" aria-labelledby="tab-builds">
+      <h2 class="sub-h">Products</h2>
+      <div class="grid grid--3">
+        <div class="live-card reveal">
+        <a class="w" href="/projects/tally">
+          <div class="stage" style="--g: var(--g-tri)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>tally</span></div><img src="/assets/img/builds/tally.jpg" alt="Tally estimating a week of to-dos: an hour for the case memo, 30 minutes for bug reports, 3h45 in all" width="960" height="600" loading="lazy"></div></div><span class="pill">Tally <em>2026</em></span></div>
+          <h3 class="w-title">Knowing how long your to-do list will actually take.</h3>
+          <p class="meta">A note-taker where every line gets a Claude time estimate, totaled in a ledger column.</p>
+        </a>
+        %%LIVE_TALLY%%
+        </div>
+        <div class="live-card reveal">
+        <a class="w" href="/projects/palette-generator">
+          <div class="stage" style="--g: var(--g-mirror)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>palette</span></div><img src="/assets/img/builds/palette.jpg" alt="Palette Generator turning 'coffee subscription, warm and earthy' into five roles of color and a font pairing" width="960" height="600" loading="lazy"></div></div><span class="pill">Palette Generator <em>2026</em></span></div>
+          <h3 class="w-title">Brand colors and fonts for founders who aren't designers.</h3>
+          <p class="meta">Palettes that pass accessibility checks, font pairings, and what real startups use right now.</p>
+        </a>
+        %%LIVE_PALETTE_GENERATOR%%
+        </div>
+        <div class="live-card reveal">
+        <a class="w" href="/projects/typerace">
+          <div class="stage" style="--g: var(--g-lucent)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>typerace</span></div><img src="/assets/img/builds/typerace.jpg" alt="A TypeRace race in progress at 72 WPM, the progress bar halfway across" width="960" height="600" loading="lazy"></div></div><span class="pill">TypeRace <em>2026</em></span></div>
+          <h3 class="w-title">Settling who types fastest, with one link and no sign-up.</h3>
+          <p class="meta">Live races for classmates: share a code, type the same story, first to finish wins.</p>
+        </a>
+        %%LIVE_TYPERACE%%
+        </div>
+        <div class="live-card reveal">
+        <a class="w" href="/projects/networking-tracker">
+          <div class="stage" style="--g: var(--g-ey)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>networking tracker</span></div><img src="/assets/img/builds/networking-tracker.jpg" alt="Networking Tracker filtered to high-priority contacts, with demo data" width="960" height="600" loading="lazy"></div></div><span class="pill">Networking Tracker <em>2026</em></span></div>
+          <h3 class="w-title">Keeping track of every coffee chat, without sharing a thing.</h3>
+          <p class="meta">A contact tracker where Postgres row-level security keeps each person's data their own.</p>
+        </a>
+        %%LIVE_NETWORKING_TRACKER%%
+        </div>
+        <a class="w reveal" href="/projects/voiceprompter">
+          <div class="stage" style="--g: var(--g-mobility)"><div class="art fill"><img src="/assets/img/builds/voiceprompter.jpg" alt="VoicePrompter listening at word 108 of 139, with the prompter highlighting the spoken word" width="800" height="600" loading="lazy"></div><span class="pill">VoicePrompter <em>macOS</em></span></div>
+          <h3 class="w-title">Reading your notes on a call without anyone seeing them.</h3>
+          <p class="meta">A teleprompter that scrolls as you speak and stays out of Zoom, Meet, and screenshots.</p>
+        </a>
+      </div>
+
+      <h2 class="sub-h">Claude Code mods</h2>
+      <div class="grid grid--3">
+        <a class="w reveal" href="/projects/smartmodel">
+          <div class="stage" style="--g: var(--g-arcade)"><div class="art"><div class="term" aria-hidden="true"><p>SmartModel rates this medium-effort.</p><p>Which model should run it?</p><ul><li class="on">Sonnet (recommended)</li><li>Haiku</li><li>Opus</li><li>Fable</li></ul></div></div><span class="pill">SmartModel <em>Claude Code</em></span></div>
+          <h3 class="w-title">Matching each prompt to the right model, so easy work costs less.</h3>
+          <p class="meta">A hook that scores how hard a prompt is and recommends Haiku, Sonnet, Opus, or Fable. Runs in ask, auto, or block mode.</p>
+        </a>
+        <a class="w reveal" href="/projects/token-fuel">
+          <div class="stage" style="--g: var(--g-tri)"><div class="art fill"><img src="/assets/img/builds/token-fuel.jpg" alt="Token-Fuel in the menu bar at 67%, and its floating window: Good, 668.5k of 1M left, about 46 turns" width="800" height="600" loading="lazy"></div><span class="pill">Token-Fuel <em>macOS</em></span></div>
+          <h3 class="w-title">Seeing how much context is left before a session runs out.</h3>
+          <p class="meta">A floating gauge on the Claude window and a CLI status line for Claude Code and Codex.</p>
+        </a>
+        <a class="w reveal" href="/projects/code-improver">
+          <div class="stage" style="--g: var(--g-ey)"><div class="art fill"><img src="/assets/img/builds/code-improver.jpg" alt="Code Improver reviewing build-cases.py: 14 findings ordered by severity, starting with a template page that was publicly served" width="800" height="600" loading="lazy"></div><span class="pill">Code Improver <em>subagent</em></span></div>
+          <h3 class="w-title">A second reviewer that reads every file I touch.</h3>
+          <p class="meta">A custom Claude Code subagent that suggests readability, performance, and best-practice fixes.</p>
+        </a>
+      </div>
+
+      <h2 class="sub-h">AI and ML coursework</h2>
+      <div class="grid grid--3">
+        <a class="w reveal" href="/projects/personal-wiki">
+          <div class="stage" style="--g: var(--g-arcade)"><div class="art fill"><img src="/assets/img/builds/personal-wiki.jpg" alt="Obsidian graph of the wiki's linked notes" width="900" height="646" loading="lazy"></div><span class="pill">Personal Wiki <em>2026</em></span></div>
+          <h3 class="w-title">Asking my own notes questions, with no internet.</h3>
+          <p class="meta">Local Gemma via Ollama, plus hybrid retrieval over a course wiki. Runs fully offline.</p>
+        </a>
+        <a class="w reveal" href="/projects/pacman-dqn">
+          <div class="stage" style="--g: var(--g-arcade)"><div class="art fill fill--contain fill--pixel"><img src="/assets/img/builds/pacman-dqn.gif" alt="The trained agent playing Ms. Pac-Man" width="160" height="210" loading="lazy"></div><span class="pill">Pac-Man DQN <em>2026</em></span></div>
+          <h3 class="w-title">Teaching an agent to play Ms. Pac-Man by trial and error.</h3>
+          <p class="meta">A DQN agent that raised its mean evaluation score from 492 to 680.</p>
+        </a>
+        <a class="w reveal" href="/projects/custom-llm">
+          <div class="stage"><div class="art fill fill--top"><img src="/assets/img/builds/custom-llm.jpg" alt="Terminal chat with the tiny model and its odd replies" width="768" height="474" loading="lazy"></div><span class="pill">Custom LLM <em>2026</em></span></div>
+          <h3 class="w-title">Seeing how language models learn by training a tiny one.</h3>
+          <p class="meta">A nanoGPT fork trained on a laptop CPU with my own teaching corpus, scored on 48 test prompts.</p>
+        </a>
+      </div>
+
+      <h2 class="sub-h">Side quests</h2>
+      <div class="grid grid--3">
+        <a class="w reveal" href="/arcade">
+          <div class="stage" style="--g: var(--g-arcade)"><div class="art">%%SNAKE%%</div><span class="pill">Arcade <em>play</em></span></div>
+          <p class="meta">Snake and Galaga, rebuilt from memory, plus a generative lo-fi radio.</p>
+        </a>
+        <a class="w reveal" href="/projects/home-gif">
+          <div class="stage"><div class="art fill fill--pixel"><img src="/assets/img/projects/home.gif" alt="Pixel-art house at dusk" width="1067" height="600" loading="lazy"></div><span class="pill">Home <em>2020</em></span></div>
+          <p class="meta">A pixel-art GIF, made during COVID.</p>
+        </a>
+        <a class="w reveal" href="/projects/yin-yang">
+          <div class="stage"><div class="art fill"><img src="/assets/img/projects/yin-yang.gif" alt="Animated yin yang over a framed painting" width="1067" height="600" loading="lazy"></div><span class="pill">Yin Yang <em>2020</em></span></div>
+          <p class="meta">An animated illustration.</p>
+        </a>
+        <div class="w reveal">
+          <div class="stage" style="--g: var(--g-mobility)"><div class="art"><div class="glass"><b>3D</b><span>printing</span></div></div><span class="pill">3D prints</span></div>
+          <p class="meta">Keychains, organizers, and containers.</p>
+        </div>
+        <a class="w reveal" href="/assets/pdf/I308-Lime-Scooter-Poster.pdf" target="_blank" rel="noopener">
+          <div class="stage"><div class="art fill"><img src="/assets/img/projects/fake-news.jpg" alt="A phone showing a news app, held over a scooter" width="489" height="601" loading="lazy"></div><span class="pill">Poster ↗ <em>2020</em></span></div>
+          <p class="meta">A media literacy poster.</p>
+        </a>
+        <a class="w reveal" href="/assets/pdf/WMCS-Weight-Machine-Cross-Sync.pdf" target="_blank" rel="noopener">
+          <div class="stage" style="--g: var(--g-ey)"><div class="art"><div class="glass"><b>NFC</b><span>gym sets, synced</span></div></div><span class="pill">WMCS ↗ <em>2019</em></span></div>
+          <p class="meta">Weight Machine Cross Sync: log gym sets over NFC.</p>
+        </a>
+        <a class="w reveal" href="/assets/pdf/AAV-Auto-Adjusting-Volume.pdf" target="_blank" rel="noopener">
+          <div class="stage" style="--g: var(--g-tri)"><div class="art"><div class="glass"><b>dB</b><span>auto volume</span></div></div><span class="pill">AAV ↗ <em>2019</em></span></div>
+          <p class="meta">Auto-Adjusting Volume: noise-aware volume.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="panel" id="about" role="tabpanel" aria-labelledby="tab-about">
+      <div class="about">
+        <nav class="toc" aria-label="About sections">
+          <a href="#hi">Hi!</a><a href="#experience">Experience</a><a href="#off-the-clock">Off the clock</a><a href="#elsewhere">Elsewhere</a>
+        </nav>
+        <div class="about__body">
+          <section id="hi">
+            <h2>Hi, I'm Chae.</h2>
+            <div class="facts">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Berkeley, CA</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg>MBA, Berkeley Haas '27</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg>B.S. Informatics, Indiana University</span>
+            </div>
+            <p>Thirteen years growing up overseas made me curious by default. I'm happiest making things: a wireframe, a 3D print, a card game.</p>
+            <p>I've founded an NSF I-Corps AI startup, led Fortune 500 cloud programs, and run a precision manufacturer's operations. These days I build tools I'd actually use. If you're making something too, I'd love to hear about it.</p>
+            <p>I'm also writing a memoir, <em>The Treaded Path</em>, and essays on <a href="https://medium.com/@chaewoonkim" target="_blank" rel="noopener">Medium ↗</a>.</p>
+          </section>
+
+          <section id="experience">
+            <h3>Experience</h3>
+            <ul class="xp">
+              <li><b>UC Berkeley Haas</b><small>2025–27</small><span><em>MBA Candidate.</em> Merit Scholarship. Co-President, Asian Business Club (300+ members).</span></li>
+              <li><b>Lucent</b><small>2025–26</small><span><em>Co-founder &amp; CEO.</em> First paying pilot. 5 LOIs in 30 days. 100+ customer interviews. NSF I-Corps backed.</span></li>
+              <li><b>Tritooling Precision Corporation</b><small>Jul 2024–Jul 2025</small><span><em>Director of Operations, Philippines.</em> On-time delivery +15%, defects −30%. ERP make-vs-buy case approved, $100K in annual savings. Board approval to launch in Japan, a $300K+ revenue opportunity.</span></li>
+              <li><b>EY</b><small>Aug 2021–Jul 2024</small><span><em>Senior Technology Consultant, AI &amp; Data Strategy, New York.</em> Redirected $3M to priority initiatives after launching a Fortune 500 client's first QBR. $10M+ in realized savings over 2 years. −30% escalations on a $200M+ program. 90% tool adoption across 4,000 users.</span></li>
+              <li><b>Indiana University Bloomington</b><small>Class of 2021</small><span><em>B.S. Informatics, minors in HCI &amp; Entrepreneurship.</em> Dean's List. GPA 3.74.</span></li>
+              <li><b>Republic of Korea Army, Gangwon</b><small>2017–19</small><span><em>Sergeant, 2nd Artillery Brigade.</em> Ran 15 high-stakes artillery operations, leading 10 soldiers and interpreting for ROK and U.S. commanders.</span></li>
+            </ul>
+          </section>
+
+          <section id="off-the-clock">
+            <h3>Off the clock</h3>
+            <ul class="likes">
+              <li><b>3D printing</b>, design and prototyping</li>
+              <li><b>Competitive tennis</b> and latte art</li>
+              <li><b>Big Brothers Big Sisters</b> mentor, 4+ year match</li>
+            </ul>
+            <div class="photos">
+              <figure><img src="/assets/img/profile.jpg" alt="Chae waving next to an elephant in Phuket" width="1200" height="1600" loading="lazy"></figure>
+              <figure><img src="/assets/img/travel-1.jpg" alt="A pink coconut by a pool in Bali" width="900" height="1200" loading="lazy"></figure>
+              <figure><img src="/assets/img/travel-3.jpg" alt="Limestone cliffs over green water in Ha Long Bay" width="900" height="1200" loading="lazy"></figure>
+              <figure><img src="/assets/img/travel-2.jpg" alt="A boat at sunset" width="900" height="1200" loading="lazy"></figure>
+            </div>
+          </section>
+
+          <section id="elsewhere">
+            <h3>Elsewhere</h3>
+            <div class="links">
+              <a data-user="chaewoonkim" data-domain="berkeley.edu" href="#">Email</a>
+              <a href="https://www.linkedin.com/in/chaekim/" target="_blank" rel="noopener">LinkedIn ↗</a>
+              <a href="https://medium.com/@chaewoonkim" target="_blank" rel="noopener">Medium ↗</a>
+              <a href="https://github.com/chaekim96" target="_blank" rel="noopener">GitHub ↗</a>
+              <a href="/assets/pdf/chae-kim-resume.pdf">Resume (PDF)</a>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot wrap">
+    <div>
+      <a class="foot__id" href="#work">%%SEAL_SMALL%%chae kim</a>
+      <p class="clock">
+        <svg id="clock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <g class="sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g>
+          <g class="moon"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></g>
+        </svg>
+        <time id="clock"></time><span>Berkeley, CA</span>
+      </p>
+    </div>
+    <nav aria-label="Footer">
+      <a href="#work">Work</a><a href="#builds">Builds</a><a href="#about">About</a><a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
+    </nav>
+    <div class="foot__cta">
+      <b>Let's chat.</b>
+      <a data-user="chaewoonkim" data-domain="berkeley.edu" data-show href="#">chaewoonkim@berkeley.edu</a>
+      <div class="foot__small">
+        <span>Built by hand in plain HTML, between latte art attempts.</span>
+        <span><code>CHANGELOG: %%CHANGELOG%%</code></span>
+      </div>
+    </div>
+  </footer>
+
+%%LIVE_DIALOG%%
+  <script src="/assets/js/main.js?v=%%V%%"></script>
+%%LIVE_SCRIPT%%
+  <script>
+  (function () {
+    var THESIS = {
+      'work': 'I like to build things, from startups to card games.',
+      'builds': 'Tools I build for myself, then share.',
+      'about': 'Product, strategy, operations, and the occasional 3D print.'
+    };
+    var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var tabs = [].slice.call(document.querySelectorAll('.tab'));
+    var panels = [].slice.call(document.querySelectorAll('.panel'));
+    var thesis = document.querySelector('.thesis');
+    var current = null;
+
+    function show(id, opts) {
+      opts = opts || {};
+      if (!THESIS[id]) id = 'work';
+      tabs.forEach(function (t) {
+        var on = t.dataset.tab === id;
+        t.setAttribute('aria-selected', on);
+        t.tabIndex = on ? 0 : -1;
+        if (on && opts.focus) t.focus();
+      });
+      panels.forEach(function (p) { p.hidden = p.id !== id; });
+      if (current && current !== id && !reduce) {
+        thesis.classList.add('is-swapping');
+        setTimeout(function () { thesis.textContent = THESIS[id]; thesis.classList.remove('is-swapping'); }, 180);
+      } else {
+        thesis.textContent = THESIS[id];
+      }
+      current = id;
+      if (opts.scroll) document.querySelector('.tabs').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    }
+    function go(id, opts) { show(id, opts); history.replaceState(null, '', '#' + id); }
+
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { go(t.dataset.tab); });
+      t.addEventListener('keydown', function (e) {
+        var j = { ArrowRight: (i + 1) % tabs.length, ArrowLeft: (i - 1 + tabs.length) % tabs.length, Home: 0, End: tabs.length - 1 }[e.key];
+        if (j === undefined) return;
+        e.preventDefault(); go(tabs[j].dataset.tab, { focus: true });
+      });
+    });
+
+    // in-page links to a tab (footer, seal) switch tabs instead of jumping
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a[href^="#"]');
+      if (!a) return;
+      var id = a.getAttribute('href').slice(1);
+      if (THESIS[id]) { e.preventDefault(); go(id, { scroll: true }); }
+    });
+
+    // deep links: #work, #about, or a section inside About such as #experience
+    function fromHash() {
+      var h = location.hash.slice(1);
+      if (h === 'contact') h = 'elsewhere'; // old desktop-page links
+      var el = h && document.getElementById(h);
+      if (THESIS[h]) show(h);
+      else if (el && el.closest('#about')) { show('about'); requestAnimationFrame(function () { el.scrollIntoView(); }); }
+      else show('work');
+    }
+    addEventListener('hashchange', fromHash);
+    fromHash();
+
+    // local time in Berkeley, with a sun or a moon
+    var clock = document.getElementById('clock'), icon = document.getElementById('clock-icon');
+    var fmt = new Intl.DateTimeFormat('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'America/Los_Angeles' });
+    var hr = new Intl.DateTimeFormat('en-US', { hour: 'numeric', hourCycle: 'h23', timeZone: 'America/Los_Angeles' });
+    function tick() {
+      var d = new Date(), h = parseInt(hr.format(d), 10);
+      clock.textContent = fmt.format(d);
+      clock.dateTime = d.toISOString();
+      icon.dataset.night = String(h < 6 || h >= 19);
+    }
+    tick(); setInterval(tick, 30000);
+
+    // About: highlight the section in view
+    var links = [].slice.call(document.querySelectorAll('.toc a'));
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          links.forEach(function (a) { a.classList.toggle('is-active', a.getAttribute('href') === '#' + en.target.id); });
+        });
+      }, { rootMargin: '-15% 0px -70% 0px' });
+      links.forEach(function (a) { var s = document.querySelector(a.getAttribute('href')); if (s) io.observe(s); });
+    }
+  })();
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
+"""
+
+STAMP = (STAMP.replace("%%V%%", V)
+              .replace("%%INK%%", INK_DEFS)
+              .replace("%%SEAL%%", seal())
+              .replace("%%SEAL_SMALL%%", seal(label=False))
+              .replace("%%SNAKE%%", _snake())
+              .replace("%%CHANGELOG%%", STAMP_CHANGELOG)
+              .replace("%%LIVE_DIALOG%%", LIVE_DIALOG)
+              .replace("%%LIVE_SCRIPT%%", LIVE_SCRIPT)
+              .replace("%%LIVE_TALLY%%", live_button("tally"))
+              .replace("%%LIVE_PALETTE_GENERATOR%%", live_button("palette-generator"))
+              .replace("%%LIVE_TYPERACE%%", live_button("typerace"))
+              .replace("%%LIVE_NETWORKING_TRACKER%%", live_button("networking-tracker")))
+assert "%%" not in STAMP, "unreplaced token"
+
+# ----------------------------------------------------------------------------
+# Arcade page, in the same chrome as the project pages
+# ----------------------------------------------------------------------------
+
+ARCADE_PAGE = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arcade · Chae Kim</title>
+  <meta name="description" content="Snake and Galaga, rebuilt from memory, plus a generative lo-fi radio.">
+  <meta property="og:title" content="Arcade · Chae Kim">
+  <meta property="og:description" content="Snake and Galaga, rebuilt from memory, plus a generative lo-fi radio.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og.png">
+  <link rel="canonical" href="https://chaekim-portfolio.vercel.app/arcade">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{CASE_HEAD_ASSETS}
+  <link rel="stylesheet" href="/assets/css/arcade.css?v=1">
+</head>
+<body class="v v-stamp case">
+  <a class="skip" href="#main">Skip to content</a>
+{CASE_TOP}
+
+  <main id="main">
+    <section class="case-hero wrap">
+      <a class="case-hero__back" href="/#builds">← All builds</a>
+      <p class="eyebrow">side quest · arcade</p>
+      <h1 class="case-hero__title">Arcade</h1>
+      <p class="tldr">Snake and Galaga, rebuilt from memory, plus a generative lo-fi radio.</p>
+    </section>
+
+    <section class="wrap arcade" id="break">
+{ARCADE}    </section>
+  </main>
+
+{CASE_FOOT}
+{CASE_SCRIPTS}
+</body>
+</html>
+"""
+
+for name, page in (("index.html", STAMP), ("arcade.html", ARCADE_PAGE)):
+    with open(os.path.join(ROOT, name), "w", encoding="utf-8", newline="\n") as f:
+        f.write(page)
+    print("wrote", name)

@@ -50,6 +50,8 @@
 .stage.case-cover--pixel > img { image-rendering: pixelated; width: auto; height: clamp(260px, 40vw, 460px); margin: 0 auto; padding: 24px 0; box-sizing: content-box; }
 .stage.case-cover > a { transition: opacity .2s; }
 .stage.case-cover > a:hover { opacity: .94; }
+.stage.case-cover > a.live-btn { display: inline-flex; width: auto; }  /* not a full-width cover link */
+.stage.case-cover > a.live-btn:hover { opacity: 1; }
 
 /* ---------- body: quiet contents on the left, prose on the right ---------- */
 .case-body { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: clamp(24px, 6vw, 96px); padding-top: clamp(44px, 6vw, 80px); }

@@ -18,7 +18,7 @@ SITE_URL = "https://chaekim-portfolio.vercel.app"
 
 # The script name has a hyphen, so it can't be imported as a package; load the sibling module by path.
 sys.path.insert(0, str(HERE))
-from stamp_shared import CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS  # noqa: E402
+from stamp_shared import CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, LIVE_APPS, LIVE_DIALOG, LIVE_SCRIPT, live_button  # noqa: E402
 
 def confirm_tag(msg):  # visible confirm tag
     return f'<span class="confirm">[CONFIRM: {html.escape(msg)}]</span>'
@@ -59,7 +59,7 @@ SHELL = """<!DOCTYPE html>
     </section>
 
     <section class="wrap case-cover-wrap">
-      <div class="stage case-cover {cover_class}" style="--g: var(--g-{grad})">{cover}</div>
+      <div class="stage case-cover {cover_class}" style="--g: var(--g-{grad})">{cover}{live}</div>
     </section>
 
     <section class="wrap case-body">
@@ -80,7 +80,7 @@ SHELL = """<!DOCTYPE html>
   </main>
 
 {foot}
-{scripts}
+{live_dialog}{scripts}{live_script}
 </body>
 </html>
 """
@@ -477,6 +477,10 @@ def render(c, prev, nxt):
         "prev_slug": prev["slug"], "prev_title": html.escape(prev["title"]),
         "next_slug": nxt["slug"], "next_title": html.escape(nxt["title"]),
         "site_url": SITE_URL,
+        # web apps get a "Try it live" button on the cover and the dialog it opens
+        "live": live_button(c["slug"]) if c["slug"] in LIVE_APPS else "",
+        "live_dialog": LIVE_DIALOG + "\n" if c["slug"] in LIVE_APPS else "",
+        "live_script": "\n" + LIVE_SCRIPT if c["slug"] in LIVE_APPS else "",
         "head_assets": CASE_HEAD_ASSETS, "top": CASE_TOP, "foot": CASE_FOOT, "scripts": CASE_SCRIPTS,
     }
     return SHELL.format_map(fields)

@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="/assets/css/v-stamp.css?v=13">
-  <link rel="stylesheet" href="/assets/css/case-stamp.css?v=15">
+  <link rel="stylesheet" href="/assets/css/case-stamp.css?v=16">
   <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
 </head>
 <body class="v v-stamp case">
@@ -46,7 +46,7 @@
     </section>
 
     <section class="wrap case-cover-wrap">
-      <div class="stage case-cover " style="--g: var(--g-plain)"><img src="/assets/img/builds/typerace.jpg" alt="A TypeRace race in progress at 72 WPM, the progress bar halfway across" width="960" height="600"></div>
+      <div class="stage case-cover " style="--g: var(--g-plain)"><img src="/assets/img/builds/typerace.jpg" alt="A TypeRace race in progress at 72 WPM, the progress bar halfway across" width="960" height="600"><a class="live-btn" href="https://typerace.typerace.workers.dev" target="_blank" rel="noopener" data-live="https://typerace.typerace.workers.dev" data-live-title="TypeRace" data-live-note="Races here are real: a finished race posts to the weekly class leaderboard." aria-label="Try TypeRace live"><i aria-hidden="true"></i>Try it live</a></div>
     </section>
 
     <section class="wrap case-body">
@@ -109,7 +109,17 @@
       </div>
     </div>
   </footer>
+  <dialog class="live" id="live" aria-labelledby="live-title">
+    <div class="live__bar">
+      <i class="live__dot" aria-hidden="true"></i><b id="live-title">Live preview</b>
+      <a class="live__open" id="live-open" href="#" target="_blank" rel="noopener">Open in new tab ↗</a>
+      <button class="live__close" type="button" aria-label="Close live preview">×</button>
+    </div>
+    <p class="live__note" id="live-note" hidden></p>
+    <iframe id="live-frame" title="Live preview" allow="clipboard-write"></iframe>
+  </dialog>
   <script src="/assets/js/main.js?v=13"></script>
-  <script src="/assets/js/case-stamp.js?v=15"></script>
+  <script src="/assets/js/case-stamp.js?v=16"></script>
+  <script src="/assets/js/live.js?v=1" defer></script>
 </body>
 </html>

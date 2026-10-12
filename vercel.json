@@ -32,9 +32,14 @@
   ],
   "redirects": [
     {
-      "source": "/variants/stamp",
+      "source": "/variants",
       "destination": "/",
-      "permanent": false
+      "permanent": true
+    },
+    {
+      "source": "/variants/:path*",
+      "destination": "/",
+      "permanent": true
     }
   ]
 }
