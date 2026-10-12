@@ -3,7 +3,8 @@
 
 Usage:  python3 scripts/build-cases.py
 Edits:  change the CASES list below, re-run, commit the generated HTML.
-The rendered shell is also written to projects/_template.html for reference.
+The page template is SHELL below. (No rendered copy is written: everything in the
+repo is deployed, so a copy in projects/ would be a public page.)
 """
 import os, sys, html
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -452,7 +453,3 @@ for i, c in enumerate(CASES):
         f.write(html_out)
     print("wrote", c["slug"])
 
-# reference copy of the empty template
-with open(os.path.join(OUT, "_template.html"), "w") as f:
-    f.write(SHELL.replace("{", "{{").replace("}", "}}").replace("{{head_assets}}", CASE_HEAD_ASSETS).replace("{{scripts}}", CASE_SCRIPTS).replace("{{nav}}", NAV).replace("{{footer}}", FOOTER))
-print("wrote _template.html")
