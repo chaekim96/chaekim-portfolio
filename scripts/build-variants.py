@@ -897,7 +897,7 @@ STAMP = r"""<!DOCTYPE html>
           <p class="meta">A floating gauge on the Claude window and a CLI status line for Claude Code and Codex.</p>
         </a>
         <a class="w reveal" href="/projects/code-improver">
-          <div class="stage" style="--g: var(--g-ey)"><div class="art"><div class="glass"><b>Review</b><span>readability, performance</span></div></div><span class="pill">Code Improver <em>subagent</em></span></div>
+          <div class="stage" style="--g: var(--g-ey)"><div class="art fill"><img src="/assets/img/builds/code-improver.jpg" alt="Code Improver reviewing build-cases.py: 14 findings ordered by severity, starting with a template page that was publicly served" width="800" height="600" loading="lazy"></div><span class="pill">Code Improver <em>subagent</em></span></div>
           <h3 class="w-title">A second reviewer that reads every file I touch.</h3>
           <p class="meta">A custom Claude Code subagent that suggests readability, performance, and best-practice fixes.</p>
         </a>

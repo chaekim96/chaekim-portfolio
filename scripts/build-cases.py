@@ -433,7 +433,7 @@ CASES = [
     ),
     results=p("Small by design. Eight lines of configuration change how every review goes, and because it can't edit, I can run it on anything."),
     differently=p("Give it a severity ranking and permission to say \"no issues.\" Without one, a reviewer always finds something, and small nits crowd out real bugs."),
-    artifacts=p("The file above is the whole thing, verbatim."),
+    artifacts=p("The file above is the whole thing, verbatim. Below, it reviewing the script that builds this page: 14 findings, ordered by severity, and no files touched.") + "\n" + art(("/assets/img/cases/code-improver-review.jpg", "An excerpt of its review of build-cases.py. Its top finding checked out on the live site.")),
   ),
   *COURSEWORK,
 ]
