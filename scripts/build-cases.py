@@ -302,9 +302,9 @@ CASES = [
       "Led a paid pilot: multi-site SEO and AI visibility audits turned into an engineering action plan.",
       "Built the investor pitch: bottom-up SAM, phased GTM, 100+ question diligence bank.",
     ),
-    results=results(("1", "first paying pilot"), ("5", "LOIs in 30 days"), ("+50%", "discovery response rate"), ("NSF", "I-Corps backing")) + "\n" + p("The pilot became an ongoing advisory relationship. " + C("any usage or revenue metric you're comfortable sharing")),
+    results=results(("1", "first paying pilot"), ("5", "LOIs in 30 days"), ("+50%", "discovery response rate"), ("NSF", "I-Corps backing")) + "\n" + p("The pilot became an ongoing advisory relationship."),
     differently=p("Lock the GTM motion earlier. Investors flagged it as the biggest gap. Positioning tests and pilots should have run in parallel, not in sequence."),
-    artifacts=art(("", "artifact image: product screenshot (no client data)"), ("", "artifact image: pitch deck excerpt, e.g. SAM or GTM slide")),
+    artifacts="",
   ),
   dict(slug="mobility", emoji="🦯", title="Mobility devices for older adults (stealth)",
     kicker="in progress · co-founder · stealth",
@@ -312,7 +312,7 @@ CASES = [
     badge='<span class="stealth">Stealth</span>',
     desc="Premium, design-forward mobility products that help older adults stay independent longer.",
     tldr="Premium, design-forward mobility products that help older adults stay independent longer.",
-    role="Co-founder: GTM, brand, outreach, strategy (my co-founder owns product)", team="2 co-founders", timeline=C("timeline"),
+    role="Co-founder: GTM, brand, outreach, strategy (my co-founder owns product)", team="2 co-founders", timeline="In progress",
     cover='<img src="/assets/img/thumbs/mobility-wide.jpg" alt="An older couple walking along a garden path" width="1600" height="900">', cover_class="",
     problem=p("Mobility aids look like medical equipment. Users feel stigmatized, and common designs have real safety gaps."),
     did=ul(
@@ -321,7 +321,7 @@ CASES = [
       "Built the brand-as-moat thesis and a decision framework for the first product.",
       "Set an operating cadence for a team 16 time zones apart.",
     ),
-    results=p("Early stage and in progress. Results will be added as they're shareable. " + C("anything shareable now, e.g. advisors onboarded, prototype stage")),
+    results=p("Early stage and in progress. Results will be added as they're shareable."),
     differently=p("Too early to say. This section fills in once there's a first product decision to look back on."),
     artifacts=p("None yet that don't show the mechanism."),
   ),
@@ -340,15 +340,15 @@ CASES = [
       "Prioritized every application for migration, modernization, or retirement with a value-capture framework. SVP approval, $10M+ in realized savings over 2 years.",
     ),
     results=results(("$3M", "redirected to priority initiatives"), ("−30%", "executive escalations"), ("90%", "adoption across 4,000 users"), ("$10M+", "realized savings over 2 years")) + "\n" + p("Also at EY: logistics lead for a Fortune 500 consumer foods client (forecast accuracy +10% YoY), data architect on an internal initiative, and an internal AI adoption campaign that drove 200%+ usage across 5 user segments. Earlier: recovered $5M in pricing and mix leakage for a Fortune 500 software client, and re-architected Agile workflows for 25+ engineering teams."),
-    differently=p(C("what you'd do differently")),
-    artifacts=art(("", "artifact image: sanitized QBR or OKR dashboard excerpt")),
+    differently="",
+    artifacts="",
   ),
   dict(slug="mirrorme", emoji="🃏", title="MirrorMe",
     kicker="more work · co-founder, GTM · 2024",
     heading="Icebreakers that go deeper without getting awkward.",
     desc="An icebreaker card game for people who host. 150+ pre-launch purchase commitments with zero paid budget.",
     tldr="An icebreaker card game for hosts. 150+ pre-launch commitments at $30 to 40, with zero paid budget.",
-    role="Co-founder, led GTM", team="2 co-founders", timeline="2024 " + C("exact months"),
+    role="Co-founder, led GTM", team="2 co-founders", timeline="2024",
     cover='<img src="/assets/img/thumbs/mirrorme-wide.jpg" alt="MirrorMe question card" width="1600" height="900">', cover_class="",
     problem=p("Hosts want guests to actually talk. Most icebreakers are too shallow to matter or too intense for near-strangers."),
     did=ul(
@@ -357,7 +357,7 @@ CASES = [
       "Skipped paid channels. Sold in person at card game cafes and social events in New York. 50+ decks sold.",
     ),
     results=results(("150+", "pre-launch purchase commitments"), ("$30 to 40", "price point"), ("$0", "paid budget"), ("50+", "decks sold")) + "\n" + p("Insight: it sold itself in rooms where people already wanted to connect. Venue partnerships became the channel."),
-    differently=p(C("what you'd do differently")),
+    differently="",
     artifacts=art(("/assets/img/projects/mirrorme/card-category.png", "Category card"), ("/assets/img/projects/mirrorme/card-question.png", "Question card"), ("/assets/img/projects/mirrorme/card-rules.jpg", "Setup and rules card"), ("/assets/img/projects/mirrorme/card-alt.png", "Alternative card design")),
   ),
   dict(slug="tritooling", emoji="🏭", title="Tritooling",
@@ -374,8 +374,8 @@ CASES = [
       "Benchmarked pricing and expansion potential across 5 APAC countries. Secured board approval to launch in Japan, a $300K+ revenue opportunity.",
     ),
     results=results(("+15%", "on-time delivery"), ("−30%", "defects"), ("$100K", "annual savings (ERP make-vs-buy)"), ("$300K+", "revenue opportunity, board-approved Japan launch")),
-    differently=p(C("what you'd do differently")),
-    artifacts=art(("", "artifact image: sanitized dashboard or shop-floor photo")),
+    differently="",
+    artifacts="",
   ),
   *PRODUCTS,
   dict(slug="smartmodel", emoji="🧭", title="SmartModel",
@@ -396,7 +396,7 @@ CASES = [
     ),
     results=results(("66", "prompts scored across 18 sessions"), ("15", "flagged as Haiku-sized"), ("44", "flagged as Sonnet-sized"), ("35", "non-prompts correctly skipped")) + "\n" + p("59 of those 66 prompts arrived in a session running Opus. Each Haiku or Sonnet recommendation was a chance to do the same work for less."),
     differently=p("Score the work, not the wording. A keyword heuristic reads a short request that mentions git as a chore, even when it means building three pages. Next: let Haiku classify (the hook already supports it when an API key is set) and log which model I actually pick, so the thresholds learn from my overrides."),
-    artifacts=p("Not published yet. It lives in my own Claude Code setup as a hook, a small config file, a README, and the decision log. The picker above is a capture of what it shows."),
+    artifacts=links(("Source on GitHub", "https://github.com/chaekim96/smartmodel")) + "\n" + p("A hook, a small config file, a README, and the decision log. The picker above is a capture of what it shows."),
   ),
   dict(slug="token-fuel", emoji="⛽", title="Token-Fuel",
     kicker="claude code mod · macOS app · 2026",
@@ -415,7 +415,7 @@ CASES = [
     ),
     results=results(("2", "tools gauged from exact logs"), ("2 sec", "refresh, near 0% CPU"), ("~40MB", "memory"), ("12", "turns charted per session")) + "\n" + p("Checked against the logs themselves: the numbers match what each tool records."),
     differently=p("Write the acceptance checks before the build. One rebuild looked done but wasn't. The menu-bar icon hid behind the MacBook notch, the window never updated, and it counted output tokens as context. A checklist drawn from the milestones would have caught all of it on day one."),
-    artifacts=p("Not published yet. A native Swift app with a README that records every milestone: what changed, why, and the tradeoff.") + art(("/assets/img/builds/token-fuel.jpg", "Running on my Mac: the menu-bar gauge at 67%, and the floating window for this session.")),
+    artifacts=links(("Source on GitHub", "https://github.com/chaekim96/token-fuel")) + "\n" + p("A native Swift app with a README that records every milestone: what changed, why, and the tradeoff.") + "\n" + art(("/assets/img/builds/token-fuel.jpg", "Running on my Mac: the menu-bar gauge at 67%, and the floating window for this session.")),
   ),
   dict(slug="code-improver", emoji="🔍", title="Code Improver",
     kicker="claude code mod · subagent · 2026",
@@ -445,6 +445,9 @@ for i, c in enumerate(CASES):
     is_build = c in PRODUCTS or c in COURSEWORK or c["slug"] in ("smartmodel", "token-fuel", "code-improver")
     html_out = SHELL.format(head_assets=CASE_HEAD_ASSETS, scripts=CASE_SCRIPTS, grad=GRAD.get(c["slug"], "plain"), nav=NAV, footer=FOOTER, badge=c.get("badge", ""), back_href="/#builds" if is_build else "/#work", back_label="All builds" if is_build else "All work",
         desc=html.escape(c["desc"], quote=True), prev_slug=prev["slug"], prev_title=prev["title"], next_slug=nxt["slug"], next_title=nxt["title"], **{k: v for k, v in c.items() if k not in ("desc", "badge")})
+    for key, anchor, label in (("differently", "differently", "What I'd do differently"), ("artifacts", "artifacts", "Artifacts")):
+        if not c.get(key, "").strip():
+            html_out = html_out.replace(f'        <a href="#{anchor}">{label}</a>\n', "").replace(f'        <h2 id="{anchor}">{label}</h2>\n\n', "")
     with open(os.path.join(OUT, c["slug"] + ".html"), "w") as f:
         f.write(html_out)
     print("wrote", c["slug"])

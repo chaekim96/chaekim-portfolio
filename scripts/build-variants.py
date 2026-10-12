@@ -155,7 +155,7 @@ CONTACT_LINKS = """            <a class="btn btn--primary" data-user="chaewoonki
 
 EMAIL = '<a class="em" data-user="chaewoonkim" data-domain="berkeley.edu" data-show href="#">chaewoonkim@berkeley.edu</a>'
 MEDIUM = '<a class="em" href="https://medium.com/@chaewoonkim" target="_blank" rel="noopener">Medium ↗</a>'
-CONFIRM_IU = '<span class="confirm">[CONFIRM: start year]</span>'
+CONFIRM_IU = ''
 
 def tail(current):
     return f"""{switcher(current)}  <script src="/assets/js/main.js?v={V}"></script>
@@ -981,7 +981,7 @@ STAMP = r"""<!DOCTYPE html>
               <li><b>Lucent</b><small>2025–26</small><span><em>Co-founder &amp; CEO.</em> First paying pilot. 5 LOIs in 30 days. 100+ customer interviews. NSF I-Corps backed.</span></li>
               <li><b>Tritooling Precision Corporation</b><small>Jul 2024–Jul 2025</small><span><em>Director of Operations, Philippines.</em> On-time delivery +15%, defects −30%. ERP make-vs-buy case approved, $100K in annual savings. Board approval to launch in Japan, a $300K+ revenue opportunity.</span></li>
               <li><b>EY</b><small>Aug 2021–Jul 2024</small><span><em>Senior Technology Consultant, AI &amp; Data Strategy, New York.</em> Redirected $3M to priority initiatives after launching a Fortune 500 client's first QBR. $10M+ in realized savings over 2 years. −30% escalations on a $200M+ program. 90% tool adoption across 4,000 users.</span></li>
-              <li><b>Indiana University Bloomington</b><small>Class of 2021</small><span><em>B.S. Informatics, minors in HCI &amp; Entrepreneurship.</em> Dean's List. GPA 3.74. <span class="confirm">[CONFIRM: start year]</span></span></li>
+              <li><b>Indiana University Bloomington</b><small>Class of 2021</small><span><em>B.S. Informatics, minors in HCI &amp; Entrepreneurship.</em> Dean's List. GPA 3.74.</span></li>
               <li><b>Republic of Korea Army, Gangwon</b><small>2017–19</small><span><em>Sergeant, 2nd Artillery Brigade.</em> Ran 15 high-stakes artillery operations, leading 10 soldiers and interpreting for ROK and U.S. commanders.</span></li>
             </ul>
           </section>
