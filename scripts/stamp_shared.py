@@ -43,6 +43,7 @@ LIVE_APPS = {
     "tally": ("Tally", "https://tally-lake-seven.vercel.app", ""),
     "palette-generator": ("Palette Generator", "https://color-palette-generator-three-sand.vercel.app", ""),
     "typerace": ("TypeRace", "https://typerace.typerace.workers.dev", "Races here are real: a finished race posts to the weekly class leaderboard."),
+    "web-anatomy": ("Anatomy of a Website", "https://webanatomy.vercel.app", ""),
     "networking-tracker": ("Networking Tracker", "https://networking-tracker-five-sage.vercel.app", "Some browsers block signing in inside a frame. If it won't let you in, open it in a new tab."),
 }
 
