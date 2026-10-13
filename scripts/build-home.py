@@ -259,6 +259,14 @@ STAMP = r"""<!DOCTYPE html>
         </a>
         %%LIVE_NETWORKING_TRACKER%%
         </div>
+        <div class="live-card reveal">
+        <a class="w" href="/projects/web-anatomy">
+          <div class="stage" style="--g: var(--g-arcade)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>webanatomy</span></div><img src="/assets/img/builds/web-anatomy.jpg" alt="The Anatomy of a Website home page: the title, the line SEO and GEO start with the website, and the start of the journey of a request" width="960" height="600" loading="lazy"></div></div><span class="pill">Anatomy of a Website <em>2026</em></span></div>
+          <h3 class="w-title">Showing how a website works, from the DNS lookup to the AI answer.</h3>
+          <p class="meta">An illustrated encyclopedia on one idea: SEO and GEO start with the website.</p>
+        </a>
+        %%LIVE_WEB_ANATOMY%%
+        </div>
         <a class="w reveal" href="/projects/voiceprompter">
           <div class="stage" style="--g: var(--g-mobility)"><div class="art fill"><img src="/assets/img/builds/voiceprompter.jpg" alt="VoicePrompter listening at word 108 of 139, with the prompter highlighting the spoken word" width="800" height="600" loading="lazy"></div><span class="pill">VoicePrompter <em>macOS</em></span></div>
           <h3 class="w-title">Reading your notes on a call without anyone seeing them.</h3>
@@ -529,7 +537,8 @@ STAMP = (STAMP.replace("%%V%%", V)
               .replace("%%LIVE_TALLY%%", live_button("tally"))
               .replace("%%LIVE_PALETTE_GENERATOR%%", live_button("palette-generator"))
               .replace("%%LIVE_TYPERACE%%", live_button("typerace"))
-              .replace("%%LIVE_NETWORKING_TRACKER%%", live_button("networking-tracker")))
+              .replace("%%LIVE_NETWORKING_TRACKER%%", live_button("networking-tracker"))
+              .replace("%%LIVE_WEB_ANATOMY%%", live_button("web-anatomy")))
 assert "%%" not in STAMP, "unreplaced token"
 
 # ----------------------------------------------------------------------------
