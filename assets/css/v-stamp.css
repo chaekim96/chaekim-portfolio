@@ -403,3 +403,4 @@ html.live-open { overflow: hidden; }
 .path li:last-child { border-bottom: 1px solid var(--line); }
 .path b { font-weight: 500; color: var(--ink); }
 @media (max-width: 420px) { .path li { grid-template-columns: minmax(0, 1fr); gap: 2px; } }
+.notes__cap a { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
