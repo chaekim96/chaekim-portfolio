@@ -427,12 +427,12 @@ STAMP = r"""<!DOCTYPE html>
             <div><i style="background:linear-gradient(135deg,#f3f0ff 0%,#fafafd 50%,#eef5ff 100%)"></i><span>Page wash, light: <code>#f3f0ff</code> 0%, <code>#fafafd</code> 50%, <code>#eef5ff</code> 100%, 135 degrees</span></div>
             <div><i style="background:linear-gradient(135deg,#1a1530 0%,#0b0b0c 50%,#0c1322 100%)"></i><span>Page wash, dark: <code>#1a1530</code>, <code>#0b0b0c</code>, <code>#0c1322</code></span></div>
           </div>
-          <p>Each project sits on its own soft gradient stage, so the work supplies the color. <span class="confirm">[CONFIRM: draft reason for the lavender-to-sky gradient and for keeping chrome neutral, in Chae's words]</span></p>
+          <p>Each project sits on its own soft gradient stage, so the work supplies the color. Everything else stays neutral. The lavender-to-sky wash adds warmth without a brand color shouting, feels light and airy, and keeps the black and white from my brand exploration from feeling stark.</p>
         </div>
 
         <div>
           <h3>One typeface, Poppins, set mostly at regular weight</h3>
-          <p class="notes__cap">400, 500 and 600 are loaded. I kept Poppins instead of switching to the SF system font. <span class="confirm">[CONFIRM: draft: why Poppins over SF]</span></p>
+          <p class="notes__cap">400, 500 and 600 are loaded. I kept Poppins instead of switching to the SF system font. Its round, geometric letters feel friendly, not corporate. One family everywhere keeps the focus on the work, and it has carried every version of this site.</p>
           <div class="spec">
             <p class="spec__a">chae kim</p>
             <p class="spec__b">Making small businesses visible in AI search.</p>
@@ -472,7 +472,7 @@ STAMP = r"""<!DOCTYPE html>
             <li><b>Sept 2026</b>Rebuilt as a macOS desktop, inspired by renee.wiki. Then an Apple HIG layer, with Poppins kept over SF.</li>
             <li><b>Oct 4</b>A quiet, artifact-first page inspired by liumichelle.com. That became Stamp.</li>
             <li><b>Oct 8 to 9</b>A brand exploration: five directions, narrowed to two built finalists. Ink was monochrome with brush calligraphy. Desktop Craft was Apple polish.</li>
-            <li><b>Oct 12</b>Stamp became the whole site. The other designs were retired. <span class="confirm">[CONFIRM: draft: why Stamp won over Ink and Desktop Craft]</span></li>
+            <li><b>Oct 12</b>Stamp became the whole site. The other designs were retired. Stamp is quieter, and you can find the work in one scroll instead of opening windows.</li>
           </ol>
         </div>
       </div>
