@@ -404,3 +404,8 @@ html.live-open { overflow: hidden; }
 .path b { font-weight: 500; color: var(--ink); }
 @media (max-width: 420px) { .path li { grid-template-columns: minmax(0, 1fr); gap: 2px; } }
 .notes__cap a { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.brandart { display: flex; align-items: center; justify-content: center; gap: 28px; height: 100%; }
+.brandart .cal--card { width: 64px; }
+.brandart__sw { display: flex; flex-direction: column; gap: 6px; }
+.brandart__sw i { display: block; width: 120px; height: 18px; border-radius: 6px; box-shadow: inset 0 0 0 1px var(--line); }
+.path a { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }

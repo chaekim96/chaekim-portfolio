@@ -11,7 +11,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
-V = "16"
+V = "17"
 
 # ----------------------------------------------------------------------------
 # Arcade: Snake, Galaga and a generative lo-fi radio. main.js loads arcade.js
@@ -318,6 +318,10 @@ STAMP = r"""<!DOCTYPE html>
           <div class="stage" style="--g: var(--g-lucent)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>chaekim.vercel.app</span></div><img src="/assets/img/builds/portfolio-card.jpg" alt="This site's homepage" width="960" height="600" loading="lazy"></div></div><span class="pill">This portfolio <em>2026</em></span></div>
           <p class="meta">How this site got built: the decisions, the backlog, and what's next.</p>
         </a>
+        <a class="w reveal" href="/projects/personal-brand">
+          <div class="stage" style="--g: var(--g-plain)"><div class="art"><div class="brandart">%%BRANDSEAL%%<span class="brandart__sw"><i style="background:#C8372D"></i><i style="background:#FF5A1F"></i><i style="background:#B07A4F"></i><i style="background:#0066CC"></i><i style="background:#123B2E"></i></span></div></div><span class="pill">Personal brand <em>2026</em></span></div>
+          <p class="meta">How I chose a brand: five directions, two built finalists, and why Stamp won.</p>
+        </a>
         <a class="w reveal" href="/arcade">
           <div class="stage" style="--g: var(--g-arcade)"><div class="art">%%SNAKE%%</div><span class="pill">Arcade <em>play</em></span></div>
           <p class="meta">Snake and Galaga, rebuilt from memory, plus a generative lo-fi radio.</p>
@@ -475,7 +479,7 @@ STAMP = r"""<!DOCTYPE html>
             <li><b>2021</b>An IU portfolio built for class.</li>
             <li><b>Sept 2026</b>Rebuilt as a macOS desktop, inspired by renee.wiki. Then an Apple HIG layer, with Poppins kept over SF.</li>
             <li><b>Oct 4</b>A quiet, artifact-first page inspired by liumichelle.com. That became Stamp.</li>
-            <li><b>Oct 8 to 9</b>A brand exploration: five directions, narrowed to two built finalists. Ink was monochrome with brush calligraphy. Desktop Craft was Apple polish.</li>
+            <li><b>Oct 8 to 9</b>A brand exploration: five directions, narrowed to two built finalists. Ink was monochrome with brush calligraphy. Desktop Craft was Apple polish. <a href="/projects/personal-brand">Read the brand decision log</a>.</li>
             <li><b>Oct 12</b>Stamp became the whole site. The other designs were retired. Stamp is quieter, and you can find the work in one scroll instead of opening windows.</li>
           </ol>
           <p class="notes__cap" style="margin-top:14px"><a href="/projects/portfolio">Read the full decision log: how this site was built</a></p>
@@ -606,6 +610,7 @@ STAMP = r"""<!DOCTYPE html>
 
 STAMP = (STAMP.replace("%%V%%", V)
               .replace("%%INK%%", INK_DEFS)
+              .replace("%%BRANDSEAL%%", seal("cal--card", label=False))
               .replace("%%SEAL%%", seal())
               .replace("%%SEAL_SMALL%%", seal(label=False))
               .replace("%%SNAKE%%", _snake())
