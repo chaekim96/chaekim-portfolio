@@ -1,6 +1,6 @@
 # Drafts (not deployed: `drafts/` is in .vercelignore)
 
-## personal-brand.html — "Choosing a brand by owning what I already am"
+## personal-brand.html · "Choosing a brand by owning what I already am"
 
 Rebuilt in the Stamp look (loads `v-stamp.css` and `case-stamp.css`). Still held back
 from the live site. What remains before it can go live:
