@@ -133,3 +133,21 @@
 .prose h2:has(+ .artifacts > .ph:only-child) + .artifacts { display: none; }
 .case-body:has(.artifacts > .ph:only-child) .toc a[href="#artifacts"] { display: none; }
 
+
+/* ---------- /projects/portfolio: decision log and backlog ---------- */
+.prose ol.log { list-style: none; padding-left: 0; gap: 22px; margin-top: 16px; }
+.prose ol.log li { display: grid; grid-template-columns: 64px minmax(0, 1fr); column-gap: 18px; padding-left: 0; }
+.log time { grid-row: span 2; font-size: 13px; color: var(--ink-2); padding-top: 2px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.log b { color: var(--ink); font-weight: 500; }
+.log p { margin-top: 2px; }
+@media (max-width: 520px) { .prose ol.log li { grid-template-columns: minmax(0, 1fr); } .log time { grid-row: auto; padding-top: 0; } }
+.prose ul.backlog { gap: 10px; }
+.prose ul.backlog li { display: flex; align-items: baseline; gap: 10px; padding-left: 0; }
+.prose ul.backlog li::before { content: none; }
+.prose ul.backlog em { font-style: normal; color: var(--ink-2); opacity: .8; font-size: 13px; margin-left: 4px; white-space: nowrap; }
+.chip { flex: none; display: inline-block; min-width: 46px; text-align: center; padding: 2px 8px; border-radius: 999px; font-size: 12px; font-weight: 500; color: var(--ink); background: var(--fill); }
+.chip--done { color: #1d6b3a; background: rgba(48, 177, 88, .14); }
+.chip--idea { color: #4b3fa6; background: rgba(120, 100, 230, .13); }
+:root[data-theme="dark"] .chip--done { color: #7fdc9f; background: rgba(48, 177, 88, .18); }
+:root[data-theme="dark"] .chip--idea { color: #b9adff; background: rgba(140, 120, 255, .2); }
+.prose .updated { margin-top: 28px; font-size: 13px; }

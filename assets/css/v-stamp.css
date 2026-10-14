@@ -292,6 +292,7 @@ a.w:hover .swatches i:nth-child(3) { flex: 1.8; }
 .foot__cta a:hover { color: var(--ink); }
 .foot__small { margin-top: 18px; display: grid; gap: 2px; font-size: 12.5px; color: var(--ink-2); }
 .foot__small code { font: inherit; letter-spacing: .04em; }
+.foot__small a { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 
 /* ---------- entrance ---------- */
 @media (prefers-reduced-motion: no-preference) {
