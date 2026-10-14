@@ -30,8 +30,8 @@ INK_DEFS = ('<svg width="0" height="0" style="position:absolute" aria-hidden="tr
 # ---------------------------------------------------------------------------
 # Case-page chrome (project pages in the Stamp look)
 # ---------------------------------------------------------------------------
-CASE_CSS_V = "16"   # bump when assets/css/case-stamp.css changes
-STAMP_CSS_V = "14"  # v-stamp.css version, kept in step with the homepage
+CASE_CSS_V = "17"   # bump when assets/css/case-stamp.css changes
+STAMP_CSS_V = "15"  # v-stamp.css version, kept in step with the homepage
 JS_V = "13"
 LIVE_V = "1"  # bump when assets/js/live.js changes
 
@@ -105,7 +105,7 @@ CASE_FOOT = f"""  <footer class="foot wrap">
       <b>Let's chat.</b>
       <a data-user="chaewoonkim" data-domain="berkeley.edu" data-show href="#">chaewoonkim@berkeley.edu</a>
       <div class="foot__small">
-        <span>Built by hand in plain HTML, between latte art attempts.</span>
+        <span><a href="/projects/portfolio">Built by hand in plain HTML</a>, between latte art attempts.</span>
       </div>
     </div>
   </footer>"""
