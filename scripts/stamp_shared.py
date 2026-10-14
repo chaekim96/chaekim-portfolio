@@ -31,7 +31,7 @@ INK_DEFS = ('<svg width="0" height="0" style="position:absolute" aria-hidden="tr
 # Case-page chrome (project pages in the Stamp look)
 # ---------------------------------------------------------------------------
 CASE_CSS_V = "17"   # bump when assets/css/case-stamp.css changes
-STAMP_CSS_V = "15"  # v-stamp.css version, kept in step with the homepage
+STAMP_CSS_V = "16"  # v-stamp.css version, kept in step with the homepage
 JS_V = "13"
 LIVE_V = "1"  # bump when assets/js/live.js changes
 
