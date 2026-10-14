@@ -11,7 +11,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
-V = "13"
+V = "14"
 
 # ----------------------------------------------------------------------------
 # Arcade: Snake, Galaga and a generative lo-fi radio. main.js loads arcade.js
@@ -401,6 +401,79 @@ STAMP = r"""<!DOCTYPE html>
               <a href="/assets/pdf/chae-kim-resume.pdf">Resume (PDF)</a>
             </div>
           </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DESIGN NOTES ============ -->
+    <section class="notes" id="design-notes" aria-labelledby="notes-h">
+      <h2 id="notes-h">How this page is put together</h2>
+      <p class="notes__lede">Quiet, one typeface, real work as the picture.</p>
+
+      <div class="notes__grid">
+        <div>
+          <h3>Color follows the content, so the page stays neutral</h3>
+          <p class="notes__cap">Light, then dark. Tokens from <code>v-stamp.css</code>.</p>
+          <ul class="swl">
+            <li><span class="sw"><i style="background:#161618"></i><i style="background:#f5f5f7"></i></span><span class="swl__t"><b>ink</b> text</span><span class="swl__h"><code>#161618</code> / <code>#f5f5f7</code></span></li>
+            <li><span class="sw"><i style="background:#6e6e73"></i><i style="background:#a1a1a6"></i></span><span class="swl__t"><b>ink-2</b> secondary text</span><span class="swl__h"><code>#6e6e73</code> / <code>#a1a1a6</code></span></li>
+            <li><span class="sw"><i style="background:#ffffff"></i><i style="background:#0b0b0c"></i></span><span class="swl__t"><b>bg</b> page</span><span class="swl__h"><code>#ffffff</code> / <code>#0b0b0c</code></span></li>
+            <li><span class="sw"><i style="background:rgba(0,0,0,.08)"></i><i style="background:rgba(255,255,255,.10)"></i></span><span class="swl__t"><b>line</b> hairlines</span><span class="swl__h"><code>rgba(0,0,0,.08)</code> / <code>rgba(255,255,255,.10)</code></span></li>
+            <li><span class="sw"><i style="background:rgba(0,0,0,.05)"></i><i style="background:rgba(255,255,255,.08)"></i></span><span class="swl__t"><b>fill</b> active tab, hover</span><span class="swl__h"><code>rgba(0,0,0,.05)</code> / <code>rgba(255,255,255,.08)</code></span></li>
+            <li><span class="sw"><i style="background:#0a66d6"></i><i style="background:#4ea1ff"></i></span><span class="swl__t"><b>link</b> active link</span><span class="swl__h"><code>#0a66d6</code> / <code>#4ea1ff</code></span></li>
+            <li><span class="sw"><i style="background:#30b158"></i><i style="background:#30b158"></i></span><span class="swl__t"><b>ok</b> live status dot</span><span class="swl__h"><code>#30b158</code> / <code>#30b158</code></span></li>
+          </ul>
+          <div class="grads">
+            <div><i style="background:linear-gradient(135deg,#f3f0ff 0%,#fafafd 50%,#eef5ff 100%)"></i><span>Page wash, light: <code>#f3f0ff</code> 0%, <code>#fafafd</code> 50%, <code>#eef5ff</code> 100%, 135 degrees</span></div>
+            <div><i style="background:linear-gradient(135deg,#1a1530 0%,#0b0b0c 50%,#0c1322 100%)"></i><span>Page wash, dark: <code>#1a1530</code>, <code>#0b0b0c</code>, <code>#0c1322</code></span></div>
+          </div>
+          <p>Each project sits on its own soft gradient stage, so the work supplies the color. <span class="confirm">[CONFIRM: draft reason for the lavender-to-sky gradient and for keeping chrome neutral, in Chae's words]</span></p>
+        </div>
+
+        <div>
+          <h3>One typeface, Poppins, set mostly at regular weight</h3>
+          <p class="notes__cap">400, 500 and 600 are loaded. I kept Poppins instead of switching to the SF system font. <span class="confirm">[CONFIRM: draft: why Poppins over SF]</span></p>
+          <div class="spec">
+            <p class="spec__a">chae kim</p>
+            <p class="spec__b">Making small businesses visible in AI search.</p>
+            <p class="spec__c">Product, strategy, operations, and the occasional 3D print.</p>
+            <p class="spec__d">Aa Bb Cc 0123456789</p>
+          </div>
+          <table class="scale">
+            <tr><td>Name</td><td>500 · 28 to 34px · -0.025em</td></tr>
+            <tr><td>Section title</td><td>500 · 22px · -0.02em</td></tr>
+            <tr><td>Project headline</td><td>500 · 17px</td></tr>
+            <tr><td>Body</td><td>400 · 16px / 1.55</td></tr>
+            <tr><td>Notes</td><td>400 · 14px</td></tr>
+          </table>
+          <p>The only other letters are the 김채운 strip at the top. It is brushed with East Sea Dokdo outlines drawn inline, so it costs no font download.</p>
+        </div>
+
+        <div>
+          <h3>Pages you explore, with the work as the picture</h3>
+          <ul class="bul">
+            <li>Pill tabs for Work, Builds and About, routed by the URL hash.</li>
+            <li>Every project is a framed artifact: a real screenshot, a card, a gauge.</li>
+            <li>A live Berkeley clock and a day or night icon in the footer.</li>
+            <li>Light and dark themes, saved in the browser.</li>
+          </ul>
+          <p class="notes__cap" style="margin-top:18px">Shapes and motion</p>
+          <ul class="bul">
+            <li>Cards 24px radius. Content width 1200px.</li>
+            <li>Hover easing <code>cubic-bezier(.32, .72, 0, 1)</code>.</li>
+            <li>Frosted blur on small tiles only. Everything else is a plain surface with a hairline.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>How I got here</h3>
+          <ol class="path">
+            <li><b>2021</b>An IU portfolio built for class.</li>
+            <li><b>Sept 2026</b>Rebuilt as a macOS desktop, inspired by renee.wiki. Then an Apple HIG layer, with Poppins kept over SF.</li>
+            <li><b>Oct 4</b>A quiet, artifact-first page inspired by liumichelle.com. That became Stamp.</li>
+            <li><b>Oct 8 to 9</b>A brand exploration: five directions, narrowed to two built finalists. Ink was monochrome with brush calligraphy. Desktop Craft was Apple polish.</li>
+            <li><b>Oct 12</b>Stamp became the whole site. The other designs were retired. <span class="confirm">[CONFIRM: draft: why Stamp won over Ink and Desktop Craft]</span></li>
+          </ol>
         </div>
       </div>
     </section>
