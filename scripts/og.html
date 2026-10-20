@@ -1,100 +1,43 @@
 <!DOCTYPE html>
+<!-- Link-preview card (1200x630). Render: sh scripts/make-og.sh -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>OG card</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=block">
 <style>
-  /* Social card, 1200x630. Rendered by scripts/make-og.sh with headless Chrome.
-     Mirrors the site: cloud sky, one macOS window, Apple materials and color. */
-  * { box-sizing: border-box; margin: 0; }
-  :root {
-    --label: #1c1c1e;
-    --label-2: rgba(60, 60, 67, 0.72);
-    --label-3: rgba(60, 60, 67, 0.75);
-    --separator: rgba(60, 60, 67, 0.16);
-    --accent: #0063d8;
-    --marker: rgba(255, 214, 10, 0.55);
-  }
-  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
   body {
-    font-family: Poppins, system-ui, sans-serif;
-    color: var(--label);
-    display: grid; place-items: center;
-    background:
-      radial-gradient(90% 70% at 18% 12%, #ffffff 0%, transparent 55%),
-      radial-gradient(70% 60% at 82% 82%, #dbe7ff 0%, transparent 60%),
-      linear-gradient(170deg, #eef4ff 0%, #f7faff 52%, #ffffff 100%);
+    font-family: Poppins, system-ui, sans-serif; color: #161618; -webkit-font-smoothing: antialiased;
+    background: linear-gradient(135deg, #f3f0ff 0%, #fafafd 50%, #eef5ff 100%);
     position: relative;
   }
-  /* soft cloud puffs, echoing the live canvas */
-  .puff { position: absolute; border-radius: 50%; filter: blur(28px); background: #fff; }
-  .p1 { width: 420px; height: 240px; left: -80px; bottom: -70px; opacity: .95; }
-  .p2 { width: 300px; height: 170px; left: 180px; bottom: -50px; opacity: .8; }
-  .p3 { width: 360px; height: 200px; right: -60px; top: -60px; opacity: .7; }
-  .p4 { width: 220px; height: 130px; right: 260px; bottom: -40px; opacity: .65; }
-
-  .win {
-    position: relative; width: 1064px; height: 494px;
-    border-radius: 22px; overflow: hidden;
-    background: rgba(255, 255, 255, 0.88);
-    backdrop-filter: blur(20px);
-    border: 1px solid var(--separator);
-    box-shadow: 0 2px 6px rgba(16, 18, 35, .05), 0 40px 80px -30px rgba(16, 18, 35, .30);
-  }
-  .bar {
-    height: 46px; display: flex; align-items: center; gap: 10px; padding: 0 16px;
-    border-bottom: 1px solid var(--separator);
-  }
-  .dots { display: inline-flex; gap: 8px; }
-  .dots i { width: 13px; height: 13px; border-radius: 50%; display: block; box-shadow: inset 0 0 0 .5px rgba(0,0,0,.1); }
-  .dots i:nth-child(1) { background: #ff5f57; }
-  .dots i:nth-child(2) { background: #febc2e; }
-  .dots i:nth-child(3) { background: #28c840; }
-  .title { flex: 1; text-align: center; font-size: 15px; font-weight: 500; color: var(--label-2); margin-right: 62px; }
-
-  .body { display: grid; grid-template-columns: 1fr 330px; height: calc(100% - 46px); }
-  .left { padding: 40px 8px 36px 44px; display: flex; flex-direction: column; }
-
-  .brand { display: inline-flex; align-items: baseline; font-size: 30px; font-weight: 800; letter-spacing: -0.04em; }
-  .brand i { width: 11px; height: 11px; border-radius: 50%; background: #ffd60a; margin-left: 4px; display: inline-block; }
-
-  h1 { font-size: 52px; line-height: 1.1; font-weight: 700; letter-spacing: -0.032em; margin-top: 22px; }
-  .mark { background: var(--marker); border-radius: 5px; padding: 0 .08em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
-
-  .sub { margin-top: 18px; font-size: 21px; font-weight: 500; color: var(--label-2); letter-spacing: -0.01em; }
-
-  .stats { margin-top: auto; display: flex; gap: 34px; padding-top: 26px; border-top: 1px solid var(--separator); }
-  .stat b { display: block; font-size: 27px; font-weight: 700; letter-spacing: -0.028em; color: var(--accent); line-height: 1.1; }
-  .stat span { display: block; font-size: 15px; font-weight: 500; color: var(--label-3); margin-top: 3px; }
-
-  .right { position: relative; display: grid; place-items: center; }
-  .right img { width: 300px; filter: drop-shadow(0 26px 34px rgba(16, 18, 35, .22)); }
+  /* the site's soft wash, top right */
+  .wash { position: absolute; top: -220px; right: -160px; width: 900px; height: 600px; filter: blur(40px);
+    background:
+      radial-gradient(40% 46% at 62% 46%, rgba(206, 190, 255, .55), transparent 70%),
+      radial-gradient(36% 40% at 80% 30%, rgba(186, 214, 255, .6), transparent 70%),
+      radial-gradient(30% 34% at 44% 30%, rgba(255, 236, 170, .4), transparent 70%); }
+  .card { position: absolute; inset: 0; display: grid; grid-template-columns: 300px 1fr; align-items: center; gap: 72px; padding: 0 96px; }
+  .tile { width: 300px; height: 300px; transform: rotate(-2deg);
+    filter: drop-shadow(0 2px 3px rgba(40, 30, 10, .08)) drop-shadow(0 24px 40px rgba(60, 40, 10, .16)); }
+  .tile svg { width: 100%; height: 100%; display: block; }
+  h1 { margin: 0; font-size: 92px; font-weight: 500; letter-spacing: -0.035em; line-height: 1; }
+  .line { margin: 22px 0 0; font-size: 30px; line-height: 1.35; color: #3a3a3f; max-width: 15em; }
+  .cred { margin: 20px 0 0; font-size: 18.5px; color: #6e6e73; white-space: nowrap; }
+  .url { position: absolute; left: 468px; bottom: 56px; display: flex; align-items: center; gap: 10px; font-size: 19px; color: #6e6e73; }
+  .url i { width: 9px; height: 9px; border-radius: 50%; background: #30b158; box-shadow: 0 0 0 4px rgba(48, 177, 88, .18); }
 </style>
 </head>
 <body>
-  <div class="puff p1"></div><div class="puff p2"></div><div class="puff p3"></div><div class="puff p4"></div>
-
-  <div class="win">
-    <div class="bar">
-      <span class="dots"><i></i><i></i><i></i></span>
-      <span class="title">about me.txt</span>
-    </div>
-    <div class="body">
-      <div class="left">
-        <span class="brand">chae<i></i></span>
-        <h1>Hi, I'm Chae. I like to <span class="mark">build things</span>.</h1>
-        <p class="sub">MBA at Berkeley Haas · Co-founder of Lucent · Ex-EY AI &amp; Data</p>
-        <div class="stats">
-          <div class="stat"><b>$10M+</b><span>cloud savings realized</span></div>
-          <div class="stat"><b>+15%</b><span>on-time delivery</span></div>
-          <div class="stat"><b>150+</b><span>pre-orders, $0 ads</span></div>
-        </div>
-      </div>
-      <div class="right"><img src="../assets/img/memoji.png" alt=""></div>
+  <div class="wash"></div>
+  <div class="card">
+    <div class="tile"><!-- the 김 tile from /favicon.svg, inlined with a lighter edge --><svg width="300" height="300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect x=".5" y=".5" width="63" height="63" rx="14" fill="#fbf8f1" stroke="#161514" stroke-opacity=".07"/><path transform="translate(32 32.5) rotate(-2) scale(0.066 -0.066) translate(-274 -180.5)" fill="#161514" d="M263 -191H261Q258 -191 254 -194Q251 -198 248 -198Q243 -198 235 -194Q227 -189 226 -183Q223 -186 220 -186H218Q218 -185 214 -184Q210 -182 206 -180Q201 -179 198 -178Q194 -176 194 -175Q196 -171 202 -165L200 -160L202 -154V-153Q202 -150 199 -146Q196 -141 193 -136Q190 -131 187 -126Q184 -122 184 -119Q184 -113 188 -113Q189 -113 189 -114L194 -117Q192 -115 193 -112Q194 -110 189 -104H192Q201 -104 202 -92Q202 -81 202 -67Q202 -60 208 -40Q215 -21 215 -6V0H210V1Q210 2 209 2Q208 3 207 5Q207 7 210 13Q213 19 213 21Q212 25 212 30Q212 35 214 38Q215 41 219 48Q223 55 230 68Q236 81 245 106H242Q241 107 241 107Q241 109 243 113Q245 117 250 127Q251 129 252 136Q254 142 256 149Q259 156 262 162Q265 168 269 170L274 167Q273 167 278 168Q282 168 287 170Q298 160 306 155Q314 150 320 146Q325 143 330 138Q334 134 338 125Q336 123 334 116Q333 110 331 103L327 85H329Q332 85 337 86Q342 87 345 87Q364 94 377 98Q390 101 400 104Q409 106 417 110Q425 114 433 122Q436 121 440 121Q445 121 446 123Q448 125 451 128Q454 131 460 133Q467 135 482 135Q484 135 490 134Q496 133 503 130Q510 126 517 120Q524 115 529 106Q526 105 524 98Q521 90 518 81Q516 72 514 63Q513 54 513 50Q514 46 514 39Q514 26 510 13Q505 0 500 -14Q495 -27 490 -40Q486 -52 486 -64Q486 -80 494 -85L491 -88Q485 -90 478 -98Q472 -106 469 -106H468Q466 -106 458 -106Q449 -107 438 -109Q428 -111 417 -114Q406 -117 399 -122Q376 -122 364 -128Q351 -133 343 -133Q342 -132 340 -132Q333 -132 322 -142Q310 -152 303 -152Q303 -152 298 -156Q292 -160 286 -166Q280 -173 274 -184Q269 -194 269 -207H266Q263 -204 263 -200Q263 -196 263 -191ZM131 235V241Q133 245 136 254Q138 262 140 270Q142 279 143 286Q144 293 144 295Q144 297 148 306Q152 315 156 326Q161 336 165 345Q169 354 169 356Q169 361 172 367L175 374V398Q169 398 154 396Q139 393 123 390Q107 387 94 384Q81 382 78 382Q77 381 74 381Q66 381 58 389Q51 397 43 402L31 408L25 414Q25 416 24 419Q23 422 22 425L19 432Q19 435 25 440L31 444Q35 444 45 445Q55 446 66 448Q76 449 85 450Q94 452 96 452Q100 452 116 455Q132 458 150 461Q168 464 184 467Q200 470 205 470Q210 470 216 472Q221 473 225 473Q230 473 248 468Q266 464 283 464L290 444Q288 439 286 430Q283 421 280 412Q278 402 276 393Q273 384 271 380L265 368V362Q260 355 252 336Q244 317 236 296Q228 274 220 255Q213 236 209 229L206 222Q203 216 202 210Q202 205 200 197L197 187V163L179 145H173L167 157L155 145L149 149L143 145L131 157L125 169V223ZM384 172Q384 174 386 178Q387 181 387 183Q385 186 384 191Q384 196 384 200Q383 205 381 208Q379 212 373 212Q377 217 378 222Q379 228 381 233Q384 234 386 246Q388 257 390 272Q392 288 396 304Q399 321 405 332Q405 343 403 345Q401 347 401 349Q401 350 402 351H405Q406 361 408 367Q409 373 410 378Q411 384 412 390Q413 396 413 406Q413 415 416 425Q418 435 422 446Q425 456 428 466Q430 475 430 481Q430 483 430 484Q429 484 429 486Q429 486 432 492Q434 499 437 508Q440 516 442 524Q445 532 445 534Q445 546 446 556Q447 566 458 568Q459 567 465 566Q471 566 471 563H519Q528 558 528 552Q528 547 527 538Q526 530 524 520Q523 510 520 501Q517 492 514 486H516Q509 465 505 454Q501 443 500 438Q498 434 497 433Q496 432 495 430V409Q490 409 490 406Q489 403 487 401L490 398Q486 392 484 388Q482 384 479 382Q485 381 487 377Q486 371 484 369Q481 367 481 364Q481 362 482 361H487Q483 359 482 356Q482 353 482 351L478 297Q478 296 476 288Q475 281 473 270Q471 260 470 248Q468 237 468 230Q468 223 469 222H472Q472 209 464 204L449 158Q441 160 438 161Q435 162 433 162Q431 162 429 161V169Q424 167 424 162Q423 158 421 153Q419 156 417 156Q416 156 416 156Q416 155 415 155Q413 155 406 164Q398 172 384 172ZM303 -61Q299 -66 293 -73Q287 -80 287 -90H293Q313 -90 328 -81Q344 -72 364 -72Q367 -71 376 -70Q385 -68 394 -66Q404 -65 413 -64Q422 -62 425 -61L428 -59Q429 -59 429 -58Q426 -58 424 -54Q422 -51 421 -46Q420 -40 420 -29L422 -27Q422 -25 426 -19Q430 -13 430 -11H429V-10Q429 -8 432 0Q435 8 439 18Q443 28 446 39Q449 50 449 58Q449 64 446 66Q432 60 415 52Q398 45 382 36Q365 27 352 18Q340 9 335 0V-13Q333 -13 327 -12Q321 -11 319 -11Q316 -13 316 -18Q315 -22 314 -27Q314 -32 314 -36Q313 -40 311 -40L300 -37Q294 -42 294 -50Q294 -52 295 -53L300 -48V-50Q300 -55 302 -57Q303 -59 303 -61ZM161 145Q166 145 166 139Q166 133 161 133Q156 133 156 139Q156 145 161 145ZM516 499Q514 499 514 496Q514 494 516 494Q518 494 518 496Q518 499 516 499ZM442 166 443 165Q445 165 447 169H442ZM473 297Q473 298 472 298Q469 298 469 294H470Q473 294 473 297ZM410 393Q410 390 408 390Q407 390 407 391Q408 391 408 392Q408 394 409 394ZM402 337H400L402 340Z"/></svg></div>
+    <div>
+      <h1>Chae Kim</h1>
+      <p class="line">I like to build things, from startups to card games.</p>
+      <p class="cred">MBA at Berkeley Haas · Co-founded Lucent · Previously at EY &amp; Tritooling</p>
     </div>
   </div>
+  <p class="url"><i></i>chaekim.vercel.app</p>
 </body>
 </html>

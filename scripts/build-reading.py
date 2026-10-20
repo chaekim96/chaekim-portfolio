@@ -136,7 +136,7 @@ def build():
   <meta property="og:title" content="Reading list · Chae Kim - Portfolio">
   <meta property="og:description" content="{desc}">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="{SITE_URL}/assets/img/og.png">
+  <meta property="og:image" content="{SITE_URL}/assets/img/og-card.png">
   <link rel="canonical" href="{SITE_URL}/reading">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">

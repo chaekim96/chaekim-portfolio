@@ -38,7 +38,7 @@ SHELL = """<!DOCTYPE html>
   <meta property="og:title" content="{title} · Chae Kim - Portfolio">
   <meta property="og:description" content="{desc}">
   <meta property="og:type" content="article">
-  <meta property="og:image" content="{site_url}/assets/img/og.png">
+  <meta property="og:image" content="{site_url}/assets/img/og-card.png">
   <link rel="canonical" href="{site_url}/projects/{slug}">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">

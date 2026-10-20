@@ -94,7 +94,7 @@ STAMP = r"""<!DOCTYPE html>
   <meta property="og:description" content="MBA at Berkeley Haas. Co-founded Lucent. Previously at EY and Tritooling. I like to build things.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://chaekim-portfolio.vercel.app/">
-  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og.png">
+  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og-card.png">
   <link rel="canonical" href="https://chaekim-portfolio.vercel.app/">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -644,7 +644,7 @@ ARCADE_PAGE = f"""<!DOCTYPE html>
   <meta property="og:title" content="Arcade · Chae Kim - Portfolio">
   <meta property="og:description" content="Snake and Galaga, rebuilt from memory, plus a generative lo-fi radio.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og.png">
+  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og-card.png">
   <link rel="canonical" href="https://chaekim-portfolio.vercel.app/arcade">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
@@ -760,7 +760,7 @@ PORTFOLIO_PAGE = f"""<!DOCTYPE html>
   <meta property="og:title" content="This portfolio · Chae Kim - Portfolio">
   <meta property="og:description" content="How I built this portfolio like a product: where it started, the decisions that shaped it, what's on the backlog, and what I'm considering next.">
   <meta property="og:type" content="article">
-  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og.png">
+  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og-card.png">
   <link rel="canonical" href="https://chaekim-portfolio.vercel.app/projects/portfolio">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
