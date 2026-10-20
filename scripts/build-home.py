@@ -11,7 +11,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
-V = "18"
+V = "19"
 
 # ----------------------------------------------------------------------------
 # Arcade: Snake, Galaga and a generative lo-fi radio. main.js loads arcade.js
@@ -71,7 +71,7 @@ ARCADE = """          <div class="break">
 
 STAMP_CHANGELOG = "10-04-26"
 
-from stamp_shared import INK_DEFS, seal, live_button, LIVE_DIALOG, LIVE_SCRIPT, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS
+from stamp_shared import INK_DEFS, seal, live_button, LIVE_DIALOG, LIVE_SCRIPT, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, THEME_COLOR
 
 def _snake():
     body = [(2,6),(3,6),(4,6),(5,6),(5,5),(5,4),(6,4),(7,4),(8,4),(9,4),(9,5),(10,5)]
@@ -96,6 +96,7 @@ STAMP = r"""<!DOCTYPE html>
   <meta property="og:url" content="https://chaekim-portfolio.vercel.app/">
   <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og-card.png">
   <link rel="canonical" href="https://chaekim-portfolio.vercel.app/">
+%%THEME_COLOR%%
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
@@ -141,7 +142,8 @@ STAMP = r"""<!DOCTYPE html>
       <h1 class="name">chae kim</h1>
       <p class="thesis">I like to build things, from startups to card games.</p>
       <p class="cred">MBA at Berkeley Haas. Co-founded <a href="/projects/lucent">Lucent</a>. Previously at <a href="/projects/ey">EY</a> &amp; <a href="/projects/tritooling">Tritooling</a>.<br>
-        <span class="status"><i aria-hidden="true"></i><span>Lately building <a href="#builds">TypeRace</a>, a typing race for my classmates.</span></span> <a data-user="chaewoonkim" data-domain="berkeley.edu" href="#">Let's chat</a>.</p>
+        <span class="status"><i aria-hidden="true"></i><span>Lately building <a href="#builds">TypeRace</a>, a typing race for my classmates.</span></span></p>
+      <p class="hello">Let's chat: <a data-user="chaewoonkim" data-domain="berkeley.edu" data-show href="#">email me</a> <button class="hello__copy" type="button" data-copy-email>Copy</button></p>
     </section>
 
     <div class="tabs" role="tablist" aria-label="Sections">
@@ -421,9 +423,9 @@ STAMP = r"""<!DOCTYPE html>
       <p class="notes__lede">Quiet, one typeface, real work as the picture.</p>
 
       <div class="notes__grid">
-        <div class="ncard ncard--color">
-          <p class="ncard__k"><i aria-hidden="true"></i>Color</p>
-          <h3>Color follows the content, so the page stays neutral</h3>
+        <details class="ncard ncard--color">
+          <summary><p class="ncard__k"><i aria-hidden="true"></i>Color</p>
+          <h3>Color follows the content, so the page stays neutral</h3><span class="ncard__more" aria-hidden="true">Read more</span></summary>
           <p class="notes__cap">Light, then dark. Tokens from <code>v-stamp.css</code>.</p>
           <ul class="swl">
             <li><span class="sw"><i style="background:#161618"></i><i style="background:#f5f5f7"></i></span><span class="swl__t"><b>ink</b> text</span><span class="swl__h"><code>#161618</code> / <code>#f5f5f7</code></span></li>
@@ -439,11 +441,11 @@ STAMP = r"""<!DOCTYPE html>
             <div><i style="background:linear-gradient(135deg,#1a1530 0%,#0b0b0c 50%,#0c1322 100%)"></i><span>Page wash, dark: <code>#1a1530</code>, <code>#0b0b0c</code>, <code>#0c1322</code></span></div>
           </div>
           <p>Each project sits on its own soft gradient stage, so the work supplies the color. Everything else stays neutral. The lavender-to-sky wash adds warmth without a brand color shouting, feels light and airy, and keeps the black and white from my brand exploration from feeling stark.</p>
-        </div>
+        </details>
 
-        <div class="ncard ncard--type">
-          <p class="ncard__k"><i aria-hidden="true"></i>Type</p>
-          <h3>One typeface, Poppins, set mostly at regular weight</h3>
+        <details class="ncard ncard--type">
+          <summary><p class="ncard__k"><i aria-hidden="true"></i>Type</p>
+          <h3>One typeface, Poppins, set mostly at regular weight</h3><span class="ncard__more" aria-hidden="true">Read more</span></summary>
           <p class="notes__cap">400, 500 and 600 are loaded. I kept Poppins instead of switching to the SF system font. Its round, geometric letters feel friendly, not corporate. One family everywhere keeps the focus on the work, and it has carried every version of this site.</p>
           <div class="spec">
             <p class="spec__a">chae kim</p>
@@ -459,11 +461,11 @@ STAMP = r"""<!DOCTYPE html>
             <tr><td>Notes</td><td>400 · 14px</td></tr>
           </table>
           <p>The only other letters are the 김채운 strip at the top. It is brushed with East Sea Dokdo outlines drawn inline, so it costs no font download.</p>
-        </div>
+        </details>
 
-        <div class="ncard ncard--pages">
-          <p class="ncard__k"><i aria-hidden="true"></i>Structure</p>
-          <h3>Pages you explore, with the work as the picture</h3>
+        <details class="ncard ncard--pages">
+          <summary><p class="ncard__k"><i aria-hidden="true"></i>Structure</p>
+          <h3>Pages you explore, with the work as the picture</h3><span class="ncard__more" aria-hidden="true">Read more</span></summary>
           <ul class="bul">
             <li>Pill tabs for Work, Builds and About, routed by the URL hash.</li>
             <li>Every project is a framed artifact: a real screenshot, a card, a gauge.</li>
@@ -476,11 +478,11 @@ STAMP = r"""<!DOCTYPE html>
             <li>Hover easing <code>cubic-bezier(.32, .72, 0, 1)</code>.</li>
             <li>Frosted blur on small tiles only. Everything else is a plain surface with a hairline.</li>
           </ul>
-        </div>
+        </details>
 
-        <div class="ncard ncard--path">
-          <p class="ncard__k"><i aria-hidden="true"></i>History</p>
-          <h3>How I got here</h3>
+        <details class="ncard ncard--path">
+          <summary><p class="ncard__k"><i aria-hidden="true"></i>History</p>
+          <h3>How I got here</h3><span class="ncard__more" aria-hidden="true">Read more</span></summary>
           <ol class="path">
             <li><b>2021</b><span>An IU portfolio built for class.</span></li>
             <li><b>Sept 2026</b><span>Rebuilt as a macOS desktop, inspired by renee.wiki. Then an Apple HIG layer, with Poppins kept over SF.</span></li>
@@ -488,8 +490,8 @@ STAMP = r"""<!DOCTYPE html>
             <li><b>Oct 8 to 9</b><span>A brand exploration: five directions, narrowed to two built finalists. Ink was monochrome with brush calligraphy. Desktop Craft was Apple polish. <a href="/projects/personal-brand">Read the brand decision log</a>.</span></li>
             <li><b>Oct 12</b><span>Stamp became the whole site. The other designs were retired. Stamp is quieter, and you can find the work in one scroll instead of opening windows.</span></li>
           </ol>
-          <p class="notes__cap" style="margin-top:14px"><a href="/projects/portfolio">Read the full decision log: how this site was built</a></p>
-        </div>
+          <p class="notes__cap" style="margin-top:14px"><a href="/projects/portfolio">Read the full decision log: how this site was built</a><br><a href="/projects/decisions">See the options behind each call</a></p>
+        </details>
       </div>
     </section>
   </main>
@@ -609,6 +611,16 @@ STAMP = r"""<!DOCTYPE html>
     }
   })();
   </script>
+  <script>
+    // "Let's chat" copy button: copies the address main.js assembled
+    document.querySelectorAll('[data-copy-email]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var a = b.parentElement.querySelector('[data-user][data-domain]'), addr = a.dataset.user + '@' + a.dataset.domain;
+        if (!navigator.clipboard) return;
+        navigator.clipboard.writeText(addr).then(function () { b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy'; }, 1600); });
+      });
+    });
+  </script>
   <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
@@ -621,6 +633,7 @@ STAMP = (STAMP.replace("%%V%%", V)
               .replace("%%SEAL_SMALL%%", seal(label=False))
               .replace("%%SNAKE%%", _snake())
               .replace("%%CHANGELOG%%", STAMP_CHANGELOG)
+              .replace("%%THEME_COLOR%%", THEME_COLOR)
               .replace("%%LIVE_DIALOG%%", LIVE_DIALOG)
               .replace("%%LIVE_SCRIPT%%", LIVE_SCRIPT)
               .replace("%%LIVE_TALLY%%", live_button("tally"))
@@ -654,7 +667,7 @@ ARCADE_PAGE = f"""<!DOCTYPE html>
 {CASE_HEAD_ASSETS}
   <link rel="stylesheet" href="/assets/css/arcade.css?v=1">
 </head>
-<body class="v v-stamp case">
+<body class="v v-stamp case sec-builds">
   <a class="skip" href="#main">Skip to content</a>
 {CASE_TOP}
 
@@ -683,10 +696,25 @@ ARCADE_PAGE = f"""<!DOCTYPE html>
 # ----------------------------------------------------------------------------
 
 def _decision(when, title, why=""):
-    why_html = f"\n            <p>{why}</p>" if why else ""
-    return f'          <li><time>{when}</time><b>{title}</b>{why_html}</li>'
+    return (when, title, why)
 
-DECISIONS = "\n".join([
+def _month_cards(items):
+    """Decisions grouped by month, one tint per month, titles first; tap a title for the why."""
+    months = [("Sep", "September 2026", "sky"), ("Oct", "October 2026", "violet")]
+    out = []
+    for prefix, label, hue in months:
+        group = [d for d in items if d[0].startswith(prefix)]
+        rows = "\n".join(
+            f'            <li><details><summary><time>{when}</time><b>{title}</b></summary><p>{why}</p></details></li>'
+            for when, title, why in group)
+        out.append(
+            f'        <div class="mgroup mgroup--{hue}">\n'
+            f'          <p class="mgroup__k"><i aria-hidden="true"></i>{label} · {len(group)} decisions</p>\n'
+            f'          <ol class="mlog">\n{rows}\n          </ol>\n'
+            f'        </div>')
+    return '      <div class="mgroups">\n' + "\n".join(out) + "\n      </div>"
+
+DECISIONS = _month_cards([
     _decision("Sep 15", "Start from plain HTML.",
               "Hosted on Vercel, with no framework to maintain. Version one was a homepage and seven case studies."),
     _decision("Sep 16", "A wordmark instead of a symbol.",
@@ -769,7 +797,7 @@ PORTFOLIO_PAGE = f"""<!DOCTYPE html>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 {CASE_HEAD_ASSETS}
 </head>
-<body class="v v-stamp case">
+<body class="v v-stamp case sec-builds">
   <a class="skip" href="#main">Skip to content</a>
 {CASE_TOP}
 
@@ -809,9 +837,8 @@ PORTFOLIO_PAGE = f"""<!DOCTYPE html>
         <p>On September 15, 2026, I rebuilt my 2021 Indiana University portfolio and a Notion page into one static site. It has no framework and no build step: hand-written HTML and CSS, with small scripts that generate the repetitive pages.</p>
 
         <h2 id="decisions">Decisions</h2>
-        <ol class="log">
+        <p>Grouped by month. Tap a decision to see why, or <a href="/projects/decisions">see every option I weighed</a>.</p>
 {DECISIONS}
-        </ol>
 
         <h2 id="backlog">Backlog</h2>
         <p>From the backlog I wrote on October 8. Done items stay on the list, so it stays honest.</p>

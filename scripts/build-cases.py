@@ -8,6 +8,8 @@ The page template is SHELL below. (No rendered copy is written: everything in th
 repo is deployed, so a copy in projects/ would be a public page.)
 """
 import html
+import json
+import re
 import sys
 from pathlib import Path
 
@@ -46,8 +48,9 @@ SHELL = """<!DOCTYPE html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 {head_assets}
+{jsonld}
 </head>
-<body class="v v-stamp case">
+<body class="v v-stamp case {sec}">
   <a class="skip" href="#main">Skip to content</a>
 {top}
 
@@ -482,6 +485,22 @@ def render_sections(c):
     return toc, body
 
 
+def jsonld(c):
+    """Labels the page as a project by Chae Kim, so search engines and AI assistants can cite it."""
+    data = {
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        "name": c["title"],
+        "headline": html.unescape(re.sub(r"<[^>]+>", "", c["heading"])),
+        "description": c["desc"],
+        "url": f"{SITE_URL}/projects/{c['slug']}",
+        "image": f"{SITE_URL}/assets/img/og-card.png",
+        "creator": {"@type": "Person", "name": "Chae Kim", "alternateName": "Chae Woon Kim", "url": f"{SITE_URL}/"},
+    }
+    body = json.dumps(data, ensure_ascii=False, indent=2).replace("</", "<\\/")
+    return '  <script type="application/ld+json">\n' + "\n".join("  " + line for line in body.splitlines()) + "\n  </script>"
+
+
 def render(c, prev, nxt):
     c = {**DEFAULTS, **c}
     toc, body = render_sections(c)
@@ -493,6 +512,8 @@ def render(c, prev, nxt):
         "toc": toc,
         "body": body,
         "grad": GRAD.get(c["slug"], "plain"),
+        "sec": "sec-builds" if is_build else "sec-work",
+        "jsonld": jsonld(c),
         "back_href": "/#builds" if is_build else "/#work",
         "back_label": "All builds" if is_build else "All work",
         "prev_slug": prev["slug"], "prev_title": html.escape(prev["title"]),

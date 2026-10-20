@@ -146,7 +146,7 @@ def build():
 {CASE_HEAD_ASSETS}
   <style>{CSS}</style>
 </head>
-<body class="v v-stamp case">
+<body class="v v-stamp case sec-about">
   <a class="skip" href="#main">Skip to content</a>
 {CASE_TOP}
 

@@ -30,8 +30,8 @@ INK_DEFS = ('<svg width="0" height="0" style="position:absolute" aria-hidden="tr
 # ---------------------------------------------------------------------------
 # Case-page chrome (project pages in the Stamp look)
 # ---------------------------------------------------------------------------
-CASE_CSS_V = "17"   # bump when assets/css/case-stamp.css changes
-STAMP_CSS_V = "18"  # v-stamp.css version, kept in step with the homepage
+CASE_CSS_V = "19"   # bump when assets/css/case-stamp.css changes
+STAMP_CSS_V = "19"  # v-stamp.css version, kept in step with the homepage
 JS_V = "13"
 LIVE_V = "1"  # bump when assets/js/live.js changes
 
@@ -64,7 +64,12 @@ LIVE_DIALOG = """  <dialog class="live" id="live" aria-labelledby="live-title">
 
 LIVE_SCRIPT = f'  <script src="/assets/js/live.js?v={LIVE_V}" defer></script>'
 
+# Phone browser bar matches the page: lavender in light mode, deep indigo in dark.
+THEME_COLOR = ('  <meta name="theme-color" content="#f3f0ff" media="(prefers-color-scheme: light)">\n'
+               '  <meta name="theme-color" content="#1a1530" media="(prefers-color-scheme: dark)">')
+
 CASE_HEAD_ASSETS = (
+    THEME_COLOR + "\n"
     '  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">\n'
     f'  <link rel="stylesheet" href="/assets/css/v-stamp.css?v={STAMP_CSS_V}">\n'
     f'  <link rel="stylesheet" href="/assets/css/case-stamp.css?v={CASE_CSS_V}">\n'
