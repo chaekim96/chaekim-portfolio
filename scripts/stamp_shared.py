@@ -82,8 +82,8 @@ CASE_TOP = f"""  {INK_DEFS}
   <header class="top wrap">
     <a class="seal" href="/">{seal()}</a>
     <nav class="topnav" aria-label="Primary">
-      <a href="/#work">Work</a>
       <a href="/#builds">Builds</a>
+      <a href="/#work">Work</a>
       <a href="/#about">About</a>
       <a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
       <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
@@ -104,7 +104,7 @@ CASE_FOOT = f"""  <footer class="foot wrap">
       </p>
     </div>
     <nav aria-label="Footer">
-      <a href="/#work">Work</a><a href="/#builds">Builds</a><a href="/#about">About</a><a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
+      <a href="/#builds">Builds</a><a href="/#work">Work</a><a href="/#about">About</a><a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
     </nav>
     <div class="foot__cta">
       <b>Let's chat.</b>

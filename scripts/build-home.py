@@ -147,89 +147,14 @@ STAMP = r"""<!DOCTYPE html>
     </section>
 
     <div class="tabs" role="tablist" aria-label="Sections">
-      <button class="tab" role="tab" id="tab-work" data-tab="work" aria-controls="work" aria-selected="true">Work</button>
-      <button class="tab" role="tab" id="tab-builds" data-tab="builds" aria-controls="builds" aria-selected="false" tabindex="-1">Builds</button>
+      <button class="tab" role="tab" id="tab-builds" data-tab="builds" aria-controls="builds" aria-selected="true">Builds</button>
+      <button class="tab" role="tab" id="tab-work" data-tab="work" aria-controls="work" aria-selected="false" tabindex="-1">Work</button>
       <button class="tab" role="tab" id="tab-about" data-tab="about" aria-controls="about" aria-selected="false" tabindex="-1">About</button>
     </div>
 
-    <!-- ============ WORK ============ -->
-    <section class="panel" id="work" role="tabpanel" aria-labelledby="tab-work">
-      <h2 class="visually-hidden">Work</h2>
-      <div class="grid">
-        <a class="w w--wide reveal" href="/projects/lucent">
-          <div class="stage" style="--g: var(--g-lucent)">
-            <div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>trylucent.ai</span></div><img src="/assets/img/thumbs/lucent-wide.jpg" alt="Lucent's homepage: The AI Search Console" width="1440" height="810"></div></div>
-            <span class="pill">Lucent <em>2025–26</em></span>
-          </div>
-          <h3 class="w-title">Making small businesses visible in AI search.</h3>
-          <p class="meta">AI search observability platform and consultancy. <b>First paying pilot, 5 LOIs in 30 days.</b></p>
-        </a>
-
-        <a class="w reveal" href="/projects/ey">
-          <div class="stage" style="--g: var(--g-ey)">
-            <div class="art"><div class="glass"><b>Cloud</b><span>migration program</span></div></div>
-            <span class="pill">EY <em>2021–24</em></span>
-          </div>
-          <h3 class="w-title">Giving leaders one clear view of a sprawling cloud migration.</h3>
-          <p class="meta">Risk, OKRs, and the first executive QBR for a $200M+ cloud migration. <b>−30% executive escalations.</b></p>
-        </a>
-
-        <a class="w reveal" href="/projects/tritooling">
-          <div class="stage" style="--g: var(--g-tri)">
-            <div class="art"><div class="glass"><b>Factory</b><span>operations</span></div></div>
-            <span class="pill">Tritooling <em>2024–25</em></span>
-          </div>
-          <h3 class="w-title">Fixing late deliveries and defects at a precision manufacturer.</h3>
-          <p class="meta">A year running operations at a precision manufacturer. <b>−30% defects.</b></p>
-        </a>
-
-        <a class="w reveal" href="/projects/mirrorme">
-          <div class="stage" style="--g: var(--g-mirror)">
-            <div class="art"><div class="fan"><img src="/assets/img/projects/mirrorme/card-category.png" alt="MirrorMe card: Openness to experience, pink" width="714" height="1000" loading="lazy"><img src="/assets/img/projects/mirrorme/card-alt.png" alt="MirrorMe card: Openness to experience, orange" width="733" height="1000" loading="lazy"></div></div>
-            <span class="pill">MirrorMe <em>2024</em></span>
-          </div>
-          <h3 class="w-title">Icebreakers that go deeper without getting awkward.</h3>
-          <p class="meta">An icebreaker card game for hosts. <b>150+ pre-orders, $0 ad spend.</b></p>
-        </a>
-
-        <a class="w reveal" href="/projects/mobility">
-          <div class="stage" style="--g: var(--g-mobility)">
-            <div class="art"><div class="glass glass--status"><b>Stealth</b><span><i aria-hidden="true"></i>in progress</span></div></div>
-            <span class="pill">Mobility <em>now</em></span>
-          </div>
-          <h3 class="w-title">Mobility aids people aren't embarrassed to use.</h3>
-          <p class="meta">Design-forward mobility products that keep older adults independent longer.</p>
-        </a>
-      </div>
-
-      <h2 class="sub-h">Earlier, at Indiana University (2019 to 2021)</h2>
-      <div class="grid grid--5">
-        <a class="w reveal" href="/projects/iu-study-assistant">
-          <div class="stage"><div class="art fill"><img src="/assets/img/projects/iusa/home.jpg" alt="IU Study Assistant home screen" width="1400" height="720" loading="lazy"></div><span class="pill">Study Assistant</span></div>
-          <p class="meta">One place to study, not nine tabs.</p>
-        </a>
-        <a class="w reveal" href="/projects/alab">
-          <div class="stage" style="--g: linear-gradient(160deg,#eaf6fb,#d9eef7)"><div class="art fill fill--contain"><img src="/assets/img/projects/alab/cover-intro.png" alt="aLab app login screen" width="418" height="823" loading="lazy"></div><span class="pill">aLab</span></div>
-          <p class="meta">A dog bowl that rises to meet a recovering pup.</p>
-        </a>
-        <a class="w reveal" href="/projects/luc">
-          <div class="stage"><div class="art fill"><img src="/assets/img/projects/luc/mockup.jpg" alt="Pencil schematic of LUC's luggage wheels" width="1400" height="1208" loading="lazy"></div><span class="pill">LUC</span></div>
-          <p class="meta">Luggage that weighs itself before the check-in counter does.</p>
-        </a>
-        <a class="w reveal" href="/projects/ptm">
-          <div class="stage"><div class="art fill"><img src="/assets/img/projects/ptm/mockup.jpg" alt="Pencil schematic of the PTM sleep mask" width="1400" height="614" loading="lazy"></div><span class="pill">PTM</span></div>
-          <p class="meta">A sleep mask that notices your fever before you do.</p>
-        </a>
-        <a class="w reveal" href="/projects/coursera">
-          <div class="stage"><div class="art fill fill--contain"><img src="/assets/img/projects/coursera-cover.jpg" alt="Cover of the Coursera PM dossier" width="464" height="600" loading="lazy"></div><span class="pill">Coursera</span></div>
-          <p class="meta">Making online learning transferable to real careers.</p>
-        </a>
-      </div>
-    </section>
-
     <!-- ============ BUILDS ============ -->
     <section class="panel" id="builds" role="tabpanel" aria-labelledby="tab-builds">
-      <h2 class="sub-h">Products</h2>
+      <h2 class="sub-h">Products you can try live</h2>
       <div class="grid grid--3">
         <div class="live-card reveal">
         <a class="w" href="/projects/tally">
@@ -263,6 +188,10 @@ STAMP = r"""<!DOCTYPE html>
         </a>
         %%LIVE_NETWORKING_TRACKER%%
         </div>
+      </div>
+
+      <h2 class="sub-h">More products</h2>
+      <div class="grid grid--3">
         <div class="live-card reveal">
         <a class="w" href="/projects/web-anatomy">
           <div class="stage" style="--g: var(--g-arcade)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>webanatomy</span></div><img src="/assets/img/builds/web-anatomy.jpg" alt="The Anatomy of a Website home page: the title, the line SEO and GEO start with the website, and the start of the journey of a request" width="960" height="600" loading="lazy"></div></div><span class="pill">Anatomy of a Website <em>2026</em></span></div>
@@ -353,6 +282,81 @@ STAMP = r"""<!DOCTYPE html>
         <a class="w reveal" href="/assets/pdf/AAV-Auto-Adjusting-Volume.pdf" target="_blank" rel="noopener">
           <div class="stage" style="--g: var(--g-tri)"><div class="art"><div class="glass"><b>dB</b><span>auto volume</span></div></div><span class="pill">AAV ↗ <em>2019</em></span></div>
           <p class="meta">Auto-Adjusting Volume: noise-aware volume.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ WORK ============ -->
+    <section class="panel" id="work" role="tabpanel" aria-labelledby="tab-work">
+      <h2 class="visually-hidden">Work</h2>
+      <div class="grid">
+        <a class="w w--wide reveal" href="/projects/lucent">
+          <div class="stage" style="--g: var(--g-lucent)">
+            <div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>trylucent.ai</span></div><img src="/assets/img/thumbs/lucent-wide.jpg" alt="Lucent's homepage: The AI Search Console" width="1440" height="810"></div></div>
+            <span class="pill">Lucent <em>2025–26</em></span>
+          </div>
+          <h3 class="w-title">Making small businesses visible in AI search.</h3>
+          <p class="meta">AI search observability platform and consultancy. <b>First paying pilot, 5 LOIs in 30 days.</b></p>
+        </a>
+
+        <a class="w reveal" href="/projects/ey">
+          <div class="stage" style="--g: var(--g-ey)">
+            <div class="art"><div class="glass"><b>Cloud</b><span>migration program</span></div></div>
+            <span class="pill">EY <em>2021–24</em></span>
+          </div>
+          <h3 class="w-title">Giving leaders one clear view of a sprawling cloud migration.</h3>
+          <p class="meta">Risk, OKRs, and the first executive QBR for a $200M+ cloud migration. <b>−30% executive escalations.</b></p>
+        </a>
+
+        <a class="w reveal" href="/projects/tritooling">
+          <div class="stage" style="--g: var(--g-tri)">
+            <div class="art"><div class="glass"><b>Factory</b><span>operations</span></div></div>
+            <span class="pill">Tritooling <em>2024–25</em></span>
+          </div>
+          <h3 class="w-title">Fixing late deliveries and defects at a precision manufacturer.</h3>
+          <p class="meta">A year running operations at a precision manufacturer. <b>−30% defects.</b></p>
+        </a>
+
+        <a class="w reveal" href="/projects/mirrorme">
+          <div class="stage" style="--g: var(--g-mirror)">
+            <div class="art"><div class="fan"><img src="/assets/img/projects/mirrorme/card-category.png" alt="MirrorMe card: Openness to experience, pink" width="714" height="1000" loading="lazy"><img src="/assets/img/projects/mirrorme/card-alt.png" alt="MirrorMe card: Openness to experience, orange" width="733" height="1000" loading="lazy"></div></div>
+            <span class="pill">MirrorMe <em>2024</em></span>
+          </div>
+          <h3 class="w-title">Icebreakers that go deeper without getting awkward.</h3>
+          <p class="meta">An icebreaker card game for hosts. <b>150+ pre-orders, $0 ad spend.</b></p>
+        </a>
+
+        <a class="w reveal" href="/projects/mobility">
+          <div class="stage" style="--g: var(--g-mobility)">
+            <div class="art"><div class="glass glass--status"><b>Stealth</b><span><i aria-hidden="true"></i>in progress</span></div></div>
+            <span class="pill">Mobility <em>now</em></span>
+          </div>
+          <h3 class="w-title">Mobility aids people aren't embarrassed to use.</h3>
+          <p class="meta">Design-forward mobility products that keep older adults independent longer.</p>
+        </a>
+      </div>
+
+      <h2 class="sub-h">Earlier, at Indiana University (2019 to 2021)</h2>
+      <div class="grid grid--5">
+        <a class="w reveal" href="/projects/iu-study-assistant">
+          <div class="stage"><div class="art fill"><img src="/assets/img/projects/iusa/home.jpg" alt="IU Study Assistant home screen" width="1400" height="720" loading="lazy"></div><span class="pill">Study Assistant</span></div>
+          <p class="meta">One place to study, not nine tabs.</p>
+        </a>
+        <a class="w reveal" href="/projects/alab">
+          <div class="stage" style="--g: linear-gradient(160deg,#eaf6fb,#d9eef7)"><div class="art fill fill--contain"><img src="/assets/img/projects/alab/cover-intro.png" alt="aLab app login screen" width="418" height="823" loading="lazy"></div><span class="pill">aLab</span></div>
+          <p class="meta">A dog bowl that rises to meet a recovering pup.</p>
+        </a>
+        <a class="w reveal" href="/projects/luc">
+          <div class="stage"><div class="art fill"><img src="/assets/img/projects/luc/mockup.jpg" alt="Pencil schematic of LUC's luggage wheels" width="1400" height="1208" loading="lazy"></div><span class="pill">LUC</span></div>
+          <p class="meta">Luggage that weighs itself before the check-in counter does.</p>
+        </a>
+        <a class="w reveal" href="/projects/ptm">
+          <div class="stage"><div class="art fill"><img src="/assets/img/projects/ptm/mockup.jpg" alt="Pencil schematic of the PTM sleep mask" width="1400" height="614" loading="lazy"></div><span class="pill">PTM</span></div>
+          <p class="meta">A sleep mask that notices your fever before you do.</p>
+        </a>
+        <a class="w reveal" href="/projects/coursera">
+          <div class="stage"><div class="art fill fill--contain"><img src="/assets/img/projects/coursera-cover.jpg" alt="Cover of the Coursera PM dossier" width="464" height="600" loading="lazy"></div><span class="pill">Coursera</span></div>
+          <p class="meta">Making online learning transferable to real careers.</p>
         </a>
       </div>
     </section>
@@ -467,7 +471,7 @@ STAMP = r"""<!DOCTYPE html>
           <summary><p class="ncard__k"><i aria-hidden="true"></i>Structure</p>
           <h3>Pages you explore, with the work as the picture</h3><span class="ncard__more" aria-hidden="true">Read more</span></summary>
           <ul class="bul">
-            <li>Pill tabs for Work, Builds and About, routed by the URL hash.</li>
+            <li>Pill tabs for Builds, Work and About, routed by the URL hash. Builds opens first.</li>
             <li>Every project is a framed artifact: a real screenshot, a card, a gauge.</li>
             <li>A live Berkeley clock and a day or night icon in the footer.</li>
             <li>Light and dark themes, saved in the browser.</li>
@@ -498,7 +502,7 @@ STAMP = r"""<!DOCTYPE html>
 
   <footer class="foot wrap">
     <div>
-      <a class="foot__id" href="#work">%%SEAL_SMALL%%chae kim</a>
+      <a class="foot__id" href="#builds">%%SEAL_SMALL%%chae kim</a>
       <p class="clock">
         <svg id="clock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <g class="sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g>
@@ -508,7 +512,7 @@ STAMP = r"""<!DOCTYPE html>
       </p>
     </div>
     <nav aria-label="Footer">
-      <a href="#work">Work</a><a href="#builds">Builds</a><a href="#about">About</a><a href="/reading">Reading</a><a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
+      <a href="#builds">Builds</a><a href="#work">Work</a><a href="#about">About</a><a href="/reading">Reading</a><a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
     </nav>
     <div class="foot__cta">
       <b>Let's chat.</b>
@@ -526,8 +530,8 @@ STAMP = r"""<!DOCTYPE html>
   <script>
   (function () {
     var THESIS = {
-      'work': 'I like to build things, from startups to card games.',
-      'builds': 'Tools I build for myself, then share.',
+      'builds': 'I like to build things, from startups to card games.',
+      'work': 'A startup, a Fortune 500 program, and a factory floor.',
       'about': 'Product, strategy, operations, and the occasional 3D print.'
     };
     var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -538,7 +542,7 @@ STAMP = r"""<!DOCTYPE html>
 
     function show(id, opts) {
       opts = opts || {};
-      if (!THESIS[id]) id = 'work';
+      if (!THESIS[id]) id = 'builds';
       tabs.forEach(function (t) {
         var on = t.dataset.tab === id;
         t.setAttribute('aria-selected', on);
@@ -574,14 +578,14 @@ STAMP = r"""<!DOCTYPE html>
       if (THESIS[id]) { e.preventDefault(); go(id, { scroll: true }); }
     });
 
-    // deep links: #work, #about, or a section inside About such as #experience
+    // deep links: #builds (default), #work, #about, or a section inside About such as #experience
     function fromHash() {
       var h = location.hash.slice(1);
       if (h === 'contact') h = 'elsewhere'; // old desktop-page links
       var el = h && document.getElementById(h);
       if (THESIS[h]) show(h);
       else if (el && el.closest('#about')) { show('about'); requestAnimationFrame(function () { el.scrollIntoView(); }); }
-      else show('work');
+      else show('builds');
     }
     addEventListener('hashchange', fromHash);
     fromHash();
@@ -747,6 +751,8 @@ DECISIONS = _month_cards([
               "My Code Improver subagent reviewed the page generator. Its top finding was real: a template page was publicly reachable. I fixed that and the other thirteen findings."),
     _decision("Oct 12", "One design, and the tools run live.",
               "I retired every other design. Web apps on the Builds tab now open live in the page, the background got a soft gradient, and the games moved to their own arcade page."),
+    _decision("Oct 20", "Builds first, then Work.",
+              "I want people to see what I've built first. Builds now opens by default, led by the four apps you can try live."),
 ])
 
 def _item(text, status=""):

@@ -59,6 +59,17 @@ DECISIONS = [
         opt("Aurora", "Slow-drifting blobs of lavender, sky, mint and peach. More personality."),
         opt("Subtle neutral hue", "White fading to a cool gray-blue. Closest to before."),
     ], why=["The work is the color", "Calm, not loud", "Light and airy, like morning light", "Keeps black and white from feeling stark"]),
+    D("design", "Oct 2026", "This site", "How should the homepage put builds first?", [
+        opt("Swap tabs: Builds first", "Builds opens by default; Work moves to second. Smallest change, keeps the tabs.", chosen=True, rec=True),
+        opt("Featured builds above the tabs", "Keep Work as the default, but show three flagship builds before the tabs."),
+        opt("One scrolling page, no tabs", "Builds, then Work, then About on one page. Best for skimmers, a bigger change."),
+        opt("Keep Work first", "Outcomes at known companies first; builds one click away."),
+    ], why=["I want people to see what I've built first"], link=("/#builds", "See the Builds tab")),
+    D("design", "Oct 2026", "This site", "Inside Builds, what should lead?", [
+        opt("Live products first", "The four apps you can try live, then more products, mods, coursework, side quests.", chosen=True, rec=True),
+        opt("Newest first", "One list by date. Shows momentum, but mixes big and small builds."),
+        opt("Three flagships, then the rest", "Large cards for the strongest three, everything else compact."),
+    ]),
     # ---------------- this site: content ----------------
     D("content", "Oct 2026", "This site", "The site's numbers predate my resume. Which should it use?", [
         opt("Match the resume", "Update every page to the resume's figures.", chosen=True, rec=True),
