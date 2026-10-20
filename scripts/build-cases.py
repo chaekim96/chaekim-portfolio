@@ -374,7 +374,7 @@ CASES = [
       "Built the investor pitch: bottom-up SAM, phased GTM, 100+ question diligence bank.",
     ),
     results=stat_grid(("1", "first paying pilot"), ("5", "LOIs in 30 days"), ("+50%", "discovery response rate"), ("NSF", "I-Corps backing")) + "\n" + paras("The advisory work that grew out of the pilot is on pause while we research more in the GEO space."),
-    differently=paras("Lock the GTM motion earlier. Investors flagged it as the biggest gap. Positioning tests and pilots should have run in parallel, not in sequence."),
+    differently=paras("Lock the GTM motion earlier. It was the biggest gap. Positioning tests and pilots should have run in parallel, not in sequence."),
     artifacts="",
   ),
   dict(slug="mobility", title="Mobility devices for older adults (stealth)",
