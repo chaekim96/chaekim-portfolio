@@ -33,14 +33,16 @@ SHELL = """<!DOCTYPE html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{title} · Chae Kim</title>
+  <title>{title} · Chae Kim - Portfolio</title>
   <meta name="description" content="{desc}">
-  <meta property="og:title" content="{title} · Chae Kim">
+  <meta property="og:title" content="{title} · Chae Kim - Portfolio">
   <meta property="og:description" content="{desc}">
   <meta property="og:type" content="article">
   <meta property="og:image" content="{site_url}/assets/img/og.png">
   <link rel="canonical" href="{site_url}/projects/{slug}">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 {head_assets}

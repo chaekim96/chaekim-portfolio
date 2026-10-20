@@ -11,7 +11,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
-V = "17"
+V = "18"
 
 # ----------------------------------------------------------------------------
 # Arcade: Snake, Galaga and a generative lo-fi radio. main.js loads arcade.js
@@ -88,9 +88,9 @@ STAMP = r"""<!DOCTYPE html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Chae Kim · Product and strategy</title>
+  <title>Chae Kim - Portfolio</title>
   <meta name="description" content="Chae Kim: MBA at Berkeley Haas, co-founded Lucent, previously at EY and Tritooling. I like to build things. Let's chat.">
-  <meta property="og:title" content="Chae Kim · Product and strategy">
+  <meta property="og:title" content="Chae Kim - Portfolio">
   <meta property="og:description" content="MBA at Berkeley Haas. Co-founded Lucent. Previously at EY and Tritooling. I like to build things.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://chaekim-portfolio.vercel.app/">
@@ -98,6 +98,8 @@ STAMP = r"""<!DOCTYPE html>
   <link rel="canonical" href="https://chaekim-portfolio.vercel.app/">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
@@ -419,7 +421,8 @@ STAMP = r"""<!DOCTYPE html>
       <p class="notes__lede">Quiet, one typeface, real work as the picture.</p>
 
       <div class="notes__grid">
-        <div>
+        <div class="ncard ncard--color">
+          <p class="ncard__k"><i aria-hidden="true"></i>Color</p>
           <h3>Color follows the content, so the page stays neutral</h3>
           <p class="notes__cap">Light, then dark. Tokens from <code>v-stamp.css</code>.</p>
           <ul class="swl">
@@ -438,7 +441,8 @@ STAMP = r"""<!DOCTYPE html>
           <p>Each project sits on its own soft gradient stage, so the work supplies the color. Everything else stays neutral. The lavender-to-sky wash adds warmth without a brand color shouting, feels light and airy, and keeps the black and white from my brand exploration from feeling stark.</p>
         </div>
 
-        <div>
+        <div class="ncard ncard--type">
+          <p class="ncard__k"><i aria-hidden="true"></i>Type</p>
           <h3>One typeface, Poppins, set mostly at regular weight</h3>
           <p class="notes__cap">400, 500 and 600 are loaded. I kept Poppins instead of switching to the SF system font. Its round, geometric letters feel friendly, not corporate. One family everywhere keeps the focus on the work, and it has carried every version of this site.</p>
           <div class="spec">
@@ -457,7 +461,8 @@ STAMP = r"""<!DOCTYPE html>
           <p>The only other letters are the 김채운 strip at the top. It is brushed with East Sea Dokdo outlines drawn inline, so it costs no font download.</p>
         </div>
 
-        <div>
+        <div class="ncard ncard--pages">
+          <p class="ncard__k"><i aria-hidden="true"></i>Structure</p>
           <h3>Pages you explore, with the work as the picture</h3>
           <ul class="bul">
             <li>Pill tabs for Work, Builds and About, routed by the URL hash.</li>
@@ -473,14 +478,15 @@ STAMP = r"""<!DOCTYPE html>
           </ul>
         </div>
 
-        <div>
+        <div class="ncard ncard--path">
+          <p class="ncard__k"><i aria-hidden="true"></i>History</p>
           <h3>How I got here</h3>
           <ol class="path">
-            <li><b>2021</b>An IU portfolio built for class.</li>
-            <li><b>Sept 2026</b>Rebuilt as a macOS desktop, inspired by renee.wiki. Then an Apple HIG layer, with Poppins kept over SF.</li>
-            <li><b>Oct 4</b>A quiet, artifact-first page inspired by liumichelle.com. That became Stamp.</li>
-            <li><b>Oct 8 to 9</b>A brand exploration: five directions, narrowed to two built finalists. Ink was monochrome with brush calligraphy. Desktop Craft was Apple polish. <a href="/projects/personal-brand">Read the brand decision log</a>.</li>
-            <li><b>Oct 12</b>Stamp became the whole site. The other designs were retired. Stamp is quieter, and you can find the work in one scroll instead of opening windows.</li>
+            <li><b>2021</b><span>An IU portfolio built for class.</span></li>
+            <li><b>Sept 2026</b><span>Rebuilt as a macOS desktop, inspired by renee.wiki. Then an Apple HIG layer, with Poppins kept over SF.</span></li>
+            <li><b>Oct 4</b><span>A quiet, artifact-first page inspired by liumichelle.com. That became Stamp.</span></li>
+            <li><b>Oct 8 to 9</b><span>A brand exploration: five directions, narrowed to two built finalists. Ink was monochrome with brush calligraphy. Desktop Craft was Apple polish. <a href="/projects/personal-brand">Read the brand decision log</a>.</span></li>
+            <li><b>Oct 12</b><span>Stamp became the whole site. The other designs were retired. Stamp is quieter, and you can find the work in one scroll instead of opening windows.</span></li>
           </ol>
           <p class="notes__cap" style="margin-top:14px"><a href="/projects/portfolio">Read the full decision log: how this site was built</a></p>
         </div>
@@ -633,14 +639,16 @@ ARCADE_PAGE = f"""<!DOCTYPE html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Arcade · Chae Kim</title>
+  <title>Arcade · Chae Kim - Portfolio</title>
   <meta name="description" content="Snake and Galaga, rebuilt from memory, plus a generative lo-fi radio.">
-  <meta property="og:title" content="Arcade · Chae Kim">
+  <meta property="og:title" content="Arcade · Chae Kim - Portfolio">
   <meta property="og:description" content="Snake and Galaga, rebuilt from memory, plus a generative lo-fi radio.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og.png">
   <link rel="canonical" href="https://chaekim-portfolio.vercel.app/arcade">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 {CASE_HEAD_ASSETS}
@@ -747,14 +755,16 @@ PORTFOLIO_PAGE = f"""<!DOCTYPE html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>This portfolio · Chae Kim</title>
+  <title>This portfolio · Chae Kim - Portfolio</title>
   <meta name="description" content="How I built this portfolio like a product: where it started, the decisions that shaped it, what's on the backlog, and what I'm considering next.">
-  <meta property="og:title" content="This portfolio · Chae Kim">
+  <meta property="og:title" content="This portfolio · Chae Kim - Portfolio">
   <meta property="og:description" content="How I built this portfolio like a product: where it started, the decisions that shaped it, what's on the backlog, and what I'm considering next.">
   <meta property="og:type" content="article">
   <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og.png">
   <link rel="canonical" href="https://chaekim-portfolio.vercel.app/projects/portfolio">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 {CASE_HEAD_ASSETS}
