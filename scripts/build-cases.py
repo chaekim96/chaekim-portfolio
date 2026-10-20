@@ -371,7 +371,7 @@ CASES = [
       "Positioned around the one-person marketing team: GEO plus SEO execution, not just citation tracking. 5 positioning hypotheses tested across 65 outbound prospects picked the message.",
       "Designed cheap tracking: statistical sampling, and re-running prompts only when models or rankings change.",
       "Led a paid pilot: multi-site SEO and AI visibility audits turned into an engineering action plan.",
-      "Built the investor pitch: bottom-up SAM, phased GTM, 100+ question diligence bank.",
+      "Built the business case: bottom-up SAM, phased GTM, and a 100+ question diligence bank.",
     ),
     results=stat_grid(("1", "first paying pilot"), ("5", "LOIs in 30 days"), ("+50%", "discovery response rate"), ("NSF", "I-Corps backing")) + "\n" + paras("The advisory work that grew out of the pilot is on pause while we research more in the GEO space."),
     differently=paras("Lock the GTM motion earlier. It was the biggest gap. Positioning tests and pilots should have run in parallel, not in sequence."),
