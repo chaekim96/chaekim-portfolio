@@ -112,6 +112,15 @@ DECISIONS = [
         opt("Manual", "Only when I ask."),
     ]),
     # ---------------- coursework ----------------
+    D("coursework", "Oct 2026", "Spotify Review Triage", "The 10,000 development reviews were already labeled. Reuse those labels in the final run?", [
+        opt("Reuse the development labels", "Keep the earlier labels for those 10,000 reviews."),
+        opt("Classify them again in the final run", "Label them fresh with the final setup.", chosen=True),
+    ], why=["Every graded label should come from one final configuration"], link=("/projects/spotify-review-triage", "Spotify Review Triage")),
+    D("coursework", "Oct 2026", "Spotify Review Triage", "How close must the model's sentiment score be to my label to count as a match?", [
+        opt("Exact", "Any difference counts as wrong."),
+        opt("Average error only", "Report the mean error, with no pass or fail."),
+        opt("Within ±0.5, with ±0.25 also reported", "The same or the next step on a five-step scale. The average error is reported too.", chosen=True),
+    ], why=["Sentiment runs from -1 to 1, so an exact match would mark near-identical scores wrong"]),
     D("coursework", "Sep 2026", "Pac-Man DQN", "How much should the agent explore?", [
         opt("0.20", "Balanced: random one move in five after warm-up.", chosen=True, rec=True),
         opt("0.10", "Follows its own estimates more; settles into a habit faster."),

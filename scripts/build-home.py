@@ -228,6 +228,14 @@ STAMP = r"""<!DOCTYPE html>
 
       <h2 class="sub-h">AI and ML coursework</h2>
       <div class="grid grid--3">
+        <div class="live-card reveal">
+        <a class="w" href="/projects/spotify-review-triage">
+          <div class="stage" style="--g: var(--g-mobility)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>spotify-review-triage</span></div><img src="/assets/img/builds/spotify-review-triage-card.jpg" alt="The Spotify Review Triage dashboard: 660,622 reviews, $4.36 spend, and the recommendation" width="960" height="600" loading="lazy"></div></div><span class="pill">Spotify Review Triage <em>2026</em></span></div>
+          <h3 class="w-title">Turning a flood of app reviews into one clear product priority.</h3>
+          <p class="meta">A multi-agent LLM pipeline over 660,622 reviews, with an independent checker and a live dashboard.</p>
+        </a>
+        %%LIVE_SPOTIFY%%
+        </div>
         <a class="w reveal" href="/projects/personal-wiki">
           <div class="stage" style="--g: var(--g-arcade)"><div class="art fill"><img src="/assets/img/builds/personal-wiki.jpg" alt="Obsidian graph of the wiki's linked notes" width="900" height="646" loading="lazy"></div><span class="pill">Personal Wiki <em>2026</em></span></div>
           <h3 class="w-title">Asking my own notes questions, with no internet.</h3>
@@ -644,6 +652,7 @@ STAMP = (STAMP.replace("%%V%%", V)
               .replace("%%LIVE_PALETTE_GENERATOR%%", live_button("palette-generator"))
               .replace("%%LIVE_TYPERACE%%", live_button("typerace"))
               .replace("%%LIVE_NETWORKING_TRACKER%%", live_button("networking-tracker"))
+              .replace("%%LIVE_SPOTIFY%%", live_button("spotify-review-triage"))
               .replace("%%LIVE_WEB_ANATOMY%%", live_button("web-anatomy")))
 assert "%%" not in STAMP, "unreplaced token"
 
