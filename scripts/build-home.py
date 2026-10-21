@@ -531,7 +531,7 @@ STAMP = r"""<!DOCTYPE html>
   (function () {
     var THESIS = {
       'builds': 'I like to build things, from startups to card games.',
-      'work': 'A startup, a Fortune 500 program, and a factory floor.',
+      'work': 'I run the operations behind the idea.',
       'about': 'Product, strategy, operations, and the occasional 3D print.'
     };
     var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
