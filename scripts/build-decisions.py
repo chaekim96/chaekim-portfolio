@@ -111,6 +111,16 @@ DECISIONS = [
         opt("Public", "The case page can link to the source.", chosen=True, rec=True),
         opt("Private", "Keep it private for now, possibly for Lucent."),
     ]),
+    D("products", "Oct 2026", "AI Visibility Checker", "How should the Lucent audit playbook go into the checker?", [
+        opt("Add its checks and credit it", "Turn the playbook's automatable checks into new ones and credit the playbook by name.", chosen=True, rec=True),
+        opt("Credit only", "Mention the playbook and Chris without changing the checks."),
+        opt("Link the Lucent repo too", "Only works once the repo is public."),
+    ]),
+    D("products", "Oct 2026", "AI Visibility Checker", "How should Chris Jackson, my Lucent co-founder, be credited?", [
+        opt("Partner on the method", "The checks draw on the audit playbook we built at Lucent; the checker code is new.", chosen=True, rec=True),
+        opt("Co-builder of the checker", "Name him as co-creator of the checker itself."),
+        opt("Ask Chris first", "Hold anything that names him until he agrees."),
+    ]),
     D("products", "Oct 2026", "Palette Generator", "Where should the weekly trend scan read brand colors from?", [
         opt("Startup lists", "New Product Hunt launches plus a curated list. Needs an API token.", rec=True),
         opt("A curated list only", "Hand-picked sites kept in the repo. No token; \"latest\" means the sites we add.", chosen=True),

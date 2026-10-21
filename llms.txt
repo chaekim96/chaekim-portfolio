@@ -1,0 +1,57 @@
+# Chae Kim
+
+> Chae Kim (Chaewoon Kim) builds products and tools. MBA candidate at UC Berkeley Haas, co-founder of Lucent (an AI search console), previously at EY (AI & Data) and Tritooling. This is their portfolio.
+
+Every project page follows the same shape: the problem, what Chae did, results, what they'd do differently, and artifacts. Numbers on the site match Chae's resume.
+
+## Builds
+
+Products and tools, most with a live demo.
+
+- [AI Visibility Checker](https://chaekim-portfolio.vercel.app/projects/ai-visibility-checker): A free checker that reads a page the way a crawler does and reports whether search engines and AI assistants can find, read and cite it.
+- [Tally](https://chaekim-portfolio.vercel.app/projects/tally): A note-taker where every line gets a Claude time estimate, totaled in a ledger so a to-do list becomes an honest picture of the day.
+- [Palette Generator](https://chaekim-portfolio.vercel.app/projects/palette-generator): A palette and font-pairing generator that takes a non-designer from a one-line description to a brand look they can ship.
+- [TypeRace](https://chaekim-portfolio.vercel.app/projects/typerace): A live browser typing race for classmates: share a four-letter code, type the same short story, first to finish wins.
+- [Networking Tracker](https://chaekim-portfolio.vercel.app/projects/networking-tracker): A private contact tracker where Postgres row-level security keeps each person's data their own.
+- [Anatomy of a Website](https://chaekim-portfolio.vercel.app/projects/web-anatomy): An illustrated, growing encyclopedia of how a website works, built on one idea: SEO and GEO start with the website.
+- [VoicePrompter](https://chaekim-portfolio.vercel.app/projects/voiceprompter): A macOS teleprompter that follows your voice as you read and stays hidden from Zoom, Meet, and screenshots.
+- [SmartModel](https://chaekim-portfolio.vercel.app/projects/smartmodel): A Claude Code hook that scores how hard each prompt is and recommends the cheapest model that can handle it.
+- [Token-Fuel](https://chaekim-portfolio.vercel.app/projects/token-fuel): A menu-bar fuel gauge for Claude Code and Codex sessions, built from the exact token counts each tool already writes to disk.
+- [Code Improver](https://chaekim-portfolio.vercel.app/projects/code-improver): A custom Claude Code subagent that reviews changed files for readability, performance, and best practices.
+- [Spotify Review Triage](https://chaekim-portfolio.vercel.app/projects/spotify-review-triage): A multi-agent LLM pipeline that labels Spotify app reviews, checks its own work, and recommends where next quarter's product effort should go.
+- [Personal Wiki](https://chaekim-portfolio.vercel.app/projects/personal-wiki): A command-line study wiki that runs fully offline: a local Gemma model turns sources into linked Obsidian notes and answers questions with citations.
+- [Pac-Man DQN](https://chaekim-portfolio.vercel.app/projects/pacman-dqn): A Deep Q-Network trained on Atari Ms. Pac-Man, with every number reported straight from the run's own output files.
+- [Custom LLM](https://chaekim-portfolio.vercel.app/projects/custom-llm): A tiny nanoGPT model trained from scratch on a laptop CPU, with my own teaching corpus and 48 fixed language tests.
+- [Home (during COVID)](https://chaekim-portfolio.vercel.app/projects/home-gif): A pixel-art animated GIF depicting home during COVID, built around a Swiss Army knife as a metaphor for a perpetually growing house.
+- [Yin Yang in Motion](https://chaekim-portfolio.vercel.app/projects/yin-yang): An animated GIF that turns the yin-yang into rotating clockwork: the garden of Eden on one panel, the underworld on the other.
+
+## Work
+
+Startups, consulting and operations, then earlier projects at Indiana University.
+
+- [Lucent](https://chaekim-portfolio.vercel.app/projects/lucent): Lucent is an AI search observability platform and consultancy. It shows brands how they rank in ChatGPT, Perplexity, and Gemini, then helps them fix it.
+- [EY, AI & Data](https://chaekim-portfolio.vercel.app/projects/ey): Program-wide risk, OKRs, and the first QBR for a $200M+ cloud migration at a Fortune 500 life sciences client, with $10M+ in realized savings.
+- [Tritooling](https://chaekim-portfolio.vercel.app/projects/tritooling): Director of Operations at a family-owned precision manufacturer serving semiconductor, medical device, and industrial clients across APAC.
+- [MirrorMe](https://chaekim-portfolio.vercel.app/projects/mirrorme): An icebreaker card game for people who host. 150+ pre-launch purchase commitments with zero paid budget.
+- [MirrorMe tech pack](https://chaekim-portfolio.vercel.app/projects/mirrorme-tech-pack)
+- [Mobility devices for older adults (stealth)](https://chaekim-portfolio.vercel.app/projects/mobility): Premium, design-forward mobility products that help older adults stay independent longer.
+- [aLab: Automatic Level-Adjusting Bowl](https://chaekim-portfolio.vercel.app/projects/alab): A companion app for aLab, a conceptual height- and temperature-adjustable dog bowl, designed with human-centered computing methods.
+- [Re-envisioning Coursera](https://chaekim-portfolio.vercel.app/projects/coursera): A product-management dossier proposing features that help Coursera learners turn coursework into transferable career outcomes.
+- [IU Study Assistant](https://chaekim-portfolio.vercel.app/projects/iu-study-assistant): A year-long capstone building a streamlined study platform for Indiana University students: project management, UX design, and back-end development.
+- [LUC: Luggage Under Control](https://chaekim-portfolio.vercel.app/projects/luc): A self-weighing luggage concept using force sensors in each wheel, inspired by tire-pressure monitoring systems and Wi-Fi mesh networks.
+- [PTM: Perpetual Thermal Monitor](https://chaekim-portfolio.vercel.app/projects/ptm): A non-invasive sleep mask with embedded thermal and push sensors that tracks temperature patterns overnight and syncs to a health app.
+
+## How this site is made
+
+The decisions and options behind the portfolio itself.
+
+- [How I decide](https://chaekim-portfolio.vercel.app/projects/decisions): How I make decisions: the options I laid out for each call on this site and my projects, which one I picked, and why.
+- [This portfolio](https://chaekim-portfolio.vercel.app/projects/portfolio): How I built this portfolio like a product: where it started, the decisions that shaped it, what's on the backlog, and what I'm considering next.
+- [Personal brand](https://chaekim-portfolio.vercel.app/projects/personal-brand): How I picked a personal brand: five directions, two built finalists, and the decisions along the way.
+
+## More
+
+- [Home](https://chaekim-portfolio.vercel.app/): the Builds, Work and About tabs
+- [Reading list](https://chaekim-portfolio.vercel.app/reading)
+- [Resume (PDF)](https://chaekim-portfolio.vercel.app/assets/pdf/chae-kim-resume.pdf)
+- [Arcade](https://chaekim-portfolio.vercel.app/arcade): Snake, Galaga and a generative lo-fi radio

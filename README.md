@@ -30,6 +30,7 @@ Anything not yet confirmed is marked in the copy as `[CONFIRM: ...]` (styled yel
 
 - Add a project: add an entry to `CASES` in `scripts/build-cases.py`, a card in the Stamp template in `scripts/build-home.py`, then run both scripts. Web apps that can run in a frame go in `LIVE_APPS` (stamp_shared.py) to get a "Try it live" button.
 - The old design variants (desktop, PRD, notebook, schematic) were retired; `/variants/*` redirects home.
+- `/llms.txt` (a Markdown guide to the site for AI tools) is generated from every project page's own description: run `python3 scripts/build-llms.py` after the other build scripts. It fails if a new project page isn't assigned to a section.
 - Resume: replace `assets/pdf/chae-kim-resume.pdf`. Every resume link already points there.
 - Email is assembled at runtime from `data-user` / `data-domain` attributes (see `main.js`) so it isn't in the HTML.
 - Analytics: `/_vercel/insights/script.js` is included; enable Web Analytics in the Vercel dashboard for it to record.

@@ -158,7 +158,7 @@ STAMP = r"""<!DOCTYPE html>
       <div class="grid grid--3">
         <div class="live-card reveal">
         <a class="w" href="/projects/ai-visibility-checker">
-          <div class="stage" style="--g: var(--g-lucent)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>ai visibility checker</span></div><img src="/assets/img/builds/ai-visibility-checker-card.jpg" alt="The AI Visibility Checker report for chaekim.vercel.app: score 94, ready for AI answers" width="960" height="600" loading="lazy"></div></div><span class="pill">AI Visibility Checker <em>2026</em></span></div>
+          <div class="stage" style="--g: var(--g-lucent)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>ai visibility checker</span></div><img src="/assets/img/builds/ai-visibility-checker-card-2.jpg" alt="The AI Visibility Checker report for chaekim.vercel.app, ready for AI answers" width="960" height="600" loading="lazy"></div></div><span class="pill">AI Visibility Checker <em>2026</em></span></div>
           <h3 class="w-title">Knowing whether AI assistants can find, read and cite your site.</h3>
           <p class="meta">Paste a URL: crawler rules, llms.txt, structured data, and text that's there without JavaScript.</p>
         </a>
