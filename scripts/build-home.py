@@ -765,6 +765,7 @@ BACKLOG_DONE = "\n".join(_item(t, "done") for t in [
     "Real screenshots of every tool in use. <em>Oct 11</em>",
     "Answer or cut every unconfirmed detail on the live pages. <em>Oct 11</em>",
     "Consolidate five layers of stylesheet into one design. <em>Oct 12</em>",
+    "Publish the case study on choosing this brand. <em>Oct 14</em>",
 ])
 BACKLOG_OPEN = "\n".join(_item(t, "open") for t in [
     "Analytics on every page, counting \"Let's chat\" clicks. That's the one number this site should move.",
@@ -773,7 +774,6 @@ BACKLOG_OPEN = "\n".join(_item(t, "open") for t in [
     "A link preview that shows the work, not statistics.",
     "A custom domain.",
     "Self-host Poppins, the last request that blocks the first paint.",
-    "Finish and publish the case study on choosing this brand.",
 ])
 CONSIDERING = "\n".join(_item(t, "idea") for t in [
     "A bookshelf: what I'm reading and what stuck.",
