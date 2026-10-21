@@ -165,7 +165,7 @@ PRODUCTS = [
     desc="A live browser typing race for classmates: share a four-letter code, type the same short story, first to finish wins.",
     tldr="Start a room and share the link. Everyone types the same short story at once, with live progress bars, WPM, and accuracy, then a results chart and a weekly class leaderboard. No accounts, no ads.",
     role="Product owner and builder", team="Solo, built with Claude Code", timeline="October 2026",
-    cover=cover("/assets/img/builds/typerace.jpg", "A TypeRace race in progress at 72 WPM, the progress bar halfway across"),
+    cover=cover("/assets/img/builds/typerace-2.jpg", "A TypeRace race in progress at 70 WPM, ink on near-white, the progress bar halfway across"),
     problem=paras("Typing races are a fun way to compete with friends. I wanted one a class could join from one link in a few seconds, on a laptop or a phone, with no accounts and no ads."),
     did=bullets(
       "Wrote a PRD first, then built to it: rooms by four-letter code, a synced countdown, live progress, results, and rejoining after a refresh.",
@@ -177,7 +177,7 @@ PRODUCTS = [
     ),
     results=stat_grid(("10", "players per room"), ("20", "original stories"), ("<30 B", "per progress update"), ("11.5 KB", "client code, gzipped")),
     differently=paras("Keep test traffic out of production by design. Right after one deploy, my simulation put two bots on the live leaderboard because the old server was still answering. I removed them and made the simulation wait for the new version, but that guard should have come first."),
-    artifacts=links(("Play TypeRace", "https://typerace.typerace.workers.dev")) + "\n" + artifact_grid(("/assets/img/cases/typerace-results.jpg", "Results: finishing order, WPM, accuracy, and a WPM chart for the race.")),
+    artifacts=links(("Play TypeRace", "https://typerace.typerace.workers.dev")) + "\n" + artifact_grid(("/assets/img/cases/typerace-results-2.jpg", "Results from a test race on my own server: finishing order, WPM, accuracy, and a WPM chart.")),
   ),
   dict(slug="networking-tracker", title="Networking Tracker",
     kicker="product · solo build · 2026",
