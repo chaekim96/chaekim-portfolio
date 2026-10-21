@@ -452,7 +452,7 @@ CASES = [
     ),
     results=stat_grid(("150+", "pre-launch purchase commitments"), ("$30 to 40", "price point"), ("$0", "paid budget"), ("50+", "decks sold")) + "\n" + paras("Insight: it sold itself in rooms where people already wanted to connect. Venue partnerships became the channel."),
     differently="",
-    artifacts=artifact_grid(("/assets/img/projects/mirrorme/card-category.png", "Category card"), ("/assets/img/projects/mirrorme/card-question.png", "Question card"), ("/assets/img/projects/mirrorme/card-rules.jpg", "Setup and rules card"), ("/assets/img/projects/mirrorme/card-alt.png", "Alternative card design")),
+    artifacts=paras("I later wrote up the deck as a tech pack: card spec, bill of materials, box dieline, costing, and a proofing checklist.") + "\n" + links(("Read the tech pack", "/projects/mirrorme-tech-pack")) + "\n" + artifact_grid(("/assets/img/projects/mirrorme/card-category.png", "Category card"), ("/assets/img/projects/mirrorme/card-question.png", "Question card"), ("/assets/img/projects/mirrorme/card-rules.jpg", "Setup and rules card"), ("/assets/img/projects/mirrorme/card-alt.png", "Alternative card design")),
   ),
   dict(slug="tritooling", title="Tritooling",
     kicker="featured · director of operations · Philippines · 2024 to 2025",

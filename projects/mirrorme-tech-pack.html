@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>MirrorMe tech pack · Chae Kim</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://chaekim-portfolio.vercel.app/projects/mirrorme-tech-pack">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --ink:#161618; --ink-2:#6e6e73; --line:rgba(0,0,0,.10); --fill:rgba(0,0,0,.04);
+  --wash:linear-gradient(135deg,#f3f0ff 0%,#fafafd 50%,#eef5ff 100%);
+  --tbd-bg:#fff6db; --tbd-ink:#7a5400; --tbd-line:#e9c76a;
+  --ok:#30b158; --accent:#0a66d6;
+  --o:#7b61ff; --c:#0a66d6; --e:#f08a24; --a:#30b158; --n:#e5484d; --t:#6e6e73;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0b0b0c; --ink:#f5f5f7; --ink-2:#a1a1a6; --line:rgba(255,255,255,.12); --fill:rgba(255,255,255,.06);
+    --wash:linear-gradient(135deg,#1a1530 0%,#0b0b0c 50%,#0c1322 100%);
+    --tbd-bg:#3a2c05; --tbd-ink:#ffd772; --tbd-line:#7a5f14; --accent:#4ea1ff;
+  }
+}
+*{box-sizing:border-box}
+html{overflow-x:clip}
+body{margin:0;background:var(--bg);background-image:var(--wash);background-attachment:fixed;color:var(--ink);font:400 15px/1.55 Poppins,system-ui,sans-serif}
+.wrap{max-width:1000px;margin:0 auto;padding:40px 16px 80px}
+h1{font-weight:500;font-size:clamp(28px,5vw,40px);letter-spacing:-.025em;line-height:1.1;margin:0}
+h2{font-weight:500;font-size:20px;letter-spacing:-.02em;margin:0 0 4px}
+h3{font-weight:500;font-size:15px;margin:18px 0 8px}
+p{margin:0 0 10px}
+.muted{color:var(--ink-2)}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:13px}
+.page{background:var(--bg);border:1px solid var(--line);border-radius:24px;padding:28px;margin:18px 0}
+.sec-h{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:18px}
+.sec-h .n{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-2)}
+.sec-h p{margin:0 0 0 auto;font-size:13px;color:var(--ink-2);text-align:right}
+.tbd{display:inline-block;background:var(--tbd-bg);color:var(--tbd-ink);border:1px dashed var(--tbd-line);border-radius:6px;padding:0 6px;font-size:12px;font-family:"IBM Plex Mono",monospace;line-height:20px;white-space:normal;overflow-wrap:anywhere}
+.src{font-size:11px;color:var(--ink-2);font-family:"IBM Plex Mono",monospace}
+.legend{display:flex;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--ink-2);margin-top:14px}
+.legend b{font-weight:500;color:var(--ink)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.kv{display:grid;grid-template-columns:minmax(110px,max-content) minmax(0,1fr);gap:6px 16px;font-size:14px}
+.kv dt{color:var(--ink-2)} .kv dd{margin:0}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:560px}
+th{font-weight:500;text-align:left;color:var(--ink-2);font-size:12px;border-bottom:1px solid var(--line);padding:8px 10px}
+td{border-bottom:1px solid var(--line);padding:8px 10px;vertical-align:top}
+tr.tot td{font-weight:500;border-bottom:none}
+td.num,th.num{text-align:right;font-family:"IBM Plex Mono",monospace}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.badge{display:inline-block;font-size:11px;border-radius:999px;padding:2px 9px;border:1px solid var(--line);color:var(--ink-2)}
+.cards{display:flex;flex-wrap:wrap;gap:20px;justify-content:center}
+.card{width:180px;aspect-ratio:2.5/3.5;border-radius:10px;border:1px solid var(--line);background:#fff;color:#161618;padding:14px;display:flex;flex-direction:column;position:relative;box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.card small{font-size:10px;color:#6e6e73;letter-spacing:.04em}
+.card .q{font-size:13px;line-height:1.4;margin-top:auto;margin-bottom:auto}
+.scale{display:flex;justify-content:space-between;font-family:"IBM Plex Mono",monospace;font-size:11px}
+.scale span{width:20px;height:20px;border-radius:50%;border:1px solid #c9c9ce;display:flex;align-items:center;justify-content:center}
+.cap{font-size:12px;color:var(--ink-2);text-align:center;margin-top:8px}
+svg text{font-family:"IBM Plex Mono",monospace}
+.check{list-style:none;padding:0;margin:0;display:grid;gap:8px;font-size:14px}
+.check li{display:flex;gap:10px;align-items:flex-start}
+.check li::before{content:"";flex:none;width:16px;height:16px;border:1.5px solid var(--ink-2);border-radius:4px;margin-top:3px}
+.sign{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-top:20px}
+.sign div{border-top:1px solid var(--ink);padding-top:6px;font-size:12px;color:var(--ink-2);min-height:44px}
+.bar{display:flex;height:14px;border-radius:999px;overflow:hidden;margin:10px 0 6px;border:1px solid var(--line)}
+@media (max-width:560px){.sec-h p{display:none}.page{padding:20px}}
+@media print{
+  body{background:#fff}
+  .page{break-inside:avoid;border-radius:0;border:none;border-top:2px solid #161618;margin:0 0 12px;padding:16px 0}
+  .noprint{display:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<p class="noprint" style="margin:0 0 6px;font-size:14px"><a href="/projects/mirrorme" style="color:var(--ink-2);text-decoration:none">← MirrorMe case study</a></p>
+<p class="noprint muted" style="font-size:13px;margin:0 0 4px">I drafted this tech pack in 2026 from the original print file and question bank. Yellow blanks mark what a printer quote fills in.</p>
+
+<!-- 0. Cover -->
+<header class="page">
+  <div style="display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:flex-start">
+    <div>
+      <p class="src" style="margin-bottom:8px">TECH PACK · MM-001 · v0.1 DRAFT</p>
+      <h1>MirrorMe card game</h1>
+      <p class="muted" style="margin-top:8px;max-width:520px">Icebreakers that go deeper without getting awkward. This pack is everything a printer needs to quote, proof and produce the deck.</p>
+    </div>
+    <dl class="kv" style="min-width:240px">
+      <dt>Style no.</dt><dd class="mono">MM-001</dd>
+      <dt>Owner</dt><dd>Chae Kim, co-founder</dd>
+      <dt>Category</dt><dd>Party / icebreaker card game</dd>
+      <dt>Target retail</dt><dd>$30 to 40</dd>
+      <dt>Version date</dt><dd class="mono">2026-10-21</dd>
+      <dt>Status</dt><dd><span class="badge">Draft for quote</span></dd>
+    </dl>
+  </div>
+  <div class="legend">
+    <span><b>Black text</b> = from your files (print PDF, question sheet, case study)</span>
+    <span><span class="tbd">TBD</span> = fill in before sending to a printer</span>
+  </div>
+  <p class="noprint muted" style="font-size:13px;margin:14px 0 0">Print or save as PDF (Cmd + P). Each section prints as its own block.</p>
+</header>
+
+<!-- 1. Overview -->
+<section class="page">
+  <div class="sec-h"><span class="n">01</span><h2>Product overview</h2><p>What it is and who it is for</p></div>
+  <div class="grid2">
+    <dl class="kv">
+      <dt>Concept</dt><dd>Built on the OCEAN personality model. A category card sets a trait, a question card asks about someone at the table, and players rate them 1 to 5.</dd>
+      <dt>Customers</dt><dd>Regular hosts, and the venues that host them (card game cafes, social events).</dd>
+      <dt>Players</dt><dd><span class="tbd">min to max players</span></dd>
+      <dt>Play time</dt><dd><span class="tbd">minutes</span></dd>
+      <dt>Age rating</dt><dd><span class="tbd">e.g. 14+</span></dd>
+    </dl>
+    <dl class="kv">
+      <dt>Card size</dt><dd>2.5 × 3.5 in (63.5 × 88.9 mm), poker size <span class="src">· print PDF</span></dd>
+      <dt>Print file</dt><dd><span class="mono">MirrorMe Final.pdf</span>, 55 pages at card size</dd>
+      <dt>Question bank</dt><dd>54 questions, 47 rated on a 1 to 5 scale <span class="src">· question sheet</span></dd>
+      <dt>Card types</dt><dd>Category, question, setup and rules</dd>
+      <dt>Card count</dt><dd><span class="tbd">confirm final deck count vs 55-page file</span></dd>
+    </dl>
+  </div>
+</section>
+
+<!-- 2. Component list -->
+<section class="page">
+  <div class="sec-h"><span class="n">02</span><h2>Bill of materials</h2><p>Every part in the box</p></div>
+  <div class="tw"><table>
+    <tr><th>#</th><th>Component</th><th>Spec</th><th class="num">Qty / unit</th><th>Supplier</th><th class="num">Unit cost</th></tr>
+    <tr><td>1</td><td>Category cards</td><td>One per trait, plus trivia</td><td class="num">6 <span class="src">?</span></td><td><span class="tbd">printer</span></td><td class="num"><span class="tbd">$</span></td></tr>
+    <tr><td>2</td><td>Question cards</td><td>See deck breakdown below</td><td class="num">54</td><td><span class="tbd">printer</span></td><td class="num"><span class="tbd">$</span></td></tr>
+    <tr><td>3</td><td>Setup and rules card</td><td>Same stock as deck</td><td class="num"><span class="tbd">1 to 2</span></td><td><span class="tbd">printer</span></td><td class="num"><span class="tbd">$</span></td></tr>
+    <tr><td>4</td><td>Tuck box</td><td>Fits 2.5 × 3.5 in deck, see section 05</td><td class="num">1</td><td><span class="tbd">printer</span></td><td class="num"><span class="tbd">$</span></td></tr>
+    <tr><td>5</td><td>Shrink wrap</td><td>Clear, around tuck box</td><td class="num">1</td><td><span class="tbd">printer</span></td><td class="num"><span class="tbd">$</span></td></tr>
+    <tr><td>6</td><td>Scorepad or tokens</td><td>Optional, for tracking 1 to 5 ratings</td><td class="num"><span class="tbd">0 or 1</span></td><td><span class="tbd">supplier</span></td><td class="num"><span class="tbd">$</span></td></tr>
+    <tr class="tot"><td></td><td>Total materials</td><td></td><td></td><td></td><td class="num"><span class="tbd">$</span></td></tr>
+  </table></div>
+  <h3>Deck breakdown from the question sheet</h3>
+  <div class="tw"><table>
+    <tr><th>Category</th><th>Trait color</th><th>Question type</th><th class="num">Questions</th></tr>
+    <tr><td>Openness to experience</td><td><span class="dot" style="background:var(--o)"></span><span class="tbd">Pantone</span></td><td>1 to 5 rating</td><td class="num">7</td></tr>
+    <tr><td>Conscientiousness</td><td><span class="dot" style="background:var(--c)"></span><span class="tbd">Pantone</span></td><td>1 to 5 rating</td><td class="num">14</td></tr>
+    <tr><td>Extraversion</td><td><span class="dot" style="background:var(--e)"></span><span class="tbd">Pantone</span></td><td>1 to 5 rating</td><td class="num">9</td></tr>
+    <tr><td>Agreeableness</td><td><span class="dot" style="background:var(--a)"></span><span class="tbd">Pantone</span></td><td>1 to 5 rating</td><td class="num">6</td></tr>
+    <tr><td>Neuroticism</td><td><span class="dot" style="background:var(--n)"></span><span class="tbd">Pantone</span></td><td>1 to 5 rating</td><td class="num">11</td></tr>
+    <tr><td>Trivia</td><td><span class="dot" style="background:var(--t)"></span><span class="tbd">Pantone</span></td><td><span class="tbd">answer format</span></td><td class="num">7</td></tr>
+    <tr class="tot"><td>Total</td><td></td><td></td><td class="num">54</td></tr>
+  </table></div>
+  <p class="src" style="margin-top:8px">Dot colors are placeholders so the categories read apart. Replace with your real card colors.</p>
+</section>
+
+<!-- 3. Card spec -->
+<section class="page">
+  <div class="sec-h"><span class="n">03</span><h2>Card specification</h2><p>Trim, bleed, safe zone, stock</p></div>
+  <div class="grid2" style="align-items:center">
+    <svg viewBox="0 0 300 380" role="img" aria-label="Card layout with bleed, trim and safe zone dimensions" style="width:100%;max-width:300px;margin:0 auto;display:block">
+      <rect x="40" y="30" width="215" height="300" fill="none" stroke="#e5484d" stroke-dasharray="4 3"/>
+      <rect x="51" y="41" width="193" height="278" rx="10" fill="#fff" stroke="#161618" stroke-width="1.5"/>
+      <rect x="62" y="52" width="171" height="256" rx="6" fill="none" stroke="#0a66d6" stroke-dasharray="2 3"/>
+      <text x="147" y="180" text-anchor="middle" font-size="11" fill="#6e6e73">artwork</text>
+      <line x1="51" y1="350" x2="244" y2="350" stroke="#6e6e73"/><line x1="51" y1="344" x2="51" y2="356" stroke="#6e6e73"/><line x1="244" y1="344" x2="244" y2="356" stroke="#6e6e73"/>
+      <text x="147" y="368" text-anchor="middle" font-size="11" fill="#6e6e73">2.5 in / 63.5 mm</text>
+      <line x1="270" y1="41" x2="270" y2="319" stroke="#6e6e73"/><line x1="264" y1="41" x2="276" y2="41" stroke="#6e6e73"/><line x1="264" y1="319" x2="276" y2="319" stroke="#6e6e73"/>
+      <text x="284" y="180" font-size="11" fill="#6e6e73" transform="rotate(90 284 180)" text-anchor="middle">3.5 in / 88.9 mm</text>
+      <text x="40" y="22" font-size="10" fill="#e5484d">bleed</text>
+      <text x="200" y="22" font-size="10" fill="#161618">trim</text>
+      <text x="66" y="66" font-size="10" fill="#0a66d6">safe</text>
+    </svg>
+    <dl class="kv">
+      <dt>Trim size</dt><dd>2.5 × 3.5 in (63.5 × 88.9 mm)</dd>
+      <dt>Bleed</dt><dd><span class="tbd">0.125 in / 3 mm each side</span> <span class="src">· confirm with printer</span></dd>
+      <dt>Safe zone</dt><dd><span class="tbd">0.125 in / 3 mm inside trim</span></dd>
+      <dt>Corners</dt><dd><span class="tbd">radius, e.g. 3 mm</span></dd>
+      <dt>Card stock</dt><dd><span class="tbd">gsm and core, e.g. 300 to 330 gsm black core</span></dd>
+      <dt>Finish</dt><dd><span class="tbd">matte, gloss or linen</span></dd>
+      <dt>Print</dt><dd><span class="tbd">4/4 CMYK, both sides</span></dd>
+      <dt>File format</dt><dd>PDF, one card per page <span class="src">· matches current file</span> <span class="tbd">add bleed + crop marks</span></dd>
+    </dl>
+  </div>
+</section>
+
+<!-- 4. Artwork -->
+<section class="page">
+  <div class="sec-h"><span class="n">04</span><h2>Card artwork templates</h2><p>Layout rules per card type</p></div>
+  <div class="cards">
+    <div>
+      <div class="card" style="border-top:8px solid var(--c)">
+        <small>CATEGORY</small>
+        <div class="q" style="font-size:20px;font-weight:500;line-height:1.15">Conscientiousness</div>
+        <small>Rate how organized and dependable they are.</small>
+      </div>
+      <p class="cap">Category card · sets the trait</p>
+    </div>
+    <div>
+      <div class="card">
+        <small style="display:flex;align-items:center"><span class="dot" style="background:var(--c)"></span>CONSCIENTIOUSNESS</small>
+        <div class="q">How punctual is <b style="font-weight:500">[Subject]</b>?</div>
+        <div class="scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div>
+        <small style="display:flex;justify-content:space-between;margin-top:4px"><span>Strongly disagree</span><span>Strongly agree</span></small>
+      </div>
+      <p class="cap">Question card · from the sheet</p>
+    </div>
+    <div>
+      <div class="card" style="background:#161618;color:#fff;align-items:center;justify-content:center">
+        <div style="font-size:22px;font-weight:500;letter-spacing:-.02em">MirrorMe</div>
+        <small style="color:#a1a1a6;margin-top:6px">Card back</small>
+      </div>
+      <p class="cap">Back · <span class="tbd">final art</span></p>
+    </div>
+  </div>
+  <h3>Layout rules</h3>
+  <ul class="check" style="list-style:disc;padding-left:20px;display:block">
+    <li style="display:list-item">[Subject] is the placeholder for the person being rated. Keep it as one word so lines never reflow.</li>
+    <li style="display:list-item">Each question card carries its trait name and color, so cards can be sorted back into categories.</li>
+    <li style="display:list-item">The 1 to 5 scale sits in the same spot on every rating card.</li>
+    <li style="display:list-item">Typeface <span class="tbd">font name, sizes</span> · minimum text size <span class="tbd">e.g. 8 pt</span></li>
+  </ul>
+</section>
+
+<!-- 5. Packaging -->
+<section class="page">
+  <div class="sec-h"><span class="n">05</span><h2>Packaging</h2><p>Tuck box dieline</p></div>
+  <div class="grid2" style="align-items:center">
+    <svg viewBox="0 0 420 300" role="img" aria-label="Tuck box dieline for a poker-size deck" style="width:100%;display:block">
+      <g fill="none" stroke="#161618" stroke-width="1.2">
+        <rect x="20" y="70" width="40" height="160"/>
+        <rect x="60" y="70" width="110" height="160"/>
+        <rect x="170" y="70" width="40" height="160"/>
+        <rect x="210" y="70" width="110" height="160"/>
+        <path d="M320 70 h18 l6 8 v144 l-6 8 h-18"/>
+        <path d="M60 70 v-40 h110 v40"/>
+        <path d="M70 30 q45 -26 90 0"/>
+        <path d="M210 230 v40 h110 v-40"/>
+        <path d="M20 70 l6 -24 h28 l6 24"/><path d="M170 70 l6 -24 h28 l6 24"/>
+        <path d="M20 230 l6 24 h28 l6 -24"/><path d="M170 230 l6 24 h28 l6 -24"/>
+      </g>
+      <g fill="none" stroke="#e5484d" stroke-dasharray="4 3"><line x1="60" y1="70" x2="60" y2="230"/><line x1="170" y1="70" x2="170" y2="230"/><line x1="210" y1="70" x2="210" y2="230"/><line x1="320" y1="70" x2="320" y2="230"/><line x1="60" y1="70" x2="170" y2="70"/><line x1="210" y1="230" x2="320" y2="230"/></g>
+      <text x="115" y="155" text-anchor="middle" font-size="11" fill="#6e6e73">front</text>
+      <text x="265" y="155" text-anchor="middle" font-size="11" fill="#6e6e73">back</text>
+      <text x="40" y="155" text-anchor="middle" font-size="9" fill="#6e6e73" transform="rotate(-90 40 155)">spine</text>
+      <text x="115" y="52" text-anchor="middle" font-size="9" fill="#6e6e73">tuck flap</text>
+      <g font-size="10"><text x="20" y="292" fill="#161618">solid = cut</text><text x="120" y="292" fill="#e5484d">dashed = fold</text></g>
+    </svg>
+    <dl class="kv">
+      <dt>Box style</dt><dd>Tuck box for one poker-size deck</dd>
+      <dt>Inner size</dt><dd><span class="tbd">W × H × D</span> · about 2.56 × 3.56 in plus deck depth</dd>
+      <dt>Deck depth</dt><dd><span class="tbd">measure a stack of the final cards</span></dd>
+      <dt>Board</dt><dd><span class="tbd">e.g. 350 gsm SBS</span></dd>
+      <dt>Front</dt><dd>Logo, tagline, player count, play time, age</dd>
+      <dt>Back</dt><dd>How it works in 3 steps, barcode, <span class="tbd">company name and address</span></dd>
+      <dt>Barcode</dt><dd><span class="tbd">UPC / EAN</span></dd>
+      <dt>Safety marks</dt><dd><span class="tbd">check rules for each sales market</span></dd>
+    </dl>
+  </div>
+  <p class="src" style="margin-top:10px">The dieline is illustrative. Ask your printer for their own template at the final deck depth.</p>
+</section>
+
+<!-- 6. Costing -->
+<section class="page">
+  <div class="sec-h"><span class="n">06</span><h2>Costing sheet</h2><p>Unit cost vs target price</p></div>
+  <div class="grid2">
+    <div class="tw"><table style="min-width:300px">
+      <tr><th>Cost line</th><th class="num">Per unit</th></tr>
+      <tr><td>Cards (printing + stock)</td><td class="num"><span class="tbd">$</span></td></tr>
+      <tr><td>Tuck box + shrink wrap</td><td class="num"><span class="tbd">$</span></td></tr>
+      <tr><td>Freight to you</td><td class="num"><span class="tbd">$</span></td></tr>
+      <tr><td>Duty and fees</td><td class="num"><span class="tbd">$</span></td></tr>
+      <tr><td>Fulfillment / shipping to customer</td><td class="num"><span class="tbd">$</span></td></tr>
+      <tr class="tot"><td>Landed cost</td><td class="num"><span class="tbd">$</span></td></tr>
+      <tr><td>Retail price</td><td class="num">$30 to 40</td></tr>
+      <tr><td>Wholesale price to venues</td><td class="num"><span class="tbd">$</span></td></tr>
+    </table></div>
+    <div>
+      <p class="muted" style="font-size:14px">Common rule of thumb: keep landed cost at or under 20 to 25% of retail, so wholesale (often around half of retail) still leaves margin.</p>
+      <div class="bar" aria-hidden="true"><i style="flex:22;background:#161618"></i><i style="flex:28;background:#c9c9ce"></i><i style="flex:50;background:var(--accent)"></i></div>
+      <div class="legend" style="margin-top:0;font-size:12px"><span><span class="dot" style="background:#161618"></span>landed cost ≈ 22%</span><span><span class="dot" style="background:#c9c9ce"></span>your margin on wholesale</span><span><span class="dot" style="background:var(--accent)"></span>retailer margin</span></div>
+      <dl class="kv" style="margin-top:16px">
+        <dt>At $30 retail</dt><dd>landed cost target ≈ $6.00 to 7.50</dd>
+        <dt>At $40 retail</dt><dd>landed cost target ≈ $8.00 to 10.00</dd>
+        <dt>Quote MOQ</dt><dd><span class="tbd">e.g. 500 / 1,000 / 2,500 units</span></dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- 7. QC -->
+<section class="page">
+  <div class="sec-h"><span class="n">07</span><h2>Proofing and quality checklist</h2><p>Before you approve the run</p></div>
+  <div class="grid2">
+    <div><h3 style="margin-top:0">Digital proof</h3><ul class="check">
+      <li>Every card has bleed and stays inside the safe zone</li>
+      <li>Card count and order match the BOM</li>
+      <li>Trait name and color on every question card match its category</li>
+      <li>[Subject] spelled the same on every card</li>
+      <li>Spelling check on all 54 questions and the rules</li>
+    </ul></div>
+    <div><h3 style="margin-top:0">Physical sample</h3><ul class="check">
+      <li>Colors match the approved proof</li>
+      <li>Front and back line up (no off-center backs)</li>
+      <li>Cards shuffle cleanly and do not stick</li>
+      <li>Deck fits the box without forcing</li>
+      <li>Shrink wrap tight, barcode scans</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- 8. Revisions -->
+<section class="page">
+  <div class="sec-h"><span class="n">08</span><h2>Revision log and sign-off</h2><p>Who changed what</p></div>
+  <div class="tw"><table>
+    <tr><th>Version</th><th>Date</th><th>Change</th><th>By</th></tr>
+    <tr><td class="mono">v0.1</td><td class="mono">2026-10-21</td><td>First draft from the print PDF and question sheet</td><td>Chae Kim</td></tr>
+    <tr><td class="mono">v0.2</td><td></td><td><span class="tbd">printer quote received</span></td><td></td></tr>
+    <tr><td class="mono">v1.0</td><td></td><td><span class="tbd">approved for production</span></td><td></td></tr>
+  </table></div>
+  <div class="sign"><div>Designed by</div><div>Approved by (co-founder)</div><div>Printer sign-off</div></div>
+</section>
+
+</div>
+</body>
+</html>
