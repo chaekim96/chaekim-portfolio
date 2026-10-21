@@ -97,6 +97,20 @@ DECISIONS = [
         opt("Drop it", "Remove it from the plan."),
     ], link=("/projects/portfolio#backlog", "See the backlog")),
     # ---------------- products ----------------
+    D("products", "Oct 2026", "AI Visibility Checker", "Where should the checker live?", [
+        opt("Its own app and repo", "A new Vercel app with a serverless function that fetches the URL, plus its own case page.", chosen=True, rec=True),
+        opt("A page inside the portfolio", "Easiest to find, but mixes a product into the portfolio's code."),
+        opt("A Cloudflare Worker", "Fast and free, but a different platform from my other web apps."),
+    ], link=("/projects/ai-visibility-checker", "AI Visibility Checker")),
+    D("products", "Oct 2026", "AI Visibility Checker", "How much should version 1 check?", [
+        opt("One page, every signal", "Crawler rules, llms.txt, sitemap, structured data, previews, and text without JavaScript. Free and fast.", chosen=True, rec=True),
+        opt("Crawl the whole site", "The same checks across many pages. Slower, and more requests to other people's sites."),
+        opt("Also ask AI assistants", "Ask a model whether it cites the site. Closest to real GEO, but it costs money per check."),
+    ]),
+    D("products", "Oct 2026", "AI Visibility Checker", "Should the code be public?", [
+        opt("Public", "The case page can link to the source.", chosen=True, rec=True),
+        opt("Private", "Keep it private for now, possibly for Lucent."),
+    ]),
     D("products", "Oct 2026", "Palette Generator", "Where should the weekly trend scan read brand colors from?", [
         opt("Startup lists", "New Product Hunt launches plus a curated list. Needs an API token.", rec=True),
         opt("A curated list only", "Hand-picked sites kept in the repo. No token; \"latest\" means the sites we add.", chosen=True),

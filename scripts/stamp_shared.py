@@ -40,6 +40,7 @@ LIVE_V = "1"  # bump when assets/js/live.js changes
 # Without JS (or <dialog>) the link simply opens the app in a new tab.
 # ---------------------------------------------------------------------------
 LIVE_APPS = {
+    "ai-visibility-checker": ("AI Visibility Checker", "https://chaekim-ai-visibility.vercel.app", ""),
     "tally": ("Tally", "https://tally-lake-seven.vercel.app", ""),
     "palette-generator": ("Palette Generator", "https://color-palette-generator-three-sand.vercel.app", ""),
     "typerace": ("TypeRace", "https://typerace.typerace.workers.dev", "Races here are real: a finished race posts to the weekly class leaderboard."),
