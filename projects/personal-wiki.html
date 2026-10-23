@@ -73,14 +73,24 @@
     <section class="wrap case-body">
       <nav class="toc" aria-label="On this page">
         <a href="#problem">The problem</a>
+        <a href="#requirements">Product requirements</a>
         <a href="#did">What I did</a>
         <a href="#results">Results</a>
+        <a href="#milestones">Milestones and next steps</a>
+        <a href="#iterations">Iterations and decisions</a>
         <a href="#differently">What I'd do differently</a>
         <a href="#artifacts">Artifacts</a>
       </nav>
       <article class="prose">
         <h2 id="problem">The problem</h2>
         <p>Cloud assistants answer confidently from anywhere. For studying I wanted the opposite: answers only from my own sources, a citation for every claim, on a laptop with Wi-Fi off.</p>
+        <h2 id="requirements">Product requirements</h2>
+        <ul>
+          <li>Ingest my course sources into linked Obsidian notes and answer study questions from those sources with citations.</li>
+          <li>Run entirely on the laptop after setup, with no cloud calls or hosted embeddings, within the machine's available memory.</li>
+          <li>Keep ask, chat, and search behavior separate; unsupported questions should return insufficient evidence.</li>
+          <li>Preserve hand-edited notes and source links when ingesting the same material again.</li>
+        </ul>
         <h2 id="did">What I did</h2>
         <ul>
           <li>Picked the model to fit the machine. Gemma 4 E2B at 4-bit, because the larger versions didn't fit in the 5 to 6 GB free on an 18 GB Mac.</li>
@@ -93,8 +103,21 @@
         <h2 id="results">Results</h2>
         <div class="results"><div><b>3 of 4</b><span>tests passed, written in advance</span></div><div><b>4.4 s</b><span>per answer, warm</span></div><div><b>~1.7 GB</b><span>working memory</span></div><div><b>0</b><span>cloud calls</span></div></div>
         <p>The failure is documented. A question in my own shorthand ("A3") missed the right passage, and the model answered a nearby question with a real citation.</p>
+        <h2 id="milestones">Milestones and next steps</h2>
+        <ul>
+          <li><b>Built:</b> local ingestion, linked notes, hybrid search, cited answers, and a separate study-partner chat mode.</li>
+          <li><b>Evaluated:</b> four prewritten ask tests, mode-separation checks, memory and response-time measurements, and an offline demonstration. Three of four ask tests passed.</li>
+          <li><b>Proposed, not implemented:</b> expand aliases such as A3, reserve retrieval space across sources, and add an answer-relevance check. Re-run the original tests and retain the baseline for comparison.</li>
+        </ul>
+        <h2 id="iterations">Iterations and decisions</h2>
+        <ul>
+          <li><b>Keyword search to hybrid retrieval:</b> adding local embeddings moved the paraphrase test's relevant passages from ranks 5 and 4 to ranks 2 and 3.</li>
+          <li><b>Reliable ingestion:</b> save a plan for each source and detect hand edits, so repeated ingestion reuses note names and keeps edited notes.</li>
+          <li><b>Citations to relevance:</b> the A3 test exposed a real citation attached to the wrong answer. The next experiment must check whether the evidence answers the actual question, as well as whether the citation exists.</li>
+        </ul>
+        <p><a href="https://github.com/chaekim96/personal-wiki/blob/main/evidence/retrieval_changes.md" target="_blank" rel="noopener">Retrieval changes ↗</a> · <a href="https://github.com/chaekim96/personal-wiki/blob/main/evidence/ask_tests/results.md" target="_blank" rel="noopener">Test results ↗</a> · <a href="https://github.com/chaekim96/personal-wiki/blob/main/README.md#10-limitation-and-improvement" target="_blank" rel="noopener">Limitations and proposed improvements ↗</a></p>
         <h2 id="differently">What I'd do differently</h2>
-        <p>A citation check proves a citation exists, not that it answers the question. Next: an alias file so my shorthand expands (A3 means Assignment 3), a guaranteed slot for each source's best passage, and a second check that asks whether the answer fits the question.</p>
+        <p>Write more questions in my own shorthand before tuning retrieval. A citation check proves a citation exists, not that it answers the question; the failed A3 test made that distinction concrete.</p>
         <h2 id="artifacts">Artifacts</h2>
         <p><a href="https://github.com/chaekim96/personal-wiki" target="_blank" rel="noopener">Source and evidence on GitHub ↗</a></p>
         <div class="artifacts"><figure><img src="/assets/img/cases/wiki-note.jpg" alt="A generated note in Obsidian, with its sources linked back to the raw files." loading="lazy"><figcaption>A generated note in Obsidian, with its sources linked back to the raw files.</figcaption></figure><figure><img src="/assets/img/cases/wiki-index.jpg" alt="The wiki&#x27;s index: concepts and projects, each with a one-line summary." loading="lazy"><figcaption>The wiki's index: concepts and projects, each with a one-line summary.</figcaption></figure></div>
