@@ -59,6 +59,22 @@ DECISIONS = [
         opt("Aurora", "Slow-drifting blobs of lavender, sky, mint and peach. More personality."),
         opt("Subtle neutral hue", "White fading to a cool gray-blue. Closest to before."),
     ], why=["The work is the color", "Calm, not loud", "Light and airy, like morning light", "Keeps black and white from feeling stark"]),
+    D("design", "Oct 2026", "This site", "Which background, take two?", [
+        opt("Lavender sky", "The wash I had. Fresh, but it shares hues with the Lucent card."),
+        opt("Hanji paper", "Warm near-white from the paper behind my 김채운 seal.", chosen=True, rec=True),
+        opt("Near white", "The off-white from my brand exploration. The quietest option."),
+        opt("Cool fog", "A grey-blue mist, calm and techy."),
+        opt("Warm dawn", "Peach into cream, friendly and personal."),
+        opt("Sage morning", "A green whisper into soft blue."),
+    ]),
+    D("design", "Oct 2026", "This site", "Hanji felt too muted. Which background, take three?", [
+        opt("Hanji, as is", "Pale cream paper with a warm glow."),
+        opt("Hanji with fibers", "Faint grain and long paper fibers."),
+        opt("Hanji with ink wash", "Sumi ink soaking in behind the seal."),
+        opt("Hanji with vermilion", "The seal's red in the tab, the email underline, and a dot.", rec=True),
+        opt("Deeper hanji", "A warmer, richer paper tone.", rec=True),
+        opt("Sky and clouds", "Sky blue overhead, soft clouds, fading to white.", chosen=True),
+    ], why=["I like that blue", "It reflects the sky and the clouds"]),
     D("design", "Oct 2026", "This site", "How should the homepage put builds first?", [
         opt("Swap tabs: Builds first", "Builds opens by default; Work moves to second. Smallest change, keeps the tabs.", chosen=True, rec=True),
         opt("Featured builds above the tabs", "Keep Work as the default, but show three flagship builds before the tabs."),
@@ -250,7 +266,7 @@ def page():
   <meta property="og:title" content="How I decide · Chae Kim - Portfolio">
   <meta property="og:description" content="{desc}">
   <meta property="og:type" content="article">
-  <meta property="og:image" content="{SITE_URL}/assets/img/og-card.png">
+  <meta property="og:image" content="{SITE_URL}/assets/img/og-sky.png">
   <link rel="canonical" href="{SITE_URL}/projects/decisions">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">

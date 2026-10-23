@@ -40,7 +40,7 @@ SHELL = """<!DOCTYPE html>
   <meta property="og:title" content="{title} · Chae Kim - Portfolio">
   <meta property="og:description" content="{desc}">
   <meta property="og:type" content="article">
-  <meta property="og:image" content="{site_url}/assets/img/og-card.png">
+  <meta property="og:image" content="{site_url}/assets/img/og-sky.png">
   <link rel="canonical" href="{site_url}/projects/{slug}">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
@@ -606,7 +606,7 @@ def jsonld(c):
         "headline": html.unescape(re.sub(r"<[^>]+>", "", c["heading"])),
         "description": c["desc"],
         "url": f"{SITE_URL}/projects/{c['slug']}",
-        "image": f"{SITE_URL}/assets/img/og-card.png",
+        "image": f"{SITE_URL}/assets/img/og-sky.png",
         "creator": {"@type": "Person", "name": "Chae Kim", "alternateName": "Chae Woon Kim", "url": f"{SITE_URL}/"},
     }
     body = json.dumps(data, ensure_ascii=False, indent=2).replace("</", "<\\/")
