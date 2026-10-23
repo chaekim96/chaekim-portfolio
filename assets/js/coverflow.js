@@ -13,15 +13,16 @@
   var S = 240, pos = Math.min(1, n - 1), target = pos, vel = 0, flipped = -1, raf = 0, shown = -1;
 
   function size() {
-    S = Math.round(Math.min(260, Math.max(168, root.clientWidth * 0.24)));
+    var w = root.clientWidth;
+    S = Math.round(w < 640 ? Math.min(340, w * 0.7) : Math.min(420, Math.max(260, w * 0.34)));
     root.style.setProperty('--s', S + 'px');
   }
   function clampP(p) { return Math.max(0, Math.min(n - 1, p)); }
   function render() {
-    var gap = S * 0.34, side = S * 0.7;
+    var gap = S * 0.26, side = S * 0.66;
     for (var k = 0; k < n; k++) {
       var o = k - pos, a = Math.abs(o), cl = Math.max(-1, Math.min(1, o)), m = Math.min(a, 1);
-      var x = o * gap + cl * side, ry = -cl * 58, z = (1 - m) * S * 0.2 - m * S * 0.12, sc = 1 - m * 0.06;
+      var x = o * gap + cl * side, ry = -cl * 52, z = (1 - m) * S * 0.12 - m * S * 0.14, sc = 1 - m * 0.04;
       var c = C[k];
       c.style.transform = 'translateX(' + x + 'px) translateZ(' + z + 'px) rotateY(' + ry + 'deg) scale(' + sc + ')';
       c.style.zIndex = 1000 - Math.round(a * 10);
@@ -64,7 +65,7 @@
     down.moved = Math.max(down.moved, Math.abs(dx));
     vel = 0.75 * vel + 0.25 * ((e.clientX - down.lx) / dt);
     down.lx = e.clientX; down.lt = now;
-    var p = down.p - dx / (S * 0.34);
+    var p = down.p - dx / (S * 0.26);
     if (p < 0) p *= 0.3; if (p > n - 1) p = n - 1 + (p - (n - 1)) * 0.3;   // soft edges
     pos = target = p; render();
   });
@@ -76,7 +77,7 @@
       else go(Math.round(pos));
     } else {
       var v = Math.max(-2, Math.min(2, vel));
-      go(Math.round(pos + Math.max(-3, Math.min(3, -v * 160 / (S * 0.34)))));
+      go(Math.round(pos + Math.max(-3, Math.min(3, -v * 160 / (S * 0.26)))));
     }
     down = null;
   }
