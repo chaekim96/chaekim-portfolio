@@ -59,6 +59,14 @@ DECISIONS = [
         opt("Aurora", "Slow-drifting blobs of lavender, sky, mint and peach. More personality."),
         opt("Subtle neutral hue", "White fading to a cool gray-blue. Closest to before."),
     ], why=["The work is the color", "Calm, not loud", "Light and airy, like morning light", "Keeps black and white from feeling stark"]),
+    D("design", "Oct 2026", "This site", "Which background, take two?", [
+        opt("Lavender sky", "The wash I had. Fresh, but it shares hues with the Lucent card."),
+        opt("Hanji paper", "Warm near-white from the paper behind my 김채운 seal.", chosen=True, rec=True),
+        opt("Near white", "The off-white from my brand exploration. The quietest option."),
+        opt("Cool fog", "A grey-blue mist, calm and techy."),
+        opt("Warm dawn", "Peach into cream, friendly and personal."),
+        opt("Sage morning", "A green whisper into soft blue."),
+    ]),
     D("design", "Oct 2026", "This site", "How should the homepage put builds first?", [
         opt("Swap tabs: Builds first", "Builds opens by default; Work moves to second. Smallest change, keeps the tabs.", chosen=True, rec=True),
         opt("Featured builds above the tabs", "Keep Work as the default, but show three flagship builds before the tabs."),
