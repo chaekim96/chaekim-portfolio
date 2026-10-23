@@ -11,7 +11,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
-V = "20"
+V = "21"
 
 # ----------------------------------------------------------------------------
 # Arcade: Snake, Galaga and a generative lo-fi radio. main.js loads arcade.js
@@ -455,17 +455,17 @@ STAMP = r"""<!DOCTYPE html>
           <ul class="swl">
             <li><span class="sw"><i style="background:#161618"></i><i style="background:#f5f5f7"></i></span><span class="swl__t"><b>ink</b> text</span><span class="swl__h"><code>#161618</code> / <code>#f5f5f7</code></span></li>
             <li><span class="sw"><i style="background:#6e6e73"></i><i style="background:#a1a1a6"></i></span><span class="swl__t"><b>ink-2</b> secondary text</span><span class="swl__h"><code>#6e6e73</code> / <code>#a1a1a6</code></span></li>
-            <li><span class="sw"><i style="background:#fdfbf6"></i><i style="background:#0d0c0a"></i></span><span class="swl__t"><b>bg</b> page</span><span class="swl__h"><code>#fdfbf6</code> / <code>#0d0c0a</code></span></li>
+            <li><span class="sw"><i style="background:#ffffff"></i><i style="background:#0b0b0c"></i></span><span class="swl__t"><b>bg</b> page</span><span class="swl__h"><code>#ffffff</code> / <code>#0b0b0c</code></span></li>
             <li><span class="sw"><i style="background:rgba(0,0,0,.08)"></i><i style="background:rgba(255,255,255,.10)"></i></span><span class="swl__t"><b>line</b> hairlines</span><span class="swl__h"><code>rgba(0,0,0,.08)</code> / <code>rgba(255,255,255,.10)</code></span></li>
             <li><span class="sw"><i style="background:rgba(0,0,0,.05)"></i><i style="background:rgba(255,255,255,.08)"></i></span><span class="swl__t"><b>fill</b> active tab, hover</span><span class="swl__h"><code>rgba(0,0,0,.05)</code> / <code>rgba(255,255,255,.08)</code></span></li>
             <li><span class="sw"><i style="background:#0a66d6"></i><i style="background:#4ea1ff"></i></span><span class="swl__t"><b>link</b> active link</span><span class="swl__h"><code>#0a66d6</code> / <code>#4ea1ff</code></span></li>
             <li><span class="sw"><i style="background:#30b158"></i><i style="background:#30b158"></i></span><span class="swl__t"><b>ok</b> live status dot</span><span class="swl__h"><code>#30b158</code> / <code>#30b158</code></span></li>
           </ul>
           <div class="grads">
-            <div><i style="background:linear-gradient(180deg,#fdfbf6 0%,#faf7f0 100%)"></i><span>Hanji paper, light: <code>#fdfbf6</code> to <code>#faf7f0</code>, top to bottom</span></div>
-            <div><i style="background:linear-gradient(180deg,#141310 0%,#0d0c0a 100%)"></i><span>Hanji paper, dark: <code>#141310</code> to <code>#0d0c0a</code></span></div>
+            <div><i style="background:linear-gradient(180deg,#bfdcf7 0%,#dcecfb 22%,#f2f8fe 48%,#ffffff 72%)"></i><span>Sky, light: <code>#bfdcf7</code> to <code>#dcecfb</code> to <code>#f2f8fe</code> to white, with soft white clouds</span></div>
+            <div><i style="background:linear-gradient(180deg,#0f1a2e 0%,#0d1424 30%,#0b0e15 55%,#0b0b0c 75%)"></i><span>Night sky, dark: <code>#0f1a2e</code> to <code>#0b0b0c</code>, with faint clouds</span></div>
           </div>
-          <p>Each project sits on its own soft gradient stage, so the work supplies the color. Everything else stays neutral. The page is hanji paper, the same warm off-white as the paper behind my 김채운 seal. It adds warmth without a brand color shouting, feels light and airy, and keeps the black and white from my brand exploration from feeling stark.</p>
+          <p>Each project sits on its own soft gradient stage, so the work supplies the color. Everything else stays neutral. The page opens on a sky: soft blue overhead, a few clouds, fading to white behind the work. I like that blue. It stays calm, not loud, feels light and airy, and keeps the black and white from my brand exploration from feeling stark.</p>
         </details>
 
         <details class="ncard ncard--type">
