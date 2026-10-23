@@ -121,6 +121,20 @@ DECISIONS = [
         opt("Co-builder of the checker", "Name him as co-creator of the checker itself."),
         opt("Ask Chris first", "Hold anything that names him until he agrees."),
     ]),
+    D("products", "Oct 2026", "Parallel Prospect Brief", "Which demo should I build on Parallel's API?", [
+        opt("Prospect brief agent", "Type a company name, get a cited one-page sales brief: what they build, whether they run AI agents, which Parallel API fits, and discovery questions.", chosen=True, rec=True),
+        opt("Search eval kit", "A 20-question gold set run across Parallel Search's modes, scored on accuracy, speed, and cost, with a one-page report."),
+        opt("AI visibility checker", "Check how a brand shows up in answers to category questions, with cited sources. Closest to my Lucent work."),
+    ], why=["It doubles as material a sales team can use"], link=("/projects/parallel-prospect-brief", "Parallel Prospect Brief")),
+    D("products", "Oct 2026", "Parallel Prospect Brief", "What should finished include?", [
+        opt("Polished CLI", "Verify the Parallel facts it uses, add tests and a clearly labeled sample brief, and tighten the README. Costs nothing until it runs.", chosen=True, rec=True),
+        opt("CLI and a web page", "Plus a small page where a visitor types a company and gets a brief. Each brief spends credits, so it would need an access code."),
+        opt("CLI and a prospect list step", "Plus a FindAll step: describe an ideal customer, get matching companies, and brief the top few. More API spend per run."),
+    ]),
+    D("products", "Oct 2026", "Parallel Prospect Brief", "Should the code be public?", [
+        opt("Public", "The case page can link to the source. The key stays in a local file git ignores.", chosen=True, rec=True),
+        opt("Private", "Keep it private for now."),
+    ]),
     D("products", "Oct 2026", "Palette Generator", "Where should the weekly trend scan read brand colors from?", [
         opt("Startup lists", "New Product Hunt launches plus a curated list. Needs an API token.", rec=True),
         opt("A curated list only", "Hand-picked sites kept in the repo. No token; \"latest\" means the sites we add.", chosen=True),
