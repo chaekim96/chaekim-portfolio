@@ -242,19 +242,35 @@ PRODUCTS = [
   dict(slug="voiceprompter", title="VoicePrompter",
     kicker="product · macOS app · 2026",
     heading="Reading your notes on a call without anyone seeing them.",
-    desc="A macOS teleprompter that follows your voice as you read and stays hidden from Zoom, Meet, and screenshots.",
-    tldr="Your script floats above every app, even full-screen ones. As you speak, it highlights the word you're on and scrolls to keep your line near the top. Screen sharing and recordings that use ScreenCaptureKit, including Zoom, Google Meet, OBS, and QuickTime, don't see it.",
+    desc="A macOS teleprompter that follows your voice as you read, with capture protection tested against specific macOS recording APIs.",
+    tldr="Your script floats above other apps. As you speak, it highlights the word you're on and scrolls to keep your line near the top. The capture test hides its content from ScreenCaptureKit on the tested Mac; older recording paths can still show it, and individual sharing apps need a manual check.",
     role="Builder", team="Solo, built with Claude Code", timeline="September to October 2026",
     cover=cover("/assets/img/builds/voiceprompter.jpg", "VoicePrompter listening at word 108 of 139, with the prompter highlighting the spoken word", 800, 600),
     problem=paras("I was practicing presenting and interviewing and wanted my notes on screen, without cluttering the screen I was sharing. The teleprompters I found either fell short or wanted me to pay."),
+    requirements=bullets(
+      "Keep the script readable above other apps, with controls to pause, hide, reposition, and resize it.",
+      "Follow spoken words despite small skips, ad-libs, and recognition errors, without jumping on weak matches.",
+      "Support on-device speech recognition, explain microphone and speech permissions, and make capture-protection limits visible.",
+      "Keep the first version to one script at a time. Configurable hotkeys and additional speech engines remain outside the current build.",
+    ),
     did=bullets(
       "Built a native Swift app: an overlay that floats on every Space, and a main window with every setting in a sidebar.",
       "Transcribed speech on the device with Apple's recognizer, restarting the session about every 50 seconds so results stay short and fast.",
       "Wrote the alignment. Each update matches the last 8 spoken words against the script, with fuzzy matching for misheard words and guards so it never jumps on weak evidence.",
-      "Hid the overlay from capture, then tested it. It's hidden from ScreenCaptureKit, screenshots, and window lists, and still visible to older recorders, which the README says plainly.",
+      "Tested capture protection on macOS 15.7.4. ScreenCaptureKit and tested still-image APIs hide the content; legacy video paths can show it. The window name can still appear in a sharing picker.",
       "Added global hotkeys that need no Accessibility permission, double-click to jump to a word, and click-through so clicks reach the app underneath.",
     ),
-    results=stat_grid(("~0.3 ms", "per update on an 8,800-word script"), ("8", "spoken words matched each update"), ("2", "permissions: mic and speech"), ("4", "capture tools it hides from")),
+    results=stat_grid(("~0.3 ms", "alignment update on an 8,800-word script"), ("8", "spoken words matched each update"), ("2", "permissions: mic and speech"), ("3", "capture-harness runs reproduced")),
+    milestones=bullets(
+      "<b>Built:</b> a floating script, voice tracking, a settings sidebar, and global controls.",
+      "<b>Tested:</b> capture APIs on macOS 15.7.4, including a control panel to confirm that each recording actually captured the display.",
+      "<b>Still to verify:</b> interactive sharing in Zoom, Meet, QuickTime, and OBS, plus a full uninterrupted latency run. These are checks to complete, not shipped guarantees.",
+    ),
+    iterations=bullets(
+      "<b>Keeping up with speech:</b> restart recognition about every 50 seconds and carry alignment context across sessions.",
+      "<b>Avoiding false jumps:</b> use fuzzy matching, a local search window, and stronger confirmation for larger moves.",
+      "<b>Learning the protection boundary:</b> the API tests showed why a hide hotkey is still necessary, even when the normal capture path hides the overlay.",
+    ) + "\n" + links(("Requirements and limitations", "https://github.com/chaekim96/VoicePrompter/blob/main/README.md"), ("Capture-test evidence", "https://github.com/chaekim96/VoicePrompter/blob/main/ProtectionTest/RESULTS.md")),
     differently=paras("Measure latency from the start. The speech recognizer dominates the delay, and I built the latency test only after the app worked. A full, uninterrupted latency run is still on my list."),
     artifacts=links(("Source on GitHub", "https://github.com/chaekim96/VoicePrompter")) + "\n" + artifact_grid(("/assets/img/cases/vp-main.jpg", "The main window while listening: status, position in the script, and prompter settings."), ("/assets/img/cases/vp-prompter.jpg", "The prompter further in. Read text dims and the current word turns gold. Captured with protection off.")),
   ),
@@ -289,6 +305,12 @@ COURSEWORK = [
     role="Builder", team="Solo, built with Claude Code", timeline="October 2026",
     cover=cover("/assets/img/builds/spotify-review-triage.jpg", "The live dashboard: 660,622 reviews in file, 100,000 in scope, $4.36 measured spend, and the recommendation: usability", 1600, 1000),
     problem=paras("Nobody can read 660,000 reviews. A model can label them, but its answer is only useful if it is affordable, checked, and every number traces back to a real review."),
+    requirements=bullets(
+      "Answer one product question: should next quarter's effort go to access, usability, playback, or billing and support?",
+      "Account for every input review, declare the classification scope, and keep the run within a $10 API budget.",
+      "Trace recommendations to claims and individual reviews, validate model outputs, and resume interrupted work without re-labeling completed records.",
+      "Show sample coverage, human-label agreement, and unresolved failures alongside the dashboard's recommendation.",
+    ),
     did=bullets(
       "Accounted for all 660,622 reviews in code before any model saw them, matching the course's own checksum.",
       "Labeled a declared 100,000-review sample with a small, cheap model, 50 reviews per request, with a cache so each distinct text is labeled once.",
@@ -297,8 +319,18 @@ COURSEWORK = [
       "Grouped complaints into issues, ranked four business areas by severity, and wrote a memo where every number cites a claim and a review.",
       "Shipped a public dashboard backed by a database and an API, so anyone can follow the ranking down to a single review.",
     ),
-    results=stat_grid(("$4.36", "for 100,000 reviews, under a $10 cap"), ("20 / 20", "planted wrong labels caught"), ("5 / 5", "prompt injections resisted"), ("35.5%", "of complaint severity is usability")) + "\n" + paras("The recommendation: put next quarter's effort into usability, ahead of billing and support at 19.1%."),
-    differently=paras("Get more human labels in early. Only 50 labels are mine, and the model matched me on topic 42% of the time, so the answer leans on the model and its checker. Next: more human labels, and the full run over every review, estimated at $25 to $48."),
+    results=stat_grid(("$4.36", "API spend within the declared 100,000-review scope"), ("20 / 20", "planted wrong labels caught"), ("5 / 5", "prompt injections resisted"), ("35.5%", "of sample complaint severity is usability")) + "\n" + paras("All 660,622 input reviews were accounted for. Within the declared 100,000-review scope, 99,936 were validly classified and 64 were quarantined. The recommendation applies to that sample: prioritize usability, ahead of billing and support at 19.1%."),
+    milestones=bullets(
+      "<b>Completed:</b> full input accounting, a declared sample, a cold/warm cost pilot, and an interrupt-and-resume demonstration.",
+      "<b>Completed:</b> a blind model verification sample, 50 human labels, reproducible ranking, and a dashboard backed by an API and database.",
+      "<b>Next, not completed:</b> more human labels and a run over every nonempty review. The $25 to $48 full-run cost is an estimate, not measured spend.",
+    ),
+    iterations=bullets(
+      "<b>Grouping:</b> long literal phrases left about 56% of complaints in catch-all issues. Short stems, spelling variants, and word-start matching reduced that share to 45.1%.",
+      "<b>Recovery:</b> re-queue transport failures separately from invalid labels, then resume with a shared rate limiter. The resumed run recorded no transport failures.",
+      "<b>Caching:</b> make the memo's evidence pack deterministic so the warm 100-review pilot reuses all results, makes zero model calls, and costs $0.00.",
+    ) + "\n" + links(("Decision log", "https://github.com/chaekim96/spotify-review-triage/blob/main/DECISIONS.md"), ("Human evaluation", "https://github.com/chaekim96/spotify-review-triage/blob/main/evals/golden/golden_eval.md"), ("Resume demonstration", "https://github.com/chaekim96/spotify-review-triage/releases/tag/resume-demo-2026-10-20")),
+    differently=paras("Get more human labels in early. Only 50 labels are mine, and the model matched me on topic 42% of the time, so the answer leans on the model and its checker. A larger run would increase coverage; it would not by itself resolve the labeling uncertainty."),
     artifacts=links(("Open the dashboard", "https://spotify-review-triage.vercel.app"), ("Source and evidence on GitHub", "https://github.com/chaekim96/spotify-review-triage")) + "\n" + artifact_grid(("/assets/img/cases/spotify-alternatives.jpg", "The memo weighs every alternative: billing and support, playback, and access, each with its evidence and review links.")),
   ),
   dict(slug="personal-wiki", title="Personal Wiki",
@@ -309,6 +341,12 @@ COURSEWORK = [
     role="Builder", team="Solo", timeline="September 2026",
     cover=cover("/assets/img/builds/personal-wiki.jpg", "Obsidian graph of the wiki's linked notes", 900, 646),
     problem=paras("Cloud assistants answer confidently from anywhere. For studying I wanted the opposite: answers only from my own sources, a citation for every claim, on a laptop with Wi-Fi off."),
+    requirements=bullets(
+      "Ingest my course sources into linked Obsidian notes and answer study questions from those sources with citations.",
+      "Run entirely on the laptop after setup, with no cloud calls or hosted embeddings, within the machine's available memory.",
+      "Keep ask, chat, and search behavior separate; unsupported questions should return insufficient evidence.",
+      "Preserve hand-edited notes and source links when ingesting the same material again.",
+    ),
     did=bullets(
       "Picked the model to fit the machine. Gemma 4 E2B at 4-bit, because the larger versions didn't fit in the 5 to 6 GB free on an 18 GB Mac.",
       "Wrote the CLI and harness with only Python's standard library: ingest, search, ask, and chat modes.",
@@ -318,7 +356,17 @@ COURSEWORK = [
       "Recorded an offline demo with Wi-Fi off. All four tests matched the online results.",
     ),
     results=stat_grid(("3 of 4", "tests passed, written in advance"), ("4.4 s", "per answer, warm"), ("~1.7 GB", "working memory"), ("0", "cloud calls")) + "\n" + paras("The failure is documented. A question in my own shorthand (\"A3\") missed the right passage, and the model answered a nearby question with a real citation."),
-    differently=paras("A citation check proves a citation exists, not that it answers the question. Next: an alias file so my shorthand expands (A3 means Assignment 3), a guaranteed slot for each source's best passage, and a second check that asks whether the answer fits the question."),
+    milestones=bullets(
+      "<b>Built:</b> local ingestion, linked notes, hybrid search, cited answers, and a separate study-partner chat mode.",
+      "<b>Evaluated:</b> four prewritten ask tests, mode-separation checks, memory and response-time measurements, and an offline demonstration. Three of four ask tests passed.",
+      "<b>Proposed, not implemented:</b> expand aliases such as A3, reserve retrieval space across sources, and add an answer-relevance check. Re-run the original tests and retain the baseline for comparison.",
+    ),
+    iterations=bullets(
+      "<b>Keyword search to hybrid retrieval:</b> adding local embeddings moved the paraphrase test's relevant passages from ranks 5 and 4 to ranks 2 and 3.",
+      "<b>Reliable ingestion:</b> save a plan for each source and detect hand edits, so repeated ingestion reuses note names and keeps edited notes.",
+      "<b>Citations to relevance:</b> the A3 test exposed a real citation attached to the wrong answer. The next experiment must check whether the evidence answers the actual question, as well as whether the citation exists.",
+    ) + "\n" + links(("Retrieval changes", "https://github.com/chaekim96/personal-wiki/blob/main/evidence/retrieval_changes.md"), ("Test results", "https://github.com/chaekim96/personal-wiki/blob/main/evidence/ask_tests/results.md"), ("Limitations and proposed improvements", "https://github.com/chaekim96/personal-wiki/blob/main/README.md#10-limitation-and-improvement")),
+    differently=paras("Write more questions in my own shorthand before tuning retrieval. A citation check proves a citation exists, not that it answers the question; the failed A3 test made that distinction concrete."),
     artifacts=links(("Source and evidence on GitHub", "https://github.com/chaekim96/personal-wiki")) + "\n" + artifact_grid(("/assets/img/cases/wiki-note.jpg", "A generated note in Obsidian, with its sources linked back to the raw files."), ("/assets/img/cases/wiki-index.jpg", "The wiki's index: concepts and projects, each with a one-line summary.")),
   ),
   dict(slug="pacman-dqn", title="Pac-Man DQN",
@@ -520,11 +568,14 @@ CASES = [
 BUILD_SLUGS = {c["slug"] for c in (*PRODUCTS, *MODS, *COURSEWORK)}
 
 # Sections in page order; a section whose content is empty is left out of the TOC and the body.
-SECTIONS = (("problem", "The problem"), ("did", "What I did"), ("results", "Results"),
+SECTIONS = (("problem", "The problem"), ("requirements", "Product requirements"),
+            ("did", "What I did"), ("results", "Results"),
+            ("milestones", "Milestones and next steps"), ("iterations", "Iterations and decisions"),
             ("differently", "What I'd do differently"), ("artifacts", "Artifacts"))
 REQUIRED = ("slug", "title", "kicker", "heading", "desc", "tldr", "role", "team", "timeline",
             "cover", "problem", "did", "results")
-DEFAULTS = dict(badge="", cover_class="", differently="", artifacts="")
+DEFAULTS = dict(badge="", cover_class="", differently="", artifacts="",
+                requirements="", milestones="", iterations="")
 PLAIN_TEXT = ("title", "kicker", "role", "team", "timeline")  # text only, never HTML: escape on output
 
 

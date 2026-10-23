@@ -14,7 +14,7 @@ Products and tools, most with a live demo.
 - [TypeRace](https://chaekim-portfolio.vercel.app/projects/typerace): A live browser typing race for classmates: share a four-letter code, type the same short story, first to finish wins.
 - [Networking Tracker](https://chaekim-portfolio.vercel.app/projects/networking-tracker): A private contact tracker where Postgres row-level security keeps each person's data their own.
 - [Anatomy of a Website](https://chaekim-portfolio.vercel.app/projects/web-anatomy): An illustrated, growing encyclopedia of how a website works, built on one idea: SEO and GEO start with the website.
-- [VoicePrompter](https://chaekim-portfolio.vercel.app/projects/voiceprompter): A macOS teleprompter that follows your voice as you read and stays hidden from Zoom, Meet, and screenshots.
+- [VoicePrompter](https://chaekim-portfolio.vercel.app/projects/voiceprompter): A macOS teleprompter that follows your voice as you read, with capture protection tested against specific macOS recording APIs.
 - [Parallel Prospect Brief](https://chaekim-portfolio.vercel.app/projects/parallel-prospect-brief): A command-line tool that turns a company name into a cited one-page sales brief, built on Parallel's Task API.
 - [SmartModel](https://chaekim-portfolio.vercel.app/projects/smartmodel): A Claude Code hook that scores how hard each prompt is and recommends the cheapest model that can handle it.
 - [Token-Fuel](https://chaekim-portfolio.vercel.app/projects/token-fuel): A menu-bar fuel gauge for Claude Code and Codex sessions, built from the exact token counts each tool already writes to disk.

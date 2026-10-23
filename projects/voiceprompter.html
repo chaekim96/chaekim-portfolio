@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>VoicePrompter · Chae Kim - Portfolio</title>
-  <meta name="description" content="A macOS teleprompter that follows your voice as you read and stays hidden from Zoom, Meet, and screenshots.">
+  <meta name="description" content="A macOS teleprompter that follows your voice as you read, with capture protection tested against specific macOS recording APIs.">
   <meta property="og:title" content="VoicePrompter · Chae Kim - Portfolio">
-  <meta property="og:description" content="A macOS teleprompter that follows your voice as you read and stays hidden from Zoom, Meet, and screenshots.">
+  <meta property="og:description" content="A macOS teleprompter that follows your voice as you read, with capture protection tested against specific macOS recording APIs.">
   <meta property="og:type" content="article">
   <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og-card.png">
   <link rel="canonical" href="https://chaekim-portfolio.vercel.app/projects/voiceprompter">
@@ -27,7 +27,7 @@
     "@type": "CreativeWork",
     "name": "VoicePrompter",
     "headline": "Reading your notes on a call without anyone seeing them.",
-    "description": "A macOS teleprompter that follows your voice as you read and stays hidden from Zoom, Meet, and screenshots.",
+    "description": "A macOS teleprompter that follows your voice as you read, with capture protection tested against specific macOS recording APIs.",
     "url": "https://chaekim-portfolio.vercel.app/projects/voiceprompter",
     "image": "https://chaekim-portfolio.vercel.app/assets/img/og-card.png",
     "creator": {
@@ -62,7 +62,7 @@
       <a class="case-hero__back" href="/#builds">← All builds</a>
       <p class="eyebrow">product · macOS app · 2026</p>
       <h1 class="case-hero__title">Reading your notes on a call without anyone seeing them.</h1>
-      <p class="tldr">Your script floats above every app, even full-screen ones. As you speak, it highlights the word you're on and scrolls to keep your line near the top. Screen sharing and recordings that use ScreenCaptureKit, including Zoom, Google Meet, OBS, and QuickTime, don't see it.</p>
+      <p class="tldr">Your script floats above other apps. As you speak, it highlights the word you're on and scrolls to keep your line near the top. The capture test hides its content from ScreenCaptureKit on the tested Mac; older recording paths can still show it, and individual sharing apps need a manual check.</p>
       <p class="meta-line"><b>Role</b> Builder · <b>Team</b> Solo, built with Claude Code · <b>Timeline</b> September to October 2026</p>
     </section>
 
@@ -73,24 +73,47 @@
     <section class="wrap case-body">
       <nav class="toc" aria-label="On this page">
         <a href="#problem">The problem</a>
+        <a href="#requirements">Product requirements</a>
         <a href="#did">What I did</a>
         <a href="#results">Results</a>
+        <a href="#milestones">Milestones and next steps</a>
+        <a href="#iterations">Iterations and decisions</a>
         <a href="#differently">What I'd do differently</a>
         <a href="#artifacts">Artifacts</a>
       </nav>
       <article class="prose">
         <h2 id="problem">The problem</h2>
         <p>I was practicing presenting and interviewing and wanted my notes on screen, without cluttering the screen I was sharing. The teleprompters I found either fell short or wanted me to pay.</p>
+        <h2 id="requirements">Product requirements</h2>
+        <ul>
+          <li>Keep the script readable above other apps, with controls to pause, hide, reposition, and resize it.</li>
+          <li>Follow spoken words despite small skips, ad-libs, and recognition errors, without jumping on weak matches.</li>
+          <li>Support on-device speech recognition, explain microphone and speech permissions, and make capture-protection limits visible.</li>
+          <li>Keep the first version to one script at a time. Configurable hotkeys and additional speech engines remain outside the current build.</li>
+        </ul>
         <h2 id="did">What I did</h2>
         <ul>
           <li>Built a native Swift app: an overlay that floats on every Space, and a main window with every setting in a sidebar.</li>
           <li>Transcribed speech on the device with Apple's recognizer, restarting the session about every 50 seconds so results stay short and fast.</li>
           <li>Wrote the alignment. Each update matches the last 8 spoken words against the script, with fuzzy matching for misheard words and guards so it never jumps on weak evidence.</li>
-          <li>Hid the overlay from capture, then tested it. It's hidden from ScreenCaptureKit, screenshots, and window lists, and still visible to older recorders, which the README says plainly.</li>
+          <li>Tested capture protection on macOS 15.7.4. ScreenCaptureKit and tested still-image APIs hide the content; legacy video paths can show it. The window name can still appear in a sharing picker.</li>
           <li>Added global hotkeys that need no Accessibility permission, double-click to jump to a word, and click-through so clicks reach the app underneath.</li>
         </ul>
         <h2 id="results">Results</h2>
-        <div class="results"><div><b>~0.3 ms</b><span>per update on an 8,800-word script</span></div><div><b>8</b><span>spoken words matched each update</span></div><div><b>2</b><span>permissions: mic and speech</span></div><div><b>4</b><span>capture tools it hides from</span></div></div>
+        <div class="results"><div><b>~0.3 ms</b><span>alignment update on an 8,800-word script</span></div><div><b>8</b><span>spoken words matched each update</span></div><div><b>2</b><span>permissions: mic and speech</span></div><div><b>3</b><span>capture-harness runs reproduced</span></div></div>
+        <h2 id="milestones">Milestones and next steps</h2>
+        <ul>
+          <li><b>Built:</b> a floating script, voice tracking, a settings sidebar, and global controls.</li>
+          <li><b>Tested:</b> capture APIs on macOS 15.7.4, including a control panel to confirm that each recording actually captured the display.</li>
+          <li><b>Still to verify:</b> interactive sharing in Zoom, Meet, QuickTime, and OBS, plus a full uninterrupted latency run. These are checks to complete, not shipped guarantees.</li>
+        </ul>
+        <h2 id="iterations">Iterations and decisions</h2>
+        <ul>
+          <li><b>Keeping up with speech:</b> restart recognition about every 50 seconds and carry alignment context across sessions.</li>
+          <li><b>Avoiding false jumps:</b> use fuzzy matching, a local search window, and stronger confirmation for larger moves.</li>
+          <li><b>Learning the protection boundary:</b> the API tests showed why a hide hotkey is still necessary, even when the normal capture path hides the overlay.</li>
+        </ul>
+        <p><a href="https://github.com/chaekim96/VoicePrompter/blob/main/README.md" target="_blank" rel="noopener">Requirements and limitations ↗</a> · <a href="https://github.com/chaekim96/VoicePrompter/blob/main/ProtectionTest/RESULTS.md" target="_blank" rel="noopener">Capture-test evidence ↗</a></p>
         <h2 id="differently">What I'd do differently</h2>
         <p>Measure latency from the start. The speech recognizer dominates the delay, and I built the latency test only after the app worked. A full, uninterrupted latency run is still on my list.</p>
         <h2 id="artifacts">Artifacts</h2>
