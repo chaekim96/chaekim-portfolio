@@ -218,6 +218,11 @@ STAMP = r"""<!DOCTYPE html>
           <h3 class="w-title">Walking into a first sales call with every claim sourced.</h3>
           <p class="meta">A CLI that turns a company name into a cited one-page sales brief, built on Parallel's Task API.</p>
         </a>
+        <a class="w reveal" href="/projects/product-blueprint">
+          <div class="stage" style="--g: var(--g-mirror)"><div class="art fill"><img src="/assets/img/builds/product-blueprint-card.jpg" alt="The build loop: six stages from Discover to Ship, each with the gate it has to pass" width="800" height="600" loading="lazy"></div><span class="pill">Product Blueprint <em>playbook</em></span></div>
+          <h3 class="w-title">One way to build every product, with a test at each step.</h3>
+          <p class="meta">A six-stage build loop, a design system, and 22 prompts that each come with their own evals.</p>
+        </a>
       </div>
 
       <h2 class="sub-h">Claude Code mods</h2>

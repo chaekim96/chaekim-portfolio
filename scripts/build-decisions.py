@@ -135,6 +135,14 @@ DECISIONS = [
         opt("Public", "The case page can link to the source. The key stays in a local file git ignores.", chosen=True, rec=True),
         opt("Private", "Keep it private for now."),
     ]),
+    D("products", "Oct 2026", "Product Blueprint", "Where should the blueprint live?", [
+        opt("Inside the FaFo repo", "Where it was first written. FaFo already had a docs folder, but the blueprint covers every product."),
+        opt("Its own repo", "One home for the method; each product repo keeps only its own brief and evals.", chosen=True, rec=True),
+    ], link=("/projects/product-blueprint", "Product Blueprint")),
+    D("products", "Oct 2026", "Product Blueprint", "Should the repo be public?", [
+        opt("Public", "The case page could link to the source."),
+        opt("Private", "Keep it to myself for now.", chosen=True),
+    ]),
     D("products", "Oct 2026", "Palette Generator", "Where should the weekly trend scan read brand colors from?", [
         opt("Startup lists", "New Product Hunt launches plus a curated list. Needs an API token.", rec=True),
         opt("A curated list only", "Hand-picked sites kept in the repo. No token; \"latest\" means the sites we add.", chosen=True),

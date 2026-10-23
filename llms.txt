@@ -16,6 +16,7 @@ Products and tools, most with a live demo.
 - [Anatomy of a Website](https://chaekim-portfolio.vercel.app/projects/web-anatomy): An illustrated, growing encyclopedia of how a website works, built on one idea: SEO and GEO start with the website.
 - [VoicePrompter](https://chaekim-portfolio.vercel.app/projects/voiceprompter): A macOS teleprompter that follows your voice as you read and stays hidden from Zoom, Meet, and screenshots.
 - [Parallel Prospect Brief](https://chaekim-portfolio.vercel.app/projects/parallel-prospect-brief): A command-line tool that turns a company name into a cited one-page sales brief, built on Parallel's Task API.
+- [Product Blueprint](https://chaekim-portfolio.vercel.app/projects/product-blueprint): My playbook for building products with AI tools: a six-stage loop with a pass/fail gate at each stage, a design system, a product template, and a database of 22 versioned prompts with evals.
 - [SmartModel](https://chaekim-portfolio.vercel.app/projects/smartmodel): A Claude Code hook that scores how hard each prompt is and recommends the cheapest model that can handle it.
 - [Token-Fuel](https://chaekim-portfolio.vercel.app/projects/token-fuel): A menu-bar fuel gauge for Claude Code and Codex sessions, built from the exact token counts each tool already writes to disk.
 - [Code Improver](https://chaekim-portfolio.vercel.app/projects/code-improver): A custom Claude Code subagent that reviews changed files for readability, performance, and best practices.
