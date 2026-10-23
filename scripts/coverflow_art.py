@@ -1,8 +1,8 @@
-"""Cover art for the Builds Cover Flow: one ink sketch per build, all in the same hand.
+"""Cover art for the Builds Cover Flow: one blueprint drawing per build, all in the same hand.
 
-Every cover is a 240x240 line drawing: round caps, one stroke weight, ink only, roughened
-by the shared #sketch filter so it reads as drawn rather than plotted. Keep new covers in
-the same style: one idea per project, centered, no text beyond a few glyphs.
+Every cover is a 240x240 line drawing: round caps, one stroke weight, drawn in white on
+blueprint-blue grid paper (the paper and colors live in .cf__face in v-stamp.css). Keep new
+covers in the same style: one idea per project, centered, no text beyond a few glyphs.
 """
 
 COVERS = {
@@ -123,9 +123,3 @@ COVERS = {
 
 # products, mods and coursework each get one tint, so the shelf reads as a series
 TINT = {"PRODUCTS": "sky", "MODS": "violet", "COURSEWORK": "mint"}
-
-SKETCH_DEFS = ('<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>'
-               '<filter id="sketch" x="-5%" y="-5%" width="110%" height="110%">'
-               '<feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7" result="n"/>'
-               '<feDisplacementMap in="SourceGraphic" in2="n" scale="3.2" xChannelSelector="R" yChannelSelector="G"/>'
-               '</filter></defs></svg>')

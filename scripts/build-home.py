@@ -11,7 +11,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
-V = "23"
+V = "24"
 
 # ----------------------------------------------------------------------------
 # Arcade: Snake, Galaga and a generative lo-fi radio. main.js loads arcade.js
@@ -79,7 +79,7 @@ def _coverflow():
     import html as _h
     import importlib.util
     import re as _re
-    from coverflow_art import COVERS, TINT, SKETCH_DEFS
+    from coverflow_art import COVERS, TINT
     from stamp_shared import LIVE_APPS
     spec = importlib.util.spec_from_file_location("build_cases", os.path.join(os.path.dirname(os.path.abspath(__file__)), "build-cases.py"))
     bc = importlib.util.module_from_spec(spec)
@@ -101,7 +101,7 @@ def _coverflow():
             covers.append(
                 f'<div class="cf__cv" role="option" aria-selected="false" data-tint="{TINT[group]}" data-title="{e(c["title"])}" data-heading="{e(c["heading"])}">'
                 f'<div class="cf__fl"><div class="cf__face">'
-                f'<svg class="cf__art" viewBox="0 0 240 240" aria-hidden="true"><g filter="url(#sketch)">{COVERS[slug]}</g></svg>'
+                f'<svg class="cf__art" viewBox="0 0 240 240" aria-hidden="true"><g>{COVERS[slug]}</g></svg>'
                 f'<div class="cf__tag"><span>{e(c["title"])}</span>' + (f'<em>{year}</em>' if year else '') + '</div></div>'
                 f'<div class="cf__back"><small>{e(c.get("kicker"))}</small><h3>{e(c["heading"])}</h3>'
                 f'<dl><dt>Role</dt><dd>{e(c.get("role"))}</dd><dt>Team</dt><dd>{e(c.get("team"))}</dd><dt>When</dt><dd>{e(c.get("timeline"))}</dd></dl>'
@@ -109,7 +109,7 @@ def _coverflow():
                 f'<div class="cf__links"><a href="/projects/{slug}">Read the case study →</a>'
                 + (live_button(slug) if slug in LIVE_APPS else '') + '</div></div></div></div>')
     n = len(covers)
-    return (SKETCH_DEFS +
+    return (
             '<div class="cf" data-coverflow>'
             f'<div class="cf__stage" tabindex="0" role="listbox" aria-label="{n} builds. Drag, scroll, or use the arrow keys. Press Enter to flip a cover for its liner notes.">'
             + "".join(covers) +

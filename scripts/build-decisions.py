@@ -83,6 +83,14 @@ DECISIONS = [
         opt("Play with the real thing", "Small live demos right on the page.", rec=True),
         opt("Crate digging", "Builds stand like records in a crate; pull one out to read it."),
     ], link=("/#builds", "Flip through the builds")),
+    D("design", "Oct 2026", "This site", "What style should the Cover Flow covers be drawn in?", [
+        opt("Ink line", "Even ink lines with a slight wobble on soft pastel tints."),
+        opt("Blueprint", "White line drawings on blueprint-blue grid paper.", chosen=True),
+        opt("Sumi brush", "Thick dry-brush strokes on cream paper with a small red seal."),
+        opt("Pencil sketch", "Grey graphite with hatched shading, like a notebook page."),
+        opt("Flat cut paper", "Bold two-tone shapes in sky and navy, no outlines."),
+        opt("Risograph", "Two off-register inks, blue and pink, with print grain."),
+    ], link=("/#builds", "See the covers")),
     D("design", "Oct 2026", "This site", "How should the homepage put builds first?", [
         opt("Swap tabs: Builds first", "Builds opens by default; Work moves to second. Smallest change, keeps the tabs.", chosen=True, rec=True),
         opt("Featured builds above the tabs", "Keep Work as the default, but show three flagship builds before the tabs."),
