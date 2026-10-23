@@ -11,7 +11,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
-V = "22"
+V = "23"
 
 # ----------------------------------------------------------------------------
 # Arcade: Snake, Galaga and a generative lo-fi radio. main.js loads arcade.js
@@ -80,6 +80,7 @@ def _coverflow():
     import importlib.util
     import re as _re
     from coverflow_art import COVERS, TINT, SKETCH_DEFS
+    from stamp_shared import LIVE_APPS
     spec = importlib.util.spec_from_file_location("build_cases", os.path.join(os.path.dirname(os.path.abspath(__file__)), "build-cases.py"))
     bc = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(bc)
@@ -105,7 +106,8 @@ def _coverflow():
                 f'<div class="cf__back"><small>{e(c.get("kicker"))}</small><h3>{e(c["heading"])}</h3>'
                 f'<dl><dt>Role</dt><dd>{e(c.get("role"))}</dd><dt>Team</dt><dd>{e(c.get("team"))}</dd><dt>When</dt><dd>{e(c.get("timeline"))}</dd></dl>'
                 f'<div class="cf__stats">{stat_html}</div>'
-                f'<a href="/projects/{slug}">Read the case study →</a></div></div></div>')
+                f'<div class="cf__links"><a href="/projects/{slug}">Read the case study →</a>'
+                + (live_button(slug) if slug in LIVE_APPS else '') + '</div></div></div></div>')
     n = len(covers)
     return (SKETCH_DEFS +
             '<div class="cf" data-coverflow>'
@@ -200,50 +202,6 @@ STAMP = r"""<!DOCTYPE html>
     <section class="panel" id="builds" role="tabpanel" aria-labelledby="tab-builds">
       <h2 class="sub-h">Flip through the builds</h2>
       %%COVERFLOW%%
-      <h2 class="sub-h">Products you can try live</h2>
-      <div class="grid grid--3">
-        <div class="live-card reveal">
-        <a class="w" href="/projects/ai-visibility-checker">
-          <div class="stage" style="--g: var(--g-lucent)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>ai visibility checker</span></div><img src="/assets/img/builds/ai-visibility-checker-card-2.jpg" alt="The AI Visibility Checker report for chaekim.vercel.app, ready for AI answers" width="960" height="600" loading="lazy"></div></div><span class="pill">AI Visibility Checker <em>2026</em></span></div>
-          <h3 class="w-title">Knowing whether AI assistants can find, read and cite your site.</h3>
-          <p class="meta">Paste a URL: crawler rules, llms.txt, structured data, and text that's there without JavaScript.</p>
-        </a>
-        %%LIVE_AVC%%
-        </div>
-        <div class="live-card reveal">
-        <a class="w" href="/projects/tally">
-          <div class="stage" style="--g: var(--g-tri)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>tally</span></div><img src="/assets/img/builds/tally.jpg" alt="Tally estimating a week of to-dos: an hour for the case memo, 30 minutes for bug reports, 3h45 in all" width="960" height="600" loading="lazy"></div></div><span class="pill">Tally <em>2026</em></span></div>
-          <h3 class="w-title">Knowing how long your to-do list will actually take.</h3>
-          <p class="meta">A note-taker where every line gets a Claude time estimate, totaled in a ledger column.</p>
-        </a>
-        %%LIVE_TALLY%%
-        </div>
-        <div class="live-card reveal">
-        <a class="w" href="/projects/palette-generator">
-          <div class="stage" style="--g: var(--g-mirror)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>palette</span></div><img src="/assets/img/builds/palette.jpg" alt="Palette Generator turning 'coffee subscription, warm and earthy' into five roles of color and a font pairing" width="960" height="600" loading="lazy"></div></div><span class="pill">Palette Generator <em>2026</em></span></div>
-          <h3 class="w-title">Brand colors and fonts for founders who aren't designers.</h3>
-          <p class="meta">Palettes that pass accessibility checks, font pairings, and what real startups use right now.</p>
-        </a>
-        %%LIVE_PALETTE_GENERATOR%%
-        </div>
-        <div class="live-card reveal">
-        <a class="w" href="/projects/typerace">
-          <div class="stage" style="--g: var(--g-lucent)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>typerace</span></div><img src="/assets/img/builds/typerace-2.jpg" alt="A TypeRace race in progress at 70 WPM, ink on near-white, the progress bar halfway across" width="960" height="600" loading="lazy"></div></div><span class="pill">TypeRace <em>2026</em></span></div>
-          <h3 class="w-title">Settling who types fastest, with one link and no sign-up.</h3>
-          <p class="meta">Live races for classmates: share a code, type the same story, first to finish wins.</p>
-        </a>
-        %%LIVE_TYPERACE%%
-        </div>
-        <div class="live-card reveal">
-        <a class="w" href="/projects/networking-tracker">
-          <div class="stage" style="--g: var(--g-ey)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>networking tracker</span></div><img src="/assets/img/builds/networking-tracker.jpg" alt="Networking Tracker filtered to high-priority contacts, with demo data" width="960" height="600" loading="lazy"></div></div><span class="pill">Networking Tracker <em>2026</em></span></div>
-          <h3 class="w-title">Keeping track of every coffee chat, without sharing a thing.</h3>
-          <p class="meta">A contact tracker where Postgres row-level security keeps each person's data their own.</p>
-        </a>
-        %%LIVE_NETWORKING_TRACKER%%
-        </div>
-      </div>
-
       <h2 class="sub-h">More products</h2>
       <div class="grid grid--3">
         <div class="live-card reveal">
