@@ -266,7 +266,7 @@ def page():
   <meta property="og:title" content="How I decide · Chae Kim - Portfolio">
   <meta property="og:description" content="{desc}">
   <meta property="og:type" content="article">
-  <meta property="og:image" content="{SITE_URL}/assets/img/og-card.png">
+  <meta property="og:image" content="{SITE_URL}/assets/img/og-sky.png">
   <link rel="canonical" href="{SITE_URL}/projects/decisions">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
