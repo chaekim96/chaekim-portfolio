@@ -75,6 +75,14 @@ DECISIONS = [
         opt("Deeper hanji", "A warmer, richer paper tone.", rec=True),
         opt("Sky and clouds", "Sky blue overhead, soft clouds, fading to white.", chosen=True),
     ], why=["I like that blue", "It reflects the sky and the clouds"]),
+    D("design", "Oct 2026", "This site", "How should Builds show the work, beyond a card and a preview?", [
+        opt("Cover Flow", "Each build is an album cover; drag or flick through them.", chosen=True, rec=True),
+        opt("Flip for liner notes", "Click a cover to flip it: role, team, dates and results on the back.", chosen=True, rec=True),
+        opt("Click wheel", "A small iPod with a wheel that scrolls the projects."),
+        opt("Now playing", "A case study plays like a track, with a scrubber through its chapters."),
+        opt("Play with the real thing", "Small live demos right on the page.", rec=True),
+        opt("Crate digging", "Builds stand like records in a crate; pull one out to read it."),
+    ], link=("/#builds", "Flip through the builds")),
     D("design", "Oct 2026", "This site", "How should the homepage put builds first?", [
         opt("Swap tabs: Builds first", "Builds opens by default; Work moves to second. Smallest change, keeps the tabs.", chosen=True, rec=True),
         opt("Featured builds above the tabs", "Keep Work as the default, but show three flagship builds before the tabs."),
