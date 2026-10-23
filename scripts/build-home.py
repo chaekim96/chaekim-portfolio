@@ -402,7 +402,7 @@ STAMP = r"""<!DOCTYPE html>
             </div>
             <p>Thirteen years growing up overseas made me curious by default. I'm happiest making things: a wireframe, a 3D print, a card game.</p>
             <p>I've founded an NSF I-Corps AI startup, led Fortune 500 cloud programs, and run a precision manufacturer's operations. These days I build tools I'd actually use. If you're making something too, I'd love to hear about it.</p>
-            <p>I'm also writing a memoir, <em>The Treaded Path</em>, and essays on <a href="https://medium.com/@chaewoonkim" target="_blank" rel="noopener">Medium ↗</a>. I also keep a <a href="/reading">reading list</a> of articles that helped.</p>
+            <p>I'm also writing a memoir, <em>The Treaded Path</em>, and essays on <a href="https://medium.com/@chaewoonkim" target="_blank" rel="noopener">Medium ↗</a>. I also keep a <a href="/reading">writing and reading list</a> with my essays and the articles that helped.</p>
           </section>
 
           <section id="experience">
@@ -537,7 +537,7 @@ STAMP = r"""<!DOCTYPE html>
       </p>
     </div>
     <nav aria-label="Footer">
-      <a href="#builds">Builds</a><a href="#work">Work</a><a href="#about">About</a><a href="/reading">Reading</a><a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
+      <a href="#builds">Builds</a><a href="#work">Work</a><a href="#about">About</a><a href="/reading">Essays &amp; reading</a><a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
     </nav>
     <div class="foot__cta">
       <b>Let's chat.</b>

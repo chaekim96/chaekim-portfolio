@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
-"""Builds /reading (reading.html), Chae's running list of helpful articles.
+"""Builds /reading (reading.html): Chae's own essays, plus a running list of helpful articles.
 
 Add an article:  append one dict to the top of READING below, then run
     python3 scripts/build-reading.py && python3 scripts/build-sitemap.py
 Fields: title, author, source, url, added (YYYY-MM-DD), topics (list), summary
 (neutral, one sentence), note (Chae's own takeaway; leave "" until written).
-Topic filter chips are generated from the topics used. Run with --check to
-fail if reading.html is out of date.
+Add an essay: append one dict to ESSAYS below (title, url, published YYYY-MM-DD
+or "" if unknown, description one neutral sentence), then run the same commands.
+Topic filter chips are generated from the topics used and only filter READING.
+Run with --check to fail if reading.html is out of date.
 """
 import html
 import sys
@@ -62,18 +64,39 @@ READING = [
     },
 ]
 
+# Chae's own essays, newest first. Descriptions are one neutral sentence; never
+# include family or memoir details, money amounts, or names of other people.
+ESSAYS = [
+    {
+        "title": "A Story About Money",
+        "url": "https://chaewoonkim.medium.com/a-story-about-money-afedd3e1ee00",
+        "published": "",  # Medium blocked fetching; date not verified, so omitted.
+        "description": "A personal essay on money.",
+    },
+    {
+        "title": "2025–2026 Reflections: Onwards",
+        "url": "https://chaewoonkim.medium.com/2025-2026-reflections-onwards-2bc4a878e448",
+        "published": "",  # Medium blocked fetching; date not verified, so omitted.
+        "description": "A personal essay reflecting on the last couple of years and what comes next.",
+    },
+]
+
 CSS = """
   .reading__lede { max-width: 60ch; color: var(--ink-2); line-height: 1.6; margin-top: 12px; }
+  .rl-section { margin-top: 56px; }
+  .rl-section h2 { font-size: 22px; font-weight: 500; margin: 0 0 4px; }
   .rl-filters { display: flex; flex-wrap: wrap; gap: 6px; margin: 28px 0 8px; }
   .rl-chip { padding: 6px 14px 5px; border-radius: 999px; font-size: 14px; color: var(--ink-2); box-shadow: inset 0 0 0 1px var(--line); }
   .rl-chip:hover { color: var(--ink); background: var(--fill-2); }
   .rl-chip[aria-pressed="true"] { color: var(--ink); background: var(--fill); font-weight: 500; }
-  .rl-list { list-style: none; margin: 0; padding: 0; }
-  .rl-item { padding: 24px 0; border-top: 1px solid var(--line); }
+  .rl-list, .es-list { list-style: none; margin: 0; padding: 0; }
+  .rl-item, .es-item { padding: 24px 0; border-top: 1px solid var(--line); }
   .rl-item[hidden] { display: none; }
-  .rl-item h2 { font-size: 19px; font-weight: 500; line-height: 1.35; margin: 0; }
-  .rl-item h2 a { color: var(--ink); }
-  .rl-item h2 a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .rl-item h3, .es-item h3 { font-size: 19px; font-weight: 500; line-height: 1.35; margin: 0; }
+  .rl-item h3 a, .es-item h3 a { color: var(--ink); }
+  .rl-item h3 a:hover, .es-item h3 a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .es-meta { margin: 6px 0 0; font-size: 14px; color: var(--ink-2); }
+  .es-desc { margin: 12px 0 0; max-width: 64ch; line-height: 1.6; }
   .rl-by { margin: 6px 0 0; font-size: 14px; color: var(--ink-2); }
   .rl-sum { margin: 12px 0 0; max-width: 64ch; line-height: 1.6; }
   .rl-notes { margin: 10px 0 0; max-width: 64ch; font-size: 14px; color: var(--ink-2); }
@@ -112,7 +135,7 @@ def item(a):
     summary = esc(a["summary"]) if a["summary"] else '<span class="confirm">[CONFIRM: summary pending]</span>'
     note = esc(a["note"]) if a["note"] else "<i>(add your own takeaway)</i>"
     return (f'      <li class="rl-item" data-topics="{esc("|".join(a["topics"]))}">\n'
-            f'        <h2><a href="{esc(a["url"])}" target="_blank" rel="noopener">{esc(a["title"])} ↗</a></h2>\n'
+            f'        <h3><a href="{esc(a["url"])}" target="_blank" rel="noopener">{esc(a["title"])} ↗</a></h3>\n'
             f'        <p class="rl-by">{esc(a["author"])} · {esc(a["source"])} · added <time datetime="{a["added"]}">{a["added"]}</time></p>\n'
             f'        <p class="rl-sum">{summary}</p>\n'
             f'        <p class="rl-notes"><b>My notes:</b> {note}</p>\n'
@@ -120,20 +143,30 @@ def item(a):
             f'      </li>')
 
 
+def essay(e):
+    date = (f' · published <time datetime="{e["published"]}">{e["published"]}</time>' if e["published"] else "")
+    return (f'      <li class="es-item">\n'
+            f'        <h3><a href="{esc(e["url"])}" target="_blank" rel="noopener">{esc(e["title"])} ↗</a></h3>\n'
+            f'        <p class="es-meta">Medium{date}</p>\n'
+            f'        <p class="es-desc">{esc(e["description"])}</p>\n'
+            f'      </li>')
+
+
 def build():
     topics = sorted({t for a in READING for t in a["topics"]})
+    essay_items = "\n".join(essay(e) for e in ESSAYS)
     chips = '<button class="rl-chip" type="button" data-topic="all" aria-pressed="true">All</button>' + "".join(
         f'<button class="rl-chip" type="button" data-topic="{esc(t)}" aria-pressed="false">{esc(t)}</button>' for t in topics)
     items = "\n".join(item(a) for a in READING)
-    desc = "A running list of articles Chae Kim has found helpful, organized by topic."
+    desc = "Essays by Chae Kim, and a running list of articles found helpful, organized by topic."
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Reading list · Chae Kim - Portfolio</title>
+  <title>Writing &amp; reading · Chae Kim - Portfolio</title>
   <meta name="description" content="{desc}">
-  <meta property="og:title" content="Reading list · Chae Kim - Portfolio">
+  <meta property="og:title" content="Writing &amp; reading · Chae Kim - Portfolio">
   <meta property="og:description" content="{desc}">
   <meta property="og:type" content="website">
   <meta property="og:image" content="{SITE_URL}/assets/img/og-sky.png">
@@ -153,13 +186,21 @@ def build():
   <main id="main">
     <section class="case-hero wrap">
       <a class="case-hero__back" href="/">← Home</a>
-      <p class="eyebrow">Reading list</p>
-      <h1 class="case-hero__title">Articles that <em>helped</em>.</h1>
-      <p class="reading__lede">A running list of things I've read that were worth keeping, with a line on what each is about and room for my own notes. Newest first.</p>
+      <p class="eyebrow">Writing &amp; reading</p>
+      <h1 class="case-hero__title">Writing and <em>reading</em>.</h1>
+      <p class="reading__lede">My own essays, plus a running list of things I've read that were worth keeping, with a line on what each is about and room for my own notes. Newest first.</p>
     </section>
 
-    <section class="wrap">
-      <div class="rl-filters" role="group" aria-label="Filter by topic">{chips}</div>
+    <section class="wrap rl-section" aria-labelledby="essays-h">
+      <h2 id="essays-h">Essays</h2>
+      <ul class="es-list">
+{essay_items}
+      </ul>
+    </section>
+
+    <section class="wrap rl-section" aria-labelledby="reading-h">
+      <h2 id="reading-h">Reading list</h2>
+      <div class="rl-filters" role="group" aria-label="Filter reading list by topic">{chips}</div>
       <p class="rl-count" id="rl-count" aria-live="polite"></p>
       <ul class="rl-list">
 {items}
