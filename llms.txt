@@ -23,6 +23,7 @@ Products and tools, most with a live demo.
 - [Personal Wiki](https://chaekim-portfolio.vercel.app/projects/personal-wiki): A command-line study wiki that runs fully offline: a local Gemma model turns sources into linked Obsidian notes and answers questions with citations.
 - [Pac-Man DQN](https://chaekim-portfolio.vercel.app/projects/pacman-dqn): A Deep Q-Network trained on Atari Ms. Pac-Man, with every number reported straight from the run's own output files.
 - [Custom LLM](https://chaekim-portfolio.vercel.app/projects/custom-llm): A tiny nanoGPT model trained from scratch on a laptop CPU, with my own teaching corpus and 48 fixed language tests.
+- [Siri, Reimagined: The Last App You'll Install](https://chaekim-portfolio.vercel.app/projects/siri-reimagined): A design concept: an iPhone that ships with five apps, and a Siri that builds the rest. A thought piece on the future of the App Store and app development, with iPhone mockups and wireframes.
 - [Home (during COVID)](https://chaekim-portfolio.vercel.app/projects/home-gif): A pixel-art animated GIF depicting home during COVID, built around a Swiss Army knife as a metaphor for a perpetually growing house.
 - [Yin Yang in Motion](https://chaekim-portfolio.vercel.app/projects/yin-yang): An animated GIF that turns the yin-yang into rotating clockwork: the garden of Eden on one panel, the underworld on the other.
 
