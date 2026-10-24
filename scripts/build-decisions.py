@@ -91,6 +91,14 @@ DECISIONS = [
         opt("Flat cut paper", "Bold two-tone shapes in sky and navy, no outlines."),
         opt("Risograph", "Two off-register inks, blue and pink, with print grain."),
     ], link=("/#builds", "See the covers")),
+    D("design", "Oct 2026", "This site", "The Cover Flow felt off. How should Builds show the work instead?", [
+        opt("One visual language", "Every build gets the same square crop of its real screenshot.", chosen=True, rec=True),
+        opt("Index", "A quiet list that opens inline to show the artwork and a live button."),
+        opt("Featured and shelf", "Three big builds with live demos, then a shelf of matched tiles.", chosen=True, rec=True),
+        opt("Hover to play", "Cards step through real screens of the app on hover."),
+        opt("Story timeline", "Builds placed by month to show momentum."),
+        opt("Case study first", "Each card is a mini brief, decision and result."),
+    ], why=["The Cover Flow seemed off and made the portfolio structure incoherent"], link=("/#builds", "See the Builds tab")),
     D("design", "Oct 2026", "This site", "How should the homepage put builds first?", [
         opt("Swap tabs: Builds first", "Builds opens by default; Work moves to second. Smallest change, keeps the tabs.", chosen=True, rec=True),
         opt("Featured builds above the tabs", "Keep Work as the default, but show three flagship builds before the tabs."),
