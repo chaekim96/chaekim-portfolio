@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
   <link rel="preload" as="image" href="/assets/img/thumbs/lucent-wide.jpg">
-  <link rel="stylesheet" href="/assets/css/v-stamp.css?v=25">
+  <link rel="stylesheet" href="/assets/css/v-stamp.css?v=26">
   <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
   <script type="application/ld+json">
   {
@@ -65,6 +65,7 @@
     <div class="tabs" role="tablist" aria-label="Sections">
       <button class="tab" role="tab" id="tab-builds" data-tab="builds" aria-controls="builds" aria-selected="true">Builds</button>
       <button class="tab" role="tab" id="tab-work" data-tab="work" aria-controls="work" aria-selected="false" tabindex="-1">Work</button>
+      <button class="tab" role="tab" id="tab-writing" data-tab="writing" aria-controls="writing" aria-selected="false" tabindex="-1">Writing</button>
       <button class="tab" role="tab" id="tab-about" data-tab="about" aria-controls="about" aria-selected="false" tabindex="-1">About</button>
     </div>
 
@@ -223,6 +224,41 @@
       </div>
     </section>
 
+    <!-- ============ WRITING ============ -->
+    <section class="panel" id="writing" role="tabpanel" aria-labelledby="tab-writing">
+      <h2 class="sub-h">Essays</h2>
+      <ul class="wlist">
+        <li class="reveal"><h3><a href="/projects/preinstalled-apps">What’s the Point of Preinstalled Apps?</a></h3><p class="wl-by">On this site · October 2026</p><p class="wl-sum">If AI can build the app you need in minutes, what is the point of preinstalled apps, and of apps at all?</p></li>
+        <li class="reveal"><h3><a href="https://chaewoonkim.medium.com/a-story-about-money-afedd3e1ee00" target="_blank" rel="noopener">A Story About Money ↗</a></h3><p class="wl-by">Medium</p><p class="wl-sum">A personal essay on money.</p></li>
+        <li class="reveal"><h3><a href="https://chaewoonkim.medium.com/2025-2026-reflections-onwards-2bc4a878e448" target="_blank" rel="noopener">2025–2026 Reflections: Onwards ↗</a></h3><p class="wl-by">Medium</p><p class="wl-sum">A personal essay reflecting on the last couple of years and what comes next.</p></li>
+      </ul>
+
+      <h2 class="sub-h">Case-study write-ups</h2>
+      <div class="grid grid--3">
+        <a class="w reveal" href="/projects/decisions">
+          <div class="stage" style="--g: var(--g-mobility)"><div class="art"><div class="glass"><b>Options</b><span>and the pick</span></div></div><span class="pill">How I decide <em>2026</em></span></div>
+          <p class="meta">The options I laid out for each call on this site and my projects, which one I picked, and why.</p>
+        </a>
+        <a class="w reveal" href="/projects/portfolio">
+          <div class="stage" style="--g: var(--g-lucent)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>chaekim.vercel.app</span></div><img src="/assets/img/builds/portfolio-card.jpg" alt="This site's homepage" width="960" height="600" loading="lazy"></div></div><span class="pill">This portfolio <em>2026</em></span></div>
+          <p class="meta">How this site got built: the decisions, the backlog, and what's next.</p>
+        </a>
+        <a class="w reveal" href="/projects/personal-brand">
+          <div class="stage" style="--g: var(--g-plain)"><div class="art"><div class="brandart"><svg class="cal cal--card" viewBox="0 0 44 104" aria-hidden="true"><rect class="paper" x="1.5" y="1.5" width="41" height="101" rx="1" fill="#fbf8f1" filter="url(#paper)"/><use class="ink" href="#cal-glyphs" fill="#161514" filter="url(#ink)"/></svg><span class="brandart__sw"><i style="background:#C8372D"></i><i style="background:#FF5A1F"></i><i style="background:#B07A4F"></i><i style="background:#0066CC"></i><i style="background:#123B2E"></i></span></div></div><span class="pill">Personal brand <em>2026</em></span></div>
+          <p class="meta">How I chose a brand: five directions, two built finalists, and why Stamp won.</p>
+        </a>
+      </div>
+
+      <h2 class="sub-h">Reading list</h2>
+      <ul class="wlist">
+        <li class="reveal"><h3><a href="https://www.a16z.news/p/product-management-is-still-all-about" target="_blank" rel="noopener">Product Management is Still All About Telling Stories ↗</a></h3><p class="wl-by">Josh Elman · a16z newsletter · added 2026-10-14</p><p class="wl-sum">Elman argues that as AI makes building software cheaper and faster, a product manager&#x27;s core value shifts to judgment about what to build and to communicating a product&#x27;s purpose, especially through onboarding.</p><div class="wl-tags"><span>Product management</span><span>AI</span></div></li>
+        <li class="reveal"><h3><a href="https://joshelman.medium.com/a-product-managers-job-63c09a43d0ec" target="_blank" rel="noopener">A Product Manager&#x27;s Job ↗</a></h3><p class="wl-by">Josh Elman · Medium · added 2026-10-14</p><p class="wl-sum">A short essay on what a product manager is responsible for, framing the job as helping a team ship the right product for users and breaking it into five smaller parts.</p><div class="wl-tags"><span>Product management</span></div></li>
+        <li class="reveal"><h3><a href="https://joshelman.medium.com/my-blueprint-9693a6059a1a" target="_blank" rel="noopener">My Blueprint ↗</a></h3><p class="wl-by">Josh Elman · Medium · added 2026-10-14</p><p class="wl-sum">Elman shares his own personal blueprint, a written outline of how he works and his quirks, inspired by a friend&#x27;s essay on the practice.</p><div class="wl-tags"><span>Working style</span><span>Career</span></div></li>
+        <li class="reveal"><h3><a href="https://joshelman.medium.com/51-7fbfb877e869" target="_blank" rel="noopener">51 ↗</a></h3><p class="wl-by">Josh Elman · Medium · added 2026-10-14</p><div class="wl-tags"><span>Career</span></div></li>
+      </ul>
+      <p class="wl-more">The same list, with topic filters, is on its own page: <a href="/reading">Writing &amp; reading</a>.</p>
+    </section>
+
     <!-- ============ WORK ============ -->
     <section class="panel" id="work" role="tabpanel" aria-labelledby="tab-work">
       <h2 class="visually-hidden">Work</h2>
@@ -314,7 +350,7 @@
             </div>
             <p>Thirteen years growing up overseas made me curious by default. I'm happiest making things: a wireframe, a 3D print, a card game.</p>
             <p>I've founded an NSF I-Corps AI startup, led Fortune 500 cloud programs, and run a precision manufacturer's operations. These days I build tools I'd actually use. If you're making something too, I'd love to hear about it.</p>
-            <p>I'm also writing a memoir, <em>The Treaded Path</em>, and essays on <a href="https://medium.com/@chaewoonkim" target="_blank" rel="noopener">Medium ↗</a>. I also keep a <a href="/reading">writing and reading list</a> with my essays and the articles that helped.</p>
+            <p>I'm also writing a memoir, <em>The Treaded Path</em>, and essays on <a href="https://medium.com/@chaewoonkim" target="_blank" rel="noopener">Medium ↗</a>. My essays and the articles that helped are on the <a href="#writing">Writing tab</a>.</p>
           </section>
 
           <section id="experience">
@@ -449,7 +485,7 @@
       </p>
     </div>
     <nav aria-label="Footer">
-      <a href="#builds">Builds</a><a href="#work">Work</a><a href="#about">About</a><a href="/reading">Essays &amp; reading</a><a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
+      <a href="#builds">Builds</a><a href="#work">Work</a><a href="#writing">Writing</a><a href="#about">About</a><a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
     </nav>
     <div class="foot__cta">
       <b>Let's chat.</b>
@@ -470,14 +506,15 @@
     <p class="live__note" id="live-note" hidden></p>
     <iframe id="live-frame" title="Live preview" allow="clipboard-write"></iframe>
   </dialog>
-  <script src="/assets/js/main.js?v=25"></script>
-  <script src="/assets/js/play.js?v=25" defer></script>
+  <script src="/assets/js/main.js?v=26"></script>
+  <script src="/assets/js/play.js?v=26" defer></script>
   <script src="/assets/js/live.js?v=1" defer></script>
   <script>
   (function () {
     var THESIS = {
       'builds': 'I like to build things, from startups to card games.',
       'work': 'I run the operations behind the idea.',
+      'writing': 'Essays, how I decide, and what I read.',
       'about': 'Product, strategy, operations, and the occasional 3D print.'
     };
     var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;

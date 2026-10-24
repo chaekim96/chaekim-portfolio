@@ -272,7 +272,7 @@ PRODUCTS = [
       "<b>Learning the protection boundary:</b> the API tests showed why a hide hotkey is still necessary, even when the normal capture path hides the overlay.",
     ) + "\n" + links(("Requirements and limitations", "https://github.com/chaekim96/VoicePrompter/blob/main/README.md"), ("Capture-test evidence", "https://github.com/chaekim96/VoicePrompter/blob/main/ProtectionTest/RESULTS.md")),
     differently=paras("Measure latency from the start. The speech recognizer dominates the delay, and I built the latency test only after the app worked. A full, uninterrupted latency run is still on my list."),
-    artifacts=links(("Source on GitHub", "https://github.com/chaekim96/VoicePrompter")) + "\n" + artifact_grid(("/assets/img/cases/vp-main.jpg", "The main window while listening: status, position in the script, and prompter settings."), ("/assets/img/cases/vp-prompter.jpg", "The prompter further in. Read text dims and the current word turns gold. Captured with protection off.")),
+    artifacts=links(("Source on GitHub", "https://github.com/chaekim96/VoicePrompter"), ("Essay: What\u2019s the Point of Preinstalled Apps?", "/projects/preinstalled-apps")) + "\n" + artifact_grid(("/assets/img/cases/vp-main.jpg", "The main window while listening: status, position in the script, and prompter settings."), ("/assets/img/cases/vp-prompter.jpg", "The prompter further in. Read text dims and the current word turns gold. Captured with protection off.")),
   ),
   dict(slug="parallel-prospect-brief", title="Parallel Prospect Brief",
     kicker="product · solo build · 2026",

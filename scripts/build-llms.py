@@ -23,6 +23,9 @@ SECTIONS = [
         "lucent", "ey", "tritooling", "mirrorme", "mirrorme-tech-pack", "mobility",
         "alab", "coursera", "iu-study-assistant", "luc", "ptm",
     ]),
+    ("Writing", "Essays by Chae, plus the reading list at /reading.", [
+        "preinstalled-apps",
+    ]),
     ("How this site is made", "The decisions and options behind the portfolio itself.", [
         "decisions", "portfolio", "personal-brand",
     ]),
@@ -61,7 +64,7 @@ def main():
     out += [
         "## More",
         "",
-        f"- [Home]({SITE}/): the Builds, Work and About tabs",
+        f"- [Home]({SITE}/): the Builds, Work, Writing and About tabs",
         f"- [Reading list]({SITE}/reading)",
         f"- [Resume (PDF)]({SITE}/assets/pdf/chae-kim-resume.pdf)",
         f"- [Arcade]({SITE}/arcade): Snake, Galaga and a generative lo-fi radio",
