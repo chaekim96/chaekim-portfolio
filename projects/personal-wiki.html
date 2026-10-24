@@ -97,7 +97,7 @@
           <li>Wrote the CLI and harness with only Python's standard library: ingest, search, ask, and chat modes.</li>
           <li>Built hybrid retrieval: my own BM25 plus local embeddings, merged with reciprocal rank fusion.</li>
           <li>Wrote the expected answers for four tests before running them, including one the wiki should refuse.</li>
-          <li>Checked every citation in code, with one automatic retry when a citation doesn't point to a retrieved passage.</li>
+          <li>Checked ask-mode citations against the retrieved passages in code and flagged invalid answers. Chat has a separate citation check with one retry.</li>
           <li>Recorded an offline demo with Wi-Fi off. All four tests matched the online results.</li>
         </ul>
         <h2 id="results">Results</h2>

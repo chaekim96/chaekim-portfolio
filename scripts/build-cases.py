@@ -352,7 +352,7 @@ COURSEWORK = [
       "Wrote the CLI and harness with only Python's standard library: ingest, search, ask, and chat modes.",
       "Built hybrid retrieval: my own BM25 plus local embeddings, merged with reciprocal rank fusion.",
       "Wrote the expected answers for four tests before running them, including one the wiki should refuse.",
-      "Checked every citation in code, with one automatic retry when a citation doesn't point to a retrieved passage.",
+      "Checked ask-mode citations against the retrieved passages in code and flagged invalid answers. Chat has a separate citation check with one retry.",
       "Recorded an offline demo with Wi-Fi off. All four tests matched the online results.",
     ),
     results=stat_grid(("3 of 4", "tests passed, written in advance"), ("4.4 s", "per answer, warm"), ("~1.7 GB", "working memory"), ("0", "cloud calls")) + "\n" + paras("The failure is documented. A question in my own shorthand (\"A3\") missed the right passage, and the model answered a nearby question with a real citation."),
