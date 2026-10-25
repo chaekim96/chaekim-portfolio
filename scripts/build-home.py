@@ -752,11 +752,13 @@ ARCADE_PAGE = f"""<!DOCTYPE html>
   <meta property="og:title" content="Arcade · Chae Kim - Portfolio">
   <meta property="og:description" content="Snake and Galaga, rebuilt from memory, plus a generative lo-fi radio.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og-sky.png">
+  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/brand/arcade-og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://chaekim-portfolio.vercel.app/arcade">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="icon" href="/assets/img/brand/arcade.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/img/brand/arcade-touch.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 {CASE_HEAD_ASSETS}
