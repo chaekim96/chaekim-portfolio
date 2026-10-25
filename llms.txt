@@ -43,6 +43,12 @@ Startups, consulting and operations, then earlier projects at Indiana University
 - [LUC: Luggage Under Control](https://chaekim-portfolio.vercel.app/projects/luc): A self-weighing luggage concept using force sensors in each wheel, inspired by tire-pressure monitoring systems and Wi-Fi mesh networks.
 - [PTM: Perpetual Thermal Monitor](https://chaekim-portfolio.vercel.app/projects/ptm): A non-invasive sleep mask with embedded thermal and push sensors that tracks temperature patterns overnight and syncs to a health app.
 
+## Writing
+
+Essays by Chae, plus the reading list at /reading.
+
+- [What’s the Point of Preinstalled Apps?](https://chaekim-portfolio.vercel.app/projects/preinstalled-apps): If AI can build the app you need in minutes, what is the point of preinstalled apps, and of apps at all?
+
 ## How this site is made
 
 The decisions and options behind the portfolio itself.
@@ -53,7 +59,7 @@ The decisions and options behind the portfolio itself.
 
 ## More
 
-- [Home](https://chaekim-portfolio.vercel.app/): the Builds, Work and About tabs
+- [Home](https://chaekim-portfolio.vercel.app/): the Builds, Work, Writing and About tabs
 - [Reading list](https://chaekim-portfolio.vercel.app/reading)
 - [Resume (PDF)](https://chaekim-portfolio.vercel.app/assets/pdf/chae-kim-resume.pdf)
 - [Arcade](https://chaekim-portfolio.vercel.app/arcade): Snake, Galaga and a generative lo-fi radio

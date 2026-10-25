@@ -30,8 +30,8 @@ INK_DEFS = ('<svg width="0" height="0" style="position:absolute" aria-hidden="tr
 # ---------------------------------------------------------------------------
 # Case-page chrome (project pages in the Stamp look)
 # ---------------------------------------------------------------------------
-CASE_CSS_V = "20"   # bump when assets/css/case-stamp.css changes
-STAMP_CSS_V = "25"  # v-stamp.css version, kept in step with the homepage
+CASE_CSS_V = "21"   # bump when assets/css/case-stamp.css changes
+STAMP_CSS_V = "26"  # v-stamp.css version, kept in step with the homepage
 JS_V = "13"
 LIVE_V = "1"  # bump when assets/js/live.js changes
 
@@ -86,6 +86,7 @@ CASE_TOP = f"""  {INK_DEFS}
     <nav class="topnav" aria-label="Primary">
       <a href="/#builds">Builds</a>
       <a href="/#work">Work</a>
+      <a href="/#writing">Writing</a>
       <a href="/#about">About</a>
       <a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
       <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
@@ -106,7 +107,7 @@ CASE_FOOT = f"""  <footer class="foot wrap">
       </p>
     </div>
     <nav aria-label="Footer">
-      <a href="/#builds">Builds</a><a href="/#work">Work</a><a href="/#about">About</a><a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
+      <a href="/#builds">Builds</a><a href="/#work">Work</a><a href="/#writing">Writing</a><a href="/#about">About</a><a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
     </nav>
     <div class="foot__cta">
       <b>Let's chat.</b>

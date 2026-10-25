@@ -1,0 +1,213 @@
+**What’s the Point of Preinstalled Apps?**
+
+I recently had an assignment where I needed to record a video using a teleprompter.
+
+I figured this would be easy. Download a teleprompter app, paste in my script, record, done.
+
+Instead, I spent more time than I expected trying to find a decent one.
+
+Some apps locked basic features behind subscriptions. Others were free but clunky. A few had way more functionality than I needed.
+
+All I wanted was a box for my script, adjustable scrolling speed, readable text, and a clean interface.
+
+So I stopped looking and made one.
+
+I opened Claude Code, told Opus what I wanted, and within a few minutes I had a working teleprompter.
+
+The first version worked, but the UI was pretty bad.
+
+So I told it to take another stab at the design.
+
+The second version surprised me.
+
+It wasn't just better than the first. I preferred it to the teleprompter apps I had downloaded. It was simple, did exactly what I wanted, and somehow felt like it belonged on my computer.
+
+And that's when I had a thought:
+
+**What's the point of preinstalled apps?**
+
+**Why do our computers come with apps?**
+
+For most of computing history, the answer has been pretty obvious.
+
+Software is expensive to build.
+
+When you buy a new computer or phone, the manufacturer gives you a collection of tools that cover the things you're probably going to need.
+
+Calculator. Notes. Calendar. Weather. Mail. Voice recorder. Browser.
+
+Then we customize from there.
+
+We delete some apps, move others around, and download the things we actually need. Eventually, everyone's home screen or dock looks completely different.
+
+But generative AI introduces another possibility.
+
+**What if instead of customizing which apps we have, we generate the software we need?**
+
+Imagine buying a new iPhone.
+
+Instead of being greeted by pages of preinstalled apps, you're greeted by Siri.
+
+You say:
+
+"Make me a simple expense tracker for my trip to Japan."
+
+A small interface appears.
+
+"Give me a timer that alternates between 45 seconds of exercise and 15 seconds of rest."
+
+Done.
+
+"Make me a teleprompter. I want to paste in text, adjust the scrolling speed, and control it with keyboard shortcuts."
+
+Done.
+
+Maybe you use that tool once and it disappears.
+
+Maybe you keep using it and it becomes a permanent icon on your home screen.
+
+The operating system slowly becomes yours.
+
+## From apps to intent
+
+We've spent decades adapting ourselves to software.
+
+Someone else decides what features an app should have, where the buttons go, what the workflows look like, and increasingly, what those features should cost per month.
+
+We then choose whichever application comes closest to what we want.
+
+AI could flip that relationship.
+
+Instead of searching:
+
+**"What's the best app for X?"**
+
+You say:
+
+**"I need X."**
+
+And the computer figures out the rest.
+
+That's a much bigger change than making app development cheaper.
+
+It changes the fundamental unit of computing.
+
+Today, that unit is the **application**.
+
+Tomorrow, it might be the **intent**.
+
+## What does Apple look like in that world?
+
+This is where things get interesting.
+
+Apple spends enormous resources designing, building, testing, updating, and maintaining software across its ecosystem.
+
+Obviously, much of that isn't going anywhere.
+
+I don't want my iPhone generating a new version of Settings every morning. I probably don't want an AI improvising how Messages works. Camera, security, payments, communications, and other core systems need reliability and consistency.
+
+But does Apple really need to build every utility?
+
+Does every function need its own predetermined interface?
+
+And does every new capability need to become another app?
+
+Maybe the operating system of the future looks less like a collection of software and more like a collection of primitives: camera, location, payments, storage, messaging, identity, sensors, and compute.
+
+The agent sits on top of them.
+
+You tell it what you're trying to accomplish, and it assembles those capabilities into whatever interface you need.
+
+In that world, Siri isn't another application.
+
+**Siri becomes the operating system.**
+
+That could have enormous implications for companies like Apple.
+
+Instead of continually expanding the number of applications they build and maintain, they could invest more heavily in the underlying platform and agent that generates experiences on top of it.
+
+Software development doesn't disappear. It moves down a layer.
+
+Apple builds the trusted infrastructure.
+
+AI builds the last mile.
+
+## And then there's the App Store
+
+This is where my little teleprompter experiment becomes more uncomfortable.
+
+Because the question isn't really whether Apple needs Calculator.
+
+It's whether I need to download a calculator app at all.
+
+The App Store was built around scarcity.
+
+Building software required technical knowledge, time, and money. Developers built applications because users couldn't easily build those applications themselves.
+
+Distribution became valuable because creation was difficult.
+
+But what happens when creation becomes trivial?
+
+There is an enormous category of apps that aren't particularly complicated. Timers. Trackers. Calculators. Converters. Simple editors. Scanners. Dashboards. Journals. Teleprompters.
+
+They're useful, but many are essentially interfaces wrapped around a handful of functions.
+
+If I can describe exactly what I want and have a functional version generated in minutes, the economics of that software start looking very different.
+
+Why search through 20 teleprompter apps?
+
+Why read reviews?
+
+Why compare subscription plans?
+
+Why pay $4.99 a month?
+
+Just make one.
+
+## Not everything is bloatware
+
+My first reaction after building the teleprompter was:
+
+"Everything is just bloatware at this point."
+
+I don't actually think that's right.
+
+Good software does much more than provide an interface. Great products encode years of expertise, edge cases, infrastructure, network effects, trust, and thoughtful product decisions.
+
+I'm not generating Photoshop this afternoon.
+
+I'm not vibe-coding my own bank.
+
+And I probably shouldn't generate my own password manager.
+
+But the threshold for what deserves to be an application is moving.
+
+Fast.
+
+There is now a growing category of software where searching, downloading, onboarding, and paying for an application may actually require more effort than creating exactly what you need.
+
+That's new.
+
+And I think we're still underestimating what it means.
+
+Because when I needed that teleprompter, I didn't consciously decide to participate in some new paradigm of computing.
+
+I was just annoyed.
+
+I needed software.
+
+I couldn't find software I liked.
+
+So I made it.
+
+A few years ago, that sentence would have implied that I knew how to build an app.
+
+Today, increasingly, it just means I knew what I wanted.
+
+And if that becomes normal, the interesting question isn't:
+
+**What's the point of preinstalled apps?**
+
+It's:
+
+**What's the point of apps?**

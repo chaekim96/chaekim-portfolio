@@ -1,12 +1,8 @@
 #!/usr/bin/env python3
 """Builds /reading (reading.html): Chae's own essays, plus a running list of helpful articles.
 
-Add an article:  append one dict to the top of READING below, then run
-    python3 scripts/build-reading.py && python3 scripts/build-sitemap.py
-Fields: title, author, source, url, added (YYYY-MM-DD), topics (list), summary
-(neutral, one sentence), note (Chae's own takeaway; leave "" until written).
-Add an essay: append one dict to ESSAYS below (title, url, published YYYY-MM-DD
-or "" if unknown, description one neutral sentence), then run the same commands.
+The articles and essays live in scripts/writing_data.py (shared with the homepage Writing tab).
+After editing them run build-reading.py, build-home.py and build-sitemap.py.
 Topic filter chips are generated from the topics used and only filter READING.
 Run with --check to fail if reading.html is out of date.
 """
@@ -18,68 +14,8 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 SITE_URL = "https://chaekim-portfolio.vercel.app"
 sys.path.insert(0, str(HERE))
+from writing_data import READING, ESSAYS, pub_label  # noqa: E402
 from stamp_shared import CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS  # noqa: E402
-
-# Newest first. Keep summaries neutral and in your own words; never paste article text.
-READING = [
-    {
-        "title": "Product Management is Still All About Telling Stories",
-        "author": "Josh Elman",
-        "source": "a16z newsletter",
-        "url": "https://www.a16z.news/p/product-management-is-still-all-about",
-        "added": "2026-10-14",
-        "topics": ["Product management", "AI"],
-        "summary": "Elman argues that as AI makes building software cheaper and faster, a product manager's core value shifts to judgment about what to build and to communicating a product's purpose, especially through onboarding.",
-        "note": "",
-    },
-    {
-        "title": "A Product Manager's Job",
-        "author": "Josh Elman",
-        "source": "Medium",
-        "url": "https://joshelman.medium.com/a-product-managers-job-63c09a43d0ec",
-        "added": "2026-10-14",
-        "topics": ["Product management"],
-        "summary": "A short essay on what a product manager is responsible for, framing the job as helping a team ship the right product for users and breaking it into five smaller parts.",
-        "note": "",
-    },
-    {
-        "title": "My Blueprint",
-        "author": "Josh Elman",
-        "source": "Medium",
-        "url": "https://joshelman.medium.com/my-blueprint-9693a6059a1a",
-        "added": "2026-10-14",
-        "topics": ["Working style", "Career"],
-        "summary": "Elman shares his own personal blueprint, a written outline of how he works and his quirks, inspired by a friend's essay on the practice.",
-        "note": "",
-    },
-    {
-        "title": "51",
-        "author": "Josh Elman",
-        "source": "Medium",
-        "url": "https://joshelman.medium.com/51-7fbfb877e869",
-        "added": "2026-10-14",
-        "topics": ["Career"],
-        "summary": "",  # TODO: Medium blocked fetching; title taken from the URL slug. Confirm title and write a one-sentence summary.
-        "note": "",
-    },
-]
-
-# Chae's own essays, newest first. Descriptions are one neutral sentence; never
-# include family or memoir details, money amounts, or names of other people.
-ESSAYS = [
-    {
-        "title": "A Story About Money",
-        "url": "https://chaewoonkim.medium.com/a-story-about-money-afedd3e1ee00",
-        "published": "",  # Medium blocked fetching; date not verified, so omitted.
-        "description": "A personal essay on money.",
-    },
-    {
-        "title": "2025–2026 Reflections: Onwards",
-        "url": "https://chaewoonkim.medium.com/2025-2026-reflections-onwards-2bc4a878e448",
-        "published": "",  # Medium blocked fetching; date not verified, so omitted.
-        "description": "A personal essay reflecting on the last couple of years and what comes next.",
-    },
-]
 
 CSS = """
   .reading__lede { max-width: 60ch; color: var(--ink-2); line-height: 1.6; margin-top: 12px; }
@@ -132,22 +68,25 @@ def esc(s):
 
 def item(a):
     tags = "".join(f"<span>{esc(t)}</span>" for t in a["topics"])
-    summary = esc(a["summary"]) if a["summary"] else '<span class="confirm">[CONFIRM: summary pending]</span>'
-    note = esc(a["note"]) if a["note"] else "<i>(add your own takeaway)</i>"
+    summary = f'        <p class="rl-sum">{esc(a["summary"])}</p>\n' if a["summary"] else ""
+    note = f'        <p class="rl-notes"><b>My notes:</b> {esc(a["note"])}</p>\n' if a["note"] else ""
     return (f'      <li class="rl-item" data-topics="{esc("|".join(a["topics"]))}">\n'
             f'        <h3><a href="{esc(a["url"])}" target="_blank" rel="noopener">{esc(a["title"])} ↗</a></h3>\n'
             f'        <p class="rl-by">{esc(a["author"])} · {esc(a["source"])} · added <time datetime="{a["added"]}">{a["added"]}</time></p>\n'
-            f'        <p class="rl-sum">{summary}</p>\n'
-            f'        <p class="rl-notes"><b>My notes:</b> {note}</p>\n'
+            f'{summary}{note}'
             f'        <div class="rl-tags">{tags}</div>\n'
             f'      </li>')
 
 
 def essay(e):
-    date = (f' · published <time datetime="{e["published"]}">{e["published"]}</time>' if e["published"] else "")
+    date = (f' · published <time datetime="{e["published"]}">{pub_label(e["published"])}</time>' if e["published"] else "")
+    internal = e.get("internal")
+    ext = "" if internal else ' target="_blank" rel="noopener"'
+    arrow = "" if internal else " ↗"
+    where = "On this site" if internal else "Medium"
     return (f'      <li class="es-item">\n'
-            f'        <h3><a href="{esc(e["url"])}" target="_blank" rel="noopener">{esc(e["title"])} ↗</a></h3>\n'
-            f'        <p class="es-meta">Medium{date}</p>\n'
+            f'        <h3><a href="{esc(e["url"])}"{ext}>{esc(e["title"])}{arrow}</a></h3>\n'
+            f'        <p class="es-meta">{where}{date}</p>\n'
             f'        <p class="es-desc">{esc(e["description"])}</p>\n'
             f'      </li>')
 

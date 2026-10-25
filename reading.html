@@ -18,8 +18,8 @@
   <meta name="theme-color" content="#bfdcf7" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0f1a2e" media="(prefers-color-scheme: dark)">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="/assets/css/v-stamp.css?v=25">
-  <link rel="stylesheet" href="/assets/css/case-stamp.css?v=20">
+  <link rel="stylesheet" href="/assets/css/v-stamp.css?v=26">
+  <link rel="stylesheet" href="/assets/css/case-stamp.css?v=21">
   <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
   <style>
   .reading__lede { max-width: 60ch; color: var(--ink-2); line-height: 1.6; margin-top: 12px; }
@@ -56,6 +56,7 @@
     <nav class="topnav" aria-label="Primary">
       <a href="/#builds">Builds</a>
       <a href="/#work">Work</a>
+      <a href="/#writing">Writing</a>
       <a href="/#about">About</a>
       <a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
       <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
@@ -75,6 +76,11 @@
     <section class="wrap rl-section" aria-labelledby="essays-h">
       <h2 id="essays-h">Essays</h2>
       <ul class="es-list">
+      <li class="es-item">
+        <h3><a href="/projects/preinstalled-apps">What’s the Point of Preinstalled Apps?</a></h3>
+        <p class="es-meta">On this site · published <time datetime="2026-10">October 2026</time></p>
+        <p class="es-desc">If AI can build the app you need in minutes, what is the point of preinstalled apps, and of apps at all?</p>
+      </li>
       <li class="es-item">
         <h3><a href="https://chaewoonkim.medium.com/a-story-about-money-afedd3e1ee00" target="_blank" rel="noopener">A Story About Money ↗</a></h3>
         <p class="es-meta">Medium</p>
@@ -97,28 +103,23 @@
         <h3><a href="https://www.a16z.news/p/product-management-is-still-all-about" target="_blank" rel="noopener">Product Management is Still All About Telling Stories ↗</a></h3>
         <p class="rl-by">Josh Elman · a16z newsletter · added <time datetime="2026-10-14">2026-10-14</time></p>
         <p class="rl-sum">Elman argues that as AI makes building software cheaper and faster, a product manager&#x27;s core value shifts to judgment about what to build and to communicating a product&#x27;s purpose, especially through onboarding.</p>
-        <p class="rl-notes"><b>My notes:</b> <i>(add your own takeaway)</i></p>
         <div class="rl-tags"><span>Product management</span><span>AI</span></div>
       </li>
       <li class="rl-item" data-topics="Product management">
         <h3><a href="https://joshelman.medium.com/a-product-managers-job-63c09a43d0ec" target="_blank" rel="noopener">A Product Manager&#x27;s Job ↗</a></h3>
         <p class="rl-by">Josh Elman · Medium · added <time datetime="2026-10-14">2026-10-14</time></p>
         <p class="rl-sum">A short essay on what a product manager is responsible for, framing the job as helping a team ship the right product for users and breaking it into five smaller parts.</p>
-        <p class="rl-notes"><b>My notes:</b> <i>(add your own takeaway)</i></p>
         <div class="rl-tags"><span>Product management</span></div>
       </li>
       <li class="rl-item" data-topics="Working style|Career">
         <h3><a href="https://joshelman.medium.com/my-blueprint-9693a6059a1a" target="_blank" rel="noopener">My Blueprint ↗</a></h3>
         <p class="rl-by">Josh Elman · Medium · added <time datetime="2026-10-14">2026-10-14</time></p>
         <p class="rl-sum">Elman shares his own personal blueprint, a written outline of how he works and his quirks, inspired by a friend&#x27;s essay on the practice.</p>
-        <p class="rl-notes"><b>My notes:</b> <i>(add your own takeaway)</i></p>
         <div class="rl-tags"><span>Working style</span><span>Career</span></div>
       </li>
       <li class="rl-item" data-topics="Career">
         <h3><a href="https://joshelman.medium.com/51-7fbfb877e869" target="_blank" rel="noopener">51 ↗</a></h3>
         <p class="rl-by">Josh Elman · Medium · added <time datetime="2026-10-14">2026-10-14</time></p>
-        <p class="rl-sum"><span class="confirm">[CONFIRM: summary pending]</span></p>
-        <p class="rl-notes"><b>My notes:</b> <i>(add your own takeaway)</i></p>
         <div class="rl-tags"><span>Career</span></div>
       </li>
       </ul>
@@ -137,7 +138,7 @@
       </p>
     </div>
     <nav aria-label="Footer">
-      <a href="/#builds">Builds</a><a href="/#work">Work</a><a href="/#about">About</a><a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
+      <a href="/#builds">Builds</a><a href="/#work">Work</a><a href="/#writing">Writing</a><a href="/#about">About</a><a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
     </nav>
     <div class="foot__cta">
       <b>Let's chat.</b>
@@ -148,7 +149,7 @@
     </div>
   </footer>
   <script src="/assets/js/main.js?v=13"></script>
-  <script src="/assets/js/case-stamp.js?v=20"></script>
+  <script src="/assets/js/case-stamp.js?v=21"></script>
   <script>
     (function () {
       var chips = [].slice.call(document.querySelectorAll('.rl-chip'));
