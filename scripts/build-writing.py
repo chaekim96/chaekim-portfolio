@@ -27,7 +27,7 @@ ESSAYS = [
         dek="Reimagining Siri as the operating system.",
         published="2026-10",
         date_label="October 2026",
-        end='<a href="/projects/voiceprompter">The teleprompter in this essay</a>',
+        end='<a href="/projects/voiceprompter">The teleprompter in this essay</a> · <a href="/projects/siri-reimagined">The design concept: Siri, Reimagined</a>',
     ),
 ]
 
