@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>What’s the Point of Preinstalled Apps? · Chae Kim - Portfolio</title>
-  <meta name="description" content="If AI can build the app you need in minutes, what is the point of preinstalled apps, and of apps at all?">
+  <meta name="description" content="What if a new iPhone greeted you with Siri instead of pages of apps? On Siri becoming the operating system, and what that means for apps, Apple, and the App Store.">
   <meta name="author" content="Chae Kim">
   <meta property="og:title" content="What’s the Point of Preinstalled Apps? · Chae Kim - Portfolio">
-  <meta property="og:description" content="If AI can build the app you need in minutes, what is the point of preinstalled apps, and of apps at all?">
+  <meta property="og:description" content="What if a new iPhone greeted you with Siri instead of pages of apps? On Siri becoming the operating system, and what that means for apps, Apple, and the App Store.">
   <meta property="og:type" content="article">
   <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og-sky.png">
   <link rel="canonical" href="https://chaekim-portfolio.vercel.app/projects/preinstalled-apps">
@@ -20,14 +20,14 @@
   <meta name="theme-color" content="#0f1a2e" media="(prefers-color-scheme: dark)">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="/assets/css/v-stamp.css?v=26">
-  <link rel="stylesheet" href="/assets/css/case-stamp.css?v=21">
+  <link rel="stylesheet" href="/assets/css/case-stamp.css?v=22">
   <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "What’s the Point of Preinstalled Apps?",
-    "description": "If AI can build the app you need in minutes, what is the point of preinstalled apps, and of apps at all?",
+    "description": "What if a new iPhone greeted you with Siri instead of pages of apps? On Siri becoming the operating system, and what that means for apps, Apple, and the App Store.",
     "url": "https://chaekim-portfolio.vercel.app/projects/preinstalled-apps",
     "mainEntityOfPage": "https://chaekim-portfolio.vercel.app/projects/preinstalled-apps",
     "datePublished": "2026-10",
@@ -63,8 +63,9 @@
   <main id="main">
     <section class="case-hero wrap">
       <a class="case-hero__back" href="/#writing">← Writing</a>
-      <p class="eyebrow">essay · october 2026</p>
+      <p class="eyebrow">essay · siri, reimagined</p>
       <h1 class="case-hero__title">What’s the Point of Preinstalled Apps?</h1>
+      <p class="essay-dek">Reimagining Siri as the operating system.</p>
       <p class="meta-line"><b>By</b> Chae Kim · <time datetime="2026-10">October 2026</time> · 5 min read</p>
     </section>
 
@@ -94,6 +95,17 @@
         <p><strong>What if instead of customizing which apps we have, we generate the software we need?</strong></p>
         <p>Imagine buying a new iPhone.</p>
         <p>Instead of being greeted by pages of preinstalled apps, you're greeted by Siri.</p>
+        <figure class="fig fig-phones" aria-label="Two phones: one opens to pages of preinstalled apps, the other opens to Siri building an expense tracker on request">
+          <div class="fig-phones__row">
+            <div class="phone"><div class="phone__screen phone__screen--apps"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="phone__label">Today: pages of preinstalled apps</span></div>
+            <div class="phone"><div class="phone__screen phone__screen--siri">
+              <span class="siri-orb" aria-hidden="true"></span>
+              <p class="bubble">Make me a simple expense tracker for my trip to Japan.</p>
+              <div class="mini-app"><b>Japan trip</b><span>Expenses</span><ul><li><em>Train pass</em><em>¥29,650</em></li><li><em>Ramen</em><em>¥1,200</em></li><li><em>Museum</em><em>¥2,000</em></li></ul><button type="button" tabindex="-1">+ Add</button></div>
+            </div><span class="phone__label">Reimagined: greeted by Siri</span></div>
+          </div>
+          <figcaption>Instead of choosing from apps someone else built, you ask for the one you need. Amounts are illustrative.</figcaption>
+        </figure>
         <p>You say:</p>
         <blockquote>"Make me a simple expense tracker for my trip to Japan."</blockquote>
         <p>A small interface appears.</p>
@@ -118,6 +130,11 @@
         <p>It changes the fundamental unit of computing.</p>
         <p>Today, that unit is the <strong>application</strong>.</p>
         <p>Tomorrow, it might be the <strong>intent</strong>.</p>
+        <figure class="fig fig-shift" aria-label="The unit of computing shifts from the application to the intent">
+          <div class="shift__col"><span class="stack__k">Today</span><b>Application</b><p class="bubble bubble--muted">What's the best app for X?</p></div>
+          <span class="shift__arrow" aria-hidden="true">→</span>
+          <div class="shift__col"><span class="stack__k">Tomorrow</span><b>Intent</b><p class="bubble">I need X.</p></div>
+        </figure>
         <h2>What does Apple look like in that world?</h2>
         <p>This is where things get interesting.</p>
         <p>Apple spends enormous resources designing, building, testing, updating, and maintaining software across its ecosystem.</p>
@@ -128,6 +145,12 @@
         <p>And does every new capability need to become another app?</p>
         <p>Maybe the operating system of the future looks less like a collection of software and more like a collection of primitives: camera, location, payments, storage, messaging, identity, sensors, and compute.</p>
         <p>The agent sits on top of them.</p>
+        <figure class="fig fig-stack" aria-label="Three layers: primitives at the bottom, the agent in the middle, and the interface you asked for on top">
+          <div class="stack__layer stack__layer--ui"><span class="stack__k">Interface</span><span>Built on request: a tracker, a timer, a teleprompter</span></div>
+          <div class="stack__layer stack__layer--agent"><span class="stack__k">Agent</span><span>Siri, turning what you're trying to do into software</span></div>
+          <div class="stack__layer stack__layer--prims"><span class="stack__k">Primitives</span><span class="chips"><i>camera</i><i>location</i><i>payments</i><i>storage</i><i>messaging</i><i>identity</i><i>sensors</i><i>compute</i></span></div>
+          <figcaption>Siri becomes the operating system: the platform supplies primitives, the agent assembles them.</figcaption>
+        </figure>
         <p>You tell it what you're trying to accomplish, and it assembles those capabilities into whatever interface you need.</p>
         <p>In that world, Siri isn't another application.</p>
         <p><strong>Siri becomes the operating system.</strong></p>
@@ -204,6 +227,6 @@
     </div>
   </footer>
   <script src="/assets/js/main.js?v=13"></script>
-  <script src="/assets/js/case-stamp.js?v=21"></script>
+  <script src="/assets/js/case-stamp.js?v=22"></script>
 </body>
 </html>

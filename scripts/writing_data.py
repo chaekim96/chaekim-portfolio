@@ -60,7 +60,7 @@ ESSAYS = [
         "url": "/projects/preinstalled-apps",
         "internal": True,
         "published": "2026-10",
-        "description": "If AI can build the app you need in minutes, what is the point of preinstalled apps, and of apps at all?",
+        "description": "What if a new iPhone greeted you with Siri instead of pages of apps? On Siri becoming the operating system, and what that means for apps, Apple, and the App Store.",
     },
     {
         "title": "A Story About Money",

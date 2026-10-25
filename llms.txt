@@ -46,7 +46,7 @@ Startups, consulting and operations, then earlier projects at Indiana University
 
 Essays by Chae, plus the reading list at /reading.
 
-- [What’s the Point of Preinstalled Apps?](https://chaekim-portfolio.vercel.app/projects/preinstalled-apps): If AI can build the app you need in minutes, what is the point of preinstalled apps, and of apps at all?
+- [What’s the Point of Preinstalled Apps?](https://chaekim-portfolio.vercel.app/projects/preinstalled-apps): What if a new iPhone greeted you with Siri instead of pages of apps? On Siri becoming the operating system, and what that means for apps, Apple, and the App Store.
 
 ## How this site is made
 

@@ -23,12 +23,41 @@ ESSAYS = [
     dict(
         slug="preinstalled-apps",
         title="What’s the Point of Preinstalled Apps?",
-        desc="If AI can build the app you need in minutes, what is the point of preinstalled apps, and of apps at all?",
+        desc="What if a new iPhone greeted you with Siri instead of pages of apps? On Siri becoming the operating system, and what that means for apps, Apple, and the App Store.",
+        dek="Reimagining Siri as the operating system.",
         published="2026-10",
         date_label="October 2026",
         end='<a href="/projects/voiceprompter">The teleprompter in this essay</a>',
     ),
 ]
+
+# Illustrations, placed after the paragraph whose text matches the key. Built from the essay's own examples.
+FIGURES = {
+    "preinstalled-apps": {
+        "Instead of being greeted by pages of preinstalled apps, you're greeted by Siri.": """        <figure class="fig fig-phones" aria-label="Two phones: one opens to pages of preinstalled apps, the other opens to Siri building an expense tracker on request">
+          <div class="fig-phones__row">
+            <div class="phone"><div class="phone__screen phone__screen--apps">""" + "".join('<i></i>' for _ in range(20)) + """</div><span class="phone__label">Today: pages of preinstalled apps</span></div>
+            <div class="phone"><div class="phone__screen phone__screen--siri">
+              <span class="siri-orb" aria-hidden="true"></span>
+              <p class="bubble">Make me a simple expense tracker for my trip to Japan.</p>
+              <div class="mini-app"><b>Japan trip</b><span>Expenses</span><ul><li><em>Train pass</em><em>¥29,650</em></li><li><em>Ramen</em><em>¥1,200</em></li><li><em>Museum</em><em>¥2,000</em></li></ul><button type="button" tabindex="-1">+ Add</button></div>
+            </div><span class="phone__label">Reimagined: greeted by Siri</span></div>
+          </div>
+          <figcaption>Instead of choosing from apps someone else built, you ask for the one you need. Amounts are illustrative.</figcaption>
+        </figure>""",
+        "The agent sits on top of them.": """        <figure class="fig fig-stack" aria-label="Three layers: primitives at the bottom, the agent in the middle, and the interface you asked for on top">
+          <div class="stack__layer stack__layer--ui"><span class="stack__k">Interface</span><span>Built on request: a tracker, a timer, a teleprompter</span></div>
+          <div class="stack__layer stack__layer--agent"><span class="stack__k">Agent</span><span>Siri, turning what you're trying to do into software</span></div>
+          <div class="stack__layer stack__layer--prims"><span class="stack__k">Primitives</span><span class="chips"><i>camera</i><i>location</i><i>payments</i><i>storage</i><i>messaging</i><i>identity</i><i>sensors</i><i>compute</i></span></div>
+          <figcaption>Siri becomes the operating system: the platform supplies primitives, the agent assembles them.</figcaption>
+        </figure>""",
+        "Tomorrow, it might be the **intent**.": """        <figure class="fig fig-shift" aria-label="The unit of computing shifts from the application to the intent">
+          <div class="shift__col"><span class="stack__k">Today</span><b>Application</b><p class="bubble bubble--muted">What's the best app for X?</p></div>
+          <span class="shift__arrow" aria-hidden="true">→</span>
+          <div class="shift__col"><span class="stack__k">Tomorrow</span><b>Intent</b><p class="bubble">I need X.</p></div>
+        </figure>""",
+    },
+}
 
 
 def inline(text):
@@ -36,16 +65,22 @@ def inline(text):
     return re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", out)
 
 
-def body_html(source):
+def body_html(source, figures=None):
+    figures = dict(figures or {})
     paras = [p.strip() for p in source.strip().split("\n\n") if p.strip()][1:]  # drop the title paragraph
     out = []
     for p in paras:
+        fig = figures.pop(p, None)
         if p.startswith("## "):
             out.append(f"        <h2>{inline(p[3:])}</h2>")
         elif re.match(r'^(\*\*)?["“]', p) and re.search(r'["”](\*\*)?$', p):
             out.append(f"        <blockquote>{inline(p)}</blockquote>")
         else:
             out.append(f"        <p>{inline(p)}</p>")
+        if fig:
+            out.append(fig)
+    if figures:
+        raise SystemExit(f"figure anchors not found in the essay: {list(figures)}")
     return "\n".join(out)
 
 
@@ -99,14 +134,15 @@ def render(e):
   <main id="main">
     <section class="case-hero wrap">
       <a class="case-hero__back" href="/#writing">← Writing</a>
-      <p class="eyebrow">essay · {e['date_label'].lower()}</p>
+      <p class="eyebrow">essay · siri, reimagined</p>
       <h1 class="case-hero__title">{title}</h1>
+      <p class="essay-dek">{html.escape(e['dek'])}</p>
       <p class="meta-line"><b>By</b> Chae Kim · <time datetime="{e['published']}">{e['date_label']}</time> · {mins} min read</p>
     </section>
 
     <section class="wrap essay-wrap">
       <article class="prose essay">
-{body_html(source)}
+{body_html(source, FIGURES.get(e['slug']))}
         <p class="essay__end">{e['end']}</p>
       </article>
     </section>
