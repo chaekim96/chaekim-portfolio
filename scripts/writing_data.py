@@ -63,16 +63,16 @@ ESSAYS = [
         "description": "What if a new iPhone greeted you with Siri instead of pages of apps? On Siri becoming the operating system, and what that means for apps, Apple, and the App Store.",
     },
     {
-        "title": "A Story About Money",
-        "url": "https://chaewoonkim.medium.com/a-story-about-money-afedd3e1ee00",
-        "published": "",  # Medium blocked fetching; date not verified, so omitted.
-        "description": "A personal essay on money.",
-    },
-    {
         "title": "2025–2026 Reflections: Onwards",
         "url": "https://chaewoonkim.medium.com/2025-2026-reflections-onwards-2bc4a878e448",
-        "published": "",  # Medium blocked fetching; date not verified, so omitted.
+        "published": "2026-01-15",  # Medium RSS feed pubDate
         "description": "A personal essay reflecting on the last couple of years and what comes next.",
+    },
+    {
+        "title": "A Story About Money",
+        "url": "https://chaewoonkim.medium.com/a-story-about-money-afedd3e1ee00",
+        "published": "2025-07-22",  # Medium RSS feed pubDate
+        "description": "A personal essay on money.",
     },
 ]
 
