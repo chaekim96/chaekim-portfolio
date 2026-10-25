@@ -376,6 +376,7 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
 .essay h3 { font: 700 clamp(1.5rem, 2.8vw, 2rem)/1.15 var(--sf); letter-spacing: -.03em; margin-top: 2.25rem; }
 .essay .first { font: 600 clamp(1.5rem, 2.8vw, 2rem)/1.25 var(--sf); letter-spacing: -.03em; }
 .essay .quote { font: 700 clamp(2rem, 5vw, 3.2rem)/1.05 var(--sf); letter-spacing: -.04em; text-align: center; padding-block: 1.5rem; }
+.essay .note { font-size: 1rem; line-height: 1.55; color: var(--muted); border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); padding-block: 1rem; }
 .essay ul { margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: .6rem; }
 .essay li::marker { color: var(--muted); }
 .fig { background: var(--theater); color: var(--theater-ink); border-radius: 28px; padding: clamp(1.5rem, 4vw, 2.5rem); display: flex; flex-direction: column; gap: 1.25rem; margin-block: 1rem; }
@@ -522,7 +523,7 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
   <section class="band">
     <div class="wrap" style="padding-block:clamp(3rem,7vw,5rem)">
       <div class="parts">
-        <a class="partcard" href="#essay"><span class="num">Part 1</span><span class="t">The thought piece</span><p>Why your next iPhone should ship nearly empty, and what that means for the App Store and the people who build apps.</p><span class="go">Read it ›</span></a>
+        <a class="partcard" href="#essay"><span class="num">Part 1</span><span class="t">The thought piece</span><p>Why your next iPhone should ship nearly empty, and what that means for the App Store and the people who build apps. The long version of my essay on preinstalled apps.</p><span class="go">Read it ›</span></a>
         <a class="partcard" href="#playout"><span class="num">Part 2</span><span class="t">How it would play out</span><p>Illustrations, wireframes, and a realistic path from today's iPhone to this one.</p><span class="go">See it ›</span></a>
       </div>
     </div>
@@ -535,15 +536,15 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
         <div class="partmark" style="align-items:flex-start;text-align:left"><span class="tag">Part 1 · The thought piece</span></div>
         <h2>Why your next iPhone should ship nearly empty.</h2>
 
-        <p class="first">A few weeks ago I needed an app that didn't exist.</p>
-        <p>It wasn't anything complicated. I wanted one screen that tracked my weekly spending and nothing else. Every app I found was either bloated with features I'd never touch, buried behind a subscription, or built for someone who wasn't me.</p>
-        <p>So I made my own. I put together a simple website, opened it in Safari, and tapped "Add to Home Screen." It got an icon. It sat next to my other apps. For all I cared, it was an app.</p>
-        <p>And it worked. Mostly.</p>
-        <p>It couldn't talk to the rest of my phone. It couldn't pull from my calendar, my health data, or my wallet. It felt a little off next to everything else on my screen. And honestly, I could only build it because I know how. Most people don't, and they shouldn't have to.</p>
-        <p>But I kept using it every day, more than most of the apps that came with my phone.</p>
+        <p class="first">I recently needed a teleprompter for a class assignment.</p>
+        <p>I figured this would be easy. Download a teleprompter app, paste in my script, record, done. Instead, I spent more time than I expected trying to find a decent one. Some apps locked basic features behind subscriptions. Others were free but clunky. A few had way more functionality than I needed.</p>
+        <p>All I wanted was a box for my script, adjustable scrolling speed, readable text, and a clean interface. So I stopped looking and made one.</p>
+        <p>I opened Claude Code, told it what I wanted, and within a few minutes I had a working teleprompter. After one more pass on the design, I liked it better than every teleprompter app I had downloaded. It did exactly what I wanted, and it felt like it belonged on my computer. (It's now <a href="/projects/voiceprompter">VoicePrompter</a>.)</p>
+        <p>But I could only build it because I know how to use those tools. Most people don't, and they shouldn't have to. And it lives on my laptop, while the place most of us need small tools like this is our phone.</p>
         <p>That's when it clicked. I didn't want <em>more</em> apps. I wanted <em>my</em> apps. Small, personal tools built around how I live, not around what a company thinks millions of people might want.</p>
-        <p>Today, making something like that is a side project. It should take one sentence.</p>
+        <p>Today, making something like that takes a laptop and a coding tool. It should take one sentence.</p>
         <p class="quote">"Hey Siri,<br><span class="grad">make me an app."</span></p>
+        <p class="note">I first wrote about this idea in a short essay, <a href="/projects/preinstalled-apps">What's the Point of Preinstalled Apps?</a> This is the longer version: the full argument, then what it could look like.</p>
 
         <h3>We don't need more apps.</h3>
         <p>Our phones are full of apps we downloaded once and forgot. Studies of phone usage keep landing on the same pattern: people open around ten apps a day and around thirty in a month, out of dozens installed.<sup>1</sup></p>
@@ -797,7 +798,7 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
   <div class="in">
     <p>1. Illustrative figures based on published studies of daily and monthly smartphone app usage.</p>
     <p>Juniper Coffee is a fictional brand. App names, people, and amounts shown on screens are examples.</p>
-    <p>Concept, writing, and design by Chae Kim. <a href="/#builds">Back to the portfolio</a>.</p>
+    <p>Concept, writing, and design by Chae Kim. Read the short essay, <a href="/projects/preinstalled-apps">What’s the Point of Preinstalled Apps?</a> <a href="/#builds">Back to the portfolio</a>.</p>
     <div class="rule"><span>An unofficial design concept. Not affiliated with or endorsed by Apple Inc.</span><span>Siri, iPhone, iOS, and Liquid Glass are trademarks of Apple Inc.</span></div>
   </div>
 </footer>

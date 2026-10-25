@@ -26,7 +26,7 @@ ESSAYS = [
         desc="If AI can build the app you need in minutes, what is the point of preinstalled apps, and of apps at all?",
         published="2026-10",
         date_label="October 2026",
-        end='<a href="/projects/voiceprompter">The teleprompter in this essay</a>',
+        end='<a href="/projects/voiceprompter">The teleprompter in this essay</a> · <a href="/projects/siri-reimagined">The design concept: Siri, Reimagined</a>',
     ),
 ]
 
