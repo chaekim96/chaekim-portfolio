@@ -528,8 +528,8 @@ body[class*="sec-"] .toc a.is-active, :root[data-theme="dark"] body[class*="sec-
 body::before {
   content: ""; position: fixed; inset: 0; z-index: -2; pointer-events: none;
   background: radial-gradient(42vmax 42vmax at var(--mx, 50%) var(--my, 18%),
-    hsl(var(--hue, 210) 95% 70% / var(--glow-a, .5)), transparent 65%);
+    hsl(var(--hue, 210) 85% 80% / var(--glow-a, .26)), transparent 65%);
   transition: opacity .6s ease;
 }
-:root[data-theme="dark"] body::before { --glow-a: .3; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) body::before { --glow-a: .3; } }
+:root[data-theme="dark"] body::before { --glow-a: .14; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) body::before { --glow-a: .14; } }

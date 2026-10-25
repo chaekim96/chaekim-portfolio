@@ -11,7 +11,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
-V = "27"
+V = "28"
 
 # ----------------------------------------------------------------------------
 # Arcade: Snake, Galaga and a generative lo-fi radio. main.js loads arcade.js
