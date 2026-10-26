@@ -19,6 +19,7 @@
 .case-hero { padding-top: clamp(36px, 6vw, 64px); }
 .case-hero__back { display: inline-block; font-size: 14px; color: var(--ink-2); margin-bottom: 22px; padding: 2px 0; background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; transition: color .2s, background-size .25s var(--ease); }
 .case-hero__back:hover, .case-hero__back:focus-visible { color: var(--ink); background-size: 100% 1px; }
+.case-hero__mark { display: block; width: 56px; height: 56px; margin-bottom: 16px; }
 .eyebrow { font-size: 13px; font-weight: 500; color: var(--ink-2); margin-bottom: 8px; }
 .case-hero__title {
   font-size: clamp(28px, 4.4vw, 44px); font-weight: 500; letter-spacing: -0.03em; line-height: 1.12;

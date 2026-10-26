@@ -6,12 +6,13 @@ Stamp is the only design: assets/css/v-stamp.css (+ case-stamp.css on project pa
 The calligraphy name mark, case-page chrome and live-preview dialog are shared via stamp_shared.py.
 """
 import os
+import re
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
-V = "28"
+V = "29"
 
 # ----------------------------------------------------------------------------
 # Arcade: Snake, Galaga and a generative lo-fi radio. main.js loads arcade.js
@@ -71,7 +72,7 @@ ARCADE = """          <div class="break">
 
 STAMP_CHANGELOG = "10-04-26"
 
-from stamp_shared import INK_DEFS, seal, live_button, LIVE_DIALOG, LIVE_SCRIPT, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, THEME_COLOR
+from stamp_shared import INK_DEFS, seal, live_button, LIVE_DIALOG, LIVE_SCRIPT, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, THEME_COLOR, build_mark
 
 
 def _snake():
@@ -742,6 +743,15 @@ STAMP = (STAMP.replace("%%WRITING_ESSAYS%%", _writing_essays())
               .replace("%%LIVE_WEB_ANATOMY%%", live_button("web-anatomy")))
 assert "%%" not in STAMP, "unreplaced token"
 
+# Each card's pill leads with the build's color-seal mark, found from the page the card links to.
+# The name gets its own span so it can truncate on narrow cards instead of being clipped.
+def _pill_mark(m):
+    mark = build_mark(m.group(2), "pill__mark", 18)
+    return m.group(1) + (f'{mark}<span class="pill__name">{m.group(3)}</span>' if mark else m.group(3))
+
+STAMP = re.sub(r'(href="/(?:projects/)?([a-z0-9-]+)"[^>]*>\s*<div class="stage"(?:(?!</a>).)*?<span class="pill">)([^<]*?)(?=\s*<em>|</span>)',
+               _pill_mark, STAMP, flags=re.S)
+
 # ----------------------------------------------------------------------------
 # Arcade page, in the same chrome as the project pages
 # ----------------------------------------------------------------------------
@@ -775,6 +785,7 @@ ARCADE_PAGE = f"""<!DOCTYPE html>
   <main id="main">
     <section class="case-hero wrap">
       <a class="case-hero__back" href="/#builds">← All builds</a>
+      {build_mark("arcade", "case-hero__mark", 56)}
       <p class="eyebrow">side quest · arcade</p>
       <h1 class="case-hero__title">Arcade</h1>
       <p class="tldr">Snake and Galaga, rebuilt from memory, plus a generative lo-fi radio.</p>

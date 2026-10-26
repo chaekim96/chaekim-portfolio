@@ -10,6 +10,15 @@ def seal(cls="", label=True):
             '<use class="ink" href="#cal-glyphs" fill="#161514" filter="url(#ink)"/>'
             '</svg>')
 
+# A build's color-seal mark from assets/img/brand/, or "" for pages without one.
+# The name sits right beside it, so the image is decorative (alt="").
+def build_mark(slug, cls, size):
+    import os
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    if not os.path.exists(os.path.join(root, "assets", "img", "brand", f"{slug}.svg")):
+        return ""
+    return f'<img class="{cls}" src="/assets/img/brand/{slug}.svg" alt="" width="{size}" height="{size}">'
+
 INK_DEFS = ('<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>'
             '<filter id="paper" x="-5%" y="-3%" width="110%" height="106%">'
             '<feTurbulence type="fractalNoise" baseFrequency="0.33" numOctaves="2" seed="3" result="edge"/>'
@@ -30,8 +39,8 @@ INK_DEFS = ('<svg width="0" height="0" style="position:absolute" aria-hidden="tr
 # ---------------------------------------------------------------------------
 # Case-page chrome (project pages in the Stamp look)
 # ---------------------------------------------------------------------------
-CASE_CSS_V = "22"   # bump when assets/css/case-stamp.css changes
-STAMP_CSS_V = "28"  # v-stamp.css version, kept in step with the homepage
+CASE_CSS_V = "23"   # bump when assets/css/case-stamp.css changes
+STAMP_CSS_V = "29"  # v-stamp.css version, kept in step with the homepage
 JS_V = "14"
 LIVE_V = "1"  # bump when assets/js/live.js changes
 

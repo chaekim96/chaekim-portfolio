@@ -20,7 +20,7 @@ SITE_URL = "https://chaekim-portfolio.vercel.app"
 
 # The script name has a hyphen, so it can't be imported as a package; load the sibling module by path.
 sys.path.insert(0, str(HERE))
-from stamp_shared import CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, LIVE_APPS, LIVE_DIALOG, LIVE_SCRIPT, live_button  # noqa: E402
+from stamp_shared import CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, LIVE_APPS, LIVE_DIALOG, LIVE_SCRIPT, live_button, build_mark  # noqa: E402
 
 def confirm_tag(msg):  # visible confirm tag
     return f'<span class="confirm">[CONFIRM: {html.escape(msg)}]</span>'
@@ -57,7 +57,7 @@ SHELL = """<!DOCTYPE html>
   <main id="main">
     <section class="case-hero wrap">
       <a class="case-hero__back" href="{back_href}">← {back_label}</a>
-      <p class="eyebrow">{kicker}</p>
+      {mark}<p class="eyebrow">{kicker}</p>
       <h1 class="case-hero__title">{heading}{badge}</h1>
       <p class="tldr">{tldr}</p>
       <p class="meta-line"><b>Role</b> {role} · <b>Team</b> {team} · <b>Timeline</b> {timeline}</p>
@@ -617,6 +617,7 @@ def render(c, prev, nxt):
     c = {**DEFAULTS, **c}
     toc, body = render_sections(c)
     is_build = c["slug"] in BUILD_SLUGS
+    mark = build_mark(c["slug"], "case-hero__mark", 56) if is_build else ""
     fields = {
         **{k: c[k] for k in ("slug", "heading", "tldr", "cover", "cover_class", "badge")},
         **{k: html.escape(c[k]) for k in PLAIN_TEXT},
@@ -631,6 +632,8 @@ def render(c, prev, nxt):
         "prev_slug": prev["slug"], "prev_title": html.escape(prev["title"]),
         "next_slug": nxt["slug"], "next_title": html.escape(nxt["title"]),
         "site_url": SITE_URL,
+        # builds show their color-seal mark above the eyebrow
+        "mark": mark + "\n      " if mark else "",
         # web apps get a "Try it live" button on the cover and the dialog it opens
         "live": live_button(c["slug"]) if c["slug"] in LIVE_APPS else "",
         "live_dialog": LIVE_DIALOG + "\n" if c["slug"] in LIVE_APPS else "",
