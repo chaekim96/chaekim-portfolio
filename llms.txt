@@ -56,6 +56,7 @@ The decisions and options behind the portfolio itself.
 - [How I decide](https://chaekim-portfolio.vercel.app/projects/decisions): How I make decisions: the options I laid out for each call on this site and my projects, which one I picked, and why.
 - [This portfolio](https://chaekim-portfolio.vercel.app/projects/portfolio): How I built this portfolio like a product: where it started, the decisions that shaped it, what's on the backlog, and what I'm considering next.
 - [Personal brand](https://chaekim-portfolio.vercel.app/projects/personal-brand): How I picked a personal brand: five directions, two built finalists, and the decisions along the way.
+- [Build marks](https://chaekim-portfolio.vercel.app/projects/build-marks): How sixteen builds got one family of logos: four directions, three hybrids, six palettes, and the decisions along the way.
 
 ## More
 

@@ -282,6 +282,10 @@ STAMP = r"""<!DOCTYPE html>
           <div class="stage" style="--g: var(--g-plain)"><div class="art"><div class="brandart">%%BRANDSEAL%%<span class="brandart__sw"><i style="background:#C8372D"></i><i style="background:#FF5A1F"></i><i style="background:#B07A4F"></i><i style="background:#0066CC"></i><i style="background:#123B2E"></i></span></div></div><span class="pill">Personal brand <em>2026</em></span></div>
           <p class="meta">How I chose a brand: five directions, two built finalists, and why Stamp won.</p>
         </a>
+        <a class="w reveal" href="/projects/build-marks">
+          <div class="stage" style="--g: var(--g-plain)"><div class="art"><div style="display:grid;grid-template-columns:repeat(3,52px);gap:10px"><img src="/assets/img/brand/tally.svg" alt="" width="52" height="52" loading="lazy" style="display:block;width:52px;height:52px;border-radius:12px"><img src="/assets/img/brand/token-fuel.svg" alt="" width="52" height="52" loading="lazy" style="display:block;width:52px;height:52px;border-radius:12px"><img src="/assets/img/brand/typerace.svg" alt="" width="52" height="52" loading="lazy" style="display:block;width:52px;height:52px;border-radius:12px"><img src="/assets/img/brand/smartmodel.svg" alt="" width="52" height="52" loading="lazy" style="display:block;width:52px;height:52px;border-radius:12px"><img src="/assets/img/brand/spotify-review-triage.svg" alt="" width="52" height="52" loading="lazy" style="display:block;width:52px;height:52px;border-radius:12px"><img src="/assets/img/brand/ai-visibility-checker.svg" alt="" width="52" height="52" loading="lazy" style="display:block;width:52px;height:52px;border-radius:12px"></div></div><span class="pill">Build marks <em>2026</em></span></div>
+          <p class="meta">Giving sixteen builds one family of logos.</p>
+        </a>
         <a class="w reveal" href="/arcade">
           <div class="stage" style="--g: var(--g-arcade)"><div class="art">%%SNAKE%%</div><span class="pill">Arcade <em>play</em></span></div>
           <p class="meta">Snake and Galaga, rebuilt from memory, plus a generative lo-fi radio.</p>

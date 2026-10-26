@@ -136,6 +136,33 @@ DECISIONS = [
         opt("Maybe later", "An idea, not a commitment."),
         opt("Drop it", "Remove it from the plan."),
     ], link=("/projects/portfolio#backlog", "See the backlog")),
+    D("design", "Oct 2026", "Build marks", "Which builds get a logo?", [
+        opt("Sixteen builds, plus a rule for the rest", "Every build I made gets a mark. Lucent and MirrorMe stay outside, the stealth project and archive pieces are left out, and employers' brands aren't mine to redraw.", chosen=True),
+        opt("Every item on the site", "Marks for work projects and archive pieces too."),
+    ], link=("/projects/build-marks", "Build marks")),
+    D("design", "Oct 2026", "Build marks", "Which direction should the marks take?", [
+        opt("C · Color seal", "The accent fills the tile and the glyph is drawn in ink. Boldest, and recognisable by color alone.", chosen=True),
+        opt("A · Ink tile", "Dark tile, light pictogram. The version first rolled out."),
+        opt("B · Paper and ink", "Closest to Stamp, but quiet in a dark browser tab."),
+        opt("D · Monogram", "Two letters. Easiest to extend, but says nothing about the build and blurs at 16px."),
+    ], why=["Letters never survive 16px, which is where most people meet these marks"], link=("/projects/build-marks#directions", "See the four directions")),
+    D("design", "Oct 2026", "Build marks", "Can the monogram be folded into the color seal?", [
+        opt("Keep C as it is", "Pictogram only. Drop the monogram idea.", chosen=True),
+        opt("E · Seal and chop", "A small ink chop with the letters in the corner, like a painter's seal."),
+        opt("F · Monogram seal", "Letters on the color."),
+        opt("G · Size switch", "Pictogram for favicons, monogram for large sizes."),
+    ], why=["Every hybrid put letters somewhere that gets small"], link=("/projects/build-marks#hybrids", "See the hybrids")),
+    D("design", "Oct 2026", "Build marks", "Which palette should the color seals use?", [
+        opt("Electric", "Full-saturation, system-style colors with the lit white spark.", chosen=True),
+        opt("Digital brights", "My first pick, before white was worked in."),
+        opt("Obangsaek", "Korean five-direction colors. Ties to the brush name."),
+        opt("Jewel brights, Lagoon or Sunset", "Three more palettes tried with the lit spark."),
+    ], link=("/projects/build-marks#palettes", "See the palettes")),
+    D("design", "Oct 2026", "Build marks", "How deep should Electric go?", [
+        opt("Keep the original", "Full saturation. Every ink drawing stays readable.", chosen=True),
+        opt("12% deeper", "Calmer, with every ink drawing at 3.5:1 or better."),
+        opt("22% deeper", "Calmer still, but ink on violet drops to 2.9:1, below the 3:1 bar for graphics."),
+    ]),
     # ---------------- products ----------------
     D("products", "Oct 2026", "AI Visibility Checker", "Where should the checker live?", [
         opt("Its own app and repo", "A new Vercel app with a serverless function that fetches the URL, plus its own case page.", chosen=True, rec=True),

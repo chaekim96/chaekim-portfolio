@@ -27,7 +27,7 @@ SECTIONS = [
         "preinstalled-apps",
     ]),
     ("How this site is made", "The decisions and options behind the portfolio itself.", [
-        "decisions", "portfolio", "personal-brand",
+        "decisions", "portfolio", "personal-brand", "build-marks",
     ]),
 ]
 
