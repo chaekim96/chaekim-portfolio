@@ -16,7 +16,7 @@ SITE = "https://chaekim-portfolio.vercel.app"
 SECTIONS = [
     ("Builds", "Products and tools, most with a live demo.", [
         "ai-visibility-checker", "tally", "palette-generator", "typerace", "networking-tracker",
-        "web-anatomy", "voiceprompter", "parallel-prospect-brief", "smartmodel", "token-fuel", "code-improver",
+        "web-anatomy", "voiceprompter", "parallel-prospect-brief", "smartmodel", "token-fuel", "code-improver", "task-progress",
         "spotify-review-triage", "personal-wiki", "pacman-dqn", "custom-llm", "siri-reimagined", "home-gif", "yin-yang",
     ]),
     ("Work", "Startups, consulting and operations, then earlier projects at Indiana University.", [

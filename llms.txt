@@ -19,6 +19,7 @@ Products and tools, most with a live demo.
 - [SmartModel](https://chaekim-portfolio.vercel.app/projects/smartmodel): A Claude Code hook that scores how hard each prompt is and recommends the cheapest model that can handle it.
 - [Token-Fuel](https://chaekim-portfolio.vercel.app/projects/token-fuel): A menu-bar fuel gauge for Claude Code and Codex sessions, built from the exact token counts each tool already writes to disk.
 - [Code Improver](https://chaekim-portfolio.vercel.app/projects/code-improver): A custom Claude Code subagent that reviews changed files for readability, performance, and best practices.
+- [task-progress](https://chaekim-portfolio.vercel.app/projects/task-progress): A Claude Code mod that turns Claude's own task checklist into a calm progress band above the prompt, plus a checklist pane.
 - [Spotify Review Triage](https://chaekim-portfolio.vercel.app/projects/spotify-review-triage): A multi-agent LLM pipeline that labels Spotify app reviews, checks its own work, and recommends where next quarter's product effort should go.
 - [Personal Wiki](https://chaekim-portfolio.vercel.app/projects/personal-wiki): A command-line study wiki that runs fully offline: a local Gemma model turns sources into linked Obsidian notes and answers questions with citations.
 - [Pac-Man DQN](https://chaekim-portfolio.vercel.app/projects/pacman-dqn): A Deep Q-Network trained on Atari Ms. Pac-Man, with every number reported straight from the run's own output files.

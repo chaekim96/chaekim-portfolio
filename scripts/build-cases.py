@@ -467,6 +467,27 @@ MODS = [
     differently=paras("Give it a severity ranking and permission to say \"no issues.\" Without one, a reviewer always finds something, and small nits crowd out real bugs."),
     artifacts=paras("The file above is the whole thing, verbatim. Below, it reviewing the script that builds this page: 14 findings, ordered by severity, and no files touched.") + "\n" + artifact_grid(("/assets/img/cases/code-improver-review.jpg", "An excerpt of its review of build-cases.py. Its top finding checked out on the live site.")),
   ),
+  dict(slug="task-progress", title="task-progress",
+    kicker="claude code mod · hooks module · 2026",
+    heading="Seeing how far along a task is, right above the prompt.",
+    desc="A Claude Code mod that turns Claude's own task checklist into a calm progress band above the prompt, plus a checklist pane.",
+    tldr="Claude Code's spinner says something is happening, not how far along it is. task-progress reads the checklist Claude already keeps and draws it as a still band above the prompt: 3/5 · 60%, the step in progress, and a green ✓ all done at the end.",
+    role="Product owner and builder", team="Solo, built with Claude Code", timeline="October 2026",
+    cover='<img src="/assets/img/thumbs/task-progress-wide.jpg" alt="task-progress in Claude Code: a band above the prompt at 3 of 6 steps, and the /task-progress pane listing each step" width="1600" height="900">',
+    problem=paras("On a long task, the flickering spinner looks the same at step 1 as at step 5. To know whether Claude was nearly done or barely started, I had to scroll back through the transcript. I wanted to glance at the screen and know \"3 of 5 done, now running tests.\""),
+    did=bullets(
+      "Wrote the job first: one glance, no reading, and no extra list for me to keep up to date.",
+      "First version: a terminal status line. It worked, but I spend my day in the desktop app's Code tab, which doesn't show status lines. I reverted it instead of shipping something I'd never see.",
+      "Rebuilt it as a mod (a hooks module) that follows the app's own task checklist: update_plan and wrap_up in the Code tab, and TodoWrite, TaskCreate and TaskUpdate in the terminal. Claude already keeps that list, so the bar can't drift from it.",
+      "Kept it calm on purpose. No animation: it redraws only when the list changes. Cyan while working, green with ✓ all done at the end, and hidden when there's no list.",
+      "Added a /task-progress pane that lists every step as done (✓), in progress (▸) or pending (·).",
+      "Ignored subagents' task lists, so a helper's checklist never takes over the main bar.",
+      "Published it as a public plugin with a one-line install, with tests for the desktop list, the terminal list, and the hidden state.",
+    ),
+    results=stat_grid(("4/4", "steps filled in a live demo"), ("5", "task-list tools it follows"), ("0", "animation frames"), ("1", "line to install")) + "\n" + paras("I ran a 4-step demo task in the Code tab and watched the band fill one segment per step to 4/4, then turn green with ✓ all done."),
+    differently=paras("Check where the user actually looks before choosing the surface. I knew I lived in the desktop app and still built for the terminal first. The place I'd most like it is the session sidebar, so progress shows across sessions at once. Mods can't draw there, so that would take a change in the app itself."),
+    artifacts=links(("Source on GitHub", "https://github.com/chaekim96/task-progress")) + "\n" + paras("Install from a Claude Code prompt: <code>/plugin install task-progress --marketplace chaekim96/task-progress</code>") + "\n" + artifact_grid(("/assets/img/cases/task-progress-card.png", "Its share card, with the build mark: a progress bar above a checklist.")),
+  ),
 ]
 
 CASES = [

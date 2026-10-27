@@ -240,6 +240,11 @@ STAMP = r"""<!DOCTYPE html>
           <h3 class="w-title">A second reviewer that reads every file I touch.</h3>
           <p class="meta">A custom Claude Code subagent that suggests readability, performance, and best-practice fixes.</p>
         </a>
+        <a class="w reveal" href="/projects/task-progress">
+          <div class="stage" style="--g: var(--g-arcade)"><div class="art fill"><img src="/assets/img/builds/task-progress.jpg" alt="The /task-progress pane at 3 of 6: three steps done, one in progress, two pending" width="800" height="600" loading="lazy"></div><span class="pill">task-progress <em>Claude Code</em></span></div>
+          <h3 class="w-title">Seeing how far along a task is, right above the prompt.</h3>
+          <p class="meta">A mod that turns Claude's own task checklist into a calm progress band above the prompt, plus a checklist pane.</p>
+        </a>
       </div>
 
       <h2 class="sub-h">AI and ML coursework</h2>
