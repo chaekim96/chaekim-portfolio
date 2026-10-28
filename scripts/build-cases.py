@@ -20,7 +20,7 @@ SITE_URL = "https://chaekim-portfolio.vercel.app"
 
 # The script name has a hyphen, so it can't be imported as a package; load the sibling module by path.
 sys.path.insert(0, str(HERE))
-from stamp_shared import CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, LIVE_APPS, LIVE_DIALOG, LIVE_SCRIPT, live_button, build_mark  # noqa: E402
+from stamp_shared import CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, LIVE_APPS, LIVE_DIALOG, LIVE_SCRIPT, live_button, build_mark, build_icons  # noqa: E402
 
 def confirm_tag(msg):  # visible confirm tag
     return f'<span class="confirm">[CONFIRM: {html.escape(msg)}]</span>'
@@ -29,6 +29,10 @@ def confirm_tag(msg):  # visible confirm tag
 
 # stage gradient behind each cover, from the Stamp tokens
 GRAD = {"lucent": "lucent", "ey": "ey", "tritooling": "tri", "mirrorme": "mirror", "mobility": "mobility", "pacman-dqn": "arcade"}
+
+SITE_ICONS = ('  <link rel="icon" href="/favicon.svg" type="image/svg+xml">\n'
+              '  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">\n'
+              '  <link rel="apple-touch-icon" href="/apple-touch-icon.png">')
 
 SHELL = """<!DOCTYPE html>
 <html lang="en">
@@ -40,11 +44,11 @@ SHELL = """<!DOCTYPE html>
   <meta property="og:title" content="{title} · Chae Kim - Portfolio">
   <meta property="og:description" content="{desc}">
   <meta property="og:type" content="article">
-  <meta property="og:image" content="{site_url}/assets/img/og-sky.png">
+  <meta property="og:image" content="{og_image}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <link rel="canonical" href="{site_url}/projects/{slug}">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+{icons}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 {head_assets}
@@ -618,7 +622,7 @@ def render_sections(c):
     return toc, body
 
 
-def jsonld(c):
+def jsonld(c, og_image):
     """Labels the page as a project by Chae Kim, so search engines and AI assistants can cite it."""
     data = {
         "@context": "https://schema.org",
@@ -627,7 +631,7 @@ def jsonld(c):
         "headline": html.unescape(re.sub(r"<[^>]+>", "", c["heading"])),
         "description": c["desc"],
         "url": f"{SITE_URL}/projects/{c['slug']}",
-        "image": f"{SITE_URL}/assets/img/og-sky.png",
+        "image": og_image,
         "creator": {"@type": "Person", "name": "Chae Kim", "alternateName": "Chae Woon Kim", "url": f"{SITE_URL}/"},
     }
     body = json.dumps(data, ensure_ascii=False, indent=2).replace("</", "<\\/")
@@ -639,6 +643,9 @@ def render(c, prev, nxt):
     toc, body = render_sections(c)
     is_build = c["slug"] in BUILD_SLUGS
     mark = build_mark(c["slug"], "case-hero__mark", 56) if is_build else ""
+    # builds use their own favicon, touch icon and share card; everything else keeps the site's 김 set
+    own = build_icons(c["slug"], SITE_URL) if is_build else None
+    icons, og_image = own or (SITE_ICONS, f"{SITE_URL}/assets/img/og-sky.png")
     fields = {
         **{k: c[k] for k in ("slug", "heading", "tldr", "cover", "cover_class", "badge")},
         **{k: html.escape(c[k]) for k in PLAIN_TEXT},
@@ -647,12 +654,12 @@ def render(c, prev, nxt):
         "body": body,
         "grad": GRAD.get(c["slug"], "plain"),
         "sec": "sec-builds" if is_build else "sec-work",
-        "jsonld": jsonld(c),
+        "jsonld": jsonld(c, og_image),
         "back_href": "/#builds" if is_build else "/#work",
         "back_label": "All builds" if is_build else "All work",
         "prev_slug": prev["slug"], "prev_title": html.escape(prev["title"]),
         "next_slug": nxt["slug"], "next_title": html.escape(nxt["title"]),
-        "site_url": SITE_URL,
+        "site_url": SITE_URL, "icons": icons, "og_image": og_image,
         # builds show their color-seal mark above the eyebrow
         "mark": mark + "\n      " if mark else "",
         # web apps get a "Try it live" button on the cover and the dialog it opens

@@ -118,6 +118,8 @@ def render(e):
   <meta property="og:description" content="{desc}">
   <meta property="og:type" content="article">
   <meta property="og:image" content="{SITE_URL}/assets/img/og-sky.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <link rel="canonical" href="{url}">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">

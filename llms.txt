@@ -36,7 +36,7 @@ Startups, consulting and operations, then earlier projects at Indiana University
 - [EY, AI & Data](https://chaekim-portfolio.vercel.app/projects/ey): Program-wide risk, OKRs, and the first QBR for a $200M+ cloud migration at a Fortune 500 life sciences client, with $10M+ in realized savings.
 - [Tritooling](https://chaekim-portfolio.vercel.app/projects/tritooling): Director of Operations at a family-owned precision manufacturer serving semiconductor, medical device, and industrial clients across APAC.
 - [MirrorMe](https://chaekim-portfolio.vercel.app/projects/mirrorme): An icebreaker card game for people who host. 150+ pre-launch purchase commitments with zero paid budget.
-- [MirrorMe tech pack](https://chaekim-portfolio.vercel.app/projects/mirrorme-tech-pack)
+- [MirrorMe tech pack](https://chaekim-portfolio.vercel.app/projects/mirrorme-tech-pack): The MirrorMe card game as a tech pack: card spec, bill of materials, box dieline, costing, and a proofing checklist.
 - [Mobility devices for older adults (stealth)](https://chaekim-portfolio.vercel.app/projects/mobility): Premium, design-forward mobility products that help older adults stay independent longer.
 - [aLab: Automatic Level-Adjusting Bowl](https://chaekim-portfolio.vercel.app/projects/alab): A companion app for aLab, a conceptual height- and temperature-adjustable dog bowl, designed with human-centered computing methods.
 - [Re-envisioning Coursera](https://chaekim-portfolio.vercel.app/projects/coursera): A product-management dossier proposing features that help Coursera learners turn coursework into transferable career outcomes.
