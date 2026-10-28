@@ -9,10 +9,10 @@
   <meta property="og:description" content="MBA at Berkeley Haas. Co-founded Lucent. Previously at EY and Tritooling. I like to build things.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://chaekim-portfolio.vercel.app/">
-  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og-card.png">
+  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og-sky.png">
   <link rel="canonical" href="https://chaekim-portfolio.vercel.app/">
-  <meta name="theme-color" content="#f3f0ff" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#1a1530" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#bfdcf7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1a2e" media="(prefers-color-scheme: dark)">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
   <link rel="preload" as="image" href="/assets/img/thumbs/lucent-wide.jpg">
-  <link rel="stylesheet" href="/assets/css/v-stamp.css?v=19">
+  <link rel="stylesheet" href="/assets/css/v-stamp.css?v=29">
   <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
   <script type="application/ld+json">
   {
@@ -65,130 +65,140 @@
     <div class="tabs" role="tablist" aria-label="Sections">
       <button class="tab" role="tab" id="tab-builds" data-tab="builds" aria-controls="builds" aria-selected="true">Builds</button>
       <button class="tab" role="tab" id="tab-work" data-tab="work" aria-controls="work" aria-selected="false" tabindex="-1">Work</button>
+      <button class="tab" role="tab" id="tab-writing" data-tab="writing" aria-controls="writing" aria-selected="false" tabindex="-1">Writing</button>
       <button class="tab" role="tab" id="tab-about" data-tab="about" aria-controls="about" aria-selected="false" tabindex="-1">About</button>
     </div>
 
     <!-- ============ BUILDS ============ -->
     <section class="panel" id="builds" role="tabpanel" aria-labelledby="tab-builds">
-      <h2 class="sub-h">Products you can try live</h2>
-      <div class="grid grid--3">
-        <div class="live-card reveal">
-        <a class="w" href="/projects/ai-visibility-checker">
-          <div class="stage" style="--g: var(--g-lucent)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>ai visibility checker</span></div><img src="/assets/img/builds/ai-visibility-checker-card-2.jpg" alt="The AI Visibility Checker report for chaekim.vercel.app, ready for AI answers" width="960" height="600" loading="lazy"></div></div><span class="pill">AI Visibility Checker <em>2026</em></span></div>
+      <h2 class="sub-h">Three to try first</h2>
+      <div class="feat" data-play>
+        <article class="feat__card reveal">
+        <a class="w feat__w" href="/projects/ai-visibility-checker">
+          <div class="stage" style="--g: var(--g-lucent)"><div class="art"><div class="browser play"><div class="browser__bar"><i></i><i></i><i></i><span>ai visibility checker</span></div><img src="/assets/img/builds/ai-visibility-checker-card-2.jpg" alt="The AI Visibility Checker report for chaekim.vercel.app, ready for AI answers" width="960" height="600" loading="lazy"><img class="play__f" src="/assets/img/cases/avc-crawlers-2.jpg" alt="Which crawlers robots.txt lets in, split into search and live fetching versus model training." loading="lazy"><img class="play__f" src="/assets/img/builds/ai-visibility-checker-2.jpg" alt="The checker report for chaekim.vercel.app, ready for AI answers, with the fixes worth the most listed first" loading="lazy"></div></div><span class="pill"><img class="pill__mark" src="/assets/img/brand/ai-visibility-checker.svg" alt="" width="18" height="18"><span class="pill__name">AI Visibility Checker</span> <em>2026</em></span></div>
           <h3 class="w-title">Knowing whether AI assistants can find, read and cite your site.</h3>
           <p class="meta">Paste a URL: crawler rules, llms.txt, structured data, and text that's there without JavaScript.</p>
         </a>
-        <a class="live-btn" href="https://chaekim-ai-visibility.vercel.app" target="_blank" rel="noopener" data-live="https://chaekim-ai-visibility.vercel.app" data-live-title="AI Visibility Checker" data-live-note="" aria-label="Try AI Visibility Checker live"><i aria-hidden="true"></i>Try it live</a>
-        </div>
-        <div class="live-card reveal">
-        <a class="w" href="/projects/tally">
-          <div class="stage" style="--g: var(--g-tri)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>tally</span></div><img src="/assets/img/builds/tally.jpg" alt="Tally estimating a week of to-dos: an hour for the case memo, 30 minutes for bug reports, 3h45 in all" width="960" height="600" loading="lazy"></div></div><span class="pill">Tally <em>2026</em></span></div>
+        <div class="feat__strip"><a class="live-btn" href="https://chaekim-ai-visibility.vercel.app" target="_blank" rel="noopener" data-live="https://chaekim-ai-visibility.vercel.app" data-live-title="AI Visibility Checker" data-live-note="" aria-label="Try AI Visibility Checker live"><i aria-hidden="true"></i>Try it live</a><a class="feat__case" href="/projects/ai-visibility-checker">Read the case study →</a></div>
+        </article>
+        <article class="feat__card reveal">
+        <a class="w feat__w" href="/projects/tally">
+          <div class="stage" style="--g: var(--g-tri)"><div class="art"><div class="browser play"><div class="browser__bar"><i></i><i></i><i></i><span>tally</span></div><img src="/assets/img/builds/tally.jpg" alt="Tally estimating a week of to-dos: an hour for the case memo, 30 minutes for bug reports, 3h45 in all" width="960" height="600" loading="lazy"><img class="play__f" src="/assets/img/cases/tally-day.jpg" alt="The Day view: a capacity meter, the Unscheduled tray, and blocks on the calendar." loading="lazy"><img class="play__f" src="/assets/img/cases/tally-summary.jpg" alt="The Summary: what's left, the finish-by time, and where the time goes." loading="lazy"></div></div><span class="pill"><img class="pill__mark" src="/assets/img/brand/tally.svg" alt="" width="18" height="18"><span class="pill__name">Tally</span> <em>2026</em></span></div>
           <h3 class="w-title">Knowing how long your to-do list will actually take.</h3>
           <p class="meta">A note-taker where every line gets a Claude time estimate, totaled in a ledger column.</p>
         </a>
-        <a class="live-btn" href="https://tally-lake-seven.vercel.app" target="_blank" rel="noopener" data-live="https://tally-lake-seven.vercel.app" data-live-title="Tally" data-live-note="" aria-label="Try Tally live"><i aria-hidden="true"></i>Try it live</a>
-        </div>
+        <div class="feat__strip"><a class="live-btn" href="https://tally-lake-seven.vercel.app" target="_blank" rel="noopener" data-live="https://tally-lake-seven.vercel.app" data-live-title="Tally" data-live-note="" aria-label="Try Tally live"><i aria-hidden="true"></i>Try it live</a><a class="feat__case" href="/projects/tally">Read the case study →</a></div>
+        </article>
+        <article class="feat__card reveal">
+        <a class="w feat__w" href="/projects/typerace">
+          <div class="stage" style="--g: var(--g-lucent)"><div class="art"><div class="browser play"><div class="browser__bar"><i></i><i></i><i></i><span>typerace</span></div><img src="/assets/img/builds/typerace-2.jpg" alt="A TypeRace race in progress at 70 WPM, ink on near-white, the progress bar halfway across" width="960" height="600" loading="lazy"><img class="play__f" src="/assets/img/cases/typerace-results-2.jpg" alt="Results from a test race on my own server: finishing order, WPM, accuracy, and a WPM chart." loading="lazy"></div></div><span class="pill"><img class="pill__mark" src="/assets/img/brand/typerace.svg" alt="" width="18" height="18"><span class="pill__name">TypeRace</span> <em>2026</em></span></div>
+          <h3 class="w-title">Settling who types fastest, with one link and no sign-up.</h3>
+          <p class="meta">Live races for classmates: share a code, type the same story, first to finish wins.</p>
+        </a>
+        <div class="feat__strip"><a class="live-btn" href="https://typerace.typerace.workers.dev" target="_blank" rel="noopener" data-live="https://typerace.typerace.workers.dev" data-live-title="TypeRace" data-live-note="Races here are real: a finished race posts to the weekly class leaderboard." aria-label="Try TypeRace live"><i aria-hidden="true"></i>Try it live</a><a class="feat__case" href="/projects/typerace">Read the case study →</a></div>
+        </article>
+      </div>
+
+      <h2 class="sub-h">More products</h2>
+      <div class="grid grid--shelf">
         <div class="live-card reveal">
         <a class="w" href="/projects/palette-generator">
-          <div class="stage" style="--g: var(--g-mirror)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>palette</span></div><img src="/assets/img/builds/palette.jpg" alt="Palette Generator turning 'coffee subscription, warm and earthy' into five roles of color and a font pairing" width="960" height="600" loading="lazy"></div></div><span class="pill">Palette Generator <em>2026</em></span></div>
+          <div class="stage" style="--g: var(--g-mirror)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>palette</span></div><img src="/assets/img/builds/palette.jpg" alt="Palette Generator turning 'coffee subscription, warm and earthy' into five roles of color and a font pairing" width="960" height="600" loading="lazy"></div></div><span class="pill"><img class="pill__mark" src="/assets/img/brand/palette-generator.svg" alt="" width="18" height="18"><span class="pill__name">Palette Generator</span> <em>2026</em></span></div>
           <h3 class="w-title">Brand colors and fonts for founders who aren't designers.</h3>
           <p class="meta">Palettes that pass accessibility checks, font pairings, and what real startups use right now.</p>
         </a>
         <a class="live-btn" href="https://color-palette-generator-three-sand.vercel.app" target="_blank" rel="noopener" data-live="https://color-palette-generator-three-sand.vercel.app" data-live-title="Palette Generator" data-live-note="" aria-label="Try Palette Generator live"><i aria-hidden="true"></i>Try it live</a>
         </div>
         <div class="live-card reveal">
-        <a class="w" href="/projects/typerace">
-          <div class="stage" style="--g: var(--g-lucent)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>typerace</span></div><img src="/assets/img/builds/typerace-2.jpg" alt="A TypeRace race in progress at 70 WPM, ink on near-white, the progress bar halfway across" width="960" height="600" loading="lazy"></div></div><span class="pill">TypeRace <em>2026</em></span></div>
-          <h3 class="w-title">Settling who types fastest, with one link and no sign-up.</h3>
-          <p class="meta">Live races for classmates: share a code, type the same story, first to finish wins.</p>
-        </a>
-        <a class="live-btn" href="https://typerace.typerace.workers.dev" target="_blank" rel="noopener" data-live="https://typerace.typerace.workers.dev" data-live-title="TypeRace" data-live-note="Races here are real: a finished race posts to the weekly class leaderboard." aria-label="Try TypeRace live"><i aria-hidden="true"></i>Try it live</a>
-        </div>
-        <div class="live-card reveal">
         <a class="w" href="/projects/networking-tracker">
-          <div class="stage" style="--g: var(--g-ey)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>networking tracker</span></div><img src="/assets/img/builds/networking-tracker.jpg" alt="Networking Tracker filtered to high-priority contacts, with demo data" width="960" height="600" loading="lazy"></div></div><span class="pill">Networking Tracker <em>2026</em></span></div>
+          <div class="stage" style="--g: var(--g-ey)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>networking tracker</span></div><img src="/assets/img/builds/networking-tracker.jpg" alt="Networking Tracker filtered to high-priority contacts, with demo data" width="960" height="600" loading="lazy"></div></div><span class="pill"><img class="pill__mark" src="/assets/img/brand/networking-tracker.svg" alt="" width="18" height="18"><span class="pill__name">Networking Tracker</span> <em>2026</em></span></div>
           <h3 class="w-title">Keeping track of every coffee chat, without sharing a thing.</h3>
           <p class="meta">A contact tracker where Postgres row-level security keeps each person's data their own.</p>
         </a>
         <a class="live-btn" href="https://networking-tracker-five-sage.vercel.app" target="_blank" rel="noopener" data-live="https://networking-tracker-five-sage.vercel.app" data-live-title="Networking Tracker" data-live-note="Some browsers block signing in inside a frame. If it won't let you in, open it in a new tab." aria-label="Try Networking Tracker live"><i aria-hidden="true"></i>Try it live</a>
         </div>
-      </div>
-
-      <h2 class="sub-h">More products</h2>
-      <div class="grid grid--3">
         <div class="live-card reveal">
         <a class="w" href="/projects/web-anatomy">
-          <div class="stage" style="--g: var(--g-arcade)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>webanatomy</span></div><img src="/assets/img/builds/web-anatomy.jpg" alt="The Anatomy of a Website home page: the title, the line SEO and GEO start with the website, and the start of the journey of a request" width="960" height="600" loading="lazy"></div></div><span class="pill">Anatomy of a Website <em>2026</em></span></div>
+          <div class="stage" style="--g: var(--g-arcade)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>webanatomy</span></div><img src="/assets/img/builds/web-anatomy.jpg" alt="The Anatomy of a Website home page: the title, the line SEO and GEO start with the website, and the start of the journey of a request" width="960" height="600" loading="lazy"></div></div><span class="pill"><img class="pill__mark" src="/assets/img/brand/web-anatomy.svg" alt="" width="18" height="18"><span class="pill__name">Anatomy of a Website</span> <em>2026</em></span></div>
           <h3 class="w-title">Showing how a website works, from the DNS lookup to the AI answer.</h3>
           <p class="meta">An illustrated encyclopedia on one idea: SEO and GEO start with the website.</p>
         </a>
         <a class="live-btn" href="https://webanatomy.vercel.app" target="_blank" rel="noopener" data-live="https://webanatomy.vercel.app" data-live-title="Anatomy of a Website" data-live-note="" aria-label="Try Anatomy of a Website live"><i aria-hidden="true"></i>Try it live</a>
         </div>
         <a class="w reveal" href="/projects/voiceprompter">
-          <div class="stage" style="--g: var(--g-mobility)"><div class="art fill"><img src="/assets/img/builds/voiceprompter.jpg" alt="VoicePrompter listening at word 108 of 139, with the prompter highlighting the spoken word" width="800" height="600" loading="lazy"></div><span class="pill">VoicePrompter <em>macOS</em></span></div>
+          <div class="stage" style="--g: var(--g-mobility)"><div class="art fill"><img src="/assets/img/builds/voiceprompter.jpg" alt="VoicePrompter listening at word 108 of 139, with the prompter highlighting the spoken word" width="800" height="600" loading="lazy"></div><span class="pill"><img class="pill__mark" src="/assets/img/brand/voiceprompter.svg" alt="" width="18" height="18"><span class="pill__name">VoicePrompter</span> <em>macOS</em></span></div>
           <h3 class="w-title">Reading your notes on a call without anyone seeing them.</h3>
           <p class="meta">A teleprompter that scrolls as you speak and stays out of Zoom, Meet, and screenshots.</p>
         </a>
         <a class="w reveal" href="/projects/parallel-prospect-brief">
-          <div class="stage" style="--g: var(--g-tri)"><div class="art fill"><img src="/assets/img/builds/parallel-prospect-brief-card.jpg" alt="An illustrative prospect brief for an invented company: what they do, products, agent signal, and best-fit API, with sources" width="800" height="600" loading="lazy"></div><span class="pill">Parallel Prospect Brief <em>CLI</em></span></div>
+          <div class="stage" style="--g: var(--g-tri)"><div class="art fill"><img src="/assets/img/builds/parallel-prospect-brief-card.jpg" alt="An illustrative prospect brief for an invented company: what they do, products, agent signal, and best-fit API, with sources" width="800" height="600" loading="lazy"></div><span class="pill"><img class="pill__mark" src="/assets/img/brand/parallel-prospect-brief.svg" alt="" width="18" height="18"><span class="pill__name">Parallel Prospect Brief</span> <em>CLI</em></span></div>
           <h3 class="w-title">Walking into a first sales call with every claim sourced.</h3>
           <p class="meta">A CLI that turns a company name into a cited one-page sales brief, built on Parallel's Task API.</p>
         </a>
         <a class="w reveal" href="/projects/product-blueprint">
-          <div class="stage" style="--g: var(--g-mirror)"><div class="art fill"><img src="/assets/img/builds/product-blueprint-card.jpg" alt="The build loop: six stages from Discover to Ship, each with the gate it has to pass" width="800" height="600" loading="lazy"></div><span class="pill">Product Blueprint <em>playbook</em></span></div>
+          <div class="stage" style="--g: var(--g-mirror)"><div class="art fill"><img src="/assets/img/builds/product-blueprint-card.jpg" alt="The build loop: six stages from Discover to Ship, each with the gate it has to pass" width="800" height="600" loading="lazy"></div><span class="pill"><img class="pill__mark" src="/assets/img/brand/product-blueprint.svg" alt="" width="18" height="18"><span class="pill__name">Product Blueprint</span> <em>playbook</em></span></div>
           <h3 class="w-title">One way to build every product, with a test at each step.</h3>
           <p class="meta">A six-stage build loop, a design system, and 22 prompts that each come with their own evals.</p>
         </a>
       </div>
 
       <h2 class="sub-h">Claude Code mods</h2>
-      <div class="grid grid--3">
+      <div class="grid grid--shelf">
         <a class="w reveal" href="/projects/smartmodel">
-          <div class="stage" style="--g: var(--g-arcade)"><div class="art"><div class="term" aria-hidden="true"><p>SmartModel rates this medium-effort.</p><p>Which model should run it?</p><ul><li class="on">Sonnet (recommended)</li><li>Haiku</li><li>Opus</li><li>Fable</li></ul></div></div><span class="pill">SmartModel <em>Claude Code</em></span></div>
+          <div class="stage" style="--g: var(--g-arcade)"><div class="art"><div class="term" aria-hidden="true"><p>SmartModel rates this medium-effort.</p><p>Which model should run it?</p><ul><li class="on">Sonnet (recommended)</li><li>Haiku</li><li>Opus</li><li>Fable</li></ul></div></div><span class="pill"><img class="pill__mark" src="/assets/img/brand/smartmodel.svg" alt="" width="18" height="18"><span class="pill__name">SmartModel</span> <em>Claude Code</em></span></div>
           <h3 class="w-title">Matching each prompt to the right model, so easy work costs less.</h3>
           <p class="meta">A hook that scores how hard a prompt is and recommends Haiku, Sonnet, Opus, or Fable. Runs in ask, auto, or block mode.</p>
         </a>
         <a class="w reveal" href="/projects/token-fuel">
-          <div class="stage" style="--g: var(--g-tri)"><div class="art fill"><img src="/assets/img/builds/token-fuel.jpg" alt="Token-Fuel in the menu bar at 67%, and its floating window: Good, 668.5k of 1M left, about 46 turns" width="800" height="600" loading="lazy"></div><span class="pill">Token-Fuel <em>macOS</em></span></div>
+          <div class="stage" style="--g: var(--g-tri)"><div class="art fill"><img src="/assets/img/builds/token-fuel.jpg" alt="Token-Fuel in the menu bar at 67%, and its floating window: Good, 668.5k of 1M left, about 46 turns" width="800" height="600" loading="lazy"></div><span class="pill"><img class="pill__mark" src="/assets/img/brand/token-fuel.svg" alt="" width="18" height="18"><span class="pill__name">Token-Fuel</span> <em>macOS</em></span></div>
           <h3 class="w-title">Seeing how much context is left before a session runs out.</h3>
           <p class="meta">A floating gauge on the Claude window and a CLI status line for Claude Code and Codex.</p>
         </a>
         <a class="w reveal" href="/projects/code-improver">
-          <div class="stage" style="--g: var(--g-ey)"><div class="art fill"><img src="/assets/img/builds/code-improver.jpg" alt="Code Improver reviewing build-cases.py: 14 findings ordered by severity, starting with a template page that was publicly served" width="800" height="600" loading="lazy"></div><span class="pill">Code Improver <em>subagent</em></span></div>
+          <div class="stage" style="--g: var(--g-ey)"><div class="art fill"><img src="/assets/img/builds/code-improver.jpg" alt="Code Improver reviewing build-cases.py: 14 findings ordered by severity, starting with a template page that was publicly served" width="800" height="600" loading="lazy"></div><span class="pill"><img class="pill__mark" src="/assets/img/brand/code-improver.svg" alt="" width="18" height="18"><span class="pill__name">Code Improver</span> <em>subagent</em></span></div>
           <h3 class="w-title">A second reviewer that reads every file I touch.</h3>
           <p class="meta">A custom Claude Code subagent that suggests readability, performance, and best-practice fixes.</p>
+        </a>
+        <a class="w reveal" href="/projects/task-progress">
+          <div class="stage" style="--g: var(--g-arcade)"><div class="art fill"><img src="/assets/img/builds/task-progress.jpg" alt="The /task-progress pane at 3 of 6: three steps done, one in progress, two pending" width="800" height="600" loading="lazy"></div><span class="pill"><img class="pill__mark" src="/assets/img/brand/task-progress.svg" alt="" width="18" height="18"><span class="pill__name">task-progress</span> <em>Claude Code</em></span></div>
+          <h3 class="w-title">Seeing how far along a task is, right above the prompt.</h3>
+          <p class="meta">A mod that turns Claude's own task checklist into a calm progress band above the prompt, plus a checklist pane.</p>
         </a>
       </div>
 
       <h2 class="sub-h">AI and ML coursework</h2>
-      <div class="grid grid--3">
+      <div class="grid grid--shelf">
         <div class="live-card reveal">
         <a class="w" href="/projects/spotify-review-triage">
-          <div class="stage" style="--g: var(--g-mobility)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>spotify-review-triage</span></div><img src="/assets/img/builds/spotify-review-triage-card.jpg" alt="The Spotify Review Triage dashboard: 660,622 reviews, $4.36 spend, and the recommendation" width="960" height="600" loading="lazy"></div></div><span class="pill">Spotify Review Triage <em>2026</em></span></div>
+          <div class="stage" style="--g: var(--g-mobility)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>spotify-review-triage</span></div><img src="/assets/img/builds/spotify-review-triage-card.jpg" alt="The Spotify Review Triage dashboard: 660,622 reviews, $4.36 spend, and the recommendation" width="960" height="600" loading="lazy"></div></div><span class="pill"><img class="pill__mark" src="/assets/img/brand/spotify-review-triage.svg" alt="" width="18" height="18"><span class="pill__name">Spotify Review Triage</span> <em>2026</em></span></div>
           <h3 class="w-title">Turning a flood of app reviews into one clear product priority.</h3>
           <p class="meta">A multi-agent LLM pipeline over 660,622 reviews, with an independent checker and a live dashboard.</p>
         </a>
         <a class="live-btn" href="https://spotify-review-triage.vercel.app" target="_blank" rel="noopener" data-live="https://spotify-review-triage.vercel.app" data-live-title="Spotify Review Triage" data-live-note="" aria-label="Try Spotify Review Triage live"><i aria-hidden="true"></i>Try it live</a>
         </div>
         <a class="w reveal" href="/projects/personal-wiki">
-          <div class="stage" style="--g: var(--g-arcade)"><div class="art fill"><img src="/assets/img/builds/personal-wiki.jpg" alt="Obsidian graph of the wiki's linked notes" width="900" height="646" loading="lazy"></div><span class="pill">Personal Wiki <em>2026</em></span></div>
+          <div class="stage" style="--g: var(--g-arcade)"><div class="art fill"><img src="/assets/img/builds/personal-wiki.jpg" alt="Obsidian graph of the wiki's linked notes" width="900" height="646" loading="lazy"></div><span class="pill"><img class="pill__mark" src="/assets/img/brand/personal-wiki.svg" alt="" width="18" height="18"><span class="pill__name">Personal Wiki</span> <em>2026</em></span></div>
           <h3 class="w-title">Asking my own notes questions, with no internet.</h3>
           <p class="meta">Local Gemma via Ollama, plus hybrid retrieval over a course wiki. Runs fully offline.</p>
         </a>
         <a class="w reveal" href="/projects/pacman-dqn">
-          <div class="stage" style="--g: var(--g-arcade)"><div class="art fill fill--contain fill--pixel"><img src="/assets/img/builds/pacman-dqn.gif" alt="The trained agent playing Ms. Pac-Man" width="160" height="210" loading="lazy"></div><span class="pill">Pac-Man DQN <em>2026</em></span></div>
+          <div class="stage" style="--g: var(--g-arcade)"><div class="art fill fill--contain fill--pixel"><img src="/assets/img/builds/pacman-dqn.gif" alt="The trained agent playing Ms. Pac-Man" width="160" height="210" loading="lazy"></div><span class="pill"><img class="pill__mark" src="/assets/img/brand/pacman-dqn.svg" alt="" width="18" height="18"><span class="pill__name">Pac-Man DQN</span> <em>2026</em></span></div>
           <h3 class="w-title">Teaching an agent to play Ms. Pac-Man by trial and error.</h3>
           <p class="meta">A DQN agent that raised its mean evaluation score from 492 to 680.</p>
         </a>
         <a class="w reveal" href="/projects/custom-llm">
-          <div class="stage"><div class="art fill fill--top"><img src="/assets/img/builds/custom-llm.jpg" alt="Terminal chat with the tiny model and its odd replies" width="768" height="474" loading="lazy"></div><span class="pill">Custom LLM <em>2026</em></span></div>
+          <div class="stage"><div class="art fill fill--top"><img src="/assets/img/builds/custom-llm.jpg" alt="Terminal chat with the tiny model and its odd replies" width="768" height="474" loading="lazy"></div><span class="pill"><img class="pill__mark" src="/assets/img/brand/custom-llm.svg" alt="" width="18" height="18"><span class="pill__name">Custom LLM</span> <em>2026</em></span></div>
           <h3 class="w-title">Seeing how language models learn by training a tiny one.</h3>
           <p class="meta">A nanoGPT fork trained on a laptop CPU with my own teaching corpus, scored on 48 test prompts.</p>
         </a>
       </div>
 
       <h2 class="sub-h">Side quests</h2>
-      <div class="grid grid--3">
+      <div class="grid grid--shelf">
+        <a class="w reveal" href="/projects/siri-reimagined">
+          <div class="stage" style="--g: var(--g-lucent)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>siri, reimagined</span></div><img src="/assets/img/builds/siri-reimagined-card.jpg" alt="Siri, Reimagined: the headline The last app you'll install, above three iPhones with Liquid Glass screens" width="960" height="600" loading="lazy"></div></div><span class="pill">Siri, Reimagined <em>concept</em></span></div>
+          <p class="meta">A design concept: an iPhone that ships with five apps, and a Siri that builds the rest.</p>
+        </a>
         <a class="w reveal" href="/projects/portfolio">
           <div class="stage" style="--g: var(--g-lucent)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>chaekim.vercel.app</span></div><img src="/assets/img/builds/portfolio-card.jpg" alt="This site's homepage" width="960" height="600" loading="lazy"></div></div><span class="pill">This portfolio <em>2026</em></span></div>
           <p class="meta">How this site got built: the decisions, the backlog, and what's next.</p>
@@ -197,8 +207,12 @@
           <div class="stage" style="--g: var(--g-plain)"><div class="art"><div class="brandart"><svg class="cal cal--card" viewBox="0 0 44 104" aria-hidden="true"><rect class="paper" x="1.5" y="1.5" width="41" height="101" rx="1" fill="#fbf8f1" filter="url(#paper)"/><use class="ink" href="#cal-glyphs" fill="#161514" filter="url(#ink)"/></svg><span class="brandart__sw"><i style="background:#C8372D"></i><i style="background:#FF5A1F"></i><i style="background:#B07A4F"></i><i style="background:#0066CC"></i><i style="background:#123B2E"></i></span></div></div><span class="pill">Personal brand <em>2026</em></span></div>
           <p class="meta">How I chose a brand: five directions, two built finalists, and why Stamp won.</p>
         </a>
+        <a class="w reveal" href="/projects/build-marks">
+          <div class="stage" style="--g: var(--g-plain)"><div class="art"><div style="display:grid;grid-template-columns:repeat(3,52px);gap:10px"><img src="/assets/img/brand/tally.svg" alt="" width="52" height="52" loading="lazy" style="display:block;width:52px;height:52px;border-radius:12px"><img src="/assets/img/brand/token-fuel.svg" alt="" width="52" height="52" loading="lazy" style="display:block;width:52px;height:52px;border-radius:12px"><img src="/assets/img/brand/typerace.svg" alt="" width="52" height="52" loading="lazy" style="display:block;width:52px;height:52px;border-radius:12px"><img src="/assets/img/brand/smartmodel.svg" alt="" width="52" height="52" loading="lazy" style="display:block;width:52px;height:52px;border-radius:12px"><img src="/assets/img/brand/spotify-review-triage.svg" alt="" width="52" height="52" loading="lazy" style="display:block;width:52px;height:52px;border-radius:12px"><img src="/assets/img/brand/ai-visibility-checker.svg" alt="" width="52" height="52" loading="lazy" style="display:block;width:52px;height:52px;border-radius:12px"></div></div><span class="pill">Build marks <em>2026</em></span></div>
+          <p class="meta">Giving sixteen builds one family of logos.</p>
+        </a>
         <a class="w reveal" href="/arcade">
-          <div class="stage" style="--g: var(--g-arcade)"><div class="art"><svg class="snake-art" viewBox="0 0 160 100" aria-hidden="true"><defs><pattern id="px" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M10 0H0V10" fill="none" stroke="rgba(255,255,255,.07)"/></pattern></defs><rect width="160" height="100" fill="url(#px)"/><rect x="21" y="61" width="8" height="8" rx="1.6" fill="#58cf86"/><rect x="31" y="61" width="8" height="8" rx="1.6" fill="#58cf86"/><rect x="41" y="61" width="8" height="8" rx="1.6" fill="#58cf86"/><rect x="51" y="61" width="8" height="8" rx="1.6" fill="#58cf86"/><rect x="51" y="51" width="8" height="8" rx="1.6" fill="#58cf86"/><rect x="51" y="41" width="8" height="8" rx="1.6" fill="#58cf86"/><rect x="61" y="41" width="8" height="8" rx="1.6" fill="#58cf86"/><rect x="71" y="41" width="8" height="8" rx="1.6" fill="#58cf86"/><rect x="81" y="41" width="8" height="8" rx="1.6" fill="#58cf86"/><rect x="91" y="41" width="8" height="8" rx="1.6" fill="#58cf86"/><rect x="91" y="51" width="8" height="8" rx="1.6" fill="#58cf86"/><rect x="101" y="51" width="8" height="8" rx="1.6" fill="#58cf86"/><rect x="111" y="51" width="8" height="8" rx="1.6" fill="#a6f0bf"/><rect x="131" y="51" width="8" height="8" rx="1.6" fill="#ffd60a"/></svg></div><span class="pill">Arcade <em>play</em></span></div>
+          <div class="stage" style="--g: var(--g-arcade)"><div class="art"><svg class="snake-art" viewBox="0 0 160 100" aria-hidden="true"><defs><pattern id="px" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M10 0H0V10" fill="none" stroke="rgba(255,255,255,.07)"/></pattern></defs><rect width="160" height="100" fill="url(#px)"/><rect x="21" y="61" width="8" height="8" rx="1.6" fill="#58cf86"/><rect x="31" y="61" width="8" height="8" rx="1.6" fill="#58cf86"/><rect x="41" y="61" width="8" height="8" rx="1.6" fill="#58cf86"/><rect x="51" y="61" width="8" height="8" rx="1.6" fill="#58cf86"/><rect x="51" y="51" width="8" height="8" rx="1.6" fill="#58cf86"/><rect x="51" y="41" width="8" height="8" rx="1.6" fill="#58cf86"/><rect x="61" y="41" width="8" height="8" rx="1.6" fill="#58cf86"/><rect x="71" y="41" width="8" height="8" rx="1.6" fill="#58cf86"/><rect x="81" y="41" width="8" height="8" rx="1.6" fill="#58cf86"/><rect x="91" y="41" width="8" height="8" rx="1.6" fill="#58cf86"/><rect x="91" y="51" width="8" height="8" rx="1.6" fill="#58cf86"/><rect x="101" y="51" width="8" height="8" rx="1.6" fill="#58cf86"/><rect x="111" y="51" width="8" height="8" rx="1.6" fill="#a6f0bf"/><rect x="131" y="51" width="8" height="8" rx="1.6" fill="#ffd60a"/></svg></div><span class="pill"><img class="pill__mark" src="/assets/img/brand/arcade.svg" alt="" width="18" height="18"><span class="pill__name">Arcade</span> <em>play</em></span></div>
           <p class="meta">Snake and Galaga, rebuilt from memory, plus a generative lo-fi radio.</p>
         </a>
         <a class="w reveal" href="/projects/home-gif">
@@ -226,6 +240,41 @@
           <p class="meta">Auto-Adjusting Volume: noise-aware volume.</p>
         </a>
       </div>
+    </section>
+
+    <!-- ============ WRITING ============ -->
+    <section class="panel" id="writing" role="tabpanel" aria-labelledby="tab-writing">
+      <h2 class="sub-h">Essays</h2>
+      <ul class="wlist">
+        <li class="reveal"><h3><a href="/projects/preinstalled-apps">What’s the Point of Preinstalled Apps?</a></h3><p class="wl-by">On this site · October 2026</p><p class="wl-sum">What if a new iPhone greeted you with Siri instead of pages of apps? On Siri becoming the operating system, and what that means for apps, Apple, and the App Store.</p></li>
+        <li class="reveal"><h3><a href="https://chaewoonkim.medium.com/2025-2026-reflections-onwards-2bc4a878e448" target="_blank" rel="noopener">2025–2026 Reflections: Onwards ↗</a></h3><p class="wl-by">Medium · January 15, 2026</p><p class="wl-sum">A personal essay reflecting on the last couple of years and what comes next.</p></li>
+        <li class="reveal"><h3><a href="https://chaewoonkim.medium.com/a-story-about-money-afedd3e1ee00" target="_blank" rel="noopener">A Story About Money ↗</a></h3><p class="wl-by">Medium · July 22, 2025</p><p class="wl-sum">A personal essay on money.</p></li>
+      </ul>
+
+      <h2 class="sub-h">Case-study write-ups</h2>
+      <div class="grid grid--3">
+        <a class="w reveal" href="/projects/decisions">
+          <div class="stage" style="--g: var(--g-mobility)"><div class="art"><div class="glass"><b>Options</b><span>and the pick</span></div></div><span class="pill">How I decide <em>2026</em></span></div>
+          <p class="meta">The options I laid out for each call on this site and my projects, which one I picked, and why.</p>
+        </a>
+        <a class="w reveal" href="/projects/portfolio">
+          <div class="stage" style="--g: var(--g-lucent)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>chaekim.vercel.app</span></div><img src="/assets/img/builds/portfolio-card.jpg" alt="This site's homepage" width="960" height="600" loading="lazy"></div></div><span class="pill">This portfolio <em>2026</em></span></div>
+          <p class="meta">How this site got built: the decisions, the backlog, and what's next.</p>
+        </a>
+        <a class="w reveal" href="/projects/personal-brand">
+          <div class="stage" style="--g: var(--g-plain)"><div class="art"><div class="brandart"><svg class="cal cal--card" viewBox="0 0 44 104" aria-hidden="true"><rect class="paper" x="1.5" y="1.5" width="41" height="101" rx="1" fill="#fbf8f1" filter="url(#paper)"/><use class="ink" href="#cal-glyphs" fill="#161514" filter="url(#ink)"/></svg><span class="brandart__sw"><i style="background:#C8372D"></i><i style="background:#FF5A1F"></i><i style="background:#B07A4F"></i><i style="background:#0066CC"></i><i style="background:#123B2E"></i></span></div></div><span class="pill">Personal brand <em>2026</em></span></div>
+          <p class="meta">How I chose a brand: five directions, two built finalists, and why Stamp won.</p>
+        </a>
+      </div>
+
+      <h2 class="sub-h">Reading list</h2>
+      <ul class="wlist">
+        <li class="reveal"><h3><a href="https://www.a16z.news/p/product-management-is-still-all-about" target="_blank" rel="noopener">Product Management is Still All About Telling Stories ↗</a></h3><p class="wl-by">Josh Elman · a16z newsletter · added 2026-10-14</p><p class="wl-sum">Elman argues that as AI makes building software cheaper and faster, a product manager&#x27;s core value shifts to judgment about what to build and to communicating a product&#x27;s purpose, especially through onboarding.</p><div class="wl-tags"><span>Product management</span><span>AI</span></div></li>
+        <li class="reveal"><h3><a href="https://joshelman.medium.com/a-product-managers-job-63c09a43d0ec" target="_blank" rel="noopener">A Product Manager&#x27;s Job ↗</a></h3><p class="wl-by">Josh Elman · Medium · added 2026-10-14</p><p class="wl-sum">A short essay on what a product manager is responsible for, framing the job as helping a team ship the right product for users and breaking it into five smaller parts.</p><div class="wl-tags"><span>Product management</span></div></li>
+        <li class="reveal"><h3><a href="https://joshelman.medium.com/my-blueprint-9693a6059a1a" target="_blank" rel="noopener">My Blueprint ↗</a></h3><p class="wl-by">Josh Elman · Medium · added 2026-10-14</p><p class="wl-sum">Elman shares his own personal blueprint, a written outline of how he works and his quirks, inspired by a friend&#x27;s essay on the practice.</p><div class="wl-tags"><span>Working style</span><span>Career</span></div></li>
+        <li class="reveal"><h3><a href="https://joshelman.medium.com/51-7fbfb877e869" target="_blank" rel="noopener">51 ↗</a></h3><p class="wl-by">Josh Elman · Medium · added 2026-10-14</p><div class="wl-tags"><span>Career</span></div></li>
+      </ul>
+      <p class="wl-more">The same list, with topic filters, is on its own page: <a href="/reading">Writing &amp; reading</a>.</p>
     </section>
 
     <!-- ============ WORK ============ -->
@@ -319,7 +368,7 @@
             </div>
             <p>Thirteen years growing up overseas made me curious by default. I'm happiest making things: a wireframe, a 3D print, a card game.</p>
             <p>I've founded an NSF I-Corps AI startup, led Fortune 500 cloud programs, and run a precision manufacturer's operations. These days I build tools I'd actually use. If you're making something too, I'd love to hear about it.</p>
-            <p>I'm also writing a memoir, <em>The Treaded Path</em>, and essays on <a href="https://medium.com/@chaewoonkim" target="_blank" rel="noopener">Medium ↗</a>. I also keep a <a href="/reading">reading list</a> of articles that helped.</p>
+            <p>I'm also writing a memoir, <em>The Treaded Path</em>, and essays on <a href="https://medium.com/@chaewoonkim" target="_blank" rel="noopener">Medium ↗</a>. My essays and the articles that helped are on the <a href="#writing">Writing tab</a>.</p>
           </section>
 
           <section id="experience">
@@ -383,10 +432,10 @@
             <li><span class="sw"><i style="background:#30b158"></i><i style="background:#30b158"></i></span><span class="swl__t"><b>ok</b> live status dot</span><span class="swl__h"><code>#30b158</code> / <code>#30b158</code></span></li>
           </ul>
           <div class="grads">
-            <div><i style="background:linear-gradient(135deg,#f3f0ff 0%,#fafafd 50%,#eef5ff 100%)"></i><span>Page wash, light: <code>#f3f0ff</code> 0%, <code>#fafafd</code> 50%, <code>#eef5ff</code> 100%, 135 degrees</span></div>
-            <div><i style="background:linear-gradient(135deg,#1a1530 0%,#0b0b0c 50%,#0c1322 100%)"></i><span>Page wash, dark: <code>#1a1530</code>, <code>#0b0b0c</code>, <code>#0c1322</code></span></div>
+            <div><i style="background:linear-gradient(180deg,#bfdcf7 0%,#dcecfb 22%,#f2f8fe 48%,#ffffff 72%)"></i><span>Sky, light: <code>#bfdcf7</code> to <code>#dcecfb</code> to <code>#f2f8fe</code> to white, with soft white clouds</span></div>
+            <div><i style="background:linear-gradient(180deg,#0f1a2e 0%,#0d1424 30%,#0b0e15 55%,#0b0b0c 75%)"></i><span>Night sky, dark: <code>#0f1a2e</code> to <code>#0b0b0c</code>, with faint clouds</span></div>
           </div>
-          <p>Each project sits on its own soft gradient stage, so the work supplies the color. Everything else stays neutral. The lavender-to-sky wash adds warmth without a brand color shouting, feels light and airy, and keeps the black and white from my brand exploration from feeling stark.</p>
+          <p>Each project sits on its own soft gradient stage, so the work supplies the color. Everything else stays neutral. The page opens on a sky: soft blue overhead, a few clouds, fading to white behind the work. I like that blue. It stays calm, not loud, feels light and airy, and keeps the black and white from my brand exploration from feeling stark.</p>
         </details>
 
         <details class="ncard ncard--type">
@@ -454,7 +503,7 @@
       </p>
     </div>
     <nav aria-label="Footer">
-      <a href="#builds">Builds</a><a href="#work">Work</a><a href="#about">About</a><a href="/reading">Reading</a><a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
+      <a href="#builds">Builds</a><a href="#work">Work</a><a href="#writing">Writing</a><a href="#about">About</a><a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
     </nav>
     <div class="foot__cta">
       <b>Let's chat.</b>
@@ -475,13 +524,15 @@
     <p class="live__note" id="live-note" hidden></p>
     <iframe id="live-frame" title="Live preview" allow="clipboard-write"></iframe>
   </dialog>
-  <script src="/assets/js/main.js?v=19"></script>
+  <script src="/assets/js/main.js?v=29"></script>
+  <script src="/assets/js/play.js?v=29" defer></script>
   <script src="/assets/js/live.js?v=1" defer></script>
   <script>
   (function () {
     var THESIS = {
       'builds': 'I like to build things, from startups to card games.',
       'work': 'I run the operations behind the idea.',
+      'writing': 'Essays, how I decide, and what I read.',
       'about': 'Product, strategy, operations, and the occasional 3D print.'
     };
     var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;

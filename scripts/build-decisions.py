@@ -59,6 +59,46 @@ DECISIONS = [
         opt("Aurora", "Slow-drifting blobs of lavender, sky, mint and peach. More personality."),
         opt("Subtle neutral hue", "White fading to a cool gray-blue. Closest to before."),
     ], why=["The work is the color", "Calm, not loud", "Light and airy, like morning light", "Keeps black and white from feeling stark"]),
+    D("design", "Oct 2026", "This site", "Which background, take two?", [
+        opt("Lavender sky", "The wash I had. Fresh, but it shares hues with the Lucent card."),
+        opt("Hanji paper", "Warm near-white from the paper behind my 김채운 seal.", chosen=True, rec=True),
+        opt("Near white", "The off-white from my brand exploration. The quietest option."),
+        opt("Cool fog", "A grey-blue mist, calm and techy."),
+        opt("Warm dawn", "Peach into cream, friendly and personal."),
+        opt("Sage morning", "A green whisper into soft blue."),
+    ]),
+    D("design", "Oct 2026", "This site", "Hanji felt too muted. Which background, take three?", [
+        opt("Hanji, as is", "Pale cream paper with a warm glow."),
+        opt("Hanji with fibers", "Faint grain and long paper fibers."),
+        opt("Hanji with ink wash", "Sumi ink soaking in behind the seal."),
+        opt("Hanji with vermilion", "The seal's red in the tab, the email underline, and a dot.", rec=True),
+        opt("Deeper hanji", "A warmer, richer paper tone.", rec=True),
+        opt("Sky and clouds", "Sky blue overhead, soft clouds, fading to white.", chosen=True),
+    ], why=["I like that blue", "It reflects the sky and the clouds"]),
+    D("design", "Oct 2026", "This site", "How should Builds show the work, beyond a card and a preview?", [
+        opt("Cover Flow", "Each build is an album cover; drag or flick through them.", chosen=True, rec=True),
+        opt("Flip for liner notes", "Click a cover to flip it: role, team, dates and results on the back.", chosen=True, rec=True),
+        opt("Click wheel", "A small iPod with a wheel that scrolls the projects."),
+        opt("Now playing", "A case study plays like a track, with a scrubber through its chapters."),
+        opt("Play with the real thing", "Small live demos right on the page.", rec=True),
+        opt("Crate digging", "Builds stand like records in a crate; pull one out to read it."),
+    ], link=("/#builds", "Flip through the builds")),
+    D("design", "Oct 2026", "This site", "What style should the Cover Flow covers be drawn in?", [
+        opt("Ink line", "Even ink lines with a slight wobble on soft pastel tints."),
+        opt("Blueprint", "White line drawings on blueprint-blue grid paper.", chosen=True),
+        opt("Sumi brush", "Thick dry-brush strokes on cream paper with a small red seal."),
+        opt("Pencil sketch", "Grey graphite with hatched shading, like a notebook page."),
+        opt("Flat cut paper", "Bold two-tone shapes in sky and navy, no outlines."),
+        opt("Risograph", "Two off-register inks, blue and pink, with print grain."),
+    ], link=("/#builds", "See the covers")),
+    D("design", "Oct 2026", "This site", "The Cover Flow felt off. How should Builds show the work instead?", [
+        opt("One visual language", "Every build gets the same square crop of its real screenshot.", chosen=True, rec=True),
+        opt("Index", "A quiet list that opens inline to show the artwork and a live button."),
+        opt("Featured and shelf", "Three big builds with live demos, then a shelf of matched tiles.", chosen=True, rec=True),
+        opt("Hover to play", "Cards step through real screens of the app on hover."),
+        opt("Story timeline", "Builds placed by month to show momentum."),
+        opt("Case study first", "Each card is a mini brief, decision and result."),
+    ], why=["The Cover Flow seemed off and made the portfolio structure incoherent"], link=("/#builds", "See the Builds tab")),
     D("design", "Oct 2026", "This site", "How should the homepage put builds first?", [
         opt("Swap tabs: Builds first", "Builds opens by default; Work moves to second. Smallest change, keeps the tabs.", chosen=True, rec=True),
         opt("Featured builds above the tabs", "Keep Work as the default, but show three flagship builds before the tabs."),
@@ -96,6 +136,33 @@ DECISIONS = [
         opt("Maybe later", "An idea, not a commitment."),
         opt("Drop it", "Remove it from the plan."),
     ], link=("/projects/portfolio#backlog", "See the backlog")),
+    D("design", "Oct 2026", "Build marks", "Which builds get a logo?", [
+        opt("Sixteen builds, plus a rule for the rest", "Every build I made gets a mark. Lucent and MirrorMe stay outside, the stealth project and archive pieces are left out, and employers' brands aren't mine to redraw.", chosen=True),
+        opt("Every item on the site", "Marks for work projects and archive pieces too."),
+    ], link=("/projects/build-marks", "Build marks")),
+    D("design", "Oct 2026", "Build marks", "Which direction should the marks take?", [
+        opt("C · Color seal", "The accent fills the tile and the glyph is drawn in ink. Boldest, and recognisable by color alone.", chosen=True),
+        opt("A · Ink tile", "Dark tile, light pictogram. The version first rolled out."),
+        opt("B · Paper and ink", "Closest to Stamp, but quiet in a dark browser tab."),
+        opt("D · Monogram", "Two letters. Easiest to extend, but says nothing about the build and blurs at 16px."),
+    ], why=["Letters never survive 16px, which is where most people meet these marks"], link=("/projects/build-marks#directions", "See the four directions")),
+    D("design", "Oct 2026", "Build marks", "Can the monogram be folded into the color seal?", [
+        opt("Keep C as it is", "Pictogram only. Drop the monogram idea.", chosen=True),
+        opt("E · Seal and chop", "A small ink chop with the letters in the corner, like a painter's seal."),
+        opt("F · Monogram seal", "Letters on the color."),
+        opt("G · Size switch", "Pictogram for favicons, monogram for large sizes."),
+    ], why=["Every hybrid put letters somewhere that gets small"], link=("/projects/build-marks#hybrids", "See the hybrids")),
+    D("design", "Oct 2026", "Build marks", "Which palette should the color seals use?", [
+        opt("Electric", "Full-saturation, system-style colors with the lit white spark.", chosen=True),
+        opt("Digital brights", "My first pick, before white was worked in."),
+        opt("Obangsaek", "Korean five-direction colors. Ties to the brush name."),
+        opt("Jewel brights, Lagoon or Sunset", "Three more palettes tried with the lit spark."),
+    ], link=("/projects/build-marks#palettes", "See the palettes")),
+    D("design", "Oct 2026", "Build marks", "How deep should Electric go?", [
+        opt("Keep the original", "Full saturation. Every ink drawing stays readable.", chosen=True),
+        opt("12% deeper", "Calmer, with every ink drawing at 3.5:1 or better."),
+        opt("22% deeper", "Calmer still, but ink on violet drops to 2.9:1, below the 3:1 bar for graphics."),
+    ]),
     # ---------------- products ----------------
     D("products", "Oct 2026", "AI Visibility Checker", "Where should the checker live?", [
         opt("Its own app and repo", "A new Vercel app with a serverless function that fetches the URL, plus its own case page.", chosen=True, rec=True),
@@ -258,7 +325,7 @@ def page():
   <meta property="og:title" content="How I decide · Chae Kim - Portfolio">
   <meta property="og:description" content="{desc}">
   <meta property="og:type" content="article">
-  <meta property="og:image" content="{SITE_URL}/assets/img/og-card.png">
+  <meta property="og:image" content="{SITE_URL}/assets/img/og-sky.png">
   <link rel="canonical" href="{SITE_URL}/projects/decisions">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">

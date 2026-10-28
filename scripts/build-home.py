@@ -6,12 +6,13 @@ Stamp is the only design: assets/css/v-stamp.css (+ case-stamp.css on project pa
 The calligraphy name mark, case-page chrome and live-preview dialog are shared via stamp_shared.py.
 """
 import os
+import re
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
-V = "19"
+V = "29"
 
 # ----------------------------------------------------------------------------
 # Arcade: Snake, Galaga and a generative lo-fi radio. main.js loads arcade.js
@@ -71,7 +72,8 @@ ARCADE = """          <div class="break">
 
 STAMP_CHANGELOG = "10-04-26"
 
-from stamp_shared import INK_DEFS, seal, live_button, LIVE_DIALOG, LIVE_SCRIPT, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, THEME_COLOR
+from stamp_shared import INK_DEFS, seal, live_button, LIVE_DIALOG, LIVE_SCRIPT, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, THEME_COLOR, build_mark
+
 
 def _snake():
     body = [(2,6),(3,6),(4,6),(5,6),(5,5),(5,4),(6,4),(7,4),(8,4),(9,4),(9,5),(10,5)]
@@ -94,7 +96,7 @@ STAMP = r"""<!DOCTYPE html>
   <meta property="og:description" content="MBA at Berkeley Haas. Co-founded Lucent. Previously at EY and Tritooling. I like to build things.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://chaekim-portfolio.vercel.app/">
-  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og-card.png">
+  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og-sky.png">
   <link rel="canonical" href="https://chaekim-portfolio.vercel.app/">
 %%THEME_COLOR%%
   <meta name="twitter:card" content="summary_large_image">
@@ -149,29 +151,42 @@ STAMP = r"""<!DOCTYPE html>
     <div class="tabs" role="tablist" aria-label="Sections">
       <button class="tab" role="tab" id="tab-builds" data-tab="builds" aria-controls="builds" aria-selected="true">Builds</button>
       <button class="tab" role="tab" id="tab-work" data-tab="work" aria-controls="work" aria-selected="false" tabindex="-1">Work</button>
+      <button class="tab" role="tab" id="tab-writing" data-tab="writing" aria-controls="writing" aria-selected="false" tabindex="-1">Writing</button>
       <button class="tab" role="tab" id="tab-about" data-tab="about" aria-controls="about" aria-selected="false" tabindex="-1">About</button>
     </div>
 
     <!-- ============ BUILDS ============ -->
     <section class="panel" id="builds" role="tabpanel" aria-labelledby="tab-builds">
-      <h2 class="sub-h">Products you can try live</h2>
-      <div class="grid grid--3">
-        <div class="live-card reveal">
-        <a class="w" href="/projects/ai-visibility-checker">
-          <div class="stage" style="--g: var(--g-lucent)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>ai visibility checker</span></div><img src="/assets/img/builds/ai-visibility-checker-card-2.jpg" alt="The AI Visibility Checker report for chaekim.vercel.app, ready for AI answers" width="960" height="600" loading="lazy"></div></div><span class="pill">AI Visibility Checker <em>2026</em></span></div>
+      <h2 class="sub-h">Three to try first</h2>
+      <div class="feat" data-play>
+        <article class="feat__card reveal">
+        <a class="w feat__w" href="/projects/ai-visibility-checker">
+          <div class="stage" style="--g: var(--g-lucent)"><div class="art"><div class="browser play"><div class="browser__bar"><i></i><i></i><i></i><span>ai visibility checker</span></div><img src="/assets/img/builds/ai-visibility-checker-card-2.jpg" alt="The AI Visibility Checker report for chaekim.vercel.app, ready for AI answers" width="960" height="600" loading="lazy"><img class="play__f" src="/assets/img/cases/avc-crawlers-2.jpg" alt="Which crawlers robots.txt lets in, split into search and live fetching versus model training." loading="lazy"><img class="play__f" src="/assets/img/builds/ai-visibility-checker-2.jpg" alt="The checker report for chaekim.vercel.app, ready for AI answers, with the fixes worth the most listed first" loading="lazy"></div></div><span class="pill">AI Visibility Checker <em>2026</em></span></div>
           <h3 class="w-title">Knowing whether AI assistants can find, read and cite your site.</h3>
           <p class="meta">Paste a URL: crawler rules, llms.txt, structured data, and text that's there without JavaScript.</p>
         </a>
-        %%LIVE_AVC%%
-        </div>
-        <div class="live-card reveal">
-        <a class="w" href="/projects/tally">
-          <div class="stage" style="--g: var(--g-tri)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>tally</span></div><img src="/assets/img/builds/tally.jpg" alt="Tally estimating a week of to-dos: an hour for the case memo, 30 minutes for bug reports, 3h45 in all" width="960" height="600" loading="lazy"></div></div><span class="pill">Tally <em>2026</em></span></div>
+        <div class="feat__strip">%%LIVE_AVC%%<a class="feat__case" href="/projects/ai-visibility-checker">Read the case study →</a></div>
+        </article>
+        <article class="feat__card reveal">
+        <a class="w feat__w" href="/projects/tally">
+          <div class="stage" style="--g: var(--g-tri)"><div class="art"><div class="browser play"><div class="browser__bar"><i></i><i></i><i></i><span>tally</span></div><img src="/assets/img/builds/tally.jpg" alt="Tally estimating a week of to-dos: an hour for the case memo, 30 minutes for bug reports, 3h45 in all" width="960" height="600" loading="lazy"><img class="play__f" src="/assets/img/cases/tally-day.jpg" alt="The Day view: a capacity meter, the Unscheduled tray, and blocks on the calendar." loading="lazy"><img class="play__f" src="/assets/img/cases/tally-summary.jpg" alt="The Summary: what's left, the finish-by time, and where the time goes." loading="lazy"></div></div><span class="pill">Tally <em>2026</em></span></div>
           <h3 class="w-title">Knowing how long your to-do list will actually take.</h3>
           <p class="meta">A note-taker where every line gets a Claude time estimate, totaled in a ledger column.</p>
         </a>
-        %%LIVE_TALLY%%
-        </div>
+        <div class="feat__strip">%%LIVE_TALLY%%<a class="feat__case" href="/projects/tally">Read the case study →</a></div>
+        </article>
+        <article class="feat__card reveal">
+        <a class="w feat__w" href="/projects/typerace">
+          <div class="stage" style="--g: var(--g-lucent)"><div class="art"><div class="browser play"><div class="browser__bar"><i></i><i></i><i></i><span>typerace</span></div><img src="/assets/img/builds/typerace-2.jpg" alt="A TypeRace race in progress at 70 WPM, ink on near-white, the progress bar halfway across" width="960" height="600" loading="lazy"><img class="play__f" src="/assets/img/cases/typerace-results-2.jpg" alt="Results from a test race on my own server: finishing order, WPM, accuracy, and a WPM chart." loading="lazy"></div></div><span class="pill">TypeRace <em>2026</em></span></div>
+          <h3 class="w-title">Settling who types fastest, with one link and no sign-up.</h3>
+          <p class="meta">Live races for classmates: share a code, type the same story, first to finish wins.</p>
+        </a>
+        <div class="feat__strip">%%LIVE_TYPERACE%%<a class="feat__case" href="/projects/typerace">Read the case study →</a></div>
+        </article>
+      </div>
+
+      <h2 class="sub-h">More products</h2>
+      <div class="grid grid--shelf">
         <div class="live-card reveal">
         <a class="w" href="/projects/palette-generator">
           <div class="stage" style="--g: var(--g-mirror)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>palette</span></div><img src="/assets/img/builds/palette.jpg" alt="Palette Generator turning 'coffee subscription, warm and earthy' into five roles of color and a font pairing" width="960" height="600" loading="lazy"></div></div><span class="pill">Palette Generator <em>2026</em></span></div>
@@ -181,14 +196,6 @@ STAMP = r"""<!DOCTYPE html>
         %%LIVE_PALETTE_GENERATOR%%
         </div>
         <div class="live-card reveal">
-        <a class="w" href="/projects/typerace">
-          <div class="stage" style="--g: var(--g-lucent)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>typerace</span></div><img src="/assets/img/builds/typerace-2.jpg" alt="A TypeRace race in progress at 70 WPM, ink on near-white, the progress bar halfway across" width="960" height="600" loading="lazy"></div></div><span class="pill">TypeRace <em>2026</em></span></div>
-          <h3 class="w-title">Settling who types fastest, with one link and no sign-up.</h3>
-          <p class="meta">Live races for classmates: share a code, type the same story, first to finish wins.</p>
-        </a>
-        %%LIVE_TYPERACE%%
-        </div>
-        <div class="live-card reveal">
         <a class="w" href="/projects/networking-tracker">
           <div class="stage" style="--g: var(--g-ey)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>networking tracker</span></div><img src="/assets/img/builds/networking-tracker.jpg" alt="Networking Tracker filtered to high-priority contacts, with demo data" width="960" height="600" loading="lazy"></div></div><span class="pill">Networking Tracker <em>2026</em></span></div>
           <h3 class="w-title">Keeping track of every coffee chat, without sharing a thing.</h3>
@@ -196,10 +203,6 @@ STAMP = r"""<!DOCTYPE html>
         </a>
         %%LIVE_NETWORKING_TRACKER%%
         </div>
-      </div>
-
-      <h2 class="sub-h">More products</h2>
-      <div class="grid grid--3">
         <div class="live-card reveal">
         <a class="w" href="/projects/web-anatomy">
           <div class="stage" style="--g: var(--g-arcade)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>webanatomy</span></div><img src="/assets/img/builds/web-anatomy.jpg" alt="The Anatomy of a Website home page: the title, the line SEO and GEO start with the website, and the start of the journey of a request" width="960" height="600" loading="lazy"></div></div><span class="pill">Anatomy of a Website <em>2026</em></span></div>
@@ -226,7 +229,7 @@ STAMP = r"""<!DOCTYPE html>
       </div>
 
       <h2 class="sub-h">Claude Code mods</h2>
-      <div class="grid grid--3">
+      <div class="grid grid--shelf">
         <a class="w reveal" href="/projects/smartmodel">
           <div class="stage" style="--g: var(--g-arcade)"><div class="art"><div class="term" aria-hidden="true"><p>SmartModel rates this medium-effort.</p><p>Which model should run it?</p><ul><li class="on">Sonnet (recommended)</li><li>Haiku</li><li>Opus</li><li>Fable</li></ul></div></div><span class="pill">SmartModel <em>Claude Code</em></span></div>
           <h3 class="w-title">Matching each prompt to the right model, so easy work costs less.</h3>
@@ -242,10 +245,15 @@ STAMP = r"""<!DOCTYPE html>
           <h3 class="w-title">A second reviewer that reads every file I touch.</h3>
           <p class="meta">A custom Claude Code subagent that suggests readability, performance, and best-practice fixes.</p>
         </a>
+        <a class="w reveal" href="/projects/task-progress">
+          <div class="stage" style="--g: var(--g-arcade)"><div class="art fill"><img src="/assets/img/builds/task-progress.jpg" alt="The /task-progress pane at 3 of 6: three steps done, one in progress, two pending" width="800" height="600" loading="lazy"></div><span class="pill">task-progress <em>Claude Code</em></span></div>
+          <h3 class="w-title">Seeing how far along a task is, right above the prompt.</h3>
+          <p class="meta">A mod that turns Claude's own task checklist into a calm progress band above the prompt, plus a checklist pane.</p>
+        </a>
       </div>
 
       <h2 class="sub-h">AI and ML coursework</h2>
-      <div class="grid grid--3">
+      <div class="grid grid--shelf">
         <div class="live-card reveal">
         <a class="w" href="/projects/spotify-review-triage">
           <div class="stage" style="--g: var(--g-mobility)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>spotify-review-triage</span></div><img src="/assets/img/builds/spotify-review-triage-card.jpg" alt="The Spotify Review Triage dashboard: 660,622 reviews, $4.36 spend, and the recommendation" width="960" height="600" loading="lazy"></div></div><span class="pill">Spotify Review Triage <em>2026</em></span></div>
@@ -272,7 +280,11 @@ STAMP = r"""<!DOCTYPE html>
       </div>
 
       <h2 class="sub-h">Side quests</h2>
-      <div class="grid grid--3">
+      <div class="grid grid--shelf">
+        <a class="w reveal" href="/projects/siri-reimagined">
+          <div class="stage" style="--g: var(--g-lucent)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>siri, reimagined</span></div><img src="/assets/img/builds/siri-reimagined-card.jpg" alt="Siri, Reimagined: the headline The last app you'll install, above three iPhones with Liquid Glass screens" width="960" height="600" loading="lazy"></div></div><span class="pill">Siri, Reimagined <em>concept</em></span></div>
+          <p class="meta">A design concept: an iPhone that ships with five apps, and a Siri that builds the rest.</p>
+        </a>
         <a class="w reveal" href="/projects/portfolio">
           <div class="stage" style="--g: var(--g-lucent)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>chaekim.vercel.app</span></div><img src="/assets/img/builds/portfolio-card.jpg" alt="This site's homepage" width="960" height="600" loading="lazy"></div></div><span class="pill">This portfolio <em>2026</em></span></div>
           <p class="meta">How this site got built: the decisions, the backlog, and what's next.</p>
@@ -280,6 +292,10 @@ STAMP = r"""<!DOCTYPE html>
         <a class="w reveal" href="/projects/personal-brand">
           <div class="stage" style="--g: var(--g-plain)"><div class="art"><div class="brandart">%%BRANDSEAL%%<span class="brandart__sw"><i style="background:#C8372D"></i><i style="background:#FF5A1F"></i><i style="background:#B07A4F"></i><i style="background:#0066CC"></i><i style="background:#123B2E"></i></span></div></div><span class="pill">Personal brand <em>2026</em></span></div>
           <p class="meta">How I chose a brand: five directions, two built finalists, and why Stamp won.</p>
+        </a>
+        <a class="w reveal" href="/projects/build-marks">
+          <div class="stage" style="--g: var(--g-plain)"><div class="art"><div style="display:grid;grid-template-columns:repeat(3,52px);gap:10px"><img src="/assets/img/brand/tally.svg" alt="" width="52" height="52" loading="lazy" style="display:block;width:52px;height:52px;border-radius:12px"><img src="/assets/img/brand/token-fuel.svg" alt="" width="52" height="52" loading="lazy" style="display:block;width:52px;height:52px;border-radius:12px"><img src="/assets/img/brand/typerace.svg" alt="" width="52" height="52" loading="lazy" style="display:block;width:52px;height:52px;border-radius:12px"><img src="/assets/img/brand/smartmodel.svg" alt="" width="52" height="52" loading="lazy" style="display:block;width:52px;height:52px;border-radius:12px"><img src="/assets/img/brand/spotify-review-triage.svg" alt="" width="52" height="52" loading="lazy" style="display:block;width:52px;height:52px;border-radius:12px"><img src="/assets/img/brand/ai-visibility-checker.svg" alt="" width="52" height="52" loading="lazy" style="display:block;width:52px;height:52px;border-radius:12px"></div></div><span class="pill">Build marks <em>2026</em></span></div>
+          <p class="meta">Giving sixteen builds one family of logos.</p>
         </a>
         <a class="w reveal" href="/arcade">
           <div class="stage" style="--g: var(--g-arcade)"><div class="art">%%SNAKE%%</div><span class="pill">Arcade <em>play</em></span></div>
@@ -310,6 +326,32 @@ STAMP = r"""<!DOCTYPE html>
           <p class="meta">Auto-Adjusting Volume: noise-aware volume.</p>
         </a>
       </div>
+    </section>
+
+    <!-- ============ WRITING ============ -->
+    <section class="panel" id="writing" role="tabpanel" aria-labelledby="tab-writing">
+      <h2 class="sub-h">Essays</h2>
+%%WRITING_ESSAYS%%
+
+      <h2 class="sub-h">Case-study write-ups</h2>
+      <div class="grid grid--3">
+        <a class="w reveal" href="/projects/decisions">
+          <div class="stage" style="--g: var(--g-mobility)"><div class="art"><div class="glass"><b>Options</b><span>and the pick</span></div></div><span class="pill">How I decide <em>2026</em></span></div>
+          <p class="meta">The options I laid out for each call on this site and my projects, which one I picked, and why.</p>
+        </a>
+        <a class="w reveal" href="/projects/portfolio">
+          <div class="stage" style="--g: var(--g-lucent)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>chaekim.vercel.app</span></div><img src="/assets/img/builds/portfolio-card.jpg" alt="This site's homepage" width="960" height="600" loading="lazy"></div></div><span class="pill">This portfolio <em>2026</em></span></div>
+          <p class="meta">How this site got built: the decisions, the backlog, and what's next.</p>
+        </a>
+        <a class="w reveal" href="/projects/personal-brand">
+          <div class="stage" style="--g: var(--g-plain)"><div class="art"><div class="brandart">%%BRANDSEAL%%<span class="brandart__sw"><i style="background:#C8372D"></i><i style="background:#FF5A1F"></i><i style="background:#B07A4F"></i><i style="background:#0066CC"></i><i style="background:#123B2E"></i></span></div></div><span class="pill">Personal brand <em>2026</em></span></div>
+          <p class="meta">How I chose a brand: five directions, two built finalists, and why Stamp won.</p>
+        </a>
+      </div>
+
+      <h2 class="sub-h">Reading list</h2>
+%%WRITING_READING%%
+      <p class="wl-more">The same list, with topic filters, is on its own page: <a href="/reading">Writing &amp; reading</a>.</p>
     </section>
 
     <!-- ============ WORK ============ -->
@@ -403,7 +445,7 @@ STAMP = r"""<!DOCTYPE html>
             </div>
             <p>Thirteen years growing up overseas made me curious by default. I'm happiest making things: a wireframe, a 3D print, a card game.</p>
             <p>I've founded an NSF I-Corps AI startup, led Fortune 500 cloud programs, and run a precision manufacturer's operations. These days I build tools I'd actually use. If you're making something too, I'd love to hear about it.</p>
-            <p>I'm also writing a memoir, <em>The Treaded Path</em>, and essays on <a href="https://medium.com/@chaewoonkim" target="_blank" rel="noopener">Medium ↗</a>. I also keep a <a href="/reading">reading list</a> of articles that helped.</p>
+            <p>I'm also writing a memoir, <em>The Treaded Path</em>, and essays on <a href="https://medium.com/@chaewoonkim" target="_blank" rel="noopener">Medium ↗</a>. My essays and the articles that helped are on the <a href="#writing">Writing tab</a>.</p>
           </section>
 
           <section id="experience">
@@ -467,10 +509,10 @@ STAMP = r"""<!DOCTYPE html>
             <li><span class="sw"><i style="background:#30b158"></i><i style="background:#30b158"></i></span><span class="swl__t"><b>ok</b> live status dot</span><span class="swl__h"><code>#30b158</code> / <code>#30b158</code></span></li>
           </ul>
           <div class="grads">
-            <div><i style="background:linear-gradient(135deg,#f3f0ff 0%,#fafafd 50%,#eef5ff 100%)"></i><span>Page wash, light: <code>#f3f0ff</code> 0%, <code>#fafafd</code> 50%, <code>#eef5ff</code> 100%, 135 degrees</span></div>
-            <div><i style="background:linear-gradient(135deg,#1a1530 0%,#0b0b0c 50%,#0c1322 100%)"></i><span>Page wash, dark: <code>#1a1530</code>, <code>#0b0b0c</code>, <code>#0c1322</code></span></div>
+            <div><i style="background:linear-gradient(180deg,#bfdcf7 0%,#dcecfb 22%,#f2f8fe 48%,#ffffff 72%)"></i><span>Sky, light: <code>#bfdcf7</code> to <code>#dcecfb</code> to <code>#f2f8fe</code> to white, with soft white clouds</span></div>
+            <div><i style="background:linear-gradient(180deg,#0f1a2e 0%,#0d1424 30%,#0b0e15 55%,#0b0b0c 75%)"></i><span>Night sky, dark: <code>#0f1a2e</code> to <code>#0b0b0c</code>, with faint clouds</span></div>
           </div>
-          <p>Each project sits on its own soft gradient stage, so the work supplies the color. Everything else stays neutral. The lavender-to-sky wash adds warmth without a brand color shouting, feels light and airy, and keeps the black and white from my brand exploration from feeling stark.</p>
+          <p>Each project sits on its own soft gradient stage, so the work supplies the color. Everything else stays neutral. The page opens on a sky: soft blue overhead, a few clouds, fading to white behind the work. I like that blue. It stays calm, not loud, feels light and airy, and keeps the black and white from my brand exploration from feeling stark.</p>
         </details>
 
         <details class="ncard ncard--type">
@@ -538,7 +580,7 @@ STAMP = r"""<!DOCTYPE html>
       </p>
     </div>
     <nav aria-label="Footer">
-      <a href="#builds">Builds</a><a href="#work">Work</a><a href="#about">About</a><a href="/reading">Reading</a><a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
+      <a href="#builds">Builds</a><a href="#work">Work</a><a href="#writing">Writing</a><a href="#about">About</a><a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
     </nav>
     <div class="foot__cta">
       <b>Let's chat.</b>
@@ -552,12 +594,14 @@ STAMP = r"""<!DOCTYPE html>
 
 %%LIVE_DIALOG%%
   <script src="/assets/js/main.js?v=%%V%%"></script>
+  <script src="/assets/js/play.js?v=%%V%%" defer></script>
 %%LIVE_SCRIPT%%
   <script>
   (function () {
     var THESIS = {
       'builds': 'I like to build things, from startups to card games.',
       'work': 'I run the operations behind the idea.',
+      'writing': 'Essays, how I decide, and what I read.',
       'about': 'Product, strategy, operations, and the occasional 3D print.'
     };
     var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -656,7 +700,41 @@ STAMP = r"""<!DOCTYPE html>
 </html>
 """
 
-STAMP = (STAMP.replace("%%V%%", V)
+# ----------------------------------------------------------------------------
+# Writing tab: essays and the reading list come from writing_data.py (shared with /reading)
+# ----------------------------------------------------------------------------
+import html as _html
+from writing_data import ESSAYS, READING, pub_label
+
+
+def _writing_essays():
+    rows = []
+    for e in ESSAYS:
+        internal = e.get("internal")
+        ext = "" if internal else ' target="_blank" rel="noopener"'
+        arrow = "" if internal else " ↗"
+        date = f' · {pub_label(e["published"])}' if e["published"] else ""
+        rows.append(f'        <li class="reveal"><h3><a href="{_html.escape(e["url"], quote=True)}"{ext}>{_html.escape(e["title"])}{arrow}</a></h3>'
+                    f'<p class="wl-by">{"On this site" if internal else "Medium"}{date}</p>'
+                    f'<p class="wl-sum">{_html.escape(e["description"])}</p></li>')
+    return '      <ul class="wlist">\n' + "\n".join(rows) + "\n      </ul>"
+
+
+def _writing_reading():
+    rows = []
+    for a in READING:
+        summary = f'<p class="wl-sum">{_html.escape(a["summary"])}</p>' if a["summary"] else ""
+        note = f'<p class="wl-sum"><b>My notes:</b> {_html.escape(a["note"])}</p>' if a["note"] else ""
+        tags = "".join(f"<span>{_html.escape(t)}</span>" for t in a["topics"])
+        rows.append(f'        <li class="reveal"><h3><a href="{_html.escape(a["url"], quote=True)}" target="_blank" rel="noopener">{_html.escape(a["title"])} ↗</a></h3>'
+                    f'<p class="wl-by">{_html.escape(a["author"])} · {_html.escape(a["source"])} · added {a["added"]}</p>'
+                    f'{summary}{note}<div class="wl-tags">{tags}</div></li>')
+    return '      <ul class="wlist">\n' + "\n".join(rows) + "\n      </ul>"
+
+
+STAMP = (STAMP.replace("%%WRITING_ESSAYS%%", _writing_essays())
+              .replace("%%WRITING_READING%%", _writing_reading())
+              .replace("%%V%%", V)
               .replace("%%INK%%", INK_DEFS)
               .replace("%%BRANDSEAL%%", seal("cal--card", label=False))
               .replace("%%SEAL%%", seal())
@@ -675,6 +753,15 @@ STAMP = (STAMP.replace("%%V%%", V)
               .replace("%%LIVE_WEB_ANATOMY%%", live_button("web-anatomy")))
 assert "%%" not in STAMP, "unreplaced token"
 
+# Each card's pill leads with the build's color-seal mark, found from the page the card links to.
+# The name gets its own span so it can truncate on narrow cards instead of being clipped.
+def _pill_mark(m):
+    mark = build_mark(m.group(2), "pill__mark", 18)
+    return m.group(1) + (f'{mark}<span class="pill__name">{m.group(3)}</span>' if mark else m.group(3))
+
+STAMP = re.sub(r'(href="/(?:projects/)?([a-z0-9-]+)"[^>]*>\s*<div class="stage"(?:(?!</a>).)*?<span class="pill">)([^<]*?)(?=\s*<em>|</span>)',
+               _pill_mark, STAMP, flags=re.S)
+
 # ----------------------------------------------------------------------------
 # Arcade page, in the same chrome as the project pages
 # ----------------------------------------------------------------------------
@@ -689,11 +776,13 @@ ARCADE_PAGE = f"""<!DOCTYPE html>
   <meta property="og:title" content="Arcade · Chae Kim - Portfolio">
   <meta property="og:description" content="Snake and Galaga, rebuilt from memory, plus a generative lo-fi radio.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og-card.png">
+  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/brand/arcade-og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://chaekim-portfolio.vercel.app/arcade">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="icon" href="/assets/img/brand/arcade.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/img/brand/arcade-touch.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 {CASE_HEAD_ASSETS}
@@ -706,6 +795,7 @@ ARCADE_PAGE = f"""<!DOCTYPE html>
   <main id="main">
     <section class="case-hero wrap">
       <a class="case-hero__back" href="/#builds">← All builds</a>
+      {build_mark("arcade", "case-hero__mark", 56)}
       <p class="eyebrow">side quest · arcade</p>
       <h1 class="case-hero__title">Arcade</h1>
       <p class="tldr">Snake and Galaga, rebuilt from memory, plus a generative lo-fi radio.</p>
@@ -822,7 +912,7 @@ PORTFOLIO_PAGE = f"""<!DOCTYPE html>
   <meta property="og:title" content="This portfolio · Chae Kim - Portfolio">
   <meta property="og:description" content="How I built this portfolio like a product: where it started, the decisions that shaped it, what's on the backlog, and what I'm considering next.">
   <meta property="og:type" content="article">
-  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og-card.png">
+  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og-sky.png">
   <link rel="canonical" href="https://chaekim-portfolio.vercel.app/projects/portfolio">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">

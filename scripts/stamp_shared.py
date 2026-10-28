@@ -10,6 +10,15 @@ def seal(cls="", label=True):
             '<use class="ink" href="#cal-glyphs" fill="#161514" filter="url(#ink)"/>'
             '</svg>')
 
+# A build's color-seal mark from assets/img/brand/, or "" for pages without one.
+# The name sits right beside it, so the image is decorative (alt="").
+def build_mark(slug, cls, size):
+    import os
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    if not os.path.exists(os.path.join(root, "assets", "img", "brand", f"{slug}.svg")):
+        return ""
+    return f'<img class="{cls}" src="/assets/img/brand/{slug}.svg" alt="" width="{size}" height="{size}">'
+
 INK_DEFS = ('<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>'
             '<filter id="paper" x="-5%" y="-3%" width="110%" height="106%">'
             '<feTurbulence type="fractalNoise" baseFrequency="0.33" numOctaves="2" seed="3" result="edge"/>'
@@ -30,9 +39,9 @@ INK_DEFS = ('<svg width="0" height="0" style="position:absolute" aria-hidden="tr
 # ---------------------------------------------------------------------------
 # Case-page chrome (project pages in the Stamp look)
 # ---------------------------------------------------------------------------
-CASE_CSS_V = "20"   # bump when assets/css/case-stamp.css changes
-STAMP_CSS_V = "19"  # v-stamp.css version, kept in step with the homepage
-JS_V = "13"
+CASE_CSS_V = "23"   # bump when assets/css/case-stamp.css changes
+STAMP_CSS_V = "29"  # v-stamp.css version, kept in step with the homepage
+JS_V = "14"
 LIVE_V = "1"  # bump when assets/js/live.js changes
 
 # ---------------------------------------------------------------------------
@@ -66,9 +75,9 @@ LIVE_DIALOG = """  <dialog class="live" id="live" aria-labelledby="live-title">
 
 LIVE_SCRIPT = f'  <script src="/assets/js/live.js?v={LIVE_V}" defer></script>'
 
-# Phone browser bar matches the page: lavender in light mode, deep indigo in dark.
-THEME_COLOR = ('  <meta name="theme-color" content="#f3f0ff" media="(prefers-color-scheme: light)">\n'
-               '  <meta name="theme-color" content="#1a1530" media="(prefers-color-scheme: dark)">')
+# Phone browser bar matches the page: sky blue in light mode, night navy in dark.
+THEME_COLOR = ('  <meta name="theme-color" content="#bfdcf7" media="(prefers-color-scheme: light)">\n'
+               '  <meta name="theme-color" content="#0f1a2e" media="(prefers-color-scheme: dark)">')
 
 CASE_HEAD_ASSETS = (
     THEME_COLOR + "\n"
@@ -86,6 +95,7 @@ CASE_TOP = f"""  {INK_DEFS}
     <nav class="topnav" aria-label="Primary">
       <a href="/#builds">Builds</a>
       <a href="/#work">Work</a>
+      <a href="/#writing">Writing</a>
       <a href="/#about">About</a>
       <a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
       <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
@@ -106,7 +116,7 @@ CASE_FOOT = f"""  <footer class="foot wrap">
       </p>
     </div>
     <nav aria-label="Footer">
-      <a href="/#builds">Builds</a><a href="/#work">Work</a><a href="/#about">About</a><a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
+      <a href="/#builds">Builds</a><a href="/#work">Work</a><a href="/#writing">Writing</a><a href="/#about">About</a><a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
     </nav>
     <div class="foot__cta">
       <b>Let's chat.</b>

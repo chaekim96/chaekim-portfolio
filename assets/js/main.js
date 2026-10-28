@@ -233,6 +233,28 @@
     arcade.querySelectorAll('button').forEach(b => b.addEventListener('click', load, { once: true }));
   }
 
+  /* ---------- Live hue: the background glow follows the cursor; its color shifts left to right ---------- */
+  (function () {
+    const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!fine || still) return;
+    const s = root.style;
+    let tx = innerWidth / 2, ty = innerHeight * 0.18, x = tx, y = ty, raf = 0;
+    const hue = px => 200 + (px / innerWidth) * 140;  // sky blue at the left, violet mid, rose at the right
+    function step() {
+      x += (tx - x) * 0.12; y += (ty - y) * 0.12;
+      s.setProperty('--mx', x.toFixed(1) + 'px');
+      s.setProperty('--my', y.toFixed(1) + 'px');
+      s.setProperty('--hue', hue(x).toFixed(1));
+      raf = Math.abs(tx - x) + Math.abs(ty - y) > 0.5 ? requestAnimationFrame(step) : 0;
+    }
+    addEventListener('pointermove', e => {
+      if (e.pointerType !== 'mouse') return;
+      tx = e.clientX; ty = e.clientY;
+      if (!raf) raf = requestAnimationFrame(step);
+    }, { passive: true });
+  })();
+
   /* ---------- Footer year ---------- */
   document.querySelectorAll('[data-year]').forEach(el => el.textContent = new Date().getFullYear());
 })();

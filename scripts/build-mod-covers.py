@@ -2,14 +2,16 @@
 """Renders the cover images for the Claude Code mod case studies.
 
 Usage:  python3 scripts/build-mod-covers.py
-Output: assets/img/thumbs/{smartmodel,token-fuel,code-improver}-wide.jpg (1600x900)
+Usage:  python3 scripts/build-mod-covers.py task-progress   (render only the named covers)
+Output: assets/img/thumbs/{smartmodel,token-fuel,code-improver,task-progress}-wide.jpg (1600x900)
 
 Each cover shows the mod's real output, not an illustration:
   SmartModel     the picker its hook actually raises in ask mode
   Token-Fuel     the gauge line and menu-bar item from its README
   Code Improver  its subagent definition file, verbatim
+  task-progress  its band and pane, drawn from the task list of the session that added it here
 """
-import os, subprocess, tempfile
+import os, subprocess, sys, tempfile
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 OUT = os.path.join(ROOT, "assets", "img", "thumbs")
@@ -95,10 +97,38 @@ COVERS = {
 <p>You are a code improvement specialist. For each issue you find,</p>
 <p>explain the problem, show the current code, and provide an improved version.</p>
 </div></div>"""),
+  "task-progress": dict(
+    bg="radial-gradient(70% 80% at 70% 15%, #2b3a8f 0%, #10163a 60%, #0a0e24 100%)", w=1380,
+    css="""
+.win { background: #0f1325; border: 1px solid rgba(255,255,255,.08); }
+.bar { background: #161b31; border-bottom: 1px solid rgba(255,255,255,.06); } .bar span { color: #8a93b8; }
+.split { display: grid; grid-template-columns: 1fr 540px; }
+.chat { padding: 34px 40px 30px; display: grid; gap: 14px; align-content: end; min-height: 400px; }
+.chat .ln { height: 14px; border-radius: 7px; background: rgba(255,255,255,.07); }
+.band { margin-top: 22px; font-size: 24px; color: #e6e9f5; white-space: nowrap; }
+.prompt { margin-top: 10px; padding: 18px 20px; border-radius: 14px; border: 1px solid rgba(255,255,255,.14); color: #6e7699; font-size: 20px; }
+.pane { border-left: 1px solid rgba(255,255,255,.08); padding: 30px 30px; font-size: 19px; line-height: 2; color: #e6e9f5; background: #12172c; }
+.pane h4 { font: 500 17px Poppins, sans-serif; color: #8a93b8; margin-bottom: 10px; }
+.c { color: #5fd7ee; } .g { color: #5fd38a; } .dim { color: #6e7699; }
+""",
+    body="""<div class="win"><div class="bar"><i></i><i></i><i></i><span class="mono">claude code</span></div>
+<div class="split"><div class="chat">
+<div class="ln" style="width:72%"></div><div class="ln" style="width:88%"></div><div class="ln" style="width:54%"></div><div class="ln" style="width:80%"></div>
+<p class="band mono"><span class="c">██████████</span><span class="dim">░░░░░░░░░░</span> 3/6 · 50% <span class="dim">▸ Add portfolio card and case page</span></p>
+<div class="prompt">Reply to Claude</div>
+</div>
+<div class="pane mono"><h4>/task-progress</h4>
+<p><span class="c">██████████</span><span class="dim">░░░░░░░░░░</span> 3/6</p>
+<p class="g">✓ Read memories and notes</p><p class="g">✓ Generate the brand mark</p><p class="g">✓ Add brand/ to the repo</p>
+<p>▸ Add portfolio card and page</p><p class="dim">· Update GitHub profile</p><p class="dim">· Verify in a browser</p>
+</div></div></div>"""),
 }
 
 tmp = tempfile.mkdtemp()
+only = sys.argv[1:]
 for slug, c in COVERS.items():
+    if only and slug not in only:
+        continue
     src = os.path.join(tmp, f"{slug}.html")
     open(src, "w", encoding="utf-8").write(BASE % c)
     png = os.path.join(tmp, f"{slug}.png")

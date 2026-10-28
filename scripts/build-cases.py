@@ -20,7 +20,7 @@ SITE_URL = "https://chaekim-portfolio.vercel.app"
 
 # The script name has a hyphen, so it can't be imported as a package; load the sibling module by path.
 sys.path.insert(0, str(HERE))
-from stamp_shared import CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, LIVE_APPS, LIVE_DIALOG, LIVE_SCRIPT, live_button  # noqa: E402
+from stamp_shared import CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, LIVE_APPS, LIVE_DIALOG, LIVE_SCRIPT, live_button, build_mark  # noqa: E402
 
 def confirm_tag(msg):  # visible confirm tag
     return f'<span class="confirm">[CONFIRM: {html.escape(msg)}]</span>'
@@ -40,7 +40,7 @@ SHELL = """<!DOCTYPE html>
   <meta property="og:title" content="{title} · Chae Kim - Portfolio">
   <meta property="og:description" content="{desc}">
   <meta property="og:type" content="article">
-  <meta property="og:image" content="{site_url}/assets/img/og-card.png">
+  <meta property="og:image" content="{site_url}/assets/img/og-sky.png">
   <link rel="canonical" href="{site_url}/projects/{slug}">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
@@ -57,7 +57,7 @@ SHELL = """<!DOCTYPE html>
   <main id="main">
     <section class="case-hero wrap">
       <a class="case-hero__back" href="{back_href}">← {back_label}</a>
-      <p class="eyebrow">{kicker}</p>
+      {mark}<p class="eyebrow">{kicker}</p>
       <h1 class="case-hero__title">{heading}{badge}</h1>
       <p class="tldr">{tldr}</p>
       <p class="meta-line"><b>Role</b> {role} · <b>Team</b> {team} · <b>Timeline</b> {timeline}</p>
@@ -242,21 +242,37 @@ PRODUCTS = [
   dict(slug="voiceprompter", title="VoicePrompter",
     kicker="product · macOS app · 2026",
     heading="Reading your notes on a call without anyone seeing them.",
-    desc="A macOS teleprompter that follows your voice as you read and stays hidden from Zoom, Meet, and screenshots.",
-    tldr="Your script floats above every app, even full-screen ones. As you speak, it highlights the word you're on and scrolls to keep your line near the top. Screen sharing and recordings that use ScreenCaptureKit, including Zoom, Google Meet, OBS, and QuickTime, don't see it.",
+    desc="A macOS teleprompter that follows your voice as you read, with capture protection tested against specific macOS recording APIs.",
+    tldr="Your script floats above other apps. As you speak, it highlights the word you're on and scrolls to keep your line near the top. The capture test hides its content from ScreenCaptureKit on the tested Mac; older recording paths can still show it, and individual sharing apps need a manual check.",
     role="Builder", team="Solo, built with Claude Code", timeline="September to October 2026",
     cover=cover("/assets/img/builds/voiceprompter.jpg", "VoicePrompter listening at word 108 of 139, with the prompter highlighting the spoken word", 800, 600),
     problem=paras("I was practicing presenting and interviewing and wanted my notes on screen, without cluttering the screen I was sharing. The teleprompters I found either fell short or wanted me to pay."),
+    requirements=bullets(
+      "Keep the script readable above other apps, with controls to pause, hide, reposition, and resize it.",
+      "Follow spoken words despite small skips, ad-libs, and recognition errors, without jumping on weak matches.",
+      "Support on-device speech recognition, explain microphone and speech permissions, and make capture-protection limits visible.",
+      "Keep the first version to one script at a time. Configurable hotkeys and additional speech engines remain outside the current build.",
+    ),
     did=bullets(
       "Built a native Swift app: an overlay that floats on every Space, and a main window with every setting in a sidebar.",
       "Transcribed speech on the device with Apple's recognizer, restarting the session about every 50 seconds so results stay short and fast.",
       "Wrote the alignment. Each update matches the last 8 spoken words against the script, with fuzzy matching for misheard words and guards so it never jumps on weak evidence.",
-      "Hid the overlay from capture, then tested it. It's hidden from ScreenCaptureKit, screenshots, and window lists, and still visible to older recorders, which the README says plainly.",
+      "Tested capture protection on macOS 15.7.4. ScreenCaptureKit and tested still-image APIs hide the content; legacy video paths can show it. The window name can still appear in a sharing picker.",
       "Added global hotkeys that need no Accessibility permission, double-click to jump to a word, and click-through so clicks reach the app underneath.",
     ),
-    results=stat_grid(("~0.3 ms", "per update on an 8,800-word script"), ("8", "spoken words matched each update"), ("2", "permissions: mic and speech"), ("4", "capture tools it hides from")),
+    results=stat_grid(("~0.3 ms", "alignment update on an 8,800-word script"), ("8", "spoken words matched each update"), ("2", "permissions: mic and speech"), ("3", "capture-harness runs reproduced")),
+    milestones=bullets(
+      "<b>Built:</b> a floating script, voice tracking, a settings sidebar, and global controls.",
+      "<b>Tested:</b> capture APIs on macOS 15.7.4, including a control panel to confirm that each recording actually captured the display.",
+      "<b>Still to verify:</b> interactive sharing in Zoom, Meet, QuickTime, and OBS, plus a full uninterrupted latency run. These are checks to complete, not shipped guarantees.",
+    ),
+    iterations=bullets(
+      "<b>Keeping up with speech:</b> restart recognition about every 50 seconds and carry alignment context across sessions.",
+      "<b>Avoiding false jumps:</b> use fuzzy matching, a local search window, and stronger confirmation for larger moves.",
+      "<b>Learning the protection boundary:</b> the API tests showed why a hide hotkey is still necessary, even when the normal capture path hides the overlay.",
+    ) + "\n" + links(("Requirements and limitations", "https://github.com/chaekim96/VoicePrompter/blob/main/README.md"), ("Capture-test evidence", "https://github.com/chaekim96/VoicePrompter/blob/main/ProtectionTest/RESULTS.md")),
     differently=paras("Measure latency from the start. The speech recognizer dominates the delay, and I built the latency test only after the app worked. A full, uninterrupted latency run is still on my list."),
-    artifacts=links(("Source on GitHub", "https://github.com/chaekim96/VoicePrompter")) + "\n" + artifact_grid(("/assets/img/cases/vp-main.jpg", "The main window while listening: status, position in the script, and prompter settings."), ("/assets/img/cases/vp-prompter.jpg", "The prompter further in. Read text dims and the current word turns gold. Captured with protection off.")),
+    artifacts=links(("Source on GitHub", "https://github.com/chaekim96/VoicePrompter"), ("Essay: What\u2019s the Point of Preinstalled Apps?", "/projects/preinstalled-apps")) + "\n" + artifact_grid(("/assets/img/cases/vp-main.jpg", "The main window while listening: status, position in the script, and prompter settings."), ("/assets/img/cases/vp-prompter.jpg", "The prompter further in. Read text dims and the current word turns gold. Captured with protection off.")),
   ),
   dict(slug="parallel-prospect-brief", title="Parallel Prospect Brief",
     kicker="product · solo build · 2026",
@@ -281,7 +297,7 @@ PRODUCTS = [
   dict(slug="product-blueprint", title="Product Blueprint",
     kicker="method · solo build · 2026",
     heading="One way to build every product, with a test at each step.",
-    desc="My playbook for building products with AI tools: a six-stage loop with a pass/fail gate at each stage, a design system, a product template, and a database of 22 versioned prompts with evals.",
+    desc="My personal prompt library and playbook for building products with AI tools: a six-stage loop with a pass/fail gate at each stage, a design system, a product template, and a database of 22 versioned prompts with evals.",
     tldr="I build fast with Lovable, Google AI Studio and Claude, and my prompts and design choices lived in chat history. The blueprint writes the method down: six stages from Discover to Ship, each ending with a pass/fail gate, a design system pulled from my own products, a template to fill in per product, and 22 prompts that each carry their own evals. Two scripts check the prompt database and score AI features against a locked test set.",
     role="Product owner and builder", team="Solo, built with Claude Code", timeline="October 2026",
     cover=cover("/assets/img/builds/product-blueprint.jpg", "The build loop: six stages from Discover to Ship, each with the gate it has to pass", 1600, 1000),
@@ -310,6 +326,12 @@ COURSEWORK = [
     role="Builder", team="Solo, built with Claude Code", timeline="October 2026",
     cover=cover("/assets/img/builds/spotify-review-triage.jpg", "The live dashboard: 660,622 reviews in file, 100,000 in scope, $4.36 measured spend, and the recommendation: usability", 1600, 1000),
     problem=paras("Nobody can read 660,000 reviews. A model can label them, but its answer is only useful if it is affordable, checked, and every number traces back to a real review."),
+    requirements=bullets(
+      "Answer one product question: should next quarter's effort go to access, usability, playback, or billing and support?",
+      "Account for every input review, declare the classification scope, and keep the run within a $10 API budget.",
+      "Trace recommendations to claims and individual reviews, validate model outputs, and resume interrupted work without re-labeling completed records.",
+      "Show sample coverage, human-label agreement, and unresolved failures alongside the dashboard's recommendation.",
+    ),
     did=bullets(
       "Accounted for all 660,622 reviews in code before any model saw them, matching the course's own checksum.",
       "Labeled a declared 100,000-review sample with a small, cheap model, 50 reviews per request, with a cache so each distinct text is labeled once.",
@@ -318,8 +340,18 @@ COURSEWORK = [
       "Grouped complaints into issues, ranked four business areas by severity, and wrote a memo where every number cites a claim and a review.",
       "Shipped a public dashboard backed by a database and an API, so anyone can follow the ranking down to a single review.",
     ),
-    results=stat_grid(("$4.36", "for 100,000 reviews, under a $10 cap"), ("20 / 20", "planted wrong labels caught"), ("5 / 5", "prompt injections resisted"), ("35.5%", "of complaint severity is usability")) + "\n" + paras("The recommendation: put next quarter's effort into usability, ahead of billing and support at 19.1%."),
-    differently=paras("Get more human labels in early. Only 50 labels are mine, and the model matched me on topic 42% of the time, so the answer leans on the model and its checker. Next: more human labels, and the full run over every review, estimated at $25 to $48."),
+    results=stat_grid(("$4.36", "API spend within the declared 100,000-review scope"), ("20 / 20", "planted wrong labels caught"), ("5 / 5", "prompt injections resisted"), ("35.5%", "of sample complaint severity is usability")) + "\n" + paras("All 660,622 input reviews were accounted for. Within the declared 100,000-review scope, 99,936 were validly classified and 64 were quarantined. The recommendation applies to that sample: prioritize usability, ahead of billing and support at 19.1%."),
+    milestones=bullets(
+      "<b>Completed:</b> full input accounting, a declared sample, a cold/warm cost pilot, and an interrupt-and-resume demonstration.",
+      "<b>Completed:</b> a blind model verification sample, 50 human labels, reproducible ranking, and a dashboard backed by an API and database.",
+      "<b>Next, not completed:</b> more human labels and a run over every nonempty review. The $25 to $48 full-run cost is an estimate, not measured spend.",
+    ),
+    iterations=bullets(
+      "<b>Grouping:</b> long literal phrases left about 56% of complaints in catch-all issues. Short stems, spelling variants, and word-start matching reduced that share to 45.1%.",
+      "<b>Recovery:</b> re-queue transport failures separately from invalid labels, then resume with a shared rate limiter. The resumed run recorded no transport failures.",
+      "<b>Caching:</b> make the memo's evidence pack deterministic so the warm 100-review pilot reuses all results, makes zero model calls, and costs $0.00.",
+    ) + "\n" + links(("Decision log", "https://github.com/chaekim96/spotify-review-triage/blob/main/DECISIONS.md"), ("Human evaluation", "https://github.com/chaekim96/spotify-review-triage/blob/main/evals/golden/golden_eval.md"), ("Resume demonstration", "https://github.com/chaekim96/spotify-review-triage/releases/tag/resume-demo-2026-10-20")),
+    differently=paras("Get more human labels in early. Only 50 labels are mine, and the model matched me on topic 42% of the time, so the answer leans on the model and its checker. A larger run would increase coverage; it would not by itself resolve the labeling uncertainty."),
     artifacts=links(("Open the dashboard", "https://spotify-review-triage.vercel.app"), ("Source and evidence on GitHub", "https://github.com/chaekim96/spotify-review-triage")) + "\n" + artifact_grid(("/assets/img/cases/spotify-alternatives.jpg", "The memo weighs every alternative: billing and support, playback, and access, each with its evidence and review links.")),
   ),
   dict(slug="personal-wiki", title="Personal Wiki",
@@ -330,16 +362,32 @@ COURSEWORK = [
     role="Builder", team="Solo", timeline="September 2026",
     cover=cover("/assets/img/builds/personal-wiki.jpg", "Obsidian graph of the wiki's linked notes", 900, 646),
     problem=paras("Cloud assistants answer confidently from anywhere. For studying I wanted the opposite: answers only from my own sources, a citation for every claim, on a laptop with Wi-Fi off."),
+    requirements=bullets(
+      "Ingest my course sources into linked Obsidian notes and answer study questions from those sources with citations.",
+      "Run entirely on the laptop after setup, with no cloud calls or hosted embeddings, within the machine's available memory.",
+      "Keep ask, chat, and search behavior separate; unsupported questions should return insufficient evidence.",
+      "Preserve hand-edited notes and source links when ingesting the same material again.",
+    ),
     did=bullets(
       "Picked the model to fit the machine. Gemma 4 E2B at 4-bit, because the larger versions didn't fit in the 5 to 6 GB free on an 18 GB Mac.",
       "Wrote the CLI and harness with only Python's standard library: ingest, search, ask, and chat modes.",
       "Built hybrid retrieval: my own BM25 plus local embeddings, merged with reciprocal rank fusion.",
       "Wrote the expected answers for four tests before running them, including one the wiki should refuse.",
-      "Checked every citation in code, with one automatic retry when a citation doesn't point to a retrieved passage.",
+      "Checked ask-mode citations against the retrieved passages in code and flagged invalid answers. Chat has a separate citation check with one retry.",
       "Recorded an offline demo with Wi-Fi off. All four tests matched the online results.",
     ),
     results=stat_grid(("3 of 4", "tests passed, written in advance"), ("4.4 s", "per answer, warm"), ("~1.7 GB", "working memory"), ("0", "cloud calls")) + "\n" + paras("The failure is documented. A question in my own shorthand (\"A3\") missed the right passage, and the model answered a nearby question with a real citation."),
-    differently=paras("A citation check proves a citation exists, not that it answers the question. Next: an alias file so my shorthand expands (A3 means Assignment 3), a guaranteed slot for each source's best passage, and a second check that asks whether the answer fits the question."),
+    milestones=bullets(
+      "<b>Built:</b> local ingestion, linked notes, hybrid search, cited answers, and a separate study-partner chat mode.",
+      "<b>Evaluated:</b> four prewritten ask tests, mode-separation checks, memory and response-time measurements, and an offline demonstration. Three of four ask tests passed.",
+      "<b>Proposed, not implemented:</b> expand aliases such as A3, reserve retrieval space across sources, and add an answer-relevance check. Re-run the original tests and retain the baseline for comparison.",
+    ),
+    iterations=bullets(
+      "<b>Keyword search to hybrid retrieval:</b> adding local embeddings moved the paraphrase test's relevant passages from ranks 5 and 4 to ranks 2 and 3.",
+      "<b>Reliable ingestion:</b> save a plan for each source and detect hand edits, so repeated ingestion reuses note names and keeps edited notes.",
+      "<b>Citations to relevance:</b> the A3 test exposed a real citation attached to the wrong answer. The next experiment must check whether the evidence answers the actual question, as well as whether the citation exists.",
+    ) + "\n" + links(("Retrieval changes", "https://github.com/chaekim96/personal-wiki/blob/main/evidence/retrieval_changes.md"), ("Test results", "https://github.com/chaekim96/personal-wiki/blob/main/evidence/ask_tests/results.md"), ("Limitations and proposed improvements", "https://github.com/chaekim96/personal-wiki/blob/main/README.md#10-limitation-and-improvement")),
+    differently=paras("Write more questions in my own shorthand before tuning retrieval. A citation check proves a citation exists, not that it answers the question; the failed A3 test made that distinction concrete."),
     artifacts=links(("Source and evidence on GitHub", "https://github.com/chaekim96/personal-wiki")) + "\n" + artifact_grid(("/assets/img/cases/wiki-note.jpg", "A generated note in Obsidian, with its sources linked back to the raw files."), ("/assets/img/cases/wiki-index.jpg", "The wiki's index: concepts and projects, each with a one-line summary.")),
   ),
   dict(slug="pacman-dqn", title="Pac-Man DQN",
@@ -439,6 +487,27 @@ MODS = [
     results=paras("Small by design. Eight lines of configuration change how every review goes, and because it can't edit, I can run it on anything."),
     differently=paras("Give it a severity ranking and permission to say \"no issues.\" Without one, a reviewer always finds something, and small nits crowd out real bugs."),
     artifacts=paras("The file above is the whole thing, verbatim. Below, it reviewing the script that builds this page: 14 findings, ordered by severity, and no files touched.") + "\n" + artifact_grid(("/assets/img/cases/code-improver-review.jpg", "An excerpt of its review of build-cases.py. Its top finding checked out on the live site.")),
+  ),
+  dict(slug="task-progress", title="task-progress",
+    kicker="claude code mod · hooks module · 2026",
+    heading="Seeing how far along a task is, right above the prompt.",
+    desc="A Claude Code mod that turns Claude's own task checklist into a calm progress band above the prompt, plus a checklist pane.",
+    tldr="Claude Code's spinner says something is happening, not how far along it is. task-progress reads the checklist Claude already keeps and draws it as a still band above the prompt: 3/5 · 60%, the step in progress, and a green ✓ all done at the end.",
+    role="Product owner and builder", team="Solo, built with Claude Code", timeline="October 2026",
+    cover='<img src="/assets/img/thumbs/task-progress-wide.jpg" alt="task-progress in Claude Code: a band above the prompt at 3 of 6 steps, and the /task-progress pane listing each step" width="1600" height="900">',
+    problem=paras("On a long task, the flickering spinner looks the same at step 1 as at step 5. To know whether Claude was nearly done or barely started, I had to scroll back through the transcript. I wanted to glance at the screen and know \"3 of 5 done, now running tests.\""),
+    did=bullets(
+      "Wrote the job first: one glance, no reading, and no extra list for me to keep up to date.",
+      "First version: a terminal status line. It worked, but I spend my day in the desktop app's Code tab, which doesn't show status lines. I reverted it instead of shipping something I'd never see.",
+      "Rebuilt it as a mod (a hooks module) that follows the app's own task checklist: update_plan and wrap_up in the Code tab, and TodoWrite, TaskCreate and TaskUpdate in the terminal. Claude already keeps that list, so the bar can't drift from it.",
+      "Kept it calm on purpose. No animation: it redraws only when the list changes. Cyan while working, green with ✓ all done at the end, and hidden when there's no list.",
+      "Added a /task-progress pane that lists every step as done (✓), in progress (▸) or pending (·).",
+      "Ignored subagents' task lists, so a helper's checklist never takes over the main bar.",
+      "Published it as a public plugin with a one-line install, with tests for the desktop list, the terminal list, and the hidden state.",
+    ),
+    results=stat_grid(("4/4", "steps filled in a live demo"), ("5", "task-list tools it follows"), ("0", "animation frames"), ("1", "line to install")) + "\n" + paras("I ran a 4-step demo task in the Code tab and watched the band fill one segment per step to 4/4, then turn green with ✓ all done."),
+    differently=paras("Check where the user actually looks before choosing the surface. I knew I lived in the desktop app and still built for the terminal first. The place I'd most like it is the session sidebar, so progress shows across sessions at once. Mods can't draw there, so that would take a change in the app itself."),
+    artifacts=links(("Source on GitHub", "https://github.com/chaekim96/task-progress")) + "\n" + paras("Install from a Claude Code prompt: <code>/plugin install task-progress --marketplace chaekim96/task-progress</code>") + "\n" + artifact_grid(("/assets/img/cases/task-progress-card.png", "Its share card, with the build mark: a progress bar above a checklist.")),
   ),
 ]
 
@@ -541,11 +610,14 @@ CASES = [
 BUILD_SLUGS = {c["slug"] for c in (*PRODUCTS, *MODS, *COURSEWORK)}
 
 # Sections in page order; a section whose content is empty is left out of the TOC and the body.
-SECTIONS = (("problem", "The problem"), ("did", "What I did"), ("results", "Results"),
+SECTIONS = (("problem", "The problem"), ("requirements", "Product requirements"),
+            ("did", "What I did"), ("results", "Results"),
+            ("milestones", "Milestones and next steps"), ("iterations", "Iterations and decisions"),
             ("differently", "What I'd do differently"), ("artifacts", "Artifacts"))
 REQUIRED = ("slug", "title", "kicker", "heading", "desc", "tldr", "role", "team", "timeline",
             "cover", "problem", "did", "results")
-DEFAULTS = dict(badge="", cover_class="", differently="", artifacts="")
+DEFAULTS = dict(badge="", cover_class="", differently="", artifacts="",
+                requirements="", milestones="", iterations="")
 PLAIN_TEXT = ("title", "kicker", "role", "team", "timeline")  # text only, never HTML: escape on output
 
 
@@ -576,7 +648,7 @@ def jsonld(c):
         "headline": html.unescape(re.sub(r"<[^>]+>", "", c["heading"])),
         "description": c["desc"],
         "url": f"{SITE_URL}/projects/{c['slug']}",
-        "image": f"{SITE_URL}/assets/img/og-card.png",
+        "image": f"{SITE_URL}/assets/img/og-sky.png",
         "creator": {"@type": "Person", "name": "Chae Kim", "alternateName": "Chae Woon Kim", "url": f"{SITE_URL}/"},
     }
     body = json.dumps(data, ensure_ascii=False, indent=2).replace("</", "<\\/")
@@ -587,6 +659,7 @@ def render(c, prev, nxt):
     c = {**DEFAULTS, **c}
     toc, body = render_sections(c)
     is_build = c["slug"] in BUILD_SLUGS
+    mark = build_mark(c["slug"], "case-hero__mark", 56) if is_build else ""
     fields = {
         **{k: c[k] for k in ("slug", "heading", "tldr", "cover", "cover_class", "badge")},
         **{k: html.escape(c[k]) for k in PLAIN_TEXT},
@@ -601,6 +674,8 @@ def render(c, prev, nxt):
         "prev_slug": prev["slug"], "prev_title": html.escape(prev["title"]),
         "next_slug": nxt["slug"], "next_title": html.escape(nxt["title"]),
         "site_url": SITE_URL,
+        # builds show their color-seal mark above the eyebrow
+        "mark": mark + "\n      " if mark else "",
         # web apps get a "Try it live" button on the cover and the dialog it opens
         "live": live_button(c["slug"]) if c["slug"] in LIVE_APPS else "",
         "live_dialog": LIVE_DIALOG + "\n" if c["slug"] in LIVE_APPS else "",

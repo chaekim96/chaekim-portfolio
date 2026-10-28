@@ -16,15 +16,18 @@ SITE = "https://chaekim-portfolio.vercel.app"
 SECTIONS = [
     ("Builds", "Products and tools, most with a live demo.", [
         "ai-visibility-checker", "tally", "palette-generator", "typerace", "networking-tracker",
-        "web-anatomy", "voiceprompter", "parallel-prospect-brief", "product-blueprint", "smartmodel", "token-fuel", "code-improver",
-        "spotify-review-triage", "personal-wiki", "pacman-dqn", "custom-llm", "home-gif", "yin-yang",
+        "web-anatomy", "voiceprompter", "parallel-prospect-brief", "product-blueprint", "smartmodel", "token-fuel", "code-improver", "task-progress",
+        "spotify-review-triage", "personal-wiki", "pacman-dqn", "custom-llm", "siri-reimagined", "home-gif", "yin-yang",
     ]),
     ("Work", "Startups, consulting and operations, then earlier projects at Indiana University.", [
         "lucent", "ey", "tritooling", "mirrorme", "mirrorme-tech-pack", "mobility",
         "alab", "coursera", "iu-study-assistant", "luc", "ptm",
     ]),
+    ("Writing", "Essays by Chae, plus the reading list at /reading.", [
+        "preinstalled-apps",
+    ]),
     ("How this site is made", "The decisions and options behind the portfolio itself.", [
-        "decisions", "portfolio", "personal-brand",
+        "decisions", "portfolio", "personal-brand", "build-marks",
     ]),
 ]
 
@@ -61,7 +64,7 @@ def main():
     out += [
         "## More",
         "",
-        f"- [Home]({SITE}/): the Builds, Work and About tabs",
+        f"- [Home]({SITE}/): the Builds, Work, Writing and About tabs",
         f"- [Reading list]({SITE}/reading)",
         f"- [Resume (PDF)]({SITE}/assets/pdf/chae-kim-resume.pdf)",
         f"- [Arcade]({SITE}/arcade): Snake, Galaga and a generative lo-fi radio",

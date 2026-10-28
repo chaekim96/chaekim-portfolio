@@ -8,18 +8,18 @@
   <meta property="og:title" content="Spotify Review Triage · Chae Kim - Portfolio">
   <meta property="og:description" content="A multi-agent LLM pipeline that labels Spotify app reviews, checks its own work, and recommends where next quarter&#x27;s product effort should go.">
   <meta property="og:type" content="article">
-  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og-card.png">
+  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og-sky.png">
   <link rel="canonical" href="https://chaekim-portfolio.vercel.app/projects/spotify-review-triage">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <meta name="theme-color" content="#f3f0ff" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#1a1530" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#bfdcf7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1a2e" media="(prefers-color-scheme: dark)">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="/assets/css/v-stamp.css?v=19">
-  <link rel="stylesheet" href="/assets/css/case-stamp.css?v=20">
+  <link rel="stylesheet" href="/assets/css/v-stamp.css?v=29">
+  <link rel="stylesheet" href="/assets/css/case-stamp.css?v=23">
   <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
   <script type="application/ld+json">
   {
@@ -29,7 +29,7 @@
     "headline": "Turning a flood of app reviews into one clear product priority.",
     "description": "A multi-agent LLM pipeline that labels Spotify app reviews, checks its own work, and recommends where next quarter's product effort should go.",
     "url": "https://chaekim-portfolio.vercel.app/projects/spotify-review-triage",
-    "image": "https://chaekim-portfolio.vercel.app/assets/img/og-card.png",
+    "image": "https://chaekim-portfolio.vercel.app/assets/img/og-sky.png",
     "creator": {
       "@type": "Person",
       "name": "Chae Kim",
@@ -49,6 +49,7 @@
     <nav class="topnav" aria-label="Primary">
       <a href="/#builds">Builds</a>
       <a href="/#work">Work</a>
+      <a href="/#writing">Writing</a>
       <a href="/#about">About</a>
       <a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
       <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
@@ -60,6 +61,7 @@
   <main id="main">
     <section class="case-hero wrap">
       <a class="case-hero__back" href="/#builds">← All builds</a>
+      <img class="case-hero__mark" src="/assets/img/brand/spotify-review-triage.svg" alt="" width="56" height="56">
       <p class="eyebrow">ai/ml coursework · final project · 2026</p>
       <h1 class="case-hero__title">Turning a flood of app reviews into one clear product priority.</h1>
       <p class="tldr">660,622 Spotify reviews in, one recommendation out. A small model labels a declared 100,000-review sample under a $10 cap, a different model checks a blind sample, and a public dashboard traces the ranking down to single reviews. The answer: usability.</p>
@@ -73,14 +75,24 @@
     <section class="wrap case-body">
       <nav class="toc" aria-label="On this page">
         <a href="#problem">The problem</a>
+        <a href="#requirements">Product requirements</a>
         <a href="#did">What I did</a>
         <a href="#results">Results</a>
+        <a href="#milestones">Milestones and next steps</a>
+        <a href="#iterations">Iterations and decisions</a>
         <a href="#differently">What I'd do differently</a>
         <a href="#artifacts">Artifacts</a>
       </nav>
       <article class="prose">
         <h2 id="problem">The problem</h2>
         <p>Nobody can read 660,000 reviews. A model can label them, but its answer is only useful if it is affordable, checked, and every number traces back to a real review.</p>
+        <h2 id="requirements">Product requirements</h2>
+        <ul>
+          <li>Answer one product question: should next quarter's effort go to access, usability, playback, or billing and support?</li>
+          <li>Account for every input review, declare the classification scope, and keep the run within a $10 API budget.</li>
+          <li>Trace recommendations to claims and individual reviews, validate model outputs, and resume interrupted work without re-labeling completed records.</li>
+          <li>Show sample coverage, human-label agreement, and unresolved failures alongside the dashboard's recommendation.</li>
+        </ul>
         <h2 id="did">What I did</h2>
         <ul>
           <li>Accounted for all 660,622 reviews in code before any model saw them, matching the course's own checksum.</li>
@@ -91,10 +103,23 @@
           <li>Shipped a public dashboard backed by a database and an API, so anyone can follow the ranking down to a single review.</li>
         </ul>
         <h2 id="results">Results</h2>
-        <div class="results"><div><b>$4.36</b><span>for 100,000 reviews, under a $10 cap</span></div><div><b>20 / 20</b><span>planted wrong labels caught</span></div><div><b>5 / 5</b><span>prompt injections resisted</span></div><div><b>35.5%</b><span>of complaint severity is usability</span></div></div>
-        <p>The recommendation: put next quarter's effort into usability, ahead of billing and support at 19.1%.</p>
+        <div class="results"><div><b>$4.36</b><span>API spend within the declared 100,000-review scope</span></div><div><b>20 / 20</b><span>planted wrong labels caught</span></div><div><b>5 / 5</b><span>prompt injections resisted</span></div><div><b>35.5%</b><span>of sample complaint severity is usability</span></div></div>
+        <p>All 660,622 input reviews were accounted for. Within the declared 100,000-review scope, 99,936 were validly classified and 64 were quarantined. The recommendation applies to that sample: prioritize usability, ahead of billing and support at 19.1%.</p>
+        <h2 id="milestones">Milestones and next steps</h2>
+        <ul>
+          <li><b>Completed:</b> full input accounting, a declared sample, a cold/warm cost pilot, and an interrupt-and-resume demonstration.</li>
+          <li><b>Completed:</b> a blind model verification sample, 50 human labels, reproducible ranking, and a dashboard backed by an API and database.</li>
+          <li><b>Next, not completed:</b> more human labels and a run over every nonempty review. The $25 to $48 full-run cost is an estimate, not measured spend.</li>
+        </ul>
+        <h2 id="iterations">Iterations and decisions</h2>
+        <ul>
+          <li><b>Grouping:</b> long literal phrases left about 56% of complaints in catch-all issues. Short stems, spelling variants, and word-start matching reduced that share to 45.1%.</li>
+          <li><b>Recovery:</b> re-queue transport failures separately from invalid labels, then resume with a shared rate limiter. The resumed run recorded no transport failures.</li>
+          <li><b>Caching:</b> make the memo's evidence pack deterministic so the warm 100-review pilot reuses all results, makes zero model calls, and costs $0.00.</li>
+        </ul>
+        <p><a href="https://github.com/chaekim96/spotify-review-triage/blob/main/DECISIONS.md" target="_blank" rel="noopener">Decision log ↗</a> · <a href="https://github.com/chaekim96/spotify-review-triage/blob/main/evals/golden/golden_eval.md" target="_blank" rel="noopener">Human evaluation ↗</a> · <a href="https://github.com/chaekim96/spotify-review-triage/releases/tag/resume-demo-2026-10-20" target="_blank" rel="noopener">Resume demonstration ↗</a></p>
         <h2 id="differently">What I'd do differently</h2>
-        <p>Get more human labels in early. Only 50 labels are mine, and the model matched me on topic 42% of the time, so the answer leans on the model and its checker. Next: more human labels, and the full run over every review, estimated at $25 to $48.</p>
+        <p>Get more human labels in early. Only 50 labels are mine, and the model matched me on topic 42% of the time, so the answer leans on the model and its checker. A larger run would increase coverage; it would not by itself resolve the labeling uncertainty.</p>
         <h2 id="artifacts">Artifacts</h2>
         <p><a href="https://spotify-review-triage.vercel.app" target="_blank" rel="noopener">Open the dashboard ↗</a> · <a href="https://github.com/chaekim96/spotify-review-triage" target="_blank" rel="noopener">Source and evidence on GitHub ↗</a></p>
         <div class="artifacts"><figure><img src="/assets/img/cases/spotify-alternatives.jpg" alt="The memo weighs every alternative: billing and support, playback, and access, each with its evidence and review links." loading="lazy"><figcaption>The memo weighs every alternative: billing and support, playback, and access, each with its evidence and review links.</figcaption></figure></div>
@@ -103,7 +128,7 @@
 
     <section class="next wrap">
       <div class="next__grid">
-        <a href="/projects/code-improver"><small>← Previous</small><strong>Code Improver</strong></a>
+        <a href="/projects/task-progress"><small>← Previous</small><strong>task-progress</strong></a>
         <a class="next__forward" href="/projects/personal-wiki"><small>Next →</small><strong>Personal Wiki</strong></a>
       </div>
     </section>
@@ -121,7 +146,7 @@
       </p>
     </div>
     <nav aria-label="Footer">
-      <a href="/#builds">Builds</a><a href="/#work">Work</a><a href="/#about">About</a><a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
+      <a href="/#builds">Builds</a><a href="/#work">Work</a><a href="/#writing">Writing</a><a href="/#about">About</a><a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
     </nav>
     <div class="foot__cta">
       <b>Let's chat.</b>
@@ -140,8 +165,8 @@
     <p class="live__note" id="live-note" hidden></p>
     <iframe id="live-frame" title="Live preview" allow="clipboard-write"></iframe>
   </dialog>
-  <script src="/assets/js/main.js?v=13"></script>
-  <script src="/assets/js/case-stamp.js?v=20"></script>
+  <script src="/assets/js/main.js?v=14"></script>
+  <script src="/assets/js/case-stamp.js?v=23"></script>
   <script src="/assets/js/live.js?v=1" defer></script>
 </body>
 </html>

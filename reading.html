@@ -3,36 +3,40 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Reading list · Chae Kim - Portfolio</title>
-  <meta name="description" content="A running list of articles Chae Kim has found helpful, organized by topic.">
-  <meta property="og:title" content="Reading list · Chae Kim - Portfolio">
-  <meta property="og:description" content="A running list of articles Chae Kim has found helpful, organized by topic.">
+  <title>Writing &amp; reading · Chae Kim - Portfolio</title>
+  <meta name="description" content="Essays by Chae Kim, and a running list of articles found helpful, organized by topic.">
+  <meta property="og:title" content="Writing &amp; reading · Chae Kim - Portfolio">
+  <meta property="og:description" content="Essays by Chae Kim, and a running list of articles found helpful, organized by topic.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og-card.png">
+  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og-sky.png">
   <link rel="canonical" href="https://chaekim-portfolio.vercel.app/reading">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <meta name="theme-color" content="#f3f0ff" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#1a1530" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#bfdcf7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1a2e" media="(prefers-color-scheme: dark)">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="/assets/css/v-stamp.css?v=19">
-  <link rel="stylesheet" href="/assets/css/case-stamp.css?v=20">
+  <link rel="stylesheet" href="/assets/css/v-stamp.css?v=29">
+  <link rel="stylesheet" href="/assets/css/case-stamp.css?v=23">
   <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
   <style>
   .reading__lede { max-width: 60ch; color: var(--ink-2); line-height: 1.6; margin-top: 12px; }
+  .rl-section { margin-top: 56px; }
+  .rl-section h2 { font-size: 22px; font-weight: 500; margin: 0 0 4px; }
   .rl-filters { display: flex; flex-wrap: wrap; gap: 6px; margin: 28px 0 8px; }
   .rl-chip { padding: 6px 14px 5px; border-radius: 999px; font-size: 14px; color: var(--ink-2); box-shadow: inset 0 0 0 1px var(--line); }
   .rl-chip:hover { color: var(--ink); background: var(--fill-2); }
   .rl-chip[aria-pressed="true"] { color: var(--ink); background: var(--fill); font-weight: 500; }
-  .rl-list { list-style: none; margin: 0; padding: 0; }
-  .rl-item { padding: 24px 0; border-top: 1px solid var(--line); }
+  .rl-list, .es-list { list-style: none; margin: 0; padding: 0; }
+  .rl-item, .es-item { padding: 24px 0; border-top: 1px solid var(--line); }
   .rl-item[hidden] { display: none; }
-  .rl-item h2 { font-size: 19px; font-weight: 500; line-height: 1.35; margin: 0; }
-  .rl-item h2 a { color: var(--ink); }
-  .rl-item h2 a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .rl-item h3, .es-item h3 { font-size: 19px; font-weight: 500; line-height: 1.35; margin: 0; }
+  .rl-item h3 a, .es-item h3 a { color: var(--ink); }
+  .rl-item h3 a:hover, .es-item h3 a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .es-meta { margin: 6px 0 0; font-size: 14px; color: var(--ink-2); }
+  .es-desc { margin: 12px 0 0; max-width: 64ch; line-height: 1.6; }
   .rl-by { margin: 6px 0 0; font-size: 14px; color: var(--ink-2); }
   .rl-sum { margin: 12px 0 0; max-width: 64ch; line-height: 1.6; }
   .rl-notes { margin: 10px 0 0; max-width: 64ch; font-size: 14px; color: var(--ink-2); }
@@ -52,6 +56,7 @@
     <nav class="topnav" aria-label="Primary">
       <a href="/#builds">Builds</a>
       <a href="/#work">Work</a>
+      <a href="/#writing">Writing</a>
       <a href="/#about">About</a>
       <a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
       <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
@@ -63,41 +68,58 @@
   <main id="main">
     <section class="case-hero wrap">
       <a class="case-hero__back" href="/">← Home</a>
-      <p class="eyebrow">Reading list</p>
-      <h1 class="case-hero__title">Articles that <em>helped</em>.</h1>
-      <p class="reading__lede">A running list of things I've read that were worth keeping, with a line on what each is about and room for my own notes. Newest first.</p>
+      <p class="eyebrow">Writing &amp; reading</p>
+      <h1 class="case-hero__title">Writing and <em>reading</em>.</h1>
+      <p class="reading__lede">My own essays, plus a running list of things I've read that were worth keeping, with a line on what each is about and room for my own notes. Newest first.</p>
     </section>
 
-    <section class="wrap">
-      <div class="rl-filters" role="group" aria-label="Filter by topic"><button class="rl-chip" type="button" data-topic="all" aria-pressed="true">All</button><button class="rl-chip" type="button" data-topic="AI" aria-pressed="false">AI</button><button class="rl-chip" type="button" data-topic="Career" aria-pressed="false">Career</button><button class="rl-chip" type="button" data-topic="Product management" aria-pressed="false">Product management</button><button class="rl-chip" type="button" data-topic="Working style" aria-pressed="false">Working style</button></div>
+    <section class="wrap rl-section" aria-labelledby="essays-h">
+      <h2 id="essays-h">Essays</h2>
+      <ul class="es-list">
+      <li class="es-item">
+        <h3><a href="/projects/preinstalled-apps">What’s the Point of Preinstalled Apps?</a></h3>
+        <p class="es-meta">On this site · published <time datetime="2026-10">October 2026</time></p>
+        <p class="es-desc">What if a new iPhone greeted you with Siri instead of pages of apps? On Siri becoming the operating system, and what that means for apps, Apple, and the App Store.</p>
+      </li>
+      <li class="es-item">
+        <h3><a href="https://chaewoonkim.medium.com/2025-2026-reflections-onwards-2bc4a878e448" target="_blank" rel="noopener">2025–2026 Reflections: Onwards ↗</a></h3>
+        <p class="es-meta">Medium · published <time datetime="2026-01-15">January 15, 2026</time></p>
+        <p class="es-desc">A personal essay reflecting on the last couple of years and what comes next.</p>
+      </li>
+      <li class="es-item">
+        <h3><a href="https://chaewoonkim.medium.com/a-story-about-money-afedd3e1ee00" target="_blank" rel="noopener">A Story About Money ↗</a></h3>
+        <p class="es-meta">Medium · published <time datetime="2025-07-22">July 22, 2025</time></p>
+        <p class="es-desc">A personal essay on money.</p>
+      </li>
+      </ul>
+    </section>
+
+    <section class="wrap rl-section" aria-labelledby="reading-h">
+      <h2 id="reading-h">Reading list</h2>
+      <div class="rl-filters" role="group" aria-label="Filter reading list by topic"><button class="rl-chip" type="button" data-topic="all" aria-pressed="true">All</button><button class="rl-chip" type="button" data-topic="AI" aria-pressed="false">AI</button><button class="rl-chip" type="button" data-topic="Career" aria-pressed="false">Career</button><button class="rl-chip" type="button" data-topic="Product management" aria-pressed="false">Product management</button><button class="rl-chip" type="button" data-topic="Working style" aria-pressed="false">Working style</button></div>
       <p class="rl-count" id="rl-count" aria-live="polite"></p>
       <ul class="rl-list">
       <li class="rl-item" data-topics="Product management|AI">
-        <h2><a href="https://www.a16z.news/p/product-management-is-still-all-about" target="_blank" rel="noopener">Product Management is Still All About Telling Stories ↗</a></h2>
+        <h3><a href="https://www.a16z.news/p/product-management-is-still-all-about" target="_blank" rel="noopener">Product Management is Still All About Telling Stories ↗</a></h3>
         <p class="rl-by">Josh Elman · a16z newsletter · added <time datetime="2026-10-14">2026-10-14</time></p>
         <p class="rl-sum">Elman argues that as AI makes building software cheaper and faster, a product manager&#x27;s core value shifts to judgment about what to build and to communicating a product&#x27;s purpose, especially through onboarding.</p>
-        <p class="rl-notes"><b>My notes:</b> <i>(add your own takeaway)</i></p>
         <div class="rl-tags"><span>Product management</span><span>AI</span></div>
       </li>
       <li class="rl-item" data-topics="Product management">
-        <h2><a href="https://joshelman.medium.com/a-product-managers-job-63c09a43d0ec" target="_blank" rel="noopener">A Product Manager&#x27;s Job ↗</a></h2>
+        <h3><a href="https://joshelman.medium.com/a-product-managers-job-63c09a43d0ec" target="_blank" rel="noopener">A Product Manager&#x27;s Job ↗</a></h3>
         <p class="rl-by">Josh Elman · Medium · added <time datetime="2026-10-14">2026-10-14</time></p>
         <p class="rl-sum">A short essay on what a product manager is responsible for, framing the job as helping a team ship the right product for users and breaking it into five smaller parts.</p>
-        <p class="rl-notes"><b>My notes:</b> <i>(add your own takeaway)</i></p>
         <div class="rl-tags"><span>Product management</span></div>
       </li>
       <li class="rl-item" data-topics="Working style|Career">
-        <h2><a href="https://joshelman.medium.com/my-blueprint-9693a6059a1a" target="_blank" rel="noopener">My Blueprint ↗</a></h2>
+        <h3><a href="https://joshelman.medium.com/my-blueprint-9693a6059a1a" target="_blank" rel="noopener">My Blueprint ↗</a></h3>
         <p class="rl-by">Josh Elman · Medium · added <time datetime="2026-10-14">2026-10-14</time></p>
         <p class="rl-sum">Elman shares his own personal blueprint, a written outline of how he works and his quirks, inspired by a friend&#x27;s essay on the practice.</p>
-        <p class="rl-notes"><b>My notes:</b> <i>(add your own takeaway)</i></p>
         <div class="rl-tags"><span>Working style</span><span>Career</span></div>
       </li>
       <li class="rl-item" data-topics="Career">
-        <h2><a href="https://joshelman.medium.com/51-7fbfb877e869" target="_blank" rel="noopener">51 ↗</a></h2>
+        <h3><a href="https://joshelman.medium.com/51-7fbfb877e869" target="_blank" rel="noopener">51 ↗</a></h3>
         <p class="rl-by">Josh Elman · Medium · added <time datetime="2026-10-14">2026-10-14</time></p>
-        <p class="rl-sum"><span class="confirm">[CONFIRM: summary pending]</span></p>
-        <p class="rl-notes"><b>My notes:</b> <i>(add your own takeaway)</i></p>
         <div class="rl-tags"><span>Career</span></div>
       </li>
       </ul>
@@ -116,7 +138,7 @@
       </p>
     </div>
     <nav aria-label="Footer">
-      <a href="/#builds">Builds</a><a href="/#work">Work</a><a href="/#about">About</a><a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
+      <a href="/#builds">Builds</a><a href="/#work">Work</a><a href="/#writing">Writing</a><a href="/#about">About</a><a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
     </nav>
     <div class="foot__cta">
       <b>Let's chat.</b>
@@ -126,8 +148,8 @@
       </div>
     </div>
   </footer>
-  <script src="/assets/js/main.js?v=13"></script>
-  <script src="/assets/js/case-stamp.js?v=20"></script>
+  <script src="/assets/js/main.js?v=14"></script>
+  <script src="/assets/js/case-stamp.js?v=22"></script>
   <script>
     (function () {
       var chips = [].slice.call(document.querySelectorAll('.rl-chip'));

@@ -8,18 +8,18 @@
   <meta property="og:title" content="Personal Wiki · Chae Kim - Portfolio">
   <meta property="og:description" content="A command-line study wiki that runs fully offline: a local Gemma model turns sources into linked Obsidian notes and answers questions with citations.">
   <meta property="og:type" content="article">
-  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og-card.png">
+  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og-sky.png">
   <link rel="canonical" href="https://chaekim-portfolio.vercel.app/projects/personal-wiki">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <meta name="theme-color" content="#f3f0ff" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#1a1530" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#bfdcf7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1a2e" media="(prefers-color-scheme: dark)">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="/assets/css/v-stamp.css?v=19">
-  <link rel="stylesheet" href="/assets/css/case-stamp.css?v=20">
+  <link rel="stylesheet" href="/assets/css/v-stamp.css?v=29">
+  <link rel="stylesheet" href="/assets/css/case-stamp.css?v=23">
   <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
   <script type="application/ld+json">
   {
@@ -29,7 +29,7 @@
     "headline": "Asking my own notes questions, with no internet.",
     "description": "A command-line study wiki that runs fully offline: a local Gemma model turns sources into linked Obsidian notes and answers questions with citations.",
     "url": "https://chaekim-portfolio.vercel.app/projects/personal-wiki",
-    "image": "https://chaekim-portfolio.vercel.app/assets/img/og-card.png",
+    "image": "https://chaekim-portfolio.vercel.app/assets/img/og-sky.png",
     "creator": {
       "@type": "Person",
       "name": "Chae Kim",
@@ -49,6 +49,7 @@
     <nav class="topnav" aria-label="Primary">
       <a href="/#builds">Builds</a>
       <a href="/#work">Work</a>
+      <a href="/#writing">Writing</a>
       <a href="/#about">About</a>
       <a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
       <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
@@ -60,6 +61,7 @@
   <main id="main">
     <section class="case-hero wrap">
       <a class="case-hero__back" href="/#builds">← All builds</a>
+      <img class="case-hero__mark" src="/assets/img/brand/personal-wiki.svg" alt="" width="56" height="56">
       <p class="eyebrow">ai/ml coursework · mba 290t · 2026</p>
       <h1 class="case-hero__title">Asking my own notes questions, with no internet.</h1>
       <p class="tldr">A study wiki for my AI course that never touches the cloud. Local Gemma, through Ollama, turns sources into linked Obsidian notes. An ask command answers from those notes with citations, or says the evidence isn't there.</p>
@@ -73,28 +75,51 @@
     <section class="wrap case-body">
       <nav class="toc" aria-label="On this page">
         <a href="#problem">The problem</a>
+        <a href="#requirements">Product requirements</a>
         <a href="#did">What I did</a>
         <a href="#results">Results</a>
+        <a href="#milestones">Milestones and next steps</a>
+        <a href="#iterations">Iterations and decisions</a>
         <a href="#differently">What I'd do differently</a>
         <a href="#artifacts">Artifacts</a>
       </nav>
       <article class="prose">
         <h2 id="problem">The problem</h2>
         <p>Cloud assistants answer confidently from anywhere. For studying I wanted the opposite: answers only from my own sources, a citation for every claim, on a laptop with Wi-Fi off.</p>
+        <h2 id="requirements">Product requirements</h2>
+        <ul>
+          <li>Ingest my course sources into linked Obsidian notes and answer study questions from those sources with citations.</li>
+          <li>Run entirely on the laptop after setup, with no cloud calls or hosted embeddings, within the machine's available memory.</li>
+          <li>Keep ask, chat, and search behavior separate; unsupported questions should return insufficient evidence.</li>
+          <li>Preserve hand-edited notes and source links when ingesting the same material again.</li>
+        </ul>
         <h2 id="did">What I did</h2>
         <ul>
           <li>Picked the model to fit the machine. Gemma 4 E2B at 4-bit, because the larger versions didn't fit in the 5 to 6 GB free on an 18 GB Mac.</li>
           <li>Wrote the CLI and harness with only Python's standard library: ingest, search, ask, and chat modes.</li>
           <li>Built hybrid retrieval: my own BM25 plus local embeddings, merged with reciprocal rank fusion.</li>
           <li>Wrote the expected answers for four tests before running them, including one the wiki should refuse.</li>
-          <li>Checked every citation in code, with one automatic retry when a citation doesn't point to a retrieved passage.</li>
+          <li>Checked ask-mode citations against the retrieved passages in code and flagged invalid answers. Chat has a separate citation check with one retry.</li>
           <li>Recorded an offline demo with Wi-Fi off. All four tests matched the online results.</li>
         </ul>
         <h2 id="results">Results</h2>
         <div class="results"><div><b>3 of 4</b><span>tests passed, written in advance</span></div><div><b>4.4 s</b><span>per answer, warm</span></div><div><b>~1.7 GB</b><span>working memory</span></div><div><b>0</b><span>cloud calls</span></div></div>
         <p>The failure is documented. A question in my own shorthand ("A3") missed the right passage, and the model answered a nearby question with a real citation.</p>
+        <h2 id="milestones">Milestones and next steps</h2>
+        <ul>
+          <li><b>Built:</b> local ingestion, linked notes, hybrid search, cited answers, and a separate study-partner chat mode.</li>
+          <li><b>Evaluated:</b> four prewritten ask tests, mode-separation checks, memory and response-time measurements, and an offline demonstration. Three of four ask tests passed.</li>
+          <li><b>Proposed, not implemented:</b> expand aliases such as A3, reserve retrieval space across sources, and add an answer-relevance check. Re-run the original tests and retain the baseline for comparison.</li>
+        </ul>
+        <h2 id="iterations">Iterations and decisions</h2>
+        <ul>
+          <li><b>Keyword search to hybrid retrieval:</b> adding local embeddings moved the paraphrase test's relevant passages from ranks 5 and 4 to ranks 2 and 3.</li>
+          <li><b>Reliable ingestion:</b> save a plan for each source and detect hand edits, so repeated ingestion reuses note names and keeps edited notes.</li>
+          <li><b>Citations to relevance:</b> the A3 test exposed a real citation attached to the wrong answer. The next experiment must check whether the evidence answers the actual question, as well as whether the citation exists.</li>
+        </ul>
+        <p><a href="https://github.com/chaekim96/personal-wiki/blob/main/evidence/retrieval_changes.md" target="_blank" rel="noopener">Retrieval changes ↗</a> · <a href="https://github.com/chaekim96/personal-wiki/blob/main/evidence/ask_tests/results.md" target="_blank" rel="noopener">Test results ↗</a> · <a href="https://github.com/chaekim96/personal-wiki/blob/main/README.md#10-limitation-and-improvement" target="_blank" rel="noopener">Limitations and proposed improvements ↗</a></p>
         <h2 id="differently">What I'd do differently</h2>
-        <p>A citation check proves a citation exists, not that it answers the question. Next: an alias file so my shorthand expands (A3 means Assignment 3), a guaranteed slot for each source's best passage, and a second check that asks whether the answer fits the question.</p>
+        <p>Write more questions in my own shorthand before tuning retrieval. A citation check proves a citation exists, not that it answers the question; the failed A3 test made that distinction concrete.</p>
         <h2 id="artifacts">Artifacts</h2>
         <p><a href="https://github.com/chaekim96/personal-wiki" target="_blank" rel="noopener">Source and evidence on GitHub ↗</a></p>
         <div class="artifacts"><figure><img src="/assets/img/cases/wiki-note.jpg" alt="A generated note in Obsidian, with its sources linked back to the raw files." loading="lazy"><figcaption>A generated note in Obsidian, with its sources linked back to the raw files.</figcaption></figure><figure><img src="/assets/img/cases/wiki-index.jpg" alt="The wiki&#x27;s index: concepts and projects, each with a one-line summary." loading="lazy"><figcaption>The wiki's index: concepts and projects, each with a one-line summary.</figcaption></figure></div>
@@ -121,7 +146,7 @@
       </p>
     </div>
     <nav aria-label="Footer">
-      <a href="/#builds">Builds</a><a href="/#work">Work</a><a href="/#about">About</a><a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
+      <a href="/#builds">Builds</a><a href="/#work">Work</a><a href="/#writing">Writing</a><a href="/#about">About</a><a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
     </nav>
     <div class="foot__cta">
       <b>Let's chat.</b>
@@ -131,7 +156,7 @@
       </div>
     </div>
   </footer>
-  <script src="/assets/js/main.js?v=13"></script>
-  <script src="/assets/js/case-stamp.js?v=20"></script>
+  <script src="/assets/js/main.js?v=14"></script>
+  <script src="/assets/js/case-stamp.js?v=23"></script>
 </body>
 </html>

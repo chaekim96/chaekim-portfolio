@@ -14,16 +14,18 @@ Products and tools, most with a live demo.
 - [TypeRace](https://chaekim-portfolio.vercel.app/projects/typerace): A live browser typing race for classmates: share a four-letter code, type the same short story, first to finish wins.
 - [Networking Tracker](https://chaekim-portfolio.vercel.app/projects/networking-tracker): A private contact tracker where Postgres row-level security keeps each person's data their own.
 - [Anatomy of a Website](https://chaekim-portfolio.vercel.app/projects/web-anatomy): An illustrated, growing encyclopedia of how a website works, built on one idea: SEO and GEO start with the website.
-- [VoicePrompter](https://chaekim-portfolio.vercel.app/projects/voiceprompter): A macOS teleprompter that follows your voice as you read and stays hidden from Zoom, Meet, and screenshots.
+- [VoicePrompter](https://chaekim-portfolio.vercel.app/projects/voiceprompter): A macOS teleprompter that follows your voice as you read, with capture protection tested against specific macOS recording APIs.
 - [Parallel Prospect Brief](https://chaekim-portfolio.vercel.app/projects/parallel-prospect-brief): A command-line tool that turns a company name into a cited one-page sales brief, built on Parallel's Task API.
-- [Product Blueprint](https://chaekim-portfolio.vercel.app/projects/product-blueprint): My playbook for building products with AI tools: a six-stage loop with a pass/fail gate at each stage, a design system, a product template, and a database of 22 versioned prompts with evals.
+- [Product Blueprint](https://chaekim-portfolio.vercel.app/projects/product-blueprint): My personal prompt library and playbook for building products with AI tools: a six-stage loop with a pass/fail gate at each stage, a design system, a product template, and a database of 22 versioned prompts with evals.
 - [SmartModel](https://chaekim-portfolio.vercel.app/projects/smartmodel): A Claude Code hook that scores how hard each prompt is and recommends the cheapest model that can handle it.
 - [Token-Fuel](https://chaekim-portfolio.vercel.app/projects/token-fuel): A menu-bar fuel gauge for Claude Code and Codex sessions, built from the exact token counts each tool already writes to disk.
 - [Code Improver](https://chaekim-portfolio.vercel.app/projects/code-improver): A custom Claude Code subagent that reviews changed files for readability, performance, and best practices.
+- [task-progress](https://chaekim-portfolio.vercel.app/projects/task-progress): A Claude Code mod that turns Claude's own task checklist into a calm progress band above the prompt, plus a checklist pane.
 - [Spotify Review Triage](https://chaekim-portfolio.vercel.app/projects/spotify-review-triage): A multi-agent LLM pipeline that labels Spotify app reviews, checks its own work, and recommends where next quarter's product effort should go.
 - [Personal Wiki](https://chaekim-portfolio.vercel.app/projects/personal-wiki): A command-line study wiki that runs fully offline: a local Gemma model turns sources into linked Obsidian notes and answers questions with citations.
 - [Pac-Man DQN](https://chaekim-portfolio.vercel.app/projects/pacman-dqn): A Deep Q-Network trained on Atari Ms. Pac-Man, with every number reported straight from the run's own output files.
 - [Custom LLM](https://chaekim-portfolio.vercel.app/projects/custom-llm): A tiny nanoGPT model trained from scratch on a laptop CPU, with my own teaching corpus and 48 fixed language tests.
+- [Siri, Reimagined: The Last App You'll Install](https://chaekim-portfolio.vercel.app/projects/siri-reimagined): A design concept: an iPhone that ships with five apps, and a Siri that builds the rest. A thought piece on the future of the App Store and app development, with iPhone mockups and wireframes.
 - [Home (during COVID)](https://chaekim-portfolio.vercel.app/projects/home-gif): A pixel-art animated GIF depicting home during COVID, built around a Swiss Army knife as a metaphor for a perpetually growing house.
 - [Yin Yang in Motion](https://chaekim-portfolio.vercel.app/projects/yin-yang): An animated GIF that turns the yin-yang into rotating clockwork: the garden of Eden on one panel, the underworld on the other.
 
@@ -43,6 +45,12 @@ Startups, consulting and operations, then earlier projects at Indiana University
 - [LUC: Luggage Under Control](https://chaekim-portfolio.vercel.app/projects/luc): A self-weighing luggage concept using force sensors in each wheel, inspired by tire-pressure monitoring systems and Wi-Fi mesh networks.
 - [PTM: Perpetual Thermal Monitor](https://chaekim-portfolio.vercel.app/projects/ptm): A non-invasive sleep mask with embedded thermal and push sensors that tracks temperature patterns overnight and syncs to a health app.
 
+## Writing
+
+Essays by Chae, plus the reading list at /reading.
+
+- [What’s the Point of Preinstalled Apps?](https://chaekim-portfolio.vercel.app/projects/preinstalled-apps): What if a new iPhone greeted you with Siri instead of pages of apps? On Siri becoming the operating system, and what that means for apps, Apple, and the App Store.
+
 ## How this site is made
 
 The decisions and options behind the portfolio itself.
@@ -50,10 +58,11 @@ The decisions and options behind the portfolio itself.
 - [How I decide](https://chaekim-portfolio.vercel.app/projects/decisions): How I make decisions: the options I laid out for each call on this site and my projects, which one I picked, and why.
 - [This portfolio](https://chaekim-portfolio.vercel.app/projects/portfolio): How I built this portfolio like a product: where it started, the decisions that shaped it, what's on the backlog, and what I'm considering next.
 - [Personal brand](https://chaekim-portfolio.vercel.app/projects/personal-brand): How I picked a personal brand: five directions, two built finalists, and the decisions along the way.
+- [Build marks](https://chaekim-portfolio.vercel.app/projects/build-marks): How sixteen builds got one family of logos: four directions, three hybrids, six palettes, and the decisions along the way.
 
 ## More
 
-- [Home](https://chaekim-portfolio.vercel.app/): the Builds, Work and About tabs
+- [Home](https://chaekim-portfolio.vercel.app/): the Builds, Work, Writing and About tabs
 - [Reading list](https://chaekim-portfolio.vercel.app/reading)
 - [Resume (PDF)](https://chaekim-portfolio.vercel.app/assets/pdf/chae-kim-resume.pdf)
 - [Arcade](https://chaekim-portfolio.vercel.app/arcade): Snake, Galaga and a generative lo-fi radio

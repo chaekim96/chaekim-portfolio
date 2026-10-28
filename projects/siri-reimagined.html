@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Siri, Reimagined: The Last App You'll Install · Chae Kim - Portfolio</title>
+  <meta name="description" content="A design concept: an iPhone that ships with five apps, and a Siri that builds the rest. A thought piece on the future of the App Store and app development, with iPhone mockups and wireframes.">
+  <meta property="og:title" content="Siri, Reimagined: The Last App You'll Install · Chae Kim - Portfolio">
+  <meta property="og:description" content="A design concept: an iPhone that ships with five apps, and a Siri that builds the rest. A thought piece on the future of the App Store and app development, with iPhone mockups and wireframes.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/projects/siri-reimagined/og.jpg">
+  <link rel="canonical" href="https://chaekim-portfolio.vercel.app/projects/siri-reimagined">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
+  <meta name="theme-color" content="#F5F5F7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: an Apple-style product page. Full-width bands alternate light and black
+   ("theater"); content centers in a 1200px wrap; iPhones carry Liquid Glass screens. */
+:root {
+  --bg: #F5F5F7;
+  --card: #FFFFFF;
+  --ink: #1D1D1F;
+  --muted: #6E6E73;
+  --hair: #D2D2D7;
+  --link: #0066CC;
+  --cta: #0071E3;
+  --cta-ink: #FFFFFF;
+  --nav: rgba(245, 245, 247, .72);
+  --theater: #000000;
+  --theater-card: #1C1C1E;
+  --theater-ink: #F5F5F7;
+  --theater-muted: #86868B;
+  --theater-hair: #333336;
+  --g1: #FF8A3D; --g2: #FF4FA3; --g3: #A15CFF; --g4: #3F8CFF;
+  --sf: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Helvetica Neue", Arial, sans-serif;
+  --sft: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #000000; --card: #1C1C1E; --ink: #F5F5F7; --muted: #86868B; --hair: #38383A;
+    --link: #2997FF; --nav: rgba(22, 22, 23, .72);
+    --theater: #161617; --theater-card: #2C2C2E; --theater-hair: #3A3A3C;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #000000; --card: #1C1C1E; --ink: #F5F5F7; --muted: #86868B; --hair: #38383A;
+  --link: #2997FF; --nav: rgba(22, 22, 23, .72);
+  --theater: #161617; --theater-card: #2C2C2E; --theater-hair: #3A3A3C;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+img { max-width: 100%; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.47 var(--sft); letter-spacing: -.022em; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { font-family: var(--sf); text-wrap: balance; }
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--cta); outline-offset: 3px; border-radius: 6px; }
+
+.band { background: var(--bg); color: var(--ink); }
+.band.theater { background: var(--theater); color: var(--theater-ink); }
+.wrap {
+  max-width: 1200px; margin-inline: auto; padding-block: clamp(4.5rem, 10vw, 8rem);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex; flex-direction: column; gap: clamp(2.5rem, 5vw, 4rem);
+}
+.head { display: flex; flex-direction: column; gap: 1rem; text-align: center; align-items: center; max-width: 880px; margin-inline: auto; }
+.eyebrow { font: 600 clamp(1.05rem, 2vw, 1.3rem)/1.2 var(--sf); }
+.headline { font-size: clamp(2.5rem, 6.4vw, 4.8rem); font-weight: 700; line-height: 1.04; letter-spacing: -.035em; }
+.sub { font: 500 clamp(1.15rem, 2.2vw, 1.6rem)/1.3 var(--sf); color: var(--muted); letter-spacing: -.02em; max-width: 34ch; }
+.theater .sub, .theater .muted { color: var(--theater-muted); }
+.lede { font: 600 clamp(1.25rem, 2.6vw, 1.75rem)/1.3 var(--sf); color: var(--muted); letter-spacing: -.02em; max-width: 780px; margin-inline: auto; text-align: left; }
+.lede strong { color: var(--ink); font-weight: 600; }
+.theater .lede { color: var(--theater-muted); }
+.theater .lede strong { color: var(--theater-ink); }
+.grad { background: linear-gradient(90deg, var(--g1), var(--g2) 35%, var(--g3) 65%, var(--g4)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.links { display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: center; font-size: 1.15rem; }
+.theater a { color: #2997FF; }
+
+/* ---------- Local nav (glass) ---------- */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.localnav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9; background: var(--nav); -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid var(--hair); }
+.localnav .in { max-width: 1200px; margin-inline: auto; height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.localnav .title { font: 600 1.3rem var(--sf); color: var(--ink); white-space: nowrap; letter-spacing: -.02em; display: flex; align-items: baseline; gap: .45rem; }
+.localnav .title .home { color: var(--muted); font-weight: 500; font-size: .8em; }
+.localnav .title .slash { color: var(--hair); font-weight: 400; }
+@media (max-width: 480px) { .localnav .title .home, .localnav .title .slash { display: none; } }
+.localnav nav { display: flex; align-items: center; gap: 1.4rem; font-size: .78rem; }
+.localnav nav a { color: var(--ink); opacity: .8; }
+.pill { display: inline-flex; align-items: center; background: var(--cta); color: var(--cta-ink) !important; border-radius: 980px; padding: 5px 13px; font-size: .78rem; opacity: 1 !important; white-space: nowrap; }
+.pill:hover { text-decoration: none; filter: brightness(1.08); }
+.pill.lg { font-size: 1.05rem; padding: 11px 22px; }
+
+/* ---------- Hero ---------- */
+.hero .wrap { padding-block: clamp(3.5rem, 8vw, 6rem) 0; gap: 2rem; overflow: hidden; }
+.hero h1 { font-size: clamp(3rem, 9vw, 6.6rem); font-weight: 700; line-height: 1; letter-spacing: -.045em; }
+.hero-phones { position: relative; display: flex; justify-content: center; align-items: flex-end; gap: clamp(1rem, 3vw, 2.5rem); padding-top: 2rem; margin-bottom: -60px; }
+.hero-phones::before { content: ""; position: absolute; inset: 15% 10% 0; background: radial-gradient(closest-side, rgba(255, 79, 163, .45), rgba(161, 92, 255, .25) 55%, transparent); filter: blur(40px); z-index: 0; }
+.hero-phones > * { position: relative; z-index: 1; }
+.hero-phones .side { transform: translateY(40px); }
+
+/* ---------- Bento ---------- */
+.bento { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 20px; }
+.tile { background: var(--card); border-radius: 28px; padding: clamp(1.5rem, 3vw, 2.4rem); display: flex; flex-direction: column; gap: .6rem; min-width: 0; }
+.theater .tile { background: var(--theater-card); }
+.tile.w4 { grid-column: span 4; } .tile.w3 { grid-column: span 3; } .tile.w2 { grid-column: span 2; }
+.tile .big { font: 700 clamp(3.5rem, 8vw, 6rem)/1 var(--sf); letter-spacing: -.05em; }
+.tile .t { font: 600 clamp(1.4rem, 2.6vw, 2rem)/1.15 var(--sf); letter-spacing: -.03em; }
+.tile p { color: var(--muted); font: 500 1.1rem/1.4 var(--sf); }
+.theater .tile p { color: var(--theater-muted); }
+
+/* ---------- Story column ---------- */
+.story { max-width: 700px; margin-inline: auto; display: flex; flex-direction: column; gap: 1.3rem; font-size: 1.2rem; line-height: 1.6; }
+.story .first { font: 600 clamp(1.6rem, 3vw, 2.2rem)/1.2 var(--sf); letter-spacing: -.03em; }
+.story .quote { font: 700 clamp(2rem, 5vw, 3.4rem)/1.05 var(--sf); letter-spacing: -.04em; text-align: center; padding-top: 1.5rem; }
+
+/* ---------- Usage grid ---------- */
+.usage { display: grid; grid-template-columns: repeat(16, 1fr); gap: 8px; width: 100%; max-width: 760px; margin-inline: auto; }
+.usage span { aspect-ratio: 1; border-radius: 26%; background: rgba(255, 255, 255, .08); }
+.usage span.month { background: transparent; box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .55); }
+.usage span.day { background: linear-gradient(135deg, var(--g1), var(--g2), var(--g3)); box-shadow: 0 0 18px rgba(255, 79, 163, .45); }
+.legend { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem 1.75rem; font-size: .9rem; color: var(--theater-muted); }
+.legend i { display: inline-block; width: 12px; height: 12px; border-radius: 4px; margin-right: 8px; vertical-align: -1px; }
+
+/* ---------- Day one ---------- */
+.dayone { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 2rem 3rem; align-items: center; }
+.callouts { display: flex; flex-direction: column; gap: 2rem; min-width: 0; }
+.callout { border-top: 1px solid var(--hair); padding-top: 1rem; display: flex; flex-direction: column; gap: .3rem; }
+.callout b { font: 600 1.2rem var(--sf); letter-spacing: -.02em; }
+.callout span { color: var(--muted); font-size: 1rem; line-height: 1.45; }
+
+/* ---------- Phone rows ---------- */
+.phones { display: grid; gap: 3rem 1.5rem; justify-items: center; align-items: start; }
+.phones.c4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.phones.c3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.phones.c2 { grid-template-columns: repeat(2, minmax(0, auto)); justify-content: center; gap: 3rem clamp(2rem, 6vw, 6rem); }
+.cap { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; text-align: center; min-width: 0; }
+.cap .k { font: 600 1.15rem var(--sf); letter-spacing: -.02em; }
+.cap .d { font-size: .98rem; line-height: 1.45; color: var(--muted); max-width: 26ch; }
+.theater .cap .d { color: var(--theater-muted); }
+.gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.gallery .tile { align-items: center; text-align: center; padding: 1.6rem 1rem 2rem; gap: 1.2rem; }
+.gallery .who { font: 600 1.05rem var(--sf); }
+
+/* ---------- Store ---------- */
+.split { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(2rem, 6vw, 5rem); align-items: center; }
+.split .copy { display: flex; flex-direction: column; gap: 1.25rem; min-width: 0; }
+.split h3 { font: 700 clamp(1.8rem, 3.5vw, 2.6rem)/1.1 var(--sf); letter-spacing: -.035em; }
+.split .copy > p { font-size: 1.15rem; line-height: 1.5; color: var(--theater-muted); }
+.models { display: grid; gap: 12px; }
+.model { background: var(--theater-card); border-radius: 20px; padding: 1.1rem 1.3rem; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: .25rem 1.25rem; }
+.model b { font: 600 1.05rem var(--sf); }
+.model span { font-size: .95rem; line-height: 1.45; color: var(--theater-muted); }
+.model em { grid-column: 2; font-style: normal; font-size: .85rem; color: var(--theater-muted); opacity: .8; }
+
+/* ---------- Developers ---------- */
+.flow { display: grid; grid-template-columns: minmax(0, 1.2fr) auto minmax(0, 1fr) auto minmax(0, 1fr); gap: 1rem; align-items: center; }
+.stack { display: flex; flex-direction: column; gap: 1rem; min-width: 0; }
+.node { background: var(--card); border-radius: 24px; padding: 1.4rem 1.5rem; display: flex; flex-direction: column; gap: .45rem; min-width: 0; }
+.node .k { font: 600 .82rem var(--sft); color: var(--muted); letter-spacing: 0; }
+.node .v { font: 600 1.3rem/1.2 var(--sf); letter-spacing: -.025em; }
+.node .d { font-size: .95rem; color: var(--muted); line-height: 1.45; }
+.node.siri { position: relative; background: var(--card); }
+.node.siri::before { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 2px; background: linear-gradient(135deg, var(--g1), var(--g2), var(--g3), var(--g4)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: .3rem; }
+.tags span { font-size: .78rem; background: var(--bg); border-radius: 980px; padding: 4px 10px; color: var(--muted); }
+.arrow { color: var(--muted); font: 300 2rem var(--sf); text-align: center; }
+.brands { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.brands .tile { padding: 1.25rem; gap: 1rem; }
+.brands .who { font-size: .92rem; color: var(--muted); padding-inline: .25rem; }
+.wall { border-radius: 20px; padding: 1.5rem; min-height: 190px; display: grid; place-items: center;
+  background: radial-gradient(circle at 15% 10%, #FF9A6B, transparent 55%), radial-gradient(circle at 90% 70%, #6F7BFF, transparent 55%), radial-gradient(circle at 10% 100%, #FF5FA0, transparent 50%), #23243D; }
+.wall.b { background: radial-gradient(circle at 85% 10%, #5FD3E8, transparent 55%), radial-gradient(circle at 10% 70%, #3F8CFF, transparent 55%), radial-gradient(circle at 80% 100%, #A15CFF, transparent 50%), #141C3A; }
+.wall.c { background: radial-gradient(circle at 20% 20%, #FFC46B, transparent 55%), radial-gradient(circle at 90% 80%, #FF5F7E, transparent 55%), #3A1E2E; }
+.widget { width: 100%; max-width: 250px; border-radius: 22px; padding: 14px 16px; color: #FFFFFF; display: flex; flex-direction: column; gap: 6px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, .42), rgba(255, 255, 255, .1)); border: 1px solid rgba(255, 255, 255, .45);
+  -webkit-backdrop-filter: blur(18px) saturate(170%); backdrop-filter: blur(18px) saturate(170%);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, .7), 0 10px 26px rgba(0, 0, 0, .25); }
+.widget .br { display: flex; align-items: center; gap: 7px; font: 600 12px var(--sft); opacity: .95; }
+.widget .br i { width: 16px; height: 16px; border-radius: 5px; background: linear-gradient(160deg, #6FDCA8, #1E7655); }
+.widget b { font: 600 17px/1.2 var(--sf); letter-spacing: -.02em; }
+.widget .go { align-self: flex-start; background: #FFFFFF; color: #1E7655; border-radius: 980px; padding: 5px 13px; font: 600 12px var(--sft); }
+.stamps { display: flex; gap: 5px; }
+.stamps i { width: 15px; height: 15px; border-radius: 50%; border: 1.5px solid rgba(255, 255, 255, .8); }
+.stamps i.f { background: #FFFFFF; }
+
+/* ---------- Privacy ---------- */
+.trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.trio .tile { gap: .9rem; }
+.trio svg { width: 44px; height: 44px; stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.trio .k { font-size: .9rem; color: var(--theater-muted); }
+
+/* ---------- FAQ ---------- */
+.faq { max-width: 880px; width: 100%; margin-inline: auto; border-top: 1px solid var(--hair); }
+.faq details { border-bottom: 1px solid var(--hair); }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.5rem 0; font: 600 clamp(1.15rem, 2.2vw, 1.5rem)/1.25 var(--sf); letter-spacing: -.02em; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font: 300 2rem/1 var(--sf); color: var(--muted); transition: transform .25s; flex: none; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { padding: 0 3rem 1.6rem 0; color: var(--muted); font-size: 1.1rem; line-height: 1.55; }
+
+/* ---------- Footer ---------- */
+footer { background: var(--bg); color: var(--muted); font-size: .75rem; line-height: 1.5; }
+footer .in { max-width: 1200px; margin-inline: auto; padding-block: 2rem 3rem; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: flex; flex-direction: column; gap: .8rem; }
+footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1rem; }
+
+/* =====================================================================
+   iPhone. Device colors are literal: the hardware and its screen look the
+   same whichever theme the page is in.
+   ===================================================================== */
+.iphone {
+  --w: 260px;
+  width: var(--w); max-width: 100%; aspect-ratio: 71.5 / 149.6; flex: none; position: relative;
+  border-radius: calc(var(--w) * .17); padding: calc(var(--w) * .014);
+  background: linear-gradient(135deg, #B9B4AC, #6E6A64 18%, #D6D1C9 40%, #77736C 62%, #C4BFB7 82%, #8A857E);
+  box-shadow: 0 1px 1px rgba(255, 255, 255, .3) inset, 0 30px 60px -20px rgba(0, 0, 0, .45), 0 18px 36px -18px rgba(0, 0, 0, .35);
+}
+.iphone::before { content: ""; position: absolute; left: -2px; top: 19%; width: 3px; height: 4.5%; border-radius: 2px 0 0 2px; background: #8A857E; box-shadow: 0 calc(var(--w) * .13) 0 0 #8A857E, 0 calc(var(--w) * .24) 0 0 #8A857E; }
+.iphone::after { content: ""; position: absolute; right: -2px; top: 27%; width: 3px; height: 10%; border-radius: 0 2px 2px 0; background: #8A857E; }
+.scr {
+  position: relative; height: 100%; overflow: hidden; border-radius: calc(var(--w) * .152);
+  border: calc(var(--w) * .026) solid #050505; background: #000000;
+  display: flex; flex-direction: column; gap: 8px; padding: 40px 12px 16px;
+  font-family: var(--sft); letter-spacing: -.01em; color: #FFFFFF; text-align: left;
+}
+.island { position: absolute; top: 9px; left: 50%; transform: translateX(-50%); width: 31%; height: 23px; border-radius: 14px; background: #000000; z-index: 5; }
+.sb { position: absolute; top: 12px; left: 20px; right: 18px; display: flex; justify-content: space-between; align-items: center; font: 600 11.5px var(--sft); color: #FFFFFF; z-index: 4; }
+.sb.dk { color: #000000; }
+.sbr { display: flex; gap: 4px; align-items: center; }
+.sig { display: flex; gap: 1.5px; align-items: flex-end; height: 8px; }
+.sig i { width: 2.5px; background: currentColor; border-radius: 1px; }
+.sig i:nth-child(1) { height: 3px; } .sig i:nth-child(2) { height: 4.5px; } .sig i:nth-child(3) { height: 6px; } .sig i:nth-child(4) { height: 8px; }
+.batt { width: 19px; height: 9px; border-radius: 3px; border: 1px solid currentColor; padding: 1px; opacity: .9; }
+.batt::before { content: ""; display: block; height: 100%; width: 78%; background: currentColor; border-radius: 1.5px; }
+
+/* Wallpapers */
+.wp-a { background: radial-gradient(circle at 15% 8%, #FF9A6B, transparent 52%), radial-gradient(circle at 95% 50%, #6F7BFF, transparent 55%), radial-gradient(circle at 15% 98%, #FF5FA0, transparent 52%), #20213A; }
+.wp-b { background: radial-gradient(circle at 85% 8%, #5FD3E8, transparent 52%), radial-gradient(circle at 5% 55%, #3F8CFF, transparent 55%), radial-gradient(circle at 85% 98%, #A15CFF, transparent 52%), #121A36; }
+.wp-c { background: radial-gradient(circle at 20% 12%, #FFC46B, transparent 52%), radial-gradient(circle at 90% 70%, #FF5F7E, transparent 55%), radial-gradient(circle at 10% 100%, #B65CFF, transparent 50%), #2E1A2B; }
+.dim::before { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, .35); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+.dim > *:not(.island):not(.sb) { position: relative; }
+.siri-on::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 6;
+  box-shadow: inset 7px 0 16px -6px #FF8A3D, inset -7px 0 16px -6px #3F8CFF, inset 0 7px 16px -6px #A15CFF, inset 0 -7px 16px -6px #FF4FA3, inset 0 0 0 1.5px rgba(255, 140, 200, .55); }
+
+/* Home screen */
+.hgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px 4px; padding: 8px 2px 0; }
+.ap { display: flex; flex-direction: column; align-items: center; gap: 5px; min-width: 0; }
+.ap span { font: 500 9px/1.15 var(--sft); color: #FFFFFF; text-align: center; text-shadow: 0 1px 3px rgba(0, 0, 0, .35); width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ico { position: relative; display: grid; place-items: center; width: 76%; aspect-ratio: 1; border-radius: 24%; color: #FFFFFF; font: 700 14px var(--sf); letter-spacing: -.03em; box-shadow: 0 4px 10px rgba(0, 0, 0, .25); overflow: hidden; }
+.ico::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(160deg, rgba(255, 255, 255, .55), rgba(255, 255, 255, 0) 48%); box-shadow: inset 0 0 0 .5px rgba(255, 255, 255, .55), inset 0 1px 1px rgba(255, 255, 255, .7); }
+.ico svg { width: 56%; height: 56%; fill: #FFFFFF; position: relative; z-index: 1; }
+.i-siri { background: radial-gradient(circle at 35% 30%, #FFFFFF, rgba(255, 255, 255, .1) 34%, transparent 60%), conic-gradient(from 30deg, #FF8A3D, #FF4FA3, #A15CFF, #3F8CFF, #5FD3E8, #FF8A3D); }
+.i-msg { background: linear-gradient(180deg, #6CF08A, #1FBF41); }
+.i-cam { background: linear-gradient(180deg, #E4E4E8, #8E8E93); }
+.i-cam svg { fill: #2C2C2E; }
+.i-music { background: linear-gradient(180deg, #FF6B81, #FA2D48); }
+.i-set { background: linear-gradient(180deg, #C2C2C7, #6E6E73); }
+.i-blue { background: linear-gradient(180deg, #5AC8FA, #007AFF); }
+.i-orange { background: linear-gradient(180deg, #FFB340, #FF7A00); }
+.i-teal { background: linear-gradient(180deg, #64E1D3, #11A398); }
+.i-purple { background: linear-gradient(180deg, #C38BFF, #7B3FF2); }
+.i-indigo { background: linear-gradient(180deg, #8E9BFF, #4752E8); }
+.i-pink { background: linear-gradient(180deg, #FF8FC7, #E8457E); }
+.i-jun { background: linear-gradient(180deg, #6FDCA8, #1E7655); }
+.ap.new .ico { box-shadow: 0 0 0 2px rgba(255, 255, 255, .9), 0 0 22px 4px rgba(255, 120, 200, .7); }
+.ap.fade { opacity: .38; }
+.glass { background: linear-gradient(160deg, rgba(255, 255, 255, .42), rgba(255, 255, 255, .1)); border: 1px solid rgba(255, 255, 255, .45);
+  -webkit-backdrop-filter: blur(16px) saturate(170%); backdrop-filter: blur(16px) saturate(170%);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, .65), 0 6px 16px rgba(0, 0, 0, .2); color: #FFFFFF; }
+.gpill { margin-top: auto; align-self: center; border-radius: 980px; padding: 9px 15px; font: 500 11px var(--sft); }
+.toast { border-radius: 18px; padding: 9px 12px; font: 600 11px var(--sft); display: flex; gap: 8px; align-items: center; }
+.toast i { width: 22px; height: 22px; border-radius: 6px; flex: none; }
+.fill { flex: 1; }
+.gbub { border-radius: 18px; padding: 9px 12px; font: 400 12px/1.4 var(--sft); max-width: 90%; align-self: flex-start; }
+.gbub.me { align-self: flex-end; background: #0A84FF; border-color: rgba(255, 255, 255, .25); }
+.gchips { display: flex; flex-wrap: wrap; gap: 6px; }
+.gchips span { border-radius: 980px; padding: 6px 11px; font: 500 10.5px var(--sft); }
+.gchips span.on { background: #FFFFFF; color: #1D1D1F; }
+.orb { width: 46px; height: 46px; border-radius: 50%; align-self: center; margin-top: 8px; flex: none;
+  background: radial-gradient(circle at 35% 30%, #FFFFFF, rgba(255, 255, 255, .15) 32%, transparent 60%), conic-gradient(from 30deg, #FF8A3D, #FF4FA3, #A15CFF, #3F8CFF, #5FD3E8, #FF8A3D);
+  box-shadow: 0 0 26px rgba(255, 79, 163, .6); animation: spin 6s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.gfield { border-radius: 980px; padding: 10px 14px; font: 400 11.5px var(--sft); color: rgba(255, 255, 255, .75); }
+
+/* App screen (light iOS app with floating glass tab bar) */
+.app { background: #F2F2F7; color: #1D1D1F; padding-bottom: 66px; }
+.lt { font: 700 22px/1.1 var(--sf); letter-spacing: -.03em; padding: 4px 4px 0; }
+.st { font: 500 11px var(--sft); color: #8A8A8E; padding: 0 4px 4px; }
+.cd { background: #FFFFFF; border-radius: 14px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; }
+.cd .t { font: 500 10px var(--sft); color: #8A8A8E; }
+.cd b { font: 600 13.5px/1.25 var(--sf); letter-spacing: -.015em; }
+.cd .n { font: 400 10.5px/1.35 var(--sft); color: #6E6E73; }
+.cd .n.ok { color: #248A3D; font-weight: 600; }
+.cd.hot { background: #E5F0FF; }
+.cd.hot b, .cd.hot .t { color: #0062D1; }
+.cd.dash { background: transparent; border: 1.5px dashed #C7C7CC; }
+.cd.faded { opacity: .45; }
+.cbars { display: flex; align-items: flex-end; gap: 4px; height: 40px; margin-top: 4px; }
+.cbars i { flex: 1; border-radius: 4px 4px 2px 2px; background: #D1D1D6; }
+.cbars i.hi { background: #007AFF; }
+.prog { height: 7px; border-radius: 4px; background: #E5E5EA; overflow: hidden; margin-top: 3px; }
+.prog i { display: block; height: 100%; border-radius: 4px; background: #007AFF; }
+.abtn { border-radius: 980px; padding: 9px; text-align: center; font: 600 12px var(--sft); background: #007AFF; color: #FFFFFF; }
+.abtn.alt { background: #E5E5EA; color: #007AFF; }
+.achips { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 2px; }
+.achips span { background: #F2F2F7; border-radius: 980px; padding: 4px 9px; font: 500 10px var(--sft); color: #3A3A3C; }
+.search { border-radius: 980px; padding: 8px 12px; font: 400 11.5px var(--sft); color: #3A3A3C; background: rgba(118, 118, 128, .12); }
+.tabbar { position: absolute; left: 12px; right: 62px; bottom: 12px; height: 46px; border-radius: 26px; display: flex; justify-content: space-around; align-items: center; padding: 0 6px;
+  background: rgba(255, 255, 255, .62); border: .5px solid rgba(255, 255, 255, .9);
+  -webkit-backdrop-filter: blur(16px) saturate(180%); backdrop-filter: blur(16px) saturate(180%);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .12), inset 0 1px 0 rgba(255, 255, 255, .95); }
+.tabbar span { display: flex; flex-direction: column; align-items: center; gap: 2px; font: 500 8.5px var(--sft); color: #3A3A3C; padding: 4px 9px; border-radius: 18px; }
+.tabbar span::before { content: ""; width: 14px; height: 14px; border-radius: 4px; background: currentColor; opacity: .85; }
+.tabbar span.on { color: #007AFF; background: rgba(0, 122, 255, .1); }
+.tabsiri { position: absolute; right: 12px; bottom: 12px; width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center;
+  background: rgba(255, 255, 255, .62); border: .5px solid rgba(255, 255, 255, .9); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .12), inset 0 1px 0 rgba(255, 255, 255, .95); }
+.tabsiri::before { content: ""; width: 22px; height: 22px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #FFFFFF, transparent 45%), conic-gradient(#FF8A3D, #FF4FA3, #A15CFF, #3F8CFF, #FF8A3D); }
+.shimmer { background: linear-gradient(90deg, #1D1D1F 30%, #FF4FA3 45%, #A15CFF 55%, #1D1D1F 70%); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: sh 2.4s linear infinite; }
+@keyframes sh { from { background-position: 100% 0; } to { background-position: -100% 0; } }
+.skl { height: 9px; border-radius: 5px; background: linear-gradient(90deg, #E5E5EA, #F7F0FF, #E5E5EA); background-size: 200% 100%; animation: sk 1.6s linear infinite; }
+.skl.s { width: 60%; }
+@keyframes sk { from { background-position: 200% 0; } to { background-position: 0 0; } }
+@media (prefers-reduced-motion: reduce) { .orb, .shimmer, .skl { animation: none; } }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1080px) {
+  .phones.c4, .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .flow { grid-template-columns: 1fr; }
+  .arrow { transform: rotate(90deg); }
+}
+@media (max-width: 860px) {
+  .localnav nav a:not(.pill) { display: none; }
+  .dayone { grid-template-columns: 1fr; justify-items: center; }
+  .dayone .callouts { width: 100%; max-width: 520px; }
+  .phones.c3, .brands, .trio { grid-template-columns: 1fr; }
+  .split { grid-template-columns: 1fr; justify-items: center; }
+  .bento { grid-template-columns: 1fr; }
+  .tile.w4, .tile.w3, .tile.w2 { grid-column: auto; }
+  .hero-phones .side { display: none; }
+}
+@media (max-width: 600px) {
+  .phones.c4, .gallery, .phones.c2 { grid-template-columns: 1fr; }
+  .usage { grid-template-columns: repeat(10, 1fr); gap: 6px; }
+  .model { grid-template-columns: 1fr; }
+  .model em { grid-column: 1; }
+  .faq details p { padding-right: 0; }
+}
+
+/* ---------- Two-part structure ---------- */
+.parts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.partcard { background: var(--card); border-radius: 28px; padding: clamp(1.75rem, 3.5vw, 2.75rem); display: flex; flex-direction: column; gap: .75rem; color: var(--ink); min-width: 0; }
+.partcard:hover { text-decoration: none; }
+.partcard:hover .go { text-decoration: underline; }
+.partcard .num { font: 600 1rem var(--sf); color: var(--muted); }
+.partcard .t { font: 700 clamp(1.8rem, 3.4vw, 2.6rem)/1.08 var(--sf); letter-spacing: -.035em; }
+.partcard p { color: var(--muted); font: 500 1.08rem/1.45 var(--sf); }
+.partcard .go { color: var(--link); font-size: 1.05rem; margin-top: auto; padding-top: .5rem; }
+.partmark { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1rem; }
+.partmark .tag { font: 600 .9rem var(--sft); color: var(--muted); border: 1px solid var(--hair); border-radius: 980px; padding: 6px 14px; }
+.theater .partmark .tag { color: var(--theater-muted); border-color: var(--theater-hair); }
+
+/* ---------- Essay ---------- */
+.essay { max-width: 700px; width: 100%; margin-inline: auto; display: flex; flex-direction: column; gap: 1.3rem; font-size: 1.2rem; line-height: 1.62; }
+.essay h2 { font: 700 clamp(2.2rem, 5vw, 3.6rem)/1.05 var(--sf); letter-spacing: -.04em; margin-bottom: .5rem; }
+.essay h3 { font: 700 clamp(1.5rem, 2.8vw, 2rem)/1.15 var(--sf); letter-spacing: -.03em; margin-top: 2.25rem; }
+.essay .first { font: 600 clamp(1.5rem, 2.8vw, 2rem)/1.25 var(--sf); letter-spacing: -.03em; }
+.essay .quote { font: 700 clamp(2rem, 5vw, 3.2rem)/1.05 var(--sf); letter-spacing: -.04em; text-align: center; padding-block: 1.5rem; }
+.essay .note { font-size: 1rem; line-height: 1.55; color: var(--muted); border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); padding-block: 1rem; }
+.essay ul { margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: .6rem; }
+.essay li::marker { color: var(--muted); }
+.fig { background: var(--theater); color: var(--theater-ink); border-radius: 28px; padding: clamp(1.5rem, 4vw, 2.5rem); display: flex; flex-direction: column; gap: 1.25rem; margin-block: 1rem; }
+.fig .cap2 { font-size: .85rem; color: var(--theater-muted); text-align: center; }
+.essay .faq { margin-top: .5rem; }
+
+/* ---------- Wireframes (lo-fi, theme-aware) ---------- */
+.wfs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2.5rem 1.5rem; }
+.wfs.c3 { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 900px; margin-inline: auto; width: 100%; }
+.wfstep { display: flex; flex-direction: column; align-items: center; gap: 1rem; text-align: center; min-width: 0; }
+.wfstep .k { font: 600 1.05rem var(--sf); letter-spacing: -.02em; }
+.wfstep .k b { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--cta); color: var(--cta-ink); font: 600 .78rem var(--sft); margin-right: 8px; vertical-align: 2px; }
+.wfstep .d { font-size: .95rem; line-height: 1.45; color: var(--muted); max-width: 26ch; }
+.wf { width: 200px; max-width: 100%; aspect-ratio: 9 / 19.5; border: 2px solid var(--ink); border-radius: 32px; background: var(--card); padding: 30px 11px 12px; position: relative; display: flex; flex-direction: column; gap: 7px; font: 500 9.5px/1.35 var(--sft); color: var(--muted); text-align: left; }
+.wf::before { content: ""; position: absolute; top: 9px; left: 50%; transform: translateX(-50%); width: 30%; height: 12px; border-radius: 8px; background: var(--ink); }
+.wf .wt { font: 700 13px var(--sf); color: var(--ink); letter-spacing: -.02em; }
+.wf .bx { border: 1.5px solid var(--hair); background: var(--bg); border-radius: 10px; padding: 7px 8px; display: flex; flex-direction: column; gap: 5px; }
+.wf .bx b { color: var(--ink); font-weight: 600; }
+.wf .bx.hl { border: 1.5px dashed var(--cta); background: transparent; color: var(--cta); }
+.wf .bx.hl b { color: var(--cta); }
+.wf .ln { display: block; height: 5px; border-radius: 3px; background: var(--hair); }
+.wf .ln.s { width: 55%; }
+.wf .row2 { display: flex; gap: 6px; }
+.wf .row2 > * { flex: 1; }
+.wf .wb { border-radius: 980px; padding: 6px; text-align: center; background: var(--ink); color: var(--card); font-weight: 600; }
+.wf .wb.alt { background: transparent; color: var(--ink); border: 1.5px solid var(--hair); }
+.wf .wb.hl { background: var(--cta); color: var(--cta-ink); }
+.wf .sheet { margin-top: auto; border: 1.5px solid var(--ink); border-radius: 18px; padding: 10px; display: flex; flex-direction: column; gap: 7px; background: var(--card); }
+.wf .scrim { position: absolute; inset: 0; border-radius: 30px; background: var(--ink); opacity: .08; pointer-events: none; }
+.wf .tb { margin-top: auto; display: flex; gap: 6px; align-items: center; }
+.wf .tb .bar { flex: 1; height: 26px; border-radius: 14px; border: 1.5px solid var(--hair); }
+.wf .tb .dot { width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--hair); flex: none; }
+.wf .tb .dot.hl { border: 2px solid var(--cta); box-shadow: 0 0 0 4px rgba(0, 113, 227, .18); }
+.wf .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 9px 6px; }
+.wf .grid4 i { aspect-ratio: 1; border-radius: 24%; border: 1.5px solid var(--hair); background: var(--bg); }
+.wf .grid4 i.hl { border: 2px solid var(--cta); }
+.wf .menu { border: 1.5px solid var(--ink); border-radius: 14px; overflow: hidden; background: var(--card); }
+.wf .menu span { display: block; padding: 7px 9px; border-top: 1px solid var(--hair); color: var(--ink); }
+.wf .menu span:first-child { border-top: 0; }
+.wf .menu span.hl { color: var(--cta); font-weight: 600; }
+.wf .bub { align-self: flex-start; max-width: 88%; border-radius: 13px; padding: 7px 9px; background: var(--bg); border: 1.5px solid var(--hair); }
+.wf .bub.me { align-self: flex-end; background: var(--ink); color: var(--card); border-color: var(--ink); }
+.wf .chips { display: flex; flex-wrap: wrap; gap: 5px; }
+.wf .chips span { border: 1.5px solid var(--hair); border-radius: 980px; padding: 3px 8px; color: var(--ink); }
+.wf .chips span.hl { border-color: var(--cta); color: var(--cta); }
+.wf .fill { flex: 1; }
+.flowhead { display: flex; flex-direction: column; gap: .5rem; max-width: 760px; }
+.flowhead h3 { font: 700 clamp(1.6rem, 3vw, 2.2rem)/1.1 var(--sf); letter-spacing: -.035em; }
+.flowhead p { color: var(--muted); font-size: 1.1rem; line-height: 1.5; }
+.legend2 { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; font-size: .85rem; color: var(--muted); }
+.legend2 i { display: inline-block; width: 14px; height: 10px; border-radius: 3px; border: 1.5px dashed var(--cta); margin-right: 7px; vertical-align: 0; }
+
+/* ---------- Rollout ---------- */
+.rollout { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; position: relative; }
+.phase { background: var(--theater-card); border-radius: 26px; padding: 1.6rem 1.5rem 1.8rem; display: flex; flex-direction: column; gap: .7rem; min-width: 0; }
+.phase .when { font: 600 .9rem var(--sft); }
+.phase .t { font: 700 1.35rem/1.2 var(--sf); letter-spacing: -.025em; }
+.phase p { font-size: .98rem; line-height: 1.5; color: var(--theater-muted); }
+.phase .meter { display: flex; gap: 4px; margin-top: auto; padding-top: .6rem; }
+.phase .meter i { flex: 1; height: 5px; border-radius: 3px; background: var(--theater-hair); }
+.phase .meter i.on { background: linear-gradient(90deg, var(--g1), var(--g2), var(--g3), var(--g4)); }
+.phase .ex { font-size: .85rem; color: var(--theater-ink); opacity: .85; border-top: 1px solid var(--theater-hair); padding-top: .7rem; }
+
+@media (max-width: 1080px) {
+  .wfs, .rollout { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 860px) {
+  .parts, .wfs.c3 { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .wfs, .rollout { grid-template-columns: 1fr; }
+}
+
+/* ---------- Under the hood diagram ---------- */
+.hood { display: grid; grid-template-columns: minmax(0, 1fr) minmax(140px, .75fr) minmax(0, 1fr); grid-template-areas: "dev link cloud" "down . ." "svc svc svc"; align-items: center; max-width: 1000px; width: 100%; margin-inline: auto; }
+.hnode { background: var(--theater-card); border-radius: 28px; padding: 1.75rem 1.5rem; display: flex; flex-direction: column; align-items: center; text-align: center; gap: .45rem; min-width: 0; }
+.hnode svg { width: 64px; height: 64px; margin-bottom: .5rem; }
+.hnode .k { font: 600 .85rem var(--sft); color: var(--theater-muted); }
+.hnode .v { font: 700 1.35rem/1.2 var(--sf); letter-spacing: -.025em; }
+.hnode .d { font-size: .95rem; color: var(--theater-muted); }
+.hdev { grid-area: dev; } .hcloud { grid-area: cloud; }
+.hlink { grid-area: link; position: relative; height: 2px; margin-inline: 10px; background: linear-gradient(90deg, var(--g1), var(--g2), var(--g3), var(--g4)); }
+.hlink span, .hdown span { position: absolute; font-size: .85rem; color: var(--theater-muted); white-space: nowrap; }
+.hlink span { bottom: 14px; left: 50%; transform: translateX(-50%); }
+.hlink::after { content: ""; position: absolute; top: -4px; left: 0; width: 10px; height: 10px; border-radius: 50%; background: #FFFFFF; box-shadow: 0 0 12px #FF4FA3; animation: travel 3s ease-in-out infinite alternate; }
+@keyframes travel { to { left: calc(100% - 10px); } }
+.hdown { grid-area: down; justify-self: center; position: relative; width: 2px; height: 76px; background: linear-gradient(var(--g3), var(--g4)); }
+.hdown span { left: 14px; top: 50%; transform: translateY(-50%); }
+.hsvc { grid-area: svc; flex-direction: row; flex-wrap: wrap; justify-content: center; gap: .75rem 1rem; padding-block: 1.4rem; }
+.hsvc svg { width: 30px; height: 30px; margin: 0; }
+.hsvc .v { font-size: 1.15rem; }
+.hsvc .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.hsvc .chips span { background: rgba(255, 255, 255, .08); border-radius: 980px; padding: 6px 13px; font-size: .88rem; }
+@media (prefers-reduced-motion: reduce) { .hlink::after { animation: none; left: 50%; } }
+@media (max-width: 860px) {
+  .hood { grid-template-columns: 1fr; grid-template-areas: "cloud" "link" "dev" "down" "svc"; }
+  .hlink { width: 2px; height: 76px; margin: 0; justify-self: center; background: linear-gradient(var(--g4), var(--g2)); }
+  .hlink span { bottom: auto; left: 14px; top: 50%; transform: translateY(-50%); }
+  .hlink::after { display: none; }
+  .hlink span, .hdown span { white-space: normal; width: 9.5rem; }
+}
+
+/* Rollout on a light band */
+.phase { background: var(--card); }
+.phase p { color: var(--muted); }
+.phase .meter i { background: var(--hair); }
+.phase .ex { color: var(--ink); border-top-color: var(--hair); }
+</style>
+</head>
+<body>
+<div class="localnav">
+  <div class="in">
+    <span class="title"><a class="home" href="/#builds">Chae Kim</a><span class="slash" aria-hidden="true">/</span>Siri, Reimagined</span>
+    <nav aria-label="Sections">
+      <a href="#essay">Thought piece</a>
+      <a href="#playout">How it plays out</a>
+      <a href="#wireframes">Wireframes</a>
+      <a href="#rollout">Rollout</a>
+      <a class="pill" href="#essay">Read it</a>
+    </nav>
+  </div>
+</div>
+
+<main>
+
+  <!-- HERO -->
+  <section class="band theater hero">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow muted">A design concept</span>
+        <h1><span class="grad">The last app</span><br>you'll install.</h1>
+        <p class="sub">Your iPhone ships with five apps. Siri builds the rest, around you.</p>
+        <div class="links"><a href="#essay">Read the thought piece ›</a><a href="#playout">See how it plays out ›</a></div>
+      </div>
+      <div class="hero-phones">
+        <div class="iphone side" data-s="ask" style="--w:240px"></div>
+        <div class="iphone" data-s="home5" style="--w:290px"></div>
+        <div class="iphone side" data-s="w1" style="--w:240px"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENTS -->
+  <section class="band">
+    <div class="wrap" style="padding-block:clamp(3rem,7vw,5rem)">
+      <div class="parts">
+        <a class="partcard" href="#essay"><span class="num">Part 1</span><span class="t">The thought piece</span><p>Why your next iPhone should ship nearly empty, and what that means for the App Store and the people who build apps. The long version of my essay on preinstalled apps.</p><span class="go">Read it ›</span></a>
+        <a class="partcard" href="#playout"><span class="num">Part 2</span><span class="t">How it would play out</span><p>Illustrations, wireframes, and a realistic path from today's iPhone to this one.</p><span class="go">See it ›</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PART 1 ===================== -->
+  <section class="band" id="essay">
+    <div class="wrap" style="padding-top:clamp(2rem,5vw,3rem)">
+      <article class="essay">
+        <div class="partmark" style="align-items:flex-start;text-align:left"><span class="tag">Part 1 · The thought piece</span></div>
+        <h2>Why your next iPhone should ship nearly empty.</h2>
+
+        <p class="first">I recently needed a teleprompter for a class assignment.</p>
+        <p>I figured this would be easy. Download a teleprompter app, paste in my script, record, done. Instead, I spent more time than I expected trying to find a decent one. Some apps locked basic features behind subscriptions. Others were free but clunky. A few had way more functionality than I needed.</p>
+        <p>All I wanted was a box for my script, adjustable scrolling speed, readable text, and a clean interface. So I stopped looking and made one.</p>
+        <p>I opened Claude Code, told it what I wanted, and within a few minutes I had a working teleprompter. After one more pass on the design, I liked it better than every teleprompter app I had downloaded. It did exactly what I wanted, and it felt like it belonged on my computer. (It's now <a href="/projects/voiceprompter">VoicePrompter</a>.)</p>
+        <p>But I could only build it because I know how to use those tools. Most people don't, and they shouldn't have to. And it lives on my laptop, while the place most of us need small tools like this is our phone.</p>
+        <p>That's when it clicked. I didn't want <em>more</em> apps. I wanted <em>my</em> apps. Small, personal tools built around how I live, not around what a company thinks millions of people might want.</p>
+        <p>Today, making something like that takes a laptop and a coding tool. It should take one sentence.</p>
+        <p class="quote">"Hey Siri,<br><span class="grad">make me an app."</span></p>
+        <p class="note">I first wrote about this idea in a short essay, <a href="/projects/preinstalled-apps">What's the Point of Preinstalled Apps?</a> This is the longer version: the full argument, then what it could look like.</p>
+
+        <h3>We don't need more apps.</h3>
+        <p>Our phones are full of apps we downloaded once and forgot. Studies of phone usage keep landing on the same pattern: people open around ten apps a day and around thirty in a month, out of dozens installed.<sup>1</sup></p>
+        <div class="fig">
+          <div class="usage" id="usage" aria-label="Grid of 80 apps: 10 opened daily, 20 more opened this month, 50 rarely opened"></div>
+          <div class="legend">
+            <span><i style="background:linear-gradient(135deg,#FF8A3D,#FF4FA3,#A15CFF)"></i>Opened daily</span>
+            <span><i style="box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.55)"></i>Opened this month</span>
+            <span><i style="background:rgba(255,255,255,.12)"></i>Rarely opened</span>
+          </div>
+          <p class="cap2">80 installed apps. Illustrative.</p>
+        </div>
+        <p>Each app is a whole product designed for millions of people. Each of us only needs a slice of it. The rest is clutter we scroll past, pay for, and update.</p>
+        <p>People have been quietly pushing back for years. Apple has let us delete most built-in apps since 2016, and in the EU you can now remove even Safari, the App Store, and Messages. We're already subtracting. The operating system just hasn't caught up.</p>
+
+        <h3>Five apps on day one.</h3>
+        <p>Here's the idea. A new iPhone ships with five apps: <strong>Siri</strong>, <strong>Conversations</strong> (Messages and Phone in one), <strong>Camera</strong> (with your photos built in), <strong>Music</strong>, and <strong>Settings</strong>. That's the whole box.</p>
+        <p>Everything else, you make by asking. "Track my runs and how much I spend on coffee after." Siri asks one question if it needs to, then builds the app from Apple's own design system, using the services you've already approved. About thirty seconds later, it's on your Home Screen.</p>
+
+        <h3>Features you pull, not features you're given.</h3>
+        <p>Today, a company decides what ships and everyone gets the same update. In this world, you add a feature by asking for it, and it exists that afternoon, only for you. Features you stop using fade away. Apps you outgrow ask before they leave. Like a friend's app? They share it, and you remix it for yourself.</p>
+        <p>A year in, your iPhone looks nothing like anyone else's, because it was built around you.</p>
+
+        <h3>The App Store becomes a capability store.</h3>
+        <p>Siri can build a habit tracker. It can't build a ride service, a bank, or a music catalog. Those are real businesses with drivers, accounts, and licenses behind them.</p>
+        <p>So you don't download a ride app. You allow a ride service, and Siri puts a "get a ride" button wherever it makes sense in your apps. The store stops selling screens and starts listing what services can do.</p>
+        <p>That raises the obvious question, because the App Store is one of Apple's biggest businesses. A few ways it could still pay:</p>
+        <ul>
+          <li><strong>Per transaction.</strong> A small cut of every ride, order, or booking made through Siri. Closest to today, though services will push back on fees.</li>
+          <li><strong>Premium capabilities.</strong> Services charge for advanced abilities, and Apple takes a share. Familiar, but it adds paywalls inside personal apps.</li>
+          <li><strong>Placement.</strong> Services pay to be Siri's first suggestion. Easy money that erodes trust fast if Siri starts to feel like an ad.</li>
+        </ul>
+        <p>I'd lead with per transaction. It's closest to how Apple earns today, and it rewards the services people actually use.</p>
+
+        <h3>What happens to developers.</h3>
+        <p>If Siri builds the screens, what do developers build? The job splits in two. <strong>Service makers</strong> (banks, airlines, music services) publish what their service can do and the rules for using it. <strong>Component makers</strong> design premium building blocks Siri can use, like a great map view or a pro-grade photo editor.</p>
+        <p>This is a real loss of control, and big brands will feel it most. A coffee chain spends millions on its app. Here, it becomes a set of abilities. The answer is branded components: the brand keeps its colors, voice, and signature moments wherever Siri puts them.</p>
+        <p>There's an upside, too. When thousands of people ask Siri for the same feature, service makers can see it and build it properly. Users become the roadmap, and feature development stops being a guess.</p>
+
+        <h3>Can an iPhone actually do this?</h3>
+        <p>It's closer than it sounds. Recent iPhone chips match Mac chips on single-core speed. Phones still have less memory and run hot sooner than laptops, so the work gets split. Small, fast models run on the device for quick changes and anything personal. Heavier builds go to Apple's Private Cloud Compute, which Apple says doesn't keep your data. Every app Siri builds runs sandboxed and can't get more access than you approve.</p>
+        <p>Most of the plumbing already exists. Shortcuts, widgets, and App Intents already let apps tell Siri what they can do. This concept takes that plumbing and makes it the whole operating system.</p>
+
+        <h3>The hard questions.</h3>
+        <div class="faq">
+          <details open><summary>Who fixes it when it breaks?</summary><p>If a service changes, Siri rebuilds the affected part and tells you what changed. The service maker is responsible for its abilities, and Apple is responsible for the app holding together.</p></details>
+          <details><summary>How does anyone help you if every app is different?</summary><p>Apple's design system is the guardrail. Buttons, navigation, and settings behave the same everywhere, even when the layout is yours.</p></details>
+          <details><summary>Isn't this a security nightmare?</summary><p>An app that can read messages and move money is a big target. Every app is sandboxed, every permission is explicit, and anything involving money asks you first.</p></details>
+          <details><summary>Why would Apple risk its App Store revenue?</summary><p>Because someone else will do this first. Owning the place where apps get made is worth more than owning the shelf where they're sold.</p></details>
+          <details><summary>Haven't AI devices already failed?</summary><p>The ones that failed tried to replace the phone. This keeps the phone people already trust and changes what's on it.</p></details>
+        </div>
+
+        <p class="quote">Apple made the computer personal.<br><span class="grad">This makes it yours.</span></p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===================== PART 2 ===================== -->
+  <section class="band theater" id="playout">
+    <div class="wrap">
+      <div class="partmark">
+        <span class="tag">Part 2 · How it would play out</span>
+        <h2 class="headline">From one sentence<br><span class="grad">to a new kind of iPhone.</span></h2>
+        <p class="sub">The ideas from Part 1, on screen.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DAY ONE -->
+  <section class="band" id="dayone">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow grad">Day one</span>
+        <h2 class="headline">Five apps.<br>That's the whole box.</h2>
+      </div>
+      <div class="phones"><div class="iphone" data-s="home5" style="--w:300px"></div></div>
+    </div>
+  </section>
+
+  <!-- MAKE -->
+  <section class="band theater" id="make">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow grad">Make an app</span>
+        <h2 class="headline">Say it.<br>Siri builds it.</h2>
+      </div>
+      <div class="phones c4">
+        <div class="cap"><div class="iphone" data-s="ask" style="--w:240px"></div><span class="k">Ask</span><span class="d">Plain language. No templates to pick from.</span></div>
+        <div class="cap"><div class="iphone" data-s="clarify" style="--w:240px"></div><span class="k">Clarify</span><span class="d">One question, with answers you can tap.</span></div>
+        <div class="cap"><div class="iphone" data-s="build" style="--w:240px"></div><span class="k">Build</span><span class="d">Siri connects each service you've approved.</span></div>
+        <div class="cap"><div class="iphone" data-s="land" style="--w:240px"></div><span class="k">Done</span><span class="d">A real app on your Home Screen, about thirty seconds later.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WIREFRAMES -->
+  <section class="band" id="wireframes">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow grad">Wireframes</span>
+        <h2 class="headline">The everyday moments.</h2>
+        <p class="sub">Making an app is the headline. These are the flows you'd use every week.</p>
+        <div class="legend2"><span><i></i>New or changed by Siri</span></div>
+      </div>
+
+      <div class="flowhead"><h3>Change a feature</h3><p>Every app Siri builds has a Siri button. Ask for a change, see exactly what will be different, then keep it or undo it.</p></div>
+      <div class="wfs">
+        <div class="wfstep"><div class="wf" data-w="c1"></div><span class="k"><b>1</b>Tap Siri in the app</span><span class="d">The Siri button sits next to the tab bar in every app it builds.</span></div>
+        <div class="wfstep"><div class="wf" data-w="c2"></div><span class="k"><b>2</b>Say what you want</span><span class="d">"Add a way to split the bill with my running club."</span></div>
+        <div class="wfstep"><div class="wf" data-w="c3"></div><span class="k"><b>3</b>Preview the change</span><span class="d">Siri shows what's new and what it will access before anything changes.</span></div>
+        <div class="wfstep"><div class="wf" data-w="c4"></div><span class="k"><b>4</b>It's live</span><span class="d">Undo stays available, so trying things out is safe.</span></div>
+      </div>
+
+      <div class="flowhead" style="margin-top:2rem"><h3>Share and remix</h3><p>Apps spread person to person. Sharing sends the design, never your data.</p></div>
+      <div class="wfs">
+        <div class="wfstep"><div class="wf" data-w="s1"></div><span class="k"><b>1</b>Share from the Home Screen</span><span class="d">Press and hold any app you made.</span></div>
+        <div class="wfstep"><div class="wf" data-w="s2"></div><span class="k"><b>2</b>A friend gets a preview</span><span class="d">They see what it does and what it uses before they take it.</span></div>
+        <div class="wfstep"><div class="wf" data-w="s3"></div><span class="k"><b>3</b>Siri tailors their copy</span><span class="d">Their copy connects to their own accounts and data.</span></div>
+        <div class="wfstep"><div class="wf" data-w="s4"></div><span class="k"><b>4</b>Now it's theirs</span><span class="d">Same starting point, different app.</span></div>
+      </div>
+
+      <div class="flowhead" style="margin-top:2rem"><h3>Allow a service</h3><p>The new version of installing an app. Siri suggests a service where it would help, and you decide how much it can do.</p></div>
+      <div class="wfs c3">
+        <div class="wfstep"><div class="wf" data-w="a1"></div><span class="k"><b>1</b>Siri suggests it</span><span class="d">Right when it's useful, like a ride before a calendar event.</span></div>
+        <div class="wfstep"><div class="wf" data-w="a2"></div><span class="k"><b>2</b>You set the limits</span><span class="d">Clear abilities and permissions, like today's privacy prompts.</span></div>
+        <div class="wfstep"><div class="wf" data-w="a3"></div><span class="k"><b>3</b>It shows up where it fits</span><span class="d">A ride button inside your calendar, not a separate app.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVOLVE -->
+  <section class="band theater" id="evolve">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow grad">Evolve</span>
+        <h2 class="headline">Your apps grow<br>as you do.</h2>
+      </div>
+      <div class="phones c3">
+        <div class="cap"><div class="iphone" data-s="w1"></div><span class="k">Week 1</span><span class="d">Exactly what you asked for. Nothing else.</span></div>
+        <div class="cap"><div class="iphone" data-s="m3"></div><span class="k">Month 3</span><span class="d">You asked for a weekly goal and a way to split the post-run coffee.</span></div>
+        <div class="cap"><div class="iphone" data-s="y1"></div><span class="k">Year 1</span><span class="d">Your habits changed, so the app did too. Even its name.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="head">
+        <h2 class="headline" style="font-size:clamp(2rem,4.5vw,3.4rem)">Made by people like you.</h2>
+      </div>
+      <div class="gallery">
+        <div class="tile"><span class="who">A student</span><div class="iphone" data-s="dorm" style="--w:230px"></div></div>
+        <div class="tile"><span class="who">A parent</span><div class="iphone" data-s="pickup" style="--w:230px"></div></div>
+        <div class="tile"><span class="who">A shop owner</span><div class="iphone" data-s="shop" style="--w:230px"></div></div>
+        <div class="tile"><span class="who">A caregiver</span><div class="iphone" data-s="meds" style="--w:230px"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORE -->
+  <section class="band theater" id="store">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow grad">The App Store</span>
+        <h2 class="headline">Don't download apps.<br>Allow services.</h2>
+      </div>
+      <div class="phones"><div class="iphone" data-s="store" style="--w:280px"></div></div>
+    </div>
+  </section>
+
+  <!-- DEVELOPERS -->
+  <section class="band" id="developers">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow grad">Developers</span>
+        <h2 class="headline">One brand.<br>Three apps.</h2>
+      </div>
+      <div class="brands">
+        <div class="tile"><span class="who">In a runner's app</span><div class="wall"><div class="widget"><span class="br"><i></i>Juniper Coffee</span><b>Your usual, ready in 6 min</b><span class="go">Reorder</span></div></div></div>
+        <div class="tile"><span class="who">In a student's budget app</span><div class="wall b"><div class="widget"><span class="br"><i></i>Juniper Coffee</span><b>7 of 10 stamps</b><div class="stamps"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i><i></i></div></div></div></div>
+        <div class="tile"><span class="who">In a parent's errands app</span><div class="wall c"><div class="widget"><span class="br"><i></i>Juniper Coffee · 0.3 mi</span><b>On your way to pickup</b><span class="go">Order ahead</span></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UNDER THE HOOD -->
+  <section class="band theater" id="hood">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow grad">Under the hood</span>
+        <h2 class="headline">Private by design.</h2>
+      </div>
+      <div class="hood">
+        <div class="hnode hdev">
+          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><defs><linearGradient id="hg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF8A3D"/><stop offset=".5" stop-color="#FF4FA3"/><stop offset="1" stop-color="#3F8CFF"/></linearGradient></defs><rect x="18" y="4" width="28" height="56" rx="7" stroke="#F5F5F7" stroke-width="2.5"/><rect x="27" y="8" width="10" height="3" rx="1.5" fill="#F5F5F7"/><rect x="24" y="24" width="16" height="16" rx="3.5" fill="url(#hg1)"/></svg>
+          <span class="k">On your iPhone</span><span class="v">Small, fast models</span><span class="d">Most requests stay here</span>
+        </div>
+        <div class="hlink"><span>Heavier builds only</span></div>
+        <div class="hnode hcloud">
+          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><defs><linearGradient id="hg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#A15CFF"/><stop offset="1" stop-color="#3F8CFF"/></linearGradient></defs><path d="M19 46h27a10 10 0 0 0 0-20 14 14 0 0 0-27.2 3.6A8.3 8.3 0 0 0 19 46z" stroke="url(#hg2)" stroke-width="2.5" stroke-linejoin="round"/></svg>
+          <span class="k">Private Cloud Compute</span><span class="v">Larger models</span><span class="d">Your data isn't kept</span>
+        </div>
+        <div class="hdown"><span>Sandboxed · only what you allow</span></div>
+        <div class="hnode hsvc">
+          <svg viewBox="0 0 44 44" fill="none" stroke="#F5F5F7" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="10" y="19" width="24" height="18" rx="4"/><path d="M15 19v-5a7 7 0 0 1 14 0v5"/></svg>
+          <span class="v">Services you allow</span>
+          <div class="chips"><span>Health</span><span>Wallet</span><span>Calendar</span><span>Ride service</span><span>Music</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROLLOUT -->
+  <section class="band" id="rollout">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow grad">The rollout</span>
+        <h2 class="headline">It doesn't happen<br>overnight.</h2>
+        <p class="sub">A realistic path, built on what iOS already has. Each step earns trust for the next one.</p>
+      </div>
+      <div class="rollout">
+        <div class="phase"><span class="when grad">Phase 1</span><span class="t">Siri builds widgets and shortcuts</span><p>Starts with today's App Intents. Low risk, and it teaches people that asking works.</p><span class="ex">"Make me a widget for my rent split."</span><div class="meter"><i class="on"></i><i></i><i></i><i></i></div></div>
+        <div class="phase"><span class="when grad">Phase 2</span><span class="t">Personal apps, next to the App Store</span><p>Siri builds full apps that sit beside downloaded ones. Nothing is taken away yet.</p><span class="ex">Your Home Screen mixes both.</span><div class="meter"><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
+        <div class="phase"><span class="when grad">Phase 3</span><span class="t">Services publish capabilities</span><p>Developers ship abilities and branded components. The App Store starts listing them.</p><span class="ex">Allow a ride service instead of installing it.</span><div class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
+        <div class="phase"><span class="when grad">Phase 4</span><span class="t">The five-app iPhone</span><p>New iPhones ship nearly empty. You can still restore the classic apps if you want them.</p><span class="ex">Day one: five apps and a Siri button.</span><div class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSE -->
+  <section class="band theater" id="close">
+    <div class="wrap">
+      <div class="head">
+        <h2 class="headline">Same iPhone.<br><span class="grad">Nothing alike.</span></h2>
+        <p class="sub">Two people, the same five apps on day one. A year later:</p>
+      </div>
+      <div class="phones c2">
+        <div class="cap"><div class="iphone" data-s="homeA" style="--w:270px"></div><span class="k">A grad student</span></div>
+        <div class="cap"><div class="iphone" data-s="homeB" style="--w:270px"></div><span class="k">A shop owner and parent</span></div>
+      </div>
+      <div class="head" style="gap:1.75rem">
+        <p class="headline" style="font-size:clamp(2rem,5vw,3.6rem)">Apple made the computer personal.<br><span class="grad">This makes it yours.</span></p>
+        <div class="links"><a href="#essay">Read the thought piece ›</a><a class="pill lg" href="#playout" style="font-size:1rem">Back to Part 2</a></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="in">
+    <p>1. Illustrative figures based on published studies of daily and monthly smartphone app usage.</p>
+    <p>Juniper Coffee is a fictional brand. App names, people, and amounts shown on screens are examples.</p>
+    <p>Concept, writing, and design by Chae Kim. Read the short essay, <a href="/projects/preinstalled-apps">What’s the Point of Preinstalled Apps?</a> <a href="/#builds">Back to the portfolio</a>.</p>
+    <div class="rule"><span>An unofficial design concept. Not affiliated with or endorsed by Apple Inc.</span><span>Siri, iPhone, iOS, and Liquid Glass are trademarks of Apple Inc.</span></div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var G = {
+    msg: '<svg viewBox="0 0 24 24"><path d="M12 4C7 4 3 7.1 3 11c0 2.2 1.3 4.2 3.4 5.5L5.5 20l4-2.2c.8.2 1.6.3 2.5.3 5 0 9-3.1 9-7s-4-7.1-9-7.1z"/></svg>',
+    cam: '<svg viewBox="0 0 24 24"><path d="M4 7h3.5l1.7-2h5.6l1.7 2H20a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1zm8 2.4a3.6 3.6 0 1 0 0 7.2 3.6 3.6 0 0 0 0-7.2z"/></svg>',
+    music: '<svg viewBox="0 0 24 24"><path d="M17 3v11.5a3 3 0 1 1-2-2.8V7l-6 1.5v8a3 3 0 1 1-2-2.8V5.5z"/></svg>',
+    set: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7" fill="none" stroke="#fff" stroke-width="3.4" stroke-dasharray="2.4 2.1"/><circle cx="12" cy="12" r="3.8" fill="none" stroke="#fff" stroke-width="2"/></svg>'
+  };
+  var A = {
+    siri: ['i-siri', '', 'Siri'], msg: ['i-msg', G.msg, 'Conversations'], cam: ['i-cam', G.cam, 'Camera'],
+    music: ['i-music', G.music, 'Music'], set: ['i-set', G.set, 'Settings']
+  };
+  var CORE = [A.siri, A.msg, A.cam, A.music, A.set];
+  function sb(dark) { return '<div class="sb' + (dark ? ' dk' : '') + '"><span>9:41</span><span class="sbr"><span class="sig"><i></i><i></i><i></i><i></i></span><span class="batt"></span></span></div>'; }
+  function grid(list) {
+    return '<div class="hgrid">' + list.map(function (a) {
+      return '<div class="ap ' + (a[3] || '') + '"><i class="ico ' + a[0] + '">' + a[1] + '</i><span>' + a[2] + '</span></div>';
+    }).join('') + '</div>';
+  }
+  function cd(t, b, n, cls, extra) {
+    return '<div class="cd ' + (cls || '') + '">' + (t ? '<span class="t">' + t + '</span>' : '') + '<b>' + b + '</b>' + (n ? '<span class="n' + (n.indexOf('✓') === 0 ? ' ok' : '') + '">' + n + '</span>' : '') + (extra || '') + '</div>';
+  }
+  function bars(v, hi) { return '<div class="cbars">' + v.map(function (h, i) { return '<i class="' + (hi.indexOf(i) > -1 ? 'hi' : '') + '" style="height:' + h + '%"></i>'; }).join('') + '</div>'; }
+  function tabs(l) { return '<div class="tabbar">' + l.map(function (x, i) { return '<span class="' + (i ? '' : 'on') + '">' + x + '</span>'; }).join('') + '</div><div class="tabsiri" aria-hidden="true"></div>'; }
+  function head(t, s) { return sb(1) + '<div class="lt">' + t + '</div><div class="st">' + s + '</div>'; }
+  var T3 = ['Today', 'History', 'Goals'];
+
+  var S = {
+    home5: ['wp-a', sb() + grid(CORE) + '<div class="gpill glass">✦ Ask Siri to make an app</div>'],
+    ask: ['wp-a dim siri-on', sb() + '<div class="fill"></div><div class="gbub glass me">Track my runs and how much I spend on coffee after.</div><div class="orb"></div><div class="gfield glass">Ask Siri…</div>'],
+    clarify: ['wp-a dim siri-on', sb() + '<div class="fill"></div><div class="gbub glass me">Track my runs and how much I spend on coffee after.</div><div class="gbub glass">Should I count any café, or only ones within an hour of a run?</div><div class="gchips"><span class="glass on">Within an hour</span><span class="glass">Any café</span></div><div class="orb"></div>'],
+    build: ['app siri-on', sb(1) + '<div class="lt shimmer">Building…</div><div class="st">Run + Coffee</div>' + cd('Health', 'Runs this week', '✓ Connected') + cd('Wallet', 'Café purchases', '✓ Connected') + '<div class="cd"><div class="skl"></div><div class="skl s"></div>' + bars([30, 55, 25, 70, 45], []) + '</div><div class="cd dash"><span class="n">Weekly summary…</span></div>'],
+    land: ['wp-a', sb() + '<div class="toast glass"><i class="i-blue"></i>Run + Coffee is ready</div>' + grid(CORE.concat([['i-blue', 'RC', 'Run + Coffee', 'new']]))],
+    w1: ['app', head('Run + Coffee', 'This week') + cd('Running', '3 runs · 14.2 km', '', '', bars([40, 80, 20, 65, 10, 90, 5], [1, 3, 5])) + cd('Coffee after runs', '$18.50', '3 visits · Juniper Coffee') + tabs(T3)],
+    m3: ['app', head('Run + Coffee', 'Goal: 20 km a week') + cd('Weekly goal', '17.8 of 20 km', '', '', '<div class="prog"><i style="width:89%"></i></div>') + cd('Coffee after runs', '$24.00', '4 visits') + cd('New', 'Split with running club', '"Add a split-the-bill button"', 'hot') + tabs(T3)],
+    y1: ['app', head('Marathon Prep', '18 weeks to race day') + cd('Saturday', 'Long run · 26 km', 'Easy pace · 5:45 / km') + cd('Recovery', 'Ready to train', '', '', bars([60, 75, 90, 50], [2])) + cd('Coffee spending', 'Not opened in 6 weeks', 'Remove this section?', 'faded') + tabs(['Plan', 'Runs', 'Race'])],
+    dorm: ['app', head('Dorm Duty', 'Shared with 3 roommates') + cd('Tonight', 'Trash · Maya') + cd('Tomorrow', 'Dishes · You') + cd('Due Friday', 'Rent split · $412 each', '2 of 4 paid') + tabs(['Chores', 'Money', 'House'])],
+    pickup: ['app', head('Pickup Plan', "This week's carpool") + cd('Monday · 3:15', 'You drive · 4 kids') + cd('Tuesday · 3:15', "Sam's dad · 4 kids") + '<div class="abtn">I\'m running late</div>' + tabs(['Week', 'Kids', 'Parents'])],
+    shop: ['app', head('Shop Day', 'Today') + cd('Orders', '12 orders · $640', '', '', bars([30, 55, 90, 40, 65], [2])) + cd('Low stock', 'Candles · 4 left', 'Reorder from supplier?', 'hot') + tabs(['Today', 'Stock', 'Customers'])],
+    meds: ['app', head("Mom's Meds", 'Shared with my brother') + cd('8:00 AM', 'Taken ✓', 'Logged by Mom') + cd('8:00 PM', 'Reminder set', 'Blood pressure pill', 'hot') + '<div class="abtn alt">Call Mom</div>' + tabs(['Today', 'Meds', 'Notes'])],
+    store: ['app', sb(1) + '<div class="lt">Capabilities</div><div class="search">⌕ rides</div>' + cd('', 'Ride service', 'Uses Location and Wallet', '', '<div class="achips"><span>Book rides</span><span>Track arrival</span><span>Split fare</span></div>') + cd('', 'Bike share', 'Uses Location', '', '<div class="achips"><span>Find bikes</span><span>Unlock</span></div>') + '<div class="abtn">Allow Siri to use</div>' + tabs(['Discover', 'Allowed', 'Search'])],
+    homeA: ['wp-b', sb() + grid(CORE.concat([['i-orange', 'MP', 'Marathon Prep', 'new'], ['i-teal', 'RS', 'Rent Split', 'new'], ['i-purple', 'TT', 'Thesis Tracker', 'new'], ['i-indigo', 'DD', 'Dorm Duty', 'new'], ['i-blue', 'RC', 'Run + Coffee', 'fade']])) + '<div class="gpill glass">✦ Ask Siri to make an app</div>'],
+    homeB: ['wp-c', sb() + grid(CORE.concat([['i-pink', 'SD', 'Shop Day', 'new'], ['i-orange', 'PP', 'Pickup Plan', 'new'], ['i-teal', 'MM', "Mom's Meds", 'new'], ['i-jun', 'J', 'Juniper', '']])) + '<div class="gpill glass">✦ Ask Siri to make an app</div>']
+  };
+
+  document.querySelectorAll('.iphone[data-s]').forEach(function (el) {
+    var s = S[el.getAttribute('data-s')];
+    if (!s) return;
+    el.setAttribute('role', 'img');
+    el.setAttribute('aria-label', 'iPhone screen: ' + el.getAttribute('data-s'));
+    el.innerHTML = '<div class="scr ' + s[0] + '"><span class="island"></span>' + s[1] + '</div>';
+  });
+
+  function ln(s) { return '<i class="ln' + (s ? ' s' : '') + '"></i>'; }
+  function bx(b, n, cls) { return '<div class="bx ' + (cls || '') + '">' + (b ? '<b>' + b + '</b>' : '') + (n || '') + '</div>'; }
+  var TB = '<div class="tb"><span class="bar"></span><span class="dot"></span></div>';
+  var TBH = '<div class="tb"><span class="bar"></span><span class="dot hl"></span></div>';
+  var APP = '<span class="wt">Run + Coffee</span>' + bx('17.8 of 20 km', ln()) + bx('$24.00 on coffee', ln(1));
+  var W = {
+    c1: APP + bx('', ln() + ln(1)) + TBH,
+    c2: '<span class="scrim"></span>' + APP + '<div class="sheet"><span class="bub me">Add a way to split the bill with my running club.</span><span>Listening…</span></div>',
+    c3: '<span class="scrim"></span>' + APP + '<div class="sheet"><b style="color:var(--ink)">Here\'s what changes</b>' + bx('+ Split with running club', 'Uses Wallet and Contacts', 'hl') + '<div class="row2"><span class="wb alt">Undo</span><span class="wb hl">Keep it</span></div></div>',
+    c4: APP + bx('Split with running club', '4 people · $6 each', 'hl') + TB,
+    s1: '<div class="grid4"><i></i><i></i><i></i><i></i><i></i><i class="hl"></i><i></i><i></i></div><div class="menu"><span class="hl">Share app</span><span>Change with Siri</span><span>Remove</span></div>',
+    s2: '<span class="wt">Maya</span><span class="bub">You need this for the apartment</span>' + bx('Dorm Duty', 'Chores and rent split · Uses Reminders, Wallet', 'hl') + '<span class="wb hl">Get my own copy</span><div class="fill"></div>' + TB,
+    s3: '<span class="scrim"></span><div class="sheet"><b style="color:var(--ink)">Your copy of Dorm Duty</b><span>It uses your accounts and data only. Anything to change?</span><div class="chips"><span class="hl">2 roommates, not 3</span><span>Add groceries</span></div><span class="wb hl">Make it</span></div>',
+    s4: '<span class="wt">Dorm Duty</span>' + bx('Trash · You', 'Tonight') + bx('Rent split · $620 each', '2 roommates', 'hl') + bx('Groceries', 'Shared list', 'hl') + TB,
+    a1: '<span class="wt">Calendar</span>' + bx('Dinner with Sam · 7:00', 'Lucca · 4.2 mi away') + '<div class="sheet"><span>Siri: Want a way to get a ride from here?</span><div class="row2"><span class="wb alt">Not now</span><span class="wb hl">Show me</span></div></div>',
+    a2: '<span class="scrim"></span><div class="sheet"><b style="color:var(--ink)">Allow Ride service?</b>' + bx('It can', 'Book rides · Track arrival') + bx('It uses', 'Location · Wallet (asks each time)') + '<span class="wb hl">Allow</span><span class="wb alt">Allow once</span><span class="wb alt">Don\'t allow</span></div>',
+    a3: '<span class="wt">Calendar</span>' + bx('Dinner with Sam · 7:00', 'Lucca · 4.2 mi away') + bx('Get a ride · $14', 'Pickup in 5 min', 'hl') + bx('', ln() + ln(1)) + TB
+  };
+  document.querySelectorAll('.wf[data-w]').forEach(function (el) {
+    var w = W[el.getAttribute('data-w')];
+    if (!w) return;
+    el.setAttribute('role', 'img');
+    el.setAttribute('aria-label', 'Wireframe');
+    el.innerHTML = w;
+  });
+
+  var grid80 = document.getElementById('usage');
+  if (grid80) {
+    var day = [3, 17, 22, 36, 41, 50, 58, 64, 71, 77];
+    var month = [1, 6, 9, 12, 19, 25, 28, 31, 39, 44, 47, 53, 55, 60, 62, 67, 69, 73, 75, 79];
+    for (var i = 0; i < 80; i++) {
+      var sq = document.createElement('span');
+      if (day.indexOf(i) > -1) sq.className = 'day';
+      else if (month.indexOf(i) > -1) sq.className = 'month';
+      grid80.appendChild(sq);
+    }
+  }
+})();
+</script>
+</body>
+</html>
