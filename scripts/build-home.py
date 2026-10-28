@@ -280,6 +280,10 @@ STAMP = r"""<!DOCTYPE html>
           <div class="stage" style="--g: var(--g-lucent)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>siri, reimagined</span></div><img src="/assets/img/builds/siri-reimagined-card.jpg" alt="Siri, Reimagined: the headline The last app you'll install, above three iPhones with Liquid Glass screens" width="960" height="600" loading="lazy"></div></div><span class="pill">Siri, Reimagined <em>concept</em></span></div>
           <p class="meta">A design concept: an iPhone that ships with five apps, and a Siri that builds the rest.</p>
         </a>
+        <a class="w reveal" href="/projects/decagon-repositioned">
+          <div class="stage" style="--g: var(--g-lucent)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>decagon, repositioned</span></div><img src="/assets/img/builds/decagon-repositioned-card.jpg" alt="Decagon, Repositioned: the headline Don't close the ticket. Make the decision., above three phone mockups of an AI agent resolving a card dispute" width="960" height="600" loading="lazy"></div></div><span class="pill">Decagon, Repositioned <em>concept</em></span></div>
+          <p class="meta">A strategy concept: Decagon stops answering tickets and starts making governed customer decisions.</p>
+        </a>
         <a class="w reveal" href="/projects/portfolio">
           <div class="stage" style="--g: var(--g-lucent)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>chaekim.vercel.app</span></div><img src="/assets/img/builds/portfolio-card.jpg" alt="This site's homepage" width="960" height="600" loading="lazy"></div></div><span class="pill">This portfolio <em>2026</em></span></div>
           <p class="meta">How this site got built: the decisions, the backlog, and what's next.</p>
