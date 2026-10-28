@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Decagon, Repositioned: Don't Close the Ticket · Chae Kim - Portfolio</title>
+  <meta name="description" content="A strategy concept: Decagon stops selling an AI agent that answers tickets and becomes the place regulated businesses hand real customer decisions to software. A thought piece on positioning, with six industry plays, mockups and a rollout.">
+  <meta property="og:title" content="Decagon, Repositioned: Don't Close the Ticket · Chae Kim - Portfolio">
+  <meta property="og:description" content="A strategy concept: Decagon stops selling an AI agent that answers tickets and becomes the place regulated businesses hand real customer decisions to software. A thought piece on positioning, with six industry plays, mockups and a rollout.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/projects/decagon-repositioned/og.jpg">
+  <link rel="canonical" href="https://chaekim-portfolio.vercel.app/projects/decagon-repositioned">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
+  <meta name="theme-color" content="#F5F5F7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: a product-page concept in the same format as "Siri, Reimagined". Full-width bands
+   alternate light and dark ("theater"); content centers in a 1200px wrap; screens are CSS mockups. */
+:root {
+  --bg: #F5F5F7; --card: #FFFFFF; --ink: #1D1D1F; --muted: #6E6E73; --hair: #D2D2D7;
+  --link: #0066CC; --cta: #3B5BFF; --cta-ink: #FFFFFF; --nav: rgba(245, 245, 247, .72);
+  --theater: #05070D; --theater-card: #141922; --theater-ink: #F5F5F7; --theater-muted: #8A90A0; --theater-hair: #2A3140;
+  --g1: #2EE6C5; --g2: #22B8F0; --g3: #5B6CFF; --g4: #A35CFF;
+  --ok: #1F9D63;
+  --sf: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Helvetica Neue", Arial, sans-serif;
+  --sft: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #000000; --card: #1C1C1E; --ink: #F5F5F7; --muted: #8E8E93; --hair: #38383A;
+    --link: #4DA3FF; --cta: #5B78FF; --nav: rgba(22, 22, 23, .72);
+    --theater: #0C0F16; --theater-card: #1A202B; --theater-hair: #343C4C;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #000000; --card: #1C1C1E; --ink: #F5F5F7; --muted: #8E8E93; --hair: #38383A;
+  --link: #4DA3FF; --cta: #5B78FF; --nav: rgba(22, 22, 23, .72);
+  --theater: #0C0F16; --theater-card: #1A202B; --theater-hair: #343C4C;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.47 var(--sft); letter-spacing: -.022em; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { font-family: var(--sf); text-wrap: balance; }
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--cta); outline-offset: 3px; border-radius: 6px; }
+sup { font-size: .6em; line-height: 0; }
+sup a { color: var(--muted); }
+.band { background: var(--bg); color: var(--ink); }
+.band.theater { background: var(--theater); color: var(--theater-ink); }
+.wrap {
+  max-width: 1200px; margin-inline: auto; padding-block: clamp(4.5rem, 10vw, 8rem);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex; flex-direction: column; gap: clamp(2.5rem, 5vw, 4rem);
+}
+.head { display: flex; flex-direction: column; gap: 1rem; text-align: center; align-items: center; max-width: 880px; margin-inline: auto; }
+.eyebrow { font: 600 clamp(1.05rem, 2vw, 1.3rem)/1.2 var(--sf); }
+.headline { font-size: clamp(2.5rem, 6.4vw, 4.8rem); font-weight: 700; line-height: 1.04; letter-spacing: -.035em; }
+.sub { font: 500 clamp(1.15rem, 2.2vw, 1.6rem)/1.3 var(--sf); color: var(--muted); letter-spacing: -.02em; max-width: 36ch; }
+.theater .sub, .theater .muted { color: var(--theater-muted); }
+.grad { background: linear-gradient(90deg, var(--g1), var(--g2) 35%, var(--g3) 65%, var(--g4)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.links { display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: center; font-size: 1.15rem; }
+.theater a { color: #4DA3FF; }
+
+/* ---------- Local nav ---------- */
+.localnav { position: sticky; top: 0; z-index: 9; background: var(--nav); -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid var(--hair); }
+.localnav .in { max-width: 1200px; margin-inline: auto; height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.localnav .title { font: 600 1.3rem var(--sf); color: var(--ink); white-space: nowrap; letter-spacing: -.02em; display: flex; align-items: baseline; gap: .45rem; }
+.localnav .title .home { color: var(--muted); font-weight: 500; font-size: .8em; }
+.localnav .title .slash { color: var(--hair); font-weight: 400; }
+.localnav nav { display: flex; align-items: center; gap: 1.4rem; font-size: .78rem; }
+.localnav nav a { color: var(--ink); opacity: .8; }
+.pill { display: inline-flex; align-items: center; background: var(--cta); color: var(--cta-ink) !important; border-radius: 980px; padding: 5px 13px; font-size: .78rem; opacity: 1 !important; white-space: nowrap; }
+.pill:hover { text-decoration: none; filter: brightness(1.08); }
+.pill.lg { font-size: 1.05rem; padding: 11px 22px; }
+
+/* ---------- Hero ---------- */
+.hero .wrap { padding-block: clamp(3.5rem, 8vw, 6rem) 0; gap: 2rem; overflow: hidden; }
+.hero h1 { font-size: clamp(3rem, 8.4vw, 6.2rem); font-weight: 700; line-height: 1; letter-spacing: -.045em; }
+.hero-screens { position: relative; display: flex; justify-content: center; align-items: flex-end; gap: clamp(1rem, 3vw, 2.5rem); padding-top: 2rem; margin-bottom: -60px; }
+.hero-screens::before { content: ""; position: absolute; inset: 15% 10% 0; background: radial-gradient(closest-side, rgba(34, 184, 240, .4), rgba(91, 108, 255, .25) 55%, transparent); filter: blur(40px); z-index: 0; }
+.hero-screens > * { position: relative; z-index: 1; }
+.hero-screens .side { transform: translateY(40px); }
+
+/* ---------- Two-part structure ---------- */
+.parts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.partcard { background: var(--card); border-radius: 28px; padding: clamp(1.75rem, 3.5vw, 2.75rem); display: flex; flex-direction: column; gap: .75rem; color: var(--ink); min-width: 0; }
+.partcard:hover { text-decoration: none; }
+.partcard:hover .go { text-decoration: underline; }
+.partcard .num { font: 600 1rem var(--sf); color: var(--muted); }
+.partcard .t { font: 700 clamp(1.8rem, 3.4vw, 2.6rem)/1.08 var(--sf); letter-spacing: -.035em; }
+.partcard p { color: var(--muted); font: 500 1.08rem/1.45 var(--sf); }
+.partcard .go { color: var(--link); font-size: 1.05rem; margin-top: auto; padding-top: .5rem; }
+.partmark { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1rem; }
+.partmark .tag { font: 600 .9rem var(--sft); color: var(--muted); border: 1px solid var(--hair); border-radius: 980px; padding: 6px 14px; }
+.theater .partmark .tag { color: var(--theater-muted); border-color: var(--theater-hair); }
+
+/* ---------- Essay ---------- */
+.essay { max-width: 700px; width: 100%; margin-inline: auto; display: flex; flex-direction: column; gap: 1.3rem; font-size: 1.2rem; line-height: 1.62; }
+.essay h2 { font: 700 clamp(2.2rem, 5vw, 3.6rem)/1.05 var(--sf); letter-spacing: -.04em; margin-bottom: .5rem; }
+.essay h3 { font: 700 clamp(1.5rem, 2.8vw, 2rem)/1.15 var(--sf); letter-spacing: -.03em; margin-top: 2.25rem; }
+.essay .first { font: 600 clamp(1.5rem, 2.8vw, 2rem)/1.25 var(--sf); letter-spacing: -.03em; }
+.essay .quote { font: 700 clamp(2rem, 5vw, 3.2rem)/1.05 var(--sf); letter-spacing: -.04em; text-align: center; padding-block: 1.5rem; }
+.essay .note { font-size: 1rem; line-height: 1.55; color: var(--muted); border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); padding-block: 1rem; }
+.essay ul, .essay ol { margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: .6rem; }
+.essay li::marker { color: var(--muted); }
+.fig { background: var(--theater); color: var(--theater-ink); border-radius: 28px; padding: clamp(1.5rem, 4vw, 2.5rem); display: flex; flex-direction: column; gap: 1.25rem; margin-block: 1rem; }
+.fig .cap2 { font-size: .85rem; color: var(--theater-muted); text-align: center; }
+.frames { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.frame { border-radius: 18px; padding: 1.1rem 1.2rem; background: var(--theater-card); display: flex; flex-direction: column; gap: .55rem; min-width: 0; }
+.frame .k { font: 600 .8rem var(--sft); color: var(--theater-muted); text-transform: uppercase; letter-spacing: .04em; }
+.frame b { font: 600 1.15rem/1.25 var(--sf); letter-spacing: -.02em; }
+.frame ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .4rem; font-size: .95rem; line-height: 1.4; color: var(--theater-muted); }
+.frame.hi { position: relative; }
+.frame.hi::before, .ring::before { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 2px; background: linear-gradient(135deg, var(--g1), var(--g2), var(--g3), var(--g4)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
+.frame.hi ul { color: var(--theater-ink); }
+
+/* ---------- FAQ ---------- */
+.faq { max-width: 880px; width: 100%; margin-inline: auto; border-top: 1px solid var(--hair); margin-top: .5rem; }
+.faq details { border-bottom: 1px solid var(--hair); }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.5rem 0; font: 600 clamp(1.15rem, 2.2vw, 1.5rem)/1.25 var(--sf); letter-spacing: -.02em; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font: 300 2rem/1 var(--sf); color: var(--muted); transition: transform .25s; flex: none; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { padding: 0 3rem 1.6rem 0; color: var(--muted); font-size: 1.1rem; line-height: 1.55; }
+
+/* ---------- Screen mockups (light UI inside a dark device frame) ---------- */
+.scr { --w: 250px; width: var(--w); max-width: 100%; aspect-ratio: 9 / 17.5; border-radius: 38px; background: #0B0D12; padding: 9px; flex: none;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, .35), inset 0 0 0 1.5px #2A2F3A; }
+.scr .in { height: 100%; border-radius: 30px; background: #F3F5F9; color: #14171F; display: flex; flex-direction: column; overflow: hidden; font: 400 11.5px/1.4 var(--sft); letter-spacing: -.01em; text-align: left; }
+.scr .bar { display: flex; align-items: center; gap: 8px; padding: 18px 14px 10px; background: #FFFFFF; border-bottom: 1px solid #E6E9EF; }
+.scr .bar i { width: 24px; height: 24px; border-radius: 8px; flex: none; background: linear-gradient(135deg, #1E3A8A, #3B82F6); }
+.scr .bar .nm { display: flex; flex-direction: column; min-width: 0; }
+.scr .bar b { font: 600 12.5px/1.2 var(--sf); }
+.scr .bar span { font-size: 9.5px; color: #6B7280; }
+.scr .body { flex: 1; padding: 12px 11px; display: flex; flex-direction: column; gap: 8px; overflow: hidden; }
+.bub { border-radius: 16px; padding: 8px 11px; max-width: 88%; background: #FFFFFF; align-self: flex-start; box-shadow: 0 1px 1px rgba(0, 0, 0, .04); }
+.bub.me { align-self: flex-end; background: #2B59FF; color: #FFFFFF; }
+.act { background: #FFFFFF; border-radius: 14px; padding: 10px 11px; display: flex; flex-direction: column; gap: 5px; border: 1px solid #E3E7EE; }
+.act .t { font: 600 9px var(--sft); text-transform: uppercase; letter-spacing: .05em; color: #6B7280; }
+.act b { font: 600 13px/1.25 var(--sf); letter-spacing: -.015em; }
+.act .n { font-size: 10.5px; color: #5B6270; line-height: 1.35; }
+.act.ok { border-color: #BFE8D3; background: #F0FAF5; }
+.act.ok .t { color: #1F9D63; }
+.act.glow { box-shadow: 0 0 0 2px rgba(91, 108, 255, .35); border-color: #C9D2FF; }
+.act.mono { font: 400 9.5px/1.5 ui-monospace, Menlo, monospace; color: #3A404C; }
+.row { display: flex; gap: 7px; align-items: flex-start; font-size: 10.5px; color: #3A404C; line-height: 1.35; }
+.chk { display: inline-grid; place-items: center; width: 15px; height: 15px; border-radius: 50%; background: #1F9D63; color: #FFFFFF; font: 700 8.5px var(--sft); flex: none; margin-top: 1px; }
+.chk.wait { background: #C9CED8; }
+.chk.flag { background: #D97706; }
+.qr { display: flex; flex-wrap: wrap; gap: 5px; }
+.qr span { border: 1px solid #CBD3E1; border-radius: 980px; padding: 5px 9px; font: 500 10px var(--sft); color: #2B59FF; background: #FFFFFF; }
+.qr span.on { background: #2B59FF; color: #FFFFFF; border-color: #2B59FF; }
+.inp { margin: 0 10px 12px; border-radius: 980px; background: #FFFFFF; border: 1px solid #E1E5EC; padding: 9px 12px; color: #8A90A0; font-size: 10.5px; }
+.doc h4 { margin: 0; font: 700 15px/1.2 var(--sf); letter-spacing: -.02em; }
+.doc .lbl { font: 600 9px var(--sft); text-transform: uppercase; letter-spacing: .05em; color: #6B7280; }
+.doc ol { margin: 0; padding-left: 16px; display: flex; flex-direction: column; gap: 5px; font-size: 10.5px; line-height: 1.4; }
+.doc .tagx { display: inline-block; background: #EEF1FF; color: #3B4FD8; border-radius: 5px; padding: 0 4px; font: 500 9.5px ui-monospace, Menlo, monospace; }
+.stat { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.stat div { background: #FFFFFF; border: 1px solid #E3E7EE; border-radius: 12px; padding: 8px; display: flex; flex-direction: column; gap: 2px; }
+.stat b { font: 700 17px/1 var(--sf); letter-spacing: -.03em; }
+.stat span { font-size: 9px; color: #6B7280; }
+.prog { height: 6px; border-radius: 4px; background: #E5E7EB; overflow: hidden; }
+.prog i { display: block; height: 100%; background: linear-gradient(90deg, var(--g1), var(--g3)); border-radius: 4px; }
+.abtn { border-radius: 980px; padding: 9px; text-align: center; font: 600 11.5px var(--sft); background: #2B59FF; color: #FFFFFF; }
+.abtn.alt { background: #E7EAF2; color: #2B59FF; }
+
+/* ---------- Screen rows ---------- */
+.screens { display: grid; gap: 3rem 1.5rem; justify-items: center; align-items: start; }
+.screens.c4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.screens.c2 { grid-template-columns: repeat(2, minmax(0, auto)); justify-content: center; gap: 3rem clamp(2rem, 6vw, 6rem); }
+.cap { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; text-align: center; min-width: 0; }
+.cap .k { font: 600 1.15rem var(--sf); letter-spacing: -.02em; }
+.cap .d { font-size: .98rem; line-height: 1.45; color: var(--muted); max-width: 26ch; }
+.theater .cap .d { color: var(--theater-muted); }
+
+/* ---------- Wireframes (lo-fi, theme-aware) ---------- */
+.wfs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2.5rem 1.5rem; }
+.wfs.c3 { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 900px; margin-inline: auto; width: 100%; }
+.wfstep { display: flex; flex-direction: column; align-items: center; gap: 1rem; text-align: center; min-width: 0; }
+.wfstep .k { font: 600 1.05rem var(--sf); letter-spacing: -.02em; }
+.wfstep .k b { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--cta); color: var(--cta-ink); font: 600 .78rem var(--sft); margin-right: 8px; vertical-align: 2px; }
+.wfstep .d { font-size: .95rem; line-height: 1.45; color: var(--muted); max-width: 26ch; }
+.wf { width: 100%; max-width: 240px; aspect-ratio: 4 / 5; border-radius: 22px; border: 1.5px solid var(--hair); background: var(--card); padding: 14px; display: flex; flex-direction: column; gap: 8px; text-align: left; font: 400 10.5px/1.4 var(--sft); color: var(--ink); letter-spacing: -.01em; }
+.wf .lbl { font: 600 9px var(--sft); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+.wf b { font: 600 12.5px/1.25 var(--sf); }
+.wf .ln { height: 7px; border-radius: 4px; background: var(--hair); }
+.wf .w40 { width: 40%; } .wf .w60 { width: 60%; } .wf .w80 { width: 80%; }
+.wf .blk { border: 1.5px solid var(--hair); border-radius: 10px; padding: 8px; }
+.wf .blk > * + * { margin-top: 5px; }
+.wf .new { border: 1.5px dashed var(--cta); background: rgba(59, 91, 255, .06); }
+.wf .btn { margin-top: auto; border-radius: 980px; background: var(--cta); color: var(--cta-ink); text-align: center; padding: 7px; font-weight: 600; }
+.wf .btn.alt { background: transparent; border: 1.5px solid var(--hair); color: var(--ink); margin-top: 0; }
+.wf .two { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.wf .bar2 { display: flex; align-items: center; gap: 6px; }
+.wf .bar2 .ln { flex: 1; }
+.wf .bar2 .ln.f { background: var(--cta); }
+.wf .del { text-decoration: line-through; color: var(--muted); }
+.wf .add { color: var(--cta); font-weight: 600; }
+.flowhead { display: flex; flex-direction: column; gap: .5rem; max-width: 760px; }
+.flowhead h3 { font: 700 clamp(1.6rem, 3vw, 2.2rem)/1.1 var(--sf); letter-spacing: -.035em; }
+.flowhead p { color: var(--muted); font-size: 1.1rem; line-height: 1.5; }
+.legend2 { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; font-size: .85rem; color: var(--muted); }
+.legend2 i { display: inline-block; width: 14px; height: 10px; border-radius: 3px; border: 1.5px dashed var(--cta); margin-right: 7px; vertical-align: 0; }
+
+/* ---------- Industries ---------- */
+.inds { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.ind { background: var(--theater-card); border-radius: 28px; padding: clamp(1.4rem, 2.6vw, 2rem); display: flex; flex-direction: column; gap: .8rem; min-width: 0; }
+.ind .top { display: flex; justify-content: space-between; align-items: center; gap: .5rem; }
+.ind .seq { font: 600 .75rem var(--sft); border: 1px solid var(--theater-hair); color: var(--theater-muted); border-radius: 980px; padding: 3px 10px; white-space: nowrap; }
+.ind .seq.lead { border-color: transparent; background: linear-gradient(90deg, var(--g1), var(--g3)); color: #06101F; }
+.ind h3 { font: 700 1.5rem/1.15 var(--sf); letter-spacing: -.03em; }
+.ind .wedge { font-size: .98rem; line-height: 1.45; color: var(--theater-muted); }
+.ind .wedge b { color: var(--theater-ink); font-weight: 600; }
+.mini { background: #F3F5F9; border-radius: 18px; padding: 10px; display: flex; flex-direction: column; gap: 6px; font: 400 11.5px/1.4 var(--sft); color: #14171F; }
+.mini .bub { font-size: 11.5px; }
+.ind .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.ind .chips span { font-size: .78rem; background: rgba(255, 255, 255, .07); border-radius: 980px; padding: 4px 10px; color: var(--theater-ink); }
+.ind .proof { font-size: .85rem; color: var(--theater-muted); border-top: 1px solid var(--theater-hair); padding-top: .7rem; margin-top: auto; }
+
+/* ---------- Bento ---------- */
+.bento { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 20px; }
+.tile { background: var(--card); border-radius: 28px; padding: clamp(1.5rem, 3vw, 2.4rem); display: flex; flex-direction: column; gap: .6rem; min-width: 0; position: relative; }
+.theater .tile { background: var(--theater-card); }
+.tile.w3 { grid-column: span 3; }
+.tile.w2 { grid-column: span 2; }
+.tile .big { font: 700 clamp(3.2rem, 7vw, 5.4rem)/1 var(--sf); letter-spacing: -.05em; }
+.tile .t { font: 600 clamp(1.3rem, 2.4vw, 1.8rem)/1.15 var(--sf); letter-spacing: -.03em; }
+.tile p { color: var(--muted); font: 500 1.05rem/1.45 var(--sf); }
+.theater .tile p { color: var(--theater-muted); }
+.tile .k { font: 600 .85rem var(--sft); color: var(--muted); }
+.theater .tile .k { color: var(--theater-muted); }
+
+/* ---------- Positioning map ---------- */
+.map { position: relative; width: 100%; max-width: 860px; margin-inline: auto; aspect-ratio: 16 / 10; border-radius: 28px; background: var(--card); overflow: hidden; }
+.map .zone { position: absolute; right: 0; top: 0; width: 50%; height: 50%; background: radial-gradient(circle at 75% 25%, rgba(46, 230, 197, .22), rgba(91, 108, 255, .14) 50%, transparent 75%); }
+.map .vx { position: absolute; left: 50%; top: 8%; bottom: 8%; width: 1px; background: var(--hair); }
+.map .hx { position: absolute; top: 50%; left: 6%; right: 6%; height: 1px; background: var(--hair); }
+.map .ax { position: absolute; font: 600 .78rem var(--sft); color: var(--muted); }
+.map .ax.t { top: 3%; left: 50%; transform: translateX(-50%); }
+.map .ax.b { bottom: 3%; left: 50%; transform: translateX(-50%); }
+.map .ax.l { left: 2%; top: 50%; transform: translateY(-140%); }
+.map .ax.r { right: 2%; top: 50%; transform: translateY(-140%); }
+.map .zl { position: absolute; right: 4%; top: 12%; font: 600 .8rem var(--sft); color: var(--cta); text-align: right; }
+.dot { position: absolute; transform: translate(-50%, -50%); display: flex; align-items: center; gap: 7px; font: 600 .85rem var(--sft); white-space: nowrap; }
+.dot i { width: 12px; height: 12px; border-radius: 50%; background: var(--muted); flex: none; }
+.dot.us i { background: var(--ink); }
+.dot.go i { background: linear-gradient(135deg, var(--g1), var(--g4)); width: 16px; height: 16px; box-shadow: 0 0 0 5px rgba(91, 108, 255, .18); }
+.dot.go { color: var(--cta); }
+.dot.ghost { color: var(--muted); font-weight: 500; }
+.theater .map { background: var(--theater-card); }
+.theater .map .vx, .theater .map .hx { background: var(--theater-hair); }
+.theater .map .ax, .theater .dot.ghost { color: var(--theater-muted); }
+.theater .dot.ghost i { background: var(--theater-muted); }
+.theater .map .zl, .theater .dot.go { color: #8EA2FF; }
+.mapnote { text-align: center; font-size: .9rem; color: var(--muted); max-width: 60ch; margin-inline: auto; }
+
+/* ---------- Under the hood ---------- */
+.flow { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.2fr) auto minmax(0, 1fr); gap: 1rem; align-items: center; }
+.node { background: var(--theater-card); border-radius: 24px; padding: 1.4rem 1.5rem; display: flex; flex-direction: column; gap: .5rem; min-width: 0; position: relative; }
+.node .k { font: 600 .82rem var(--sft); color: var(--theater-muted); }
+.node .v { font: 600 1.3rem/1.2 var(--sf); letter-spacing: -.025em; }
+.node .d { font-size: .95rem; color: var(--theater-muted); line-height: 1.45; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: .3rem; }
+.tags span { font-size: .78rem; background: rgba(255, 255, 255, .07); border-radius: 980px; padding: 4px 10px; color: var(--theater-ink); }
+.arrow { color: var(--theater-muted); font: 300 2rem var(--sf); text-align: center; }
+.guards { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.guard { border: 1px solid var(--theater-hair); border-radius: 18px; padding: 1rem; display: flex; flex-direction: column; gap: .3rem; min-width: 0; }
+.guard b { font: 600 1rem var(--sf); }
+.guard span { font-size: .88rem; line-height: 1.4; color: var(--theater-muted); }
+
+/* ---------- Rollout ---------- */
+.rollout { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.phase { background: var(--card); border-radius: 26px; padding: 1.6rem 1.5rem 1.8rem; display: flex; flex-direction: column; gap: .7rem; min-width: 0; }
+.phase .when { font: 600 .9rem var(--sft); }
+.phase .t { font: 700 1.35rem/1.2 var(--sf); letter-spacing: -.025em; }
+.phase p { font-size: .98rem; line-height: 1.5; color: var(--muted); }
+.phase .ex { font-size: .85rem; color: var(--ink); opacity: .85; border-top: 1px solid var(--hair); padding-top: .7rem; }
+.phase .meter { display: flex; gap: 4px; margin-top: auto; padding-top: .6rem; }
+.phase .meter i { flex: 1; height: 5px; border-radius: 3px; background: var(--hair); }
+.phase .meter i.on { background: linear-gradient(90deg, var(--g1), var(--g2), var(--g3), var(--g4)); }
+
+/* ---------- Footer ---------- */
+footer { background: var(--bg); color: var(--muted); font-size: .75rem; line-height: 1.5; }
+footer .in { max-width: 1200px; margin-inline: auto; padding-block: 2rem 3rem; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: flex; flex-direction: column; gap: .8rem; }
+footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1rem; }
+
+@media (max-width: 1080px) {
+  .screens.c4, .wfs, .rollout { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .inds { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .flow { grid-template-columns: 1fr; }
+  .arrow { transform: rotate(90deg); }
+  .guards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 860px) {
+  .localnav nav a:not(.pill) { display: none; }
+  .parts, .wfs.c3, .frames { grid-template-columns: 1fr; }
+  .bento { grid-template-columns: 1fr; }
+  .tile.w3, .tile.w2 { grid-column: auto; }
+  .hero-screens .side { display: none; }
+  .map { aspect-ratio: 4 / 5; }
+  .map .ax.l, .map .ax.r { transform: none; top: auto; bottom: 52%; max-width: 30%; white-space: normal; }
+  .map .ax.r { text-align: right; }
+}
+@media (max-width: 600px) {
+  .screens.c4, .screens.c2, .wfs, .rollout, .inds, .guards { grid-template-columns: 1fr; }
+  .faq details p { padding-right: 0; }
+  .localnav .title .home, .localnav .title .slash { display: none; }
+  .dot { font-size: .72rem; white-space: normal; max-width: 44%; }
+}
+</style>
+</head>
+<body>
+<div class="localnav">
+  <div class="in">
+    <span class="title"><a class="home" href="/#builds">Chae Kim</a><span class="slash" aria-hidden="true">/</span>Decagon, Repositioned</span>
+    <nav aria-label="Sections">
+      <a href="#essay">Thought piece</a>
+      <a href="#playout">How it plays out</a>
+      <a href="#industries">Industries</a>
+      <a href="#rollout">Rollout</a>
+      <a class="pill" href="#essay">Read it</a>
+    </nav>
+  </div>
+</div>
+
+<main>
+
+  <!-- HERO -->
+  <section class="band theater hero">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow muted">A strategy concept</span>
+        <h1><span class="grad">Don't close the ticket.</span><br>Make the decision.</h1>
+        <p class="sub">Every help desk has an AI agent now. Decagon should sell the thing they can't do safely: act.</p>
+        <div class="links"><a href="#essay">Read the thought piece ›</a><a href="#playout">See how it plays out ›</a></div>
+      </div>
+      <div class="hero-screens">
+        <div class="scr side" style="--w:230px" aria-hidden="true"><div class="in">
+          <div class="bar"><i></i><div class="nm"><b>Card disputes</b><span>Operating procedure · v14</span></div></div>
+          <div class="body doc">
+            <span class="lbl">When a customer reports an unknown charge</span>
+            <ol>
+              <li>Verify identity with <span class="tagx">2FA</span></li>
+              <li>Pull the last 90 days from <span class="tagx">core_ledger</span></li>
+              <li>If under $500 and no prior disputes, issue provisional credit</li>
+              <li>Over $500, hand to a specialist with the case built</li>
+              <li>Log the reasoning for audit</li>
+            </ol>
+            <div class="act ok"><span class="t">Simulated · 1,000 runs</span><b>99.2% followed policy</b></div>
+          </div>
+        </div></div>
+        <div class="scr" style="--w:280px" aria-hidden="true"><div class="in">
+          <div class="bar"><i></i><div class="nm"><b>Northbeam Bank</b><span>Support · AI agent</span></div></div>
+          <div class="body">
+            <div class="bub me">There's a $240 charge from "QXT*SVCS" I don't recognize.</div>
+            <div class="bub">I've confirmed it's you. That merchant hasn't charged you before, so I've opened a dispute.</div>
+            <div class="act ok"><span class="t">Done · within policy</span><b>$240.00 credited to your account</b><span class="n">Provisional while we investigate. Card ending 4417 is frozen and a new one ships today.</span></div>
+            <div class="qr"><span>Track dispute</span><span>Talk to a person</span></div>
+          </div>
+          <div class="inp">Message Northbeam</div>
+        </div></div>
+        <div class="scr side" style="--w:230px" aria-hidden="true"><div class="in">
+          <div class="bar"><i></i><div class="nm"><b>Audit record</b><span>Case 88-2041</span></div></div>
+          <div class="body">
+            <div class="row"><span class="chk">✓</span>Identity verified · 2FA</div>
+            <div class="row"><span class="chk">✓</span>Ledger checked · 90 days</div>
+            <div class="row"><span class="chk">✓</span>Rule 3 applied · $240 &lt; $500</div>
+            <div class="row"><span class="chk">✓</span>Reg E notice sent</div>
+            <div class="row"><span class="chk wait">·</span>Merchant response due in 10 days</div>
+            <div class="act mono">policy: card_disputes@v14<br>action: provisional_credit<br>approved_by: rule_3<br>reviewer: none required</div>
+          </div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENTS -->
+  <section class="band">
+    <div class="wrap" style="padding-block:clamp(3rem,7vw,5rem)">
+      <div class="parts">
+        <a class="partcard" href="#essay"><span class="num">Part 1</span><span class="t">The thought piece</span><p>Why answering tickets is turning into a commodity, and why Decagon should sell the decision behind the answer, one regulated industry at a time.</p><span class="go">Read it ›</span></a>
+        <a class="partcard" href="#playout"><span class="num">Part 2</span><span class="t">How it would play out</span><p>Mockups, wireframes, six industry plays and a realistic path from today's Decagon to this one.</p><span class="go">See it ›</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PART 1 ===================== -->
+  <section class="band" id="essay">
+    <div class="wrap" style="padding-top:clamp(2rem,5vw,3rem)">
+      <article class="essay">
+        <div class="partmark" style="align-items:flex-start;text-align:left"><span class="tag">Part 1 · The thought piece</span></div>
+        <h2>Why Decagon should stop selling customer service.</h2>
+
+        <p class="first">Think about the last time you disputed a charge.</p>
+        <p>You didn't need an answer. You already knew the charge was wrong. You needed someone with the authority to do something about it: reverse it, freeze the card, and tell you when the money would come back.</p>
+        <p>Most support bots can answer "how do I dispute a charge?" They link you to a help article and wish you a great day. Very few can actually file the dispute, apply the bank's policy, issue a provisional credit, and leave behind a record a regulator would accept.</p>
+        <p>That gap is the whole opportunity. The question isn't whether an AI agent can talk to customers. Everyone's can. It's whether a company trusts it to make the call.</p>
+        <p class="quote">Don't answer the question.<br><span class="grad">Make the decision.</span></p>
+        <p class="note">This is an outside view, written from Decagon's public site and press coverage as of October 2026. Facts are footnoted. Everything else, including the industry plays and the mockups, is my own judgment. Bank and airline names on screens are fictional.</p>
+
+        <h3>Everything answers tickets now.</h3>
+        <p>Three years ago, an AI agent that resolved most support conversations was remarkable. Today it's a line item. Intercom prices Fin at about $0.99 per resolution, and Zendesk and Salesforce bundle agents into suites customers already pay for.<sup><a href="#src3">3</a></sup> Every vendor quotes a resolution rate between roughly 60 and 80 percent, and every one of those numbers is self-reported.</p>
+        <p>When that's the scorecard, the buyer is the head of support, the question is cost per ticket, and procurement runs a bake-off. The cheapest credible answer wins. That's a bad game for the company with the best engineering.</p>
+        <div class="fig">
+          <div class="frames">
+            <div class="frame"><span class="k">The game today</span><b>Cost per ticket</b><ul><li>Buyer: head of support</li><li>Proof: resolution rate</li><li>Comparison: price per outcome</li><li>Rival: whatever the help desk bundles</li></ul></div>
+            <div class="frame hi"><span class="k">The game to play</span><b>Decisions you can trust</b><ul><li>Buyer: operations, with risk co-signing</li><li>Proof: audited actions, money saved or earned</li><li>Comparison: cost of a wrong decision</li><li>Rival: the human team doing it today</li></ul></div>
+          </div>
+          <p class="cap2">Same product, different frame. Illustrative.</p>
+        </div>
+
+        <h3>Where Decagon already wins.</h3>
+        <p>Look at who Decagon serves and the pattern is already there: Chime, Cash App and Square in fintech; American Airlines and Delta in travel; Deutsche Telekom in telecom.<sup><a href="#src1">1</a></sup> These aren't companies with simple FAQs. Their conversations end in refunds, rebookings, plan changes and disputes, where a wrong answer costs money or turns into a compliance finding.</p>
+        <p>The proof points say the same thing. Decagon reports 70 percent resolution at Chime, and $1M in revenue from conversations handled entirely by AI at Hunter Douglas.<sup><a href="#src1">1</a></sup> Investors agree it's a serious company, too: it was reportedly valued at $4.5B in January 2026.<sup><a href="#src2">2</a></sup></p>
+        <p>But the homepage still leads with an "AI concierge for every customer." That's a sentence any competitor could write.</p>
+
+        <h3>Policy is the product.</h3>
+        <p>Decagon's agents follow Agent Operating Procedures: plain-language instructions an operations lead can read and edit, which the agent turns into real steps against real systems.<sup><a href="#src1">1</a></sup> Today they're pitched as a nice way to build an agent. I'd make them the center of the story.</p>
+        <p>A bank's dispute policy, an airline's rebooking rules and a carrier's retention offers are some of the most valuable documents those companies have. If they live in Decagon, versioned, tested and approved, then the agent is just how the policy gets carried out. Switching vendors would mean rewriting how the business runs. That's a moat a help desk can't bundle away.</p>
+
+        <h3>Prove it before it ships.</h3>
+        <p>The person who blocks an AI agent at a bank isn't the head of support. It's the risk officer, and their question is simple: how do I know what it will do?</p>
+        <p>Decagon already has the pieces to answer that. It can simulate conversations before launch, run experiments, and watch every live conversation for problems.<sup><a href="#src1">1</a></sup> Packaged for a risk team, that becomes the pitch: run a thousand fake disputes against the new policy, see exactly where the agent would deviate, approve it, and get an audit trail for every real one after. Lead with that, and the risk officer stops being the blocker and starts being the champion.</p>
+
+        <h3>One industry at a time.</h3>
+        <p>A horizontal platform with a vertical go-to-market. The product stays the same, but each industry gets its own procedures, integrations, test suites and audit reports out of the box, so a new customer starts most of the way there instead of at zero. My order:</p>
+        <ol>
+          <li><strong>Fintech and banking first.</strong> The logos and the proof already exist, and disputes are the perfect wedge: high volume, clear rules, real money.</li>
+          <li><strong>Airlines and telecom next.</strong> Both prove voice at scale: storm-day rebooking and bill-shock calls.</li>
+          <li><strong>Insurance and healthcare payers as design partners.</strong> The compliance bar is high and sales cycles are slow, which is exactly why winning there builds the moat.</li>
+          <li><strong>Commerce and gaming as the revenue story.</strong> Not a vertical team, but the place to prove support can make money.</li>
+        </ol>
+
+        <h3>Support should make money.</h3>
+        <p>The most strategic number on Decagon's site is the one it buries: $1M in revenue from AI-handled conversations.<sup><a href="#src1">1</a></sup> Cost savings get a support leader a bonus. Revenue gets a meeting with the CFO.</p>
+        <p>Three moves push the story there. Report revenue in the product, from save offers, upgrades and recovered carts. Make voice the headline, because the phone is the most expensive and least automated channel in every regulated industry. And go proactive: when a flight is cancelled or a payment fails, the agent reaches out first and fixes it before anyone has to ask.</p>
+
+        <h3>How it should price.</h3>
+        <p>If the product is the decision, pricing every outcome at the same rate undersells it. A few ways to price it:</p>
+        <ul>
+          <li><strong>Per resolution.</strong> Simple and easy to compare. That's exactly the problem: it puts Decagon next to a $0.99 rate card.</li>
+          <li><strong>Per action, tiered by value.</strong> A resolved dispute or saved account costs more than an FAQ answer. Harder to explain, but it matches the value.</li>
+          <li><strong>Platform fee plus outcomes.</strong> A base for the policy, testing and audit layer, plus tiered outcomes on top.</li>
+        </ul>
+        <p>I'd lead with the third, and publish a starting price. Enterprise buyers don't need a rate card, but a visible floor shortens the first conversation.</p>
+
+        <h3>The hard questions.</h3>
+        <div class="faq">
+          <details open><summary>Doesn't narrowing the story lose deals?</summary><p>Some, at first. The platform stays horizontal; only the pitch, the packs and the sales teams go vertical. A commerce company can still buy Decagon. It just won't be the homepage.</p></details>
+          <details><summary>Can Decagon win against Sierra's war chest?</summary><p>Not on breadth. Sierra is reportedly valued well above Decagon.<sup><a href="#src3">3</a></sup> The way to beat a better-funded rival is to go deeper in fewer places, so that in fintech or airlines Decagon is the obvious choice, not the alternative.</p></details>
+          <details><summary>Aren't regulated industries too slow to sell into?</summary><p>Insurance and payer deals can take well over a year. That's why they start as design partners. Fintech and travel carry the growth while the slow verticals build the moat.</p></details>
+          <details><summary>What happens when the agent makes a bad decision?</summary><p>That's the real risk of this strategy: acting is riskier than answering. Approval thresholds, instant rollback and live monitoring have to be real and visible. The pitch only works if the safety is the product, not a slide.</p></details>
+          <details><summary>Won't Salesforce and Zendesk just bundle this?</summary><p>They'll bundle answering. Governed actions on top of a bank's core systems are much harder. And Decagon should be available inside those marketplaces too, as the decision layer on top of the help desk rather than only a replacement for it.</p></details>
+        </div>
+
+        <p class="quote">Help desks answer customers.<br><span class="grad">Decagon should act for them.</span></p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===================== PART 2 ===================== -->
+  <section class="band theater" id="playout">
+    <div class="wrap">
+      <div class="partmark">
+        <span class="tag">Part 2 · How it would play out</span>
+        <h2 class="headline">From one answer<br><span class="grad">to a decision you can audit.</span></h2>
+        <p class="sub">The ideas from Part 1, on screen.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE CORE LOOP -->
+  <section class="band" id="loop">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow grad">The core loop</span>
+        <h2 class="headline">Ask. Check.<br>Act. Prove.</h2>
+        <p class="sub">One dispute, start to finish, without a human in the loop and without a gap in the record.</p>
+      </div>
+      <div class="screens c4">
+        <div class="cap"><div class="scr" style="--w:230px" aria-hidden="true"><div class="in">
+          <div class="bar"><i></i><div class="nm"><b>Northbeam Bank</b><span>Support · AI agent</span></div></div>
+          <div class="body">
+            <div class="bub me">There's a $240 charge I don't recognize. Can you reverse it?</div>
+            <div class="bub">I can help with that. First, I sent a code to your phone ending 82.</div>
+            <div class="qr"><span class="on">Enter code</span><span>Call me</span></div>
+          </div>
+          <div class="inp">Message Northbeam</div>
+        </div></div><span class="k">Ask</span><span class="d">The customer asks in their own words, in chat, voice or email.</span></div>
+
+        <div class="cap"><div class="scr" style="--w:230px" aria-hidden="true"><div class="in">
+          <div class="bar"><i></i><div class="nm"><b>Agent reasoning</b><span>Visible to the ops team</span></div></div>
+          <div class="body">
+            <div class="row"><span class="chk">✓</span>Identity verified</div>
+            <div class="row"><span class="chk">✓</span>New merchant, first charge</div>
+            <div class="row"><span class="chk">✓</span>No disputes in 12 months</div>
+            <div class="row"><span class="chk">✓</span>Amount under $500 limit</div>
+            <div class="act glow"><span class="t">Policy match</span><b>Card disputes · rule 3</b><span class="n">Provisional credit allowed without review.</span></div>
+          </div>
+        </div></div><span class="k">Check</span><span class="d">The agent runs the bank's own procedure against its real systems.</span></div>
+
+        <div class="cap"><div class="scr" style="--w:230px" aria-hidden="true"><div class="in">
+          <div class="bar"><i></i><div class="nm"><b>Northbeam Bank</b><span>Support · AI agent</span></div></div>
+          <div class="body">
+            <div class="act ok"><span class="t">Done</span><b>$240.00 credited</b><span class="n">Provisional while we investigate.</span></div>
+            <div class="act ok"><span class="t">Done</span><b>Card 4417 frozen</b><span class="n">New card arrives Thursday.</span></div>
+            <div class="bub">You'll hear from us within 10 business days. Anything else?</div>
+          </div>
+          <div class="inp">Message Northbeam</div>
+        </div></div><span class="k">Act</span><span class="d">It takes the action, not just the next step in a help article.</span></div>
+
+        <div class="cap"><div class="scr" style="--w:230px" aria-hidden="true"><div class="in">
+          <div class="bar"><i></i><div class="nm"><b>Audit record</b><span>Case 88-2041</span></div></div>
+          <div class="body">
+            <div class="act mono">policy: card_disputes@v14<br>rule: 3 (under $500)<br>actions: credit, freeze, reissue<br>notice: Reg E sent<br>review: not required</div>
+            <div class="abtn alt">Export for audit</div>
+          </div>
+        </div></div><span class="k">Prove</span><span class="d">Every decision leaves a record a risk team can read and export.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WIREFRAMES: POLICY -->
+  <section class="band theater" id="policy">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow grad">Policy is the product</span>
+        <h2 class="headline">Write the rule once.<br>Every channel follows it.</h2>
+        <p class="sub">The everyday flows for the ops and risk teams who own the agent.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="wireframes">
+    <div class="wrap">
+      <div class="legend2" style="justify-content:center"><span><i></i>New or changed</span></div>
+
+      <div class="flowhead"><h3>Change a policy</h3><p>An ops lead edits the procedure in plain language. Nothing ships until it's been tested and approved.</p></div>
+      <div class="wfs">
+        <div class="wfstep"><div class="wf" aria-hidden="true">
+          <span class="lbl">Card disputes · v14</span><b>Rule 3</b>
+          <div class="blk">If the amount is under <span class="del">$500</span> <span class="add">$750</span> and there are no disputes in 12 months, issue provisional credit.</div>
+          <div class="ln w80"></div><div class="ln w60"></div>
+          <div class="btn">Test this change</div>
+        </div><span class="k"><b>1</b>Edit in plain language</span><span class="d">"Raise the no-review limit to $750 for customers over two years."</span></div>
+
+        <div class="wfstep"><div class="wf" aria-hidden="true">
+          <span class="lbl">Simulation</span><b>1,000 past disputes</b>
+          <div class="blk new"><div class="bar2"><span style="width:52px">Followed</span><div class="ln f" style="width:96%"></div></div><div class="bar2"><span style="width:52px">Escalated</span><div class="ln f" style="width:22%"></div></div><div class="bar2"><span style="width:52px">Deviated</span><div class="ln" style="width:6%;background:#D97706"></div></div></div>
+          <div class="ln w80"></div><div class="ln w40"></div>
+          <div class="btn">Review 8 deviations</div>
+        </div><span class="k"><b>2</b>Replay real cases</span><span class="d">See exactly which conversations would change before anything is live.</span></div>
+
+        <div class="wfstep"><div class="wf" aria-hidden="true">
+          <span class="lbl">Impact</span><b>What changes</b>
+          <div class="two"><div class="blk new"><b>+14%</b>resolved without review</div><div class="blk new"><b>$31k</b>more credit / month</div></div>
+          <div class="blk">Est. fraud exposure <b>+0.02%</b></div>
+          <div class="btn">Send for approval</div>
+        </div><span class="k"><b>3</b>See the trade-off</span><span class="d">More automation, at a cost the risk team can see in dollars.</span></div>
+
+        <div class="wfstep"><div class="wf" aria-hidden="true">
+          <span class="lbl">Approvals</span><b>v15 ready to ship</b>
+          <div class="blk"><div class="row" style="color:inherit"><span class="chk">✓</span>Ops lead</div><div class="row" style="color:inherit"><span class="chk">✓</span>Risk officer</div></div>
+          <div class="blk new">Roll out to 10% of chats, then 100% after 7 days</div>
+          <div class="btn">Ship v15</div>
+        </div><span class="k"><b>4</b>Approve and roll out</span><span class="d">Two sign-offs, a staged rollout and one-click rollback.</span></div>
+      </div>
+
+      <div class="flowhead" style="margin-top:2rem"><h3>Hand off to a person</h3><p>When a case is over the line, the agent doesn't give up. It builds the case so the specialist starts at the end, not the beginning.</p></div>
+      <div class="wfs c3">
+        <div class="wfstep"><div class="wf" aria-hidden="true">
+          <span class="lbl">Rule 4</span><b>Over $500</b>
+          <div class="blk">Charge is <b>$1,180</b>. Needs a specialist.</div>
+          <div class="ln w80"></div><div class="ln w60"></div>
+          <div class="blk new">"I'm connecting you with a dispute specialist now. You won't need to repeat anything."</div>
+        </div><span class="k"><b>1</b>The agent knows its limit</span><span class="d">It stops where the policy says to stop and tells the customer why.</span></div>
+        <div class="wfstep"><div class="wf" aria-hidden="true">
+          <span class="lbl">Specialist view</span><b>Case brief</b>
+          <div class="blk new">Verified · 3 similar charges · merchant flagged by 41 other customers</div>
+          <div class="ln w80"></div><div class="ln w40"></div>
+          <div class="two"><div class="btn alt">Deny</div><div class="btn alt" style="border-color:var(--cta);color:var(--cta)">Approve</div></div>
+        </div><span class="k"><b>2</b>The human decides</span><span class="d">One screen with everything gathered. A decision in a minute, not twenty.</span></div>
+        <div class="wfstep"><div class="wf" aria-hidden="true">
+          <span class="lbl">Insights</span><b>Pattern found</b>
+          <div class="blk new">41 escalations this week from one merchant. Suggest a new rule?</div>
+          <div class="ln w60"></div><div class="ln w80"></div>
+          <div class="btn">Draft rule 5</div>
+        </div><span class="k"><b>3</b>The policy learns</span><span class="d">Repeated escalations become a suggested change, which goes back to step 1.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section class="band theater" id="industries">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow grad">Industry packs</span>
+        <h2 class="headline">Six industries.<br>One playbook.</h2>
+        <p class="sub">Each pack ships with procedures, integrations, tests and audit reports for one high-stakes workflow.</p>
+      </div>
+      <div class="inds">
+        <div class="ind">
+          <div class="top"><span class="eyebrow grad" style="font-size:1rem">Fintech and banking</span><span class="seq lead">Lead</span></div>
+          <h3>Disputes to provisional credit</h3>
+          <div class="mini" aria-hidden="true"><div class="bub me">There's a charge I don't recognize.</div><div class="bub">Dispute filed and $240 credited while we investigate.</div></div>
+          <p class="wedge"><b>Buyer:</b> VP of support operations, with the chief risk officer co-signing. <b>Rules:</b> Reg E timelines, complaint handling, KYC.</p>
+          <div class="chips"><span>Cost per dispute</span><span>Time to credit</span><span>Audit exceptions</span></div>
+          <p class="proof">Proof today: Chime, Cash App and Square are customers; 70% resolution at Chime.<sup><a href="#src1">1</a></sup></p>
+        </div>
+        <div class="ind">
+          <div class="top"><span class="eyebrow grad" style="font-size:1rem">Airlines and travel</span><span class="seq">Next</span></div>
+          <h3>Storm-day rebooking</h3>
+          <div class="mini" aria-hidden="true"><div class="bub">Your 6pm to Denver was cancelled. You're on the 7:40am, seat 14C.</div><div class="bub me">Can I get a hotel?</div><div class="bub">Voucher's in your email.</div></div>
+          <p class="wedge"><b>Buyer:</b> chief customer officer. <b>Rules:</b> DOT refund rules, EU261-style compensation, accessibility.</p>
+          <div class="chips"><span>Peak-day hold time</span><span>Rebook rate</span><span>Comp accuracy</span></div>
+          <p class="proof">Proof today: American Airlines and Delta are customers.<sup><a href="#src1">1</a></sup></p>
+        </div>
+        <div class="ind">
+          <div class="top"><span class="eyebrow grad" style="font-size:1rem">Telecom</span><span class="seq">Next</span></div>
+          <h3>Bill-shock calls on voice</h3>
+          <div class="mini" aria-hidden="true"><div class="bub me">Why did my bill jump $38?</div><div class="bub">Your promo ended. I can move you to Plus and keep $30 off. Want it?</div></div>
+          <p class="wedge"><b>Buyer:</b> head of care, with the CFO watching churn. <b>Rules:</b> consumer protection, number porting, EU data residency.</p>
+          <div class="chips"><span>Voice containment</span><span>Save rate</span><span>Repeat calls</span></div>
+          <p class="proof">Proof today: Deutsche Telekom is a customer.<sup><a href="#src1">1</a></sup></p>
+        </div>
+        <div class="ind">
+          <div class="top"><span class="eyebrow grad" style="font-size:1rem">Insurance</span><span class="seq">Design partner</span></div>
+          <h3>First notice of loss</h3>
+          <div class="mini" aria-hidden="true"><div class="bub me">Someone backed into my car.</div><div class="bub">Claim opened. Send 3 photos and I'll book an adjuster for Thursday.</div></div>
+          <p class="wedge"><b>Buyer:</b> VP of claims operations. <b>Rules:</b> claim-handling timelines, fair-claims practices. The agent gathers and routes; it never denies.</p>
+          <div class="chips"><span>Days to first contact</span><span>Complete-file rate</span><span>Adjuster hours</span></div>
+          <p class="proof">Proof today: none public that I found. Needs one design partner.</p>
+        </div>
+        <div class="ind">
+          <div class="top"><span class="eyebrow grad" style="font-size:1rem">Healthcare payers</span><span class="seq">Design partner</span></div>
+          <h3>Benefits and claim status</h3>
+          <div class="mini" aria-hidden="true"><div class="bub me">Why was my lab claim denied?</div><div class="bub">It was billed out of network. I've started an appeal with the right code.</div></div>
+          <p class="wedge"><b>Buyer:</b> VP of member experience, with compliance as gatekeeper. <b>Rules:</b> HIPAA, state AI disclosure laws, no clinical advice.</p>
+          <div class="chips"><span>First-call resolution</span><span>Complaint rate</span><span>PHI incidents: 0</span></div>
+          <p class="proof">Proof today: Oura and Curology in wellness.<sup><a href="#src1">1</a></sup> Not yet payer-grade.</p>
+        </div>
+        <div class="ind">
+          <div class="top"><span class="eyebrow grad" style="font-size:1rem">Commerce and gaming</span><span class="seq">Revenue proof</span></div>
+          <h3>Conversations that sell</h3>
+          <div class="mini" aria-hidden="true"><div class="bub me">Which blinds fit a bay window?</div><div class="bub">Three panels, 28 inches each. Add them to your cart?</div></div>
+          <p class="wedge"><b>Buyer:</b> VP of e-commerce or head of player support, plus a growth owner. <b>Rules:</b> lighter: refund law, minors' data in gaming.</p>
+          <div class="chips"><span>Revenue per chat</span><span>Conversion</span><span>CSAT</span></div>
+          <p class="proof">Proof today: $1M in AI-handled revenue at Hunter Douglas; Riot Games and Ticketmaster are customers.<sup><a href="#src1">1</a></sup></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVENUE -->
+  <section class="band" id="revenue">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow grad">Beyond cost savings</span>
+        <h2 class="headline">Support that<br>pays for itself.</h2>
+      </div>
+      <div class="bento">
+        <div class="tile w3"><span class="k">Already on Decagon's site</span><span class="big grad">$1M</span><p>Revenue from conversations handled entirely by AI at Hunter Douglas.<sup><a href="#src1">1</a></sup> It should be the first number on the homepage, not the fourth.</p></div>
+        <div class="tile w3"><span class="k">Make voice the headline</span><span class="t">The phone is where the money is.</span><p>It's the most expensive, least automated channel in every regulated industry. Lead enterprise demos with a live call on a hard workflow.</p></div>
+        <div class="tile w2"><span class="k">Go proactive</span><span class="t">Fix it before they ask.</span><p>Flight cancelled, payment failed, claim missing a photo: the agent reaches out first.</p></div>
+        <div class="tile w2"><span class="k">Report revenue</span><span class="t">A revenue view in the product.</span><p>Save offers, upgrades and recovered carts, next to deflection.</p></div>
+        <div class="tile w2"><span class="k">Price on value</span><span class="t">Not every outcome costs $0.99.</span><p>A platform fee, plus outcomes tiered by what the action is worth.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section class="band theater" id="map">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow grad">The market</span>
+        <h2 class="headline">Move to the<br>open corner.</h2>
+      </div>
+      <div class="map" role="img" aria-label="Positioning map. Horizontal axis from horizontal to vertical and policy-deep; vertical axis from answers questions to takes governed actions. Help-desk agents sit bottom left, Sierra and Decagon today sit near the top middle, and the target for Decagon is the top right.">
+        <div class="zone"></div><div class="vx"></div><div class="hx"></div>
+        <span class="ax t">Takes governed actions</span>
+        <span class="ax b">Answers questions</span>
+        <span class="ax l">Horizontal</span>
+        <span class="ax r">Vertical, policy-deep</span>
+        <span class="zl">Target: governed decisions<br>in regulated industries</span>
+        <span class="dot ghost" style="left:22%;top:76%"><i></i>Help-desk agents (Fin, Zendesk AI)</span>
+        <span class="dot ghost" style="left:30%;top:62%"><i></i>Ada, Forethought</span>
+        <span class="dot ghost" style="left:24%;top:40%"><i></i>Agentforce</span>
+        <span class="dot ghost" style="left:44%;top:28%"><i></i>Sierra</span>
+        <span class="dot us" style="left:52%;top:36%;color:var(--theater-ink)"><i style="background:var(--theater-ink)"></i>Decagon today</span>
+        <span class="dot go" style="left:76%;top:24%"><i></i>Decagon target</span>
+      </div>
+      <p class="mapnote muted">My placement, based on how each company describes itself in public. A judgment call, not measured data.<sup><a href="#src3">3</a></sup></p>
+    </div>
+  </section>
+
+  <!-- UNDER THE HOOD -->
+  <section class="band theater" id="hood" style="border-top:1px solid var(--theater-hair)">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow grad">Under the hood</span>
+        <h2 class="headline">Governed by design.</h2>
+        <p class="sub">The agent sits between every channel and every system of record, and the policy sits above it.</p>
+      </div>
+      <div class="flow">
+        <div class="node"><span class="k">Where customers are</span><span class="v">Every channel</span><div class="tags"><span>Chat</span><span>Voice</span><span>Email</span><span>SMS</span><span>Customers' own AI agents</span></div></div>
+        <div class="arrow" aria-hidden="true">→</div>
+        <div class="node ring"><span class="k">The decision layer</span><span class="v">Agent + operating procedures</span><span class="d">Versioned policy, tested before launch, approved by ops and risk.</span></div>
+        <div class="arrow" aria-hidden="true">→</div>
+        <div class="node"><span class="k">Where the action happens</span><span class="v">Systems of record</span><div class="tags"><span>Core banking</span><span>Booking</span><span>Billing</span><span>Claims</span><span>Help desk</span></div></div>
+      </div>
+      <div class="guards">
+        <div class="guard"><b>Simulate first</b><span>Replay real cases against every change.</span></div>
+        <div class="guard"><b>Approval limits</b><span>Dollar and risk thresholds per action.</span></div>
+        <div class="guard"><b>Staged rollout</b><span>10% first, with one-click rollback.</span></div>
+        <div class="guard"><b>Live monitoring</b><span>Every conversation checked for problems.</span></div>
+        <div class="guard"><b>Audit export</b><span>A record per decision, ready for review.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROLLOUT -->
+  <section class="band" id="rollout">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow grad">The rollout</span>
+        <h2 class="headline">It doesn't happen<br>overnight.</h2>
+        <p class="sub">A realistic path, built on what Decagon already ships. Each step earns trust for the next one.</p>
+      </div>
+      <div class="rollout">
+        <div class="phase"><span class="when grad">Phase 1 · 0–6 months</span><span class="t">Narrow the story</span><p>Rewrite the homepage around decisions and three industries. Publish fintech and airline playbooks. Put revenue and audit proof up front. Publish a starting price.</p><span class="ex">"The decision layer for regulated customer service."</span><div class="meter"><i class="on"></i><i></i><i></i><i></i></div></div>
+        <div class="phase"><span class="when grad">Phase 2 · 6–12 months</span><span class="t">Ship the industry packs</span><p>Packs for fintech, travel and telecom. Launch proactive outreach. Sign one insurance and one payer design partner. Start training integrators and outsourced call centers.</p><span class="ex">A new bank goes live on disputes in weeks, not months.</span><div class="meter"><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
+        <div class="phase"><span class="when grad">Phase 3 · 12–24 months</span><span class="t">Open the procedures</span><p>Publish a library of operating procedures and certify partners to write them. HIPAA readiness and regional data residency. Tiered outcome pricing.</p><span class="ex">Partners ship packs Decagon didn't have to build.</span><div class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
+        <div class="phase"><span class="when grad">Phase 4 · 24 months+</span><span class="t">Where policy lives</span><p>Decagon becomes the system of record for how regulated companies treat their customers, and every channel, human or AI, follows it.</p><span class="ex">Switching away means rewriting the business.</span><div class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS -->
+  <section class="band theater" id="metrics">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow grad">Scorecard</span>
+        <h2 class="headline">How you'd know<br>it's working.</h2>
+      </div>
+      <div class="bento">
+        <div class="tile w2"><span class="k">Focus</span><span class="t">Share of new customers in target industries</span><p>Shows the narrower story is actually landing.</p></div>
+        <div class="tile w2"><span class="k">Buyer shift</span><span class="t">Deals with risk or compliance at the table</span><p>Confirms the pitch moved past the support team.</p></div>
+        <div class="tile w2"><span class="k">Depth</span><span class="t">Governed actions per customer</span><p>Decisions made, not conversations closed.</p></div>
+        <div class="tile w3"><span class="k">Outcomes</span><span class="t">Revenue per AI conversation, and audit exceptions per 10,000 actions</span><p>Moves the story beyond deflection, while keeping the safety claim honest.</p></div>
+        <div class="tile w3"><span class="k">Leverage</span><span class="t">Time to first live workflow, and share of deployments led by partners</span><p>Tests whether packs and partners make each new customer cheaper to launch.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSE -->
+  <section class="band" id="close">
+    <div class="wrap">
+      <div class="head">
+        <h2 class="headline">Same agent.<br><span class="grad">Different job.</span></h2>
+        <p class="sub">The same customer, the same question. Today versus repositioned:</p>
+      </div>
+      <div class="screens c2">
+        <div class="cap"><div class="scr" style="--w:260px" aria-hidden="true"><div class="in">
+          <div class="bar"><i style="background:#9CA3AF"></i><div class="nm"><b>Any help desk</b><span>Support · AI agent</span></div></div>
+          <div class="body">
+            <div class="bub me">There's a $240 charge I don't recognize.</div>
+            <div class="bub">Sorry about that! To dispute a charge, go to Settings › Cards › Transactions, tap the charge, and choose "Report a problem."</div>
+            <div class="bub">Here's an article that might help: <u>Disputing a transaction</u></div>
+            <div class="qr"><span>Was this helpful?</span></div>
+          </div>
+          <div class="inp">Message support</div>
+        </div></div><span class="k">An answer</span></div>
+        <div class="cap"><div class="scr" style="--w:260px" aria-hidden="true"><div class="in">
+          <div class="bar"><i></i><div class="nm"><b>Northbeam Bank</b><span>Support · AI agent</span></div></div>
+          <div class="body">
+            <div class="bub me">There's a $240 charge I don't recognize.</div>
+            <div class="act ok"><span class="t">Done · within policy</span><b>$240.00 credited</b><span class="n">Dispute filed. Card frozen, new one arrives Thursday.</span></div>
+            <div class="act"><span class="t">Recorded</span><b>Audit trail saved</b><span class="n">card_disputes@v14 · rule 3</span></div>
+            <div class="qr"><span>Track dispute</span></div>
+          </div>
+          <div class="inp">Message Northbeam</div>
+        </div></div><span class="k">A decision</span></div>
+      </div>
+      <div class="head" style="gap:1.75rem">
+        <p class="headline" style="font-size:clamp(2rem,5vw,3.6rem)">Help desks answer customers.<br><span class="grad">Decagon should act for them.</span></p>
+        <div class="links"><a href="#essay">Read the thought piece ›</a><a class="pill lg" href="#playout" style="font-size:1rem">Back to Part 2</a></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="in">
+    <p id="src1">1. <a href="https://decagon.ai/">Decagon homepage</a>, accessed October 27, 2026: product components, customers and results. Results are company-reported.</p>
+    <p id="src2">2. <a href="https://www.bloomberg.com/news/articles/2026-01-28/ai-customer-support-startup-decagon-valued-at-4-5-billion">Bloomberg, January 28, 2026</a>: $4.5B valuation. Reports disagree on the lead investor and revenue, so only the valuation is used here.</p>
+    <p id="src3">3. Third-party comparisons: <a href="https://www.dragapp.com/blog/ai-support-agents-compared/">Drag</a>, <a href="https://vantaige.io/blog/intercom-fin-vs-decagon-vs-sierra-2026">Vantaige</a>, <a href="https://quiq.com/blog/decagon-vs-intercom/">Quiq</a>. Competitor pricing, Sierra's valuation and positioning come from these pages and are not independently verified.</p>
+    <p>Northbeam Bank, case numbers, policy versions and the numbers on wireframes are fictional examples. Industry plays, pricing and the roadmap are my own analysis.</p>
+    <p>Concept, writing and design by Chae Kim. See also <a href="/projects/siri-reimagined">Siri, Reimagined</a>. <a href="/#builds">Back to the portfolio</a>.</p>
+    <div class="rule"><span>An unofficial strategy concept. Not affiliated with or endorsed by Decagon.</span><span>Decagon and all customer and competitor names are trademarks of their respective owners.</span></div>
+  </div>
+</footer>
+</body>
+</html>
