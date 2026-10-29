@@ -12,12 +12,38 @@ def seal(cls="", label=True):
 
 # A build's color-seal mark from assets/img/brand/, or "" for pages without one.
 # The name sits right beside it, so the image is decorative (alt="").
-def build_mark(slug, cls, size):
+# A mark that changes gets a new filename (assets are cached immutably); list the current file here.
+MARK_FILE = {
+    "arcade": "arcade-2", "web-anatomy": "web-anatomy-2", "palette-generator": "palette-generator-2",
+    "custom-llm": "custom-llm-2", "pacman-dqn": "pacman-dqn-2",
+}
+# Link-preview card and touch icon per build, written by scripts/build-brand-cards.py.
+CARD_DIR = "assets/img/brand/cards"
+
+def _root():
     import os
-    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    if not os.path.exists(os.path.join(root, "assets", "img", "brand", f"{slug}.svg")):
+    return os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+def mark_file(slug):
+    """Name of a build's mark file in assets/img/brand/ (without .svg), or None if it has no mark."""
+    import os
+    name = MARK_FILE.get(slug, slug)
+    return name if os.path.exists(os.path.join(_root(), "assets", "img", "brand", f"{name}.svg")) else None
+
+def build_mark(slug, cls, size):
+    name = mark_file(slug)
+    if not name:
         return ""
-    return f'<img class="{cls}" src="/assets/img/brand/{slug}.svg" alt="" width="{size}" height="{size}">'
+    return f'<img class="{cls}" src="/assets/img/brand/{name}.svg" alt="" width="{size}" height="{size}">'
+
+def build_icons(slug, site_url):
+    """(icon_links, og_image_url) for a build's own favicon, touch icon and share card; None if it has no mark."""
+    name = mark_file(slug)
+    if not name:
+        return None
+    icons = (f'  <link rel="icon" href="/assets/img/brand/{name}.svg" type="image/svg+xml">\n'
+             f'  <link rel="apple-touch-icon" href="/{CARD_DIR}/{slug}-touch.png">')
+    return icons, f"{site_url}/{CARD_DIR}/{slug}-og.png"
 
 INK_DEFS = ('<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>'
             '<filter id="paper" x="-5%" y="-3%" width="110%" height="106%">'
@@ -81,6 +107,7 @@ THEME_COLOR = ('  <meta name="theme-color" content="#bfdcf7" media="(prefers-col
 
 CASE_HEAD_ASSETS = (
     THEME_COLOR + "\n"
+    '  <meta name="twitter:card" content="summary_large_image">\n'
     '  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">\n'
     f'  <link rel="stylesheet" href="/assets/css/v-stamp.css?v={STAMP_CSS_V}">\n'
     f'  <link rel="stylesheet" href="/assets/css/case-stamp.css?v={CASE_CSS_V}">\n'
