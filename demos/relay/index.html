@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Relay turns a YouTube playlist into a learning plan, practical tasks and a project you can show. Interactive concept by Chae Kim."
+    />
+    <title>Relay · From watching to making</title>
+    <link rel="stylesheet" href="/demos/relay/relay.css" />
+    <script src="/demos/relay/relay.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to workspace</a>
+    <div class="shell">
+      <aside class="sidebar">
+        <a class="brand" href="#overview"
+          ><span class="brandmark">↗</span> relay<span class="dot">.</span></a
+        >
+        <p class="eyebrow">YOUR LEARNING, IN MOTION</p>
+        <nav aria-label="Workspace">
+          <a href="#overview" data-nav="overview">◫ <span>Overview</span></a
+          ><a href="#plan" data-nav="plan">≋ <span>Learning plan</span></a
+          ><a href="#workspace" data-nav="workspace"
+            >▷ <span>Video workspace</span></a
+          ><a href="#tasks" data-nav="tasks"
+            >☑ <span>My tasks</span><b id="task-count">3</b></a
+          ><a href="#project" data-nav="project"
+            >◇ <span>Final project</span></a
+          >
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="little-note">
+            <span>LESS SCROLLING.<br />MORE <i>BUILDING.</i></span>
+            <p>Your next skill is one small action away.</p>
+          </div>
+          <a href="../../projects/relay.html">↗ The product story</a
+          ><button id="reset" class="text-button">Reset demo progress</button>
+          <div class="profile">
+            <span class="avatar">JD</span>
+            <div>
+              <strong>Jamie Davis</strong><small>Curious by default</small>
+            </div>
+          </div>
+        </div>
+      </aside>
+      <div class="body">
+        <header class="topbar">
+          <span
+            >My workspace <span class="muted">/</span>
+            <strong id="breadcrumb">Overview</strong></span
+          >
+          <div>
+            <span class="demo-label">INTERACTIVE CONCEPT</span
+            ><button class="button small" data-import>
+              ＋ Import playlist
+            </button>
+          </div>
+        </header>
+        <main id="main" tabindex="-1"></main>
+        <footer>
+        <span><a href="/demos/relay/walkthrough.html">Screen walkthrough</a> · <a href="/demos/relay/prd.html">Product requirements</a></span>
+          Made for the space between “I watched it” and “I can do it.”
+          <span>Concept by Chae Kim · Independent of YouTube & Google</span>
+        </footer>
+      </div>
+    </div>
+    <dialog id="import-dialog" aria-labelledby="import-title">
+      <form id="import-form">
+        <div class="dialog-heading">
+          <span class="eyebrow">START WITH SOMETHING YOU SAVED</span
+          ><button
+            type="button"
+            id="close-import"
+            class="icon-button"
+            aria-label="Close import"
+          >
+            ×
+          </button>
+        </div>
+        <h2 id="import-title">Give your playlist a purpose.</h2>
+        <p>Paste a YouTube playlist, then tell us what you want to make.</p>
+        <label
+          >YouTube playlist URL<input
+            id="playlist-url"
+            type="url"
+            placeholder="https://www.youtube.com/playlist?list=…"
+            required /></label
+        ><label
+          >Your learning goal<input
+            id="learning-goal"
+            maxlength="100"
+            placeholder="Build a responsive landing page"
+            required
+        /></label>
+        <div class="form-grid">
+          <label
+            >Weekly practice time<select id="hours">
+              <option value="2">2 hours / week</option>
+              <option value="4" selected>4 hours / week</option>
+              <option value="6">6 hours / week</option>
+            </select></label
+          ><label
+            >Starting point<select id="level">
+              <option>I'm new to this</option>
+              <option>I know the basics</option>
+            </select></label
+          >
+        </div>
+        <p class="notice">
+          Demo import: your URL is validated, then a curated web-design sample
+          is loaded. No YouTube API or AI request is made.
+        </p>
+        <p id="import-error" class="error" role="alert"></p>
+        <button class="button primary" type="submit">
+          Create my sample plan ↗</button
+        ><button type="button" id="sample" class="text-button">
+          Use the sample playlist instead
+        </button>
+      </form>
+    </dialog>
+    <div id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
