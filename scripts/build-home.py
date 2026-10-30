@@ -366,7 +366,7 @@ STAMP = r"""<!DOCTYPE html>
             <span class="pill">Lucent <em>2025–26</em></span>
           </div>
           <h3 class="w-title">Making small businesses visible in AI search.</h3>
-          <p class="meta">AI search observability platform and consultancy. <b>First paying pilot, 5 LOIs in 30 days.</b></p>
+          <p class="meta">AI search visibility platform with GEO and SEO advisory. <b>First paying pilot, 5 LOIs in 30 days.</b></p>
         </a>
 
         <a class="w reveal" href="/projects/ey">
@@ -390,10 +390,10 @@ STAMP = r"""<!DOCTYPE html>
         <a class="w reveal" href="/projects/mirrorme">
           <div class="stage" style="--g: var(--g-mirror)">
             <div class="art"><div class="fan"><img src="/assets/img/projects/mirrorme/card-category.png" alt="MirrorMe card: Openness to experience, pink" width="714" height="1000" loading="lazy"><img src="/assets/img/projects/mirrorme/card-alt.png" alt="MirrorMe card: Openness to experience, orange" width="733" height="1000" loading="lazy"></div></div>
-            <span class="pill">MirrorMe <em>2024</em></span>
+            <span class="pill">MirrorMe <em>2024–25</em></span>
           </div>
           <h3 class="w-title">Icebreakers that go deeper without getting awkward.</h3>
-          <p class="meta">An icebreaker card game for hosts. <b>150+ pre-orders, $0 ad spend.</b></p>
+          <p class="meta">An icebreaker card game for hosts. <b>200+ playtests, 150+ pre-orders.</b></p>
         </a>
 
         <a class="w reveal" href="/projects/mobility">
