@@ -39,7 +39,7 @@ Sources: [HTML Crash Course](https://www.youtube.com/watch?v=UB1O30fR-EE), [CSS 
 
 Progress is stored under `relay-demo-v1` in localStorage for the current origin. Reload retains notes, task states, and draft form values. Reset overwrites only this demo key. Blocked storage falls back to memory for the current visit. Do not enter confidential information on a shared device.
 
-The UI uses semantic navigation, named inputs, native dialog focus trapping and Escape dismissal, visible focus states, live status messages, a skip link, and reduced-motion handling. Layout breakpoints adapt the sidebar and columns for tablet and phone widths. A deployed-browser review verified the primary flow, notes after reload, task filters, draft feedback, export, Escape dismissal, all five routes at 375px, and the plan at 768px. Cross-browser and assistive-technology testing remain before production. See [the illustrated walkthrough](walkthrough.html) for captured screens and the review record.
+The UI uses semantic navigation, named inputs, native dialog focus trapping and Escape dismissal, visible focus states, live status messages, a skip link, and reduced-motion handling. Layout breakpoints adapt the sidebar and columns for tablet and phone widths. A deployed-browser review verified the primary flow, notes after reload, task filters, draft feedback, export, Escape dismissal, all five routes at 375px, the plan at 768px, and keyboard focus retention after switching filters and resources. Cross-browser and assistive-technology testing remain before production. See [the illustrated walkthrough](walkthrough.html) for captured screens and the review record.
 
 ## Checks
 

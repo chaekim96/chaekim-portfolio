@@ -1,9 +1,9 @@
 # Relay: turn a YouTube playlist into a skill you can show
 
-**Status:** Discovery hypothesis and interactive concept, not a validated business or production service  
-**Owner:** Chae Kim  
-**Updated:** October 30, 2026  
-**Initial use case:** Build and iterate on a responsive landing page  
+**Status:** Discovery hypothesis and interactive concept, not a validated business or production service\
+**Owner:** Chae Kim\
+**Updated:** October 30, 2026\
+**Initial use case:** Build and iterate on a responsive landing page\
 **Promise:** “Bring a tutorial playlist. Leave with something you made.”
 
 ## 1. Who this is for
