@@ -17,7 +17,7 @@ function harness(saved, blocked = false) {
         innerHTML: "",
         dataset: {},
         classList: { add() {}, remove() {}, toggle() {} },
-        focus() {},
+        focus() { this.focused = true; },
         scrollIntoView() {},
         showModal() {
           this.open = true;
@@ -123,6 +123,9 @@ test("strict playlist validation, custom goal escaping, and schedule", () => {
   h.element("#import-form").onsubmit({ preventDefault() {} });
   assert.match(h.element("#import-error").textContent, /HTTPS YouTube/);
   assert.equal(h.run("state.imported"), false);
+  h.element("#sample").onclick();
+  assert.equal(h.element("#import-error").textContent, "");
+  h.element("#learning-goal").value = "Build <script>oops</script>";
   h.element("#playlist-url").value =
     "https://www.youtube.com/playlist?list=demo";
   h.element("#import-form").onsubmit({ preventDefault() {} });
@@ -141,8 +144,11 @@ test("tasks, filters, notes, and persisted reload", () => {
   h.check(2, false);
   assert.equal(h.run("state.done.length"), 2);
   h.click({ dataset: { filter: "done" } });
+  assert.equal(h.element('[data-filter="done"]').focused, true);
   assert.doesNotMatch(h.html(), /id="task-2"/);
   h.route("workspace");
+  h.click({ dataset: { noteTab: "notes" } });
+  assert.equal(h.element('[data-note-tab="notes"]').focused, true);
   h.input("notes", "<b>Use a flexible grid</b>");
   const reloaded = harness(h.store.get("relay-demo-v1"));
   reloaded.route("workspace");

@@ -39,7 +39,7 @@ Sources: [HTML Crash Course](https://www.youtube.com/watch?v=UB1O30fR-EE), [CSS 
 
 Progress is stored under `relay-demo-v1` in localStorage for the current origin. Reload retains notes, task states, and draft form values. Reset overwrites only this demo key. Blocked storage falls back to memory for the current visit. Do not enter confidential information on a shared device.
 
-The UI uses semantic navigation, named inputs, native dialog focus trapping and Escape dismissal, visible focus states, live status messages, a skip link, and reduced-motion handling. Layout breakpoints adapt the sidebar and columns for tablet and phone widths. Browser visual and keyboard QA still needs to be performed before merging.
+The UI uses semantic navigation, named inputs, native dialog focus trapping and Escape dismissal, visible focus states, live status messages, a skip link, and reduced-motion handling. Layout breakpoints adapt the sidebar and columns for tablet and phone widths. A deployed-browser review verified the primary flow, notes after reload, task filters, draft feedback, export, Escape dismissal, all five routes at 375px, and the plan at 768px. Cross-browser and assistive-technology testing remain before production. See [the illustrated walkthrough](walkthrough.html) for captured screens and the review record.
 
 ## Checks
 
@@ -51,7 +51,7 @@ node --test demos/relay/relay.test.cjs
 python3 scripts/build-cases.py --check
 ```
 
-The dependency-free interaction tests execute the real application script in a Node VM with a minimal document harness. They verify navigation rendering, import validation, progress, notes, persistence, project validation, simulated feedback, export, and reset. They do not replace real-browser layout, native dialog, or keyboard testing.
+The six dependency-free interaction tests execute the real application script in a Node VM with a minimal document harness. They verify navigation rendering, import validation, progress, notes, persistence, project validation, simulated feedback, export, and reset. They do not replace real-browser layout, native dialog, or keyboard testing.
 
 ## Portfolio integration
 
@@ -67,3 +67,11 @@ Vercel serves this static directory as part of the existing portfolio deployment
 ## Next product experiment
 
 Test whether five learners can go from the sample playlist to their first practice action without help. Then compare a source-only playlist with the same playlist plus practice tasks. Use blind project review and a delayed transfer task to measure applied skill. Completion and return-to-practice are supporting metrics, not substitutes for demonstrated learning. No outcome claims have been measured for this prototype.
+
+## Product review materials
+
+- [Screen-by-screen walkthrough](walkthrough.html): seven captured screens, phone and tablet examples, and observed verification results.
+- [PRD](prd.html) and [Markdown source](PRD.md): primary audience, launch use case, requirements, scope, acceptance criteria, proposed success measures, and research plan.
+- `screenshots/`: actual browser captures from the repaired deployment on October 30, 2026. Fictional demo data only.
+
+The deployed clean URL is `/demos/relay`. Asset links use absolute `/demos/relay/...` paths so redirects do not break CSS or JavaScript. Serve this folder from the repository root, as shown above.

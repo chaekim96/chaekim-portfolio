@@ -278,10 +278,12 @@ document.addEventListener("click", (e) => {
   if (el.dataset.filter) {
     filter = el.dataset.filter;
     render();
+    $(`[data-filter="${filter}"]`).focus();
   }
   if (el.dataset.noteTab) {
     noteTab = el.dataset.noteTab;
     render();
+    $(`[data-note-tab="${noteTab}"]`).focus();
   }
   if (el.id === "watched") {
     const i = state.lesson;
@@ -320,6 +322,7 @@ document.addEventListener("input", (e) => {
 });
 $("#close-import").onclick = () => $("#import-dialog").close();
 $("#sample").onclick = () => {
+  $("#import-error").textContent = "";
   $("#playlist-url").value =
     "https://www.youtube.com/playlist?list=PL-relay-demo";
   $("#learning-goal").value = "Build a responsive landing page";
