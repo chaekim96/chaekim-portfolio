@@ -510,7 +510,7 @@ MODS = [
       "Published it as a public plugin with a one-line install, with tests for the desktop list, the terminal list, and the hidden state.",
     ),
     results=stat_grid(("4/4", "steps filled in a live demo"), ("5", "task-list tools it follows"), ("0", "animation frames"), ("1", "line to install")) + "\n" + paras("I ran a 4-step demo task in the Code tab and watched the band fill one segment per step to 4/4, then turn green with ✓ all done."),
-    iterations=paras("<b>v0.2.</b> v0.1 answered \"how far along?\" Once I used it every day, the next questions were \"how long is left, is it stuck, and is the context running out?\" v0.2 answers those, with one rule carried over: no fake numbers and no animation.") + "\n" + bullets(
+    iterations=paras("<b>v0.2.</b> v0.1 answered \"how far along?\" With that answered, the next questions were \"how long is left, is it stuck, and is the context running out?\" v0.2 answers those, with one rule carried over: no fake numbers and no animation.") + "\n" + bullets(
       "<b>Time left:</b> <code>~40s left</code>, the average of the finished steps times the steps still to go. It appears only after the first step finishes.",
       "<b>Progress inside a step:</b> the step's elapsed time and its tool calls (<code>· 7 actions</code>). A sub-bar appears only where a real count exists, like a step named \"Migrate 3/10 files\" or a test summary like <code>tests 11/12</code>. No guessed percentages.",
       "<b>A clear finish:</b> a pop-up (\"All 5 steps done in 2m 10s\") and a soft 0.4 second two-note chime, once per list. The chime has an off switch.",
