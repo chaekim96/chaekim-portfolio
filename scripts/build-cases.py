@@ -298,6 +298,27 @@ PRODUCTS = [
     differently=paras("Get an API key on day one. I built and tested everything offline, so the first live run is still ahead, and that run is the real test of the schema."),
     artifacts=links(("Source on GitHub", "https://github.com/chaekim96/parallel-prospect-brief"), ("Sample brief", "https://github.com/chaekim96/parallel-prospect-brief/blob/main/examples/sample-brief.md")) + "\n" + artifact_grid(("/assets/img/cases/ppb-sample.jpg", "The full illustrative sample. Every fact is invented to show the format.")),
   ),
+  dict(slug="product-blueprint", title="Product Blueprint",
+    kicker="method · solo build · 2026",
+    heading="One way to build every product, with a test at each step.",
+    desc="My personal prompt library and playbook for building products with AI tools: a six-stage loop with a pass/fail gate at each stage, a design system, a product template, and a database of 22 versioned prompts with evals.",
+    tldr="I build fast with Lovable, Google AI Studio and Claude, and my prompts and design choices lived in chat history. The blueprint writes the method down: six stages from Discover to Ship, each ending with a pass/fail gate, a design system pulled from my own products, a template to fill in per product, and 22 prompts that each carry their own evals. Two scripts check the prompt database and score AI features against a locked test set.",
+    role="Product owner and builder", team="Solo, built with Claude Code", timeline="October 2026",
+    cover=cover("/assets/img/builds/product-blueprint.jpg", "The build loop: six stages from Discover to Ship, each with the gate it has to pass", 1600, 1000),
+    problem=paras("AI builders make the first draft easy. Keeping products consistent is harder. My prompts lived in old chats, each product picked its own colors, and I judged AI output by feel. When a prompt worked, I couldn't find it again or tell whether a change made it better."),
+    did=bullets(
+      "Wrote a six-stage build loop, Discover to Ship. Each stage ends with a short pass/fail gate, so problems get fixed where they start.",
+      "Pulled a design system from two of my products: a dark technical theme from FaFo and a warm paper theme from Timely, with shared rules for layout, type, motion and copy voice, and an 8-point design rubric.",
+      "Built a product template that walks one product through every stage and records each gate result.",
+      "Wrote 22 prompts across the six stages, from problem framing to launch posts. Each has a version, its inputs, pass/fail evals and a changelog.",
+      "Set pass targets by risk (85%, 90% or 98%) and a test-set format that always includes empty input, long input, other languages and prompt-injection attempts.",
+      "Wrote a checker that fails if a prompt is missing evals, a version or an input. On its first run it caught a gap in one of my own prompts.",
+      "Filled in the template for Timely as a worked example, with a 25-case test set for its time estimator.",
+    ),
+    results=stat_grid(("6", "stages, each with a gate"), ("22", "versioned prompts with evals"), ("25", "test cases for Timely's estimator"), ("3", "launch blockers found in Timely")) + "\n" + paras("Filling in the template for Timely found three things to fix before launch: the Gemini key is readable in the browser, user text goes into the prompt unprotected, and the page title doesn't match the product name. Every prompt is still marked draft. One moves to tested only after it passes its evals on three real uses."),
+    differently=paras("Start from one real product, not the whole method. Filling in the template for Timely taught me more than writing it did, and it found the launch blockers. I'd fill it in for the next product first and write each stage as I reach it."),
+    artifacts=paras("The repo is private. Below, one prompt from the database, as it appears in the repo.") + "\n" + artifact_grid(("/assets/img/cases/pb-prompt.jpg", "The copy review prompt: when to use it, the prompt, and the evals its output has to pass.")),
+  ),
 ]
 
 COURSEWORK = [
