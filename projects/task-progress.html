@@ -79,6 +79,7 @@
         <a href="#problem">The problem</a>
         <a href="#did">What I did</a>
         <a href="#results">Results</a>
+        <a href="#iterations">Iterations and decisions</a>
         <a href="#differently">What I'd do differently</a>
         <a href="#artifacts">Artifacts</a>
       </nav>
@@ -98,6 +99,18 @@
         <h2 id="results">Results</h2>
         <div class="results"><div><b>4/4</b><span>steps filled in a live demo</span></div><div><b>5</b><span>task-list tools it follows</span></div><div><b>0</b><span>animation frames</span></div><div><b>1</b><span>line to install</span></div></div>
         <p>I ran a 4-step demo task in the Code tab and watched the band fill one segment per step to 4/4, then turn green with ✓ all done.</p>
+        <h2 id="iterations">Iterations and decisions</h2>
+        <p><b>v0.2.</b> v0.1 answered "how far along?" Once I used it every day, the next questions were "how long is left, is it stuck, and is the context running out?" v0.2 answers those, with one rule carried over: no fake numbers and no animation.</p>
+        <ul>
+          <li><b>Time left:</b> <code>~40s left</code>, the average of the finished steps times the steps still to go. It appears only after the first step finishes.</li>
+          <li><b>Progress inside a step:</b> the step's elapsed time and its tool calls (<code>· 7 actions</code>). A sub-bar appears only where a real count exists, like a step named "Migrate 3/10 files" or a test summary like <code>tests 11/12</code>. No guessed percentages.</li>
+          <li><b>A clear finish:</b> a pop-up ("All 5 steps done in 2m 10s") and a soft 0.4 second two-note chime, once per list. The chime has an off switch.</li>
+          <li><b>Stuck warning:</b> the step turns amber when it runs longer than twice the median step time, and never sooner than 3 minutes. The band redraws every 20 seconds only while a step is active, and still never animates.</li>
+          <li><b>History in the pane:</b> each step's time and action count, the total, and the last five runs under "Previous runs".</li>
+          <li><b>Context bar:</b> <code>ctx ███░░ 48%</code> from Claude Code's own context measurement, green, then amber above 60% and red above 80%. On narrow screens the extras drop off first, so the bar, the count and the current step always stay.</li>
+          <li><b>Checked before shipping:</b> 17 tests, and a live 4-step demo in the Code tab before it was pushed.</li>
+        </ul>
+        <p>A working band now reads <code>███████░░░░░░░░ 1/3 · 33% · ~25s left ▸ Run tests · 15s · 7 actions ctx ███░░ 48%</code>, and a finished one <code>███████████████ 3/3 · 100% ✓ all done in 2m 10s</code>.</p>
         <h2 id="differently">What I'd do differently</h2>
         <p>Check where the user actually looks before choosing the surface. I knew I lived in the desktop app and still built for the terminal first. The place I'd most like it is the session sidebar, so progress shows across sessions at once. Mods can't draw there, so that would take a change in the app itself.</p>
         <h2 id="artifacts">Artifacts</h2>
