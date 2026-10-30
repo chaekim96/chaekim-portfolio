@@ -1173,6 +1173,10 @@ dialog .button {
   .path-card {
     padding: 0;
   }
+  .video {
+    aspect-ratio: auto;
+    min-height: 270px;
+  }
   .video h2 {
     font-size: 25px;
   }
