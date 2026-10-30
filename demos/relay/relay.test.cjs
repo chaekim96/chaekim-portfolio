@@ -176,3 +176,15 @@ test("malformed storage and denied storage preserve a usable demo", () => {
   assert.equal(h.run("state.done.length"), 3);
   assert.match(h.element("#toast").textContent, /Progress updated/);
 });
+
+// Vercel cleanUrls removes /index.html and the trailing slash. Asset URLs must
+// still resolve inside the demo directory at the canonical deployed URL.
+test("assets resolve after Vercel clean URL redirects", () => {
+  const html = fs.readFileSync(__dirname + "/index.html", "utf8");
+  const base = "https://portfolio.example/demos/relay";
+  for (const asset of ["relay.css", "relay.js"]) {
+    const match = html.match(new RegExp('(?:href|src)="([^"]*' + asset.replace(".", "\\.") + ')"'));
+    assert.ok(match, asset + " is referenced");
+    assert.equal(new URL(match[1], base).pathname, "/demos/relay/" + asset);
+  }
+});
