@@ -547,15 +547,15 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
         <p class="note">I first wrote about this idea in a short essay, <a href="/projects/preinstalled-apps">What's the Point of Preinstalled Apps?</a> This is the longer version: the full argument, then what it could look like.</p>
 
         <h3>We don't need more apps.</h3>
-        <p>Our phones are full of apps we downloaded once and forgot. Studies of phone usage keep landing on the same pattern: people open around ten apps a day and around thirty in a month, out of dozens installed.<sup>1</sup></p>
+        <p>Our phones are full of apps we downloaded once and forgot. A 2017 App Annie study found that people open about nine apps a day and about thirty a month, out of the dozens on their phones.<sup><a href="#fn1" id="fnref1">1</a></sup></p>
         <div class="fig">
-          <div class="usage" id="usage" aria-label="Grid of 80 apps: 10 opened daily, 20 more opened this month, 50 rarely opened"></div>
+          <div class="usage" id="usage" aria-label="Grid of 80 apps: 9 opened daily, 21 more opened this month, 50 rarely opened"></div>
           <div class="legend">
             <span><i style="background:linear-gradient(135deg,#FF8A3D,#FF4FA3,#A15CFF)"></i>Opened daily</span>
             <span><i style="box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.55)"></i>Opened this month</span>
             <span><i style="background:rgba(255,255,255,.12)"></i>Rarely opened</span>
           </div>
-          <p class="cap2">80 installed apps. Illustrative.</p>
+          <p class="cap2">80 installed apps, illustrative. About 9 opened daily and 30 monthly, per App Annie (2017).</p>
         </div>
         <p>Each app is a whole product designed for millions of people. Each of us only needs a slice of it. The rest is clutter we scroll past, pay for, and update.</p>
         <p>People have been quietly pushing back for years. Apple has let us delete most built-in apps since 2016, and in the EU you can now remove even Safari, the App Store, and Messages. We're already subtracting. The operating system just hasn't caught up.</p>
@@ -796,7 +796,7 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
 
 <footer>
   <div class="in">
-    <p>1. Illustrative figures based on published studies of daily and monthly smartphone app usage.</p>
+    <p id="fn1">1. App Annie, Spotlight on Consumer App Usage (2017), as reported in <a href="https://techcrunch.com/2017/05/04/report-smartphone-owners-are-using-9-apps-per-day-30-per-month/">TechCrunch, "Report: Smartphone owners are using 9 apps per day, 30 per month"</a>. The counts include built-in apps. The 80-app grid is illustrative. <a href="#fnref1">Back to text</a></p>
     <p>Juniper Coffee is a fictional brand. App names, people, and amounts shown on screens are examples.</p>
     <p>Concept, writing, and design by Chae Kim. Read the short essay, <a href="/projects/preinstalled-apps">What’s the Point of Preinstalled Apps?</a> <a href="/#builds">Back to the portfolio</a>.</p>
     <div class="rule"><span>An unofficial design concept. Not affiliated with or endorsed by Apple Inc.</span><span>Siri, iPhone, iOS, and Liquid Glass are trademarks of Apple Inc.</span></div>
@@ -884,8 +884,8 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
 
   var grid80 = document.getElementById('usage');
   if (grid80) {
-    var day = [3, 17, 22, 36, 41, 50, 58, 64, 71, 77];
-    var month = [1, 6, 9, 12, 19, 25, 28, 31, 39, 44, 47, 53, 55, 60, 62, 67, 69, 73, 75, 79];
+    var day = [3, 17, 22, 36, 41, 50, 58, 64, 71];
+    var month = [1, 6, 9, 12, 19, 25, 28, 31, 39, 44, 47, 53, 55, 60, 62, 67, 69, 73, 75, 77, 79];
     for (var i = 0; i < 80; i++) {
       var sq = document.createElement('span');
       if (day.indexOf(i) > -1) sq.className = 'day';
