@@ -51,7 +51,7 @@ node --test demos/relay/relay.test.cjs
 python3 scripts/build-cases.py --check
 ```
 
-The six dependency-free interaction tests execute the real application script in a Node VM with a minimal document harness. They verify navigation rendering, import validation, progress, notes, persistence, project validation, simulated feedback, export, and reset. They do not replace real-browser layout, native dialog, or keyboard testing.
+The seven dependency-free interaction tests execute the real application script in a Node VM with a minimal document harness. They verify navigation rendering, import validation, progress, notes, persistence, project validation, simulated feedback, export, and reset. They do not replace real-browser layout, native dialog, or keyboard testing.
 
 ## Portfolio integration
 
