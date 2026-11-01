@@ -75,3 +75,11 @@ Test whether five learners can go from the sample playlist to their first practi
 - `screenshots/`: actual browser captures from the repaired deployment on October 30, 2026. Fictional demo data only.
 
 The deployed clean URL is `/demos/relay`. Asset links use absolute `/demos/relay/...` paths so redirects do not break CSS or JavaScript. Serve this folder from the repository root, as shown above.
+
+## YouTube-inspired design direction (October 31)
+
+The current UI explores how Relay could appear within YouTube: a recognizable header/search, a Your learning navigation section, thumbnail cards, a watch-page source preview, creator attribution, a playlist queue, and a Learning assistant task panel. This is an independent design exploration, not an official YouTube feature.
+
+Search matches the demo's four curated lessons only. The player-shaped source preview links out to the real creator video; its illustrated controls do not play media in the prototype. No likes, views, subscriber counts, or official endorsements are invented. Notes, tasks, draft submission, and simulated feedback retain the existing behavior. `youtube.css` supplies the visual layer over the shared learning UI.
+
+The original seven-screen walkthrough documents the first standalone visual iteration; the live prototype shows the newer YouTube-inspired direction.
