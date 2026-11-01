@@ -8,6 +8,7 @@ Every project page follows the same shape: the problem, what Chae did, results, 
 
 Products and tools, most with a live demo.
 
+- [Relay: YouTube to action](https://chaekim-portfolio.vercel.app/projects/relay): Relay is an interactive product concept that bridges video learning and project work: import a playlist, follow a plan, practice alongside the source, and submit a project for actionable feedback.
 - [AI Visibility Checker](https://chaekim-portfolio.vercel.app/projects/ai-visibility-checker): A free checker that reads a page the way a crawler does and reports whether search engines and AI assistants can find, read and cite it.
 - [Tally](https://chaekim-portfolio.vercel.app/projects/tally): A note-taker where every line gets a Claude time estimate, totaled in a ledger so a to-do list becomes an honest picture of the day.
 - [Palette Generator](https://chaekim-portfolio.vercel.app/projects/palette-generator): A palette and font-pairing generator that takes a non-designer from a one-line description to a brand look they can ship.

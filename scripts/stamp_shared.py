@@ -75,6 +75,7 @@ LIVE_V = "1"  # bump when assets/js/live.js changes
 # Without JS (or <dialog>) the link simply opens the app in a new tab.
 # ---------------------------------------------------------------------------
 LIVE_APPS = {
+    "relay": ("Relay", "/demos/relay/index.html", "Interactive concept. Import and feedback are simulated; progress stays in your browser."),
     "ai-visibility-checker": ("AI Visibility Checker", "https://chaekim-ai-visibility.vercel.app", ""),
     "tally": ("Tally", "https://tally-lake-seven.vercel.app", ""),
     "palette-generator": ("Palette Generator", "https://color-palette-generator-three-sand.vercel.app", ""),

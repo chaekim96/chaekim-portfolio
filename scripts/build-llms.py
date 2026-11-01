@@ -15,7 +15,7 @@ SITE = "https://chaekim-portfolio.vercel.app"
 # Same order as the homepage tabs.
 SECTIONS = [
     ("Builds", "Products and tools, most with a live demo.", [
-        "ai-visibility-checker", "tally", "palette-generator", "typerace", "networking-tracker",
+        "relay", "ai-visibility-checker", "tally", "palette-generator", "typerace", "networking-tracker",
         "web-anatomy", "voiceprompter", "parallel-prospect-brief", "product-blueprint", "smartmodel", "token-fuel", "code-improver", "task-progress",
         "spotify-review-triage", "personal-wiki", "pacman-dqn", "custom-llm", "siri-reimagined", "home-gif", "yin-yang",
     ]),
