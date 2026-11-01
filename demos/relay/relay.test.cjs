@@ -17,7 +17,9 @@ function harness(saved, blocked = false) {
         innerHTML: "",
         dataset: {},
         classList: { add() {}, remove() {}, toggle() {} },
-        focus() { this.focused = true; },
+        focus() {
+          this.focused = true;
+        },
         scrollIntoView() {},
         showModal() {
           this.open = true;
@@ -189,8 +191,29 @@ test("assets resolve after Vercel clean URL redirects", () => {
   const html = fs.readFileSync(__dirname + "/index.html", "utf8");
   const base = "https://portfolio.example/demos/relay";
   for (const asset of ["relay.css", "relay.js"]) {
-    const match = html.match(new RegExp('(?:href|src)="([^"]*' + asset.replace(".", "\\.") + ')"'));
+    const match = html.match(
+      new RegExp('(?:href|src)="([^"]*' + asset.replace(".", "\\.") + ')"'),
+    );
     assert.ok(match, asset + " is referenced");
     assert.equal(new URL(match[1], base).pathname, "/demos/relay/" + asset);
   }
+});
+
+test("YouTube-style lesson search stays scoped to the sample path", () => {
+  const h = harness();
+  h.element("#lesson-search").value = "responsive";
+  h.element("#lesson-search-form").onsubmit({ preventDefault() {} });
+  assert.match(h.html(), /Search is limited to the four curated lessons/);
+  assert.match(h.html(), /Design for the small screen first/);
+  assert.doesNotMatch(h.html(), /Think in boxes, not pages/);
+  h.click({ dataset: { lesson: "2" } });
+  h.route("workspace");
+  assert.equal(h.run("state.lesson"), 2);
+  assert.match(h.html(), /Learning playlist/);
+  assert.match(h.html(), /Now, make it yours/);
+  h.element("#lesson-search").value = "nothing-matches-this";
+  h.element("#lesson-search-form").onsubmit({ preventDefault() {} });
+  assert.match(h.html(), /No matching lessons/);
+  h.click({ id: "clear-search" });
+  assert.doesNotMatch(h.html(), /No matching lessons/);
 });

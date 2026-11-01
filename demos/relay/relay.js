@@ -134,11 +134,23 @@ const intro = (eyebrow, title, subtitle) =>
   `<div class="intro"><div><div class="eyebrow">${eyebrow}</div><h1>${title}</h1><p>${subtitle}</p></div><span class="date">A LITTLE PROGRESS, EVERY DAY.</span></div>`;
 const visual = () =>
   `<div class="path-visual" aria-hidden="true"><div class="window"><div class="window-bar"><i></i><i></i><i></i></div><div class="window-grid"><b>Good ideas.<br>Better websites.</b><span></span></div></div><div class="design-label">design.<br>build.<br>repeat. ↗</div></div>`;
+function lessonThumb(l, cls = "") {
+  return `<div class="yt-thumbnail ${cls}"><img src="https://i.ytimg.com/vi/${l.video}/hqdefault.jpg" alt="${esc(l.chapter)} source video thumbnail" loading="lazy"><span class="yt-duration">${l.duration} min study</span></div>`;
+}
 function overview() {
-  return `${intro("FROM WATCHING TO MAKING", "Your next chapter starts here.", "A little less “watch later.” A little more “look what I made.”")}
-<section class="hero"><div class="hero-copy"><span class="tag">WATCH IT. TRY IT. MAKE IT YOURS.</span><h2>You have the playlist.<br>Now build the skill.</h2><p>Turn the videos you love into a plan you can follow, one small project at a time.</p><button class="button primary" data-import>Turn a playlist into a plan ↗</button></div><div class="hero-art" aria-hidden="true"><div class="art-card"><div class="art-top"><span>YOUR NEXT CHAPTER</span><span>↗</span></div><h3>Ideas become<br>things you can do.</h3><div class="art-lines"><span class="check">✓</span> Find something worth learning</div><div class="art-lines"><span class="check">✓</span> Put it into practice</div><div class="art-lines"><span class="check">↗</span> Make something of your own</div></div><div class="floating"><span>✦</span> Small steps. Real skills.</div></div></section>
-<div class="stats"><div class="stat"><strong>01</strong><span>learning path<br>in motion</span></div><div class="stat"><strong>${state.done.length}<small style="font-size:14px;color:#909486"> / 5</small></strong><span>practical tasks<br>completed</span></div><div class="stat"><strong>${pct()}%</strong><span>of your project<br>practice complete</span></div></div>
-<div class="section-head"><h2>Keep the momentum.</h2><a href="#plan">View learning plan ↗</a></div><div class="columns"><article class="card path-card">${visual()}<div class="path-info"><span class="eyebrow">YOUR ACTIVE LEARNING PATH</span><h3 style="margin-top:9px">${esc(state.goal)}</h3><p>4 curated lessons · ${Math.ceil(6 / state.hours)} weeks · Beginner friendly</p><div class="progress-label"><span>${state.done.length} of 5 practice tasks complete</span><strong>${pct()}%</strong></div><div class="progress"><div style="width:${pct()}%"></div></div><div class="path-bottom"><div class="avatars"><b>TM</b><b>KP</b>Learn from 2 creators</div>${btn("#workspace", "Continue learning →", "small")}</div></div></article><article class="card next-card"><span class="eyebrow">UP NEXT · PUT IT INTO PRACTICE</span><h3>${esc(tasks.find((_, i) => !state.done.includes(i))?.title || "Your project is ready for its next chapter.")}</h3><p>Close the gap between understanding a lesson and using it. Your next task is a small piece of your final project.</p><div class="source"><b>▷</b> Based on your web-design learning path</div><div class="time">◷ 25–35 minutes of focused making</div>${btn(state.done.length === 5 ? "#project" : "#tasks", state.done.length === 5 ? "Submit your project ↗" : "Open my tasks ↗", "ghost")}</article></div>`;
+  const next = tasks.find((_, i) => !state.done.includes(i));
+  return `${intro("YOUTUBE · LEARNING CONCEPT", "Your next chapter starts here.", "The videos you saved. The skills you wanted. A plan to bring them together.")}
+    <div class="yt-chips"><a class="selected" href="#overview">For you</a><a href="#plan">Your learning path</a><a href="#tasks">Practice tasks</a><a href="#project">Your project</a></div>
+    <section class="yt-feature"><div><span class="yt-feature-label">INTRODUCING LEARNING PATHS <span>CONCEPT</span></span><h2>Go from “watch later”<br>to “look what I made.”</h2><p>Start with a playlist. Get a learning plan, try it yourself, and build something you can share.</p><button class="button primary" data-import>＋ Create a learning path</button></div><div class="yt-feature-visual" aria-hidden="true"><div class="feature-play">▶</div><div class="feature-flow"><span>▷ Watch</span><i>→</i><span>☑ Practice</span><i>→</i><span>◇ Make</span></div></div></section>
+    <div class="section-head"><h2>Pick up where you left off</h2><a href="#plan">View full plan →</a></div>
+    <div class="yt-continue"><a class="yt-continue-thumb" href="#workspace">${lessonThumb(lessons[state.lesson])}<span class="play-overlay">▶</span></a><div class="yt-continue-copy"><span class="eyebrow">YOUR ACTIVE LEARNING PATH</span><h3>${esc(state.goal)}</h3><p>4 lessons · ${Math.ceil(6 / state.hours)} weeks · ${state.hours} hours / week</p><div class="progress-label"><span>${state.done.length} of 5 practice tasks complete</span><strong>${pct()}%</strong></div><div class="progress"><div style="width:${pct()}%"></div></div><div class="path-bottom">${btn("#workspace", "Continue learning →", "primary")}<a href="#tasks" class="yt-next"><strong>Up next</strong> ${esc(next?.title || "Submit your project")} →</a></div></div></div>
+    <div class="section-head"><h2>In your learning path</h2><span class="source">Source videos from 2 creators</span></div><div class="yt-video-grid">${lessons
+      .slice(0, 3)
+      .map(
+        (l, i) =>
+          `<article class="yt-video-card"><button class="yt-video-open" data-lesson="${i}" aria-label="Open ${esc(l.title)}">${lessonThumb(l)}<h3>${l.title}</h3></button><p>${l.creator} <span aria-label="Curated source">· Curated source</span></p><span class="source">Lesson ${i + 1} · ${l.topic}</span></article>`,
+      )
+      .join("")}</div>`;
 }
 function plan() {
   const weeks = Math.ceil(6 / state.hours);
@@ -161,7 +173,7 @@ function plan() {
 }
 function workspace() {
   const l = lessons[state.lesson];
-  return `${intro("LESSON " + (state.lesson + 1) + " OF 4", "Watch with a purpose.", l.topic)}<div class="workspace"><div><div class="video"><span class="eyebrow">CURATED SOURCE · ${l.creator.toUpperCase()}</span><h2>${l.title}</h2><a class="button" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=${l.video}&t=${l.seconds}s">▷ Watch source on YouTube ↗</a><small>Opens the original creator video · ${l.duration} min suggested study</small></div><div class="video-caption"><div><h3>${l.chapter}</h3><div class="source"><b>▷</b> ${l.creator} · Source-linked learning</div></div><button class="button small" id="watched">${state.watched.includes(state.lesson) ? "✓ Watched · mark unwatched" : "Mark as watched"}</button></div><div class="card"><div class="tabs" aria-label="Learning resources">${[
+  return `<div class="yt-watch-heading"><span class="eyebrow">YOUR LEARNING PATH</span><a href="#plan">${esc(state.goal)} →</a><span>Lesson ${state.lesson + 1} of ${lessons.length}</span></div><div class="workspace"><div class="yt-watch-main"><div class="video"><img class="yt-player-poster" src="https://i.ytimg.com/vi/${l.video}/hqdefault.jpg" alt="${esc(l.chapter)} source video"><div class="yt-player-shade"></div><div class="yt-player-content"><span class="yt-player-label">SOURCE VIDEO · OPENS ON YOUTUBE</span><a class="yt-play-button" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=${l.video}&t=${l.seconds}s" aria-label="Watch source on YouTube">▶</a><span>${l.duration} min suggested study · ${l.creator}</span></div><div class="yt-player-controls" aria-hidden="true"><div class="yt-player-track"><i></i></div><span>▷ <span>Source preview</span></span><span>⚙ ⛶</span></div></div><div class="yt-watch-title"><h1>${l.chapter}</h1><p>${l.title} · ${l.topic}</p></div><div class="yt-channel-row"><div class="yt-channel"><span class="channel-avatar">${l.creator === "Kevin Powell" ? "KP" : "TM"}</span><div><strong>${l.creator}</strong><small>Original creator · Curated source</small></div></div><button class="button small" id="watched">${state.watched.includes(state.lesson) ? "✓ Watched · mark unwatched" : "Mark as watched"}</button></div><div class="yt-description"><strong>Learning with a purpose</strong><p>Watch the source, capture one idea, then try it in your own project. The exercise below is an authored demo prompt, not an AI summary of this video.</p></div><div class="card"><div class="tabs" aria-label="Learning resources">${[
     ["notes", "My notes"],
     ["takeaways", "Practice prompts"],
     ["chapters", "All lessons"],
@@ -172,7 +184,7 @@ function workspace() {
     )
     .join(
       "",
-    )}</div>${noteTab === "notes" ? `<label for="notes">What do you want to remember?<textarea id="notes" placeholder="Try: Use a two-column grid on desktop, then stack the hero on mobile…">${esc(state.notes[state.lesson] || "")}</textarea></label><button id="save-notes" class="button small">Save note</button><span class="source" style="display:inline;margin-left:12px">Saved in this browser</span>` : noteTab === "takeaways" ? `<div class="note"><strong>Try it without the tutorial.</strong><br>Explain ${esc(l.topic.toLowerCase())} in your own words. Then use it in your project.</div><div class="note">What changes at 375px? Which element should the visitor notice first? Can someone reach your call to action using a keyboard?</div><p class="notice">Authored demo prompts, not a transcript or AI summary.</p>` : lessons.map((x, i) => `<div class="lesson"><div class="lesson-text"><h4>${i + 1}. ${x.title}</h4><small>${x.creator}</small></div><button class="button small" data-lesson="${i}">Open →</button></div>`).join("")}</div></div><aside class="card workspace-side"><div><span class="eyebrow">NOW, MAKE IT STICK</span><h3>${tasks.find((t) => t.lesson === state.lesson).title}</h3><p>Use this lesson in your own landing page. Aim for a working first version.</p><div class="criteria"><strong>Your definition of done</strong>✓ A clear visual hierarchy<br>✓ A layout that adapts to mobile<br>✓ A decision you can explain</div></div><div><div class="notice">Learning happens when you try. Watching and completing tasks are tracked separately.</div>${btn("#tasks", "Go to practice tasks →", "primary")}<p><a href="#plan">← Back to the full plan</a></p></div></aside></div>`;
+    )}</div>${noteTab === "notes" ? `<label for="notes">What do you want to remember?<textarea id="notes" placeholder="Try: Use a two-column grid on desktop, then stack the hero on mobile…">${esc(state.notes[state.lesson] || "")}</textarea></label><button id="save-notes" class="button small">Save note</button><span class="source" style="display:inline;margin-left:12px">Saved in this browser</span>` : noteTab === "takeaways" ? `<div class="note"><strong>Try it without the tutorial.</strong><br>Explain ${esc(l.topic.toLowerCase())} in your own words. Then use it in your project.</div><div class="note">What changes at 375px? Which element should the visitor notice first? Can someone reach your call to action using a keyboard?</div><p class="notice">Authored demo prompts, not a transcript or AI summary.</p>` : lessons.map((x, i) => `<div class="lesson"><div class="lesson-text"><h4>${i + 1}. ${x.title}</h4><small>${x.creator}</small></div><button class="button small" data-lesson="${i}">Open →</button></div>`).join("")}</div></div><aside class="workspace-side"><section class="yt-queue"><div class="yt-queue-heading"><h2>Web design foundations</h2><p>Learning playlist · ${state.lesson + 1} / ${lessons.length}</p><a href="#plan">View learning plan ↗</a></div>${lessons.map((x, i) => `<button class="yt-queue-item ${i === state.lesson ? "current" : ""}" data-lesson="${i}" ${i === state.lesson ? 'aria-current="true"' : ""}><span class="yt-queue-number">${i === state.lesson ? "▶" : i + 1}</span>${lessonThumb(x)}<span><strong>${x.title}</strong><small>${x.creator}</small></span></button>`).join("")}</section><section class="yt-assistant card"><span class="assistant-label">✦ LEARNING ASSISTANT <b>CONCEPT</b></span><h3>Now, make it yours.</h3><p class="yt-task-title">${tasks.find((t) => t.lesson === state.lesson).title}</p><p>Put this lesson to work in your own landing page.</p><div class="criteria"><strong>Your definition of done</strong>✓ Clear visual hierarchy<br>✓ A layout that adapts to mobile<br>✓ A decision you can explain</div>${btn("#tasks", "Try the practice task →", "primary")}<p class="assistant-disclaimer">Authored demo exercise. Watched status and practice progress are tracked separately.</p></section></aside></div>`;
 }
 function taskView() {
   const list = tasks
@@ -206,11 +218,22 @@ function project() {
       "",
     )}<div class="notice">${state.done.length}/5 practice tasks complete. Submit a draft at any point. Feedback is an illustrative checklist, not an evaluation of your website.</div><form id="project-form"><label for="project-url">Project URL<input id="project-url" type="url" placeholder="https://your-project.example" value="${esc(state.projectUrl)}" required></label><label for="reflection">What did you build, and what would you improve?<textarea id="reflection" minlength="30" maxlength="3000" placeholder="Describe your layout choices, what you tested, and one thing you want feedback on…" required>${esc(state.reflection)}</textarea></label><p id="project-error" class="error" role="alert"></p><button class="button primary" type="submit">${state.submitted ? "Update draft & feedback" : "Submit draft & see sample feedback"} ↗</button></form></section><aside class="card" id="feedback">${feedback()}</aside></div>`;
 }
+let searchTerm = "";
+function searchResults() {
+  const matches = lessons
+    .map((l, i) => ({ ...l, index: i }))
+    .filter((l) =>
+      (l.title + " " + l.topic + " " + l.creator + " " + l.chapter)
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase()),
+    );
+  return `${intro("SEARCH THIS LEARNING PATH", "Results for “" + esc(searchTerm) + "”", "Search is limited to the four curated lessons in this demo.")}<div class="yt-video-grid">${matches.length ? matches.map((l) => `<article class="yt-video-card"><button class="yt-video-open" data-lesson="${l.index}" aria-label="Open ${esc(l.title)}">${lessonThumb(l)}<h3>${l.title}</h3></button><p>${l.creator}</p><span class="source">${l.topic}</span></article>`).join("") : "<p>No matching lessons. Try “CSS”, “HTML”, or “responsive”.</p>"}</div><p><button class="button" id="clear-search">Back to learning plan →</button></p>`;
+}
 function render() {
   const route = location.hash.slice(1) || "overview",
     views = { overview, plan, workspace, tasks: taskView, project },
     active = views[route] ? route : "overview";
-  $("#main").innerHTML = views[active]();
+  $("#main").innerHTML = searchTerm ? searchResults() : views[active]();
   $("#breadcrumb").textContent = {
     overview: "Overview",
     plan: "Learning plan",
@@ -265,6 +288,7 @@ document.addEventListener("click", (e) => {
     $("#import-dialog").showModal();
   }
   if (el.dataset.lesson !== undefined) {
+    searchTerm = "";
     state.lesson = Number(el.dataset.lesson);
     save();
     if (location.hash === "#workspace") render();
@@ -299,6 +323,17 @@ document.addEventListener("click", (e) => {
     toast("Note saved. Your next idea is waiting.");
   }
   if (el.id === "export") exportSummary();
+  if (el.id === "clear-search") {
+    searchTerm = "";
+    $("#lesson-search").value = "";
+    render();
+  }
+  if (el.id === "rail-toggle") {
+    const collapsed = document
+      .querySelector(".shell")
+      .classList.toggle("rail-collapsed");
+    el.setAttribute("aria-expanded", String(!collapsed));
+  }
 });
 document.addEventListener("change", (e) => {
   if (e.target.dataset.task !== undefined) {
@@ -383,7 +418,13 @@ function exportSummary() {
   a.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
+$("#lesson-search-form").onsubmit = (e) => {
+  e.preventDefault();
+  searchTerm = $("#lesson-search").value.trim().slice(0, 100);
+  render();
+};
 window.addEventListener("hashchange", () => {
+  searchTerm = "";
   render();
   $("#main").focus({ preventScroll: true });
   window.scrollTo(0, 0);

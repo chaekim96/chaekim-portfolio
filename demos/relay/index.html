@@ -9,60 +9,107 @@
     />
     <title>Relay · From watching to making</title>
     <link rel="stylesheet" href="/demos/relay/relay.css" />
+    <link rel="stylesheet" href="/demos/relay/youtube.css" />
     <script src="/demos/relay/relay.js" defer></script>
   </head>
-  <body>
+  <body class="youtube-concept">
     <a class="skip" href="#main">Skip to workspace</a>
+    <header class="yt-header">
+      <div class="yt-identity">
+        <button
+          id="rail-toggle"
+          class="yt-icon"
+          aria-label="Toggle navigation"
+          aria-expanded="true"
+        >
+          ☰</button
+        ><a
+          href="#overview"
+          class="yt-logo"
+          aria-label="YouTube learning concept"
+          ><svg viewBox="0 0 32 24" aria-hidden="true">
+            <rect x="0" y="1" width="32" height="22" rx="7" fill="#f03" />
+            <path d="m13 7 9 5-9 5Z" fill="white" /></svg
+          ><strong>YouTube</strong><sup>Learning</sup></a
+        >
+      </div>
+      <form id="lesson-search-form" class="yt-search" role="search">
+        <label class="sr-only" for="lesson-search"
+          >Search this learning path</label
+        ><input
+          id="lesson-search"
+          type="search"
+          placeholder="Search this learning path"
+          autocomplete="off"
+        /><button aria-label="Search lessons" type="submit">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="10.5" cy="10.5" r="6.5" />
+            <path d="m16 16 5 5" />
+          </svg>
+        </button>
+      </form>
+      <div class="yt-header-actions">
+        <span class="concept-pill">DESIGN CONCEPT</span
+        ><button class="button small" data-import>＋ Import playlist</button
+        ><span class="avatar" aria-label="Fictional learner Jamie Davis"
+          >J</span
+        >
+      </div>
+    </header>
     <div class="shell">
       <aside class="sidebar">
-        <a class="brand" href="#overview"
-          ><span class="brandmark">↗</span> relay<span class="dot">.</span></a
-        >
-        <p class="eyebrow">YOUR LEARNING, IN MOTION</p>
+        <a class="yt-home" href="#overview"><span>⌂</span> Home</a>
+        <p class="rail-label">
+          Your learning <span class="new-badge">NEW</span>
+        </p>
         <nav aria-label="Workspace">
-          <a href="#overview" data-nav="overview">◫ <span>Overview</span></a
-          ><a href="#plan" data-nav="plan">≋ <span>Learning plan</span></a
-          ><a href="#workspace" data-nav="workspace"
+          <a href="#overview" data-nav="overview">◫ <span>Overview</span></a>
+          <a href="#plan" data-nav="plan">≋ <span>Learning plan</span></a>
+          <a href="#workspace" data-nav="workspace"
             >▷ <span>Video workspace</span></a
-          ><a href="#tasks" data-nav="tasks"
-            >☑ <span>My tasks</span><b id="task-count">3</b></a
-          ><a href="#project" data-nav="project"
-            >◇ <span>Final project</span></a
           >
+          <a href="#tasks" data-nav="tasks"
+            >☑ <span>My tasks</span><b id="task-count">3</b></a
+          >
+          <a href="#project" data-nav="project">◇ <span>Final project</span></a>
         </nav>
+        <div class="rail-playlist">
+          <p class="rail-label">Saved learning path</p>
+          <a href="#plan"
+            ><span class="mini-thumb">&lt;/&gt;</span
+            ><span
+              >Web design foundations<small>4 lessons · 2 creators</small></span
+            ></a
+          >
+        </div>
         <div class="sidebar-bottom">
-          <div class="little-note">
-            <span>LESS SCROLLING.<br />MORE <i>BUILDING.</i></span>
-            <p>Your next skill is one small action away.</p>
-          </div>
-          <a href="../../projects/relay.html">↗ The product story</a
+          <p class="concept-explainer">
+            <strong>What if watching led to doing?</strong>A YouTube learning
+            concept by Chae Kim. Relay turns a playlist into practice and a
+            project.
+          </p>
+          <a href="/projects/relay.html">About this concept ↗</a
+          ><a href="/demos/relay/walkthrough.html">Screen walkthrough ↗</a
+          ><a href="/demos/relay/prd.html">Product requirements ↗</a
           ><button id="reset" class="text-button">Reset demo progress</button>
-          <div class="profile">
-            <span class="avatar">JD</span>
-            <div>
-              <strong>Jamie Davis</strong><small>Curious by default</small>
-            </div>
-          </div>
         </div>
       </aside>
       <div class="body">
-        <header class="topbar">
+        <div class="topbar">
           <span
-            >My workspace <span class="muted">/</span>
+            >Your learning <span class="muted">/</span>
             <strong id="breadcrumb">Overview</strong></span
-          >
-          <div>
-            <span class="demo-label">INTERACTIVE CONCEPT</span
-            ><button class="button small" data-import>
-              ＋ Import playlist
-            </button>
-          </div>
-        </header>
+          ><span class="demo-label">A PLAYLIST. A PLAN. A PROJECT.</span>
+        </div>
         <main id="main" tabindex="-1"></main>
         <footer>
-        <span><a href="/demos/relay/walkthrough.html">Screen walkthrough</a> · <a href="/demos/relay/prd.html">Product requirements</a></span>
-          Made for the space between “I watched it” and “I can do it.”
-          <span>Concept by Chae Kim · Independent of YouTube & Google</span>
+          <span
+            ><a href="/demos/relay/walkthrough.html">Screen walkthrough</a> ·
+            <a href="/demos/relay/prd.html">Product requirements</a></span
+          ><span
+            >Independent design concept by Chae Kim. Not affiliated with YouTube
+            or Google.</span
+          >
         </footer>
       </div>
     </div>
