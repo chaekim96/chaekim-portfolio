@@ -22,6 +22,7 @@ Products and tools, most with a live demo.
 - [Code Improver](https://chaekim-portfolio.vercel.app/projects/code-improver): A custom Claude Code subagent that reviews changed files for readability, performance, and best practices.
 - [task-progress](https://chaekim-portfolio.vercel.app/projects/task-progress): A Claude Code mod that turns Claude's own task checklist into a calm progress band above the prompt, plus a checklist pane.
 - [Spotify Review Triage](https://chaekim-portfolio.vercel.app/projects/spotify-review-triage): A multi-agent LLM pipeline that labels Spotify app reviews, checks its own work, and recommends where next quarter's product effort should go.
+- [Review Labeler](https://chaekim-portfolio.vercel.app/projects/review-labeler): An experiment, in progress, testing whether a small fine-tuned model can label app reviews as well as a big prompted one for a fraction of the cost.
 - [Personal Wiki](https://chaekim-portfolio.vercel.app/projects/personal-wiki): A command-line study wiki that runs fully offline: a local Gemma model turns sources into linked Obsidian notes and answers questions with citations.
 - [Pac-Man DQN](https://chaekim-portfolio.vercel.app/projects/pacman-dqn): A Deep Q-Network trained on Atari Ms. Pac-Man, with every number reported straight from the run's own output files.
 - [Custom LLM](https://chaekim-portfolio.vercel.app/projects/custom-llm): A tiny nanoGPT model trained from scratch on a laptop CPU, with my own teaching corpus and 48 fixed language tests.

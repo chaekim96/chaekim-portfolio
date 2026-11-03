@@ -210,6 +210,11 @@ DECISIONS = [
         opt("Public", "The case page could link to the source."),
         opt("Private", "Keep it to myself for now.", chosen=True),
     ]),
+    D("coursework", "Oct 2026", "Review Labeler", "Which AI/ML project should come next?", [
+        opt("Fine-tune a small model and beat a prompt", "Fine-tune on Spotify review labels and compare it with prompting, on accuracy, cost and speed.", chosen=True, rec=True),
+        opt("A recommender", "A popularity baseline, then a model that learns from past choices, measured against it."),
+        opt("A/B test simulator with an AI analyst", "Fake experiments with known effects, and an LLM write-up checked for planted mistakes."),
+    ], link=("/projects/review-labeler", "Review Labeler")),
     D("products", "Oct 2026", "Palette Generator", "Where should the weekly trend scan read brand colors from?", [
         opt("Startup lists", "New Product Hunt launches plus a curated list. Needs an API token.", rec=True),
         opt("A curated list only", "Hand-picked sites kept in the repo. No token; \"latest\" means the sites we add.", chosen=True),
