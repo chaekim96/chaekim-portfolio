@@ -40,6 +40,9 @@
   --n-sky:    linear-gradient(150deg, #edf6ff 0%, #dfecfb 100%); --n-sky-a: #1458a6;
   --n-mint:   linear-gradient(150deg, #edf9f3 0%, #dcf0e6 100%); --n-mint-a: #17724a;
   --n-peach:  linear-gradient(150deg, #fff4ea 0%, #fde5d3 100%); --n-peach-a: #a04810;
+  /* Builds folders: one soft tint each */
+  --t-products: #f6dcc4; --t-mods: #d3d9f3; --t-ai-ml: #cfeadf; --t-design: #f3dde2; --t-archive: #e8e3d6;
+  --flap: rgba(255, 255, 255, .5); --flap-hi: rgba(255, 255, 255, .88); --flap-ink: #2b2b2e;
 }
 
 :root[data-theme="dark"] {
@@ -68,6 +71,8 @@
   --n-sky:    linear-gradient(150deg, #14202f 0%, #101a28 100%); --n-sky-a: #86bfff;
   --n-mint:   linear-gradient(150deg, #112219 0%, #0f1d17 100%); --n-mint-a: #74d6a4;
   --n-peach:  linear-gradient(150deg, #2c1b12 0%, #24160f 100%); --n-peach-a: #ffab72;
+  --t-products: #4a3526; --t-mods: #2b3150; --t-ai-ml: #1f3a30; --t-design: #432a31; --t-archive: #38332a;
+  --flap: rgba(30, 30, 34, .55); --flap-hi: rgba(255, 255, 255, .12); --flap-ink: #e9e9ec;
 }
 
 /* ---------- base ---------- */
@@ -537,3 +542,47 @@ body::before {
 }
 :root[data-theme="dark"] body::before { --glow-a: .14; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) body::before { --glow-a: .14; } }
+
+/* ---------- Builds folders ----------
+   A tinted folder per group with three build logos peeking out. Clicking one opens its cards in a tray
+   below the row. Without JS (no .js-folders) every tray stays visible, so nothing is hidden. */
+.folders { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 20px; }
+@media (max-width: 1000px) { .folders { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 680px) { .folders { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; } }
+.fold { display: block; color: inherit; text-decoration: none; min-width: 0; border-radius: 20px; }
+.fold:focus-visible { outline: 3px solid rgba(0, 122, 255, .55); outline-offset: 4px; }
+.fold__art { position: relative; display: block; aspect-ratio: 4 / 3; }
+.fold__back { position: absolute; inset: 10% 3% 0; border-radius: 6px 16px 16px 16px; background: var(--tint); }
+.fold__back::before { content: ""; position: absolute; left: 0; top: -11%; width: 40%; height: 15%; border-radius: 12px 12px 0 0; background: var(--tint); }
+.fold__peek img { position: absolute; top: 9%; width: 26%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 22%; box-shadow: 0 4px 12px rgba(0, 0, 0, .16); transition: transform .45s var(--ease); }
+.fold__peek img:nth-child(1) { left: 12%; transform: rotate(-6deg); }
+.fold__peek img:nth-child(2) { left: 37%; top: 4%; }
+.fold__peek img:nth-child(3) { left: 62%; transform: rotate(6deg); }
+.fold__front { position: absolute; left: 3%; right: 3%; bottom: 0; height: 56%; z-index: 1; display: flex; align-items: flex-end; padding: 10px 14px; border-radius: 14px 14px 16px 16px;
+  background: linear-gradient(180deg, var(--flap-hi), var(--flap)); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  box-shadow: inset 0 1px 0 var(--flap-hi), 0 -2px 10px rgba(0, 0, 0, .06); font-size: 12px; font-weight: 500; color: var(--flap-ink);
+  transform-origin: bottom; transition: transform .45s var(--ease); }
+.fold:hover .fold__peek img:nth-child(1), .fold[aria-expanded="true"] .fold__peek img:nth-child(1) { transform: rotate(-10deg) translateY(-14%); }
+.fold:hover .fold__peek img:nth-child(2), .fold[aria-expanded="true"] .fold__peek img:nth-child(2) { transform: translateY(-20%); }
+.fold:hover .fold__peek img:nth-child(3), .fold[aria-expanded="true"] .fold__peek img:nth-child(3) { transform: rotate(10deg) translateY(-14%); }
+.fold:hover .fold__front, .fold[aria-expanded="true"] .fold__front { transform: perspective(500px) rotateX(-14deg); }
+.fold__nm { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-top: 12px; font-size: 16px; font-weight: 500; }
+.fold__nm span { font-size: 13px; font-weight: 400; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.fold__ds { display: block; margin-top: 2px; font-size: 13px; color: var(--ink-2); }
+@media (max-width: 680px) { .fold__nm { font-size: 14px; } .fold__ds { font-size: 12px; } }
+
+.trays { display: grid; gap: 28px; margin-top: 28px; }
+.tray { padding: 24px; border-radius: var(--r-card); background: var(--fill-2); box-shadow: inset 0 0 0 1px var(--line); scroll-margin-top: 24px; }
+.tray__h { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 18px; }
+.tray__h h3 { margin: 0; font-size: 15px; font-weight: 500; }
+.tray__h h3 span { color: var(--ink-2); font-weight: 400; }
+.tray__close { display: none; padding: 6px 12px; border-radius: 999px; background: var(--pill); color: var(--ink-2); font-size: 13px; text-decoration: none; box-shadow: var(--shadow); }
+.js-folders .tray { display: none; }
+.js-folders .tray.is-open { display: block; }
+.js-folders .tray__close { display: inline-block; }
+@media (prefers-reduced-motion: no-preference) {
+  .js-folders .tray.is-open { animation: tray-in .35s var(--ease); }
+  @keyframes tray-in { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+}
+@media (prefers-reduced-motion: reduce) { .fold__peek img, .fold__front { transition: none; } }
+@media (max-width: 680px) { .tray { padding: 14px; border-radius: 18px; } }

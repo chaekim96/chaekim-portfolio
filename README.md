@@ -28,7 +28,8 @@ Anything not yet confirmed is marked in the copy as `[CONFIRM: ...]` (styled yel
 
 ## Updating content
 
-- Add a project: add an entry to `CASES` in `scripts/build-cases.py`, a card in the Stamp template in `scripts/build-home.py`, then run both scripts. Web apps that can run in a frame go in `LIVE_APPS` (stamp_shared.py) to get a "Try it live" button.
+- Add a project: add an entry to `CASES` in `scripts/build-cases.py`, a card in the Stamp template in `scripts/build-home.py`, then run both scripts.
+- Builds folders: after the three featured builds, the Builds tab groups projects into five folders (Products, Claude Code mods, AI and ML coursework, Design & brand, Fun & archive). Each folder is a `.fold` link plus a `.tray` section in `scripts/build-home.py`; put a new card inside the right tray's grid and update that folder's item count. Folders deep-link by id, e.g. `/#mods`. Peek images for the folders are build marks or small stills in `assets/img/folders/`. Web apps that can run in a frame go in `LIVE_APPS` (stamp_shared.py) to get a "Try it live" button.
 - The old design variants (desktop, PRD, notebook, schematic) were retired; `/variants/*` redirects home.
 - `/llms.txt` (a Markdown guide to the site for AI tools) is generated from every project page's own description: run `python3 scripts/build-llms.py` after the other build scripts. It fails if a new project page isn't assigned to a section.
 - Resume: replace `assets/pdf/chae-kim-resume.pdf`. Every resume link already points there.
