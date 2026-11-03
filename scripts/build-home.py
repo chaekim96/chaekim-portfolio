@@ -299,6 +299,11 @@ STAMP = r"""<!DOCTYPE html>
         </a>
         %%LIVE_SPOTIFY%%
         </div>
+        <a class="w reveal" href="/projects/review-labeler">
+          <div class="stage" style="--g: var(--g-mirror)"><div class="art fill"><img src="/assets/img/builds/review-labeler-card.jpg" alt="The labeling sheet: one review labeled billing, praise, severity 1, with the guide's rules beside it" width="800" height="600" loading="lazy"></div><span class="pill">Review Labeler <em>in progress</em></span></div>
+          <h3 class="w-title">Finding out when a small fine-tuned model is good enough.</h3>
+          <p class="meta">Testing fine-tuned vs. prompted models on app reviews. So far: a rewritten label guide and a labeling sheet.</p>
+        </a>
         <a class="w reveal" href="/projects/personal-wiki">
           <div class="stage" style="--g: var(--g-arcade)"><div class="art fill"><img src="/assets/img/builds/personal-wiki.jpg" alt="Obsidian graph of the wiki's linked notes" width="900" height="646" loading="lazy"></div><span class="pill">Personal Wiki <em>2026</em></span></div>
           <h3 class="w-title">Asking my own notes questions, with no internet.</h3>
