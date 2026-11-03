@@ -1,6 +1,7 @@
 /* Glass on the controls that float over the work: the tab bar, the top nav, stage pills and live buttons.
+   Live buttons sitting on a cover image stay solid so they read over dark screenshots.
    Tagged here so the CSS frosted look applies everywhere; the refraction below is Chromium only. */
-document.querySelectorAll('.tabs, .topnav, .stage .pill, .live-btn').forEach(el => {
+document.querySelectorAll('.tabs, .topnav, .stage .pill, .live-btn:not(.stage .live-btn)').forEach(el => {
   el.classList.add('lg'); el.setAttribute('data-lg', '');
   el.dataset.lgBezel = el.matches('.tabs, .topnav') ? '14' : '10';
 });
