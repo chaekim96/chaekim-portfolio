@@ -69,6 +69,12 @@ CASE_CSS_V = "23"   # bump when assets/css/case-stamp.css changes
 STAMP_CSS_V = "29"  # v-stamp.css version, kept in step with the homepage
 JS_V = "14"
 LIVE_V = "1"  # bump when assets/js/live.js changes
+SIGNAL_V = "1"  # bump when assets/css/signal-green.css changes
+GLASS_V = "1"  # bump when assets/js/liquid-glass.js changes
+
+# Signal green accent and liquid glass: stylesheet after the page styles, glass script deferred.
+SIGNAL_CSS = f'  <link rel="stylesheet" href="/assets/css/signal-green.css?v={SIGNAL_V}">'
+GLASS_JS = f'  <script src="/assets/js/liquid-glass.js?v={GLASS_V}" defer></script>'
 
 # ---------------------------------------------------------------------------
 # Live previews: a "Try it live" link opens the real app in a dialog.
@@ -102,7 +108,7 @@ LIVE_DIALOG = """  <dialog class="live" id="live" aria-labelledby="live-title">
 LIVE_SCRIPT = f'  <script src="/assets/js/live.js?v={LIVE_V}" defer></script>'
 
 # Phone browser bar matches the page: sky blue in light mode, night navy in dark.
-THEME_COLOR = ('  <meta name="theme-color" content="#bfdcf7" media="(prefers-color-scheme: light)">\n'
+THEME_COLOR = ('  <meta name="theme-color" content="#74bff0" media="(prefers-color-scheme: light)">\n'
                '  <meta name="theme-color" content="#0f1a2e" media="(prefers-color-scheme: dark)">')
 
 CASE_HEAD_ASSETS = (
@@ -111,6 +117,7 @@ CASE_HEAD_ASSETS = (
     '  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">\n'
     f'  <link rel="stylesheet" href="/assets/css/v-stamp.css?v={STAMP_CSS_V}">\n'
     f'  <link rel="stylesheet" href="/assets/css/case-stamp.css?v={CASE_CSS_V}">\n'
+    + SIGNAL_CSS + "\n" + GLASS_JS + "\n"
     "  <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>"
 )
 

@@ -72,7 +72,7 @@ ARCADE = """          <div class="break">
 
 STAMP_CHANGELOG = "10-04-26"
 
-from stamp_shared import INK_DEFS, seal, live_button, LIVE_DIALOG, LIVE_SCRIPT, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, THEME_COLOR, build_mark, build_icons
+from stamp_shared import INK_DEFS, seal, live_button, LIVE_DIALOG, LIVE_SCRIPT, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, THEME_COLOR, SIGNAL_CSS, GLASS_JS, build_mark, build_icons
 
 
 def _snake():
@@ -110,6 +110,8 @@ STAMP = r"""<!DOCTYPE html>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
   <link rel="preload" as="image" href="/assets/img/thumbs/lucent-wide.jpg">
   <link rel="stylesheet" href="/assets/css/v-stamp.css?v=%%V%%">
+%%SIGNAL_CSS%%
+%%GLASS_JS%%
   <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
   <script type="application/ld+json">
   {
@@ -736,6 +738,7 @@ def _writing_reading():
 
 STAMP = (STAMP.replace("%%WRITING_ESSAYS%%", _writing_essays())
               .replace("%%WRITING_READING%%", _writing_reading())
+              .replace("%%SIGNAL_CSS%%", SIGNAL_CSS).replace("%%GLASS_JS%%", GLASS_JS)
               .replace("%%V%%", V)
               .replace("%%INK%%", INK_DEFS)
               .replace("%%BRANDSEAL%%", seal("cal--card", label=False))
