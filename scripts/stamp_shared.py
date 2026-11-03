@@ -70,7 +70,7 @@ STAMP_CSS_V = "29"  # v-stamp.css version, kept in step with the homepage
 JS_V = "14"
 LIVE_V = "1"  # bump when assets/js/live.js changes
 SIGNAL_V = "1"  # bump when assets/css/signal-green.css changes
-GLASS_V = "1"  # bump when assets/js/liquid-glass.js changes
+GLASS_V = "2"  # bump when assets/js/liquid-glass.js changes
 
 # Signal green accent and liquid glass: stylesheet after the page styles, glass script deferred.
 SIGNAL_CSS = f'  <link rel="stylesheet" href="/assets/css/signal-green.css?v={SIGNAL_V}">'
