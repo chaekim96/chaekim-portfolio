@@ -192,35 +192,35 @@ STAMP = r"""<!DOCTYPE html>
       <h2 class="sub-h">Browse by folder</h2>
       <nav class="folders" aria-label="Project folders">
         <a class="fold reveal" href="#products" data-folder="products" aria-controls="products" aria-expanded="false">
-          <span class="fold__art" style="--tint: var(--t-products)" aria-hidden="true"><span class="fold__back"></span><span class="fold__peek"><img src="/assets/img/brand/palette-generator-2.svg" alt="" width="64" height="64" loading="lazy"><img src="/assets/img/brand/networking-tracker.svg" alt="" width="64" height="64" loading="lazy"><img src="/assets/img/brand/web-anatomy-2.svg" alt="" width="64" height="64" loading="lazy"></span><span class="fold__front">6 items</span></span>
-          <span class="fold__nm">Products<span>6</span></span>
+          <span class="fold__art" style="--tint: var(--t-products)" aria-hidden="true"><span class="fold__back"></span><span class="fold__peek"><img src="/assets/img/brand/palette-generator-2.svg" alt="" width="64" height="64" loading="lazy"><img src="/assets/img/brand/networking-tracker.svg" alt="" width="64" height="64" loading="lazy"><img src="/assets/img/brand/web-anatomy-2.svg" alt="" width="64" height="64" loading="lazy"></span><span class="fold__front">%%COUNT_PRODUCTS%% items</span></span>
+          <span class="fold__nm">Products<span>%%COUNT_PRODUCTS%%</span></span>
           <span class="fold__ds">Web apps you can try live</span>
         </a>
         <a class="fold reveal" href="#mods" data-folder="mods" aria-controls="mods" aria-expanded="false">
-          <span class="fold__art" style="--tint: var(--t-mods)" aria-hidden="true"><span class="fold__back"></span><span class="fold__peek"><img src="/assets/img/brand/smartmodel.svg" alt="" width="64" height="64" loading="lazy"><img src="/assets/img/brand/token-fuel.svg" alt="" width="64" height="64" loading="lazy"><img src="/assets/img/brand/code-improver.svg" alt="" width="64" height="64" loading="lazy"></span><span class="fold__front">4 items</span></span>
-          <span class="fold__nm">Claude Code mods<span>4</span></span>
+          <span class="fold__art" style="--tint: var(--t-mods)" aria-hidden="true"><span class="fold__back"></span><span class="fold__peek"><img src="/assets/img/brand/smartmodel.svg" alt="" width="64" height="64" loading="lazy"><img src="/assets/img/brand/token-fuel.svg" alt="" width="64" height="64" loading="lazy"><img src="/assets/img/brand/code-improver.svg" alt="" width="64" height="64" loading="lazy"></span><span class="fold__front">%%COUNT_MODS%% items</span></span>
+          <span class="fold__nm">Claude Code mods<span>%%COUNT_MODS%%</span></span>
           <span class="fold__ds">Hooks, gauges, subagents</span>
         </a>
         <a class="fold reveal" href="#ai-ml" data-folder="ai-ml" aria-controls="ai-ml" aria-expanded="false">
-          <span class="fold__art" style="--tint: var(--t-ai-ml)" aria-hidden="true"><span class="fold__back"></span><span class="fold__peek"><img src="/assets/img/brand/spotify-review-triage.svg" alt="" width="64" height="64" loading="lazy"><img src="/assets/img/brand/personal-wiki.svg" alt="" width="64" height="64" loading="lazy"><img src="/assets/img/brand/pacman-dqn-2.svg" alt="" width="64" height="64" loading="lazy"></span><span class="fold__front">4 items</span></span>
-          <span class="fold__nm">AI and ML coursework<span>4</span></span>
+          <span class="fold__art" style="--tint: var(--t-ai-ml)" aria-hidden="true"><span class="fold__back"></span><span class="fold__peek"><img src="/assets/img/brand/spotify-review-triage.svg" alt="" width="64" height="64" loading="lazy"><img src="/assets/img/brand/personal-wiki.svg" alt="" width="64" height="64" loading="lazy"><img src="/assets/img/brand/pacman-dqn-2.svg" alt="" width="64" height="64" loading="lazy"></span><span class="fold__front">%%COUNT_AI_ML%% items</span></span>
+          <span class="fold__nm">AI and ML coursework<span>%%COUNT_AI_ML%%</span></span>
           <span class="fold__ds">LLMs, RL, retrieval</span>
         </a>
         <a class="fold reveal" href="#design" data-folder="design" aria-controls="design" aria-expanded="false">
-          <span class="fold__art" style="--tint: var(--t-design)" aria-hidden="true"><span class="fold__back"></span><span class="fold__peek"><img src="/assets/img/folders/siri.jpg" alt="" width="64" height="64" loading="lazy"><img src="/favicon.svg" alt="" width="64" height="64" loading="lazy"><img src="/assets/img/brand/typerace.svg" alt="" width="64" height="64" loading="lazy"></span><span class="fold__front">4 items</span></span>
-          <span class="fold__nm">Design &amp; brand<span>4</span></span>
+          <span class="fold__art" style="--tint: var(--t-design)" aria-hidden="true"><span class="fold__back"></span><span class="fold__peek"><img src="/assets/img/folders/siri.jpg" alt="" width="64" height="64" loading="lazy"><img src="/favicon.svg" alt="" width="64" height="64" loading="lazy"><img src="/assets/img/brand/typerace.svg" alt="" width="64" height="64" loading="lazy"></span><span class="fold__front">%%COUNT_DESIGN%% items</span></span>
+          <span class="fold__nm">Design &amp; brand<span>%%COUNT_DESIGN%%</span></span>
           <span class="fold__ds">Concepts, brand, this site</span>
         </a>
         <a class="fold reveal" href="#archive" data-folder="archive" aria-controls="archive" aria-expanded="false">
-          <span class="fold__art" style="--tint: var(--t-archive)" aria-hidden="true"><span class="fold__back"></span><span class="fold__peek"><img src="/assets/img/brand/arcade-2.svg" alt="" width="64" height="64" loading="lazy"><img src="/assets/img/folders/home.jpg" alt="" width="64" height="64" loading="lazy"><img src="/assets/img/folders/yin-yang.jpg" alt="" width="64" height="64" loading="lazy"></span><span class="fold__front">7 items</span></span>
-          <span class="fold__nm">Fun &amp; archive<span>7</span></span>
+          <span class="fold__art" style="--tint: var(--t-archive)" aria-hidden="true"><span class="fold__back"></span><span class="fold__peek"><img src="/assets/img/brand/arcade-2.svg" alt="" width="64" height="64" loading="lazy"><img src="/assets/img/folders/home.jpg" alt="" width="64" height="64" loading="lazy"><img src="/assets/img/folders/yin-yang.jpg" alt="" width="64" height="64" loading="lazy"></span><span class="fold__front">%%COUNT_ARCHIVE%% items</span></span>
+          <span class="fold__nm">Fun &amp; archive<span>%%COUNT_ARCHIVE%%</span></span>
           <span class="fold__ds">Games, art, 2019 to 2020 projects</span>
         </a>
       </nav>
       <script>document.documentElement.classList.add('js-folders')</script>
       <div class="trays">
       <section class="tray" id="products" aria-label="Products">
-        <div class="tray__h"><h3>Products <span>· 6</span></h3><a class="tray__close" href="#builds" data-fold-close>Close ✕</a></div>
+        <div class="tray__h"><h3>Products <span>· %%COUNT_PRODUCTS%%</span></h3><a class="tray__close" href="#builds" data-fold-close>Close ✕</a></div>
         <div class="grid grid--shelf">
         <div class="live-card reveal">
         <a class="w" href="/projects/palette-generator">
@@ -264,7 +264,7 @@ STAMP = r"""<!DOCTYPE html>
         </div>
       </section>
       <section class="tray" id="mods" aria-label="Claude Code mods">
-        <div class="tray__h"><h3>Claude Code mods <span>· 4</span></h3><a class="tray__close" href="#builds" data-fold-close>Close ✕</a></div>
+        <div class="tray__h"><h3>Claude Code mods <span>· %%COUNT_MODS%%</span></h3><a class="tray__close" href="#builds" data-fold-close>Close ✕</a></div>
         <div class="grid grid--shelf">
         <a class="w reveal" href="/projects/smartmodel">
           <div class="stage" style="--g: var(--g-arcade)"><div class="art"><div class="term" aria-hidden="true"><p>SmartModel rates this medium-effort.</p><p>Which model should run it?</p><ul><li class="on">Sonnet (recommended)</li><li>Haiku</li><li>Opus</li><li>Fable</li></ul></div></div><span class="pill">SmartModel <em>Claude Code</em></span></div>
@@ -289,7 +289,7 @@ STAMP = r"""<!DOCTYPE html>
         </div>
       </section>
       <section class="tray" id="ai-ml" aria-label="AI and ML coursework">
-        <div class="tray__h"><h3>AI and ML coursework <span>· 4</span></h3><a class="tray__close" href="#builds" data-fold-close>Close ✕</a></div>
+        <div class="tray__h"><h3>AI and ML coursework <span>· %%COUNT_AI_ML%%</span></h3><a class="tray__close" href="#builds" data-fold-close>Close ✕</a></div>
         <div class="grid grid--shelf">
         <div class="live-card reveal">
         <a class="w" href="/projects/spotify-review-triage">
@@ -322,7 +322,7 @@ STAMP = r"""<!DOCTYPE html>
         </div>
       </section>
       <section class="tray" id="design" aria-label="Design &amp; brand">
-        <div class="tray__h"><h3>Design &amp; brand <span>· 4</span></h3><a class="tray__close" href="#builds" data-fold-close>Close ✕</a></div>
+        <div class="tray__h"><h3>Design &amp; brand <span>· %%COUNT_DESIGN%%</span></h3><a class="tray__close" href="#builds" data-fold-close>Close ✕</a></div>
         <div class="grid grid--shelf">
         <a class="w reveal" href="/projects/siri-reimagined">
           <div class="stage" style="--g: var(--g-lucent)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>siri, reimagined</span></div><img src="/assets/img/builds/siri-reimagined-card.jpg" alt="Siri, Reimagined: the headline The last app you'll install, above three iPhones with Liquid Glass screens" width="960" height="600" loading="lazy"></div></div><span class="pill">Siri, Reimagined <em>concept</em></span></div>
@@ -343,7 +343,7 @@ STAMP = r"""<!DOCTYPE html>
         </div>
       </section>
       <section class="tray" id="archive" aria-label="Fun &amp; archive">
-        <div class="tray__h"><h3>Fun &amp; archive <span>· 7</span></h3><a class="tray__close" href="#builds" data-fold-close>Close ✕</a></div>
+        <div class="tray__h"><h3>Fun &amp; archive <span>· %%COUNT_ARCHIVE%%</span></h3><a class="tray__close" href="#builds" data-fold-close>Close ✕</a></div>
         <div class="grid grid--shelf">
         <a class="w reveal" href="/arcade">
           <div class="stage" style="--g: var(--g-arcade)"><div class="art">%%SNAKE%%</div><span class="pill">Arcade <em>play</em></span></div>
@@ -814,6 +814,15 @@ def _writing_reading():
     return '      <ul class="wlist">\n' + "\n".join(rows) + "\n      </ul>"
 
 
+# Builds folders: count each tray's cards so the numbers on the folders never go stale.
+def _folder_counts(page):
+    for m in re.finditer(r'<section class="tray" id="([a-z-]+)"[\s\S]*?\n      </section>', page):
+        n = len(re.findall(r'^        <(?:a|div) class="(?:w|live-card) reveal"', m.group(0), re.M))
+        page = page.replace("%%COUNT_" + m.group(1).upper().replace("-", "_") + "%%", str(n))
+    assert "%%COUNT_" not in page, "a folder button has no matching tray"
+    return page
+
+STAMP = _folder_counts(STAMP)
 STAMP = (STAMP.replace("%%WRITING_ESSAYS%%", _writing_essays())
               .replace("%%WRITING_READING%%", _writing_reading())
               .replace("%%SIGNAL_CSS%%", SIGNAL_CSS).replace("%%GLASS_JS%%", GLASS_JS)
