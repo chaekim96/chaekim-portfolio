@@ -72,7 +72,7 @@ ARCADE = """          <div class="break">
 
 STAMP_CHANGELOG = "10-04-26"
 
-from stamp_shared import INK_DEFS, seal, live_button, LIVE_DIALOG, LIVE_SCRIPT, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, THEME_COLOR, SIGNAL_CSS, GLASS_JS, build_mark, build_icons
+from stamp_shared import INK_DEFS, seal, live_button, LIVE_DIALOG, LIVE_SCRIPT, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, THEME_COLOR, SIGNAL_CSS, GLASS_JS, build_mark, build_icons, mark_color, work_mark
 
 
 def _snake():
@@ -869,11 +869,25 @@ assert "%%" not in STAMP, "unreplaced token"
 # Each card's pill leads with the build's color-seal mark, found from the page the card links to.
 # The name gets its own span so it can truncate on narrow cards instead of being clipped.
 def _pill_mark(m):
-    mark = build_mark(m.group(2), "pill__mark", 18)
+    mark = build_mark(m.group(2), "pill__mark", 18) or work_mark(m.group(2), "pill__mark", 18)
     return m.group(1) + (f'{mark}<span class="pill__name">{m.group(3)}</span>' if mark else m.group(3))
 
 STAMP = re.sub(r'(href="/(?:projects/)?([a-z0-9-]+)"[^>]*>\s*<div class="stage"(?:(?!</a>).)*?<span class="pill">)([^<]*?)(?=\s*<em>|</span>)',
                _pill_mark, STAMP, flags=re.S)
+
+# Each build's card washes with its mark's base color (the .tint rule in v-stamp.css mixes it into paper or night).
+# Dark-tile builds keep a dark or neutral stage instead, matching their dark tiles.
+STAGE_KEEPS = {"arcade": "arcade", "web-anatomy": "arcade", "palette-generator": "plain"}
+
+def _wash_stage(m):
+    slug = m.group(2)
+    if slug in STAGE_KEEPS:
+        return m.group(1) + f'<div class="stage" style="--g: var(--g-{STAGE_KEEPS[slug]})">'
+    color = mark_color(slug)
+    return m.group(1) + (f'<div class="stage tint" style="--bc: {color}">' if color else m.group(3))
+
+STAMP = re.sub(r'(href="/(?:projects/)?([a-z0-9-]+)"[^>]*>\s*)(<div class="stage"(?: style="--g: var\(--g-[a-z]+\)")?>)',
+               _wash_stage, STAMP)
 
 # ----------------------------------------------------------------------------
 # Arcade page, in the same chrome as the project pages

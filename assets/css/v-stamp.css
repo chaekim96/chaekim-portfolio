@@ -34,6 +34,8 @@
   --g-mobility: linear-gradient(150deg, #eef9f3 0%, #dcf1ea 100%);
   --g-arcade: linear-gradient(160deg, #1b2140 0%, #0f1426 100%);
   --g-plain: linear-gradient(160deg, #f6f6f8 0%, #ececf0 100%);
+  /* a build's card: its mark's base color (--bc, set per card) mixed into paper by these amounts */
+  --wash-base: #ffffff; --wash-a: 11%; --wash-b: 22%;
   /* design-notes cards: one hue each, with an accent for the label and a darker secondary text for AA on the tint */
   --n-ink2: #54545a;
   --n-violet: linear-gradient(150deg, #f2eeff 0%, #e8e3fb 100%); --n-violet-a: #5b45c8;
@@ -66,6 +68,7 @@
   --g-mirror: linear-gradient(150deg, #241f12 0%, #2a2014 100%);
   --g-mobility: linear-gradient(150deg, #0f1f18 0%, #12241f 100%);
   --g-plain: linear-gradient(160deg, #161618 0%, #1c1c1f 100%);
+  --wash-base: #131315; --wash-a: 15%; --wash-b: 8%;
   --n-ink2: #b3b3ba;
   --n-violet: linear-gradient(150deg, #1f1b38 0%, #181630 100%); --n-violet-a: #b9adff;
   --n-sky:    linear-gradient(150deg, #14202f 0%, #101a28 100%); --n-sky-a: #86bfff;
@@ -180,6 +183,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   box-shadow: inset 0 0 0 1px var(--line);
   transition: box-shadow .4s var(--ease);
 }
+/* build cards: a soft wash of the build's own color; browsers without color-mix keep the plain stage */
+.stage.tint, .grid--shelf .stage.tint { background: linear-gradient(150deg, color-mix(in srgb, var(--bc) var(--wash-a), var(--wash-base)) 0%, color-mix(in srgb, var(--bc) var(--wash-b), var(--wash-base)) 100%); }
 .w--wide .stage { aspect-ratio: 21 / 9; }
 .grid--3 .stage { aspect-ratio: 4 / 3; border-radius: 20px; }
 .grid--5 .stage { aspect-ratio: 1 / 1; border-radius: 16px; }
