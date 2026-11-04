@@ -23,10 +23,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
   <link rel="preload" as="image" href="/assets/img/thumbs/lucent-wide.jpg">
-  <link rel="stylesheet" href="/assets/css/v-stamp.css?v=32">
-  <link rel="stylesheet" href="/assets/css/signal-green.css?v=2">
+  <link rel="stylesheet" href="/assets/css/v-stamp.css?v=33">
+  <link rel="stylesheet" href="/assets/css/signal-green.css?v=3">
   <script src="/assets/js/liquid-glass.js?v=3" defer></script>
-  <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
+  <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {} document.documentElement.classList.add('js'); try { if (!sessionStorage.getItem('ck-seal')) { sessionStorage.setItem('ck-seal', '1'); document.documentElement.classList.add('seal-stamp'); } } catch (e) {}</script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -88,7 +88,7 @@
         <article class="feat__card reveal">
         <a class="w feat__w" href="/projects/tally">
           <div class="stage tint" style="--bc: #ff3b30"><div class="art"><div class="browser play"><div class="browser__bar"><i></i><i></i><i></i><span>tally</span></div><img src="/assets/img/builds/tally.jpg" alt="Tally estimating a week of to-dos: an hour for the case memo, 30 minutes for bug reports, 3h45 in all" width="960" height="600" loading="lazy"><img class="play__f" src="/assets/img/cases/tally-day.jpg" alt="The Day view: a capacity meter, the Unscheduled tray, and blocks on the calendar." loading="lazy"><img class="play__f" src="/assets/img/cases/tally-summary.jpg" alt="The Summary: what's left, the finish-by time, and where the time goes." loading="lazy"></div></div><span class="pill"><img class="pill__mark" src="/assets/img/brand/tally.svg" alt="" width="18" height="18"><span class="pill__name">Tally</span> <em>2026</em></span></div>
-          <h3 class="w-title">Knowing how long your to-do list will actually take.</h3>
+          <h3 class="w-title">Knowing how long your <span class="nb">to-do</span> list will actually take.</h3>
           <p class="meta">A note-taker where every line gets a Claude time estimate, totaled in a ledger column.</p>
         </a>
         <div class="feat__strip"><a class="live-btn" href="https://tally-lake-seven.vercel.app" target="_blank" rel="noopener" data-live="https://tally-lake-seven.vercel.app" data-live-title="Tally" data-live-note="" aria-label="Try Tally live"><i aria-hidden="true"></i>Try it live</a><a class="feat__case" href="/projects/tally">Read the case study →</a></div>
@@ -96,7 +96,7 @@
         <article class="feat__card reveal">
         <a class="w feat__w" href="/projects/typerace">
           <div class="stage tint" style="--bc: #0a84ff"><div class="art"><div class="browser play"><div class="browser__bar"><i></i><i></i><i></i><span>typerace</span></div><img src="/assets/img/builds/typerace-2.jpg" alt="A TypeRace race in progress at 70 WPM, ink on near-white, the progress bar halfway across" width="960" height="600" loading="lazy"><img class="play__f" src="/assets/img/cases/typerace-results-2.jpg" alt="Results from a test race on my own server: finishing order, WPM, accuracy, and a WPM chart." loading="lazy"></div></div><span class="pill"><img class="pill__mark" src="/assets/img/brand/typerace.svg" alt="" width="18" height="18"><span class="pill__name">TypeRace</span> <em>2026</em></span></div>
-          <h3 class="w-title">Settling who types fastest, with one link and no sign-up.</h3>
+          <h3 class="w-title">Settling who types fastest, with one link and no <span class="nb">sign-up</span>.</h3>
           <p class="meta">Live races for classmates: share a code, type the same story, first to finish wins.</p>
         </a>
         <div class="feat__strip"><a class="live-btn" href="https://typerace.typerace.workers.dev" target="_blank" rel="noopener" data-live="https://typerace.typerace.workers.dev" data-live-title="TypeRace" data-live-note="Races here are real: a finished race posts to the weekly class leaderboard." aria-label="Try TypeRace live"><i aria-hidden="true"></i>Try it live</a><a class="feat__case" href="/projects/typerace">Read the case study →</a></div>
@@ -215,7 +215,7 @@
         </div>
         <a class="w reveal" href="/projects/review-labeler">
           <div class="stage tint" style="--bc: #b03a64"><div class="art fill"><img src="/assets/img/builds/review-labeler-card.jpg" alt="The labeling sheet: one review labeled billing, praise, severity 1, with the guide's rules beside it" width="800" height="600" loading="lazy"></div><span class="pill"><img class="pill__mark" src="/assets/img/brand/review-labeler.svg" alt="" width="18" height="18"><span class="pill__name">Review Labeler</span> <em>in progress</em></span></div>
-          <h3 class="w-title">Finding out when a small fine-tuned model is good enough.</h3>
+          <h3 class="w-title">Finding out when a small <span class="nb">fine-tuned</span> model is good enough.</h3>
           <p class="meta">Testing fine-tuned vs. prompted models on app reviews. So far: a rewritten label guide and a labeling sheet.</p>
         </a>
         <a class="w reveal" href="/projects/personal-wiki">
@@ -225,7 +225,7 @@
         </a>
         <a class="w reveal" href="/projects/pacman-dqn">
           <div class="stage tint" style="--bc: #b5ad00"><div class="art fill fill--contain fill--pixel"><img src="/assets/img/builds/pacman-dqn.gif" alt="The trained agent playing Ms. Pac-Man" width="160" height="210" loading="lazy"></div><span class="pill"><img class="pill__mark" src="/assets/img/brand/pacman-dqn-2.svg" alt="" width="18" height="18"><span class="pill__name">Pac-Man DQN</span> <em>2026</em></span></div>
-          <h3 class="w-title">Teaching an agent to play Ms. Pac-Man by trial and error.</h3>
+          <h3 class="w-title">Teaching an agent to play Ms. <span class="nb">Pac-Man</span> by trial and error.</h3>
           <p class="meta">A DQN agent that raised its mean evaluation score from 492 to 680.</p>
         </a>
         <a class="w reveal" href="/projects/custom-llm">
@@ -301,7 +301,7 @@
         <li class="reveal"><h3><a href="https://chaewoonkim.medium.com/a-story-about-money-afedd3e1ee00" target="_blank" rel="noopener">A Story About Money ↗</a></h3><p class="wl-by">Medium · July 22, 2025</p><p class="wl-sum">A personal essay on money.</p></li>
       </ul>
 
-      <h2 class="sub-h">Case-study write-ups</h2>
+      <h2 class="sub-h"><span class="nb">Case-study</span> <span class="nb">write-ups</span></h2>
       <div class="grid grid--3">
         <a class="w reveal" href="/projects/decisions">
           <div class="stage" style="--g: var(--g-mobility)"><div class="art"><div class="glass"><b>Options</b><span>and the pick</span></div></div><span class="pill">How I decide <em>2026</em></span></div>
@@ -465,33 +465,34 @@
     <!-- ============ DESIGN NOTES ============ -->
     <section class="notes" id="design-notes" aria-labelledby="notes-h">
       <h2 id="notes-h">How this page is put together</h2>
-      <p class="notes__lede">Quiet, one typeface, real work as the picture.</p>
+      <p class="notes__lede">Quiet, Poppins for words, real work as the picture.</p>
 
       <div class="notes__grid">
         <details class="ncard ncard--color">
           <summary><p class="ncard__k"><i aria-hidden="true"></i>Color</p>
           <h3>Color follows the content, so the page stays neutral</h3><span class="ncard__more" aria-hidden="true">Read more</span></summary>
-          <p class="notes__cap">Light, then dark. Tokens from <code>v-stamp.css</code>.</p>
+          <p class="notes__cap">Light, then dark. Tokens from <code>v-stamp.css</code> and <code>signal-green.css</code>.</p>
           <ul class="swl">
-            <li><span class="sw"><i style="background:#161618"></i><i style="background:#f5f5f7"></i></span><span class="swl__t"><b>ink</b> text</span><span class="swl__h"><code>#161618</code> / <code>#f5f5f7</code></span></li>
-            <li><span class="sw"><i style="background:#6e6e73"></i><i style="background:#a1a1a6"></i></span><span class="swl__t"><b>ink-2</b> secondary text</span><span class="swl__h"><code>#6e6e73</code> / <code>#a1a1a6</code></span></li>
-            <li><span class="sw"><i style="background:#ffffff"></i><i style="background:#0b0b0c"></i></span><span class="swl__t"><b>bg</b> page</span><span class="swl__h"><code>#ffffff</code> / <code>#0b0b0c</code></span></li>
-            <li><span class="sw"><i style="background:rgba(0,0,0,.08)"></i><i style="background:rgba(255,255,255,.10)"></i></span><span class="swl__t"><b>line</b> hairlines</span><span class="swl__h"><code>rgba(0,0,0,.08)</code> / <code>rgba(255,255,255,.10)</code></span></li>
-            <li><span class="sw"><i style="background:rgba(0,0,0,.05)"></i><i style="background:rgba(255,255,255,.08)"></i></span><span class="swl__t"><b>fill</b> active tab, hover</span><span class="swl__h"><code>rgba(0,0,0,.05)</code> / <code>rgba(255,255,255,.08)</code></span></li>
-            <li><span class="sw"><i style="background:#0a66d6"></i><i style="background:#4ea1ff"></i></span><span class="swl__t"><b>link</b> active link</span><span class="swl__h"><code>#0a66d6</code> / <code>#4ea1ff</code></span></li>
-            <li><span class="sw"><i style="background:#30b158"></i><i style="background:#30b158"></i></span><span class="swl__t"><b>ok</b> live status dot</span><span class="swl__h"><code>#30b158</code> / <code>#30b158</code></span></li>
+            <li><span class="sw"><i style="background:#0d1b2e"></i><i style="background:#f5f5f7"></i></span><span class="swl__t"><b>ink</b> text</span><span class="swl__h"><code>#0d1b2e</code> / <code>#f5f5f7</code></span></li>
+            <li><span class="sw"><i style="background:#44566e"></i><i style="background:#a1a1a6"></i></span><span class="swl__t"><b>ink-2</b> secondary text</span><span class="swl__h"><code>#44566e</code> / <code>#a1a1a6</code></span></li>
+            <li><span class="sw"><i style="background:#eef7fe"></i><i style="background:#0b0b0c"></i></span><span class="swl__t"><b>bg</b> page, under the sky</span><span class="swl__h"><code>#eef7fe</code> / <code>#0b0b0c</code></span></li>
+            <li><span class="sw"><i style="background:rgba(20,70,130,.12)"></i><i style="background:rgba(255,255,255,.10)"></i></span><span class="swl__t"><b>line</b> hairlines</span><span class="swl__h"><code>rgba(20,70,130,.12)</code> / <code>rgba(255,255,255,.10)</code></span></li>
+            <li><span class="sw"><i style="background:#064e8c"></i><i style="background:#6bbcff"></i></span><span class="swl__t"><b>sky accent</b> links, back arrows</span><span class="swl__h"><code>#064e8c</code> / <code>#6bbcff</code></span></li>
+            <li><span class="sw"><i style="background:#0b63b8"></i><i style="background:#6bbcff"></i></span><span class="swl__t"><b>sky fill</b> active tab, focus ring</span><span class="swl__h"><code>#0b63b8</code> / <code>#6bbcff</code></span></li>
+            <li><span class="sw"><i style="background:#30d158"></i><i style="background:#30d158"></i></span><span class="swl__t"><b>live</b> status dot, nothing else</span><span class="swl__h"><code>#30d158</code> / <code>#30d158</code></span></li>
           </ul>
           <div class="grads">
-            <div><i style="background:linear-gradient(180deg,#bfdcf7 0%,#dcecfb 22%,#f2f8fe 48%,#ffffff 72%)"></i><span>Sky, light: <code>#bfdcf7</code> to <code>#dcecfb</code> to <code>#f2f8fe</code> to white, with soft white clouds</span></div>
+            <div><i style="background:linear-gradient(180deg,#74bff0 0%,#a8d7f7 24%,#d6ecfc 58%,#eef7fe 100%)"></i><span>Sky, light: <code>#74bff0</code> to <code>#a8d7f7</code> to <code>#d6ecfc</code> to <code>#eef7fe</code>, with soft white clouds</span></div>
             <div><i style="background:linear-gradient(180deg,#0f1a2e 0%,#0d1424 30%,#0b0e15 55%,#0b0b0c 75%)"></i><span>Night sky, dark: <code>#0f1a2e</code> to <code>#0b0b0c</code>, with faint clouds</span></div>
           </div>
-          <p>Each project sits on its own soft gradient stage, so the work supplies the color. Everything else stays neutral. The page opens on a sky: soft blue overhead, a few clouds, fading to white behind the work. I like that blue. It stays calm, not loud, feels light and airy, and keeps the black and white from my brand exploration from feeling stark.</p>
+          <p>Each project sits on its own soft gradient stage, tinted from its build mark, so the work supplies the color. Everything else stays neutral: these four notes share one sky tint on purpose. The page opens on a sky: soft blue overhead, a few clouds, fading to white behind the work. I like that blue. It stays calm, not loud, feels light and airy, and keeps the black and white from my brand exploration from feeling stark.</p>
+          <p>One accent does the rest of the work. A deep sky blue marks links, back arrows, the active tab and focus rings. Green appears in one place only: the dot that means something is live. Link and button text clears 4.5:1 against the sky and white.</p>
         </details>
 
         <details class="ncard ncard--type">
           <summary><p class="ncard__k"><i aria-hidden="true"></i>Type</p>
-          <h3>One typeface, Poppins, set mostly at regular weight</h3><span class="ncard__more" aria-hidden="true">Read more</span></summary>
-          <p class="notes__cap">400, 500 and 600 are loaded. I kept Poppins instead of switching to the SF system font. Its round, geometric letters feel friendly, not corporate. One family everywhere keeps the focus on the work, and it has carried every version of this site.</p>
+          <h3>Poppins for words, a plain monospace for facts</h3><span class="ncard__more" aria-hidden="true">Read more</span></summary>
+          <p class="notes__cap">400, 500 and 600 are loaded. I kept Poppins instead of switching to the SF system font. Its round, geometric letters feel friendly, not corporate. One family for every word keeps the focus on the work, and it has carried every version of this site.</p>
           <div class="spec">
             <p class="spec__a">chae kim</p>
             <p class="spec__b">Making small businesses visible in AI search.</p>
@@ -504,25 +505,29 @@
             <tr><td>Project headline</td><td>500 · 17px</td></tr>
             <tr><td>Body</td><td>400 · 16px / 1.55</td></tr>
             <tr><td>Notes</td><td>400 · 14px</td></tr>
+            <tr><td>Case page facts</td><td>400 · 13.5px · system monospace</td></tr>
           </table>
-          <p>The only other letters are the 김채운 strip at the top. It is brushed with East Sea Dokdo outlines drawn inline, so it costs no font download.</p>
+          <p>The one exception to Poppins is the role, team and dates line on a case page. It is set in the system monospace, so facts read differently from the story around them. It costs no font download. The only other letters are the 김채운 strip at the top, brushed with East Sea Dokdo outlines drawn inline.</p>
         </details>
 
         <details class="ncard ncard--pages">
           <summary><p class="ncard__k"><i aria-hidden="true"></i>Structure</p>
           <h3>Pages you explore, with the work as the picture</h3><span class="ncard__more" aria-hidden="true">Read more</span></summary>
           <ul class="bul">
-            <li>Pill tabs for Builds, Work and About, routed by the URL hash. Builds opens first.</li>
+            <li>Pill tabs for Builds, Work, Writing and About, routed by the URL hash. Builds opens first.</li>
             <li>Builds shows three projects to try, then five folders. Each opens in a tray, so the page stays short.</li>
             <li>Every project is a framed artifact: a real screenshot, a card, a gauge.</li>
             <li>A live Berkeley clock and a day or night icon in the footer.</li>
             <li>Light and dark themes, saved in the browser.</li>
+            <li>Press ⌘K (Ctrl K on Windows) to jump to any build, tab or page.</li>
+            <li>Every build page has a row of build marks to hop between builds, and a contents list that follows your scroll.</li>
           </ul>
           <p class="notes__cap" style="margin-top:18px">Shapes and motion</p>
           <ul class="bul">
             <li>Cards 24px radius. Content width 1200px.</li>
             <li>Hover easing <code>cubic-bezier(.32, .72, 0, 1)</code>.</li>
             <li>Frosted blur on small tiles only. Everything else is a plain surface with a hairline.</li>
+            <li>Motion is slow and soft, plays once, and switches off when your device asks for less motion.</li>
           </ul>
         </details>
 
@@ -561,7 +566,11 @@
       <a data-user="chaewoonkim" data-domain="berkeley.edu" data-show href="#">chaewoonkim@berkeley.edu</a>
       <div class="foot__small">
         <span><a href="/projects/portfolio">Built by hand in plain HTML</a>, between latte art attempts.</span>
-        <span><code>CHANGELOG: 10-04-26</code></span>
+        <div class="changelog" aria-labelledby="changelog-h">
+          <p class="changelog__k" id="changelog-h">Latest changes to this site</p>
+          <ul><li><time datetime="2026-11-03">Nov 3</time> Polish pass, case page kit, motion and command palette</li><li><time datetime="2026-11-03">Nov 3</time> Tint build cards from their marks and add Work-tab ink tiles</li><li><time datetime="2026-11-03">Nov 3</time> Open a folder&#x27;s projects right under its row</li></ul>
+          <a href="https://github.com/chaekim96/chaekim-portfolio/commits/main" target="_blank" rel="noopener">All changes ↗</a>
+        </div>
       </div>
     </div>
   </footer>
@@ -575,8 +584,9 @@
     <p class="live__note" id="live-note" hidden></p>
     <iframe id="live-frame" title="Live preview" allow="clipboard-write"></iframe>
   </dialog>
-  <script src="/assets/js/main.js?v=32"></script>
-  <script src="/assets/js/play.js?v=32" defer></script>
+  <script src="/assets/js/main.js?v=33"></script>
+  <script src="/assets/js/play.js?v=33" defer></script>
+  <script src="/assets/js/palette.js?v=33" defer></script>
   <script src="/assets/js/live.js?v=1" defer></script>
   <script>
   (function () {

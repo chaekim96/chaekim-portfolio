@@ -20,11 +20,11 @@
   <meta name="theme-color" content="#0f1a2e" media="(prefers-color-scheme: dark)">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="/assets/css/v-stamp.css?v=31">
-  <link rel="stylesheet" href="/assets/css/case-stamp.css?v=23">
-  <link rel="stylesheet" href="/assets/css/signal-green.css?v=2">
+  <link rel="stylesheet" href="/assets/css/v-stamp.css?v=33">
+  <link rel="stylesheet" href="/assets/css/case-stamp.css?v=33">
+  <link rel="stylesheet" href="/assets/css/signal-green.css?v=3">
   <script src="/assets/js/liquid-glass.js?v=3" defer></script>
-  <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
+  <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {} document.documentElement.classList.add('js'); try { if (!sessionStorage.getItem('ck-seal')) { sessionStorage.setItem('ck-seal', '1'); document.documentElement.classList.add('seal-stamp'); } } catch (e) {}</script>
   <link rel="stylesheet" href="/assets/css/arcade.css?v=1">
 </head>
 <body class="v v-stamp case sec-builds">
@@ -47,6 +47,14 @@
   </header>
 
   <main id="main">
+    <nav class="switcher wrap" aria-label="Jump to another build">
+      <div class="switcher__bar">
+        <a class="switcher__k" href="/#builds">Builds</a>
+        <ul class="switcher__row"><li><a href="/projects/ai-visibility-checker" data-name="AI Visibility Checker" aria-label="AI Visibility Checker"><img class="switcher__mark" src="/assets/img/brand/ai-visibility-checker.svg" alt="" width="32" height="32"></a></li><li><a href="/projects/tally" data-name="Tally" aria-label="Tally"><img class="switcher__mark" src="/assets/img/brand/tally.svg" alt="" width="32" height="32"></a></li><li><a href="/projects/palette-generator" data-name="Palette Generator" aria-label="Palette Generator"><img class="switcher__mark" src="/assets/img/brand/palette-generator-2.svg" alt="" width="32" height="32"></a></li><li><a href="/projects/typerace" data-name="TypeRace" aria-label="TypeRace"><img class="switcher__mark" src="/assets/img/brand/typerace.svg" alt="" width="32" height="32"></a></li><li><a href="/projects/networking-tracker" data-name="Networking Tracker" aria-label="Networking Tracker"><img class="switcher__mark" src="/assets/img/brand/networking-tracker.svg" alt="" width="32" height="32"></a></li><li><a href="/projects/web-anatomy" data-name="Anatomy of a Website" aria-label="Anatomy of a Website"><img class="switcher__mark" src="/assets/img/brand/web-anatomy-2.svg" alt="" width="32" height="32"></a></li><li><a href="/projects/voiceprompter" data-name="VoicePrompter" aria-label="VoicePrompter"><img class="switcher__mark" src="/assets/img/brand/voiceprompter.svg" alt="" width="32" height="32"></a></li><li><a href="/projects/parallel-prospect-brief" data-name="Parallel Prospect Brief" aria-label="Parallel Prospect Brief"><img class="switcher__mark" src="/assets/img/brand/parallel-prospect-brief.svg" alt="" width="32" height="32"></a></li><li><a href="/projects/product-blueprint" data-name="Product Blueprint" aria-label="Product Blueprint"><img class="switcher__mark" src="/assets/img/brand/product-blueprint.svg" alt="" width="32" height="32"></a></li><li><a href="/projects/smartmodel" data-name="SmartModel" aria-label="SmartModel"><img class="switcher__mark" src="/assets/img/brand/smartmodel.svg" alt="" width="32" height="32"></a></li><li><a href="/projects/token-fuel" data-name="Token-Fuel" aria-label="Token-Fuel"><img class="switcher__mark" src="/assets/img/brand/token-fuel.svg" alt="" width="32" height="32"></a></li><li><a href="/projects/code-improver" data-name="Code Improver" aria-label="Code Improver"><img class="switcher__mark" src="/assets/img/brand/code-improver.svg" alt="" width="32" height="32"></a></li><li><a href="/projects/task-progress" data-name="task-progress" aria-label="task-progress"><img class="switcher__mark" src="/assets/img/brand/task-progress.svg" alt="" width="32" height="32"></a></li><li><a href="/projects/spotify-review-triage" data-name="Spotify Review Triage" aria-label="Spotify Review Triage"><img class="switcher__mark" src="/assets/img/brand/spotify-review-triage.svg" alt="" width="32" height="32"></a></li><li><a href="/projects/review-labeler" data-name="Review Labeler" aria-label="Review Labeler"><img class="switcher__mark" src="/assets/img/brand/review-labeler.svg" alt="" width="32" height="32"></a></li><li><a href="/projects/personal-wiki" data-name="Personal Wiki" aria-label="Personal Wiki"><img class="switcher__mark" src="/assets/img/brand/personal-wiki.svg" alt="" width="32" height="32"></a></li><li><a href="/projects/pacman-dqn" data-name="Pac-Man DQN" aria-label="Pac-Man DQN"><img class="switcher__mark" src="/assets/img/brand/pacman-dqn-2.svg" alt="" width="32" height="32"></a></li><li><a href="/projects/custom-llm" data-name="Custom LLM" aria-label="Custom LLM"><img class="switcher__mark" src="/assets/img/brand/custom-llm-2.svg" alt="" width="32" height="32"></a></li><li><a href="/arcade" aria-current="page" data-name="Arcade" aria-label="Arcade"><img class="switcher__mark" src="/assets/img/brand/arcade-2.svg" alt="" width="32" height="32"></a></li></ul>
+        <span class="switcher__name" aria-hidden="true">Arcade</span>
+      </div>
+    </nav>
+
     <section class="case-hero wrap">
       <a class="case-hero__back" href="/#builds">← All builds</a>
       <img class="case-hero__mark" src="/assets/img/brand/arcade-2.svg" alt="" width="56" height="56">
@@ -124,7 +132,8 @@
       </div>
     </div>
   </footer>
-  <script src="/assets/js/main.js?v=14"></script>
-  <script src="/assets/js/case-stamp.js?v=23"></script>
+  <script src="/assets/js/main.js?v=33"></script>
+  <script src="/assets/js/case-stamp.js?v=33"></script>
+  <script src="/assets/js/palette.js?v=33" defer></script>
 </body>
 </html>

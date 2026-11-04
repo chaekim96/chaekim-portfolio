@@ -1,18 +1,23 @@
 /* ------------------------------------------------------------------
-   Signal green on a sky-blue wash, with liquid glass on the controls.
+   One sky-blue accent on a sky-blue wash, with liquid glass on the controls.
+   (The file keeps its old name because every page links it.)
    Light: the sky carries down the whole page. Dark (the toggle): the existing night
    background keeps its colors and only the accent and the glass change.
-   Green means live. :not(#_) lifts specificity over the theme rules in v-stamp.css.
-   Contrast: --accent-on (#04210f) on the #30d158 fill is 8.9:1; --accent-ink on white and
-   on the #eef7fe wash is 5.6:1 or better; the dark ink is the fill color itself on near-black.
+   Green now means one thing: live (--live). Links, back arrows, the active tab and focus rings are sky.
+   :not(#_) lifts specificity over the theme rules in v-stamp.css.
+   Contrast (WCAG): --accent-ink #064e8c is 8.5:1 on white, 7.8:1 on the #eef7fe wash and 5.5:1 on #a8d7f7;
+   --accent-on white on the --accent-fill #0b63b8 tab is 6.0:1. Dark: --accent #6bbcff is 9.6:1 on #0b0b0c
+   and the dark ink #04111f on that fill is 9.3:1.
    ------------------------------------------------------------------ */
 
 /* ---------- accent, both themes ---------- */
 :root:not(#_) {
-  --accent: #30d158; --accent-fill: #30d158; --accent-on: #04210f; --accent-ink: #10702a; --glow: 48, 209, 88;
+  --accent: #0b63b8; --accent-fill: #0b63b8; --accent-on: #ffffff; --accent-ink: #064e8c; --glow: 40, 140, 230;
+  --live: #30d158; --live-glow: 48, 209, 88;
+  --focus: var(--accent);
   --sec-work: var(--accent-ink); --sec-builds: var(--accent-ink); --sec-writing: var(--accent-ink); --sec-about: var(--accent-ink);
   --n-violet-a: var(--accent-ink); --n-sky-a: var(--accent-ink); --n-mint-a: var(--accent-ink); --n-peach-a: var(--accent-ink);
-  --ok: var(--accent);
+  --ok: var(--live);
 }
 
 /* ---------- light: navy ink on a sky-blue wash ---------- */
@@ -33,9 +38,9 @@
   color-scheme: light;
 }
 
-/* ---------- dark: keep the night background, swap in the green and dark glass ---------- */
+/* ---------- dark: keep the night background, swap in the sky accent and dark glass ---------- */
 :root[data-theme="dark"]:not(#_) {
-  --accent-ink: #30d158;
+  --accent: #6bbcff; --accent-fill: #6bbcff; --accent-on: #04111f; --accent-ink: #6bbcff; --glow: 107, 188, 255;
   --lg-tint: rgba(36, 38, 46, .55); --lg-rim: rgba(255, 255, 255, .2); --lg-rim-2: rgba(255, 255, 255, .06);
   --lg-edge: rgba(255, 255, 255, .4); --lg-edge-2: rgba(255, 255, 255, .14);
   --lg-shadow: 0 10px 30px -10px rgba(0, 0, 0, .7), 0 2px 6px rgba(0, 0, 0, .4);
@@ -46,8 +51,11 @@
 :root .tab[aria-selected="true"]:not(#_) { background: var(--accent-fill); color: var(--accent-on); }
 :root .tab:hover:not([aria-selected="true"]) { color: var(--ink); background: var(--fill); }
 :root ::selection { background: var(--accent-fill); color: var(--accent-on); }
-:root :focus-visible { outline-color: var(--accent); }
-:root .live-btn i, :root .live__dot, :root .glass--status span i { background: var(--accent); box-shadow: 0 0 0 3px rgba(var(--glow), .22); }
+:root :focus-visible { outline-color: var(--focus); }
+:root .live-btn i, :root .live__dot, :root .glass--status span i { background: var(--live); box-shadow: 0 0 0 3px rgba(var(--live-glow), .22); }
+/* links and back arrows in the sky accent */
+:root .prose a:not(#_), :root .cred a:not(#_), :root .hello a:not(#_), :root .case-hero__back:not(#_) { color: var(--accent-ink); }
+:root .foot__small a:not(#_), :root .changelog a:not(#_) { text-decoration-color: var(--accent-ink); }
 :root .toc a.is-active:not(#_) { color: var(--accent-ink); }
 :root main a:not(.w):not(.live-btn):not([class*="notes"]):hover { color: var(--accent-ink); }
 :root body::before {
@@ -55,12 +63,12 @@
 }
 
 /* Green means live: a soft ring on the live dots, about 2s. Only these two. */
-:root .status i { background: var(--accent); }
+:root .status i { background: var(--live); }
 @media (prefers-reduced-motion: no-preference) {
   :root .live-btn i, :root .status i { animation: live-ring 2s ease-out infinite; }
   @keyframes live-ring {
-    0% { box-shadow: 0 0 0 0 rgba(var(--glow), .55); }
-    70%, 100% { box-shadow: 0 0 0 7px rgba(var(--glow), 0); }
+    0% { box-shadow: 0 0 0 0 rgba(var(--live-glow), .55); }
+    70%, 100% { box-shadow: 0 0 0 7px rgba(var(--live-glow), 0); }
   }
 }
 
@@ -92,10 +100,10 @@
 @media (max-width: 680px) { :root .topnav.lg:not(#_) { right: 12px; top: 12px; } }
 :root .topnav.lg a { padding: 7px 14px 6px; border-radius: 999px; }
 :root .topnav.lg a:hover { background: var(--fill); }
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   :root .topnav.lg:not(#_) { padding: 4px; gap: 0; }
-  :root .topnav.lg a:not(#_) { padding: 6px 5px 5px; font-size: 12.5px; }
-  :root .topnav.lg .theme-toggle { width: 30px; }
+  :root .topnav.lg a:not(#_) { padding: 6px 4px 5px; font-size: 12px; }
+  :root .topnav.lg .theme-toggle { width: 26px; }
 }
 :root .stage .pill:not(#_) { border-radius: 999px; color: var(--ink); }
 :root .stage .pill em { color: inherit; opacity: .7; }

@@ -12,7 +12,6 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
-V = "32"
 
 # ----------------------------------------------------------------------------
 # Arcade: Snake, Galaga and a generative lo-fi radio. main.js loads arcade.js
@@ -70,9 +69,7 @@ ARCADE = """          <div class="break">
 # rather than an f-string, since the inline JS is brace-heavy.
 # ----------------------------------------------------------------------------
 
-STAMP_CHANGELOG = "10-04-26"
-
-from stamp_shared import INK_DEFS, seal, live_button, LIVE_DIALOG, LIVE_SCRIPT, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, THEME_COLOR, SIGNAL_CSS, GLASS_JS, build_mark, build_icons, mark_color, work_mark
+from stamp_shared import STAMP_CSS_V as V, BOOT_SCRIPT, PALETTE_SCRIPT, nb_headlines, changelog_strip, INK_DEFS, seal, live_button, LIVE_DIALOG, LIVE_SCRIPT, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, THEME_COLOR, SIGNAL_CSS, GLASS_JS, build_mark, build_icons, mark_color, work_mark
 
 
 def _snake():
@@ -112,7 +109,7 @@ STAMP = r"""<!DOCTYPE html>
   <link rel="stylesheet" href="/assets/css/v-stamp.css?v=%%V%%">
 %%SIGNAL_CSS%%
 %%GLASS_JS%%
-  <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
+  %%BOOT%%
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -542,33 +539,34 @@ STAMP = r"""<!DOCTYPE html>
     <!-- ============ DESIGN NOTES ============ -->
     <section class="notes" id="design-notes" aria-labelledby="notes-h">
       <h2 id="notes-h">How this page is put together</h2>
-      <p class="notes__lede">Quiet, one typeface, real work as the picture.</p>
+      <p class="notes__lede">Quiet, Poppins for words, real work as the picture.</p>
 
       <div class="notes__grid">
         <details class="ncard ncard--color">
           <summary><p class="ncard__k"><i aria-hidden="true"></i>Color</p>
           <h3>Color follows the content, so the page stays neutral</h3><span class="ncard__more" aria-hidden="true">Read more</span></summary>
-          <p class="notes__cap">Light, then dark. Tokens from <code>v-stamp.css</code>.</p>
+          <p class="notes__cap">Light, then dark. Tokens from <code>v-stamp.css</code> and <code>signal-green.css</code>.</p>
           <ul class="swl">
-            <li><span class="sw"><i style="background:#161618"></i><i style="background:#f5f5f7"></i></span><span class="swl__t"><b>ink</b> text</span><span class="swl__h"><code>#161618</code> / <code>#f5f5f7</code></span></li>
-            <li><span class="sw"><i style="background:#6e6e73"></i><i style="background:#a1a1a6"></i></span><span class="swl__t"><b>ink-2</b> secondary text</span><span class="swl__h"><code>#6e6e73</code> / <code>#a1a1a6</code></span></li>
-            <li><span class="sw"><i style="background:#ffffff"></i><i style="background:#0b0b0c"></i></span><span class="swl__t"><b>bg</b> page</span><span class="swl__h"><code>#ffffff</code> / <code>#0b0b0c</code></span></li>
-            <li><span class="sw"><i style="background:rgba(0,0,0,.08)"></i><i style="background:rgba(255,255,255,.10)"></i></span><span class="swl__t"><b>line</b> hairlines</span><span class="swl__h"><code>rgba(0,0,0,.08)</code> / <code>rgba(255,255,255,.10)</code></span></li>
-            <li><span class="sw"><i style="background:rgba(0,0,0,.05)"></i><i style="background:rgba(255,255,255,.08)"></i></span><span class="swl__t"><b>fill</b> active tab, hover</span><span class="swl__h"><code>rgba(0,0,0,.05)</code> / <code>rgba(255,255,255,.08)</code></span></li>
-            <li><span class="sw"><i style="background:#0a66d6"></i><i style="background:#4ea1ff"></i></span><span class="swl__t"><b>link</b> active link</span><span class="swl__h"><code>#0a66d6</code> / <code>#4ea1ff</code></span></li>
-            <li><span class="sw"><i style="background:#30b158"></i><i style="background:#30b158"></i></span><span class="swl__t"><b>ok</b> live status dot</span><span class="swl__h"><code>#30b158</code> / <code>#30b158</code></span></li>
+            <li><span class="sw"><i style="background:#0d1b2e"></i><i style="background:#f5f5f7"></i></span><span class="swl__t"><b>ink</b> text</span><span class="swl__h"><code>#0d1b2e</code> / <code>#f5f5f7</code></span></li>
+            <li><span class="sw"><i style="background:#44566e"></i><i style="background:#a1a1a6"></i></span><span class="swl__t"><b>ink-2</b> secondary text</span><span class="swl__h"><code>#44566e</code> / <code>#a1a1a6</code></span></li>
+            <li><span class="sw"><i style="background:#eef7fe"></i><i style="background:#0b0b0c"></i></span><span class="swl__t"><b>bg</b> page, under the sky</span><span class="swl__h"><code>#eef7fe</code> / <code>#0b0b0c</code></span></li>
+            <li><span class="sw"><i style="background:rgba(20,70,130,.12)"></i><i style="background:rgba(255,255,255,.10)"></i></span><span class="swl__t"><b>line</b> hairlines</span><span class="swl__h"><code>rgba(20,70,130,.12)</code> / <code>rgba(255,255,255,.10)</code></span></li>
+            <li><span class="sw"><i style="background:#064e8c"></i><i style="background:#6bbcff"></i></span><span class="swl__t"><b>sky accent</b> links, back arrows</span><span class="swl__h"><code>#064e8c</code> / <code>#6bbcff</code></span></li>
+            <li><span class="sw"><i style="background:#0b63b8"></i><i style="background:#6bbcff"></i></span><span class="swl__t"><b>sky fill</b> active tab, focus ring</span><span class="swl__h"><code>#0b63b8</code> / <code>#6bbcff</code></span></li>
+            <li><span class="sw"><i style="background:#30d158"></i><i style="background:#30d158"></i></span><span class="swl__t"><b>live</b> status dot, nothing else</span><span class="swl__h"><code>#30d158</code> / <code>#30d158</code></span></li>
           </ul>
           <div class="grads">
-            <div><i style="background:linear-gradient(180deg,#bfdcf7 0%,#dcecfb 22%,#f2f8fe 48%,#ffffff 72%)"></i><span>Sky, light: <code>#bfdcf7</code> to <code>#dcecfb</code> to <code>#f2f8fe</code> to white, with soft white clouds</span></div>
+            <div><i style="background:linear-gradient(180deg,#74bff0 0%,#a8d7f7 24%,#d6ecfc 58%,#eef7fe 100%)"></i><span>Sky, light: <code>#74bff0</code> to <code>#a8d7f7</code> to <code>#d6ecfc</code> to <code>#eef7fe</code>, with soft white clouds</span></div>
             <div><i style="background:linear-gradient(180deg,#0f1a2e 0%,#0d1424 30%,#0b0e15 55%,#0b0b0c 75%)"></i><span>Night sky, dark: <code>#0f1a2e</code> to <code>#0b0b0c</code>, with faint clouds</span></div>
           </div>
-          <p>Each project sits on its own soft gradient stage, so the work supplies the color. Everything else stays neutral. The page opens on a sky: soft blue overhead, a few clouds, fading to white behind the work. I like that blue. It stays calm, not loud, feels light and airy, and keeps the black and white from my brand exploration from feeling stark.</p>
+          <p>Each project sits on its own soft gradient stage, tinted from its build mark, so the work supplies the color. Everything else stays neutral: these four notes share one sky tint on purpose. The page opens on a sky: soft blue overhead, a few clouds, fading to white behind the work. I like that blue. It stays calm, not loud, feels light and airy, and keeps the black and white from my brand exploration from feeling stark.</p>
+          <p>One accent does the rest of the work. A deep sky blue marks links, back arrows, the active tab and focus rings. Green appears in one place only: the dot that means something is live. Link and button text clears 4.5:1 against the sky and white.</p>
         </details>
 
         <details class="ncard ncard--type">
           <summary><p class="ncard__k"><i aria-hidden="true"></i>Type</p>
-          <h3>One typeface, Poppins, set mostly at regular weight</h3><span class="ncard__more" aria-hidden="true">Read more</span></summary>
-          <p class="notes__cap">400, 500 and 600 are loaded. I kept Poppins instead of switching to the SF system font. Its round, geometric letters feel friendly, not corporate. One family everywhere keeps the focus on the work, and it has carried every version of this site.</p>
+          <h3>Poppins for words, a plain monospace for facts</h3><span class="ncard__more" aria-hidden="true">Read more</span></summary>
+          <p class="notes__cap">400, 500 and 600 are loaded. I kept Poppins instead of switching to the SF system font. Its round, geometric letters feel friendly, not corporate. One family for every word keeps the focus on the work, and it has carried every version of this site.</p>
           <div class="spec">
             <p class="spec__a">chae kim</p>
             <p class="spec__b">Making small businesses visible in AI search.</p>
@@ -581,25 +579,29 @@ STAMP = r"""<!DOCTYPE html>
             <tr><td>Project headline</td><td>500 · 17px</td></tr>
             <tr><td>Body</td><td>400 · 16px / 1.55</td></tr>
             <tr><td>Notes</td><td>400 · 14px</td></tr>
+            <tr><td>Case page facts</td><td>400 · 13.5px · system monospace</td></tr>
           </table>
-          <p>The only other letters are the 김채운 strip at the top. It is brushed with East Sea Dokdo outlines drawn inline, so it costs no font download.</p>
+          <p>The one exception to Poppins is the role, team and dates line on a case page. It is set in the system monospace, so facts read differently from the story around them. It costs no font download. The only other letters are the 김채운 strip at the top, brushed with East Sea Dokdo outlines drawn inline.</p>
         </details>
 
         <details class="ncard ncard--pages">
           <summary><p class="ncard__k"><i aria-hidden="true"></i>Structure</p>
           <h3>Pages you explore, with the work as the picture</h3><span class="ncard__more" aria-hidden="true">Read more</span></summary>
           <ul class="bul">
-            <li>Pill tabs for Builds, Work and About, routed by the URL hash. Builds opens first.</li>
+            <li>Pill tabs for Builds, Work, Writing and About, routed by the URL hash. Builds opens first.</li>
             <li>Builds shows three projects to try, then five folders. Each opens in a tray, so the page stays short.</li>
             <li>Every project is a framed artifact: a real screenshot, a card, a gauge.</li>
             <li>A live Berkeley clock and a day or night icon in the footer.</li>
             <li>Light and dark themes, saved in the browser.</li>
+            <li>Press ⌘K (Ctrl K on Windows) to jump to any build, tab or page.</li>
+            <li>Every build page has a row of build marks to hop between builds, and a contents list that follows your scroll.</li>
           </ul>
           <p class="notes__cap" style="margin-top:18px">Shapes and motion</p>
           <ul class="bul">
             <li>Cards 24px radius. Content width 1200px.</li>
             <li>Hover easing <code>cubic-bezier(.32, .72, 0, 1)</code>.</li>
             <li>Frosted blur on small tiles only. Everything else is a plain surface with a hairline.</li>
+            <li>Motion is slow and soft, plays once, and switches off when your device asks for less motion.</li>
           </ul>
         </details>
 
@@ -638,7 +640,11 @@ STAMP = r"""<!DOCTYPE html>
       <a data-user="chaewoonkim" data-domain="berkeley.edu" data-show href="#">chaewoonkim@berkeley.edu</a>
       <div class="foot__small">
         <span><a href="/projects/portfolio">Built by hand in plain HTML</a>, between latte art attempts.</span>
-        <span><code>CHANGELOG: %%CHANGELOG%%</code></span>
+        <div class="changelog" aria-labelledby="changelog-h">
+          <p class="changelog__k" id="changelog-h">Latest changes to this site</p>
+          <ul>%%CHANGELOG%%</ul>
+          <a href="https://github.com/chaekim96/chaekim-portfolio/commits/main" target="_blank" rel="noopener">All changes ↗</a>
+        </div>
       </div>
     </div>
   </footer>
@@ -646,6 +652,7 @@ STAMP = r"""<!DOCTYPE html>
 %%LIVE_DIALOG%%
   <script src="/assets/js/main.js?v=%%V%%"></script>
   <script src="/assets/js/play.js?v=%%V%%" defer></script>
+%%PALETTE_SCRIPT%%
 %%LIVE_SCRIPT%%
   <script>
   (function () {
@@ -853,7 +860,8 @@ STAMP = (STAMP.replace("%%WRITING_ESSAYS%%", _writing_essays())
               .replace("%%SEAL%%", seal())
               .replace("%%SEAL_SMALL%%", seal(label=False))
               .replace("%%SNAKE%%", _snake())
-              .replace("%%CHANGELOG%%", STAMP_CHANGELOG)
+              .replace("%%CHANGELOG%%", changelog_strip("index.html"))
+              .replace("%%BOOT%%", BOOT_SCRIPT).replace("%%PALETTE_SCRIPT%%", PALETTE_SCRIPT)
               .replace("%%THEME_COLOR%%", THEME_COLOR)
               .replace("%%LIVE_DIALOG%%", LIVE_DIALOG)
               .replace("%%LIVE_SCRIPT%%", LIVE_SCRIPT)
@@ -895,6 +903,13 @@ STAMP = re.sub(r'(href="/(?:projects/)?([a-z0-9-]+)"[^>]*>\s*)(<div class="stage
 
 ARCADE_ICONS = build_icons("arcade", "https://chaekim-portfolio.vercel.app")
 
+# The row of build marks comes from build-cases.py, so Arcade is in step with the case studies.
+import importlib.util
+_spec = importlib.util.spec_from_file_location("build_cases", os.path.join(HERE, "build-cases.py"))
+_cases = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(_cases)
+ARCADE_SWITCHER = _cases.render_switcher("arcade")
+
 ARCADE_PAGE = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -920,6 +935,7 @@ ARCADE_PAGE = f"""<!DOCTYPE html>
 {CASE_TOP}
 
   <main id="main">
+{ARCADE_SWITCHER}
     <section class="case-hero wrap">
       <a class="case-hero__back" href="/#builds">← All builds</a>
       {build_mark("arcade", "case-hero__mark", 56)}
@@ -1118,5 +1134,5 @@ PORTFOLIO_PAGE = f"""<!DOCTYPE html>
 
 for name, page in (("index.html", STAMP), ("arcade.html", ARCADE_PAGE), ("projects/portfolio.html", PORTFOLIO_PAGE)):
     with open(os.path.join(ROOT, name), "w", encoding="utf-8", newline="\n") as f:
-        f.write(page)
+        f.write(nb_headlines(page))
     print("wrote", name)

@@ -13,7 +13,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 sys.path.insert(0, str(HERE))
-from stamp_shared import CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS  # noqa: E402
+from stamp_shared import CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, nb_headlines  # noqa: E402
 
 SITE_URL = "https://chaekim-portfolio.vercel.app"
 
@@ -396,6 +396,6 @@ def page():
 if __name__ == "__main__":
     out = ROOT / "projects" / "decisions.html"
     with open(out, "w", encoding="utf-8", newline="\n") as f:
-        f.write(page())
+        f.write(nb_headlines(page()))
     t, o, a = counts()
     print(f"wrote projects/decisions.html ({t} decisions, {o} options, {a} against the recommendation)")

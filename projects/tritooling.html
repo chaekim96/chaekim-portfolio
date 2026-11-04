@@ -21,11 +21,11 @@
   <meta name="theme-color" content="#0f1a2e" media="(prefers-color-scheme: dark)">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="/assets/css/v-stamp.css?v=31">
-  <link rel="stylesheet" href="/assets/css/case-stamp.css?v=23">
-  <link rel="stylesheet" href="/assets/css/signal-green.css?v=2">
+  <link rel="stylesheet" href="/assets/css/v-stamp.css?v=33">
+  <link rel="stylesheet" href="/assets/css/case-stamp.css?v=33">
+  <link rel="stylesheet" href="/assets/css/signal-green.css?v=3">
   <script src="/assets/js/liquid-glass.js?v=3" defer></script>
-  <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
+  <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {} document.documentElement.classList.add('js'); try { if (!sessionStorage.getItem('ck-seal')) { sessionStorage.setItem('ck-seal', '1'); document.documentElement.classList.add('seal-stamp'); } } catch (e) {}</script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -64,6 +64,14 @@
   </header>
 
   <main id="main">
+    <nav class="switcher wrap" aria-label="Jump to other work">
+      <div class="switcher__bar">
+        <a class="switcher__k" href="/#work">Work</a>
+        <ul class="switcher__row"><li><a href="/projects/lucent" data-name="Lucent" aria-label="Lucent"><img class="switcher__mark" src="/assets/img/brand/work-startup.svg" alt="" width="32" height="32"></a></li><li><a href="/projects/mobility" data-name="Mobility devices for older adults (stealth)" aria-label="Mobility devices for older adults (stealth)"><img class="switcher__mark" src="/assets/img/brand/work-hardware.svg" alt="" width="32" height="32"></a></li><li><a href="/projects/ey" data-name="EY, AI &amp; Data" aria-label="EY, AI &amp; Data"><img class="switcher__mark" src="/assets/img/brand/work-consulting.svg" alt="" width="32" height="32"></a></li><li><a href="/projects/mirrorme" data-name="MirrorMe" aria-label="MirrorMe"><img class="switcher__mark" src="/assets/img/brand/work-product.svg" alt="" width="32" height="32"></a></li><li><a href="/projects/tritooling" aria-current="page" data-name="Tritooling" aria-label="Tritooling"><img class="switcher__mark" src="/assets/img/brand/work-ops.svg" alt="" width="32" height="32"></a></li></ul>
+        <span class="switcher__name" aria-hidden="true">Tritooling</span>
+      </div>
+    </nav>
+
     <section class="case-hero wrap">
       <a class="case-hero__back" href="/#work">← All work</a>
       <p class="eyebrow">featured · director of operations · Philippines · 2024 to 2025</p>
@@ -96,10 +104,10 @@
       </article>
     </section>
 
-    <section class="next wrap">
+    <section class="next wrap" aria-label="Previous and next work">
       <div class="next__grid">
-        <a href="/projects/mirrorme"><small>← Previous</small><strong>MirrorMe</strong></a>
-        <a class="next__forward" href="/projects/ai-visibility-checker"><small>Next →</small><strong>AI Visibility Checker</strong></a>
+        <a href="/projects/mirrorme"><img class="next__mark" src="/assets/img/brand/work-product.svg" alt="" width="36" height="36"><span><small>← Previous work</small><strong>MirrorMe</strong></span></a>
+        <a class="next__forward" href="/projects/lucent"><img class="next__mark" src="/assets/img/brand/work-startup.svg" alt="" width="36" height="36"><span><small>Next work →</small><strong>Lucent</strong></span></a>
       </div>
     </section>
   </main>
@@ -126,7 +134,8 @@
       </div>
     </div>
   </footer>
-  <script src="/assets/js/main.js?v=14"></script>
-  <script src="/assets/js/case-stamp.js?v=23"></script>
+  <script src="/assets/js/main.js?v=33"></script>
+  <script src="/assets/js/case-stamp.js?v=33"></script>
+  <script src="/assets/js/palette.js?v=33" defer></script>
 </body>
 </html>

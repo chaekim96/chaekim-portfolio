@@ -20,7 +20,10 @@ SITE_URL = "https://chaekim-portfolio.vercel.app"
 
 # The script name has a hyphen, so it can't be imported as a package; load the sibling module by path.
 sys.path.insert(0, str(HERE))
-from stamp_shared import CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, LIVE_APPS, LIVE_DIALOG, LIVE_SCRIPT, live_button, build_mark, build_icons  # noqa: E402
+from stamp_shared import (CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, LIVE_APPS, LIVE_DIALOG, LIVE_SCRIPT,  # noqa: E402
+                          live_button, build_mark, build_icons, work_mark, mark_color, nb_headlines)
+import importlib.util  # noqa: E402
+import palette_data  # noqa: E402
 
 def confirm_tag(msg):  # visible confirm tag
     return f'<span class="confirm">[CONFIRM: {html.escape(msg)}]</span>'
@@ -54,18 +57,19 @@ SHELL = """<!DOCTYPE html>
 {head_assets}
 {jsonld}
 </head>
-<body class="v v-stamp case {sec}">
+<body class="v v-stamp case {sec}{tint_class}"{tint_style}>
   <a class="skip" href="#main">Skip to content</a>
 {top}
 
   <main id="main">
+{tint_wash}{switcher}
     <section class="case-hero wrap">
       <a class="case-hero__back" href="{back_href}">← {back_label}</a>
       {mark}<p class="eyebrow">{kicker}</p>
       <h1 class="case-hero__title">{heading}{badge}</h1>
       <p class="tldr">{tldr}</p>
       <p class="meta-line"><b>Role</b> {role} · <b>Team</b> {team} · <b>Timeline</b> {timeline}</p>
-    </section>
+{docs}    </section>
 
     <section class="wrap case-cover-wrap">
       <div class="stage case-cover {cover_class}" style="--g: var(--g-{grad})">{cover}{live}</div>
@@ -80,10 +84,10 @@ SHELL = """<!DOCTYPE html>
       </article>
     </section>
 
-    <section class="next wrap">
+    <section class="next wrap" aria-label="{next_label}">
       <div class="next__grid">
-        <a href="/projects/{prev_slug}"><small>← Previous</small><strong>{prev_title}</strong></a>
-        <a class="next__forward" href="/projects/{next_slug}"><small>Next →</small><strong>{next_title}</strong></a>
+        <a href="/projects/{prev_slug}">{prev_mark}<span><small>← Previous {next_noun}</small><strong>{prev_title}</strong></span></a>
+        <a class="next__forward" href="/projects/{next_slug}">{next_mark}<span><small>Next {next_noun} →</small><strong>{next_title}</strong></span></a>
       </div>
     </section>
   </main>
@@ -659,12 +663,117 @@ BUILD_SLUGS = {c["slug"] for c in (*PRODUCTS, *MODS, *COURSEWORK)}
 SECTIONS = (("problem", "The problem"), ("requirements", "Product requirements"),
             ("did", "What I did"), ("results", "Results"),
             ("milestones", "Milestones and next steps"), ("iterations", "Iterations and decisions"),
+            ("forks", "Calls I made, and what I passed on"),
             ("differently", "What I'd do differently"), ("artifacts", "Artifacts"))
 REQUIRED = ("slug", "title", "kicker", "heading", "desc", "tldr", "role", "team", "timeline",
             "cover", "problem", "did", "results")
 DEFAULTS = dict(badge="", cover_class="", differently="", artifacts="",
-                requirements="", milestones="", iterations="")
+                requirements="", milestones="", iterations="", forks="")
 PLAIN_TEXT = ("title", "kicker", "role", "team", "timeline")  # text only, never HTML: escape on output
+
+
+# ---------------------------------------------------------------------------
+# Case page kit: switcher, per-product tint, decision forks, documents row
+# ---------------------------------------------------------------------------
+
+def _load_sibling(filename, name):
+    """Load a sibling script whose file name has a hyphen (so it can't be imported normally)."""
+    spec = importlib.util.spec_from_file_location(name, HERE / filename)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+# Builds that have a color-seal mark but no case study of their own sit after the case studies in the switcher.
+EXTRA_BUILDS = (("arcade", "Arcade", "/arcade"),)
+
+def _group(slug):
+    """(label, noun, [(slug, title, href)]) for the group a page belongs to: builds, or work."""
+    builds = [(c["slug"], c["title"], f"/projects/{c['slug']}") for c in CASES if c["slug"] in BUILD_SLUGS] + list(EXTRA_BUILDS)
+    if slug in {b[0] for b in builds}:
+        return "Builds", "build", builds
+    return "Work", "work", [(c["slug"], c["title"], f"/projects/{c['slug']}") for c in CASES if c["slug"] not in BUILD_SLUGS]
+
+def _tile(slug, cls, size):
+    return build_mark(slug, cls, size) or work_mark(slug, cls, size)
+
+def render_switcher(slug):
+    """A sticky row of marks to hop between builds. Work cases have no marks, so they get their ink tiles."""
+    label, _noun, items = _group(slug)
+    cur = next(t for s_, t, _h in items if s_ == slug)
+    lis = []
+    for s_, title, href in items:
+        here = ' aria-current="page"' if s_ == slug else ""
+        lis.append(f'<li><a href="{href}"{here} data-name="{html.escape(title)}" aria-label="{html.escape(title)}">{_tile(s_, "switcher__mark", 32)}</a></li>')
+    return (f'    <nav class="switcher wrap" aria-label="{"Jump to another build" if label == "Builds" else "Jump to other work"}">\n'
+            f'      <div class="switcher__bar">\n'
+            f'        <a class="switcher__k" href="/#{label.lower()}">{label}</a>\n'
+            f'        <ul class="switcher__row">{"".join(lis)}</ul>\n'
+            f'        <span class="switcher__name" aria-hidden="true">{html.escape(cur)}</span>\n'
+            f'      </div>\n'
+            f'    </nav>\n')
+
+def neighbours(slug):
+    """(previous, next) inside the page's own group, wrapping round."""
+    _label, _noun, items = _group(slug)
+    i = [s_ for s_, _t, _h in items].index(slug)
+    return items[i - 1], items[(i + 1) % len(items)]
+
+def product_tint(slug):
+    """The product's own color, from its Electric mark. The three dark-tile marks use the accent drawn on the tile."""
+    override = {"palette-generator": "#0a84ff", "web-anatomy": "#7c5cff"}
+    color = override.get(slug) or mark_color(slug)
+    if not color:
+        return None
+    r, g, b = (int(color[i:i + 2], 16) for i in (1, 3, 5))
+    return color if (r * 299 + g * 587 + b * 114) / 255000 > 0.2 else None  # navy and other near-black marks give no tint
+
+_DECISIONS = None
+def decisions_for(title):
+    global _DECISIONS
+    if _DECISIONS is None:
+        _DECISIONS = _load_sibling("build-decisions.py", "build_decisions").DECISIONS
+    return [d for d in _DECISIONS if d["project"] == title]
+
+def render_forks(title):
+    """The project's real decisions from build-decisions.py: options passed on struck through, the pick in bold,
+    reasons only where Chae gave them. Nothing is written here that the data doesn't say."""
+    out = []
+    for d in decisions_for(title):
+        if not any(o["chosen"] for o in d["options"]):
+            continue
+        lis = []
+        for o in d["options"]:
+            label = html.escape(o["label"])
+            if o["chosen"]:
+                lis.append(f'<li class="is-chosen"><b>{label}</b><span class="visually-hidden"> (my pick)</span></li>')
+            else:
+                lis.append(f'<li class="is-passed"><s>{label}</s><span class="visually-hidden"> (passed on)</span></li>')
+        why = ""
+        if d["why"]:
+            why = ('\n          <div class="fork__why"><p>Why</p><ul>' + "".join(f"<li>{html.escape(w)}</li>" for w in d["why"]) + "</ul></div>")
+        out.append(f'        <article class="fork">\n          <h3>{html.escape(d["question"])}</h3>\n'
+                   f'          <ul class="fork__opts">{"".join(lis)}</ul>{why}\n        </article>')
+    if not out:
+        return ""
+    return ('        <div class="forks">\n' + "\n".join(out) + "\n        </div>\n"
+            '        <p><a href="/projects/decisions">See every option I weighed, across all my projects</a></p>')
+
+# Documents behind a build or case: only files that already live in this repo. Each is (name, href, what it is).
+# A build with none gets no row. Builds whose notes live in their own GitHub repos are not listed: those are not here.
+DOCS = {
+    "mirrorme": [("MirrorMe tech pack", "/projects/mirrorme-tech-pack",
+                  "A page with the card spec, bill of materials, box dieline, costing and a proofing checklist.")],
+}
+
+def render_docs(slug):
+    docs = DOCS.get(slug)
+    if not docs:
+        return ""
+    chips = "".join(
+        f'<a class="doc" href="{h}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+        f'<path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg><span><b>{html.escape(n)}</b><small>{html.escape(d)}</small></span></a>'
+        for n, h, d in docs)
+    return f'      <div class="docs" role="group" aria-label="Documents behind it"><p class="docs__k">Documents behind it</p><div class="docs__row">{chips}</div></div>\n'
 
 
 def validate(cases):
@@ -676,6 +785,11 @@ def validate(cases):
         assert not missing, f"{c.get('slug', '?')}: missing {missing}"
     unknown = set(GRAD) - set(slugs)
     assert not unknown, f"GRAD keys with no case: {unknown}"
+    # a decision whose project name matches no case would silently never show up: name the ones that are allowed to
+    titles = {c["title"] for c in cases} | {"This site", "Build marks"}
+    stray = {d["project"] for d in _load_sibling("build-decisions.py", "build_decisions").DECISIONS} - titles
+    assert not stray, f"decisions for projects with no case page: {stray}"
+    assert set(DOCS) <= set(slugs), "DOCS keys with no case"
 
 
 def render_sections(c):
@@ -701,14 +815,18 @@ def jsonld(c, og_image):
     return '  <script type="application/ld+json">\n' + "\n".join("  " + line for line in body.splitlines()) + "\n  </script>"
 
 
-def render(c, prev, nxt):
+def render(c):
     c = {**DEFAULTS, **c}
+    c["forks"] = c["forks"] or render_forks(c["title"])
     toc, body = render_sections(c)
+    tint = product_tint(c["slug"]) if c["slug"] in BUILD_SLUGS else None
     is_build = c["slug"] in BUILD_SLUGS
     mark = build_mark(c["slug"], "case-hero__mark", 56) if is_build else ""
     # builds use their own favicon, touch icon and share card; everything else keeps the site's 김 set
     own = build_icons(c["slug"], SITE_URL) if is_build else None
     icons, og_image = own or (SITE_ICONS, f"{SITE_URL}/assets/img/og-sky.png")
+    prev, nxt = neighbours(c["slug"])
+    _label, noun, _items = _group(c["slug"])
     fields = {
         **{k: c[k] for k in ("slug", "heading", "tldr", "cover", "cover_class", "badge")},
         **{k: html.escape(c[k]) for k in PLAIN_TEXT},
@@ -720,8 +838,12 @@ def render(c, prev, nxt):
         "jsonld": jsonld(c, og_image),
         "back_href": "/#builds" if is_build else "/#work",
         "back_label": "All builds" if is_build else "All work",
-        "prev_slug": prev["slug"], "prev_title": html.escape(prev["title"]),
-        "next_slug": nxt["slug"], "next_title": html.escape(nxt["title"]),
+        "prev_slug": prev[0], "prev_title": html.escape(prev[1]), "prev_mark": _tile(prev[0], "next__mark", 36),
+        "next_slug": nxt[0], "next_title": html.escape(nxt[1]), "next_mark": _tile(nxt[0], "next__mark", 36),
+        "next_noun": noun, "next_label": f"Previous and next {noun}",
+        "switcher": render_switcher(c["slug"]), "docs": render_docs(c["slug"]),
+        "tint_class": " has-tint" if tint else "", "tint_style": f' style="--pt: {tint}"' if tint else "",
+        "tint_wash": '    <div class="tint-wash" aria-hidden="true"></div>\n' if tint else "",
         "site_url": SITE_URL, "icons": icons, "og_image": og_image,
         # builds show their color-seal mark above the eyebrow
         "mark": mark + "\n      " if mark else "",
@@ -731,7 +853,7 @@ def render(c, prev, nxt):
         "live_script": "\n" + LIVE_SCRIPT if c["slug"] in LIVE_APPS else "",
         "head_assets": CASE_HEAD_ASSETS, "top": CASE_TOP, "foot": CASE_FOOT, "scripts": CASE_SCRIPTS,
     }
-    return SHELL.format_map(fields)
+    return nb_headlines(SHELL.format_map(fields))
 
 
 def main(argv=None):
@@ -741,7 +863,7 @@ def main(argv=None):
     OUT.mkdir(exist_ok=True)
     stale = []
     for i, c in enumerate(CASES):
-        out = render(c, CASES[i - 1], CASES[(i + 1) % len(CASES)])
+        out = render(c)
         if "[CONFIRM:" in out:
             sys.exit(f"{c['slug']}: unresolved CONFIRM placeholder")
         path = OUT / f"{c['slug']}.html"
@@ -752,6 +874,18 @@ def main(argv=None):
             with open(path, "w", encoding="utf-8", newline="\n") as f:
                 f.write(out)
             print("wrote", c["slug"])
+    # the command palette's data comes from the same lists, so a new case study appears there on its own
+    from writing_data import ESSAYS
+    palette = palette_data.dump(palette_data.build(CASES, BUILD_SLUGS, ESSAYS))
+    ppath = ROOT / "assets" / "data" / "palette.json"
+    if check:
+        if not ppath.exists() or ppath.read_text(encoding="utf-8") != palette:
+            stale.append("assets/data/palette.json")
+    else:
+        ppath.parent.mkdir(exist_ok=True)
+        with open(ppath, "w", encoding="utf-8", newline="\n") as f:
+            f.write(palette)
+        print("wrote assets/data/palette.json")
     if stale:
         sys.exit(f"out of date, run python3 scripts/build-cases.py: {stale}")
     if check:

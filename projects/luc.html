@@ -19,11 +19,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="/assets/css/v-stamp.css?v=29">
-  <link rel="stylesheet" href="/assets/css/case-stamp.css?v=20">
-  <link rel="stylesheet" href="/assets/css/signal-green.css?v=2">
+  <link rel="stylesheet" href="/assets/css/v-stamp.css?v=33">
+  <link rel="stylesheet" href="/assets/css/case-stamp.css?v=33">
+  <link rel="stylesheet" href="/assets/css/signal-green.css?v=3">
   <script src="/assets/js/liquid-glass.js?v=3" defer></script>
-  <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
+  <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {} document.documentElement.classList.add('js'); try { if (!sessionStorage.getItem('ck-seal')) { sessionStorage.setItem('ck-seal', '1'); document.documentElement.classList.add('seal-stamp'); } } catch (e) {}</script>
   <meta name="theme-color" content="#74bff0" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0f1a2e" media="(prefers-color-scheme: dark)">
 </head>
@@ -51,7 +51,7 @@
     <section class="case-hero wrap">
       <a class="case-hero__back" href="/#work">← All work</a>
       <p class="eyebrow">INFO-I300 Human-Computer Interaction · Sep 2019</p>
-      <h1 class="case-hero__title">Luggage that <em>weighs itself</em> before the check-in counter does.</h1>
+      <h1 class="case-hero__title">Luggage that <em>weighs itself</em> before the <span class="nb">check-in</span> counter does.</h1>
       <p class="lede">A self-weighing luggage technology: force sensors in each wheel report to a processing unit that reconciles the readings into one accurate weight on a display at the top of the bag.</p>
       <dl class="case-meta">
         <div><dt>Role</dt><dd>Creator · Researcher · Designer</dd></div>
@@ -88,7 +88,7 @@
 </div>
 
 <h2 id="solution">Solution</h2>
-<p>Two technologies inspired the design: <strong>TPMS</strong> (mandated on all US cars after the 2000 TREAD Act) and <strong>Wi-Fi mesh networks</strong>, where multiple access points cooperate to cover an area better than one could alone.</p>
+<p>Two technologies inspired the design: <strong>TPMS</strong> (mandated on all US cars after the 2000 TREAD Act) and <strong><span class="nb">Wi-Fi</span> mesh networks</strong>, where multiple access points cooperate to cover an area better than one could alone.</p>
 <p class="pull">Force sensors in every wheel, working together like a mesh — so uneven packing still produces one accurate number.</p>
 <div class="two">
 <figure class="contain"><img src="/assets/img/projects/luc/tire-forces.jpg" alt="Forces exerted on a wheel: connector, downward force, locked position, force sensor" loading="lazy"><figcaption>Forces exerted on a wheel: connector, downward force, locked position, force sensor</figcaption></figure>
@@ -111,7 +111,7 @@
 
     <section class="next wrap">
       <div class="next__grid">
-        <a href="/projects/alab"><small>← Previous</small><strong>aLab — Automatic Level-Adjusting Bowl</strong></a>
+        <a href="/projects/alab"><small>← Previous</small><strong>aLab — Automatic <span class="nb">Level-Adjusting</span> Bowl</strong></a>
         <a href="/projects/ptm" style="text-align:right"><small>Next →</small><strong>PTM — Perpetual Thermal Monitor</strong></a>
       </div>
     </section>
@@ -139,7 +139,8 @@
       </div>
     </div>
   </footer>
-  <script src="/assets/js/main.js?v=14"></script>
-  <script src="/assets/js/case-stamp.js?v=20"></script>
+  <script src="/assets/js/main.js?v=33"></script>
+  <script src="/assets/js/case-stamp.js?v=33"></script>
+  <script src="/assets/js/palette.js?v=33" defer></script>
 </body>
 </html>
