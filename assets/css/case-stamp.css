@@ -298,7 +298,8 @@ html:has(.lightbox[open]) { overflow: hidden; }
 .meta-line b { font-weight: 600; }
 
 /* ---------- project switcher: the build marks, one tap to another build ---------- */
-.switcher { position: sticky; top: 64px; z-index: 20; margin-top: 18px; pointer-events: none; }
+/* not sticky: a pinned switcher covered the cover's "Try it live" button and crowded the nav capsule while scrolling. It scrolls away with the page header; the previous/next row at the end of the page is the other way across. */
+.switcher { position: relative; z-index: 2; margin-top: 18px; }
 .switcher__bar {
   pointer-events: auto; display: flex; align-items: center; gap: 12px; width: fit-content; max-width: 100%; padding: 6px 14px 6px 14px;
   border-radius: 999px; background: color-mix(in srgb, var(--bg) 62%, transparent);
@@ -316,7 +317,7 @@ html:has(.lightbox[open]) { overflow: hidden; }
 .switcher__row a:hover .switcher__mark, .switcher__row a:focus-visible .switcher__mark, .switcher__row a[aria-current] .switcher__mark { opacity: 1; }
 .switcher__row a[aria-current] { box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent, var(--ink)); }
 .switcher__name { flex: none; min-width: 6ch; max-width: 22ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; font-weight: 500; color: var(--ink); }
-@media (max-width: 680px) { .switcher { top: 60px; } .switcher__name { display: none; } .switcher__bar { gap: 8px; padding-inline: 12px; } }
+@media (max-width: 680px) { .switcher__name { display: none; } .switcher__bar { gap: 8px; padding-inline: 12px; } }
 
 /* previous / next build, with marks */
 .next a { display: flex; align-items: center; gap: 14px; }
@@ -340,9 +341,9 @@ html:has(.lightbox[open]) { overflow: hidden; }
     linear-gradient(180deg, color-mix(in srgb, var(--pt) 10%, transparent), transparent 92%);
 }
 /* contents marker: a bar in the product color beside the current section (the text color stays the accent for contrast) */
-/* the contents list sits below the sticky project switcher */
-.case .toc { top: 128px; }
-.case .prose h2 { scroll-margin-top: 132px; }
+/* the contents list sits just below the sticky nav capsule */
+.case .toc { top: 88px; }
+.case .prose h2 { scroll-margin-top: 92px; }
 .toc a { position: relative; padding-left: 14px; margin-left: -14px; }
 .toc a::before { content: ""; position: absolute; left: 0; top: 50%; width: 3px; height: 0; border-radius: 3px; background: var(--pt, var(--accent, var(--ink))); transform: translateY(-50%); transition: height .5s var(--ease); }
 .toc a.is-active::before { height: 1.2em; }
