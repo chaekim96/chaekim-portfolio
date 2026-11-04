@@ -12,7 +12,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
-V = "31"
+V = "32"
 
 # ----------------------------------------------------------------------------
 # Arcade: Snake, Galaga and a generative lo-fi radio. main.js loads arcade.js
@@ -699,17 +699,38 @@ STAMP = r"""<!DOCTYPE html>
       if (THESIS[id]) { e.preventDefault(); go(id, { scroll: true }); }
     });
 
-    // Builds folders: one open at a time, shown in a tray under the folder row.
-    // Without JS every tray stays visible and the folder links jump to it.
+    // Builds folders: one open at a time. The open tray moves into the folder grid right after
+    // the row holding its folder, so on a phone it opens under the folder you tapped.
+    // Without JS every tray stays visible below the folders and the folder links jump to it.
     var folds = [].slice.call(document.querySelectorAll('.fold'));
     var trays = [].slice.call(document.querySelectorAll('.tray'));
+    var shelf = document.querySelector('.folders');
+    function placeTray(tray) {
+      var cols = getComputedStyle(shelf).gridTemplateColumns.split(' ').length || 1;
+      var i = folds.findIndex(function (f) { return f.dataset.folder === tray.id; });
+      var last = folds[Math.min(Math.ceil((i + 1) / cols) * cols, folds.length) - 1];
+      if (last.nextElementSibling !== tray) last.after(tray);
+    }
     function openFolder(id, opts) {
       opts = opts || {};
-      var tray = null;
-      trays.forEach(function (t) { var on = t.id === id; t.classList.toggle('is-open', on); if (on) tray = t; });
-      folds.forEach(function (f) { f.setAttribute('aria-expanded', String(f.dataset.folder === id)); });
-      if (tray && opts.scroll) requestAnimationFrame(function () { tray.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' }); });
+      var tray = null, fold = null;
+      trays.forEach(function (t) { t.classList.remove('is-open'); if (t.id === id) tray = t; });
+      folds.forEach(function (f) { var on = f.dataset.folder === id; f.setAttribute('aria-expanded', String(on)); if (on) fold = f; });
+      if (!tray) return;
+      placeTray(tray);
+      tray.classList.add('is-open');
+      // Bring the folder to the top of the screen when its tray would start low or off screen.
+      if (opts.scroll) requestAnimationFrame(function () {
+        var r = fold.getBoundingClientRect(), t = tray.getBoundingClientRect();
+        if (r.top < 0 || t.top > innerHeight * 0.6) scrollTo({ top: scrollY + r.top - 80, behavior: reduce ? 'auto' : 'smooth' });
+      });
     }
+    // Column count changes with the screen width, so re-place the open tray on resize.
+    var resizing = 0;
+    addEventListener('resize', function () {
+      cancelAnimationFrame(resizing);
+      resizing = requestAnimationFrame(function () { var t = document.querySelector('.tray.is-open'); if (t) placeTray(t); });
+    });
     folds.forEach(function (f) {
       f.addEventListener('click', function (e) {
         e.preventDefault();
