@@ -1,4 +1,5 @@
 """Shared Stamp pieces: the calligraphy mark (used by the homepage and every case page)."""
+import re
 
 # 김채운 brushed in black ink on a strip of hanji (Korean mulberry paper).
 # Glyphs are East Sea Dokdo (SIL OFL) outlines, defined once in INK_DEFS and reused,
@@ -36,6 +37,28 @@ def build_mark(slug, cls, size):
         return ""
     return f'<img class="{cls}" src="/assets/img/brand/{name}.svg" alt="" width="{size}" height="{size}">'
 
+def mark_color(slug):
+    """A build's base (middle-stop) color from its mark, or None if it has no mark."""
+    import os
+    name = mark_file(slug)
+    if not name:
+        return None
+    with open(os.path.join(_root(), "assets", "img", "brand", f"{name}.svg"), encoding="utf-8") as f:
+        return re.findall(r'stop-color="(#[0-9a-f]{6})"', f.read())[1]
+
+# Work entries aren't builds, so they get no color seal: a plain ink tile with a paper glyph for the kind of work.
+# Same 64-unit rx14 tile as the marks, so the pill keeps its shape. Files: assets/img/brand/work-<glyph>.svg
+WORK_GLYPH = {
+    "lucent": "startup", "ey": "consulting", "tritooling": "ops", "mirrorme": "product", "mobility": "hardware",
+    "iu-study-assistant": "software", "alab": "hardware", "luc": "hardware", "ptm": "hardware", "coursera": "research",
+}
+
+def work_mark(slug, cls, size):
+    glyph = WORK_GLYPH.get(slug)
+    if not glyph:
+        return ""
+    return f'<img class="{cls}" src="/assets/img/brand/work-{glyph}.svg" alt="" width="{size}" height="{size}">'
+
 def build_icons(slug, site_url):
     """(icon_links, og_image_url) for a build's own favicon, touch icon and share card; None if it has no mark."""
     name = mark_file(slug)
@@ -66,7 +89,7 @@ INK_DEFS = ('<svg width="0" height="0" style="position:absolute" aria-hidden="tr
 # Case-page chrome (project pages in the Stamp look)
 # ---------------------------------------------------------------------------
 CASE_CSS_V = "23"   # bump when assets/css/case-stamp.css changes
-STAMP_CSS_V = "29"  # v-stamp.css version, kept in step with the homepage
+STAMP_CSS_V = "31"  # v-stamp.css version, kept in step with the homepage
 JS_V = "14"
 LIVE_V = "1"  # bump when assets/js/live.js changes
 SIGNAL_V = "2"  # bump when assets/css/signal-green.css changes
