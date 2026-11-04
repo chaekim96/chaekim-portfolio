@@ -602,6 +602,8 @@ body::before {
 .tray__h h3 span { color: var(--ink-2); font-weight: 400; }
 .tray__close { display: none; padding: 6px 12px; border-radius: 999px; background: var(--pill); color: var(--ink-2); font-size: 13px; text-decoration: none; box-shadow: var(--shadow); }
 .js-folders .tray { display: none; }
+.js-folders .trays { margin-top: 0; }
+.folders > .tray { grid-column: 1 / -1; margin: 4px 0 8px; }
 .js-folders .tray.is-open { display: block; }
 .js-folders .tray__close { display: inline-block; }
 @media (prefers-reduced-motion: no-preference) {

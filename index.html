@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
   <link rel="preload" as="image" href="/assets/img/thumbs/lucent-wide.jpg">
-  <link rel="stylesheet" href="/assets/css/v-stamp.css?v=32">
+  <link rel="stylesheet" href="/assets/css/v-stamp.css?v=33">
   <link rel="stylesheet" href="/assets/css/signal-green.css?v=3">
   <script src="/assets/js/liquid-glass.js?v=3" defer></script>
   <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {} document.documentElement.classList.add('js'); try { if (!sessionStorage.getItem('ck-seal')) { sessionStorage.setItem('ck-seal', '1'); document.documentElement.classList.add('seal-stamp'); } } catch (e) {}</script>
@@ -584,9 +584,9 @@
     <p class="live__note" id="live-note" hidden></p>
     <iframe id="live-frame" title="Live preview" allow="clipboard-write"></iframe>
   </dialog>
-  <script src="/assets/js/main.js?v=32"></script>
-  <script src="/assets/js/play.js?v=32" defer></script>
-  <script src="/assets/js/palette.js?v=32" defer></script>
+  <script src="/assets/js/main.js?v=33"></script>
+  <script src="/assets/js/play.js?v=33" defer></script>
+  <script src="/assets/js/palette.js?v=33" defer></script>
   <script src="/assets/js/live.js?v=1" defer></script>
   <script>
   (function () {
@@ -640,17 +640,38 @@
       if (THESIS[id]) { e.preventDefault(); go(id, { scroll: true }); }
     });
 
-    // Builds folders: one open at a time, shown in a tray under the folder row.
-    // Without JS every tray stays visible and the folder links jump to it.
+    // Builds folders: one open at a time. The open tray moves into the folder grid right after
+    // the row holding its folder, so on a phone it opens under the folder you tapped.
+    // Without JS every tray stays visible below the folders and the folder links jump to it.
     var folds = [].slice.call(document.querySelectorAll('.fold'));
     var trays = [].slice.call(document.querySelectorAll('.tray'));
+    var shelf = document.querySelector('.folders');
+    function placeTray(tray) {
+      var cols = getComputedStyle(shelf).gridTemplateColumns.split(' ').length || 1;
+      var i = folds.findIndex(function (f) { return f.dataset.folder === tray.id; });
+      var last = folds[Math.min(Math.ceil((i + 1) / cols) * cols, folds.length) - 1];
+      if (last.nextElementSibling !== tray) last.after(tray);
+    }
     function openFolder(id, opts) {
       opts = opts || {};
-      var tray = null;
-      trays.forEach(function (t) { var on = t.id === id; t.classList.toggle('is-open', on); if (on) tray = t; });
-      folds.forEach(function (f) { f.setAttribute('aria-expanded', String(f.dataset.folder === id)); });
-      if (tray && opts.scroll) requestAnimationFrame(function () { tray.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' }); });
+      var tray = null, fold = null;
+      trays.forEach(function (t) { t.classList.remove('is-open'); if (t.id === id) tray = t; });
+      folds.forEach(function (f) { var on = f.dataset.folder === id; f.setAttribute('aria-expanded', String(on)); if (on) fold = f; });
+      if (!tray) return;
+      placeTray(tray);
+      tray.classList.add('is-open');
+      // Bring the folder to the top of the screen when its tray would start low or off screen.
+      if (opts.scroll) requestAnimationFrame(function () {
+        var r = fold.getBoundingClientRect(), t = tray.getBoundingClientRect();
+        if (r.top < 0 || t.top > innerHeight * 0.6) scrollTo({ top: scrollY + r.top - 80, behavior: reduce ? 'auto' : 'smooth' });
+      });
     }
+    // Column count changes with the screen width, so re-place the open tray on resize.
+    var resizing = 0;
+    addEventListener('resize', function () {
+      cancelAnimationFrame(resizing);
+      resizing = requestAnimationFrame(function () { var t = document.querySelector('.tray.is-open'); if (t) placeTray(t); });
+    });
     folds.forEach(function (f) {
       f.addEventListener('click', function (e) {
         e.preventDefault();

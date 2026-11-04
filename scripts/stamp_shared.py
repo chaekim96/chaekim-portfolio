@@ -91,7 +91,7 @@ INK_DEFS = ('<svg width="0" height="0" style="position:absolute" aria-hidden="tr
 # One version for every stylesheet and script of the Stamp look, so each page ends up on the same files.
 # Bump it whenever assets/css/v-stamp.css, case-stamp.css, or assets/js/main.js, case-stamp.js or palette.js change.
 # build-home.py, build-cases.py and the other page builders all read it from here.
-STAMP_CSS_V = "32"
+STAMP_CSS_V = "33"
 CASE_CSS_V = STAMP_CSS_V
 JS_V = STAMP_CSS_V
 PALETTE_V = STAMP_CSS_V
