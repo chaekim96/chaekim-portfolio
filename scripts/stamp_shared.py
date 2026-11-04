@@ -250,6 +250,7 @@ def _strip_html(rows):
     items = []
     for _sha, day, subject in rows:
         subject = re.sub(r"\s*\(#\d+\)$", "", subject).strip().rstrip(".")
+        subject = re.sub(r":\s*(source|regenerated pages.*)$", "", subject, flags=re.I)  # build-step suffixes mean nothing to a reader
         if not subject or _HOUSEKEEPING.search(subject) or _PRIVATE.search(subject) or "\u2014" in subject:
             continue
         if len(subject) > 78:
