@@ -46,3 +46,24 @@
     if (e.target === d || e.target === big || e.target.closest('.lightbox__close')) d.close();
   });
 })();
+
+// Project switcher: the row opens centered on the current build, and the name beside it follows hover and focus.
+(function () {
+  var bar = document.querySelector('.switcher__bar');
+  if (!bar) return;
+  var row = bar.querySelector('.switcher__row'), name = bar.querySelector('.switcher__name');
+  var cur = row.querySelector('[aria-current]');
+  if (cur) {
+    var off = cur.offsetLeft - (row.clientWidth - cur.offsetWidth) / 2;
+    row.style.scrollBehavior = 'auto'; row.scrollLeft = Math.max(off, 0); row.style.scrollBehavior = '';
+  }
+  if (!name) return;
+  var home = name.textContent;
+  function show(a) { name.textContent = a ? a.dataset.name : home; }
+  row.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('pointerenter', function () { show(a); });
+    a.addEventListener('focus', function () { show(a); });
+    a.addEventListener('pointerleave', function () { show(null); });
+    a.addEventListener('blur', function () { show(null); });
+  });
+})();

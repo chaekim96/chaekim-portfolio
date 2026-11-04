@@ -15,7 +15,7 @@ ROOT = HERE.parent
 SITE_URL = "https://chaekim-portfolio.vercel.app"
 sys.path.insert(0, str(HERE))
 from writing_data import READING, ESSAYS, pub_label  # noqa: E402
-from stamp_shared import CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS  # noqa: E402
+from stamp_shared import CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, nb_headlines  # noqa: E402
 
 CSS = """
   .reading__lede { max-width: 60ch; color: var(--ink-2); line-height: 1.6; margin-top: 12px; }
@@ -159,7 +159,7 @@ def build():
 
 if __name__ == "__main__":
     out = ROOT / "reading.html"
-    new = build()
+    new = nb_headlines(build())
     if "--check" in sys.argv:
         sys.exit(0 if out.exists() and out.read_text(encoding="utf-8") == new else "reading.html is out of date")
     out.write_text(new, encoding="utf-8")

@@ -50,28 +50,86 @@
   });
 
   /* ---------- Reveal on scroll ---------- */
-  const revealEls = document.querySelectorAll('.reveal');
+  // Blocks marked .reveal rise 12px and fade in as they enter the view, 80ms apart when several arrive together.
+  // CSS hides them only when html.js is set; if the observer never reports, everything is shown after 1.5s.
+  const revealEls = [...document.querySelectorAll('.reveal')];
+  const showAll = () => revealEls.forEach(el => el.classList.add('is-in'));
   if ('IntersectionObserver' in window && revealEls.length) {
+    let reported = false;
     const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+      reported = true;
+      let n = 0;
+      entries.filter(e => e.isIntersecting).forEach(e => {
+        const el = e.target;
+        el.style.transitionDelay = Math.min(n++, 5) * 80 + 'ms';
+        el.classList.add('is-in');
+        io.unobserve(el);
+        setTimeout(() => { el.style.transitionDelay = ''; }, 1400);   // so hover effects are not delayed afterwards
+      });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
     revealEls.forEach(el => io.observe(el));
+    setTimeout(() => { if (!reported) showAll(); }, 1500);
   } else {
-    revealEls.forEach(el => el.classList.add('is-in'));
+    showAll();
   }
 
-  /* ---------- Case-study table of contents highlight ---------- */
-  const tocLinks = document.querySelectorAll('.toc a');
-  if (tocLinks.length && 'IntersectionObserver' in window) {
-    const map = new Map();
-    tocLinks.forEach(a => { const id = a.getAttribute('href').slice(1); const h = document.getElementById(id); if (h) map.set(h, a); });
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { tocLinks.forEach(a => a.classList.remove('is-active')); map.get(e.target)?.classList.add('is-active'); }
-      });
-    }, { rootMargin: '-20% 0px -70% 0px' });
-    map.forEach((_, h) => io.observe(h));
+  /* ---------- Case-study contents: follows the section you are reading, plus a thin progress line ---------- */
+  const toc = document.querySelector('.toc');
+  const tocPairs = toc ? [...toc.querySelectorAll('a[href^="#"]')]
+    .map(a => ({ a, h: document.getElementById(a.getAttribute('href').slice(1)) })).filter(p => p.h) : [];
+  if (tocPairs.length) {
+    const body = document.querySelector('.prose');
+    const line = document.createElement('div');
+    line.className = 'toc__line'; line.setAttribute('aria-hidden', 'true'); line.innerHTML = '<i></i>';
+    toc.appendChild(line);
+    let queued = false, current = null;
+    const update = () => {
+      queued = false;
+      const mark = innerHeight * 0.3;            // a section counts once its heading passes 30% down the screen
+      let hit = null;
+      tocPairs.forEach(p => { if (p.h.getBoundingClientRect().top <= mark) hit = p; });
+      if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) hit = tocPairs[tocPairs.length - 1];
+      if (hit !== current) {
+        current = hit;
+        tocPairs.forEach(p => { p.a.classList.toggle('is-active', p === hit); if (p === hit) p.a.setAttribute('aria-current', 'location'); else p.a.removeAttribute('aria-current'); });
+      }
+      if (body) {
+        const r = body.getBoundingClientRect();
+        line.style.setProperty('--read', Math.max(0, Math.min(1, (mark - r.top) / Math.max(r.height - innerHeight * 0.4, 1))).toFixed(3));
+      }
+    };
+    const queue = () => { if (!queued) { queued = true; requestAnimationFrame(update); } };
+    addEventListener('scroll', queue, { passive: true });
+    addEventListener('resize', queue);
+    update();
   }
+
+  /* ---------- Page transitions: the clicked card's picture grows into the case hero ---------- */
+  // Cross-document view transitions (Chrome, Safari). Elsewhere these events never fire and pages just load.
+  // The one clicked picture and the case cover get the same name at the moment of the click, so names never clash.
+  const heroOf = path => [...document.querySelectorAll('a.w[href]')]
+    .filter(a => { try { return new URL(a.href).pathname === path; } catch (e) { return false; } })
+    .map(a => a.querySelector('.stage')).find(st => st && st.offsetParent !== null);
+  addEventListener('pageswap', e => {
+    if (!e.viewTransition) return;
+    try {
+      const cover = document.querySelector('.case-cover');
+      if (cover) { cover.style.viewTransitionName = 'hero'; return; }
+      const to = e.activation && e.activation.entry && new URL(e.activation.entry.url).pathname;
+      const pic = to && heroOf(to);
+      if (pic) pic.style.viewTransitionName = 'hero';
+    } catch (err) {}
+  });
+  addEventListener('pagereveal', e => {
+    if (!e.viewTransition) return;
+    try {
+      const cover = document.querySelector('.case-cover');
+      if (cover) { cover.style.viewTransitionName = 'hero'; return; }
+      const from = window.navigation && navigation.activation && navigation.activation.from;
+      const pic = from && heroOf(new URL(from.url).pathname);
+      if (pic) pic.style.viewTransitionName = 'hero';
+    } catch (err) {}
+  });
 
   /* ---------- Pencil-sketch thumbnails ---------- */
   // Clone each thumbnail into an inverted, blurred, color-dodge layer (the classic

@@ -17,7 +17,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 SITE_URL = "https://chaekim-portfolio.vercel.app"
 sys.path.insert(0, str(HERE))
-from stamp_shared import CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS  # noqa: E402
+from stamp_shared import CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, nb_headlines  # noqa: E402
 
 ESSAYS = [
     dict(
@@ -161,7 +161,7 @@ def main():
     check = "--check" in sys.argv[1:]
     stale = []
     for e in ESSAYS:
-        out, path = render(e), ROOT / "projects" / f"{e['slug']}.html"
+        out, path = nb_headlines(render(e)), ROOT / "projects" / f"{e['slug']}.html"
         if check:
             if not path.exists() or path.read_text(encoding="utf-8") != out:
                 stale.append(e["slug"])

@@ -88,11 +88,15 @@ INK_DEFS = ('<svg width="0" height="0" style="position:absolute" aria-hidden="tr
 # ---------------------------------------------------------------------------
 # Case-page chrome (project pages in the Stamp look)
 # ---------------------------------------------------------------------------
-CASE_CSS_V = "23"   # bump when assets/css/case-stamp.css changes
-STAMP_CSS_V = "31"  # v-stamp.css version, kept in step with the homepage
-JS_V = "14"
+# One version for every stylesheet and script of the Stamp look, so each page ends up on the same files.
+# Bump it whenever assets/css/v-stamp.css, case-stamp.css, or assets/js/main.js, case-stamp.js or palette.js change.
+# build-home.py, build-cases.py and the other page builders all read it from here.
+STAMP_CSS_V = "32"
+CASE_CSS_V = STAMP_CSS_V
+JS_V = STAMP_CSS_V
+PALETTE_V = STAMP_CSS_V
 LIVE_V = "1"  # bump when assets/js/live.js changes
-SIGNAL_V = "2"  # bump when assets/css/signal-green.css changes
+SIGNAL_V = "3"  # bump when assets/css/signal-green.css changes
 GLASS_V = "3"  # bump when assets/js/liquid-glass.js changes
 
 # Signal green accent and liquid glass: stylesheet after the page styles, glass script deferred.
@@ -130,6 +134,12 @@ LIVE_DIALOG = """  <dialog class="live" id="live" aria-labelledby="live-title">
 
 LIVE_SCRIPT = f'  <script src="/assets/js/live.js?v={LIVE_V}" defer></script>'
 
+# Runs in <head>, before first paint. "js" lets CSS hide .reveal blocks only when a script will show them again.
+# The seal stamps once per session: the class is set only on the first page of a visit.
+BOOT_SCRIPT = ("<script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {} "
+               "document.documentElement.classList.add('js'); "
+               "try { if (!sessionStorage.getItem('ck-seal')) { sessionStorage.setItem('ck-seal', '1'); document.documentElement.classList.add('seal-stamp'); } } catch (e) {}</script>")
+
 # Phone browser bar matches the page: sky blue in light mode, night navy in dark.
 THEME_COLOR = ('  <meta name="theme-color" content="#74bff0" media="(prefers-color-scheme: light)">\n'
                '  <meta name="theme-color" content="#0f1a2e" media="(prefers-color-scheme: dark)">')
@@ -141,7 +151,7 @@ CASE_HEAD_ASSETS = (
     f'  <link rel="stylesheet" href="/assets/css/v-stamp.css?v={STAMP_CSS_V}">\n'
     f'  <link rel="stylesheet" href="/assets/css/case-stamp.css?v={CASE_CSS_V}">\n'
     + SIGNAL_CSS + "\n" + GLASS_JS + "\n"
-    "  <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>"
+    "  " + BOOT_SCRIPT
 )
 
 CASE_TOP = f"""  {INK_DEFS}
@@ -184,5 +194,79 @@ CASE_FOOT = f"""  <footer class="foot wrap">
     </div>
   </footer>"""
 
+PALETTE_SCRIPT = f'  <script src="/assets/js/palette.js?v={PALETTE_V}" defer></script>'
+
 CASE_SCRIPTS = f"""  <script src="/assets/js/main.js?v={JS_V}"></script>
-  <script src="/assets/js/case-stamp.js?v={CASE_CSS_V}"></script>"""
+  <script src="/assets/js/case-stamp.js?v={CASE_CSS_V}"></script>
+{PALETTE_SCRIPT}"""
+
+
+# ---------------------------------------------------------------------------
+# Headlines: keep hyphenated words whole ("to-do", "Pac-Man") so a line never breaks inside them.
+# A nowrap span, not U+2011, so the real hyphen glyph, copy-paste and search all stay as they are.
+# ---------------------------------------------------------------------------
+_HEADING = re.compile(r"(<(h[1-6]|strong)\b[^>]*>)(.*?)(</\2>)", re.S)
+_HYPHENATED = re.compile(r"[A-Za-z0-9]+(?:-[A-Za-z0-9]+)+")
+
+def _nb_inner(inner):
+    out, in_nb = [], 0
+    for part in re.split(r"(<[^>]+>)", inner):
+        if part.startswith("<"):
+            if re.match(r'<span class="nb">', part):
+                in_nb += 1
+            elif in_nb and part == "</span>":
+                in_nb -= 1
+            out.append(part)
+        elif in_nb:
+            out.append(part)
+        else:
+            out.append(_HYPHENATED.sub(lambda m: f'<span class="nb">{m.group(0)}</span>', part))
+    return "".join(out)
+
+def nb_headlines(page):
+    """Wrap hyphenated words inside headings (h1 to h6) and <strong> titles in .nb. Safe to run twice."""
+    return _HEADING.sub(lambda m: m.group(1) + _nb_inner(m.group(3)) + m.group(4), page)
+
+
+# ---------------------------------------------------------------------------
+# Changelog strip: the last few real commits, read from `git log` whenever a page is built.
+# Wording is the commit subject; internal housekeeping and anything that could be private is left out.
+# ---------------------------------------------------------------------------
+_HOUSEKEEPING = re.compile(r"^(merge|rebuild|regenerate|readme|ignore|bump|revert|wip|fixup)\b|bytecode|cache|\bv\d+\b|sitemap", re.I)
+_PRIVATE = re.compile(r"private|secret|token|password|passwd|api[ _-]?key|salary|visa|phone|brian|gmail|@|career|offer|recruit|interview|investor|\.env|stealth", re.I)
+CHANGELOG_LINES = 3
+
+def _git(*args):
+    import subprocess
+    return subprocess.run(["git", *args], cwd=_root(), capture_output=True, text=True).stdout
+
+def _recent_commits(skip_head=False, limit=40):
+    out = _git("log", "--no-merges", f"-n{limit}", "--format=%H%x1f%cs%x1f%s")
+    rows = [r.split("\x1f") for r in out.splitlines() if r.count("\x1f") == 2]
+    return rows[1:] if skip_head else rows
+
+def _strip_html(rows):
+    import datetime, html as _h
+    items = []
+    for _sha, day, subject in rows:
+        subject = re.sub(r"\s*\(#\d+\)$", "", subject).strip().rstrip(".")
+        if not subject or _HOUSEKEEPING.search(subject) or _PRIVATE.search(subject) or "\u2014" in subject:
+            continue
+        if len(subject) > 78:
+            subject = subject[:75].rstrip() + "..."
+        d = datetime.date.fromisoformat(day)
+        items.append(f'<li><time datetime="{day}">{d.strftime("%b")} {d.day}</time> {_h.escape(subject)}</li>')
+        if len(items) == CHANGELOG_LINES:
+            break
+    return "".join(items)
+
+def changelog_strip(page="index.html"):
+    """The footer list items. Commits at the top of the log that already shipped the strip they would otherwise
+    appear in are skipped, so rebuilding right after committing gives the same page instead of one new line each time."""
+    rows = _recent_commits()
+    committed = _git("show", f"HEAD:{page}")
+    for skip in range(1, 6):
+        strip = _strip_html(rows[skip:])
+        if strip and strip in committed:
+            return strip
+    return _strip_html(rows)

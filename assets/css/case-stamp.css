@@ -291,3 +291,91 @@ html:has(.lightbox[open]) { overflow: hidden; }
   .stack__layer { grid-template-columns: 1fr; gap: 6px; }
   .fig-shift { grid-template-columns: 1fr; } .shift__arrow { transform: rotate(90deg); justify-self: center; }
 }
+
+/* ---------- case facts in a plain monospace (role, team, dates) ---------- */
+/* The one exception to Poppins-only: facts read differently from the story around them. System fonts, so no download. */
+.meta-line, .case-meta dd { font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-size: 13.5px; letter-spacing: 0; line-height: 1.7; }
+.meta-line b { font-weight: 600; }
+
+/* ---------- project switcher: the build marks, one tap to another build ---------- */
+.switcher { position: sticky; top: 64px; z-index: 20; margin-top: 18px; pointer-events: none; }
+.switcher__bar {
+  pointer-events: auto; display: flex; align-items: center; gap: 12px; width: fit-content; max-width: 100%; padding: 6px 14px 6px 14px;
+  border-radius: 999px; background: color-mix(in srgb, var(--bg) 62%, transparent);
+  backdrop-filter: blur(14px) saturate(1.5); -webkit-backdrop-filter: blur(14px) saturate(1.5);
+  box-shadow: inset 0 0 0 1px var(--line), var(--shadow);
+}
+.switcher__k { flex: none; font-size: 13px; font-weight: 500; color: var(--ink-2); }
+.switcher__k:hover { color: var(--ink); }
+.switcher__row { display: flex; align-items: center; gap: 4px; margin: 0; padding: 4px 3px; list-style: none; overflow-x: auto; scrollbar-width: none; scroll-behavior: smooth; min-width: 0; }
+.switcher__row::-webkit-scrollbar { display: none; }
+.switcher__row li { flex: none; }
+.switcher__row a { display: block; position: relative; padding: 3px; border-radius: 11px; transition: transform .45s var(--ease), background .3s var(--ease); }
+.switcher__mark { display: block; width: 28px; height: 28px; border-radius: 8px; opacity: .72; transition: opacity .3s var(--ease); }
+.switcher__row a:hover { transform: translateY(-2px); }
+.switcher__row a:hover .switcher__mark, .switcher__row a:focus-visible .switcher__mark, .switcher__row a[aria-current] .switcher__mark { opacity: 1; }
+.switcher__row a[aria-current] { box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent, var(--ink)); }
+.switcher__name { flex: none; min-width: 6ch; max-width: 22ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; font-weight: 500; color: var(--ink); }
+@media (max-width: 680px) { .switcher { top: 60px; } .switcher__name { display: none; } .switcher__bar { gap: 8px; padding-inline: 12px; } }
+
+/* previous / next build, with marks */
+.next a { display: flex; align-items: center; gap: 14px; }
+.next__forward { flex-direction: row-reverse; }
+.next__mark { flex: none; width: 36px; height: 36px; border-radius: 10px; }
+.next a > span { min-width: 0; }
+.next__forward > span { text-align: right; }
+@media (max-width: 640px) { .next__forward { flex-direction: row; } .next__forward > span { text-align: left; } }
+
+/* ---------- each case wears its product's color, at the top only ---------- */
+/* --pt is the product's own color from its Electric mark. The sky stays the base: the tint fades out by 460px. */
+.tint-wash {
+  position: absolute; z-index: -1; pointer-events: none; top: 0; left: 0; width: 100%; height: 460px;
+  background:
+    radial-gradient(70% 90% at 22% 0%, color-mix(in srgb, var(--pt) 17%, transparent), transparent 72%),
+    linear-gradient(180deg, color-mix(in srgb, var(--pt) 8%, transparent), transparent 92%);
+}
+:root[data-theme="dark"] .tint-wash {
+  background:
+    radial-gradient(70% 90% at 22% 0%, color-mix(in srgb, var(--pt) 24%, transparent), transparent 72%),
+    linear-gradient(180deg, color-mix(in srgb, var(--pt) 10%, transparent), transparent 92%);
+}
+/* contents marker: a bar in the product color beside the current section (the text color stays the accent for contrast) */
+/* the contents list sits below the sticky project switcher */
+.case .toc { top: 128px; }
+.case .prose h2 { scroll-margin-top: 132px; }
+.toc a { position: relative; padding-left: 14px; margin-left: -14px; }
+.toc a::before { content: ""; position: absolute; left: 0; top: 50%; width: 3px; height: 0; border-radius: 3px; background: var(--pt, var(--accent, var(--ink))); transform: translateY(-50%); transition: height .5s var(--ease); }
+.toc a.is-active::before { height: 1.2em; }
+.toc a.is-active { font-weight: 500; }
+.toc__line { height: 2px; margin-top: 10px; border-radius: 2px; background: var(--line); overflow: hidden; }
+.toc__line i { display: block; height: 100%; width: 100%; background: var(--pt, var(--accent, var(--ink))); transform: scaleX(var(--read, 0)); transform-origin: left; transition: transform .5s var(--ease); }
+
+/* ---------- inline decision forks ---------- */
+.forks { display: grid; gap: 14px; margin-top: 14px; }
+.fork { padding: 18px 20px 16px; border-radius: 20px; background: var(--fill-2); box-shadow: inset 0 0 0 1px var(--line); }
+.prose .fork h3 { margin-top: 0; font-size: 16px; font-weight: 500; line-height: 1.4; color: var(--ink); letter-spacing: -0.01em; }
+.prose ul.fork__opts { display: flex; flex-wrap: wrap; gap: 6px 8px; margin-top: 12px; }
+.prose .fork__opts li { padding: 4px 12px 3px; border-radius: 999px; font-size: 14px; background: var(--fill-2); box-shadow: inset 0 0 0 1px var(--line); }
+.prose .fork__opts li::before { content: none; }
+.fork__opts s { color: var(--ink-2); text-decoration-thickness: 1.5px; }
+.prose .fork__opts li.is-chosen { background: var(--pill); box-shadow: inset 0 0 0 1.5px var(--accent, var(--ink)); }
+.fork__opts b { color: var(--ink); font-weight: 600; }
+.fork__why { margin-top: 12px; }
+.prose .fork__why p { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--accent-ink, var(--ink-2)); }
+.prose .fork__why ul { margin-top: 6px; gap: 4px; }
+.prose .fork__why li { font-size: 14px; }
+
+/* ---------- documents behind it ---------- */
+.docs { margin-top: 22px; }
+.docs__k { font-size: 13px; color: var(--ink-2); margin-bottom: 8px; }
+.docs__row { display: flex; flex-wrap: wrap; gap: 10px; }
+.doc {
+  display: flex; align-items: center; gap: 12px; max-width: 460px; padding: 12px 16px 12px 14px; border-radius: 14px;
+  background: var(--pill); box-shadow: inset 0 0 0 1px var(--line), var(--shadow);
+  transition: transform .45s var(--ease), box-shadow .45s var(--ease);
+}
+.doc:hover, .doc:focus-visible { transform: translateY(-2px); box-shadow: inset 0 0 0 1px var(--line), var(--shadow-lg); }
+.doc svg { width: 26px; height: 26px; flex: none; color: var(--accent-ink, var(--ink)); }
+.doc b { display: block; font-size: 14.5px; font-weight: 500; color: var(--ink); }
+.doc small { display: block; font-size: 12.5px; line-height: 1.45; color: var(--ink-2); }
+@media (prefers-reduced-motion: reduce) { .doc, .switcher__row a, .toc a::before, .toc__line i { transition: none; } .doc:hover, .switcher__row a:hover { transform: none; } }
