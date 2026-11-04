@@ -1042,7 +1042,9 @@ CONSIDERING = "\n".join(_item(t, "idea") for t in [
     "An excerpt from my memoir, <i>The Treaded Path</i>, and a list of my Medium essays.",
     "One testimonial from someone I've built with.",
     "Playable cards: a mini TypeRace or Snake right in the grid.",
-    "A public changelog. This page is the first step.",
+])
+CONSIDERING_DONE = "\n".join(_item(t, "done") for t in [
+    "A public changelog. It's in the homepage footer now, built from the site's commits. <em>Nov 4</em>",
 ])
 
 PORTFOLIO_PAGE = f"""<!DOCTYPE html>
@@ -1119,9 +1121,10 @@ PORTFOLIO_PAGE = f"""<!DOCTYPE html>
         <h2 id="considering">Considering</h2>
         <p>Ideas I haven't committed to yet.</p>
         <ul class="backlog">
+{CONSIDERING_DONE}
 {CONSIDERING}
         </ul>
-        <p class="updated">Last updated October 14, 2026.</p>
+        <p class="updated">Last updated November 4, 2026.</p>
       </article>
     </section>
   </main>
