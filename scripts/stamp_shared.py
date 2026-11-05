@@ -6,7 +6,7 @@ import re
 from projects import field
 
 # The address the site is published at: canonical links, share images, llms.txt, the sitemap.
-SITE_URL = "https://chaekim-portfolio.vercel.app"
+SITE_URL = "https://chaekim.vercel.app"
 
 # 김채운 brushed in black ink on a strip of hanji (Korean mulberry paper).
 # Glyphs are East Sea Dokdo (SIL OFL) outlines, defined once in INK_DEFS and reused,
