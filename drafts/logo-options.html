@@ -49,10 +49,10 @@
     ];
     const grid = document.getElementById('grid');
     opts.forEach(([k, name, file, desc]) => {
-      const src = 'assets/img/logo-options/' + file;
+      const src = 'logo-options/' + file;
       const dark = { E: 'E-monoline-outline-dark.svg', G: 'G-wordmark-dark.svg' }[k];
       const mark = file === 'memoji' ? '<span class="avatar"><img src="assets/img/memoji.png" alt=""></span>' : `<img src="${src}" alt="">`;
-      const markDark = dark ? `<img src="assets/img/logo-options/${dark}" alt="">` : mark;
+      const markDark = dark ? `<img src="logo-options/${dark}" alt="">` : mark;
       const el = document.createElement('div'); el.className = 'opt';
       el.innerHTML = `
         <h2>${name} <span>Option ${k}</span></h2>

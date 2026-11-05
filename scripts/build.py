@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parent.parent
 
 # build-cases.py lists every page in the command palette and build-llms.py reads every page's description,
 # so they run after the scripts that write pages. build-sitemap.py dates what the others changed, so it runs last.
-STEPS = ["decisions", "writing", "reading", "home", "cases", "llms", "sitemap"]
+STEPS = ["pages", "decisions", "writing", "reading", "portfolio", "home", "cases", "llms", "sitemap"]
 
 # Built from git history, so they move on their own: a stale copy is not a stale page.
 VOLATILE = [re.compile(r'(<div class="changelog".*?<ul>).*?(</ul>)', re.S), re.compile(r"(<lastmod>)[^<]*(</lastmod>)")]
@@ -31,7 +31,7 @@ def run_all():
 
 def generated():
     """Every file the build can write, read straight from the working tree."""
-    files = [*ROOT.glob("*.html"), *(ROOT / "projects").glob("*.html"), ROOT / "llms.txt", ROOT / "sitemap.xml",
+    files = [*ROOT.glob("*.html"), *(ROOT / "projects").glob("*.html"), ROOT / "llms.txt", ROOT / "sitemap.xml", ROOT / "robots.txt",
              ROOT / "assets" / "data" / "palette.json"]
     return {p: p.read_text(encoding="utf-8") for p in files}
 
@@ -46,11 +46,10 @@ def problems(pages):
     """Things a build can't fix: placeholders left in, and public pages search engines aren't told about."""
     found = [f"{p.relative_to(ROOT)}: unresolved [CONFIRM:" for p, text in pages.items() if "[CONFIRM:" in text]
     locs = set(re.findall(r"<loc>https://[^/]+/?([^<]*)</loc>", pages[ROOT / "sitemap.xml"]))
-    hidden = set(re.findall(r"^Disallow: /(\S+)$", (ROOT / "robots.txt").read_text(encoding="utf-8"), re.M))
     for p, text in pages.items():
         if p.suffix == ".html" and p.stem != "404" and 'content="noindex' not in text[:3000]:
             rel = str(p.relative_to(ROOT).with_suffix(""))
-            if (rel if rel != "index" else "") not in locs and rel not in hidden:
+            if (rel if rel != "index" else "") not in locs:
                 found.append(f"{rel}: public page missing from sitemap.xml")
     return found
 

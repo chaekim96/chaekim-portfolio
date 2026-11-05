@@ -16,11 +16,10 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 OUT = ROOT / "projects"
-SITE_URL = "https://chaekim-portfolio.vercel.app"
 
 # The script name has a hyphen, so it can't be imported as a package; load the sibling module by path.
 sys.path.insert(0, str(HERE))
-from stamp_shared import (CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, LIVE_APPS, LIVE_DIALOG, LIVE_SCRIPT,  # noqa: E402
+from stamp_shared import (SITE_URL, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, LIVE_APPS, LIVE_DIALOG, LIVE_SCRIPT,  # noqa: E402
                           live_button, build_mark, build_icons, work_mark, mark_color, nb_headlines)
 import importlib.util  # noqa: E402
 import palette_data  # noqa: E402

@@ -193,9 +193,9 @@
 @media (max-width: 900px) { .how__steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 520px) { .how__steps { grid-template-columns: minmax(0, 1fr); } }
 .legend { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 18px; font-size: 13px; color: var(--ink-2); }
-.lg { display: inline-flex; align-items: center; gap: 7px; }
-.lg i { width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center; font-style: normal; font-size: 11px; box-shadow: inset 0 0 0 1.5px var(--line); }
-.lg--pick i { background: var(--ink); color: var(--bg); box-shadow: none; }
+.legend__key { display: inline-flex; align-items: center; gap: 7px; }
+.legend__key i { width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center; font-style: normal; font-size: 11px; box-shadow: inset 0 0 0 1.5px var(--line); }
+.legend__key--pick i { background: var(--ink); color: var(--bg); box-shadow: none; }
 .decisions { margin: clamp(24px, 4vw, 36px) auto clamp(64px, 8vw, 96px); }
 .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
 .fchip { padding: 7px 15px; border-radius: 999px; font-size: 14px; font-weight: 500; color: var(--ink-2); background: var(--pill); box-shadow: inset 0 0 0 1px var(--line); }
