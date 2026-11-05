@@ -87,16 +87,14 @@ INK_DEFS = ('<svg width="0" height="0" style="position:absolute" aria-hidden="tr
 # One version for every stylesheet and script of the Stamp look, so each page ends up on the same files.
 # Bump it whenever assets/css/v-stamp.css, case-stamp.css, or assets/js/main.js, case-stamp.js or palette.js change.
 # build-home.py, build-cases.py and the other page builders all read it from here.
-STAMP_CSS_V = "34"
+STAMP_CSS_V = "35"
 CASE_CSS_V = STAMP_CSS_V
 JS_V = STAMP_CSS_V
 PALETTE_V = STAMP_CSS_V
 LIVE_V = "1"  # bump when assets/js/live.js changes
-SIGNAL_V = "3"  # bump when assets/css/signal-green.css changes
 GLASS_V = "3"  # bump when assets/js/liquid-glass.js changes
 
-# Signal green accent and liquid glass: stylesheet after the page styles, glass script deferred.
-SIGNAL_CSS = f'  <link rel="stylesheet" href="/assets/css/signal-green.css?v={SIGNAL_V}">'
+# Liquid glass on the controls, deferred so it runs once the page is parsed.
 GLASS_JS = f'  <script src="/assets/js/liquid-glass.js?v={GLASS_V}" defer></script>'
 
 # ---------------------------------------------------------------------------
@@ -138,7 +136,7 @@ CASE_HEAD_ASSETS = (
     '  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">\n'
     f'  <link rel="stylesheet" href="/assets/css/v-stamp.css?v={STAMP_CSS_V}">\n'
     f'  <link rel="stylesheet" href="/assets/css/case-stamp.css?v={CASE_CSS_V}">\n'
-    + SIGNAL_CSS + "\n" + GLASS_JS + "\n"
+    + GLASS_JS + "\n"
     "  " + BOOT_SCRIPT
 )
 

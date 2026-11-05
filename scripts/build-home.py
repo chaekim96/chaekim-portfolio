@@ -69,7 +69,7 @@ ARCADE = """          <div class="break">
 # rather than an f-string, since the inline JS is brace-heavy.
 # ----------------------------------------------------------------------------
 
-from stamp_shared import STAMP_CSS_V as V, BOOT_SCRIPT, PALETTE_SCRIPT, nb_headlines, changelog_strip, INK_DEFS, seal, live_button, LIVE_DIALOG, LIVE_SCRIPT, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, THEME_COLOR, SIGNAL_CSS, GLASS_JS, build_mark, build_icons, mark_color, work_mark, LIVE_APPS
+from stamp_shared import STAMP_CSS_V as V, BOOT_SCRIPT, PALETTE_SCRIPT, nb_headlines, changelog_strip, INK_DEFS, seal, live_button, LIVE_DIALOG, LIVE_SCRIPT, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, THEME_COLOR, GLASS_JS, build_mark, build_icons, mark_color, work_mark, LIVE_APPS
 from projects import COLLEGE, FEATURED, FOLDERS, PROJECTS, WORK, field
 
 
@@ -108,7 +108,6 @@ STAMP = r"""<!DOCTYPE html>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
   <link rel="preload" as="image" href="/assets/img/thumbs/lucent-wide.jpg">
   <link rel="stylesheet" href="/assets/css/v-stamp.css?v=%%V%%">
-%%SIGNAL_CSS%%
 %%GLASS_JS%%
   %%BOOT%%
   <script type="application/ld+json">
@@ -335,7 +334,7 @@ STAMP = r"""<!DOCTYPE html>
         <details class="ncard ncard--color">
           <summary><p class="ncard__k"><i aria-hidden="true"></i>Color</p>
           <h3>Color follows the content, so the page stays neutral</h3><span class="ncard__more" aria-hidden="true">Read more</span></summary>
-          <p class="notes__cap">Light, then dark. Tokens from <code>v-stamp.css</code> and <code>signal-green.css</code>.</p>
+          <p class="notes__cap">Light, then dark. Tokens from <code>v-stamp.css</code>.</p>
           <ul class="swl">
             <li><span class="sw"><i style="background:#0d1b2e"></i><i style="background:#f5f5f7"></i></span><span class="swl__t"><b>ink</b> text</span><span class="swl__h"><code>#0d1b2e</code> / <code>#f5f5f7</code></span></li>
             <li><span class="sw"><i style="background:#44566e"></i><i style="background:#a1a1a6"></i></span><span class="swl__t"><b>ink-2</b> secondary text</span><span class="swl__h"><code>#44566e</code> / <code>#a1a1a6</code></span></li>
@@ -667,7 +666,7 @@ def _cards(page):
 STAMP = _cards(STAMP)
 STAMP = (STAMP.replace("%%WRITING_ESSAYS%%", _writing_essays())
               .replace("%%WRITING_READING%%", _writing_reading())
-              .replace("%%SIGNAL_CSS%%", SIGNAL_CSS).replace("%%GLASS_JS%%", GLASS_JS)
+              .replace("%%GLASS_JS%%", GLASS_JS)
               .replace("%%V%%", V)
               .replace("%%INK%%", INK_DEFS)
               .replace("%%BRANDSEAL%%", seal("cal--card", label=False))
