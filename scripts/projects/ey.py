@@ -6,7 +6,7 @@ PROJECT = dict(slug="ey", title="EY, AI & Data",
   desc="Program-wide risk, OKRs, and the first QBR for a $200M+ cloud migration at a Fortune 500 life sciences client, with $10M+ in realized savings.",
   tldr="Ran the operating system for a $200M+ cloud migration at a Fortune 500 life sciences client: risk, OKRs, and the first executive QBR. It redirected $3M to priority initiatives and realized $10M+ in savings.",
   role="Senior Technology Consultant, AI & Data Strategy (Staff Technology Consultant 2021 to 2023)", team="EY Technology Consulting, 25+ client teams", timeline="August 2021 to July 2024",
-  cover='<img src="/assets/img/thumbs/ey-wide.jpg" alt="Earth at night from orbit, city lights glowing" width="1600" height="900">',
+  cover='<img src="/assets/img/ey/ey-wide.jpg" alt="Earth at night from orbit, city lights glowing" width="1600" height="900">',
   problem=paras("A Fortune 500 life sciences client was moving its application portfolio to the cloud across 25+ teams. Risks surfaced late, executives got escalations instead of decisions, and nobody had one view of what was on track."),
   did=bullets(
     "Built the program-wide risk and OKR system: blocker and risk triage across 25+ teams. Earlier resource reallocation, 30% fewer executive escalations.",

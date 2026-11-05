@@ -6,7 +6,7 @@ PROJECT = dict(slug="custom-llm", title="Custom LLM",
   desc="A tiny nanoGPT model trained from scratch on a laptop CPU, with my own teaching corpus and 48 fixed language tests.",
   tldr="A word-level language model with 2 blocks and 4 heads, trained in about 14 seconds on a laptop. I ran it twice, on the starter corpus and then with my own files on grammar, opposites, and spatial relations, and scored both on the same 48 tests.",
   role="Builder", team="Solo", timeline="September 2026",
-  cover=cover("/assets/img/builds/custom-llm.jpg", "Terminal chat with the tiny model and its odd replies", 768, 474),
+  cover=cover("/assets/img/custom-llm/custom-llm.jpg", "Terminal chat with the tiny model and its odd replies", 768, 474),
   problem=paras("It's hard to build intuition for language models when the ones you use have billions of parameters. A model small enough to train in seconds makes every step visible: tokens, vectors, probabilities, and updates."),
   did=bullets(
     "Predicted each result in writing before every run, then compared.",
@@ -20,7 +20,7 @@ PROJECT = dict(slug="custom-llm", title="Custom LLM",
   artifacts=links(("Write-up and evidence on GitHub", "https://github.com/chaekim96/custom-llm")),
   mark="custom-llm-2",
   card=r"""
-          <div class="stage"><div class="art fill fill--top"><img src="/assets/img/builds/custom-llm.jpg" alt="Terminal chat with the tiny model and its odd replies" width="768" height="474" loading="lazy"></div><span class="pill">Custom LLM <em>2026</em></span></div>
+          <div class="stage"><div class="art fill fill--top"><img src="/assets/img/custom-llm/custom-llm.jpg" alt="Terminal chat with the tiny model and its odd replies" width="768" height="474" loading="lazy"></div><span class="pill">Custom LLM <em>2026</em></span></div>
           <h3 class="w-title">Seeing how language models learn by training a tiny one.</h3>
           <p class="meta">A nanoGPT fork trained on a laptop CPU with my own teaching corpus, scored on 48 test prompts.</p>
 """,
