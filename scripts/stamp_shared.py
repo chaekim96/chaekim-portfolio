@@ -1,6 +1,8 @@
 """Shared Stamp pieces: the calligraphy mark (used by the homepage and every case page)."""
 import re
 
+from projects import field
+
 # 김채운 brushed in black ink on a strip of hanji (Korean mulberry paper).
 # Glyphs are East Sea Dokdo (SIL OFL) outlines, defined once in INK_DEFS and reused,
 # so the calligraphy costs no font download. The paper gets a deckled edge and faint fibres.
@@ -14,10 +16,7 @@ def seal(cls="", label=True):
 # A build's color-seal mark from assets/img/brand/, or "" for pages without one.
 # The name sits right beside it, so the image is decorative (alt="").
 # A mark that changes gets a new filename (assets are cached immutably); list the current file here.
-MARK_FILE = {
-    "arcade": "arcade-2", "web-anatomy": "web-anatomy-2", "palette-generator": "palette-generator-2",
-    "custom-llm": "custom-llm-2", "pacman-dqn": "pacman-dqn-2",
-}
+MARK_FILE = field("mark")
 # Link-preview card and touch icon per build, written by scripts/build-brand-cards.py.
 CARD_DIR = "assets/img/brand/cards"
 
@@ -48,10 +47,7 @@ def mark_color(slug):
 
 # Work entries aren't builds, so they get no color seal: a plain ink tile with a paper glyph for the kind of work.
 # Same 64-unit rx14 tile as the marks, so the pill keeps its shape. Files: assets/img/brand/work-<glyph>.svg
-WORK_GLYPH = {
-    "lucent": "startup", "ey": "consulting", "tritooling": "ops", "mirrorme": "product", "mobility": "hardware",
-    "iu-study-assistant": "software", "alab": "hardware", "luc": "hardware", "ptm": "hardware", "coursera": "research",
-}
+WORK_GLYPH = field("glyph")
 
 def work_mark(slug, cls, size):
     glyph = WORK_GLYPH.get(slug)
@@ -107,15 +103,7 @@ GLASS_JS = f'  <script src="/assets/js/liquid-glass.js?v={GLASS_V}" defer></scri
 # Live previews: a "Try it live" link opens the real app in a dialog.
 # Without JS (or <dialog>) the link simply opens the app in a new tab.
 # ---------------------------------------------------------------------------
-LIVE_APPS = {
-    "ai-visibility-checker": ("AI Visibility Checker", "https://chaekim-ai-visibility.vercel.app", ""),
-    "tally": ("Tally", "https://tally-lake-seven.vercel.app", ""),
-    "palette-generator": ("Palette Generator", "https://color-palette-generator-three-sand.vercel.app", ""),
-    "typerace": ("TypeRace", "https://typerace.typerace.workers.dev", "Races here are real: a finished race posts to the weekly class leaderboard."),
-    "web-anatomy": ("Anatomy of a Website", "https://webanatomy.vercel.app", ""),
-    "spotify-review-triage": ("Spotify Review Triage", "https://spotify-review-triage.vercel.app", ""),
-    "networking-tracker": ("Networking Tracker", "https://networking-tracker-five-sage.vercel.app", "Some browsers block signing in inside a frame. If it won't let you in, open it in a new tab."),
-}
+LIVE_APPS = field("live")
 
 def live_button(slug):
     title, url, note = LIVE_APPS[slug]
