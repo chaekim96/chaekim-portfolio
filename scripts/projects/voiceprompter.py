@@ -6,7 +6,7 @@ PROJECT = dict(slug="voiceprompter", title="VoicePrompter",
   desc="A macOS teleprompter that follows your voice as you read, with capture protection tested against specific macOS recording APIs.",
   tldr="Your script floats above other apps. As you speak, it highlights the word you're on and scrolls to keep your line near the top. The capture test hides its content from ScreenCaptureKit on the tested Mac; older recording paths can still show it, and individual sharing apps need a manual check.",
   role="Builder", team="Solo, built with Claude Code", timeline="September to October 2026",
-  cover=cover("/assets/img/builds/voiceprompter.jpg", "VoicePrompter listening at word 108 of 139, with the prompter highlighting the spoken word", 800, 600),
+  cover=cover("/assets/img/voiceprompter/voiceprompter.jpg", "VoicePrompter listening at word 108 of 139, with the prompter highlighting the spoken word", 800, 600),
   problem=paras("I was practicing presenting and interviewing and wanted my notes on screen, without cluttering the screen I was sharing. The teleprompters I found either fell short or wanted me to pay."),
   requirements=bullets(
     "Keep the script readable above other apps, with controls to pause, hide, reposition, and resize it.",
@@ -33,9 +33,9 @@ PROJECT = dict(slug="voiceprompter", title="VoicePrompter",
     "<b>Learning the protection boundary:</b> the API tests showed why a hide hotkey is still necessary, even when the normal capture path hides the overlay.",
   ) + "\n" + links(("Requirements and limitations", "https://github.com/chaekim96/VoicePrompter/blob/main/README.md"), ("Capture-test evidence", "https://github.com/chaekim96/VoicePrompter/blob/main/ProtectionTest/RESULTS.md")),
   differently=paras("Measure latency from the start. The speech recognizer dominates the delay, and I built the latency test only after the app worked. A full, uninterrupted latency run is still on my list."),
-  artifacts=links(("Source on GitHub", "https://github.com/chaekim96/VoicePrompter"), ("Essay: What\u2019s the Point of Preinstalled Apps?", "/projects/preinstalled-apps")) + "\n" + artifact_grid(("/assets/img/cases/vp-main.jpg", "The main window while listening: status, position in the script, and prompter settings."), ("/assets/img/cases/vp-prompter.jpg", "The prompter further in. Read text dims and the current word turns gold. Captured with protection off.")),
+  artifacts=links(("Source on GitHub", "https://github.com/chaekim96/VoicePrompter"), ("Essay: What\u2019s the Point of Preinstalled Apps?", "/projects/preinstalled-apps")) + "\n" + artifact_grid(("/assets/img/voiceprompter/vp-main.jpg", "The main window while listening: status, position in the script, and prompter settings."), ("/assets/img/voiceprompter/vp-prompter.jpg", "The prompter further in. Read text dims and the current word turns gold. Captured with protection off.")),
   card=r"""
-          <div class="stage" style="--g: var(--g-mobility)"><div class="art fill"><img src="/assets/img/builds/voiceprompter.jpg" alt="VoicePrompter listening at word 108 of 139, with the prompter highlighting the spoken word" width="800" height="600" loading="lazy"></div><span class="pill">VoicePrompter <em>macOS</em></span></div>
+          <div class="stage" style="--g: var(--g-mobility)"><div class="art fill"><img src="/assets/img/voiceprompter/voiceprompter.jpg" alt="VoicePrompter listening at word 108 of 139, with the prompter highlighting the spoken word" width="800" height="600" loading="lazy"></div><span class="pill">VoicePrompter <em>macOS</em></span></div>
           <h3 class="w-title">Reading your notes on a call without anyone seeing them.</h3>
           <p class="meta">A teleprompter that scrolls as you speak and stays out of Zoom, Meet, and screenshots.</p>
 """,

@@ -6,7 +6,7 @@ PROJECT = dict(slug="smartmodel", title="SmartModel",
   desc="A Claude Code hook that scores how hard each prompt is and recommends the cheapest model that can handle it.",
   tldr="A model router built into Claude Code. Before Claude acts, a hook scores the prompt's effort from 0 to 100 and recommends Haiku, Sonnet, Opus, or Fable. Ask mode shows a picker, auto routes on its own, and block stops the prompt before any tokens are spent.",
   role="Designer and builder", team="Solo, built with Claude Code", timeline="October 2026",
-  cover='<img src="/assets/img/thumbs/smartmodel-wide.jpg" alt="SmartModel\'s picker in Claude Code: rates a prompt medium-effort and recommends Sonnet" width="1600" height="900">',
+  cover='<img src="/assets/img/smartmodel/smartmodel-wide.jpg" alt="SmartModel\'s picker in Claude Code: rates a prompt medium-effort and recommends Sonnet" width="1600" height="900">',
   problem=paras("Every prompt ran on the most expensive model, renames and git chores included. Switching by hand meant remembering to, and a fresh session meant losing the conversation."),
   did=bullets(
     "Wrote a hook that runs before Claude reads each prompt and scores its effort from 0 to 100 on keywords and structure. Under 20 is Haiku, up to 44 is Sonnet, up to 84 is Opus, and above that is Fable.",

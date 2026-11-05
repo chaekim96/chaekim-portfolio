@@ -7,7 +7,7 @@ PROJECT = dict(slug="mobility", title="Mobility devices for older adults (stealt
   desc="Premium, design-forward mobility products that help older adults stay independent longer.",
   tldr="Premium, design-forward mobility products that help older adults stay independent longer.",
   role="Co-founder: GTM, brand, outreach, strategy (my co-founder owns product)", team="2 co-founders", timeline="In progress",
-  cover='<img src="/assets/img/thumbs/mobility-wide.jpg" alt="An older couple walking along a garden path" width="1600" height="900">',
+  cover='<img src="/assets/img/mobility/mobility-wide.jpg" alt="An older couple walking along a garden path" width="1600" height="900">',
   problem=paras("Mobility aids look like medical equipment. Users feel stigmatized, and common designs have real safety gaps."),
   did=bullets(
     "Visited senior centers and assisted living facilities around Berkeley. 14+ conversations with operators, caregivers, and advisors.",

@@ -61,7 +61,7 @@
     </section>
 
     <section class="wrap case-cover-wrap">
-      <div class="stage case-cover " style="--g: var(--g-plain)"><img src="/assets/img/projects/iusa/home.jpg" alt="IU Study Assistant home page"></div>
+      <div class="stage case-cover " style="--g: var(--g-plain)"><img src="/assets/img/iu-study-assistant/iusa/home.jpg" alt="IU Study Assistant home page"></div>
     </section>
 
     <section class="wrap case-body">
@@ -83,22 +83,22 @@
 <div class="callout"><span class="ico">🔍</span><div><p><strong>What we heard:</strong> most students had hit issues with at least one platform, use cases were inconsistent across the student body, and nearly everyone wanted necessary services aggregated in one location. The lack of interface standardization was producing real friction.</p></div></div>
 <h3>Feature list: 12 → 9</h3>
 <p>Research let us cut. Flashcards and Professor Profiler were dropped; sharing was removed from Survey and Notes to sidestep confidentiality issues; the Messenger sub-feature came out of Tutor Classifieds because of team scheduling constraints. What remained: Login &amp; Register (IU credentials), Profile, Dashboard, Friends List, Survey, Notes, Study Groups, Tutor Classifieds, and Buy &amp; Sell Textbooks.</p>
-<figure class="contain"><img src="/assets/img/projects/iusa/feature-plan.png" alt="Feature development plan across sprints" loading="lazy"><figcaption>Feature development plan across sprints</figcaption></figure>
+<figure class="contain"><img src="/assets/img/iu-study-assistant/iusa/feature-plan.png" alt="Feature development plan across sprints" loading="lazy"><figcaption>Feature development plan across sprints</figcaption></figure>
 
 <h2 id="design">Design</h2>
 <p>We adopted the <strong><span class="nb">3-click</span> rule</strong> as a design framework — not because usability equals a click count, but as a forcing function to iron out redundancy and keep navigation obvious. Wireframes were built in Figma at web dimensions using Indiana University's color palette so the product felt native alongside other IU services.</p>
 <div class="two">
-<figure><img src="/assets/img/projects/iusa/login.png" alt="Login" loading="lazy"><figcaption>Login</figcaption></figure>
-<figure><img src="/assets/img/projects/iusa/dashboard.jpg" alt="Dashboard" loading="lazy"><figcaption>Dashboard</figcaption></figure>
-<figure><img src="/assets/img/projects/iusa/notes.png" alt="Notes — the feature I built end-to-end" loading="lazy"><figcaption>Notes — the feature I built end-to-end</figcaption></figure>
-<figure><img src="/assets/img/projects/iusa/study-spots.jpg" alt="Study Spots" loading="lazy"><figcaption>Study Spots</figcaption></figure>
+<figure><img src="/assets/img/iu-study-assistant/iusa/login.png" alt="Login" loading="lazy"><figcaption>Login</figcaption></figure>
+<figure><img src="/assets/img/iu-study-assistant/iusa/dashboard.jpg" alt="Dashboard" loading="lazy"><figcaption>Dashboard</figcaption></figure>
+<figure><img src="/assets/img/iu-study-assistant/iusa/notes.png" alt="Notes — the feature I built end-to-end" loading="lazy"><figcaption>Notes — the feature I built end-to-end</figcaption></figure>
+<figure><img src="/assets/img/iu-study-assistant/iusa/study-spots.jpg" alt="Study Spots" loading="lazy"><figcaption>Study Spots</figcaption></figure>
 </div>
 
 <h2 id="build">Build</h2>
 <p>I designed the database and built the Notes feature. The schema accepts new data (users, note entries) while staying concrete about existing entities like users and study groups — the ERD doubled as the team's shared mental model of how data moves through the system.</p>
-<figure class="contain"><img src="/assets/img/projects/iusa/erd.jpg" alt="Entity-relationship diagram. Bold italics = foreign key, underline = primary key, * = multi-valued attribute." loading="lazy"><figcaption>Entity-relationship diagram. Bold italics = foreign key, underline = primary key, * = multi-valued attribute.</figcaption></figure>
+<figure class="contain"><img src="/assets/img/iu-study-assistant/iusa/erd.jpg" alt="Entity-relationship diagram. Bold italics = foreign key, underline = primary key, * = multi-valued attribute." loading="lazy"><figcaption>Entity-relationship diagram. Bold italics = foreign key, underline = primary key, * = multi-valued attribute.</figcaption></figure>
 <p>Front-end was HTML, CSS, Bootstrap, and JavaScript; back-end was PHP and SQL, with LucidChart for the ERD and Mockaroo for seed data. Branding (poster, logo, promo GIF) was done in InDesign, Photoshop, and Illustrator.</p>
-<figure class="contain"><img src="/assets/img/projects/iusa/poster.gif" alt="Project poster (animated)" loading="lazy"><figcaption>Project poster (animated)</figcaption></figure>
+<figure class="contain"><img src="/assets/img/iu-study-assistant/iusa/poster.gif" alt="Project poster (animated)" loading="lazy"><figcaption>Project poster (animated)</figcaption></figure>
 
 <h2 id="outcome">Outcome &amp; lessons</h2>
 <p>The system shipped on IU servers with all nine features. The honest version of the story: early sprints were slowed by database setup and syncing files to IU's servers, and later sprints suffered from scheduling miscalculations that pushed styling work into the final sprint — so the Bootstrap grid and a mobile-friendly pass never made it across every feature.</p>

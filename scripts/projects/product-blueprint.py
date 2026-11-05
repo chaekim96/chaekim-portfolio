@@ -6,7 +6,7 @@ PROJECT = dict(slug="product-blueprint", title="Product Blueprint",
   desc="My personal prompt library and playbook for building products with AI tools: a six-stage loop with a pass/fail gate at each stage, a design system, a product template, and a database of 22 versioned prompts with evals.",
   tldr="I build fast with Lovable, Google AI Studio and Claude, and my prompts and design choices lived in chat history. The blueprint writes the method down: six stages from Discover to Ship, each ending with a pass/fail gate, a design system pulled from my own products, a template to fill in per product, and 22 prompts that each carry their own evals. Two scripts check the prompt database and score AI features against a locked test set.",
   role="Product owner and builder", team="Solo, built with Claude Code", timeline="October 2026",
-  cover=cover("/assets/img/builds/product-blueprint.jpg", "The build loop: six stages from Discover to Ship, each with the gate it has to pass", 1600, 1000),
+  cover=cover("/assets/img/product-blueprint/product-blueprint.jpg", "The build loop: six stages from Discover to Ship, each with the gate it has to pass", 1600, 1000),
   problem=paras("AI builders make the first draft easy. Keeping products consistent is harder. My prompts lived in old chats, each product picked its own colors, and I judged AI output by feel. When a prompt worked, I couldn't find it again or tell whether a change made it better."),
   did=bullets(
     "Wrote a six-stage build loop, Discover to Ship. Each stage ends with a short pass/fail gate, so problems get fixed where they start.",
@@ -19,9 +19,9 @@ PROJECT = dict(slug="product-blueprint", title="Product Blueprint",
   ),
   results=stat_grid(("6", "stages, each with a gate"), ("22", "versioned prompts with evals"), ("25", "test cases for Timely's estimator"), ("3", "launch blockers found in Timely")) + "\n" + paras("Filling in the template for Timely found three things to fix before launch: the Gemini key is readable in the browser, user text goes into the prompt unprotected, and the page title doesn't match the product name. Every prompt is still marked draft. One moves to tested only after it passes its evals on three real uses."),
   differently=paras("Start from one real product, not the whole method. Filling in the template for Timely taught me more than writing it did, and it found the launch blockers. I'd fill it in for the next product first and write each stage as I reach it."),
-  artifacts=paras("The repo is private. Below, one prompt from the database, as it appears in the repo.") + "\n" + artifact_grid(("/assets/img/cases/pb-prompt.jpg", "The copy review prompt: when to use it, the prompt, and the evals its output has to pass.")),
+  artifacts=paras("The repo is private. Below, one prompt from the database, as it appears in the repo.") + "\n" + artifact_grid(("/assets/img/product-blueprint/pb-prompt.jpg", "The copy review prompt: when to use it, the prompt, and the evals its output has to pass.")),
   card=r"""
-          <div class="stage" style="--g: var(--g-mirror)"><div class="art fill"><img src="/assets/img/builds/product-blueprint-card.jpg" alt="The build loop: six stages from Discover to Ship, each with the gate it has to pass" width="800" height="600" loading="lazy"></div><span class="pill">Product Blueprint <em>playbook</em></span></div>
+          <div class="stage" style="--g: var(--g-mirror)"><div class="art fill"><img src="/assets/img/product-blueprint/product-blueprint-card.jpg" alt="The build loop: six stages from Discover to Ship, each with the gate it has to pass" width="800" height="600" loading="lazy"></div><span class="pill">Product Blueprint <em>playbook</em></span></div>
           <h3 class="w-title">One way to build every product, with a test at each step.</h3>
           <p class="meta">A six-stage build loop, a design system, and 22 prompts that each come with their own evals.</p>
 """,

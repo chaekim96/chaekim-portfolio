@@ -3,7 +3,7 @@
 
 Usage:  python3 scripts/build-mod-covers.py
 Usage:  python3 scripts/build-mod-covers.py task-progress   (render only the named covers)
-Output: assets/img/thumbs/{smartmodel,token-fuel,code-improver,task-progress}-wide.jpg (1600x900)
+Output: assets/img/{smartmodel,token-fuel,code-improver,task-progress}/<slug>-wide.jpg (1600x900)
 
 Each cover shows the mod's real output, not an illustration:
   SmartModel     the picker its hook actually raises in ask mode
@@ -14,7 +14,7 @@ Each cover shows the mod's real output, not an illustration:
 import os, subprocess, sys, tempfile
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
-OUT = os.path.join(ROOT, "assets", "img", "thumbs")
+OUT = os.path.join(ROOT, "assets", "img")
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
 BASE = """<!DOCTYPE html><html><head><meta charset="utf-8">
@@ -135,7 +135,7 @@ for slug, c in COVERS.items():
     subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--hide-scrollbars",
                     "--window-size=1600,900", "--virtual-time-budget=6000", f"--screenshot={png}", f"file://{src}"],
                    check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=60)
-    out = os.path.join(OUT, f"{slug}-wide.jpg")
+    out = os.path.join(OUT, slug, f"{slug}-wide.jpg")
     subprocess.run(["sips", "-s", "format", "jpeg", "-s", "formatOptions", "84", png, "--out", out],
                    check=True, stdout=subprocess.DEVNULL)
     print("wrote", os.path.relpath(out, ROOT))

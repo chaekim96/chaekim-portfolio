@@ -6,7 +6,7 @@ PROJECT = dict(slug="tritooling", title="Tritooling",
   desc="Director of Operations at a family-owned precision manufacturer serving semiconductor, medical device, and industrial clients across APAC.",
   tldr="A year running operations at a family-owned precision manufacturer serving semiconductor, medical device, and industrial clients. Fewer defects, faster delivery, a board-approved Japan launch.",
   role="Director of Operations", team="Operations, logistics, engineering", timeline="July 2024 to July 2025",
-  cover='<img src="/assets/img/thumbs/tritooling-wide.jpg" alt="Engineer working at a precision machine" width="1600" height="900">',
+  cover='<img src="/assets/img/tritooling/tritooling-wide.jpg" alt="Engineer working at a precision machine" width="1600" height="900">',
   problem=paras("Bottlenecks showed up as late deliveries and defects. Operations, logistics, and engineering had no shared performance framework."),
   did=bullets(
     "Redesigned workflows across operations, logistics, and engineering around a performance-management framework, managing 7 direct reports.",

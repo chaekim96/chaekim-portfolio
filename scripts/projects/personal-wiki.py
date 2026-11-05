@@ -6,7 +6,7 @@ PROJECT = dict(slug="personal-wiki", title="Personal Wiki",
   desc="A command-line study wiki that runs fully offline: a local Gemma model turns sources into linked Obsidian notes and answers questions with citations.",
   tldr="A study wiki for my AI course that never touches the cloud. Local Gemma, through Ollama, turns sources into linked Obsidian notes. An ask command answers from those notes with citations, or says the evidence isn't there.",
   role="Builder", team="Solo", timeline="September 2026",
-  cover=cover("/assets/img/builds/personal-wiki.jpg", "Obsidian graph of the wiki's linked notes", 900, 646),
+  cover=cover("/assets/img/personal-wiki/personal-wiki.jpg", "Obsidian graph of the wiki's linked notes", 900, 646),
   problem=paras("Cloud assistants answer confidently from anywhere. For studying I wanted the opposite: answers only from my own sources, a citation for every claim, on a laptop with Wi-Fi off."),
   requirements=bullets(
     "Ingest my course sources into linked Obsidian notes and answer study questions from those sources with citations.",
@@ -34,9 +34,9 @@ PROJECT = dict(slug="personal-wiki", title="Personal Wiki",
     "<b>Citations to relevance:</b> the A3 test exposed a real citation attached to the wrong answer. The next experiment must check whether the evidence answers the actual question, as well as whether the citation exists.",
   ) + "\n" + links(("Retrieval changes", "https://github.com/chaekim96/personal-wiki/blob/main/evidence/retrieval_changes.md"), ("Test results", "https://github.com/chaekim96/personal-wiki/blob/main/evidence/ask_tests/results.md"), ("Limitations and proposed improvements", "https://github.com/chaekim96/personal-wiki/blob/main/README.md#10-limitation-and-improvement")),
   differently=paras("Write more questions in my own shorthand before tuning retrieval. A citation check proves a citation exists, not that it answers the question; the failed A3 test made that distinction concrete."),
-  artifacts=links(("Source and evidence on GitHub", "https://github.com/chaekim96/personal-wiki")) + "\n" + artifact_grid(("/assets/img/cases/wiki-note.jpg", "A generated note in Obsidian, with its sources linked back to the raw files."), ("/assets/img/cases/wiki-index.jpg", "The wiki's index: concepts and projects, each with a one-line summary.")),
+  artifacts=links(("Source and evidence on GitHub", "https://github.com/chaekim96/personal-wiki")) + "\n" + artifact_grid(("/assets/img/personal-wiki/wiki-note.jpg", "A generated note in Obsidian, with its sources linked back to the raw files."), ("/assets/img/personal-wiki/wiki-index.jpg", "The wiki's index: concepts and projects, each with a one-line summary.")),
   card=r"""
-          <div class="stage" style="--g: var(--g-arcade)"><div class="art fill"><img src="/assets/img/builds/personal-wiki.jpg" alt="Obsidian graph of the wiki's linked notes" width="900" height="646" loading="lazy"></div><span class="pill">Personal Wiki <em>2026</em></span></div>
+          <div class="stage" style="--g: var(--g-arcade)"><div class="art fill"><img src="/assets/img/personal-wiki/personal-wiki.jpg" alt="Obsidian graph of the wiki's linked notes" width="900" height="646" loading="lazy"></div><span class="pill">Personal Wiki <em>2026</em></span></div>
           <h3 class="w-title">Asking my own notes questions, with no internet.</h3>
           <p class="meta">Local Gemma via Ollama, plus hybrid retrieval over a course wiki. Runs fully offline.</p>
 """,

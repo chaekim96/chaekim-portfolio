@@ -6,7 +6,7 @@ PROJECT = dict(slug="task-progress", title="task-progress",
   desc="A Claude Code mod that turns Claude's own task checklist into a calm progress band above the prompt, plus a checklist pane.",
   tldr="Claude Code's spinner says something is happening, not how far along it is. task-progress reads the checklist Claude already keeps and draws it as a still band above the prompt: 3/5 · 60%, the step in progress, and a green ✓ all done at the end.",
   role="Product owner and builder", team="Solo, built with Claude Code", timeline="October 2026",
-  cover='<img src="/assets/img/thumbs/task-progress-wide.jpg" alt="task-progress in Claude Code: a band above the prompt at 3 of 6 steps, and the /task-progress pane listing each step" width="1600" height="900">',
+  cover='<img src="/assets/img/task-progress/task-progress-wide.jpg" alt="task-progress in Claude Code: a band above the prompt at 3 of 6 steps, and the /task-progress pane listing each step" width="1600" height="900">',
   problem=paras("On a long task, the flickering spinner looks the same at step 1 as at step 5. To know whether Claude was nearly done or barely started, I had to scroll back through the transcript. I wanted to glance at the screen and know \"3 of 5 done, now running tests.\""),
   did=bullets(
     "Wrote the job first: one glance, no reading, and no extra list for me to keep up to date.",
@@ -28,9 +28,9 @@ PROJECT = dict(slug="task-progress", title="task-progress",
     "<b>Checked before shipping:</b> 17 tests, and a live 4-step demo in the Code tab before it was pushed.",
   ) + "\n" + paras("A working band now reads <code>███████░░░░░░░░ 1/3 · 33% · ~25s left ▸ Run tests · 15s · 7 actions ctx ███░░ 48%</code>, and a finished one <code>███████████████ 3/3 · 100% ✓ all done in 2m 10s</code>."),
   differently=paras("Check where the user actually looks before choosing the surface. I knew I lived in the desktop app and still built for the terminal first. The place I'd most like it is the session sidebar, so progress shows across sessions at once. Mods can't draw there, so that would take a change in the app itself."),
-  artifacts=links(("Source on GitHub", "https://github.com/chaekim96/task-progress")) + "\n" + paras("Install from a Claude Code prompt: <code>/plugin install task-progress --marketplace chaekim96/task-progress</code>") + "\n" + artifact_grid(("/assets/img/cases/task-progress-card.png", "Its share card, with the build mark: a progress bar above a checklist.")),
+  artifacts=links(("Source on GitHub", "https://github.com/chaekim96/task-progress")) + "\n" + paras("Install from a Claude Code prompt: <code>/plugin install task-progress --marketplace chaekim96/task-progress</code>") + "\n" + artifact_grid(("/assets/img/task-progress/task-progress-card.png", "Its share card, with the build mark: a progress bar above a checklist.")),
   card=r"""
-          <div class="stage" style="--g: var(--g-arcade)"><div class="art fill"><img src="/assets/img/builds/task-progress.jpg" alt="The /task-progress pane at 3 of 6: three steps done, one in progress, two pending" width="800" height="600" loading="lazy"></div><span class="pill">task-progress <em>Claude Code</em></span></div>
+          <div class="stage" style="--g: var(--g-arcade)"><div class="art fill"><img src="/assets/img/task-progress/task-progress.jpg" alt="The /task-progress pane at 3 of 6: three steps done, one in progress, two pending" width="800" height="600" loading="lazy"></div><span class="pill">task-progress <em>Claude Code</em></span></div>
           <h3 class="w-title">Seeing how far along a task is, right above the prompt.</h3>
           <p class="meta">A mod that turns Claude's own task checklist into a calm progress band, with time left, a stuck warning and a context bar.</p>
 """,

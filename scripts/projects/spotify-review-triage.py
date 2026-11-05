@@ -6,7 +6,7 @@ PROJECT = dict(slug="spotify-review-triage", title="Spotify Review Triage",
   desc="A multi-agent LLM pipeline that labels Spotify app reviews, checks its own work, and recommends where next quarter's product effort should go.",
   tldr="660,622 Spotify reviews in, one recommendation out. A small model labels a declared 100,000-review sample under a $10 cap, a different model checks a blind sample, and a public dashboard traces the ranking down to single reviews. The answer: usability.",
   role="Builder", team="Solo, built with Claude Code", timeline="October 2026",
-  cover=cover("/assets/img/builds/spotify-review-triage.jpg", "The live dashboard: 660,622 reviews in file, 100,000 in scope, $4.36 measured spend, and the recommendation: usability", 1600, 1000),
+  cover=cover("/assets/img/spotify-review-triage/spotify-review-triage.jpg", "The live dashboard: 660,622 reviews in file, 100,000 in scope, $4.36 measured spend, and the recommendation: usability", 1600, 1000),
   problem=paras("Nobody can read 660,000 reviews. A model can label them, but its answer is only useful if it is affordable, checked, and every number traces back to a real review."),
   requirements=bullets(
     "Answer one product question: should next quarter's effort go to access, usability, playback, or billing and support?",
@@ -34,10 +34,10 @@ PROJECT = dict(slug="spotify-review-triage", title="Spotify Review Triage",
     "<b>Caching:</b> make the memo's evidence pack deterministic so the warm 100-review pilot reuses all results, makes zero model calls, and costs $0.00.",
   ) + "\n" + links(("Decision log", "https://github.com/chaekim96/spotify-review-triage/blob/main/DECISIONS.md"), ("Human evaluation", "https://github.com/chaekim96/spotify-review-triage/blob/main/evals/golden/golden_eval.md"), ("Resume demonstration", "https://github.com/chaekim96/spotify-review-triage/releases/tag/resume-demo-2026-10-20")),
   differently=paras("Get more human labels in early. Only 50 labels are mine, and the model matched me on topic 42% of the time, so the answer leans on the model and its checker. A larger run would increase coverage; it would not by itself resolve the labeling uncertainty."),
-  artifacts=links(("Open the dashboard", "https://spotify-review-triage.vercel.app"), ("Source and evidence on GitHub", "https://github.com/chaekim96/spotify-review-triage")) + "\n" + artifact_grid(("/assets/img/cases/spotify-alternatives.jpg", "The memo weighs every alternative: billing and support, playback, and access, each with its evidence and review links.")),
+  artifacts=links(("Open the dashboard", "https://spotify-review-triage.vercel.app"), ("Source and evidence on GitHub", "https://github.com/chaekim96/spotify-review-triage")) + "\n" + artifact_grid(("/assets/img/spotify-review-triage/spotify-alternatives.jpg", "The memo weighs every alternative: billing and support, playback, and access, each with its evidence and review links.")),
   live=("Spotify Review Triage", "https://spotify-review-triage.vercel.app", ""),
   card=r"""
-          <div class="stage" style="--g: var(--g-mobility)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>spotify-review-triage</span></div><img src="/assets/img/builds/spotify-review-triage-card.jpg" alt="The Spotify Review Triage dashboard: 660,622 reviews, $4.36 spend, and the recommendation" width="960" height="600" loading="lazy"></div></div><span class="pill">Spotify Review Triage <em>2026</em></span></div>
+          <div class="stage" style="--g: var(--g-mobility)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>spotify-review-triage</span></div><img src="/assets/img/spotify-review-triage/spotify-review-triage-card.jpg" alt="The Spotify Review Triage dashboard: 660,622 reviews, $4.36 spend, and the recommendation" width="960" height="600" loading="lazy"></div></div><span class="pill">Spotify Review Triage <em>2026</em></span></div>
           <h3 class="w-title">Turning a flood of app reviews into one clear product priority.</h3>
           <p class="meta">A multi-agent LLM pipeline over 660,622 reviews, with an independent checker and a live dashboard.</p>
 """,
