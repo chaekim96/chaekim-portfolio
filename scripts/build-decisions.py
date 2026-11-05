@@ -13,9 +13,8 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 sys.path.insert(0, str(HERE))
-from stamp_shared import CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, nb_headlines  # noqa: E402
+from stamp_shared import SITE_URL, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, nb_headlines  # noqa: E402
 
-SITE_URL = "https://chaekim-portfolio.vercel.app"
 
 AREAS = {
     "design": ("Design", "violet"),
@@ -362,7 +361,7 @@ def page():
         <li><b>4</b><span><strong>Write it down.</strong> So the next decision starts from this one.</span></li>
       </ol>
       <div class="legend" aria-hidden="true">
-        <span class="lg lg--pick"><i>✓</i>My pick</span><span class="lg"><i></i>Passed on</span><span class="tagc">Recommended</span>
+        <span class="legend__key legend__key--pick"><i>✓</i>My pick</span><span class="legend__key"><i></i>Passed on</span><span class="tagc">Recommended</span>
       </div>
     </section>
 

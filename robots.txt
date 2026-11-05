@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-Disallow: /logo-options
 Sitemap: https://chaekim-portfolio.vercel.app/sitemap.xml

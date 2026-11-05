@@ -9,11 +9,12 @@ import html
 import re
 from pathlib import Path
 
+from stamp_shared import SITE_URL
 from projects import BUILDS, COLLEGE, DOCUMENTS, FOLDERS, SITE_PAGES, WORK
 from writing_data import ESSAYS
 
 ROOT = Path(__file__).resolve().parent.parent
-SITE = "https://chaekim-portfolio.vercel.app"
+SITE = SITE_URL
 
 def _with_documents(slugs):
     return [x for s in slugs for x in (s, *DOCUMENTS.get(s, []))]

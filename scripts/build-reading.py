@@ -12,10 +12,9 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
-SITE_URL = "https://chaekim-portfolio.vercel.app"
 sys.path.insert(0, str(HERE))
 from writing_data import READING, ESSAYS, pub_label  # noqa: E402
-from stamp_shared import CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, nb_headlines  # noqa: E402
+from stamp_shared import SITE_URL, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, nb_headlines  # noqa: E402
 
 CSS = """
   .reading__lede { max-width: 60ch; color: var(--ink-2); line-height: 1.6; margin-top: 12px; }

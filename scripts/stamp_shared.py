@@ -1,7 +1,12 @@
 """Shared Stamp pieces: the calligraphy mark (used by the homepage and every case page)."""
+import hashlib
+import os
 import re
 
 from projects import field
+
+# The address the site is published at: canonical links, share images, llms.txt, the sitemap.
+SITE_URL = "https://chaekim-portfolio.vercel.app"
 
 # 김채운 brushed in black ink on a strip of hanji (Korean mulberry paper).
 # Glyphs are East Sea Dokdo (SIL OFL) outlines, defined once in INK_DEFS and reused,
@@ -21,12 +26,10 @@ MARK_FILE = field("mark")
 CARD_DIR = "assets/img/brand/cards"
 
 def _root():
-    import os
     return os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 def mark_file(slug):
     """Name of a build's mark file in assets/img/brand/ (without .svg), or None if it has no mark."""
-    import os
     name = MARK_FILE.get(slug, slug)
     return name if os.path.exists(os.path.join(_root(), "assets", "img", "brand", f"{name}.svg")) else None
 
@@ -38,7 +41,6 @@ def build_mark(slug, cls, size):
 
 def mark_color(slug):
     """A build's base (middle-stop) color from its mark, or None if it has no mark."""
-    import os
     name = mark_file(slug)
     if not name:
         return None
@@ -84,18 +86,15 @@ INK_DEFS = ('<svg width="0" height="0" style="position:absolute" aria-hidden="tr
 # ---------------------------------------------------------------------------
 # Case-page chrome (project pages in the Stamp look)
 # ---------------------------------------------------------------------------
-# One version for every stylesheet and script of the Stamp look, so each page ends up on the same files.
-# Bump it whenever assets/css/v-stamp.css, case-stamp.css, or assets/js/main.js, case-stamp.js or palette.js change.
-# build-home.py, build-cases.py and the other page builders all read it from here.
-STAMP_CSS_V = "35"
-CASE_CSS_V = STAMP_CSS_V
-JS_V = STAMP_CSS_V
-PALETTE_V = STAMP_CSS_V
-LIVE_V = "1"  # bump when assets/js/live.js changes
-GLASS_V = "3"  # bump when assets/js/liquid-glass.js changes
+# Each stylesheet and script is linked with a hash of its contents, so a changed file reaches browsers
+# on the next build and an unchanged one stays cached. Nothing to bump by hand.
+def asset(rel):
+    """URL of a file in assets/, e.g. asset("css/v-stamp.css")."""
+    digest = hashlib.sha256(open(os.path.join(_root(), "assets", rel), "rb").read()).hexdigest()[:8]
+    return f"/assets/{rel}?v={digest}"
 
 # Liquid glass on the controls, deferred so it runs once the page is parsed.
-GLASS_JS = f'  <script src="/assets/js/liquid-glass.js?v={GLASS_V}" defer></script>'
+GLASS_JS = f'  <script src="{asset("js/liquid-glass.js")}" defer></script>'
 
 # ---------------------------------------------------------------------------
 # Live previews: a "Try it live" link opens the real app in a dialog.
@@ -118,7 +117,7 @@ LIVE_DIALOG = """  <dialog class="live" id="live" aria-labelledby="live-title">
     <iframe id="live-frame" title="Live preview" allow="clipboard-write"></iframe>
   </dialog>"""
 
-LIVE_SCRIPT = f'  <script src="/assets/js/live.js?v={LIVE_V}" defer></script>'
+LIVE_SCRIPT = f'  <script src="{asset("js/live.js")}" defer></script>'
 
 # Runs in <head>, before first paint. "js" lets CSS hide .reveal blocks only when a script will show them again.
 # The seal stamps once per session: the class is set only on the first page of a visit.
@@ -134,8 +133,8 @@ CASE_HEAD_ASSETS = (
     THEME_COLOR + "\n"
     '  <meta name="twitter:card" content="summary_large_image">\n'
     '  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">\n'
-    f'  <link rel="stylesheet" href="/assets/css/v-stamp.css?v={STAMP_CSS_V}">\n'
-    f'  <link rel="stylesheet" href="/assets/css/case-stamp.css?v={CASE_CSS_V}">\n'
+    f'  <link rel="stylesheet" href="{asset("css/v-stamp.css")}">\n'
+    f'  <link rel="stylesheet" href="{asset("css/case-stamp.css")}">\n'
     + GLASS_JS + "\n"
     "  " + BOOT_SCRIPT
 )
@@ -180,10 +179,10 @@ CASE_FOOT = f"""  <footer class="foot wrap">
     </div>
   </footer>"""
 
-PALETTE_SCRIPT = f'  <script src="/assets/js/palette.js?v={PALETTE_V}" defer></script>'
+PALETTE_SCRIPT = f'  <script src="{asset("js/palette.js")}" defer></script>'
 
-CASE_SCRIPTS = f"""  <script src="/assets/js/main.js?v={JS_V}"></script>
-  <script src="/assets/js/case-stamp.js?v={CASE_CSS_V}"></script>
+CASE_SCRIPTS = f"""  <script src="{asset("js/main.js")}"></script>
+  <script src="{asset("js/case-stamp.js")}"></script>
 {PALETTE_SCRIPT}"""
 
 

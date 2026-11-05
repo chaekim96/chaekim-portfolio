@@ -18,12 +18,12 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
 from projects import FOLDERS, PROJECTS  # noqa: E402
-from stamp_shared import mark_file, CARD_DIR  # noqa: E402
+from stamp_shared import SITE_URL, mark_file, CARD_DIR  # noqa: E402
 
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 BRAND = os.path.join(ROOT, "assets", "img", "brand")
 OUT = os.path.join(ROOT, CARD_DIR)
-SITE = "chaekim-portfolio.vercel.app"
+SITE = SITE_URL.split("://", 1)[1]
 
 # Same text the Arcade page carries (build-home.py); Arcade is not one of the case pages.
 ARCADE = dict(slug="arcade", title="Arcade", label="Product",

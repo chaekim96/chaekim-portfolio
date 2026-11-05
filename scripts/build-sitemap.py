@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Refreshes <lastmod> in sitemap.xml from each page's last git change.
+"""Refreshes <lastmod> in sitemap.xml from each page's last git change, and points
+sitemap.xml and robots.txt at the site's address.
 
 Run before committing page edits:  python3 scripts/build-sitemap.py
 A page with uncommitted changes gets today's date.
@@ -9,8 +10,10 @@ import pathlib
 import re
 import subprocess
 
+from stamp_shared import SITE_URL
+
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-SITE = "https://chaekim-portfolio.vercel.app"
+SITE = SITE_URL
 SITEMAP = ROOT / "sitemap.xml"
 
 
@@ -19,7 +22,7 @@ def git(*args):
 
 
 def page_file(loc):
-    path = loc[len(SITE):].strip("/") if loc.startswith(SITE) else loc
+    path = re.sub(r"^https://[^/]+", "", loc).strip("/")
     return "index.html" if not path else f"{path}.html"
 
 
@@ -44,9 +47,11 @@ def refresh(m):
     new = lastmod(rel)
     changed += not old or new != old.group(1)
     rest = re.sub(r"<loc>[^<]+</loc>|<lastmod>[^<]+</lastmod>", "", entry)
+    loc = re.sub(r"^https://[^/]+", SITE, loc)
     return f"<url><loc>{loc}</loc><lastmod>{new}</lastmod>{rest}</url>"
 
 
 xml = re.sub(r"<url>(.*?)</url>", refresh, xml)
 SITEMAP.write_text(xml, encoding="utf-8")
+(ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
 print(f"sitemap.xml: {changed} lastmod dates updated")
