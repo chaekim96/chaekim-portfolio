@@ -69,7 +69,8 @@ ARCADE = """          <div class="break">
 # rather than an f-string, since the inline JS is brace-heavy.
 # ----------------------------------------------------------------------------
 
-from stamp_shared import STAMP_CSS_V as V, BOOT_SCRIPT, PALETTE_SCRIPT, nb_headlines, changelog_strip, INK_DEFS, seal, live_button, LIVE_DIALOG, LIVE_SCRIPT, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, THEME_COLOR, SIGNAL_CSS, GLASS_JS, build_mark, build_icons, mark_color, work_mark
+from stamp_shared import STAMP_CSS_V as V, BOOT_SCRIPT, PALETTE_SCRIPT, nb_headlines, changelog_strip, INK_DEFS, seal, live_button, LIVE_DIALOG, LIVE_SCRIPT, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, THEME_COLOR, GLASS_JS, build_mark, build_icons, mark_color, work_mark, LIVE_APPS
+from projects import COLLEGE, FEATURED, FOLDERS, PROJECTS, WORK, field
 
 
 def _snake():
@@ -107,7 +108,6 @@ STAMP = r"""<!DOCTYPE html>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
   <link rel="preload" as="image" href="/assets/img/thumbs/lucent-wide.jpg">
   <link rel="stylesheet" href="/assets/css/v-stamp.css?v=%%V%%">
-%%SIGNAL_CSS%%
 %%GLASS_JS%%
   %%BOOT%%
   <script type="application/ld+json">
@@ -160,30 +160,7 @@ STAMP = r"""<!DOCTYPE html>
     <section class="panel" id="builds" role="tabpanel" aria-labelledby="tab-builds">
       <h2 class="sub-h">Three to try first</h2>
       <div class="feat" data-play>
-        <article class="feat__card reveal">
-        <a class="w feat__w" href="/projects/ai-visibility-checker">
-          <div class="stage" style="--g: var(--g-lucent)"><div class="art"><div class="browser play"><div class="browser__bar"><i></i><i></i><i></i><span>ai visibility checker</span></div><img src="/assets/img/builds/ai-visibility-checker-card-2.jpg" alt="The AI Visibility Checker report for chaekim.vercel.app, ready for AI answers" width="960" height="600" loading="lazy"><img class="play__f" src="/assets/img/cases/avc-crawlers-2.jpg" alt="Which crawlers robots.txt lets in, split into search and live fetching versus model training." loading="lazy"><img class="play__f" src="/assets/img/builds/ai-visibility-checker-2.jpg" alt="The checker report for chaekim.vercel.app, ready for AI answers, with the fixes worth the most listed first" loading="lazy"></div></div><span class="pill">AI Visibility Checker <em>2026</em></span></div>
-          <h3 class="w-title">Knowing whether AI assistants can find, read and cite your site.</h3>
-          <p class="meta">Paste a URL: crawler rules, llms.txt, structured data, and text that's there without JavaScript.</p>
-        </a>
-        <div class="feat__strip">%%LIVE_AVC%%<a class="feat__case" href="/projects/ai-visibility-checker">Read the case study →</a></div>
-        </article>
-        <article class="feat__card reveal">
-        <a class="w feat__w" href="/projects/tally">
-          <div class="stage" style="--g: var(--g-tri)"><div class="art"><div class="browser play"><div class="browser__bar"><i></i><i></i><i></i><span>tally</span></div><img src="/assets/img/builds/tally.jpg" alt="Tally estimating a week of to-dos: an hour for the case memo, 30 minutes for bug reports, 3h45 in all" width="960" height="600" loading="lazy"><img class="play__f" src="/assets/img/cases/tally-day.jpg" alt="The Day view: a capacity meter, the Unscheduled tray, and blocks on the calendar." loading="lazy"><img class="play__f" src="/assets/img/cases/tally-summary.jpg" alt="The Summary: what's left, the finish-by time, and where the time goes." loading="lazy"></div></div><span class="pill">Tally <em>2026</em></span></div>
-          <h3 class="w-title">Knowing how long your to-do list will actually take.</h3>
-          <p class="meta">A note-taker where every line gets a Claude time estimate, totaled in a ledger column.</p>
-        </a>
-        <div class="feat__strip">%%LIVE_TALLY%%<a class="feat__case" href="/projects/tally">Read the case study →</a></div>
-        </article>
-        <article class="feat__card reveal">
-        <a class="w feat__w" href="/projects/typerace">
-          <div class="stage" style="--g: var(--g-lucent)"><div class="art"><div class="browser play"><div class="browser__bar"><i></i><i></i><i></i><span>typerace</span></div><img src="/assets/img/builds/typerace-2.jpg" alt="A TypeRace race in progress at 70 WPM, ink on near-white, the progress bar halfway across" width="960" height="600" loading="lazy"><img class="play__f" src="/assets/img/cases/typerace-results-2.jpg" alt="Results from a test race on my own server: finishing order, WPM, accuracy, and a WPM chart." loading="lazy"></div></div><span class="pill">TypeRace <em>2026</em></span></div>
-          <h3 class="w-title">Settling who types fastest, with one link and no sign-up.</h3>
-          <p class="meta">Live races for classmates: share a code, type the same story, first to finish wins.</p>
-        </a>
-        <div class="feat__strip">%%LIVE_TYPERACE%%<a class="feat__case" href="/projects/typerace">Read the case study →</a></div>
-        </article>
+%%CARDS_FEATURED%%
       </div>
 
       <h2 class="sub-h">Browse by folder</h2>
@@ -219,157 +196,31 @@ STAMP = r"""<!DOCTYPE html>
       <section class="tray" id="products" aria-label="Products">
         <div class="tray__h"><h3>Products <span>· %%COUNT_PRODUCTS%%</span></h3><a class="tray__close" href="#builds" data-fold-close>Close ✕</a></div>
         <div class="grid grid--shelf">
-        <div class="live-card reveal">
-        <a class="w" href="/projects/palette-generator">
-          <div class="stage" style="--g: var(--g-mirror)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>palette</span></div><img src="/assets/img/builds/palette.jpg" alt="Palette Generator turning 'coffee subscription, warm and earthy' into five roles of color and a font pairing" width="960" height="600" loading="lazy"></div></div><span class="pill">Palette Generator <em>2026</em></span></div>
-          <h3 class="w-title">Brand colors and fonts for founders who aren't designers.</h3>
-          <p class="meta">Palettes that pass accessibility checks, font pairings, and what real startups use right now.</p>
-        </a>
-        %%LIVE_PALETTE_GENERATOR%%
-        </div>
-        <div class="live-card reveal">
-        <a class="w" href="/projects/networking-tracker">
-          <div class="stage" style="--g: var(--g-ey)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>networking tracker</span></div><img src="/assets/img/builds/networking-tracker.jpg" alt="Networking Tracker filtered to high-priority contacts, with demo data" width="960" height="600" loading="lazy"></div></div><span class="pill">Networking Tracker <em>2026</em></span></div>
-          <h3 class="w-title">Keeping track of every coffee chat, without sharing a thing.</h3>
-          <p class="meta">A contact tracker where Postgres row-level security keeps each person's data their own.</p>
-        </a>
-        %%LIVE_NETWORKING_TRACKER%%
-        </div>
-        <div class="live-card reveal">
-        <a class="w" href="/projects/web-anatomy">
-          <div class="stage" style="--g: var(--g-arcade)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>webanatomy</span></div><img src="/assets/img/builds/web-anatomy.jpg" alt="The Anatomy of a Website home page: the title, the line SEO and GEO start with the website, and the start of the journey of a request" width="960" height="600" loading="lazy"></div></div><span class="pill">Anatomy of a Website <em>2026</em></span></div>
-          <h3 class="w-title">Showing how a website works, from the DNS lookup to the AI answer.</h3>
-          <p class="meta">An illustrated encyclopedia on one idea: SEO and GEO start with the website.</p>
-        </a>
-        %%LIVE_WEB_ANATOMY%%
-        </div>
-        <a class="w reveal" href="/projects/voiceprompter">
-          <div class="stage" style="--g: var(--g-mobility)"><div class="art fill"><img src="/assets/img/builds/voiceprompter.jpg" alt="VoicePrompter listening at word 108 of 139, with the prompter highlighting the spoken word" width="800" height="600" loading="lazy"></div><span class="pill">VoicePrompter <em>macOS</em></span></div>
-          <h3 class="w-title">Reading your notes on a call without anyone seeing them.</h3>
-          <p class="meta">A teleprompter that scrolls as you speak and stays out of Zoom, Meet, and screenshots.</p>
-        </a>
-        <a class="w reveal" href="/projects/parallel-prospect-brief">
-          <div class="stage" style="--g: var(--g-tri)"><div class="art fill"><img src="/assets/img/builds/parallel-prospect-brief-card.jpg" alt="An illustrative prospect brief for an invented company: what they do, products, agent signal, and best-fit API, with sources" width="800" height="600" loading="lazy"></div><span class="pill">Parallel Prospect Brief <em>CLI</em></span></div>
-          <h3 class="w-title">Walking into a first sales call with every claim sourced.</h3>
-          <p class="meta">A CLI that turns a company name into a cited one-page sales brief, built on Parallel's Task API.</p>
-        </a>
-        <a class="w reveal" href="/projects/product-blueprint">
-          <div class="stage" style="--g: var(--g-mirror)"><div class="art fill"><img src="/assets/img/builds/product-blueprint-card.jpg" alt="The build loop: six stages from Discover to Ship, each with the gate it has to pass" width="800" height="600" loading="lazy"></div><span class="pill">Product Blueprint <em>playbook</em></span></div>
-          <h3 class="w-title">One way to build every product, with a test at each step.</h3>
-          <p class="meta">A six-stage build loop, a design system, and 22 prompts that each come with their own evals.</p>
-        </a>
+%%CARDS_PRODUCTS%%
         </div>
       </section>
       <section class="tray" id="mods" aria-label="Claude Code mods">
         <div class="tray__h"><h3>Claude Code mods <span>· %%COUNT_MODS%%</span></h3><a class="tray__close" href="#builds" data-fold-close>Close ✕</a></div>
         <div class="grid grid--shelf">
-        <a class="w reveal" href="/projects/smartmodel">
-          <div class="stage" style="--g: var(--g-arcade)"><div class="art"><div class="term" aria-hidden="true"><p>SmartModel rates this medium-effort.</p><p>Which model should run it?</p><ul><li class="on">Sonnet (recommended)</li><li>Haiku</li><li>Opus</li><li>Fable</li></ul></div></div><span class="pill">SmartModel <em>Claude Code</em></span></div>
-          <h3 class="w-title">Matching each prompt to the right model, so easy work costs less.</h3>
-          <p class="meta">A hook that scores how hard a prompt is and recommends Haiku, Sonnet, Opus, or Fable. Runs in ask, auto, or block mode.</p>
-        </a>
-        <a class="w reveal" href="/projects/token-fuel">
-          <div class="stage" style="--g: var(--g-tri)"><div class="art fill"><img src="/assets/img/builds/token-fuel.jpg" alt="Token-Fuel in the menu bar at 67%, and its floating window: Good, 668.5k of 1M left, about 46 turns" width="800" height="600" loading="lazy"></div><span class="pill">Token-Fuel <em>macOS</em></span></div>
-          <h3 class="w-title">Seeing how much context is left before a session runs out.</h3>
-          <p class="meta">A floating gauge on the Claude window and a CLI status line for Claude Code and Codex.</p>
-        </a>
-        <a class="w reveal" href="/projects/code-improver">
-          <div class="stage" style="--g: var(--g-ey)"><div class="art fill"><img src="/assets/img/builds/code-improver.jpg" alt="Code Improver reviewing build-cases.py: 14 findings ordered by severity, starting with a template page that was publicly served" width="800" height="600" loading="lazy"></div><span class="pill">Code Improver <em>subagent</em></span></div>
-          <h3 class="w-title">A second reviewer that reads every file I touch.</h3>
-          <p class="meta">A custom Claude Code subagent that suggests readability, performance, and best-practice fixes.</p>
-        </a>
-        <a class="w reveal" href="/projects/task-progress">
-          <div class="stage" style="--g: var(--g-arcade)"><div class="art fill"><img src="/assets/img/builds/task-progress.jpg" alt="The /task-progress pane at 3 of 6: three steps done, one in progress, two pending" width="800" height="600" loading="lazy"></div><span class="pill">task-progress <em>Claude Code</em></span></div>
-          <h3 class="w-title">Seeing how far along a task is, right above the prompt.</h3>
-          <p class="meta">A mod that turns Claude's own task checklist into a calm progress band, with time left, a stuck warning and a context bar.</p>
-        </a>
+%%CARDS_MODS%%
         </div>
       </section>
       <section class="tray" id="ai-ml" aria-label="AI and ML coursework">
         <div class="tray__h"><h3>AI and ML coursework <span>· %%COUNT_AI_ML%%</span></h3><a class="tray__close" href="#builds" data-fold-close>Close ✕</a></div>
         <div class="grid grid--shelf">
-        <div class="live-card reveal">
-        <a class="w" href="/projects/spotify-review-triage">
-          <div class="stage" style="--g: var(--g-mobility)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>spotify-review-triage</span></div><img src="/assets/img/builds/spotify-review-triage-card.jpg" alt="The Spotify Review Triage dashboard: 660,622 reviews, $4.36 spend, and the recommendation" width="960" height="600" loading="lazy"></div></div><span class="pill">Spotify Review Triage <em>2026</em></span></div>
-          <h3 class="w-title">Turning a flood of app reviews into one clear product priority.</h3>
-          <p class="meta">A multi-agent LLM pipeline over 660,622 reviews, with an independent checker and a live dashboard.</p>
-        </a>
-        %%LIVE_SPOTIFY%%
-        </div>
-        <a class="w reveal" href="/projects/review-labeler">
-          <div class="stage" style="--g: var(--g-mirror)"><div class="art fill"><img src="/assets/img/builds/review-labeler-card.jpg" alt="The labeling sheet: one review labeled billing, praise, severity 1, with the guide's rules beside it" width="800" height="600" loading="lazy"></div><span class="pill">Review Labeler <em>in progress</em></span></div>
-          <h3 class="w-title">Finding out when a small fine-tuned model is good enough.</h3>
-          <p class="meta">Testing fine-tuned vs. prompted models on app reviews. So far: a rewritten label guide and a labeling sheet.</p>
-        </a>
-        <a class="w reveal" href="/projects/personal-wiki">
-          <div class="stage" style="--g: var(--g-arcade)"><div class="art fill"><img src="/assets/img/builds/personal-wiki.jpg" alt="Obsidian graph of the wiki's linked notes" width="900" height="646" loading="lazy"></div><span class="pill">Personal Wiki <em>2026</em></span></div>
-          <h3 class="w-title">Asking my own notes questions, with no internet.</h3>
-          <p class="meta">Local Gemma via Ollama, plus hybrid retrieval over a course wiki. Runs fully offline.</p>
-        </a>
-        <a class="w reveal" href="/projects/pacman-dqn">
-          <div class="stage" style="--g: var(--g-arcade)"><div class="art fill fill--contain fill--pixel"><img src="/assets/img/builds/pacman-dqn.gif" alt="The trained agent playing Ms. Pac-Man" width="160" height="210" loading="lazy"></div><span class="pill">Pac-Man DQN <em>2026</em></span></div>
-          <h3 class="w-title">Teaching an agent to play Ms. Pac-Man by trial and error.</h3>
-          <p class="meta">A DQN agent that raised its mean evaluation score from 492 to 680.</p>
-        </a>
-        <a class="w reveal" href="/projects/custom-llm">
-          <div class="stage"><div class="art fill fill--top"><img src="/assets/img/builds/custom-llm.jpg" alt="Terminal chat with the tiny model and its odd replies" width="768" height="474" loading="lazy"></div><span class="pill">Custom LLM <em>2026</em></span></div>
-          <h3 class="w-title">Seeing how language models learn by training a tiny one.</h3>
-          <p class="meta">A nanoGPT fork trained on a laptop CPU with my own teaching corpus, scored on 48 test prompts.</p>
-        </a>
+%%CARDS_AI_ML%%
         </div>
       </section>
       <section class="tray" id="design" aria-label="Design &amp; brand">
         <div class="tray__h"><h3>Design &amp; brand <span>· %%COUNT_DESIGN%%</span></h3><a class="tray__close" href="#builds" data-fold-close>Close ✕</a></div>
         <div class="grid grid--shelf">
-        <a class="w reveal" href="/projects/siri-reimagined">
-          <div class="stage" style="--g: var(--g-lucent)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>siri, reimagined</span></div><img src="/assets/img/builds/siri-reimagined-card.jpg" alt="Siri, Reimagined: the headline The last app you'll install, above three iPhones with Liquid Glass screens" width="960" height="600" loading="lazy"></div></div><span class="pill">Siri, Reimagined <em>concept</em></span></div>
-          <p class="meta">A design concept: an iPhone that ships with five apps, and a Siri that builds the rest.</p>
-        </a>
-        <a class="w reveal" href="/projects/portfolio">
-          <div class="stage" style="--g: var(--g-lucent)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>chaekim.vercel.app</span></div><img src="/assets/img/builds/portfolio-card.jpg" alt="This site's homepage" width="960" height="600" loading="lazy"></div></div><span class="pill">This portfolio <em>2026</em></span></div>
-          <p class="meta">How this site got built: the decisions, the backlog, and what's next.</p>
-        </a>
-        <a class="w reveal" href="/projects/personal-brand">
-          <div class="stage" style="--g: var(--g-plain)"><div class="art"><div class="brandart">%%BRANDSEAL%%<span class="brandart__sw"><i style="background:#C8372D"></i><i style="background:#FF5A1F"></i><i style="background:#B07A4F"></i><i style="background:#0066CC"></i><i style="background:#123B2E"></i></span></div></div><span class="pill">Personal brand <em>2026</em></span></div>
-          <p class="meta">How I chose a brand: five directions, two built finalists, and why Stamp won.</p>
-        </a>
-        <a class="w reveal" href="/projects/build-marks">
-          <div class="stage" style="--g: var(--g-plain)"><div class="art"><div style="display:grid;grid-template-columns:repeat(3,52px);gap:10px"><img src="/assets/img/brand/tally.svg" alt="" width="52" height="52" loading="lazy" style="display:block;width:52px;height:52px;border-radius:12px"><img src="/assets/img/brand/token-fuel.svg" alt="" width="52" height="52" loading="lazy" style="display:block;width:52px;height:52px;border-radius:12px"><img src="/assets/img/brand/typerace.svg" alt="" width="52" height="52" loading="lazy" style="display:block;width:52px;height:52px;border-radius:12px"><img src="/assets/img/brand/smartmodel.svg" alt="" width="52" height="52" loading="lazy" style="display:block;width:52px;height:52px;border-radius:12px"><img src="/assets/img/brand/spotify-review-triage.svg" alt="" width="52" height="52" loading="lazy" style="display:block;width:52px;height:52px;border-radius:12px"><img src="/assets/img/brand/ai-visibility-checker.svg" alt="" width="52" height="52" loading="lazy" style="display:block;width:52px;height:52px;border-radius:12px"></div></div><span class="pill">Build marks <em>2026</em></span></div>
-          <p class="meta">Giving sixteen builds one family of logos.</p>
-        </a>
+%%CARDS_DESIGN%%
         </div>
       </section>
       <section class="tray" id="archive" aria-label="Fun &amp; archive">
         <div class="tray__h"><h3>Fun &amp; archive <span>· %%COUNT_ARCHIVE%%</span></h3><a class="tray__close" href="#builds" data-fold-close>Close ✕</a></div>
         <div class="grid grid--shelf">
-        <a class="w reveal" href="/arcade">
-          <div class="stage" style="--g: var(--g-arcade)"><div class="art">%%SNAKE%%</div><span class="pill">Arcade <em>play</em></span></div>
-          <p class="meta">Snake and Galaga, rebuilt from memory, plus a generative lo-fi radio.</p>
-        </a>
-        <a class="w reveal" href="/projects/home-gif">
-          <div class="stage"><div class="art fill fill--pixel"><img src="/assets/img/projects/home.gif" alt="Pixel-art house at dusk" width="1067" height="600" loading="lazy"></div><span class="pill">Home <em>2020</em></span></div>
-          <p class="meta">A pixel-art GIF, made during COVID.</p>
-        </a>
-        <a class="w reveal" href="/projects/yin-yang">
-          <div class="stage"><div class="art fill"><img src="/assets/img/projects/yin-yang.gif" alt="Animated yin yang over a framed painting" width="1067" height="600" loading="lazy"></div><span class="pill">Yin Yang <em>2020</em></span></div>
-          <p class="meta">An animated illustration.</p>
-        </a>
-        <div class="w reveal">
-          <div class="stage" style="--g: var(--g-mobility)"><div class="art"><div class="glass"><b>3D</b><span>printing</span></div></div><span class="pill">3D prints</span></div>
-          <p class="meta">Keychains, organizers, and containers.</p>
-        </div>
-        <a class="w reveal" href="/assets/pdf/I308-Lime-Scooter-Poster.pdf" target="_blank" rel="noopener">
-          <div class="stage"><div class="art fill"><img src="/assets/img/projects/fake-news.jpg" alt="A phone showing a news app, held over a scooter" width="489" height="601" loading="lazy"></div><span class="pill">Poster ↗ <em>2020</em></span></div>
-          <p class="meta">A media literacy poster.</p>
-        </a>
-        <a class="w reveal" href="/assets/pdf/WMCS-Weight-Machine-Cross-Sync.pdf" target="_blank" rel="noopener">
-          <div class="stage" style="--g: var(--g-ey)"><div class="art"><div class="glass"><b>NFC</b><span>gym sets, synced</span></div></div><span class="pill">WMCS ↗ <em>2019</em></span></div>
-          <p class="meta">Weight Machine Cross Sync: log gym sets over NFC.</p>
-        </a>
-        <a class="w reveal" href="/assets/pdf/AAV-Auto-Adjusting-Volume.pdf" target="_blank" rel="noopener">
-          <div class="stage" style="--g: var(--g-tri)"><div class="art"><div class="glass"><b>dB</b><span>auto volume</span></div></div><span class="pill">AAV ↗ <em>2019</em></span></div>
-          <p class="meta">Auto-Adjusting Volume: noise-aware volume.</p>
-        </a>
+%%CARDS_ARCHIVE%%
         </div>
       </section>
       </div>
@@ -405,74 +256,12 @@ STAMP = r"""<!DOCTYPE html>
     <section class="panel" id="work" role="tabpanel" aria-labelledby="tab-work">
       <h2 class="visually-hidden">Work</h2>
       <div class="grid">
-        <a class="w w--wide reveal" href="/projects/lucent">
-          <div class="stage" style="--g: var(--g-lucent)">
-            <div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>trylucent.ai</span></div><img src="/assets/img/thumbs/lucent-wide.jpg" alt="Lucent's homepage: The AI Search Console" width="1440" height="810"></div></div>
-            <span class="pill">Lucent <em>2025–26</em></span>
-          </div>
-          <h3 class="w-title">Making small businesses visible in AI search.</h3>
-          <p class="meta">AI search visibility platform with GEO and SEO advisory. <b>First paying pilot, 5 LOIs in 30 days.</b></p>
-        </a>
-
-        <a class="w reveal" href="/projects/ey">
-          <div class="stage" style="--g: var(--g-ey)">
-            <div class="art"><div class="glass"><b>Cloud</b><span>migration program</span></div></div>
-            <span class="pill">EY <em>2021–24</em></span>
-          </div>
-          <h3 class="w-title">Giving leaders one clear view of a sprawling cloud migration.</h3>
-          <p class="meta">Risk, OKRs, and the first executive QBR for a $200M+ cloud migration. <b>−30% executive escalations.</b></p>
-        </a>
-
-        <a class="w reveal" href="/projects/tritooling">
-          <div class="stage" style="--g: var(--g-tri)">
-            <div class="art"><div class="glass"><b>Factory</b><span>operations</span></div></div>
-            <span class="pill">Tritooling <em>2024–25</em></span>
-          </div>
-          <h3 class="w-title">Fixing late deliveries and defects at a precision manufacturer.</h3>
-          <p class="meta">A year running operations at a precision manufacturer. <b>−30% defects.</b></p>
-        </a>
-
-        <a class="w reveal" href="/projects/mirrorme">
-          <div class="stage" style="--g: var(--g-mirror)">
-            <div class="art"><div class="fan"><img src="/assets/img/projects/mirrorme/card-category.png" alt="MirrorMe card: Openness to experience, pink" width="714" height="1000" loading="lazy"><img src="/assets/img/projects/mirrorme/card-alt.png" alt="MirrorMe card: Openness to experience, orange" width="733" height="1000" loading="lazy"></div></div>
-            <span class="pill">MirrorMe <em>2024–25</em></span>
-          </div>
-          <h3 class="w-title">Icebreakers that go deeper without getting awkward.</h3>
-          <p class="meta">An icebreaker card game for hosts. <b>200+ playtests, 150+ pre-orders.</b></p>
-        </a>
-
-        <a class="w reveal" href="/projects/mobility">
-          <div class="stage" style="--g: var(--g-mobility)">
-            <div class="art"><div class="glass glass--status"><b>Stealth</b><span><i aria-hidden="true"></i>in progress</span></div></div>
-            <span class="pill">Mobility <em>now</em></span>
-          </div>
-          <h3 class="w-title">Mobility aids people aren't embarrassed to use.</h3>
-          <p class="meta">Design-forward mobility products that keep older adults independent longer.</p>
-        </a>
+%%CARDS_WORK%%
       </div>
 
       <h2 class="sub-h">Earlier, at Indiana University (2019 to 2021)</h2>
       <div class="grid grid--5">
-        <a class="w reveal" href="/projects/iu-study-assistant">
-          <div class="stage"><div class="art fill"><img src="/assets/img/projects/iusa/home.jpg" alt="IU Study Assistant home screen" width="1400" height="720" loading="lazy"></div><span class="pill">Study Assistant</span></div>
-          <p class="meta">One place to study, not nine tabs.</p>
-        </a>
-        <a class="w reveal" href="/projects/alab">
-          <div class="stage" style="--g: linear-gradient(160deg,#eaf6fb,#d9eef7)"><div class="art fill fill--contain"><img src="/assets/img/projects/alab/cover-intro.png" alt="aLab app login screen" width="418" height="823" loading="lazy"></div><span class="pill">aLab</span></div>
-          <p class="meta">A dog bowl that rises to meet a recovering pup.</p>
-        </a>
-        <a class="w reveal" href="/projects/luc">
-          <div class="stage"><div class="art fill"><img src="/assets/img/projects/luc/mockup.jpg" alt="Pencil schematic of LUC's luggage wheels" width="1400" height="1208" loading="lazy"></div><span class="pill">LUC</span></div>
-          <p class="meta">Luggage that weighs itself before the check-in counter does.</p>
-        </a>
-        <a class="w reveal" href="/projects/ptm">
-          <div class="stage"><div class="art fill"><img src="/assets/img/projects/ptm/mockup.jpg" alt="Pencil schematic of the PTM sleep mask" width="1400" height="614" loading="lazy"></div><span class="pill">PTM</span></div>
-          <p class="meta">A sleep mask that notices your fever before you do.</p>
-        </a>
-        <a class="w reveal" href="/projects/coursera">
-          <div class="stage"><div class="art fill fill--contain"><img src="/assets/img/projects/coursera-cover.jpg" alt="Cover of the Coursera PM dossier" width="464" height="600" loading="lazy"></div><span class="pill">Coursera</span></div>
-          <p class="meta">Making online learning transferable to real careers.</p>
-        </a>
+%%CARDS_COLLEGE%%
       </div>
     </section>
 
@@ -545,7 +334,7 @@ STAMP = r"""<!DOCTYPE html>
         <details class="ncard ncard--color">
           <summary><p class="ncard__k"><i aria-hidden="true"></i>Color</p>
           <h3>Color follows the content, so the page stays neutral</h3><span class="ncard__more" aria-hidden="true">Read more</span></summary>
-          <p class="notes__cap">Light, then dark. Tokens from <code>v-stamp.css</code> and <code>signal-green.css</code>.</p>
+          <p class="notes__cap">Light, then dark. Tokens from <code>v-stamp.css</code>.</p>
           <ul class="swl">
             <li><span class="sw"><i style="background:#0d1b2e"></i><i style="background:#f5f5f7"></i></span><span class="swl__t"><b>ink</b> text</span><span class="swl__h"><code>#0d1b2e</code> / <code>#f5f5f7</code></span></li>
             <li><span class="sw"><i style="background:#44566e"></i><i style="background:#a1a1a6"></i></span><span class="swl__t"><b>ink-2</b> secondary text</span><span class="swl__h"><code>#44566e</code> / <code>#a1a1a6</code></span></li>
@@ -843,17 +632,41 @@ def _writing_reading():
 
 
 # Builds folders: count each tray's cards so the numbers on the folders never go stale.
-def _folder_counts(page):
-    for m in re.finditer(r'<section class="tray" id="([a-z-]+)"[\s\S]*?\n      </section>', page):
-        n = len(re.findall(r'^        <(?:a|div) class="(?:w|live-card) reveal"', m.group(0), re.M))
-        page = page.replace("%%COUNT_" + m.group(1).upper().replace("-", "_") + "%%", str(n))
-    assert "%%COUNT_" not in page, "a folder button has no matching tray"
-    return page
+def _card_open(p, cls):
+    href = p.get("card_href", f"/projects/{p['slug']}")
+    return f'<a class="{cls}" href="{href}"{p.get("card_attrs", "")}>'
 
-STAMP = _folder_counts(STAMP)
+def _card(slug):
+    """A home card. Live apps wrap the link so the "Try it live" button can sit beside it."""
+    p = PROJECTS[slug]
+    body = p["card"].strip("\n")
+    if slug in FEATURED:
+        return (f'        <article class="feat__card reveal">\n        {_card_open(p, "w feat__w")}\n{body}\n        </a>\n'
+                f'        <div class="feat__strip">{live_button(slug)}<a class="feat__case" href="/projects/{slug}">Read the case study →</a></div>\n'
+                '        </article>')
+    if slug in LIVE_APPS:
+        return (f'        <div class="live-card reveal">\n        {_card_open(p, "w")}\n{body}\n        </a>\n'
+                f'        {live_button(slug)}\n        </div>')
+    if p.get("card_href", "") is None:
+        return f'        <div class="w reveal">\n{body}\n        </div>'
+    wide = " w--wide" if p.get("card_wide") else ""
+    return f'        {_card_open(p, f"w{wide} reveal")}\n{body}\n        </a>'
+
+def _cards(page):
+    page = page.replace("%%CARDS_FEATURED%%", "\n".join(_card(s) for s in FEATURED))
+    for fid, slugs in FOLDERS.items():
+        shelf = [s for s in slugs if s not in FEATURED]
+        key = fid.upper().replace("-", "_")
+        page = (page.replace(f"%%CARDS_{key}%%", "\n".join(_card(s) for s in shelf))
+                    .replace(f"%%COUNT_{key}%%", str(len(shelf))))
+    return (page.replace("%%CARDS_WORK%%", "\n\n".join(_card(s) for s in WORK))
+                .replace("%%CARDS_COLLEGE%%", "\n".join(_card(s) for s in COLLEGE)))
+
+
+STAMP = _cards(STAMP)
 STAMP = (STAMP.replace("%%WRITING_ESSAYS%%", _writing_essays())
               .replace("%%WRITING_READING%%", _writing_reading())
-              .replace("%%SIGNAL_CSS%%", SIGNAL_CSS).replace("%%GLASS_JS%%", GLASS_JS)
+              .replace("%%GLASS_JS%%", GLASS_JS)
               .replace("%%V%%", V)
               .replace("%%INK%%", INK_DEFS)
               .replace("%%BRANDSEAL%%", seal("cal--card", label=False))
@@ -864,14 +677,7 @@ STAMP = (STAMP.replace("%%WRITING_ESSAYS%%", _writing_essays())
               .replace("%%BOOT%%", BOOT_SCRIPT).replace("%%PALETTE_SCRIPT%%", PALETTE_SCRIPT)
               .replace("%%THEME_COLOR%%", THEME_COLOR)
               .replace("%%LIVE_DIALOG%%", LIVE_DIALOG)
-              .replace("%%LIVE_SCRIPT%%", LIVE_SCRIPT)
-              .replace("%%LIVE_AVC%%", live_button("ai-visibility-checker"))
-              .replace("%%LIVE_TALLY%%", live_button("tally"))
-              .replace("%%LIVE_PALETTE_GENERATOR%%", live_button("palette-generator"))
-              .replace("%%LIVE_TYPERACE%%", live_button("typerace"))
-              .replace("%%LIVE_NETWORKING_TRACKER%%", live_button("networking-tracker"))
-              .replace("%%LIVE_SPOTIFY%%", live_button("spotify-review-triage"))
-              .replace("%%LIVE_WEB_ANATOMY%%", live_button("web-anatomy")))
+              .replace("%%LIVE_SCRIPT%%", LIVE_SCRIPT))
 assert "%%" not in STAMP, "unreplaced token"
 
 # Each card's pill leads with the build's color-seal mark, found from the page the card links to.
@@ -885,7 +691,7 @@ STAMP = re.sub(r'(href="/(?:projects/)?([a-z0-9-]+)"[^>]*>\s*<div class="stage"(
 
 # Each build's card washes with its mark's base color (the .tint rule in v-stamp.css mixes it into paper or night).
 # Dark-tile builds keep a dark or neutral stage instead, matching their dark tiles.
-STAGE_KEEPS = {"arcade": "arcade", "web-anatomy": "arcade", "palette-generator": "plain"}
+STAGE_KEEPS = field("stage")
 
 def _wash_stage(m):
     slug = m.group(2)

@@ -2,26 +2,38 @@
    Variant: stamp — quiet, gallery-like, artifact-first.
    The site's only design. Poppins at regular weight,
    one signature element (김채운 in Korean calligraphy on hanji), work shown as real artifacts.
+   One sky-blue accent on a sky-blue wash, with liquid glass on the controls. Light: the sky carries
+   down the whole page. Dark (the toggle): a night background with the same accent and darker glass.
+   Green means one thing: live (--live). Links, back arrows, the active tab and focus rings are sky.
+   Contrast (WCAG): --accent-ink #064e8c is 8.5:1 on white, 7.8:1 on the #eef7fe wash and 5.5:1 on #a8d7f7;
+   --accent-on white on the --accent-fill #0b63b8 tab is 6.0:1. Dark: --accent #6bbcff is 9.6:1 on #0b0b0c
+   and the dark ink #04111f on that fill is 9.3:1.
    ------------------------------------------------------------------ */
 
 :root {
-  --bg: #ffffff;
-  --bg-grad: linear-gradient(180deg, #bfdcf7 0%, #dcecfb 22%, #f2f8fe 48%, #ffffff 72%);  /* sky: blue overhead, fading to white */
-  --cloud: rgba(255, 255, 255, .92);
-  --ink: #161618;
-  --ink-2: #6e6e73;          /* 5.0:1 on white */
-  --line: rgba(0, 0, 0, 0.08);
-  --fill: rgba(0, 0, 0, 0.05);
-  --fill-2: rgba(0, 0, 0, 0.035);
+  --bg: #eef7fe;
+  --bg-grad: linear-gradient(180deg, #74bff0 0%, #a8d7f7 260px, #d6ecfc 640px, #eef7fe 1100px);  /* sky: blue overhead, fading into the wash */
+  --cloud: rgba(255, 255, 255, .95);
+  --ink: #0d1b2e;
+  --ink-2: #44566e;
+  --line: rgba(20, 70, 130, .12);
+  --fill: rgba(20, 90, 170, .08);
+  --fill-2: rgba(20, 90, 170, .05);
   --pill: #ffffff;
   --seal: #c63d2f;
-  --paper: #fbf6ee;
-  --ok: #30b158;
-  --focus: #0b63b8;          /* focus ring: deep sky, 6.0:1 on white */
-  --glass: rgba(255, 255, 255, 0.62);
-  --glass-line: rgba(255, 255, 255, 0.9);
-  --shadow: 0 1px 2px rgba(0, 0, 0, .04), 0 8px 24px rgba(0, 0, 0, .06);
-  --shadow-lg: 0 2px 6px rgba(0, 0, 0, .05), 0 24px 56px rgba(0, 0, 0, .12);
+  --paper: #f4faff;
+  --accent: #0b63b8; --accent-fill: #0b63b8; --accent-on: #ffffff; --accent-ink: #064e8c; --glow: 40, 140, 230; --glow-a: .16;
+  --live: #30d158; --live-glow: 48, 209, 88;
+  --ok: var(--live);
+  --focus: var(--accent);
+  --glass: rgba(255, 255, 255, .55);
+  --glass-line: rgba(255, 255, 255, .95);
+  --shadow: 0 1px 2px rgba(20, 70, 130, .06), 0 8px 24px rgba(20, 70, 130, .08);
+  --shadow-lg: 0 2px 6px rgba(20, 70, 130, .08), 0 24px 56px rgba(20, 70, 130, .16);
+  /* liquid glass: tint, rims, edge highlight, shadow */
+  --lg-tint: rgba(255, 255, 255, .62); --lg-rim: rgba(255, 255, 255, .95); --lg-rim-2: rgba(255, 255, 255, .4);
+  --lg-edge: rgba(255, 255, 255, .95); --lg-edge-2: rgba(255, 255, 255, .5);
+  --lg-shadow: 0 10px 30px -10px rgba(20, 70, 130, .35), 0 2px 6px rgba(20, 70, 130, .12);
   --ease: cubic-bezier(0.32, 0.72, 0, 1);
   --wrap: 1200px;
   --gutter: clamp(20px, 4.5vw, 64px);
@@ -38,18 +50,23 @@
   /* a build's card: its mark's base color (--bc, set per card) mixed into paper by these amounts */
   --wash-base: #ffffff; --wash-a: 11%; --wash-b: 22%;
   /* design-notes cards: one hue each, with an accent for the label and a darker secondary text for AA on the tint */
-  --n-ink2: #54545a;
-  --n-violet: linear-gradient(150deg, #f2eeff 0%, #e8e3fb 100%); --n-violet-a: #5b45c8;
-  --n-sky:    linear-gradient(150deg, #edf6ff 0%, #dfecfb 100%); --n-sky-a: #1458a6;
-  --n-mint:   linear-gradient(150deg, #edf9f3 0%, #dcf0e6 100%); --n-mint-a: #17724a;
-  --n-peach:  linear-gradient(150deg, #fff4ea 0%, #fde5d3 100%); --n-peach-a: #a04810;
+  --n-ink2: #44566e;
+  --n-violet: linear-gradient(150deg, #f2eeff 0%, #e8e3fb 100%); --n-violet-a: var(--accent-ink);
+  --n-sky:    linear-gradient(150deg, #edf6ff 0%, #dfecfb 100%); --n-sky-a: var(--accent-ink);
+  --n-mint:   linear-gradient(150deg, #edf9f3 0%, #dcf0e6 100%); --n-mint-a: var(--accent-ink);
+  --n-peach:  linear-gradient(150deg, #fff4ea 0%, #fde5d3 100%); --n-peach-a: var(--accent-ink);
   /* Builds folders: one soft tint each */
   --t-products: #f6dcc4; --t-mods: #d3d9f3; --t-ai-ml: #cfeadf; --t-design: #f3dde2; --t-archive: #e8e3d6;
   --flap: rgba(255, 255, 255, .5); --flap-hi: rgba(255, 255, 255, .88); --flap-ink: #2b2b2e;
 }
 
+:root:not([data-theme="dark"]) { color-scheme: light; }
+
 :root[data-theme="dark"] {
-  --focus: #6bbcff;
+  --accent: #6bbcff; --accent-fill: #6bbcff; --accent-on: #04111f; --accent-ink: #6bbcff; --glow: 107, 188, 255; --glow-a: .14;
+  --lg-tint: rgba(36, 38, 46, .55); --lg-rim: rgba(255, 255, 255, .2); --lg-rim-2: rgba(255, 255, 255, .06);
+  --lg-edge: rgba(255, 255, 255, .4); --lg-edge-2: rgba(255, 255, 255, .14);
+  --lg-shadow: 0 10px 30px -10px rgba(0, 0, 0, .7), 0 2px 6px rgba(0, 0, 0, .4);
   --bg: #0b0b0c;
   --bg-grad: linear-gradient(180deg, #0f1a2e 0%, #0d1424 30%, #0b0e15 55%, #0b0b0c 75%);  /* night sky: deep navy fading to near-black */
   --cloud: rgba(170, 190, 230, .10);
@@ -72,10 +89,10 @@
   --g-plain: linear-gradient(160deg, #161618 0%, #1c1c1f 100%);
   --wash-base: #131315; --wash-a: 15%; --wash-b: 8%;
   --n-ink2: #b3b3ba;
-  --n-violet: linear-gradient(150deg, #1f1b38 0%, #181630 100%); --n-violet-a: #b9adff;
-  --n-sky:    linear-gradient(150deg, #14202f 0%, #101a28 100%); --n-sky-a: #86bfff;
-  --n-mint:   linear-gradient(150deg, #112219 0%, #0f1d17 100%); --n-mint-a: #74d6a4;
-  --n-peach:  linear-gradient(150deg, #2c1b12 0%, #24160f 100%); --n-peach-a: #ffab72;
+  --n-violet: linear-gradient(150deg, #1f1b38 0%, #181630 100%);
+  --n-sky:    linear-gradient(150deg, #14202f 0%, #101a28 100%);
+  --n-mint:   linear-gradient(150deg, #112219 0%, #0f1d17 100%);
+  --n-peach:  linear-gradient(150deg, #2c1b12 0%, #24160f 100%);
   --t-products: #4a3526; --t-mods: #2b3150; --t-ai-ml: #1f3a30; --t-design: #432a31; --t-archive: #38332a;
   --flap: rgba(30, 30, 34, .55); --flap-hi: rgba(255, 255, 255, .12); --flap-ink: #e9e9ec;
 }
@@ -97,7 +114,7 @@ a { color: inherit; text-decoration: none; }
 p, h1, h2, h3, ul, ol, figure, dl, dd { margin: 0; }
 ul, ol { padding: 0; list-style: none; }
 button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
-::selection { background: #ffe9a8; color: #161618; }
+::selection { background: var(--accent-fill); color: var(--accent-on); }
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 8px; }
 
 .wrap { width: min(100% - 2 * var(--gutter), var(--wrap)); margin-inline: auto; }
@@ -124,6 +141,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 :root[data-theme="dark"] .aurora { opacity: 1; }
 
 /* ---------- top: 김채운 in calligraphy, ink on hanji ---------- */
+/* Safari rasterizes the ink filter at 1x, which smudges the small name stamp; the plain glyphs stay crisp */
+@supports (font: -apple-system-body) and (-webkit-appearance: none) {
+  .cal .ink { filter: none; }
+}
 .top { display: flex; align-items: center; justify-content: space-between; padding-top: 28px; }
 .seal { display: inline-block; line-height: 0; border-radius: 4px; }
 .cal { display: block; width: 38px; height: auto; transform: rotate(-1.5deg);
@@ -156,24 +177,29 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .thesis, .cred { color: var(--ink-2); font-size: 16px; line-height: 1.6; }
 .thesis { margin-top: 10px; min-height: 1.6em; transition: opacity .25s var(--ease); }
 .thesis.is-swapping { opacity: 0; }
-.cred a { color: var(--ink); font-weight: 500; background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; transition: background-size .25s var(--ease); }
+.cred a { color: var(--accent-ink); font-weight: 500; background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; transition: background-size .25s var(--ease); }
 .cred a:hover, .cred a:focus-visible { background-size: 100% 1px; }
 .status { display: inline-flex; align-items: baseline; gap: 7px; color: var(--ink); }
 .status i { flex: none; transform: translateY(-1px); }
-.status i { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 0 rgba(48, 177, 88, .45); }
+.status i { width: 8px; height: 8px; border-radius: 50%; background: var(--live); box-shadow: 0 0 0 0 rgba(48, 177, 88, .45); }
+/* Green means live: a soft ring on the live dots, about 2s. Only these two. */
 @media (prefers-reduced-motion: no-preference) {
-  .status i { animation: ping 2.4s ease-out infinite; }
-  @keyframes ping { 0% { box-shadow: 0 0 0 0 rgba(48, 177, 88, .45); } 70%, 100% { box-shadow: 0 0 0 7px rgba(48, 177, 88, 0); } }
+  .live-btn i, .status i { animation: live-ring 2s ease-out infinite; }
+  @keyframes live-ring {
+    0% { box-shadow: 0 0 0 0 rgba(var(--live-glow), .55); }
+    70%, 100% { box-shadow: 0 0 0 7px rgba(var(--live-glow), 0); }
+  }
 }
 
 /* ---------- tabs ---------- */
-.tabs { display: flex; gap: 4px; margin-top: 26px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+/* the tab bar floats as a glass capsule that stays in view */
+.tabs { position: sticky; top: 14px; z-index: 30; display: flex; gap: 2px; width: fit-content; max-width: 100%; margin-top: 26px; padding: 5px; border-radius: 999px; }
 .tab {
-  padding: 6px 14px 5px; border-radius: 999px; font-size: 15px; font-weight: 400; color: var(--ink-2);
+  padding: 8px 18px 7px; border-radius: 999px; font-size: 15px; font-weight: 400; color: var(--ink-2);
   transition: background .2s var(--ease), color .2s var(--ease);
 }
-.tab:hover { color: var(--ink); background: var(--fill-2); }
-.tab[aria-selected="true"] { color: var(--ink); background: var(--fill); font-weight: 500; }
+.tab:hover { color: var(--ink); background: var(--fill); }
+.tab[aria-selected="true"] { color: var(--accent-on); background: var(--accent-fill); font-weight: 500; }
 
 .panel { padding-top: 28px; }
 .panel[hidden] { display: none; }
@@ -221,6 +247,7 @@ a.w:focus-visible .stage { outline: 3px solid var(--focus); outline-offset: 3px;
 .pill:has(.pill__name) { max-width: calc(100% - 24px); }
 .pill__name { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
 .pill em { font-style: normal; font-weight: 400; color: var(--ink-2); }
+.stage .pill em { color: inherit; opacity: .7; }
 .pill em::before { content: "• "; }
 
 .meta { margin-top: 12px; font-size: 14px; line-height: 1.5; color: var(--ink-2); max-width: 60ch; }
@@ -255,7 +282,7 @@ a.w:focus-visible .stage { outline: 3px solid var(--focus); outline-offset: 3px;
 .grid--3 .glass b { font-size: clamp(26px, 3vw, 34px); }
 .glass--status b { font-size: clamp(24px, 2.6vw, 30px); font-weight: 500; letter-spacing: -0.02em; }
 .glass--status span { display: inline-flex; align-items: center; gap: 7px; }
-.glass--status span i { width: 7px; height: 7px; border-radius: 50%; background: var(--ok); }
+.glass--status span i { width: 7px; height: 7px; border-radius: 50%; background: var(--live); box-shadow: 0 0 0 3px rgba(var(--live-glow), .22); }
 
 /* printed cards, fanned */
 .fan { position: relative; width: 52%; height: 78%; }
@@ -283,8 +310,7 @@ a.w:hover .swatches i:nth-child(3) { flex: 1.8; }
 .toc { position: sticky; top: 28px; align-self: start; display: grid; gap: 2px; font-size: 14px; }
 .toc a { color: var(--ink-2); padding: 4px 0; transition: color .2s; }
 .toc a:hover, .toc a.is-active { color: var(--ink); }
-.toc a.is-active { color: #0a66d6; }
-:root[data-theme="dark"] .toc a.is-active { color: #4ea1ff; }
+.toc a.is-active { color: var(--accent-ink); }
 @media (max-width: 760px) { .about { grid-template-columns: 1fr; } .toc { display: none; } }
 .about__body { max-width: 640px; }
 .about__body section { scroll-margin-top: 28px; }
@@ -340,7 +366,8 @@ a.w:hover .swatches i:nth-child(3) { flex: 1.8; }
 .changelog ul { display: grid; gap: 1px; margin: 4px 0 6px; }
 .changelog li { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 8px; }
 .changelog time { font-variant-numeric: tabular-nums; }
-.foot__small a { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.changelog a { text-decoration-color: var(--accent-ink); }
+.foot__small a { text-decoration: underline; text-decoration-color: var(--accent-ink); text-underline-offset: 3px; text-decoration-thickness: 1px; }
 
 /* ---------- entrance ---------- */
 /* One system for every reveal: blocks rise 12px and fade in as they scroll into view, staggered by main.js.
@@ -405,7 +432,7 @@ html { overflow-x: clip; }
   padding: 7px 12px; border-radius: 999px; background: var(--pill); color: var(--ink); font-size: 13px; font-weight: 500;
   box-shadow: var(--shadow); transition: transform .2s var(--ease), box-shadow .2s var(--ease); }
 .live-btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-lg); }
-.live-btn i, .live__dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 3px rgba(48, 177, 88, .2); flex: none; }
+.live-btn i, .live__dot { width: 7px; height: 7px; border-radius: 50%; background: var(--live); box-shadow: 0 0 0 3px rgba(var(--live-glow), .22); flex: none; }
 .live { width: min(1200px, calc(100vw - 32px)); height: min(820px, calc(100dvh - 32px)); max-width: none; max-height: none;
   padding: 0; border: 0; border-radius: 18px; background: var(--pill); color: var(--ink); box-shadow: var(--shadow-lg); overflow: hidden; }
 .live[open] { display: flex; flex-direction: column; }
@@ -479,7 +506,7 @@ html.live-open { overflow: hidden; }
 
 /* ---------- "Let's chat" near the top ---------- */
 .hello { margin-top: 10px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; color: var(--ink-2); }
-.hello a { color: var(--ink); font-weight: 500; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.hello a { color: var(--accent-ink); font-weight: 500; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 .hello__copy { font-size: 12.5px; padding: 3px 11px; border-radius: 999px; background: var(--pill); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); transition: box-shadow .2s var(--ease); }
 .hello__copy:hover { box-shadow: inset 0 0 0 1px var(--line), var(--shadow); }
 
@@ -493,16 +520,16 @@ details.ncard[open] .ncard__more { display: none; }
 details.ncard > summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 6px; border-radius: 12px; }
 details.ncard[open] > summary { margin-bottom: 6px; }
 
-/* ---------- one accent: every section shares the sky blue (signal-green.css sets the values) ---------- */
-:root { --sec-work: var(--n-violet-a); --sec-builds: var(--n-mint-a); --sec-writing: var(--n-sky-a); --sec-about: var(--n-peach-a); }
-body.sec-work { --sec: var(--sec-work); --sec-bg: var(--n-violet); }
-body.sec-builds { --sec: var(--sec-builds); --sec-bg: var(--n-mint); }
-body.sec-writing { --sec: var(--sec-writing); --sec-bg: var(--n-sky); }
-body.sec-about { --sec: var(--sec-about); --sec-bg: var(--n-peach); }
+/* ---------- one accent: every section shares the sky blue ---------- */
+body[class*="sec-"] { --sec: var(--accent-ink); }
+body.sec-work { --sec-bg: var(--n-violet); }
+body.sec-builds { --sec-bg: var(--n-mint); }
+body.sec-writing { --sec-bg: var(--n-sky); }
+body.sec-about { --sec-bg: var(--n-peach); }
 body[class*="sec-"] .case-hero__back { color: var(--sec); }
 body[class*="sec-"] .eyebrow { display: flex; width: fit-content; align-items: center; gap: 8px; color: var(--sec); }
 body[class*="sec-"] .eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--sec); flex: none; }
-body[class*="sec-"] .toc a.is-active, :root[data-theme="dark"] body[class*="sec-"] .toc a.is-active { color: var(--sec); }
+body[class*="sec-"] .toc a.is-active { color: var(--sec); }
 
 
 
@@ -513,7 +540,7 @@ body[class*="sec-"] .toc a.is-active, :root[data-theme="dark"] body[class*="sec-
 .feat__card .browser { width: 84%; bottom: -10%; }
 .feat__card .w-title { font-size: clamp(18px, 1.6vw, 21px); }
 .feat__strip { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); }
-.feat__strip .live-btn { position: static; }
+.feat__strip .live-btn { position: relative; top: auto; right: auto; }
 .feat__case { font-size: 14px; color: var(--ink-2); transition: color .3s var(--ease); }
 .feat__case:hover { color: var(--ink); }
 @media (max-width: 900px) { .feat { grid-template-columns: minmax(0, 1fr); gap: 36px; } }
@@ -560,8 +587,7 @@ body[class*="sec-"] .toc a.is-active, :root[data-theme="dark"] body[class*="sec-
 /* ---------- live hue: a soft glow that follows the cursor and shifts color across the screen ---------- */
 body::before {
   content: ""; position: fixed; inset: 0; z-index: -2; pointer-events: none;
-  background: radial-gradient(42vmax 42vmax at var(--mx, 50%) var(--my, 18%),
-    hsl(var(--hue, 210) 85% 80% / var(--glow-a, .26)), transparent 65%);
+  background: radial-gradient(42vmax 42vmax at var(--mx, 50%) var(--my, 18%), rgba(var(--glow), var(--glow-a)), transparent 65%);
   transition: opacity .6s ease;
 }
 :root[data-theme="dark"] body::before { --glow-a: .14; }
@@ -673,3 +699,22 @@ body::before {
   @keyframes palette-fade { from { opacity: 0; } }
 }
 html:has(.palette[open]) { overflow: hidden; }
+
+/* ---------- liquid glass, set by liquid-glass.js: frosted everywhere, refraction in Chromium ---------- */
+.lg, .live-btn.lg:hover {
+  background: var(--lg-tint);
+  backdrop-filter: blur(14px) saturate(1.6); -webkit-backdrop-filter: blur(14px) saturate(1.6);
+  box-shadow: var(--lg-shadow), inset 0 1px 0 var(--lg-rim), inset 0 -1px 0 var(--lg-rim-2),
+              inset 1px 0 0 var(--lg-rim-2), inset -1px 0 0 var(--lg-rim-2);
+}
+.lg { isolation: isolate; }
+.lg::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; padding: 1.2px;
+  background: linear-gradient(135deg, var(--lg-edge), transparent 38%, transparent 62%, var(--lg-edge-2));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+}
+.lg-on .lg.lg-live, .lg-on .live-btn.lg-live:hover { backdrop-filter: var(--lg-filter) blur(2px) saturate(1.7) brightness(1.05); -webkit-backdrop-filter: none; }
+
+/* links keep the sky accent on hover */
+main a:not(.w):not(.live-btn):not([class*="notes"]):hover { color: var(--accent-ink); }

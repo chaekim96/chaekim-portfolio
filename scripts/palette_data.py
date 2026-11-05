@@ -1,7 +1,7 @@
 """Data for the command palette (assets/js/palette.js), written to assets/data/palette.json.
 
 Built from the same lists the pages are built from, so a new build, case, essay or page appears
-without touching the palette: case studies come from build-cases.py's lists, essays from
+without touching the palette: case studies come from scripts/projects/, essays from
 writing_data.py, and any other page in projects/ is found by its <title>. Nothing here is typed twice.
 """
 import html

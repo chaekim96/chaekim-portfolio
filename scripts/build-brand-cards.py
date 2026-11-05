@@ -7,7 +7,6 @@ Needs Google Chrome (headless) and network access for the Poppins and JetBrains 
 Pass one or more slugs to render only those.
 """
 import html
-import importlib.util
 import os
 import re
 import subprocess
@@ -18,6 +17,7 @@ import time
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
+from projects import FOLDERS, PROJECTS  # noqa: E402
 from stamp_shared import mark_file, CARD_DIR  # noqa: E402
 
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
@@ -34,16 +34,13 @@ BAR = {
     "web-anatomy": ["#7c5cff", "#ff6a00", "#30d158"],
     "palette-generator": ["#0a84ff", "#30d158", "#ffd60a", "#ff6a00", "#ff3b30"],
 }
-LABELS = {"PRODUCTS": "Product", "MODS": "Claude Code mod", "COURSEWORK": "AI/ML coursework"}
+LABELS = {"products": "Product", "mods": "Claude Code mod", "ai-ml": "AI/ML coursework"}
 
 
 def load_cases():
-    spec = importlib.util.spec_from_file_location("build_cases", os.path.join(HERE, "build-cases.py"))
-    mod = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(mod)
     items = [ARCADE]
     for group, label in LABELS.items():
-        for c in getattr(mod, group):
+        for c in (PROJECTS[s] for s in FOLDERS[group]):
             items.append(dict(slug=c["slug"], title=c["title"], label=label, desc=c["desc"],
                               url=f"{SITE}/projects/{c['slug']}"))
     return items
