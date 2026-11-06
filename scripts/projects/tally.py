@@ -7,7 +7,7 @@ PROJECT = dict(slug="tally", title="Tally",
   tldr="Tally turns a to-do list into a plan. You write lines like a normal note. Claude reads the whole note and gives each line a most-likely time, a range, and a category. The ledger adds it up, and the Day view lets you drag items onto a calendar.",
   role="Product owner and builder", team="Solo, built with Claude Code", timeline="September to October 2026",
   cover=cover("/assets/img/tally/tally.jpg", "Tally estimating a week of to-dos: an hour for the case memo, 30 minutes for bug reports, 3h45 in all"),
-  problem=paras("A to-do list says what to do, not how long it will take, so a day can be overbooked before it starts. I liked Timely, a note-taker that sizes each line, and wanted my own version: a different design, with the estimates in a column on the right."),
+  problem=paras("A to-do list says what to do, not how long it will take, so a day can be overbooked before it starts. I'd already built <a href=\"/projects/timely\">Timely</a>, a note-taker that sizes each line, in Google AI Studio, and wanted a second version: a different design, with the estimates in a column on the right."),
   did=bullets(
     "Rebuilt the idea from scratch in React, with an estimate column beside every line.",
     "Sent each line to Claude with the whole note as context. It returns the most likely minutes, an 80% range, a confidence level, and one of seven categories.",

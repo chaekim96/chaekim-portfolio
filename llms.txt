@@ -10,6 +10,7 @@ Products and tools, most with a live demo.
 
 - [AI Visibility Checker](https://chaekim.vercel.app/projects/ai-visibility-checker): A free checker that reads a page the way a crawler does and reports whether search engines and AI assistants can find, read and cite it.
 - [Tally](https://chaekim.vercel.app/projects/tally): A note-taker where every line gets a Claude time estimate, totaled in a ledger so a to-do list becomes an honest picture of the day.
+- [Timely](https://chaekim.vercel.app/projects/timely): A note-taker I built in Google AI Studio, where Gemini estimates and categorizes every line so a to-do list adds up to a real amount of time.
 - [Palette Generator](https://chaekim.vercel.app/projects/palette-generator): A palette and font-pairing generator that takes a non-designer from a one-line description to a brand look they can ship.
 - [TypeRace](https://chaekim.vercel.app/projects/typerace): A live browser typing race for classmates: share a four-letter code, type the same short story, first to finish wins.
 - [Networking Tracker](https://chaekim.vercel.app/projects/networking-tracker): A private contact tracker where Postgres row-level security keeps each person's data their own.
