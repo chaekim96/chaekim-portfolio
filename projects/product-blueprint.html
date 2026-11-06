@@ -77,7 +77,7 @@
       <p class="eyebrow">method · solo build · 2026</p>
       <h1 class="case-hero__title">One way to build every product, with a test at each step.</h1>
       <p class="tldr">I build fast with Lovable, Google AI Studio and Claude, and my prompts and design choices lived in chat history. The blueprint writes the method down: six stages from Discover to Ship, each ending with a pass/fail gate, a design system pulled from my own products, a template to fill in per product, and 22 prompts that each carry their own evals. Two scripts check the prompt database and score AI features against a locked test set.</p>
-      <p class="meta-line"><b>Role</b> Product owner and builder · <b>Team</b> Solo, built with Claude Code · <b>Timeline</b> October 2026</p>
+      <p class="meta-line"><b>Role</b> Product owner and builder · <b>Team</b> Solo, built with Claude Code · <b>Timeline</b> October to November 2026</p>
     </section>
 
     <section class="wrap case-cover-wrap">
@@ -105,10 +105,11 @@
           <li>Set pass targets by risk (85%, 90% or 98%) and a test-set format that always includes empty input, long input, other languages and prompt-injection attempts.</li>
           <li>Wrote a checker that fails if a prompt is missing evals, a version or an input. On its first run it caught a gap in one of my own prompts.</li>
           <li>Filled in the template for Timely as a worked example, with a 25-case test set for its time estimator.</li>
+          <li>Fixed the three launch blockers it found: moved the Gemini call to a server function, put the prompt's rules in a system instruction with the user's text marked as data, and renamed the page to Timely.</li>
         </ul>
         <h2 id="results">Results</h2>
-        <div class="results"><div><b>6</b><span>stages, each with a gate</span></div><div><b>22</b><span>versioned prompts with evals</span></div><div><b>25</b><span>test cases for Timely's estimator</span></div><div><b>3</b><span>launch blockers found in Timely</span></div></div>
-        <p>Filling in the template for Timely found three things to fix before launch: the Gemini key is readable in the browser, user text goes into the prompt unprotected, and the page title doesn't match the product name. Every prompt is still marked draft. One moves to tested only after it passes its evals on three real uses.</p>
+        <div class="results"><div><b>6</b><span>stages, each with a gate</span></div><div><b>22</b><span>versioned prompts with evals</span></div><div><b>25</b><span>test cases for Timely's estimator</span></div><div><b>3 of 3</b><span>Timely launch blockers fixed</span></div></div>
+        <p>Filling in the template for Timely found three things to fix before launch: the Gemini key was readable in the browser, user text went into the prompt unprotected, and the page title didn't match the product name. All three are fixed. A test build with a key set used to put that key in the browser code, and now holds neither the key nor any Gemini code. Durations over 24 hours are now rejected, so an injected "99999 minutes" can't be stored. The 25 test cases haven't been run against the live model yet, and every prompt is still marked draft. One moves to tested only after it passes its evals on three real uses.</p>
         <h2 id="forks">Calls I made, and what I passed on</h2>
         <div class="forks">
         <article class="fork">
@@ -122,7 +123,7 @@
         </div>
         <p><a href="/projects/decisions">See every option I weighed, across all my projects</a></p>
         <h2 id="differently">What I'd do differently</h2>
-        <p>Start from one real product, not the whole method. Filling in the template for Timely taught me more than writing it did, and it found the launch blockers. I'd fill it in for the next product first and write each stage as I reach it.</p>
+        <p>Start from one real product, not the whole method. Filling in the template for Timely taught me more than writing it did: it found the launch blockers, and the gates told me when they were fixed. I'd fill it in for the next product first and write each stage as I reach it.</p>
         <h2 id="artifacts">Artifacts</h2>
         <p>The repo is private. Below, one prompt from the database, as it appears in the repo.</p>
         <div class="artifacts"><figure><img src="/assets/img/product-blueprint/pb-prompt.jpg" alt="The copy review prompt: when to use it, the prompt, and the evals its output has to pass." loading="lazy"><figcaption>The copy review prompt: when to use it, the prompt, and the evals its output has to pass.</figcaption></figure></div>
