@@ -33,11 +33,32 @@ def mark_file(slug):
     name = MARK_FILE.get(slug, slug)
     return name if os.path.exists(os.path.join(_root(), "assets", "img", "brand", f"{name}.svg")) else None
 
-def build_mark(slug, cls, size):
+def _variant(kind, name, suffix=""):
+    """URL of a mark's derived file (dark/, live/, fav16/) written by build-mark-variants.py and build-fav16.py, or None."""
+    base = re.sub(r"-\d+$", "", name)
+    ext = "png" if kind == "fav16" else "svg"
+    rel = f"assets/img/brand/{kind}/{base}{suffix}.{ext}"
+    return f"/{rel}" if os.path.exists(os.path.join(_root(), rel)) else None
+
+def spark_ready(slug):
+    """True when the build's mark has an animated variant (the white detail moves while the page asks for it)."""
+    name = mark_file(slug)
+    return bool(name and _variant("live", name))
+
+def build_mark(slug, cls, size, themed=False):
+    """The mark as an <img>. themed=True adds the dark-theme tile as a second <img>; CSS shows one of the two
+    (see .mk-lit and .mk-night in v-stamp.css). The case-hero mark also carries its animated files for mark-spark.js."""
     name = mark_file(slug)
     if not name:
         return ""
-    return f'<img class="{cls}" src="/assets/img/brand/{name}.svg" alt="" width="{size}" height="{size}">'
+    light = f"/assets/img/brand/{name}.svg"
+    dark = _variant("dark", name) if themed else None
+    if not dark:
+        return f'<img class="{cls}" src="{light}" alt="" width="{size}" height="{size}">'
+    def img(mode, src, spark):
+        extra = f' data-spark="{spark}"' if spark and "brand__spark" in cls or spark and cls == "case-hero__mark" else ""
+        return f'<img class="{cls} mk-{mode}" src="{src}" alt="" width="{size}" height="{size}"{extra}>'
+    return (img("lit", light, _variant("live", name)) + img("night", dark, _variant("live", name, "-dark")))
 
 def mark_color(slug):
     """A build's base (middle-stop) color from its mark, or None if it has no mark."""
@@ -62,7 +83,11 @@ def build_icons(slug, site_url):
     name = mark_file(slug)
     if not name:
         return None
+    # the hand-hinted 16px version sits beside the SVG: browsers use it for 16px tabs, where a scaled-down mark turns soft
+    px16 = _variant("fav16", name)
+    px16_link = f'  <link rel="icon" href="{px16}" type="image/png" sizes="16x16">\n' if px16 else ""
     icons = (f'  <link rel="icon" href="/assets/img/brand/{name}.svg" type="image/svg+xml">\n'
+             + px16_link +
              f'  <link rel="apple-touch-icon" href="/{CARD_DIR}/{slug}-touch.png">')
     return icons, f"{site_url}/{CARD_DIR}/{slug}-og.png"
 
@@ -118,6 +143,9 @@ LIVE_DIALOG = """  <dialog class="live" id="live" aria-labelledby="live-title">
   </dialog>"""
 
 LIVE_SCRIPT = f'  <script src="{asset("js/live.js")}" defer></script>'
+
+# Moves the case-hero mark's white detail while the "Try it live" link or the mark is hovered or focused.
+SPARK_SCRIPT = f'  <script src="{asset("js/mark-spark.js")}" defer></script>'
 
 # Runs in <head>, before first paint. "js" lets CSS hide .reveal blocks only when a script will show them again.
 # The seal stamps once per session: the class is set only on the first page of a visit.

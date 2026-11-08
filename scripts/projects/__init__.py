@@ -28,7 +28,7 @@ FOLDERS = {
                  "web-anatomy", "voiceprompter", "parallel-prospect-brief", "product-blueprint"],
     "mods": ["smartmodel", "token-fuel", "code-improver", "task-progress"],
     "ai-ml": ["spotify-review-triage", "review-labeler", "personal-wiki", "pacman-dqn", "custom-llm"],
-    "design": ["siri-reimagined", "portfolio", "personal-brand", "build-marks"],
+    "design": ["siri-reimagined", "portfolio", "personal-brand", "build-marks", "brand"],
     "archive": ["arcade", "home-gif", "yin-yang", "3d-prints", "lime-poster", "wmcs", "aav"],
 }
 BUILDS = FOLDERS["products"] + FOLDERS["mods"] + FOLDERS["ai-ml"]

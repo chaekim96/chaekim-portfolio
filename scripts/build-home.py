@@ -169,7 +169,7 @@ assert "%%" not in STAMP, "unreplaced token"
 # Each card's pill leads with the build's color-seal mark, found from the page the card links to.
 # The name gets its own span so it can truncate on narrow cards instead of being clipped.
 def _pill_mark(m):
-    mark = build_mark(m.group(2), "pill__mark", 18) or work_mark(m.group(2), "pill__mark", 18)
+    mark = build_mark(m.group(2), "pill__mark", 18, themed=True) or work_mark(m.group(2), "pill__mark", 18)
     return m.group(1) + (f'{mark}<span class="pill__name">{m.group(3)}</span>' if mark else m.group(3))
 
 STAMP = re.sub(r'(href="/(?:projects/)?([a-z0-9-]+)"[^>]*>\s*<div class="stage"(?:(?!</a>).)*?<span class="pill">)([^<]*?)(?=\s*<em>|</span>)',
@@ -230,7 +230,7 @@ ARCADE_PAGE = f"""<!DOCTYPE html>
 {ARCADE_SWITCHER}
     <section class="case-hero wrap">
       <a class="case-hero__back" href="/#builds">← All builds</a>
-      {build_mark("arcade", "case-hero__mark", 56)}
+      {build_mark("arcade", "case-hero__mark", 56, themed=True)}
       <p class="eyebrow">side quest · arcade</p>
       <h1 class="case-hero__title">Arcade</h1>
       <p class="tldr">Snake and Galaga, rebuilt from memory, plus a generative lo-fi radio.</p>

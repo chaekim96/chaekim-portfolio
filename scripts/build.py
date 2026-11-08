@@ -4,6 +4,8 @@
 Usage:  python3 scripts/build.py           (write everything; commit the result)
         python3 scripts/build.py --check   (write nothing; fail if a page is out of date or unfinished)
 
+Also runs check-mark-colors.py (every mark's gradient and contrast) and fails if a mark breaks it.
+
 Not part of this: build-brand-cards.py, build-mod-covers.py and make-og.sh, which render images in
 headless Chrome, and build-resume.py. Run those by hand when a mark, cover or the resume changes.
 """
@@ -14,9 +16,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 
+# build-brand.py writes /brand from the marks; it and build-mark-variants.py and build-fav16.py derive the dark, animated, line and 16px files from the shipped marks;
+# build-cases.py links those files, so they run before it.
 # build-cases.py lists every page in the command palette and build-llms.py reads every page's description,
 # so they run after the scripts that write pages. build-sitemap.py dates what the others changed, so it runs last.
-STEPS = ["pages", "decisions", "writing", "reading", "portfolio", "home", "cases", "llms", "sitemap"]
+STEPS = ["pages", "decisions", "writing", "reading", "portfolio", "home", "mark-variants", "fav16", "brand", "cases", "llms", "sitemap"]
 
 # Built from git history, so they move on their own: a stale copy is not a stale page.
 VOLATILE = [re.compile(r'(<div class="changelog".*?<ul>).*?(</ul>)', re.S), re.compile(r"(<lastmod>)[^<]*(</lastmod>)")]
@@ -27,12 +31,20 @@ def run_all():
         result = subprocess.run([sys.executable, str(ROOT / "scripts" / f"build-{step}.py")], stdout=subprocess.DEVNULL)
         if result.returncode:
             sys.exit(f"build-{step}.py failed")
+    check_marks()
+
+
+def check_marks():
+    """Every shipped mark keeps the tile recipe and its contrast; the table is in the output when one fails."""
+    result = subprocess.run([sys.executable, str(ROOT / "scripts" / "check-mark-colors.py")], stdout=subprocess.PIPE, universal_newlines=True)
+    if result.returncode:
+        sys.exit(result.stdout + "check-mark-colors.py failed")
 
 
 def generated():
     """Every file the build can write, read straight from the working tree."""
     files = [*ROOT.glob("*.html"), *(ROOT / "projects").glob("*.html"), ROOT / "llms.txt", ROOT / "sitemap.xml", ROOT / "robots.txt",
-             ROOT / "assets" / "data" / "palette.json"]
+             ROOT / "assets" / "data" / "palette.json", *(ROOT / "assets" / "img" / "brand").glob("*/*.svg")]
     return {p: p.read_text(encoding="utf-8") for p in files}
 
 
