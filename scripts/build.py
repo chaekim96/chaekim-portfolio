@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parent.parent
 # build-cases.py links those files, so they run before it.
 # build-cases.py lists every page in the command palette and build-llms.py reads every page's description,
 # so they run after the scripts that write pages. build-sitemap.py dates what the others changed, so it runs last.
-STEPS = ["pages", "decisions", "writing", "reading", "portfolio", "home", "mark-variants", "fav16", "brand", "cases", "llms", "sitemap"]
+STEPS = ["pages", "decisions", "writing", "reading", "portfolio", "home", "mark-variants", "fav16", "brand", "playbook", "cases", "llms", "sitemap"]
 
 # Built from git history, so they move on their own: a stale copy is not a stale page.
 VOLATILE = [re.compile(r'(<div class="changelog".*?<ul>).*?(</ul>)', re.S), re.compile(r"(<lastmod>)[^<]*(</lastmod>)")]
