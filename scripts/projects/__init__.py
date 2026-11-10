@@ -24,7 +24,7 @@ FEATURED = ["ai-visibility-checker", "tally", "typerace"]
 # Folders on the Builds tab, in order. The first three are the builds with case studies,
 # and this order also runs the project switcher, the command palette and llms.txt.
 FOLDERS = {
-    "products": ["ai-visibility-checker", "tally", "timely", "palette-generator", "typerace", "networking-tracker",
+    "products": ["relay", "ai-visibility-checker", "tally", "timely", "palette-generator", "typerace", "networking-tracker",
                  "web-anatomy", "voiceprompter", "parallel-prospect-brief", "product-blueprint"],
     "mods": ["smartmodel", "token-fuel", "code-improver", "task-progress"],
     "ai-ml": ["spotify-review-triage", "review-labeler", "personal-wiki", "pacman-dqn", "custom-llm"],

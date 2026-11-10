@@ -1,0 +1,259 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Product requirements · Relay</title><meta name="description" content="The target learner, problem, scope, requirements, and success measures for Relay."><link rel="stylesheet" href="/demos/relay/review.css"></head><body><a class="skip" href="#main">Skip to content</a><header><strong>↗ relay.</strong><nav aria-label="Review materials"><a href="/demos/relay/walkthrough.html">Screen walkthrough</a><a href="/demos/relay/prd.html">Product requirements</a><a href="/demos/relay/index.html">Try the prototype ↗</a></nav></header><main id="main" class="wrap prose"><p class="eyebrow" style="margin-top:40px">Product requirements · Discovery draft</p><p><a href="/demos/relay/PRD.md">Download the Markdown source ↗</a> · <a href="/demos/relay/walkthrough.html">See the experience screen by screen ↗</a></p><h1>Relay: turn a YouTube playlist into a skill you can show</h1>
+<p><strong>Status:</strong> Discovery hypothesis and interactive concept, not a validated business or production service<br><strong>Owner:</strong> Chae Kim<br><strong>Updated:</strong> October 30, 2026<br><strong>Initial use case:</strong> Build and iterate on a responsive landing page<br><strong>Promise:</strong> “Bring a tutorial playlist. Leave with something you made.”</p>
+<h2>1. Who this is for</h2>
+<p><strong>Primary audience:</strong> Early-career professionals and career switchers who already use YouTube coding or design tutorials, have a specific project they want to make, and can reserve 2–6 hours per week. They understand basic computer workflows but struggle to turn guided examples into independent work. Recruit by behavior and intent, not age or job title.</p>
+<p><strong>Launch segment:</strong> A beginner who has saved a web-design tutorial and wants to publish a first landing page for a portfolio, side project, or small business within one to three weeks. A finite, inspectable output makes tasks, feedback, and learning outcomes easier to evaluate than a general “learn anything” promise.</p>
+<p><strong>Illustrative persona, not an interviewed user:</strong> Jamie is a marketing associate exploring product roles. Jamie can follow an HTML/CSS tutorial but loses momentum when the example differs from the project they want to build. Jamie has four hours each week and wants a page they can explain in a portfolio review. The need is a clear next action and feedback, rather than a larger content library.</p>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Need</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Career switcher or early-career builder with a saved tutorial and a concrete artifact</td>
+<td>Translate explanation into a small plan and finish something independently</td>
+<td>Primary</td>
+</tr>
+<tr>
+<td>Working professional learning a bounded skill for an immediate task</td>
+<td>Fit practice around a weekly time budget</td>
+<td>Adjacent, validate after launch</td>
+</tr>
+<tr>
+<td>Creator helping an audience apply a tutorial</td>
+<td>Attach exercises and a project brief to existing material</td>
+<td>Later distribution partner</td>
+</tr>
+<tr>
+<td>Passive viewer, exam crammer, or advanced learner seeking deep technical review</td>
+<td>Entertainment, recall, or expert evaluation rather than beginner project practice</td>
+<td>Outside the initial segment</td>
+</tr>
+</tbody></table>
+<p><strong>Qualifying signal:</strong> “I saved a tutorial, tried to make my own version, and got stuck or abandoned it.” A saved playlist alone does not establish demand.</p>
+<h2>2. Problem and evidence</h2>
+<p>A playlist records learning intent but does not specify the learner’s output, practice sequence, or evidence of progress. A motivated beginner must coordinate video, notes, task planning, and a separate project. The cost is abandoned attempts, repeated tutorial watching, and uncertainty about what to do next.</p>
+<p>The supplied concept discussion identifies the opportunity to bridge YouTube and a notebook with action. That is the starting hypothesis. There are no discovery interviews, behavioral analytics, willingness-to-pay data, or measured learning outcomes yet. The fictional prototype and authored exercises demonstrate an experience, not demand or efficacy. We have not established which existing product best solves this need.</p>
+<p><strong>Job to be done:</strong> When I have found a useful tutorial and need to build my own version, help me choose a realistic next exercise, apply the lesson, and improve a finished project so I can demonstrate and explain the skill without the tutorial beside me.</p>
+<p><strong>Discovery before investment:</strong> Interview 8–10 qualifying learners. Ask them to show their most recent abandoned tutorial and actual notes/project files; trace where they stopped. Test whether task selection, time, missing prerequisites, confidence, or feedback is the main barrier. Include learners who already finish tutorials to understand when Relay adds little value.</p>
+<h2>3. Goals and non-goals</h2>
+<p><strong>User outcomes:</strong> Start a relevant practice task quickly; complete a bounded project; explain one independent design decision; apply the concept again on a different task.</p>
+<p><strong>Product outcome:</strong> Establish a repeatable “lesson → practice → evidence → revision” loop. Returning to practice is more valuable than accumulating watch time.</p>
+<p><strong>Business hypothesis:</strong> Learners may pay for structured guidance and useful project feedback around freely available content. Validate willingness to pay after demonstrating value; no price or revenue forecast is justified yet. Start as a standalone companion linked from a portfolio or creator exercise. YouTube Premium bundling is a later strategic possibility, not a dependency.</p>
+<p><strong>Non-goals for v1:</strong></p>
+<ul>
+<li>A general-purpose tutor or universal curriculum generator. Support one validated learning domain first.</li>
+<li>Replacing YouTube search, video hosting, or creator ownership. Preserve attribution and links to originals.</li>
+<li>A full note-taking knowledge base. Notes serve the current task and project.</li>
+<li>Credentials, mastery certification, job placement, or high-stakes grading. A checklist is not proof of competence.</li>
+<li>Social feeds, classroom administration, multi-user review, or monetization infrastructure before the learning loop is validated.</li>
+</ul>
+<h2>4. Experience and user stories</h2>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>User story</th>
+<th>Observable result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Import</td>
+<td>As a beginner with a saved tutorial, I want to name what I will make and set my available time so that the plan fits my life.</td>
+<td>Confirmed source, goal, prerequisites, and estimated effort</td>
+</tr>
+<tr>
+<td>Plan</td>
+<td>As a time-constrained learner, I want to see how lessons contribute to the project so that I know what to do next.</td>
+<td>Editable sequence with a practice action after each lesson</td>
+</tr>
+<tr>
+<td>Workspace</td>
+<td>As a learner applying a concept, I want source material, notes, and the task close together so that I can switch from understanding to doing.</td>
+<td>Source-linked notes and a task with a clear definition of done</td>
+</tr>
+<tr>
+<td>Practice</td>
+<td>As a learner who gets stuck, I want to attempt, revise, or flag a task so that progress reflects what I can do.</td>
+<td>Attempt/evidence distinct from watched/completed status</td>
+</tr>
+<tr>
+<td>Submit</td>
+<td>As a portfolio builder, I want to submit a draft and explain my decisions so that feedback has context.</td>
+<td>Saved, consented submission with a rubric and revision path</td>
+</tr>
+<tr>
+<td>Feedback</td>
+<td>As a learner revising a draft, I want specific evidence and one next improvement so that I can act and try again.</td>
+<td>Bounded feedback, uncertainty label, and a next action</td>
+</tr>
+<tr>
+<td>Recovery</td>
+<td>As a learner with an unavailable source or incomplete draft, I want an honest explanation and a recoverable next step.</td>
+<td>No invented source content or lost work</td>
+</tr>
+</tbody></table>
+<p><strong>Screen walkthrough:</strong> Overview → Import → Learning plan → Video workspace → Tasks → Project submission → Feedback. The accompanying walkthrough illustrates this path using screenshots of the prototype. Mobile supports review, note capture, and task management; producing code may require another tool and a larger screen.</p>
+<h2>5. Requirements and acceptance criteria</h2>
+<h3>P0: minimum useful pilot</h3>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Acceptance criteria</th>
+<th>Dependencies / limits</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Confirm source and goal</td>
+<td>Given a supported public playlist, importing shows retrieved title, creator, available lessons, and unavailable items before confirmation. Unsupported, private, empty, or failed retrieval produces a retry/change-source path.</td>
+<td>Engineering: authorized metadata access and quota handling; creator attribution review</td>
+</tr>
+<tr>
+<td>Calibrate the plan</td>
+<td>Given a goal, starting level, and 2/4/6-hour budget, the learner sees an effort breakdown, prerequisites, output, and editable sequence. A change in time recomputes the calendar estimate without changing the required learning output.</td>
+<td>Learning designer validates the first domain; estimates labeled as estimates</td>
+</tr>
+<tr>
+<td>Connect video to practice</td>
+<td>Each task links to a verified source or explicitly authored exercise. Missing transcripts disable source-derived claims. Notes persist through navigation and reload.</td>
+<td>Engineering: permitted video embedding or external-link fallback; transcript availability</td>
+</tr>
+<tr>
+<td>Separate consumption and application</td>
+<td>Marking a video watched never completes a task. Each task has a definition of done and accepts a short evidence note or artifact link; learner can undo, flag a blocker, and resume.</td>
+<td>Design and learning design define states; analytics records attempts, not mastery</td>
+</tr>
+<tr>
+<td>Submit and revise</td>
+<td>Learner can save a draft before all tasks are complete, provide a link and reflection, see what is shared, and revise after feedback. Invalid URLs fail with a useful message and preserve draft fields.</td>
+<td>Engineering: persistence and safe artifact access; explicit consent before remote evaluation</td>
+</tr>
+<tr>
+<td>Bounded feedback</td>
+<td>Every substantive assessment identifies supporting evidence or says it cannot evaluate. No fabricated grade if a page is unavailable. Separate deterministic checks, model suggestions, and human assessment. Give at least one concrete next action.</td>
+<td>Engineering + learning design: evaluation rubric and benchmark set</td>
+</tr>
+<tr>
+<td>Recover safely and accessibly</td>
+<td>Keyboard-only flow works; labels, focus order, errors, and contrast are checked. At 375px and 768px controls remain usable without page-level horizontal scrolling. Reload retains work; blocked storage gives a truthful limitation.</td>
+<td>Browser QA; WCAG 2.2 AA target subject to audit</td>
+</tr>
+<tr>
+<td>Preserve attribution and control</td>
+<td>Keep creator/source links visible. Do not train on, republish, or expose learner artifacts by default. Learner can export/delete their own work.</td>
+<td>Privacy, creator-policy, and security review before real integrations</td>
+</tr>
+</tbody></table>
+<p><strong>Current prototype boundary:</strong> URL validation loads a fixed web-design fixture. Time budget changes the duration estimate, not the curriculum. Source videos open externally. Task completion is self-reported. Project URL and reflection stay in localStorage. Feedback is deterministic and labeled simulated. No metadata retrieval, model inference, artifact evaluation, cloud storage, or source-grounded assessment is implemented.</p>
+<h3>P1: after the loop works</h3>
+<p>Adaptive task difficulty based on a first independent attempt; “I’m stuck” hints tied to the source; a revised plan after missed sessions; revision history and feedback resolution; optional cross-device sync; creator-authored exercise packs. Prioritize based on observed failure points in the pilot.</p>
+<h3>P2: later</h3>
+<p>Other skill domains, peer/expert review, creator revenue share, YouTube-native distribution, team/classroom workflows, or premium subscriptions. Avoid designing v1 around these assumptions.</p>
+<h2>6. Success measures and experiment</h2>
+<p>All thresholds below are <strong>proposed pilot decision rules</strong>, not observed results or external benchmarks. Establish baselines and instrument before making claims.</p>
+<table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>Definition / window</th>
+<th>Initial decision rule</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Usability</td>
+<td>Unassisted success on sample import → first practice task, observed with 5 qualifying learners</td>
+<td>At least 4 of 5 succeed; investigate every critical blocker</td>
+</tr>
+<tr>
+<td>Time to first practice</td>
+<td>Median elapsed minutes from plan confirmation to starting a task in the same session, among successful sessions</td>
+<td>Under 10 minutes; track abandonment alongside the median</td>
+</tr>
+<tr>
+<td>Practice activation</td>
+<td>Learners who submit evidence for one task within 24h / all learners with a confirmed plan</td>
+<td>Hypothesis: at least 50% in a 20–30-person feasibility pilot</td>
+</tr>
+<tr>
+<td>Project completion</td>
+<td>Learners who submit a reviewable draft within 14 days / all randomized learners</td>
+<td>Compare arms; do not exclude dropouts or call an inaccessible link complete</td>
+</tr>
+<tr>
+<td>Applied skill, primary outcome</td>
+<td>Blind rubric score on a new transfer task seven days after the learning period</td>
+<td>Estimate the between-arm difference and uncertainty; choose a worthwhile effect and power a later study before asserting efficacy</td>
+</tr>
+<tr>
+<td>Return to practice</td>
+<td>Learners who start a second evidence-bearing practice session within seven days / learners who activated</td>
+<td>Track directionally; no target until activation baseline is credible</td>
+</tr>
+<tr>
+<td>Feedback usefulness</td>
+<td>Learners who can name and perform one suggested revision / learners receiving feedback</td>
+<td>Hypothesis: at least 70%; capture misleading advice separately</td>
+</tr>
+</tbody></table>
+<p><strong>Experiment:</strong> After usability fixes, run a small feasibility pilot using the same source material, project brief, available time, and starting-skill assessment. Randomly assign source-only versus source plus Relay practice/feedback. Blind assessors to assignment, use the same rubric, and include a delayed transfer task that differs from the tutorial. The pilot tests recruitment, instrumentation, and assessment feasibility; it is not sized to prove a learning lift. Pre-register a larger study after choosing a minimum worthwhile effect and estimating variance.</p>
+<p><strong>Guardrails:</strong> Report source failures, wrong feedback, cost per evaluated draft, draft loss, accessibility blockers, and total time burden. Do not optimize watch minutes. Any serious privacy issue, systematic unsupported assessment, or lost-work defect blocks expansion.</p>
+<p><strong>Proposed events:</strong> <code>plan_confirmed</code>, <code>lesson_opened</code>, <code>task_started</code>, <code>task_evidence_saved</code>, <code>task_blocked</code>, <code>draft_submitted</code>, <code>feedback_viewed</code>, <code>revision_submitted</code>, <code>export_completed</code>. Use identifiers and state transitions, not note or reflection text. No telemetry is added to the current demo.</p>
+<h2>7. Risks and open decisions</h2>
+<table>
+<thead>
+<tr>
+<th>Question / risk</th>
+<th>Owner</th>
+<th>When needed</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Is the binding problem knowing what to practice, missing prerequisites, or feedback?</td>
+<td>Product research</td>
+<td>Blocking scope commitment</td>
+</tr>
+<tr>
+<td>Can we reliably access authorized metadata and usable transcripts for the launch curriculum?</td>
+<td>Engineering + policy</td>
+<td>Blocking real import</td>
+</tr>
+<tr>
+<td>What constitutes independent skill at the beginner level, and who validates the rubric?</td>
+<td>Learning designer</td>
+<td>Blocking efficacy claims</td>
+</tr>
+<tr>
+<td>How can a learner inspect what a remote evaluator receives and revoke access?</td>
+<td>Design + privacy</td>
+<td>Blocking remote evaluation</td>
+</tr>
+<tr>
+<td>How do we prevent arbitrary project URLs from reaching private networks or executing untrusted code?</td>
+<td>Engineering security</td>
+<td>Blocking artifact fetching; use isolated evaluation and public-address validation</td>
+</tr>
+<tr>
+<td>Will learners pay, or is creator/institution distribution better?</td>
+<td>Product</td>
+<td>Non-blocking discovery; test after value delivery</td>
+</tr>
+<tr>
+<td>Should this live inside YouTube, a notebook, or a standalone companion?</td>
+<td>Product + design</td>
+<td>Test the standalone loop first; validate context-switch cost</td>
+</tr>
+</tbody></table>
+<h2>8. Phasing and launch gates</h2>
+<p>There is no committed launch date or staffing estimate.</p>
+<ol>
+<li><strong>Concept and usability:</strong> current prototype, screen walkthrough, 8–10 interviews, then 5 observed usability sessions. Gate: understood value, recoverable flow, and an agreed launch segment.</li>
+<li><strong>Curated pilot:</strong> one validated curriculum, real task evidence, saved drafts, and human-reviewed or tightly bounded feedback. Gate: usable flow, validated rubric, consent, privacy controls, and source reliability.</li>
+<li><strong>Feasibility experiment:</strong> recruit 20–30 qualifying learners, check instrumentation and blind assessment feasibility, and estimate effort/cost. Gate: sufficient value and operational reliability to justify a powered study.</li>
+<li><strong>Broader integration:</strong> authorized import and source-grounded generation only after quality, creator-policy, cost, and security checks. Expand subjects after the first learning loop demonstrates value.</li>
+</ol>
+<p><strong>Positioning to test:</strong> “The next step after a great tutorial: a plan, a project, and a way to improve it.”</p>
+</main><footer>Independent product concept by Chae Kim · October 30, 2026 · Not affiliated with YouTube or Google. All learner and project examples are fictional.</footer></body></html>

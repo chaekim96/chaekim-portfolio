@@ -36,6 +36,8 @@ def builds():
     out = []
     for folder, tier in TIERS:
         for s in FOLDERS[folder]:
+            if not mark_file(s):
+                continue  # a build without a color-seal mark yet (Relay) stays off the brand page
             out.append((s, NAMES.get(s, PROJECTS[s]["title"]), tier, f"/projects/{s}"))
     out.append(("arcade", "Arcade", "Product", "/arcade"))
     return out
