@@ -69,3 +69,4 @@ The decisions and options behind the portfolio itself.
 - [Resume (PDF)](https://chaekim.vercel.app/assets/pdf/chae-kim-resume.pdf)
 - [Arcade](https://chaekim.vercel.app/arcade): Snake, Galaga and a generative lo-fi radio
 - [Brand](https://chaekim.vercel.app/brand): The brand system behind my builds: one tile, one color recipe, three type tiers and one endorsement line.
+- [Playbook](https://chaekim.vercel.app/playbook): My brand playbook: the voice, the colors and type, the rules of truth, and the checks before anything ships.

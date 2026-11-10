@@ -175,7 +175,7 @@ def section_downloads():
           <li><a href="/assets/brand-kit/marks.zip">All the marks (ZIP)</a><span>Light and dark tiles, 16 pixel icons and line icons.</span></li>
           <li><a href="{GITHUB}" target="_blank" rel="noopener">The color-check script ↗</a><span>The script that checks every mark on each build.</span></li>
         </ul>
-        <p>For the whole story of how these marks were chosen, read the <a href="/projects/build-marks">decision log</a>.</p>'''
+        <p>For the whole story of how these marks were chosen, read the <a href="/projects/build-marks">decision log</a>. For the voice, colors and rules around them, read the <a href="/playbook">playbook</a>.</p>'''
 
 
 CSS = """
