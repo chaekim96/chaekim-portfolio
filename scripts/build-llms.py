@@ -42,8 +42,8 @@ def page_info(slug):
     return title, html.unescape(desc.group(1)).strip() if desc else ""
 
 
-def _brand_desc():
-    text = (ROOT / "brand.html").read_text(encoding="utf-8")
+def _brand_desc(name="brand.html"):
+    text = (ROOT / name).read_text(encoding="utf-8")
     return html.unescape(re.search(r'<meta name="description" content="([^"]*)"', text).group(1)).strip()
 
 
@@ -76,6 +76,7 @@ def main():
         f"- [Resume (PDF)]({SITE}/assets/pdf/chae-kim-resume.pdf)",
         f"- [Arcade]({SITE}/arcade): Snake, Galaga and a generative lo-fi radio",
         f"- [Brand]({SITE}/brand): " + _brand_desc(),
+        f"- [Playbook]({SITE}/playbook): " + _brand_desc("playbook.html"),
         "",
     ]
     (ROOT / "llms.txt").write_text("\n".join(out), encoding="utf-8")
