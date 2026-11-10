@@ -8,22 +8,23 @@
   <meta property="og:title" content="LUC: Luggage Under Control · Chae Kim - Portfolio">
   <meta property="og:description" content="A self-weighing luggage concept using force sensors in each wheel, inspired by tire-pressure monitoring systems and Wi-Fi mesh networks.">
   <meta property="og:type" content="article">
-  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og-sky.png">
+  <meta property="og:image" content="https://chaekim.vercel.app/assets/img/og-sky.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta name="theme-color" content="#74bff0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1a2e" media="(prefers-color-scheme: dark)">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://chaekim-portfolio.vercel.app/projects/luc">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="/assets/css/v-stamp.css?v=84e030af">
+  <link rel="stylesheet" href="/assets/css/case-stamp.css?v=a942d4e5">
+  <script src="/assets/js/liquid-glass.js?v=c955eb8a" defer></script>
+  <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {} document.documentElement.classList.add('js'); try { if (!sessionStorage.getItem('ck-seal')) { sessionStorage.setItem('ck-seal', '1'); document.documentElement.classList.add('seal-stamp'); } } catch (e) {}</script>
+  <link rel="canonical" href="https://chaekim.vercel.app/projects/luc">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="/assets/css/v-stamp.css?v=29">
-  <link rel="stylesheet" href="/assets/css/case-stamp.css?v=20">
-  <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
-  <meta name="theme-color" content="#bfdcf7" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0f1a2e" media="(prefers-color-scheme: dark)">
 </head>
 <body class="v v-stamp case sec-work">
 
@@ -49,7 +50,7 @@
     <section class="case-hero wrap">
       <a class="case-hero__back" href="/#work">← All work</a>
       <p class="eyebrow">INFO-I300 Human-Computer Interaction · Sep 2019</p>
-      <h1 class="case-hero__title">Luggage that <em>weighs itself</em> before the check-in counter does.</h1>
+      <h1 class="case-hero__title">Luggage that <em>weighs itself</em> before the <span class="nb">check-in</span> counter does.</h1>
       <p class="lede">A self-weighing luggage technology: force sensors in each wheel report to a processing unit that reconciles the readings into one accurate weight on a display at the top of the bag.</p>
       <dl class="case-meta">
         <div><dt>Role</dt><dd>Creator · Researcher · Designer</dd></div>
@@ -60,7 +61,7 @@
     </section>
 
     <section class="wrap case-cover-wrap">
-      <div class="stage case-cover case-cover--contain" style="--g: var(--g-plain)"><img src="/assets/img/projects/luc/suitcase.jpg" alt="LUC mockup sketch of sensors on a suitcase"></div>
+      <div class="stage case-cover case-cover--contain" style="--g: var(--g-plain)"><img src="/assets/img/luc/luc/suitcase.jpg" alt="LUC mockup sketch of sensors on a suitcase"></div>
     </section>
 
     <section class="wrap case-body">
@@ -82,18 +83,18 @@
 <p>As of 2019, only a handful of airlines allowed checked bags over 50 lbs, and carriers had good reason not to budge — the Washington Post reported roughly <strong>$3.1 billion</strong> in luggage fees, with escalating charges past each weight tier.</p>
 <p style="margin-top:12px">Self-weighing suitcases had been tried: the TUL Kickstarter got press from Gizmodo and ABC but missed its funding goal, and Samsonite and Panasonic announced an alliance around biometric locks and integrated scales. None had reached the mainstream. Most people still used hand-held pulley scales — and the one-star reviews showed how much they disliked them.</p>
 </div>
-<figure><img src="/assets/img/projects/luc/luggage-weight.jpg" alt="2019 airline weight limits" loading="lazy"><figcaption>2019 airline weight limits</figcaption></figure>
+<figure><img src="/assets/img/luc/luc/luggage-weight.jpg" alt="2019 airline weight limits" loading="lazy"><figcaption>2019 airline weight limits</figcaption></figure>
 </div>
 
 <h2 id="solution">Solution</h2>
-<p>Two technologies inspired the design: <strong>TPMS</strong> (mandated on all US cars after the 2000 TREAD Act) and <strong>Wi-Fi mesh networks</strong>, where multiple access points cooperate to cover an area better than one could alone.</p>
+<p>Two technologies inspired the design: <strong>TPMS</strong> (mandated on all US cars after the 2000 TREAD Act) and <strong><span class="nb">Wi-Fi</span> mesh networks</strong>, where multiple access points cooperate to cover an area better than one could alone.</p>
 <p class="pull">Force sensors in every wheel, working together like a mesh — so uneven packing still produces one accurate number.</p>
 <div class="two">
-<figure class="contain"><img src="/assets/img/projects/luc/tire-forces.jpg" alt="Forces exerted on a wheel: connector, downward force, locked position, force sensor" loading="lazy"><figcaption>Forces exerted on a wheel: connector, downward force, locked position, force sensor</figcaption></figure>
-<figure class="contain"><img src="/assets/img/projects/luc/processing.jpg" alt="All four sensors converge on a processing computer that drives the display" loading="lazy"><figcaption>All four sensors converge on a processing computer that drives the display</figcaption></figure>
+<figure class="contain"><img src="/assets/img/luc/luc/tire-forces.jpg" alt="Forces exerted on a wheel: connector, downward force, locked position, force sensor" loading="lazy"><figcaption>Forces exerted on a wheel: connector, downward force, locked position, force sensor</figcaption></figure>
+<figure class="contain"><img src="/assets/img/luc/luc/processing.jpg" alt="All four sensors converge on a processing computer that drives the display" loading="lazy"><figcaption>All four sensors converge on a processing computer that drives the display</figcaption></figure>
 </div>
-<figure class="contain"><img src="/assets/img/projects/luc/mockup.jpg" alt="Mockup: (1) digital display, (2) telemetry connector routed along the side, (3) sensor coverage areas, (4) processing computer, (5) sensor-equipped wheels" loading="lazy"><figcaption>Mockup: (1) digital display, (2) telemetry connector routed along the side, (3) sensor coverage areas, (4) processing computer, (5) sensor-equipped wheels</figcaption></figure>
-<figure class="contain"><img src="/assets/img/projects/luc/heatmap.jpg" alt="Real-time heat map with weight pressed on the left side — the sensors compensate for the tilt" loading="lazy"><figcaption>Real-time heat map with weight pressed on the left side — the sensors compensate for the tilt</figcaption></figure>
+<figure class="contain"><img src="/assets/img/luc/luc/mockup.jpg" alt="Mockup: (1) digital display, (2) telemetry connector routed along the side, (3) sensor coverage areas, (4) processing computer, (5) sensor-equipped wheels" loading="lazy"><figcaption>Mockup: (1) digital display, (2) telemetry connector routed along the side, (3) sensor coverage areas, (4) processing computer, (5) sensor-equipped wheels</figcaption></figure>
+<figure class="contain"><img src="/assets/img/luc/luc/heatmap.jpg" alt="Real-time heat map with weight pressed on the left side — the sensors compensate for the tilt" loading="lazy"><figcaption>Real-time heat map with weight pressed on the left side — the sensors compensate for the tilt</figcaption></figure>
 
 <h2 id="next">What's next</h2>
 <ul>
@@ -109,7 +110,7 @@
 
     <section class="next wrap">
       <div class="next__grid">
-        <a href="/projects/alab"><small>← Previous</small><strong>aLab — Automatic Level-Adjusting Bowl</strong></a>
+        <a href="/projects/alab"><small>← Previous</small><strong>aLab — Automatic <span class="nb">Level-Adjusting</span> Bowl</strong></a>
         <a href="/projects/ptm" style="text-align:right"><small>Next →</small><strong>PTM — Perpetual Thermal Monitor</strong></a>
       </div>
     </section>
@@ -133,11 +134,12 @@
       <b>Let's chat.</b>
       <a data-user="chaewoonkim" data-domain="berkeley.edu" data-show href="#">chaewoonkim@berkeley.edu</a>
       <div class="foot__small">
-        <span>Built by hand in plain HTML, between latte art attempts.</span>
+        <span><a href="/projects/portfolio">Built by hand in plain HTML</a>, between latte art attempts.</span>
       </div>
     </div>
   </footer>
-  <script src="/assets/js/main.js?v=14"></script>
-  <script src="/assets/js/case-stamp.js?v=20"></script>
+  <script src="/assets/js/main.js?v=f70bcab9"></script>
+  <script src="/assets/js/case-stamp.js?v=2552d548"></script>
+  <script src="/assets/js/palette.js?v=078e437e" defer></script>
 </body>
 </html>

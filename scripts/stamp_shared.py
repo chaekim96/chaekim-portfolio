@@ -1,4 +1,12 @@
 """Shared Stamp pieces: the calligraphy mark (used by the homepage and every case page)."""
+import hashlib
+import os
+import re
+
+from projects import field
+
+# The address the site is published at: canonical links, share images, llms.txt, the sitemap.
+SITE_URL = "https://chaekim.vercel.app"
 
 # 김채운 brushed in black ink on a strip of hanji (Korean mulberry paper).
 # Glyphs are East Sea Dokdo (SIL OFL) outlines, defined once in INK_DEFS and reused,
@@ -13,35 +21,73 @@ def seal(cls="", label=True):
 # A build's color-seal mark from assets/img/brand/, or "" for pages without one.
 # The name sits right beside it, so the image is decorative (alt="").
 # A mark that changes gets a new filename (assets are cached immutably); list the current file here.
-MARK_FILE = {
-    "arcade": "arcade-2", "web-anatomy": "web-anatomy-2", "palette-generator": "palette-generator-2",
-    "custom-llm": "custom-llm-2", "pacman-dqn": "pacman-dqn-2",
-}
+MARK_FILE = field("mark")
 # Link-preview card and touch icon per build, written by scripts/build-brand-cards.py.
 CARD_DIR = "assets/img/brand/cards"
 
 def _root():
-    import os
     return os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 def mark_file(slug):
     """Name of a build's mark file in assets/img/brand/ (without .svg), or None if it has no mark."""
-    import os
     name = MARK_FILE.get(slug, slug)
     return name if os.path.exists(os.path.join(_root(), "assets", "img", "brand", f"{name}.svg")) else None
 
-def build_mark(slug, cls, size):
+def _variant(kind, name, suffix=""):
+    """URL of a mark's derived file (dark/, live/, fav16/) written by build-mark-variants.py and build-fav16.py, or None."""
+    base = re.sub(r"-\d+$", "", name)
+    ext = "png" if kind == "fav16" else "svg"
+    rel = f"assets/img/brand/{kind}/{base}{suffix}.{ext}"
+    return f"/{rel}" if os.path.exists(os.path.join(_root(), rel)) else None
+
+def spark_ready(slug):
+    """True when the build's mark has an animated variant (the white detail moves while the page asks for it)."""
+    name = mark_file(slug)
+    return bool(name and _variant("live", name))
+
+def build_mark(slug, cls, size, themed=False):
+    """The mark as an <img>. themed=True adds the dark-theme tile as a second <img>; CSS shows one of the two
+    (see .mk-lit and .mk-night in v-stamp.css). The case-hero mark also carries its animated files for mark-spark.js."""
     name = mark_file(slug)
     if not name:
         return ""
-    return f'<img class="{cls}" src="/assets/img/brand/{name}.svg" alt="" width="{size}" height="{size}">'
+    light = f"/assets/img/brand/{name}.svg"
+    dark = _variant("dark", name) if themed else None
+    if not dark:
+        return f'<img class="{cls}" src="{light}" alt="" width="{size}" height="{size}">'
+    def img(mode, src, spark):
+        extra = f' data-spark="{spark}"' if spark and "brand__spark" in cls or spark and cls == "case-hero__mark" else ""
+        return f'<img class="{cls} mk-{mode}" src="{src}" alt="" width="{size}" height="{size}"{extra}>'
+    return (img("lit", light, _variant("live", name)) + img("night", dark, _variant("live", name, "-dark")))
+
+def mark_color(slug):
+    """A build's base (middle-stop) color from its mark, or None if it has no mark."""
+    name = mark_file(slug)
+    if not name:
+        return None
+    with open(os.path.join(_root(), "assets", "img", "brand", f"{name}.svg"), encoding="utf-8") as f:
+        return re.findall(r'stop-color="(#[0-9a-f]{6})"', f.read())[1]
+
+# Work entries aren't builds, so they get no color seal: a plain ink tile with a paper glyph for the kind of work.
+# Same 64-unit rx14 tile as the marks, so the pill keeps its shape. Files: assets/img/brand/work-<glyph>.svg
+WORK_GLYPH = field("glyph")
+
+def work_mark(slug, cls, size):
+    glyph = WORK_GLYPH.get(slug)
+    if not glyph:
+        return ""
+    return f'<img class="{cls}" src="/assets/img/brand/work-{glyph}.svg" alt="" width="{size}" height="{size}">'
 
 def build_icons(slug, site_url):
     """(icon_links, og_image_url) for a build's own favicon, touch icon and share card; None if it has no mark."""
     name = mark_file(slug)
     if not name:
         return None
+    # the hand-hinted 16px version sits beside the SVG: browsers use it for 16px tabs, where a scaled-down mark turns soft
+    px16 = _variant("fav16", name)
+    px16_link = f'  <link rel="icon" href="{px16}" type="image/png" sizes="16x16">\n' if px16 else ""
     icons = (f'  <link rel="icon" href="/assets/img/brand/{name}.svg" type="image/svg+xml">\n'
+             + px16_link +
              f'  <link rel="apple-touch-icon" href="/{CARD_DIR}/{slug}-touch.png">')
     return icons, f"{site_url}/{CARD_DIR}/{slug}-og.png"
 
@@ -65,25 +111,21 @@ INK_DEFS = ('<svg width="0" height="0" style="position:absolute" aria-hidden="tr
 # ---------------------------------------------------------------------------
 # Case-page chrome (project pages in the Stamp look)
 # ---------------------------------------------------------------------------
-CASE_CSS_V = "23"   # bump when assets/css/case-stamp.css changes
-STAMP_CSS_V = "29"  # v-stamp.css version, kept in step with the homepage
-JS_V = "14"
-LIVE_V = "1"  # bump when assets/js/live.js changes
+# Each stylesheet and script is linked with a hash of its contents, so a changed file reaches browsers
+# on the next build and an unchanged one stays cached. Nothing to bump by hand.
+def asset(rel):
+    """URL of a file in assets/, e.g. asset("css/v-stamp.css")."""
+    digest = hashlib.sha256(open(os.path.join(_root(), "assets", rel), "rb").read()).hexdigest()[:8]
+    return f"/assets/{rel}?v={digest}"
+
+# Liquid glass on the controls, deferred so it runs once the page is parsed.
+GLASS_JS = f'  <script src="{asset("js/liquid-glass.js")}" defer></script>'
 
 # ---------------------------------------------------------------------------
 # Live previews: a "Try it live" link opens the real app in a dialog.
 # Without JS (or <dialog>) the link simply opens the app in a new tab.
 # ---------------------------------------------------------------------------
-LIVE_APPS = {
-    "relay": ("Relay", "/demos/relay/index.html", "Interactive concept. Import and feedback are simulated; progress stays in your browser."),
-    "ai-visibility-checker": ("AI Visibility Checker", "https://chaekim-ai-visibility.vercel.app", ""),
-    "tally": ("Tally", "https://tally-lake-seven.vercel.app", ""),
-    "palette-generator": ("Palette Generator", "https://color-palette-generator-three-sand.vercel.app", ""),
-    "typerace": ("TypeRace", "https://typerace.typerace.workers.dev", "Races here are real: a finished race posts to the weekly class leaderboard."),
-    "web-anatomy": ("Anatomy of a Website", "https://webanatomy.vercel.app", ""),
-    "spotify-review-triage": ("Spotify Review Triage", "https://spotify-review-triage.vercel.app", ""),
-    "networking-tracker": ("Networking Tracker", "https://networking-tracker-five-sage.vercel.app", "Some browsers block signing in inside a frame. If it won't let you in, open it in a new tab."),
-}
+LIVE_APPS = field("live")
 
 def live_button(slug):
     title, url, note = LIVE_APPS[slug]
@@ -100,19 +142,29 @@ LIVE_DIALOG = """  <dialog class="live" id="live" aria-labelledby="live-title">
     <iframe id="live-frame" title="Live preview" allow="clipboard-write"></iframe>
   </dialog>"""
 
-LIVE_SCRIPT = f'  <script src="/assets/js/live.js?v={LIVE_V}" defer></script>'
+LIVE_SCRIPT = f'  <script src="{asset("js/live.js")}" defer></script>'
+
+# Moves the case-hero mark's white detail while the "Try it live" link or the mark is hovered or focused.
+SPARK_SCRIPT = f'  <script src="{asset("js/mark-spark.js")}" defer></script>'
+
+# Runs in <head>, before first paint. "js" lets CSS hide .reveal blocks only when a script will show them again.
+# The seal stamps once per session: the class is set only on the first page of a visit.
+BOOT_SCRIPT = ("<script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {} "
+               "document.documentElement.classList.add('js'); "
+               "try { if (!sessionStorage.getItem('ck-seal')) { sessionStorage.setItem('ck-seal', '1'); document.documentElement.classList.add('seal-stamp'); } } catch (e) {}</script>")
 
 # Phone browser bar matches the page: sky blue in light mode, night navy in dark.
-THEME_COLOR = ('  <meta name="theme-color" content="#bfdcf7" media="(prefers-color-scheme: light)">\n'
+THEME_COLOR = ('  <meta name="theme-color" content="#74bff0" media="(prefers-color-scheme: light)">\n'
                '  <meta name="theme-color" content="#0f1a2e" media="(prefers-color-scheme: dark)">')
 
 CASE_HEAD_ASSETS = (
     THEME_COLOR + "\n"
     '  <meta name="twitter:card" content="summary_large_image">\n'
     '  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">\n'
-    f'  <link rel="stylesheet" href="/assets/css/v-stamp.css?v={STAMP_CSS_V}">\n'
-    f'  <link rel="stylesheet" href="/assets/css/case-stamp.css?v={CASE_CSS_V}">\n'
-    "  <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>"
+    f'  <link rel="stylesheet" href="{asset("css/v-stamp.css")}">\n'
+    f'  <link rel="stylesheet" href="{asset("css/case-stamp.css")}">\n'
+    + GLASS_JS + "\n"
+    "  " + BOOT_SCRIPT
 )
 
 CASE_TOP = f"""  {INK_DEFS}
@@ -155,5 +207,80 @@ CASE_FOOT = f"""  <footer class="foot wrap">
     </div>
   </footer>"""
 
-CASE_SCRIPTS = f"""  <script src="/assets/js/main.js?v={JS_V}"></script>
-  <script src="/assets/js/case-stamp.js?v={CASE_CSS_V}"></script>"""
+PALETTE_SCRIPT = f'  <script src="{asset("js/palette.js")}" defer></script>'
+
+CASE_SCRIPTS = f"""  <script src="{asset("js/main.js")}"></script>
+  <script src="{asset("js/case-stamp.js")}"></script>
+{PALETTE_SCRIPT}"""
+
+
+# ---------------------------------------------------------------------------
+# Headlines: keep hyphenated words whole ("to-do", "Pac-Man") so a line never breaks inside them.
+# A nowrap span, not U+2011, so the real hyphen glyph, copy-paste and search all stay as they are.
+# ---------------------------------------------------------------------------
+_HEADING = re.compile(r"(<(h[1-6]|strong)\b[^>]*>)(.*?)(</\2>)", re.S)
+_HYPHENATED = re.compile(r"[A-Za-z0-9]+(?:-[A-Za-z0-9]+)+")
+
+def _nb_inner(inner):
+    out, in_nb = [], 0
+    for part in re.split(r"(<[^>]+>)", inner):
+        if part.startswith("<"):
+            if re.match(r'<span class="nb">', part):
+                in_nb += 1
+            elif in_nb and part == "</span>":
+                in_nb -= 1
+            out.append(part)
+        elif in_nb:
+            out.append(part)
+        else:
+            out.append(_HYPHENATED.sub(lambda m: f'<span class="nb">{m.group(0)}</span>', part))
+    return "".join(out)
+
+def nb_headlines(page):
+    """Wrap hyphenated words inside headings (h1 to h6) and <strong> titles in .nb. Safe to run twice."""
+    return _HEADING.sub(lambda m: m.group(1) + _nb_inner(m.group(3)) + m.group(4), page)
+
+
+# ---------------------------------------------------------------------------
+# Changelog strip: the last few real commits, read from `git log` whenever a page is built.
+# Wording is the commit subject; internal housekeeping and anything that could be private is left out.
+# ---------------------------------------------------------------------------
+_HOUSEKEEPING = re.compile(r"^(merge|rebuild|regenerate|readme|ignore|bump|revert|wip|fixup)\b|bytecode|cache|\bv\d+\b|sitemap", re.I)
+_PRIVATE = re.compile(r"private|secret|token|password|passwd|api[ _-]?key|salary|visa|phone|brian|gmail|@|career|offer|recruit|interview|investor|\.env|stealth", re.I)
+CHANGELOG_LINES = 3
+
+def _git(*args):
+    import subprocess
+    return subprocess.run(["git", *args], cwd=_root(), capture_output=True, text=True).stdout
+
+def _recent_commits(skip_head=False, limit=40):
+    out = _git("log", "--no-merges", f"-n{limit}", "--format=%H%x1f%cs%x1f%s")
+    rows = [r.split("\x1f") for r in out.splitlines() if r.count("\x1f") == 2]
+    return rows[1:] if skip_head else rows
+
+def _strip_html(rows):
+    import datetime, html as _h
+    items = []
+    for _sha, day, subject in rows:
+        subject = re.sub(r"\s*\(#\d+\)$", "", subject).strip().rstrip(".")
+        subject = re.sub(r":\s*(source|regenerated pages.*)$", "", subject, flags=re.I)  # build-step suffixes mean nothing to a reader
+        if not subject or _HOUSEKEEPING.search(subject) or _PRIVATE.search(subject) or "\u2014" in subject:
+            continue
+        if len(subject) > 78:
+            subject = subject[:75].rstrip() + "..."
+        d = datetime.date.fromisoformat(day)
+        items.append(f'<li><time datetime="{day}">{d.strftime("%b")} {d.day}</time> {_h.escape(subject)}</li>')
+        if len(items) == CHANGELOG_LINES:
+            break
+    return "".join(items)
+
+def changelog_strip(page="index.html"):
+    """The footer list items. Commits at the top of the log that already shipped the strip they would otherwise
+    appear in are skipped, so rebuilding right after committing gives the same page instead of one new line each time."""
+    rows = _recent_commits()
+    committed = _git("show", f"HEAD:{page}")
+    for skip in range(1, 6):
+        strip = _strip_html(rows[skip:])
+        if strip and strip in committed:
+            return strip
+    return _strip_html(rows)

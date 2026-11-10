@@ -59,7 +59,7 @@ The seven dependency-free interaction tests execute the real application script 
 - `scripts/build-cases.py`: case-study source; regenerate with `python3 scripts/build-cases.py`.
 - `scripts/stamp_shared.py`: native portfolio live-preview registration.
 - `scripts/build-llms.py`: discovery entry; regenerate with `python3 scripts/build-llms.py`.
-- `assets/img/builds/relay-cover.svg`: authored illustrative cover, not a screenshot.
+- `assets/img/relay/relay-cover.svg`: authored illustrative cover, not a screenshot.
 - `projects/relay.html`: generated case study.
 
 Vercel serves this static directory as part of the existing portfolio deployment. No hosting configuration changes are needed. A pull request may receive an automatic preview if the repository's Vercel integration is enabled. Production updates only after merge.

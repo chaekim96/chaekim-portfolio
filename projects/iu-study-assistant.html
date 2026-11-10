@@ -8,22 +8,23 @@
   <meta property="og:title" content="IU Study Assistant · Chae Kim - Portfolio">
   <meta property="og:description" content="A year-long capstone building a streamlined study platform for Indiana University students: project management, UX design, and back-end development.">
   <meta property="og:type" content="article">
-  <meta property="og:image" content="https://chaekim-portfolio.vercel.app/assets/img/og-sky.png">
+  <meta property="og:image" content="https://chaekim.vercel.app/assets/img/og-sky.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta name="theme-color" content="#74bff0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1a2e" media="(prefers-color-scheme: dark)">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://chaekim-portfolio.vercel.app/projects/iu-study-assistant">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="/assets/css/v-stamp.css?v=84e030af">
+  <link rel="stylesheet" href="/assets/css/case-stamp.css?v=a942d4e5">
+  <script src="/assets/js/liquid-glass.js?v=c955eb8a" defer></script>
+  <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {} document.documentElement.classList.add('js'); try { if (!sessionStorage.getItem('ck-seal')) { sessionStorage.setItem('ck-seal', '1'); document.documentElement.classList.add('seal-stamp'); } } catch (e) {}</script>
+  <link rel="canonical" href="https://chaekim.vercel.app/projects/iu-study-assistant">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="/assets/css/v-stamp.css?v=29">
-  <link rel="stylesheet" href="/assets/css/case-stamp.css?v=20">
-  <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
-  <meta name="theme-color" content="#bfdcf7" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0f1a2e" media="(prefers-color-scheme: dark)">
 </head>
 <body class="v v-stamp case sec-work">
 
@@ -60,7 +61,7 @@
     </section>
 
     <section class="wrap case-cover-wrap">
-      <div class="stage case-cover " style="--g: var(--g-plain)"><img src="/assets/img/projects/iusa/home.jpg" alt="IU Study Assistant home page"></div>
+      <div class="stage case-cover " style="--g: var(--g-plain)"><img src="/assets/img/iu-study-assistant/iusa/home.jpg" alt="IU Study Assistant home page"></div>
     </section>
 
     <section class="wrap case-body">
@@ -82,26 +83,26 @@
 <div class="callout"><span class="ico">🔍</span><div><p><strong>What we heard:</strong> most students had hit issues with at least one platform, use cases were inconsistent across the student body, and nearly everyone wanted necessary services aggregated in one location. The lack of interface standardization was producing real friction.</p></div></div>
 <h3>Feature list: 12 → 9</h3>
 <p>Research let us cut. Flashcards and Professor Profiler were dropped; sharing was removed from Survey and Notes to sidestep confidentiality issues; the Messenger sub-feature came out of Tutor Classifieds because of team scheduling constraints. What remained: Login &amp; Register (IU credentials), Profile, Dashboard, Friends List, Survey, Notes, Study Groups, Tutor Classifieds, and Buy &amp; Sell Textbooks.</p>
-<figure class="contain"><img src="/assets/img/projects/iusa/feature-plan.png" alt="Feature development plan across sprints" loading="lazy"><figcaption>Feature development plan across sprints</figcaption></figure>
+<figure class="contain"><img src="/assets/img/iu-study-assistant/iusa/feature-plan.png" alt="Feature development plan across sprints" loading="lazy"><figcaption>Feature development plan across sprints</figcaption></figure>
 
 <h2 id="design">Design</h2>
-<p>We adopted the <strong>3-click rule</strong> as a design framework — not because usability equals a click count, but as a forcing function to iron out redundancy and keep navigation obvious. Wireframes were built in Figma at web dimensions using Indiana University's color palette so the product felt native alongside other IU services.</p>
+<p>We adopted the <strong><span class="nb">3-click</span> rule</strong> as a design framework — not because usability equals a click count, but as a forcing function to iron out redundancy and keep navigation obvious. Wireframes were built in Figma at web dimensions using Indiana University's color palette so the product felt native alongside other IU services.</p>
 <div class="two">
-<figure><img src="/assets/img/projects/iusa/login.png" alt="Login" loading="lazy"><figcaption>Login</figcaption></figure>
-<figure><img src="/assets/img/projects/iusa/dashboard.jpg" alt="Dashboard" loading="lazy"><figcaption>Dashboard</figcaption></figure>
-<figure><img src="/assets/img/projects/iusa/notes.png" alt="Notes — the feature I built end-to-end" loading="lazy"><figcaption>Notes — the feature I built end-to-end</figcaption></figure>
-<figure><img src="/assets/img/projects/iusa/study-spots.jpg" alt="Study Spots" loading="lazy"><figcaption>Study Spots</figcaption></figure>
+<figure><img src="/assets/img/iu-study-assistant/iusa/login.png" alt="Login" loading="lazy"><figcaption>Login</figcaption></figure>
+<figure><img src="/assets/img/iu-study-assistant/iusa/dashboard.jpg" alt="Dashboard" loading="lazy"><figcaption>Dashboard</figcaption></figure>
+<figure><img src="/assets/img/iu-study-assistant/iusa/notes.png" alt="Notes — the feature I built end-to-end" loading="lazy"><figcaption>Notes — the feature I built end-to-end</figcaption></figure>
+<figure><img src="/assets/img/iu-study-assistant/iusa/study-spots.jpg" alt="Study Spots" loading="lazy"><figcaption>Study Spots</figcaption></figure>
 </div>
 
 <h2 id="build">Build</h2>
 <p>I designed the database and built the Notes feature. The schema accepts new data (users, note entries) while staying concrete about existing entities like users and study groups — the ERD doubled as the team's shared mental model of how data moves through the system.</p>
-<figure class="contain"><img src="/assets/img/projects/iusa/erd.jpg" alt="Entity-relationship diagram. Bold italics = foreign key, underline = primary key, * = multi-valued attribute." loading="lazy"><figcaption>Entity-relationship diagram. Bold italics = foreign key, underline = primary key, * = multi-valued attribute.</figcaption></figure>
+<figure class="contain"><img src="/assets/img/iu-study-assistant/iusa/erd.jpg" alt="Entity-relationship diagram. Bold italics = foreign key, underline = primary key, * = multi-valued attribute." loading="lazy"><figcaption>Entity-relationship diagram. Bold italics = foreign key, underline = primary key, * = multi-valued attribute.</figcaption></figure>
 <p>Front-end was HTML, CSS, Bootstrap, and JavaScript; back-end was PHP and SQL, with LucidChart for the ERD and Mockaroo for seed data. Branding (poster, logo, promo GIF) was done in InDesign, Photoshop, and Illustrator.</p>
-<figure class="contain"><img src="/assets/img/projects/iusa/poster.gif" alt="Project poster (animated)" loading="lazy"><figcaption>Project poster (animated)</figcaption></figure>
+<figure class="contain"><img src="/assets/img/iu-study-assistant/iusa/poster.gif" alt="Project poster (animated)" loading="lazy"><figcaption>Project poster (animated)</figcaption></figure>
 
 <h2 id="outcome">Outcome &amp; lessons</h2>
 <p>The system shipped on IU servers with all nine features. The honest version of the story: early sprints were slowed by database setup and syncing files to IU's servers, and later sprints suffered from scheduling miscalculations that pushed styling work into the final sprint — so the Bootstrap grid and a mobile-friendly pass never made it across every feature.</p>
-<div class="callout callout--marker"><span class="ico">📌</span><div><p><strong>Teamwork accountability.</strong> Working fully remote made a flexible meeting structure possible, but when accountability slipped, the team had to confront it directly. Timed stand-ups that focus on the value delivered — not the obstacles — kept us moving.</p><p><strong>Self-directed learning.</strong> The implementation was an exercise in problem-solving without a safety net, which is exactly what the first year on a real team feels like.</p></div></div>
+<div class="callout callout--marker"><span class="ico">📌</span><div><p><strong>Teamwork accountability.</strong> Working fully remote made a flexible meeting structure possible, but when accountability slipped, the team had to confront it directly. Timed stand-ups that focus on the value delivered — not the obstacles — kept us moving.</p><p><strong><span class="nb">Self-directed</span> learning.</strong> The implementation was an exercise in problem-solving without a safety net, which is exactly what the first year on a real team feels like.</p></div></div>
 
       </article>
     </section>
@@ -109,7 +110,7 @@
     <section class="next wrap">
       <div class="next__grid">
         <a href="/projects/yin-yang"><small>← Previous</small><strong>Yin Yang in Motion</strong></a>
-        <a href="/projects/alab" style="text-align:right"><small>Next →</small><strong>aLab — Automatic Level-Adjusting Bowl</strong></a>
+        <a href="/projects/alab" style="text-align:right"><small>Next →</small><strong>aLab — Automatic <span class="nb">Level-Adjusting</span> Bowl</strong></a>
       </div>
     </section>
   </main>
@@ -132,11 +133,12 @@
       <b>Let's chat.</b>
       <a data-user="chaewoonkim" data-domain="berkeley.edu" data-show href="#">chaewoonkim@berkeley.edu</a>
       <div class="foot__small">
-        <span>Built by hand in plain HTML, between latte art attempts.</span>
+        <span><a href="/projects/portfolio">Built by hand in plain HTML</a>, between latte art attempts.</span>
       </div>
     </div>
   </footer>
-  <script src="/assets/js/main.js?v=14"></script>
-  <script src="/assets/js/case-stamp.js?v=20"></script>
+  <script src="/assets/js/main.js?v=f70bcab9"></script>
+  <script src="/assets/js/case-stamp.js?v=2552d548"></script>
+  <script src="/assets/js/palette.js?v=078e437e" defer></script>
 </body>
 </html>

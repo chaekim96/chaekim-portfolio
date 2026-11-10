@@ -13,9 +13,8 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 sys.path.insert(0, str(HERE))
-from stamp_shared import CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS  # noqa: E402
+from stamp_shared import SITE_URL, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, nb_headlines  # noqa: E402
 
-SITE_URL = "https://chaekim-portfolio.vercel.app"
 
 AREAS = {
     "design": ("Design", "violet"),
@@ -210,6 +209,11 @@ DECISIONS = [
         opt("Public", "The case page could link to the source."),
         opt("Private", "Keep it to myself for now.", chosen=True),
     ]),
+    D("coursework", "Oct 2026", "Review Labeler", "Which AI/ML project should come next?", [
+        opt("Fine-tune a small model and beat a prompt", "Fine-tune on Spotify review labels and compare it with prompting, on accuracy, cost and speed.", chosen=True, rec=True),
+        opt("A recommender", "A popularity baseline, then a model that learns from past choices, measured against it."),
+        opt("A/B test simulator with an AI analyst", "Fake experiments with known effects, and an LLM write-up checked for planted mistakes."),
+    ], link=("/projects/review-labeler", "Review Labeler")),
     D("products", "Oct 2026", "Palette Generator", "Where should the weekly trend scan read brand colors from?", [
         opt("Startup lists", "New Product Hunt launches plus a curated list. Needs an API token.", rec=True),
         opt("A curated list only", "Hand-picked sites kept in the repo. No token; \"latest\" means the sites we add.", chosen=True),
@@ -357,7 +361,7 @@ def page():
         <li><b>4</b><span><strong>Write it down.</strong> So the next decision starts from this one.</span></li>
       </ol>
       <div class="legend" aria-hidden="true">
-        <span class="lg lg--pick"><i>✓</i>My pick</span><span class="lg"><i></i>Passed on</span><span class="tagc">Recommended</span>
+        <span class="legend__key legend__key--pick"><i>✓</i>My pick</span><span class="legend__key"><i></i>Passed on</span><span class="tagc">Recommended</span>
       </div>
     </section>
 
@@ -391,6 +395,6 @@ def page():
 if __name__ == "__main__":
     out = ROOT / "projects" / "decisions.html"
     with open(out, "w", encoding="utf-8", newline="\n") as f:
-        f.write(page())
+        f.write(nb_headlines(page()))
     t, o, a = counts()
     print(f"wrote projects/decisions.html ({t} decisions, {o} options, {a} against the recommendation)")

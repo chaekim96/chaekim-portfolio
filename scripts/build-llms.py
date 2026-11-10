@@ -9,26 +9,28 @@ import html
 import re
 from pathlib import Path
 
+from stamp_shared import SITE_URL
+from projects import BUILDS, COLLEGE, DOCUMENTS, FOLDERS, SITE_PAGES, WORK
+from writing_data import ESSAYS
+
 ROOT = Path(__file__).resolve().parent.parent
-SITE = "https://chaekim-portfolio.vercel.app"
+SITE = SITE_URL
+
+def _with_documents(slugs):
+    return [x for s in slugs for x in (s, *DOCUMENTS.get(s, []))]
+
+def _pages(slugs):
+    return [s for s in slugs if s not in SITE_PAGES and (ROOT / "projects" / f"{s}.html").exists()]
 
 # Same order as the homepage tabs.
 SECTIONS = [
-    ("Builds", "Products and tools, most with a live demo.", [
-        "relay", "ai-visibility-checker", "tally", "palette-generator", "typerace", "networking-tracker",
-        "web-anatomy", "voiceprompter", "parallel-prospect-brief", "product-blueprint", "smartmodel", "token-fuel", "code-improver", "task-progress",
-        "spotify-review-triage", "personal-wiki", "pacman-dqn", "custom-llm", "siri-reimagined", "home-gif", "yin-yang",
-    ]),
-    ("Work", "Startups, consulting and operations, then earlier projects at Indiana University.", [
-        "lucent", "ey", "tritooling", "mirrorme", "mirrorme-tech-pack", "mobility",
-        "alab", "coursera", "iu-study-assistant", "luc", "ptm",
-    ]),
-    ("Writing", "Essays by Chae, plus the reading list at /reading.", [
-        "preinstalled-apps",
-    ]),
-    ("How this site is made", "The decisions and options behind the portfolio itself.", [
-        "decisions", "portfolio", "personal-brand", "build-marks",
-    ]),
+    ("Builds", "Products and tools, most with a live demo.",
+     _pages(BUILDS + FOLDERS["design"] + FOLDERS["archive"])),
+    ("Work", "Startups, consulting and operations, then earlier projects at Indiana University.",
+     _with_documents(WORK) + sorted(COLLEGE)),
+    ("Writing", "Essays by Chae, plus the reading list at /reading.",
+     [e["url"].rsplit("/", 1)[1] for e in ESSAYS if e["url"].startswith("/projects/")]),
+    ("How this site is made", "The decisions and options behind the portfolio itself.", SITE_PAGES),
 ]
 
 
@@ -40,12 +42,17 @@ def page_info(slug):
     return title, html.unescape(desc.group(1)).strip() if desc else ""
 
 
+def _brand_desc(name="brand.html"):
+    text = (ROOT / name).read_text(encoding="utf-8")
+    return html.unescape(re.search(r'<meta name="description" content="([^"]*)"', text).group(1)).strip()
+
+
 def main():
     listed = {s for _, _, slugs in SECTIONS for s in slugs}
     on_disk = {p.stem for p in (ROOT / "projects").glob("*.html") if not p.stem.startswith("_")}
     missing = sorted(on_disk - listed)
     if missing:
-        raise SystemExit(f"Add these pages to a section in build-llms.py: {missing}")
+        raise SystemExit(f"Add these pages to scripts/projects/__init__.py or writing_data.py: {missing}")
 
     out = [
         "# Chae Kim",
@@ -68,6 +75,8 @@ def main():
         f"- [Reading list]({SITE}/reading)",
         f"- [Resume (PDF)]({SITE}/assets/pdf/chae-kim-resume.pdf)",
         f"- [Arcade]({SITE}/arcade): Snake, Galaga and a generative lo-fi radio",
+        f"- [Brand]({SITE}/brand): " + _brand_desc(),
+        f"- [Playbook]({SITE}/playbook): " + _brand_desc("playbook.html"),
         "",
     ]
     (ROOT / "llms.txt").write_text("\n".join(out), encoding="utf-8")
