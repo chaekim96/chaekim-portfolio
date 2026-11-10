@@ -382,6 +382,8 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
 .fig { background: var(--theater); color: var(--theater-ink); border-radius: 28px; padding: clamp(1.5rem, 4vw, 2.5rem); display: flex; flex-direction: column; gap: 1.25rem; margin-block: 1rem; }
 .fig .cap2 { font-size: .85rem; color: var(--theater-muted); text-align: center; }
 .essay .faq { margin-top: .5rem; }
+.faq .grp { font: 600 .8rem var(--sft); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding: 1.75rem 0 0; }
+.faq .grp:first-child { padding-top: 1rem; }
 
 /* ---------- Wireframes (lo-fi, theme-aware) ---------- */
 .wfs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2.5rem 1.5rem; }
@@ -588,12 +590,28 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
         <p>It's closer than it sounds. Recent iPhone chips match Mac chips on single-core speed. Phones still have less memory and run hot sooner than laptops, so the work gets split. Small, fast models run on the device for quick changes and anything personal. Heavier builds go to Apple's Private Cloud Compute, which Apple says doesn't keep your data. Every app Siri builds runs sandboxed and can't get more access than you approve.</p>
         <p>Most of the plumbing already exists. Shortcuts, widgets, and App Intents already let apps tell Siri what they can do. This concept takes that plumbing and makes it the whole operating system.</p>
 
-        <h3>The hard questions.</h3>
+        <h3>Questions I'd expect.</h3>
+        <p>If I were presenting this at Apple, these are the questions I'd expect in the room, and how I'd answer them.</p>
         <div class="faq">
-          <details open><summary>Who fixes it when it breaks?</summary><p>If a service changes, Siri rebuilds the affected part and tells you what changed. The service maker is responsible for its abilities, and Apple is responsible for the app holding together.</p></details>
+          <p class="grp">People</p>
+          <details open><summary>Most people don't want to build anything. Won't an empty phone feel broken?</summary><p>Day one shouldn't be empty. During setup, Siri asks a few questions, like what you do, what you keep track of, and who you talk to most, then suggests a starter set of apps. You tap to keep the ones you want. Making your own is there when you want it, not a chore on day one.</p></details>
+          <details><summary>What would you ship first?</summary><p>Not the five-app iPhone. The first step is Siri building widgets from the App Intents that apps already offer. It's low risk, it uses tools that exist today, and it tests the one thing that matters: whether people will ask for software instead of searching for it.</p></details>
+          <details><summary>How would you know it's working?</summary><p>Three numbers. The share of new users who keep at least one app Siri built in their first week. How many of those apps they still open 30 days later. And how often people change an app after making it. If people make apps and abandon them, it's a novelty. If they keep adjusting them, it's working.</p></details>
+          <p class="grp">Money</p>
+          <details><summary>Why would Apple risk its App Store revenue?</summary><p>Much of what people spend on the App Store goes to games and big subscription services, and those stay. What's at risk is the long tail of simple utilities, and that's exactly where people are starting to use AI instead. Owning the place where apps get made is worth more than owning the shelf where they're sold.</p></details>
+          <details><summary>So how does Apple make money from this?</summary><p>A small fee on transactions made through Siri, like rides and orders, which is closest to how the App Store earns today. Fees like that are under pressure from the Epic case and Europe's Digital Markets Act, so services would also need a way to reach people directly. The bigger payoff is indirect: an iPhone built around you is much harder to leave.</p></details>
+          <p class="grp">Developers</p>
+          <details><summary>Why would a bank or a ride service give up control of its app?</summary><p>It doesn't have to. Its full app can still exist. What it adds is a capability Siri can use, which puts it inside apps it would never reach otherwise, with branded components so it still looks like itself. It also sees what people ask Siri for, which is free product research.</p></details>
+          <details><summary>What happens to developers who make simple apps?</summary><p>That part of the market shrinks, and I don't think it's honest to pretend otherwise. The work moves to components, pro-grade tools, and services that need real infrastructure behind them.</p></details>
+          <p class="grp">Trust</p>
+          <details><summary>Apps Siri builds skip App Review. What stops a shared app from being malware?</summary><p>Sharing sends the design, never code or data. Your copy is rebuilt by your own Siri, in the same sandbox as every other app, and it asks for permissions on your phone. Anything that moves money or reads your messages asks every time.</p></details>
+          <details><summary>Who's responsible if a health or money app gets something wrong?</summary><p>The service is responsible for its data, and Apple is responsible for the app holding together. Apps Siri builds show where every number comes from and link back to the service that owns it. That's the line I'd draw, and it's the one I'd expect legal to push on hardest.</p></details>
+          <details><summary>Who fixes it when it breaks?</summary><p>If a service changes, Siri rebuilds the affected part and tells you what changed. You can always undo it.</p></details>
+          <details><summary>Doesn't merging Phone into Conversations create problems with carriers and regulators?</summary><p>Emergency calling stays built in and works from the Lock Screen, like it does today. Conversations changes where calls live in the interface, not what the phone is required to do.</p></details>
+          <p class="grp">Building it</p>
+          <details><summary>Will the same request build the same app twice? How do you test software no one wrote?</summary><p>Siri builds from a fixed set of components that Apple has already tested, inside Apple's design system. What changes from person to person is how the pieces are arranged, not the code underneath. Apple tests the parts, and Siri only puts them together.</p></details>
           <details><summary>How does anyone help you if every app is different?</summary><p>Apple's design system is the guardrail. Buttons, navigation, and settings behave the same everywhere, even when the layout is yours.</p></details>
-          <details><summary>Isn't this a security nightmare?</summary><p>An app that can read messages and move money is a big target. Every app is sandboxed, every permission is explicit, and anything involving money asks you first.</p></details>
-          <details><summary>Why would Apple risk its App Store revenue?</summary><p>Because someone else will do this first. Owning the place where apps get made is worth more than owning the shelf where they're sold.</p></details>
+          <details><summary>Google controls Android. Why would Apple win this?</summary><p>Google can move faster on its own platform. Apple's advantage is trust: people already give their iPhone their health data, payments, and messages. This idea only works on a platform people trust with all of that.</p></details>
           <details><summary>Haven't AI devices already failed?</summary><p>The ones that failed tried to replace the phone. This keeps the phone people already trust and changes what's on it.</p></details>
         </div>
 
