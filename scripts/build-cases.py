@@ -20,7 +20,7 @@ OUT = ROOT / "projects"
 # The script name has a hyphen, so it can't be imported as a package; load the sibling module by path.
 sys.path.insert(0, str(HERE))
 from stamp_shared import (SITE_URL, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, LIVE_APPS, LIVE_DIALOG, LIVE_SCRIPT,  # noqa: E402
-                          live_button, build_mark, build_icons, work_mark, mark_color, nb_headlines)
+                          live_button, build_mark, build_icons, work_mark, mark_color, nb_headlines, spark_ready, SPARK_SCRIPT)
 import importlib.util  # noqa: E402
 import palette_data  # noqa: E402
 
@@ -248,7 +248,7 @@ def render(c):
     toc, body = render_sections(c)
     tint = product_tint(c["slug"]) if c["slug"] in BUILD_SLUGS else None
     is_build = c["slug"] in BUILD_SLUGS
-    mark = build_mark(c["slug"], "case-hero__mark", 56) if is_build else ""
+    mark = build_mark(c["slug"], "case-hero__mark", 56, themed=True) if is_build else ""
     # builds use their own favicon, touch icon and share card; everything else keeps the site's 김 set
     own = build_icons(c["slug"], SITE_URL) if is_build else None
     icons, og_image = own or (SITE_ICONS, f"{SITE_URL}/assets/img/og-sky.png")
@@ -277,7 +277,7 @@ def render(c):
         # web apps get a "Try it live" button on the cover and the dialog it opens
         "live": live_button(c["slug"]) if c["slug"] in LIVE_APPS else "",
         "live_dialog": LIVE_DIALOG + "\n" if c["slug"] in LIVE_APPS else "",
-        "live_script": "\n" + LIVE_SCRIPT if c["slug"] in LIVE_APPS else "",
+        "live_script": ("\n" + LIVE_SCRIPT if c["slug"] in LIVE_APPS else "") + ("\n" + SPARK_SCRIPT if is_build and spark_ready(c["slug"]) else ""),
         "head_assets": CASE_HEAD_ASSETS, "top": CASE_TOP, "foot": CASE_FOOT, "scripts": CASE_SCRIPTS,
     }
     return nb_headlines(SHELL.format_map(fields))

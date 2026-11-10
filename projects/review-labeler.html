@@ -13,6 +13,7 @@
   <meta property="og:image:height" content="630">
   <link rel="canonical" href="https://chaekim.vercel.app/projects/review-labeler">
   <link rel="icon" href="/assets/img/brand/review-labeler.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/img/brand/fav16/review-labeler.png" type="image/png" sizes="16x16">
   <link rel="apple-touch-icon" href="/assets/img/brand/cards/review-labeler-touch.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +21,7 @@
   <meta name="theme-color" content="#0f1a2e" media="(prefers-color-scheme: dark)">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="/assets/css/v-stamp.css?v=fcebaab0">
+  <link rel="stylesheet" href="/assets/css/v-stamp.css?v=84e030af">
   <link rel="stylesheet" href="/assets/css/case-stamp.css?v=a942d4e5">
   <script src="/assets/js/liquid-glass.js?v=c955eb8a" defer></script>
   <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {} document.documentElement.classList.add('js'); try { if (!sessionStorage.getItem('ck-seal')) { sessionStorage.setItem('ck-seal', '1'); document.documentElement.classList.add('seal-stamp'); } } catch (e) {}</script>
@@ -73,7 +74,7 @@
 
     <section class="case-hero wrap">
       <a class="case-hero__back" href="/#builds">← All builds</a>
-      <img class="case-hero__mark" src="/assets/img/brand/review-labeler.svg" alt="" width="56" height="56">
+      <img class="case-hero__mark mk-lit" src="/assets/img/brand/review-labeler.svg" alt="" width="56" height="56"><img class="case-hero__mark mk-night" src="/assets/img/brand/dark/review-labeler.svg" alt="" width="56" height="56">
       <p class="eyebrow">ai/ml · solo build · in progress</p>
       <h1 class="case-hero__title">Finding out when a small <span class="nb">fine-tuned</span> model is good enough.</h1>
       <p class="tldr">Spotify Review Triage labeled 100,000 reviews with a small, cheap model. This asks the next question: would a small model fine-tuned for the job match a big model? Before training anything, I reread the old results and found that most of the gap I blamed on the model came from my own hand labels. So I rewrote the label guide, built a labeling sheet, and wrote the scripts that lock the test set and score the models. No model has been trained yet.</p>

@@ -244,6 +244,11 @@ a.w:focus-visible .stage { outline: 3px solid var(--focus); outline-offset: 3px;
 }
 /* the build's mark leads the pill; specific enough to beat the shelf's full-bleed .stage img rule */
 .stage .pill img.pill__mark { width: 18px; height: 18px; flex: none; margin-left: -6px; display: block; object-fit: contain; }
+/* Dark theme swaps in each mark's dark tile (assets/img/brand/dark/). The build writes both <img>s; the theme shows one.
+   !important because the pill and hero rules above set display with higher specificity. */
+img.mk-night { display: none !important; }
+:root[data-theme="dark"] img.mk-lit { display: none !important; }
+:root[data-theme="dark"] img.mk-night { display: block !important; }
 .pill:has(.pill__name) { max-width: calc(100% - 24px); }
 .pill__name { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
 .pill em { font-style: normal; font-weight: 400; color: var(--ink-2); }

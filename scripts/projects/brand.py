@@ -1,0 +1,6 @@
+PROJECT = dict(slug="brand", card_href="/brand",
+  card=r"""
+          <div class="stage" style="--g: var(--g-plain)"><div class="art"><div style="display:grid;grid-template-columns:repeat(3,52px);gap:10px"><img src="/assets/img/brand/ai-visibility-checker.svg" alt="" width="52" height="52" loading="lazy" style="display:block;width:52px;height:52px;border-radius:12px"><img src="/assets/img/brand/tally.svg" alt="" width="52" height="52" loading="lazy" style="display:block;width:52px;height:52px;border-radius:12px"><img src="/assets/img/brand/token-fuel.svg" alt="" width="52" height="52" loading="lazy" style="display:block;width:52px;height:52px;border-radius:12px"><img src="/assets/img/brand/personal-wiki.svg" alt="" width="52" height="52" loading="lazy" style="display:block;width:52px;height:52px;border-radius:12px"><img src="/assets/img/brand/voiceprompter.svg" alt="" width="52" height="52" loading="lazy" style="display:block;width:52px;height:52px;border-radius:12px"><img src="/assets/img/brand/typerace.svg" alt="" width="52" height="52" loading="lazy" style="display:block;width:52px;height:52px;border-radius:12px"></div></div><span class="pill">Brand <em>2026</em></span></div>
+          <p class="meta">The two-minute brand book: one tile, one recipe, one endorsement line.</p>
+""",
+)
