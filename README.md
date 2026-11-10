@@ -39,6 +39,7 @@ Stylesheets and scripts are linked with a hash of their contents, so there are n
 
 ## Other notes
 
+- WebP copies and looping videos: run `python3 scripts/make-media.py` after adding images or GIFs, then `build.py`. It uses headless Chrome, so nothing needs installing.
 - Images aren't part of `build.py`. Run `build-brand-cards.py` or `build-mod-covers.py` (headless Chrome), `build-resume.py` or `make-og.sh` when a mark, cover or the resume changes.
 - Anything in `drafts/` or `scripts/` is not deployed. Everything else in the repo is public.
 - Email is assembled at runtime from `data-user` / `data-domain` attributes (see `main.js`) so it isn't in the HTML.

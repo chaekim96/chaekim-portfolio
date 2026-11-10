@@ -20,7 +20,7 @@ OUT = ROOT / "projects"
 # The script name has a hyphen, so it can't be imported as a package; load the sibling module by path.
 sys.path.insert(0, str(HERE))
 from stamp_shared import (SITE_URL, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, LIVE_APPS, LIVE_DIALOG, LIVE_SCRIPT,  # noqa: E402
-                          live_button, build_mark, build_icons, work_mark, mark_color, nb_headlines, spark_ready, SPARK_SCRIPT)
+                          live_button, build_mark, build_icons, work_mark, mark_color, finish, spark_ready, SPARK_SCRIPT)
 import importlib.util  # noqa: E402
 import palette_data  # noqa: E402
 
@@ -81,8 +81,8 @@ SHELL = """<!DOCTYPE html>
 
     <section class="next wrap" aria-label="{next_label}">
       <div class="next__grid">
-        <a href="/projects/{prev_slug}">{prev_mark}<span><small>← Previous {next_noun}</small><strong>{prev_title}</strong></span></a>
-        <a class="next__forward" href="/projects/{next_slug}">{next_mark}<span><small>Next {next_noun} →</small><strong>{next_title}</strong></span></a>
+        <a href="{prev_href}">{prev_mark}<span><small>← Previous {next_noun}</small><strong>{prev_title}</strong></span></a>
+        <a class="next__forward" href="{next_href}">{next_mark}<span><small>Next {next_noun} →</small><strong>{next_title}</strong></span></a>
       </div>
     </section>
   </main>
@@ -265,8 +265,8 @@ def render(c):
         "jsonld": jsonld(c, og_image),
         "back_href": "/#builds" if is_build else "/#work",
         "back_label": "All builds" if is_build else "All work",
-        "prev_slug": prev[0], "prev_title": html.escape(prev[1]), "prev_mark": _tile(prev[0], "next__mark", 36),
-        "next_slug": nxt[0], "next_title": html.escape(nxt[1]), "next_mark": _tile(nxt[0], "next__mark", 36),
+        "prev_href": prev[2], "prev_title": html.escape(prev[1]), "prev_mark": _tile(prev[0], "next__mark", 36),
+        "next_href": nxt[2], "next_title": html.escape(nxt[1]), "next_mark": _tile(nxt[0], "next__mark", 36),
         "next_noun": noun, "next_label": f"Previous and next {noun}",
         "switcher": render_switcher(c["slug"]), "docs": render_docs(c["slug"]),
         "tint_class": " has-tint" if tint else "", "tint_style": f' style="--pt: {tint}"' if tint else "",
@@ -280,7 +280,7 @@ def render(c):
         "live_script": ("\n" + LIVE_SCRIPT if c["slug"] in LIVE_APPS else "") + ("\n" + SPARK_SCRIPT if is_build and spark_ready(c["slug"]) else ""),
         "head_assets": CASE_HEAD_ASSETS, "top": CASE_TOP, "foot": CASE_FOOT, "scripts": CASE_SCRIPTS,
     }
-    return nb_headlines(SHELL.format_map(fields))
+    return finish(SHELL.format_map(fields))
 
 
 def main(argv=None):

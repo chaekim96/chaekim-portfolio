@@ -6,7 +6,7 @@ Usage:  python3 scripts/build-pages.py
 """
 from pathlib import Path
 
-from stamp_shared import SITE_URL, CASE_FOOT, CASE_HEAD_ASSETS, CASE_SCRIPTS, CASE_TOP
+from stamp_shared import SITE_URL, prefer_webp, CASE_FOOT, CASE_HEAD_ASSETS, CASE_SCRIPTS, CASE_TOP
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
@@ -19,6 +19,7 @@ for src in sorted((HERE / "pages").glob("*.html")):
     page = src.read_text(encoding="utf-8")
     for token, value in TOKENS.items():
         page = page.replace(token, value)
+    page = prefer_webp(page)
     out = ROOT / (f"{src.name}" if src.stem in ROOT_PAGES else f"projects/{src.name}")
     out.write_text(page, encoding="utf-8")
     print("wrote", out.relative_to(ROOT))
