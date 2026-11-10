@@ -211,7 +211,8 @@ PALETTE_SCRIPT = f'  <script src="{asset("js/palette.js")}" defer></script>'
 
 CASE_SCRIPTS = f"""  <script src="{asset("js/main.js")}"></script>
   <script src="{asset("js/case-stamp.js")}"></script>
-{PALETTE_SCRIPT}"""
+{PALETTE_SCRIPT}
+  <script defer src="/_vercel/insights/script.js"></script>"""
 
 
 # ---------------------------------------------------------------------------
