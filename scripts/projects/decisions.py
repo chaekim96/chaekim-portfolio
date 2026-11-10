@@ -1,0 +1,2 @@
+PROJECT = dict(slug="decisions",
+)

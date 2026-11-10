@@ -15,9 +15,8 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
-SITE_URL = "https://chaekim-portfolio.vercel.app"
 sys.path.insert(0, str(HERE))
-from stamp_shared import CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS  # noqa: E402
+from stamp_shared import SITE_URL, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, nb_headlines  # noqa: E402
 
 ESSAYS = [
     dict(
@@ -118,6 +117,8 @@ def render(e):
   <meta property="og:description" content="{desc}">
   <meta property="og:type" content="article">
   <meta property="og:image" content="{SITE_URL}/assets/img/og-sky.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <link rel="canonical" href="{url}">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
@@ -159,7 +160,7 @@ def main():
     check = "--check" in sys.argv[1:]
     stale = []
     for e in ESSAYS:
-        out, path = render(e), ROOT / "projects" / f"{e['slug']}.html"
+        out, path = nb_headlines(render(e)), ROOT / "projects" / f"{e['slug']}.html"
         if check:
             if not path.exists() or path.read_text(encoding="utf-8") != out:
                 stale.append(e["slug"])
