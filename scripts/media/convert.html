@@ -1,0 +1,38 @@
+<!doctype html><meta charset=utf-8><title>conv</title><pre id=s>start</pre><script>
+const log=t=>document.getElementById('s').textContent+='\n'+t;
+async function stills(){
+  const list=await (await fetch('/__list')).json(); let i=0;
+  for(const src of list){
+    const blob=await (await fetch(src)).blob(); const bmp=await createImageBitmap(blob);
+    const c=new OffscreenCanvas(bmp.width,bmp.height); c.getContext('2d').drawImage(bmp,0,0);
+    const out=await c.convertToBlob({type:'image/webp',quality:0.82});
+    if(out.type==='image/webp') await fetch('/__save/'+encodeURIComponent(src.replace(/\.(jpe?g|png)$/i,'.webp').slice(1)),{method:'POST',body:out});
+    i++;
+  }
+  log('stills '+i);
+}
+async function gif(src,bps){
+  const data=await (await fetch(src)).arrayBuffer();
+  const dec=new ImageDecoder({data,type:'image/gif'}); await dec.tracks.ready; const n=dec.tracks.selectedTrack.frameCount;
+  const first=(await dec.decode({frameIndex:0})).image; const W=first.displayWidth,Hh=first.displayHeight;
+  const c=document.createElement('canvas'); c.width=W; c.height=Hh; const g=c.getContext('2d');
+  // poster: the first frame
+  g.drawImage(first,0,0); const poster=await new Promise(r=>c.toBlob(r,'image/webp',0.85));
+  await fetch('/__save/'+encodeURIComponent(src.replace(/\.gif$/,'-poster.webp').slice(1)),{method:'POST',body:poster});
+  const type=['video/mp4;codecs=avc1.640028','video/mp4;codecs=avc1.42E01E','video/mp4'].find(t=>MediaRecorder.isTypeSupported(t));
+  if(!type){log('no mp4 '+src);return}
+  const stream=c.captureStream(30); const rec=new MediaRecorder(stream,{mimeType:type,videoBitsPerSecond:bps}); const parts=[];
+  rec.ondataavailable=e=>parts.push(e.data); rec.start();
+  for(let i=0;i<n;i++){ const f=(await dec.decode({frameIndex:i})).image; g.drawImage(f,0,0); const d=Math.max(20,(f.duration||100000)/1000); f.close(); await new Promise(r=>setTimeout(r,d)); }
+  await new Promise(r=>{rec.onstop=r;rec.stop()});
+  const out=new Blob(parts,{type:'video/mp4'});
+  await fetch('/__save/'+encodeURIComponent(src.replace(/\.gif$/,'.mp4').slice(1)),{method:'POST',body:out});
+  log(src+' '+n+' frames '+type+' '+out.size);
+}
+(async()=>{
+  try{ await stills();
+  for(const s of (await (await fetch('/__gifs')).json())) await gif(s,3e6);
+  }catch(e){log('ERR '+e)}
+  await fetch('/__save/_done',{method:'POST',body:document.getElementById('s').textContent}); document.title='done';
+})();
+</script>

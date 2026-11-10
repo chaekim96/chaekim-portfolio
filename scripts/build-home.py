@@ -68,7 +68,7 @@ ARCADE = """          <div class="break">
 # Stamp: quiet, gallery-like, artifact-first. The page is scripts/home.html, with %%TOKENS%% filled in below.
 # ----------------------------------------------------------------------------
 
-from stamp_shared import SITE_URL, asset, BOOT_SCRIPT, PALETTE_SCRIPT, nb_headlines, changelog_strip, INK_DEFS, seal, live_button, LIVE_DIALOG, LIVE_SCRIPT, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, THEME_COLOR, GLASS_JS, build_mark, build_icons, mark_color, work_mark, LIVE_APPS
+from stamp_shared import SITE_URL, asset, BOOT_SCRIPT, PALETTE_SCRIPT, finish, changelog_strip, INK_DEFS, seal, live_button, LIVE_DIALOG, LIVE_SCRIPT, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, THEME_COLOR, GLASS_JS, build_mark, build_icons, mark_color, work_mark, LIVE_APPS
 from projects import COLLEGE, FEATURED, FOLDERS, PROJECTS, WORK, field
 
 
@@ -247,5 +247,5 @@ ARCADE_PAGE = f"""<!DOCTYPE html>
 """
 for name, page in (("index.html", STAMP), ("arcade.html", ARCADE_PAGE)):
     with open(os.path.join(ROOT, name), "w", encoding="utf-8", newline="\n") as f:
-        f.write(nb_headlines(page))
+        f.write(finish(page))
     print("wrote", name)

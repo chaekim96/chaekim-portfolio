@@ -55,8 +55,14 @@ def steady(text):
 
 
 def problems(pages):
-    """Things a build can't fix: placeholders left in, and public pages search engines aren't told about."""
+    """Things a build can't fix: placeholders and conflict markers left in, and public pages search engines aren't told about."""
     found = [f"{p.relative_to(ROOT)}: unresolved [CONFIRM:" for p, text in pages.items() if "[CONFIRM:" in text]
+    tracked = subprocess.run(["git", "ls-files", "-z"], cwd=ROOT, capture_output=True, text=True).stdout.split("\0")
+    for rel in tracked:
+        path = ROOT / rel
+        if rel and path.suffix in {".html", ".xml", ".txt", ".json", ".py", ".css", ".js", ".md", ".yml"} and path.exists():
+            if re.search(r"^(<{7}|>{7})( |$)|^={7}$", path.read_text(encoding="utf-8", errors="ignore"), re.M):
+                found.append(f"{rel}: merge conflict markers")
     locs = set(re.findall(r"<loc>https://[^/]+/?([^<]*)</loc>", pages[ROOT / "sitemap.xml"]))
     for p, text in pages.items():
         if p.suffix == ".html" and p.stem != "404" and 'content="noindex' not in text[:3000]:
