@@ -9,7 +9,7 @@ NAMES = {
     "ai-visibility-checker": "Check", "arcade": "Play", "code-improver": "Review", "custom-llm": "Train",
     "networking-tracker": "Connect", "pacman-dqn": "Maze", "palette-generator": "Palette",
     "parallel-prospect-brief": "Brief", "personal-wiki": "Notes", "product-blueprint": "Plan",
-    "review-labeler": "Label", "smartmodel": "Route", "spotify-review-triage": "Sort", "tally": "Count",
+    "relay": "Hand off", "review-labeler": "Label", "smartmodel": "Route", "spotify-review-triage": "Sort", "tally": "Count",
     "task-progress": "Progress", "timely": "Time", "token-fuel": "Fuel", "typerace": "Type",
     "voiceprompter": "Speak", "web-anatomy": "Layers",
 }
@@ -28,6 +28,7 @@ PATHS = {
     "personal-wiki": '<circle cx="12" cy="12" r="2.2"/><path d="M10.4 10.4 7 7.4M13.8 10.4l3.6-3.8M13.8 13.6l3.6 2.8M10.4 13.6 8 16.8"/>'
                      '<circle cx="5.6" cy="6" r="1.6"/><circle cx="18.6" cy="5.4" r="1.6"/><circle cx="19" cy="17.6" r="1.6"/><circle cx="6.6" cy="18.4" r="1.6"/>',
     "product-blueprint": '<path d="M4 20v-4.5h4.5V11H13V4.5h7V20z"/><path d="M14.8 9.2l1.5 1.5 2.6-3"/>',
+    "relay": '<rect x="2" y="8.5" width="6.5" height="7" rx="1.6"/><path d="M10.5 12h4M13 10l2 2-2 2"/><rect x="16" y="8" width="6" height="8" rx="1.8"/><path d="M17.8 12.2l1.2 1.2 2-2.4"/>',
     "review-labeler": '<path d="M3.5 7.5A2.5 2.5 0 0 1 6 5h7.5l7 7-7 7H6a2.5 2.5 0 0 1-2.5-2.5z"/><path d="M7.5 12l2 2 3.5-4"/>',
     "smartmodel": '<path d="M12 21v-7c0-3.5-5-4-5-8M12 14c0-3.5 5-4 5-8M12 14V6"/><circle cx="7" cy="4.6" r="1.4"/><circle cx="12" cy="4.6" r="1.4"/><circle cx="17" cy="4.6" r="1.4"/>',
     "spotify-review-triage": '<path d="M4 5h16l-6 7.5V18l-4 2v-7.5z"/>',

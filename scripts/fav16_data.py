@@ -107,6 +107,11 @@ GRIDS = {
         6: "BBeBBBBBBBBBBeBB", 7: "BBeBwwwBBBBBBeBB", 8: "BBeBwwwBkBkBkeBB", 9: "BBeBwwwBBBBBBeBB",
         10: "BBeBBeeeeeeBBeBB", 11: "BBeBBBBBBBBBBeBB", 12: "BBeBBBBBBBBBBeBB", 13: "BBeeeeeeeeeeeeBB",
     },
+    # a faint video frame, an ink arrow, a white check box: watching handed off to doing
+    "relay": {
+        5: "BBBBBBBBBwwwwwwB", 6: "BdddBBkBBwwwwwwB", 7: "BdddkkkkBwwwwkwB",
+        8: "BdddkkkkBwkwkwwB", 9: "BdddBBkBBwwkwwwB", 10: "BBBBBBBBBwwwwwwB",
+    },
     # a paper price tag with an ink check and a hole in the tile color
     "review-labeler": {
         5: "BBBpppppppBBBBBB", 6: "BBBppppppppBBBBB", 7: "BBBpppppkpppBBBB", 8: "BBBppkpkppBppBBB",
