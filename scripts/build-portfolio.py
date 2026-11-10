@@ -5,7 +5,7 @@ Usage:  python3 scripts/build-portfolio.py
 """
 import os
 
-from stamp_shared import SITE_URL, nb_headlines, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS
+from stamp_shared import SITE_URL, finish, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -192,5 +192,5 @@ PORTFOLIO_PAGE = f"""<!DOCTYPE html>
 """
 
 with open(os.path.join(ROOT, "projects", "portfolio.html"), "w", encoding="utf-8", newline="\n") as f:
-    f.write(nb_headlines(PORTFOLIO_PAGE))
+    f.write(finish(PORTFOLIO_PAGE))
 print("wrote projects/portfolio.html")

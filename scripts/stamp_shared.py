@@ -236,6 +236,18 @@ def _nb_inner(inner):
             out.append(_HYPHENATED.sub(lambda m: f'<span class="nb">{m.group(0)}</span>', part))
     return "".join(out)
 
+def prefer_webp(page):
+    """Point <img> tags at a WebP copy where one sits next to the JPG or PNG (made by
+    scripts/make-media.py; it is kept only when it is clearly smaller). Share-card meta tags keep the original."""
+    def swap(m):
+        webp = m.group(2) + ".webp"
+        return m.group(1) + (webp if os.path.exists(os.path.join(_root(), webp.lstrip("/"))) else m.group(2) + m.group(3)) + '"'
+    return re.sub(r'(<img\b[^>]*?\ssrc=")(/assets/img/[^"?#]+)(\.(?:jpe?g|png))"', swap, page)
+
+def finish(page):
+    """Last step for every generated page."""
+    return prefer_webp(nb_headlines(page))
+
 def nb_headlines(page):
     """Wrap hyphenated words inside headings (h1 to h6) and <strong> titles in .nb. Safe to run twice."""
     return _HEADING.sub(lambda m: m.group(1) + _nb_inner(m.group(3)) + m.group(4), page)
