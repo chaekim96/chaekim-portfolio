@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Siri, Reimagined: Every App, Made by You · Chae Kim - Portfolio</title>
-  <meta name="description" content="A design concept: an iPhone that ships with five apps, and a Siri that builds the rest. A thought piece on the future of the App Store and app development, with iPhone mockups and wireframes.">
+  <meta name="description" content="A design concept: Siri builds widgets and shortcuts from App Intents first. A five-app iPhone is where this could lead. Thought piece, mockups, and wireframes.">
   <meta property="og:title" content="Siri, Reimagined: Every App, Made by You · Chae Kim - Portfolio">
-  <meta property="og:description" content="A design concept: an iPhone that ships with five apps, and a Siri that builds the rest. A thought piece on the future of the App Store and app development, with iPhone mockups and wireframes.">
+  <meta property="og:description" content="A design concept: Siri builds widgets and shortcuts from App Intents first. A five-app iPhone is where this could lead. Thought piece, mockups, and wireframes.">
   <meta property="og:type" content="article">
   <meta property="og:image" content="https://chaekim.vercel.app/assets/img/siri-reimagined/siri-reimagined/og.jpg">
   <link rel="canonical" href="https://chaekim.vercel.app/projects/siri-reimagined">
@@ -358,6 +358,10 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
 }
 
 /* ---------- Two-part structure ---------- */
+.brief { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.brief li { background: var(--card); border-radius: 28px; padding: 1.35rem 1.3rem 1.5rem; display: flex; flex-direction: column; gap: .45rem; min-width: 0; }
+.brief .k { font: 600 .82rem var(--sft); color: var(--muted); }
+.brief p { font: 600 1.05rem/1.35 var(--sf); letter-spacing: -.02em; }
 .parts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
 .partcard { background: var(--card); border-radius: 28px; padding: clamp(1.75rem, 3.5vw, 2.75rem); display: flex; flex-direction: column; gap: .75rem; color: var(--ink); min-width: 0; }
 .partcard:hover { text-decoration: none; }
@@ -443,13 +447,13 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
 .phase .ex { font-size: .85rem; color: var(--theater-ink); opacity: .85; border-top: 1px solid var(--theater-hair); padding-top: .7rem; }
 
 @media (max-width: 1080px) {
-  .wfs, .rollout { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .brief, .wfs, .rollout { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 860px) {
   .parts, .wfs.c3 { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
-  .wfs, .rollout { grid-template-columns: 1fr; }
+  .brief, .wfs, .rollout { grid-template-columns: 1fr; }
 }
 
 /* ---------- Under the hood diagram ---------- */
@@ -493,6 +497,7 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
   <div class="in">
     <span class="title"><a class="home" href="/#builds">Chae Kim</a><span class="slash" aria-hidden="true">/</span>Siri, Reimagined</span>
     <nav aria-label="Sections">
+      <a href="#brief">In short</a>
       <a href="#essay">Thought piece</a>
       <a href="#playout">How it plays out</a>
       <a href="#wireframes">Wireframes</a>
@@ -510,7 +515,7 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
       <div class="head">
         <span class="eyebrow muted">A design concept</span>
         <h1>Every app.<br><span class="grad">Made by you.</span></h1>
-        <p class="sub">Just describe it. Siri builds it.<br>Your iPhone starts with five apps.</p>
+        <p class="sub">Just describe it. Siri builds it.<br>Widgets first. Five apps later.</p>
         <div class="links"><a href="#essay">Read the thought piece ›</a><a href="#playout">See how it plays out ›</a></div>
       </div>
       <div class="hero-phones">
@@ -521,12 +526,18 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
     </div>
   </section>
 
-  <!-- CONTENTS -->
-  <section class="band">
+  <!-- IN SHORT + CONTENTS -->
+  <section class="band" id="brief">
     <div class="wrap" style="padding-block:clamp(3rem,7vw,5rem)">
+      <ul class="brief">
+        <li><span class="k">The problem</span><p>People want small personal tools, not more generic apps.</p></li>
+        <li><span class="k">Ship first</span><p>Phase 1: Siri builds widgets and shortcuts from the App Intents apps already expose.</p></li>
+        <li><span class="k">How I'd measure it</span><p>Week-1 keep rate of a Siri-built app, 30-day reuse, and how often people change it after creating it.</p></li>
+        <li><span class="k">Why it fits Apple</span><p>App Intents, Private Cloud Compute, and trust with personal data.</p></li>
+      </ul>
       <div class="parts">
-        <a class="partcard" href="#essay"><span class="num">Part 1</span><span class="t">The thought piece</span><p>Why your next iPhone should ship nearly empty, and what that means for the App Store and the people who build apps. The long version of my essay on preinstalled apps.</p><span class="go">Read it ›</span></a>
-        <a class="partcard" href="#playout"><span class="num">Part 2</span><span class="t">How it would play out</span><p>Illustrations, wireframes, and a realistic path from today's iPhone to this one.</p><span class="go">See it ›</span></a>
+        <a class="partcard" href="#essay"><span class="num">Part 1</span><span class="t">The thought piece</span><p>What I'd ship first, how I'd know it worked, and where a five-app iPhone fits later. The long version of my essay on preinstalled apps.</p><span class="go">Read it ›</span></a>
+        <a class="partcard" href="#playout"><span class="num">Part 2</span><span class="t">How it would play out</span><p>Illustrations, wireframes, and a phased path from today's iPhone to where this could lead.</p><span class="go">See it ›</span></a>
       </div>
     </div>
   </section>
@@ -536,7 +547,7 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
     <div class="wrap" style="padding-top:clamp(2rem,5vw,3rem)">
       <article class="essay">
         <div class="partmark" style="align-items:flex-start;text-align:left"><span class="tag">Part 1 · The thought piece</span></div>
-        <h2>Why your next iPhone should ship nearly empty.</h2>
+        <h2>What I'd ship first.</h2>
 
         <p class="first">I recently needed a teleprompter for a class assignment.</p>
         <p>I figured this would be easy. Download a teleprompter app, paste in my script, record, done. Instead, I spent more time than I expected trying to find a decent one. Some apps locked basic features behind subscriptions. Others were free but clunky. A few had way more functionality than I needed.</p>
@@ -546,34 +557,38 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
         <p>That's when it clicked. I didn't want <em>more</em> apps. I wanted <em>my</em> apps. Small, personal tools built around how I live, not around what a company thinks millions of people might want.</p>
         <p>Today, making something like that takes a laptop and a coding tool. It should take one sentence.</p>
         <p class="quote">"Hey Siri,<br><span class="grad">make me an app."</span></p>
-        <p class="note">I first wrote about this idea in a short essay, <a href="/projects/preinstalled-apps">What's the Point of Preinstalled Apps?</a> This is the longer version: the full argument, then what it could look like.</p>
+        <p class="note">I first wrote about this idea in a short essay, <a href="/projects/preinstalled-apps">What's the Point of Preinstalled Apps?</a> This is the longer version: what I'd ship first, then where it could lead.</p>
+
+        <h3>Not the five-app iPhone.</h3>
+        <p>Phase 1 is Siri building widgets and shortcuts from the App Intents apps already expose. It's low risk, it uses tools that exist today, and it tests the one thing that matters: whether people will ask for software instead of searching for it.</p>
+        <p>The five-app iPhone is where this could lead, if that habit sticks.</p>
 
         <h3>We don't need more apps.</h3>
-        <p>Our phones are full of apps we downloaded once and forgot. A 2017 App Annie study found that people open about nine apps a day and about thirty a month, out of the dozens on their phones.<sup><a href="#fn1" id="fnref1">1</a></sup></p>
+        <p>Our phones are full of apps we downloaded once and forgot. Sensor Tower's State of Mobile 2025 found that in 2024, people used seven unique apps a day and twenty-six a month.<sup><a href="#fn1" id="fnref1">1</a></sup></p>
         <div class="fig">
-          <div class="usage" id="usage" aria-label="Grid of 80 apps: 9 opened daily, 21 more opened this month, 50 rarely opened"></div>
+          <div class="usage" id="usage" aria-label="Grid of 80 apps: 7 used daily, 19 more used this month, 54 rarely used"></div>
           <div class="legend">
-            <span><i style="background:linear-gradient(135deg,#FF8A3D,#FF4FA3,#A15CFF)"></i>Opened daily</span>
-            <span><i style="box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.55)"></i>Opened this month</span>
-            <span><i style="background:rgba(255,255,255,.12)"></i>Rarely opened</span>
+            <span><i style="background:linear-gradient(135deg,#FF8A3D,#FF4FA3,#A15CFF)"></i>Used daily</span>
+            <span><i style="box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.55)"></i>Used this month</span>
+            <span><i style="background:rgba(255,255,255,.12)"></i>Rarely used</span>
           </div>
-          <p class="cap2">80 installed apps, illustrative. About 9 opened daily and 30 monthly, per App Annie (2017).</p>
+          <p class="cap2">80 installed apps, illustrative. 7 unique apps a day and 26 a month, per Sensor Tower (2024).</p>
         </div>
         <p>Each app is a whole product designed for millions of people. Each of us only needs a slice of it. The rest is clutter we scroll past, pay for, and update.</p>
         <p>People have been quietly pushing back for years. Apple has let us delete most built-in apps since 2016, and in the EU you can now remove even Safari, the App Store, and Messages. We're already subtracting. The operating system just hasn't caught up.</p>
 
-        <h3>Five apps on day one.</h3>
-        <p>Here's the idea. A new iPhone ships with five apps: <strong>Siri</strong>, <strong>Conversations</strong> (Messages and Phone in one), <strong>Camera</strong> (with your photos built in), <strong>Music</strong>, and <strong>Settings</strong>. That's the whole box.</p>
+        <h3>Where this could lead.</h3>
+        <p>If people keep asking, a new iPhone could ship with five apps: <strong>Siri</strong>, <strong>Conversations</strong> (Messages and Phone in one), <strong>Camera</strong> (with your photos built in), <strong>Music</strong>, and <strong>Settings</strong>. That's the whole box.</p>
         <p>Everything else, you make by asking. "Track my runs and how much I spend on coffee after." Siri asks one question if it needs to, then builds the app from Apple's own design system, using the services you've already approved. About thirty seconds later, it's on your Home Screen.</p>
 
         <h3>Features you pull, not features you're given.</h3>
         <p>Today, a company decides what ships and everyone gets the same update. In this world, you add a feature by asking for it, and it exists that afternoon, only for you. Features you stop using fade away. Apps you outgrow ask before they leave. Like a friend's app? They share it, and you remix it for yourself.</p>
         <p>A year in, your iPhone looks nothing like anyone else's, because it was built around you.</p>
 
-        <h3>The App Store becomes a capability store.</h3>
+        <h3>The App Store could list capabilities.</h3>
         <p>Siri can build a habit tracker. It can't build a ride service, a bank, or a music catalog. Those are real businesses with drivers, accounts, and licenses behind them.</p>
-        <p>So you don't download a ride app. You allow a ride service, and Siri puts a "get a ride" button wherever it makes sense in your apps. The store stops selling screens and starts listing what services can do.</p>
-        <p>That raises the obvious question, because the App Store is one of Apple's biggest businesses. A few ways it could still pay:</p>
+        <p>So the ride app doesn't have to be the only way in. You could allow a ride service, and Siri puts a "get a ride" button wherever it makes sense in your apps. The store would keep selling apps, and also list what services can do.</p>
+        <p>That raises the obvious question, because the App Store is one of Apple's biggest businesses. A few ways this could still pay:</p>
         <ul>
           <li><strong>Per transaction.</strong> A small cut of every ride, order, or booking made through Siri. Closest to today, though services will push back on fees.</li>
           <li><strong>Premium capabilities.</strong> Services charge for advanced abilities, and Apple takes a share. Familiar, but it adds paywalls inside personal apps.</li>
@@ -588,17 +603,17 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
 
         <h3>Can an iPhone actually do this?</h3>
         <p>It's closer than it sounds. Recent iPhone chips match Mac chips on single-core speed. Phones still have less memory and run hot sooner than laptops, so the work gets split. Small, fast models run on the device for quick changes and anything personal. Heavier builds go to Apple's Private Cloud Compute, which Apple says doesn't keep your data. Every app Siri builds runs sandboxed and can't get more access than you approve.</p>
-        <p>Most of the plumbing already exists. Shortcuts, widgets, and App Intents already let apps tell Siri what they can do. This concept takes that plumbing and makes it the whole operating system.</p>
+        <p>Most of the plumbing already exists. Shortcuts, widgets, and App Intents already let apps tell Siri what they can do. Phase 1 uses that plumbing as it is. Later phases are what you get if people keep asking.</p>
 
         <h3>Questions I'd expect.</h3>
         <p>If I were presenting this at Apple, these are the questions I'd expect in the room, and how I'd answer them.</p>
         <div class="faq">
           <p class="grp">People</p>
           <details open><summary>Most people don't want to build anything. Won't an empty phone feel broken?</summary><p>Day one shouldn't be empty. During setup, Siri asks a few questions, like what you do, what you keep track of, and who you talk to most, then suggests a starter set of apps. You tap to keep the ones you want. Making your own is there when you want it, not a chore on day one.</p></details>
-          <details><summary>What would you ship first?</summary><p>Not the five-app iPhone. The first step is Siri building widgets from the App Intents that apps already offer. It's low risk, it uses tools that exist today, and it tests the one thing that matters: whether people will ask for software instead of searching for it.</p></details>
+          <details><summary>What would you ship first?</summary><p>Not the five-app iPhone. Phase 1 is Siri building widgets and shortcuts from the App Intents apps already expose. It's low risk, it uses tools that exist today, and it tests the one thing that matters: whether people will ask for software instead of searching for it.</p></details>
           <details><summary>How would you know it's working?</summary><p>Three numbers. The share of new users who keep at least one app Siri built in their first week. How many of those apps they still open 30 days later. And how often people change an app after making it. If people make apps and abandon them, it's a novelty. If they keep adjusting them, it's working.</p></details>
           <p class="grp">Money</p>
-          <details><summary>Why would Apple risk its App Store revenue?</summary><p>Much of what people spend on the App Store goes to games and big subscription services, and those stay. What's at risk is the long tail of simple utilities, and that's exactly where people are starting to use AI instead. Owning the place where apps get made is worth more than owning the shelf where they're sold.</p></details>
+          <details><summary>Why would Apple risk its App Store revenue?</summary><p>Much of what people spend on the App Store goes to games and big subscription services, and those stay. What's at risk is the long tail of simple utilities, and that's where people are starting to use AI instead. Apple can keep the shelf and still own where those smaller tools get made.</p></details>
           <details><summary>So how does Apple make money from this?</summary><p>A small fee on transactions made through Siri, like rides and orders, which is closest to how the App Store earns today. Fees like that are under pressure from the Epic case and Europe's Digital Markets Act, so services would also need a way to reach people directly. The bigger payoff is indirect: an iPhone built around you is much harder to leave.</p></details>
           <p class="grp">Developers</p>
           <details><summary>Why would a bank or a ride service give up control of its app?</summary><p>It doesn't have to. Its full app can still exist. What it adds is a capability Siri can use, which puts it inside apps it would never reach otherwise, with branded components so it still looks like itself. It also sees what people ask Siri for, which is free product research.</p></details>
@@ -626,7 +641,7 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
       <div class="partmark">
         <span class="tag">Part 2 · How it would play out</span>
         <h2 class="headline">From one sentence<br><span class="grad">to a new kind of iPhone.</span></h2>
-        <p class="sub">The ideas from Part 1, on screen.</p>
+        <p class="sub">The long-term version, on screen.</p>
       </div>
     </div>
   </section>
@@ -635,8 +650,9 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
   <section class="band" id="dayone">
     <div class="wrap">
       <div class="head">
-        <span class="eyebrow grad">Day one</span>
+        <span class="eyebrow grad">Where this could lead</span>
         <h2 class="headline">Five apps.<br>That's the whole box.</h2>
+        <p class="sub">Not the first release. The Home Screen, if the earlier phases work.</p>
       </div>
       <div class="phones"><div class="iphone" data-s="home5" style="--w:300px"></div></div>
     </div>
@@ -727,7 +743,7 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
     <div class="wrap">
       <div class="head">
         <span class="eyebrow grad">The App Store</span>
-        <h2 class="headline">Don't download apps.<br>Allow services.</h2>
+        <h2 class="headline">Keep the apps.<br>Add capabilities.</h2>
       </div>
       <div class="phones"><div class="iphone" data-s="store" style="--w:280px"></div></div>
     </div>
@@ -785,9 +801,9 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
       </div>
       <div class="rollout">
         <div class="phase"><span class="when grad">Phase 1</span><span class="t">Siri builds widgets and shortcuts</span><p>Starts with today's App Intents. Low risk, and it teaches people that asking works.</p><span class="ex">"Make me a widget for my rent split."</span><div class="meter"><i class="on"></i><i></i><i></i><i></i></div></div>
-        <div class="phase"><span class="when grad">Phase 2</span><span class="t">Personal apps, next to the App Store</span><p>Siri builds full apps that sit beside downloaded ones. Nothing is taken away yet.</p><span class="ex">Your Home Screen mixes both.</span><div class="meter"><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
+        <div class="phase"><span class="when grad">Phase 2</span><span class="t">Personal apps, next to the App Store</span><p>Siri builds full apps that sit beside downloaded ones. Downloaded apps stay.</p><span class="ex">Your Home Screen mixes both.</span><div class="meter"><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
         <div class="phase"><span class="when grad">Phase 3</span><span class="t">Services publish capabilities</span><p>Developers ship abilities and branded components. The App Store starts listing them.</p><span class="ex">Allow a ride service instead of installing it.</span><div class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
-        <div class="phase"><span class="when grad">Phase 4</span><span class="t">The five-app iPhone</span><p>New iPhones ship nearly empty. You can still restore the classic apps if you want them.</p><span class="ex">Day one: five apps and a Siri button.</span><div class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
+        <div class="phase"><span class="when grad">Phase 4</span><span class="t">The five-app iPhone</span><p>Where this could lead. New iPhones ship with five apps, and you can still restore the classic ones.</p><span class="ex">Day one: five apps and a Siri button.</span><div class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
       </div>
     </div>
   </section>
@@ -814,7 +830,7 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
 
 <footer>
   <div class="in">
-    <p id="fn1">1. App Annie, Spotlight on Consumer App Usage (2017), as reported in <a href="https://techcrunch.com/2017/05/04/report-smartphone-owners-are-using-9-apps-per-day-30-per-month/">TechCrunch, "Report: Smartphone owners are using 9 apps per day, 30 per month"</a>. The counts include built-in apps. The 80-app grid is illustrative. <a href="#fnref1">Back to text</a></p>
+    <p id="fn1">1. Sensor Tower, <a href="https://elements.visualcapitalist.com/wp-content/uploads/2025/01/sensor_tower__state_of_mobile_2025__en.pdf">State of Mobile 2025</a> (PDF), "Mobile Landscape at a Glance." In 2024, across 60+ markets on iOS and Android, excluding China, users used 26 apps per month and 7 unique apps a day on average. The report page is <a href="https://sensortower.com/state-of-mobile-2025">sensortower.com/state-of-mobile-2025</a>. The 80-app grid is illustrative. <a href="#fnref1">Back to text</a></p>
     <p>Juniper Coffee is a fictional brand. App names, people, and amounts shown on screens are examples.</p>
     <p>Concept, writing, and design by Chae Kim. Read the short essay, <a href="/projects/preinstalled-apps">What’s the Point of Preinstalled Apps?</a> <a href="/#builds">Back to the portfolio</a>.</p>
     <div class="rule"><span>An unofficial design concept. Not affiliated with or endorsed by Apple Inc.</span><span>Siri, iPhone, iOS, and Liquid Glass are trademarks of Apple Inc.</span></div>
@@ -902,8 +918,8 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
 
   var grid80 = document.getElementById('usage');
   if (grid80) {
-    var day = [3, 17, 22, 36, 41, 50, 58, 64, 71];
-    var month = [1, 6, 9, 12, 19, 25, 28, 31, 39, 44, 47, 53, 55, 60, 62, 67, 69, 73, 75, 77, 79];
+    var day = [3, 17, 22, 36, 41, 50, 58];
+    var month = [1, 6, 9, 12, 19, 25, 28, 31, 39, 44, 47, 53, 55, 60, 62, 67, 69, 73, 75];
     for (var i = 0; i < 80; i++) {
       var sq = document.createElement('span');
       if (day.indexOf(i) > -1) sq.className = 'day';
