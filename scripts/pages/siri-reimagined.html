@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Siri, Reimagined: Every App, Made by You · Chae Kim - Portfolio</title>
-  <meta name="description" content="A design concept: an iPhone that ships with five apps, and a Siri that builds the rest. A thought piece on the future of the App Store and app development, with iPhone mockups and wireframes.">
+  <meta name="description" content="A design concept: Siri builds the small apps you need, starting with widgets from the apps you already have. A thought piece on the future of the App Store and app development, with iPhone mockups and wireframes.">
   <meta property="og:title" content="Siri, Reimagined: Every App, Made by You · Chae Kim - Portfolio">
-  <meta property="og:description" content="A design concept: an iPhone that ships with five apps, and a Siri that builds the rest. A thought piece on the future of the App Store and app development, with iPhone mockups and wireframes.">
+  <meta property="og:description" content="A design concept: Siri builds the small apps you need, starting with widgets from the apps you already have. A thought piece on the future of the App Store and app development, with iPhone mockups and wireframes.">
   <meta property="og:type" content="article">
   <meta property="og:image" content="%%SITE%%/assets/img/siri-reimagined/siri-reimagined/og.jpg">
   <link rel="canonical" href="%%SITE%%/projects/siri-reimagined">
@@ -277,6 +277,12 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
 .glass { background: linear-gradient(160deg, rgba(255, 255, 255, .42), rgba(255, 255, 255, .1)); border: 1px solid rgba(255, 255, 255, .45);
   -webkit-backdrop-filter: blur(16px) saturate(170%); backdrop-filter: blur(16px) saturate(170%);
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, .65), 0 6px 16px rgba(0, 0, 0, .2); color: #FFFFFF; }
+.wdg { border-radius: 20px; padding: 12px 13px; display: flex; flex-direction: column; gap: 4px; margin: 4px 2px 6px; }
+.wdg .wl { font: 600 9.5px var(--sft); opacity: .85; }
+.wdg b { font: 600 15px/1.2 var(--sf); letter-spacing: -.02em; }
+.wdg span { font: 400 11px var(--sft); }
+.wdg .wbar { display: block; height: 6px; border-radius: 3px; background: rgba(255, 255, 255, .3); margin-top: 4px; overflow: hidden; }
+.wdg .wbar i { display: block; height: 100%; background: #FFFFFF; border-radius: 3px; }
 .gpill { margin-top: auto; align-self: center; border-radius: 980px; padding: 9px 15px; font: 500 11px var(--sft); }
 .toast { border-radius: 18px; padding: 9px 12px; font: 600 11px var(--sft); display: flex; gap: 8px; align-items: center; }
 .toast i { width: 22px; height: 22px; border-radius: 6px; flex: none; }
@@ -382,6 +388,12 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
 .fig { background: var(--theater); color: var(--theater-ink); border-radius: 28px; padding: clamp(1.5rem, 4vw, 2.5rem); display: flex; flex-direction: column; gap: 1.25rem; margin-block: 1rem; }
 .fig .cap2 { font-size: .85rem; color: var(--theater-muted); text-align: center; }
 .essay .faq { margin-top: .5rem; }
+.brief { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.brief .tile { gap: .7rem; }
+.brief .k { font: 600 .82rem var(--sft); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.brief .t { font-size: clamp(1.3rem, 2.4vw, 1.75rem); }
+.brief-note { text-align: center; color: var(--muted); font: 500 1.1rem/1.45 var(--sf); max-width: 46ch; margin-inline: auto; }
+@media (max-width: 860px) { .brief { grid-template-columns: 1fr; } }
 .faq .grp { font: 600 .8rem var(--sft); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding: 1.75rem 0 0; }
 .faq .grp:first-child { padding-top: 1rem; }
 
@@ -510,23 +522,37 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
       <div class="head">
         <span class="eyebrow muted">A design concept</span>
         <h1>Every app.<br><span class="grad">Made by you.</span></h1>
-        <p class="sub">Just describe it. Siri builds it.<br>Your iPhone starts with five apps.</p>
+        <p class="sub">Just describe it. Siri builds it.<br>It starts with one widget.</p>
         <div class="links"><a href="#essay">Read the thought piece ›</a><a href="#playout">See how it plays out ›</a></div>
       </div>
       <div class="hero-phones">
         <div class="iphone side" data-s="ask" style="--w:240px"></div>
-        <div class="iphone" data-s="home5" style="--w:290px"></div>
+        <div class="iphone" data-s="widget" style="--w:290px"></div>
         <div class="iphone side" data-s="w1" style="--w:240px"></div>
       </div>
     </div>
   </section>
 
+  <!-- IN BRIEF -->
+  <section class="band" id="brief">
+    <div class="wrap" style="padding-block:clamp(3.5rem,8vw,6rem) clamp(1rem,3vw,2rem)">
+      <div class="head"><h2 class="headline" style="font-size:clamp(2.2rem,5vw,3.6rem)">The short version.</h2></div>
+      <div class="brief">
+        <div class="tile"><span class="k">The problem</span><span class="t">The small tool you need doesn't exist yet.</span><p>People open about nine apps a day but keep dozens. When they need something small, they search, compare, and pay for apps built for someone else.</p></div>
+        <div class="tile"><span class="k">What I'd ship first</span><span class="t">Siri builds widgets from apps you already have.</span><p>Using the App Intents apps already offer: "Make me a widget for my rent split." Nothing new to download, and nothing taken away from developers.</p></div>
+        <div class="tile"><span class="k">How I'd measure it</span><span class="t">Kept, still used, and changed.</span><p>The share of people who keep a widget Siri built in week one, still use it after 30 days, and keep changing it. Made and abandoned is a novelty. Kept and changed is adoption.</p></div>
+        <div class="tile"><span class="k">Why it fits Apple</span><span class="t">It grows the platform.</span><p>Built on App Intents, run on device and on Private Cloud Compute, inside Apple's design system and privacy rules. Developers' apps get more useful because Siri can combine them.</p></div>
+      </div>
+      <p class="brief-note">The bigger vision, an iPhone that ships with five apps, comes last, once each step has earned people's trust.</p>
+    </div>
+  </section>
+
   <!-- CONTENTS -->
   <section class="band">
-    <div class="wrap" style="padding-block:clamp(3rem,7vw,5rem)">
+    <div class="wrap" style="padding-block:clamp(1.5rem,4vw,3rem) clamp(3rem,7vw,5rem)">
       <div class="parts">
-        <a class="partcard" href="#essay"><span class="num">Part 1</span><span class="t">The thought piece</span><p>Why your next iPhone should ship nearly empty, and what that means for the App Store and the people who build apps. The long version of my essay on preinstalled apps.</p><span class="go">Read it ›</span></a>
-        <a class="partcard" href="#playout"><span class="num">Part 2</span><span class="t">How it would play out</span><p>Illustrations, wireframes, and a realistic path from today's iPhone to this one.</p><span class="go">See it ›</span></a>
+        <a class="partcard" href="#essay"><span class="num">Part 1</span><span class="t">The thought piece</span><p>Why Siri should build the small apps we need, where it starts, and what it means for the App Store and the people who build apps. The long version of my essay on preinstalled apps.</p><span class="go">Read it ›</span></a>
+        <a class="partcard" href="#playout"><span class="num">Part 2</span><span class="t">How it would play out</span><p>The rollout, wireframes, and illustrations of how it works, from the first widget to the long-term vision.</p><span class="go">See it ›</span></a>
       </div>
     </div>
   </section>
@@ -536,7 +562,7 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
     <div class="wrap" style="padding-top:clamp(2rem,5vw,3rem)">
       <article class="essay">
         <div class="partmark" style="align-items:flex-start;text-align:left"><span class="tag">Part 1 · The thought piece</span></div>
-        <h2>Why your next iPhone should ship nearly empty.</h2>
+        <h2>Why Siri should build the apps we need.</h2>
 
         <p class="first">I recently needed a teleprompter for a class assignment.</p>
         <p>I figured this would be easy. Download a teleprompter app, paste in my script, record, done. Instead, I spent more time than I expected trying to find a decent one. Some apps locked basic features behind subscriptions. Others were free but clunky. A few had way more functionality than I needed.</p>
@@ -562,9 +588,15 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
         <p>Each app is a whole product designed for millions of people. Each of us only needs a slice of it. The rest is clutter we scroll past, pay for, and update.</p>
         <p>People have been quietly pushing back for years. Apple has let us delete most built-in apps since 2016, and in the EU you can now remove even Safari, the App Store, and Messages. We're already subtracting. The operating system just hasn't caught up.</p>
 
-        <h3>Five apps on day one.</h3>
-        <p>Here's the idea. A new iPhone ships with five apps: <strong>Siri</strong>, <strong>Conversations</strong> (Messages and Phone in one), <strong>Camera</strong> (with your photos built in), <strong>Music</strong>, and <strong>Settings</strong>. That's the whole box.</p>
+        <h3>Where it starts: one widget.</h3>
+        <p>The first step is small. Apps already tell Siri what they can do through App Intents. So start there: you ask for a widget, and Siri builds one from the apps you already have. "Make me a widget that shows my rent split and who's paid." It pulls from your bank and Reminders and puts one small card on your Home Screen.</p>
+        <p>There's nothing new to download, nothing for App Review to check, and nothing taken away from developers. Their apps get more useful, because Siri can now combine them. And it tests the one thing that matters before anything bigger: will people ask for software instead of searching for it?</p>
+        <p>I'd measure it with three numbers: the share of people who keep a widget Siri built in their first week, how many still use it 30 days later, and how often they change it after making it. If people make widgets and abandon them, it's a novelty. If they keep adjusting them, it's working, and that earns the next step: full apps, side by side with the App Store.</p>
+
+        <h3>Where it could end up: five apps on day one.</h3>
+        <p>If each step works, this is where it leads. A new iPhone ships with five apps: <strong>Siri</strong>, <strong>Conversations</strong> (Messages and Phone in one), <strong>Camera</strong> (with your photos built in), <strong>Music</strong>, and <strong>Settings</strong>. That's the whole box.</p>
         <p>Everything else, you make by asking. "Track my runs and how much I spend on coffee after." Siri asks one question if it needs to, then builds the app from Apple's own design system, using the services you've already approved. About thirty seconds later, it's on your Home Screen.</p>
+        <p>That's the long-term vision, not the first release. It only happens if people choose it, one step at a time.</p>
 
         <h3>Features you pull, not features you're given.</h3>
         <p>Today, a company decides what ships and everyone gets the same update. In this world, you add a feature by asking for it, and it exists that afternoon, only for you. Features you stop using fade away. Apps you outgrow ask before they leave. Like a friend's app? They share it, and you remix it for yourself.</p>
@@ -625,20 +657,26 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
     <div class="wrap">
       <div class="partmark">
         <span class="tag">Part 2 · How it would play out</span>
-        <h2 class="headline">From one sentence<br><span class="grad">to a new kind of iPhone.</span></h2>
-        <p class="sub">The ideas from Part 1, on screen.</p>
+        <h2 class="headline">From one widget<br><span class="grad">to an iPhone built around you.</span></h2>
+        <p class="sub">Where it starts, how it works, and where it could lead.</p>
       </div>
     </div>
   </section>
 
-  <!-- DAY ONE -->
-  <section class="band" id="dayone">
+  <!-- ROLLOUT -->
+  <section class="band" id="rollout">
     <div class="wrap">
       <div class="head">
-        <span class="eyebrow grad">Day one</span>
-        <h2 class="headline">Five apps.<br>That's the whole box.</h2>
+        <span class="eyebrow grad">The rollout</span>
+        <h2 class="headline">It starts small.</h2>
+        <p class="sub">A realistic path, built on what iOS already has. Each step earns trust for the next one.</p>
       </div>
-      <div class="phones"><div class="iphone" data-s="home5" style="--w:300px"></div></div>
+      <div class="rollout">
+        <div class="phase"><span class="when grad">Phase 1</span><span class="t">Siri builds widgets and shortcuts</span><p>Starts with today's App Intents. Low risk, and it teaches people that asking works.</p><span class="ex">"Make me a widget for my rent split."</span><div class="meter"><i class="on"></i><i></i><i></i><i></i></div></div>
+        <div class="phase"><span class="when grad">Phase 2</span><span class="t">Personal apps, next to the App Store</span><p>Siri builds full apps that sit beside downloaded ones. Nothing is taken away yet.</p><span class="ex">Your Home Screen mixes both.</span><div class="meter"><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
+        <div class="phase"><span class="when grad">Phase 3</span><span class="t">Services publish capabilities</span><p>Developers ship abilities and branded components. The App Store starts listing them.</p><span class="ex">Allow a ride service instead of installing it.</span><div class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
+        <div class="phase"><span class="when grad">Phase 4</span><span class="t">The five-app iPhone</span><p>New iPhones ship nearly empty. You can still restore the classic apps if you want them.</p><span class="ex">Day one: five apps and a Siri button.</span><div class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
+      </div>
     </div>
   </section>
 
@@ -775,20 +813,15 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
     </div>
   </section>
 
-  <!-- ROLLOUT -->
-  <section class="band" id="rollout">
+  <!-- LONG-TERM VISION -->
+  <section class="band" id="dayone">
     <div class="wrap">
       <div class="head">
-        <span class="eyebrow grad">The rollout</span>
-        <h2 class="headline">It doesn't happen<br>overnight.</h2>
-        <p class="sub">A realistic path, built on what iOS already has. Each step earns trust for the next one.</p>
+        <span class="eyebrow grad">The long-term vision</span>
+        <h2 class="headline">Five apps.<br>The rest, made by you.</h2>
+        <p class="sub">Phase 4, once each step has earned trust: a new iPhone ships with the essentials, and Siri builds everything else.</p>
       </div>
-      <div class="rollout">
-        <div class="phase"><span class="when grad">Phase 1</span><span class="t">Siri builds widgets and shortcuts</span><p>Starts with today's App Intents. Low risk, and it teaches people that asking works.</p><span class="ex">"Make me a widget for my rent split."</span><div class="meter"><i class="on"></i><i></i><i></i><i></i></div></div>
-        <div class="phase"><span class="when grad">Phase 2</span><span class="t">Personal apps, next to the App Store</span><p>Siri builds full apps that sit beside downloaded ones. Nothing is taken away yet.</p><span class="ex">Your Home Screen mixes both.</span><div class="meter"><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
-        <div class="phase"><span class="when grad">Phase 3</span><span class="t">Services publish capabilities</span><p>Developers ship abilities and branded components. The App Store starts listing them.</p><span class="ex">Allow a ride service instead of installing it.</span><div class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
-        <div class="phase"><span class="when grad">Phase 4</span><span class="t">The five-app iPhone</span><p>New iPhones ship nearly empty. You can still restore the classic apps if you want them.</p><span class="ex">Day one: five apps and a Siri button.</span><div class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
-      </div>
+      <div class="phones"><div class="iphone" data-s="home5" style="--w:300px"></div></div>
     </div>
   </section>
 
@@ -849,6 +882,7 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
   var T3 = ['Today', 'History', 'Goals'];
 
   var S = {
+    widget: ['wp-a', sb() + '<div class="wdg glass"><span class="wl">✦ Built by Siri</span><b>Rent split</b><span>2 of 4 paid · $412 each</span><span class="wbar"><i style="width:50%"></i></span></div>' + grid([['i-msg', G.msg, 'Messages'], A.cam, A.music, A.set, ['i-blue', 'B', 'Bank'], ['i-orange', 'R', 'Reminders'], ['i-teal', 'M', 'Maps'], ['i-purple', 'N', 'Notes']])],
     home5: ['wp-a', sb() + grid(CORE) + '<div class="gpill glass">✦ Ask Siri to make an app</div>'],
     ask: ['wp-a dim siri-on', sb() + '<div class="fill"></div><div class="gbub glass me">Track my runs and how much I spend on coffee after.</div><div class="orb"></div><div class="gfield glass">Ask Siri…</div>'],
     clarify: ['wp-a dim siri-on', sb() + '<div class="fill"></div><div class="gbub glass me">Track my runs and how much I spend on coffee after.</div><div class="gbub glass">Should I count any café, or only ones within an hour of a run?</div><div class="gchips"><span class="glass on">Within an hour</span><span class="glass">Any café</span></div><div class="orb"></div>'],
