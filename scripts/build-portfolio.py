@@ -113,7 +113,7 @@ PORTFOLIO_PAGE = f"""<!DOCTYPE html>
   <meta property="og:title" content="This portfolio · Chae Kim - Portfolio">
   <meta property="og:description" content="How I built this portfolio like a product: where it started, the decisions that shaped it, what's on the backlog, and what I'm considering next.">
   <meta property="og:type" content="article">
-  <meta property="og:image" content="{SITE_URL}/assets/img/og-sky.png">
+  <meta property="og:image" content="{SITE_URL}/assets/img/og-paper.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <link rel="canonical" href="{SITE_URL}/projects/portfolio">

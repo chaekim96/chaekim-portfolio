@@ -2,38 +2,38 @@
    Variant: stamp — quiet, gallery-like, artifact-first.
    The site's only design. Poppins at regular weight,
    one signature element (김채운 in Korean calligraphy on hanji), work shown as real artifacts.
-   One sky-blue accent on a sky-blue wash, with liquid glass on the controls. Light: the sky carries
-   down the whole page. Dark (the toggle): a night background with the same accent and darker glass.
-   Green means one thing: live (--live). Links, back arrows, the active tab and focus rings are sky.
-   Contrast (WCAG): --accent-ink #064e8c is 8.5:1 on white, 7.8:1 on the #eef7fe wash and 5.5:1 on #a8d7f7;
-   --accent-on white on the --accent-fill #0b63b8 tab is 6.0:1. Dark: --accent #6bbcff is 9.6:1 on #0b0b0c
-   and the dark ink #04111f on that fill is 9.3:1.
+   Palette: Stamp Ink. Warm paper, ink, one seal red and one violet accent; the build marks carry the color.
+   Light: paper with a faint warm wash at the top. Dark (the toggle): Night Press, warm near-black.
+   Green means one thing: live (--live). Links, back arrows, the active tab and focus rings are the violet accent.
+   Contrast (WCAG): ink #111110 is 17.8:1 on paper #fbf8f1, ink-2 #5f5b53 6.4:1, accent #4a3fd1 6.8:1 (5.7:1 on the
+   lightest card tint), and white on the #4a3fd1 tab is 7.2:1. Dark: text #f4efe4 16.4:1 on #121211, ink-2 #a8a296
+   7.4:1, accent #9b86ff 6.5:1, and #121211 on that fill is 6.5:1.
    ------------------------------------------------------------------ */
 
 :root {
-  --bg: #eef7fe;
-  --bg-grad: linear-gradient(180deg, #74bff0 0%, #a8d7f7 260px, #d6ecfc 640px, #eef7fe 1100px);  /* sky: blue overhead, fading into the wash */
-  --cloud: rgba(255, 255, 255, .95);
-  --ink: #0d1b2e;
-  --ink-2: #44566e;
-  --line: rgba(20, 70, 130, .12);
-  --fill: rgba(20, 90, 170, .08);
-  --fill-2: rgba(20, 90, 170, .05);
-  --pill: #ffffff;
+  --bg: #fbf8f1;
+  --bg-grad: linear-gradient(180deg, #f3ecdd 0%, #f7f2e7 320px, #fbf8f1 760px);  /* paper: a faint warm wash at the top, settling into paper */
+  --cloud: rgba(255, 253, 247, .0);
+  --ink: #111110;
+  --ink-2: #5f5b53;
+  --line: rgba(17, 17, 16, .12);
+  --fill: rgba(17, 17, 16, .06);
+  --fill-2: rgba(17, 17, 16, .04);
+  --pill: #fffdf8;
   --seal: #c63d2f;
-  --paper: #f4faff;
-  --accent: #0b63b8; --accent-fill: #0b63b8; --accent-on: #ffffff; --accent-ink: #064e8c; --glow: 40, 140, 230; --glow-a: .16;
+  --paper: #fffdf8;
+  --accent: #4a3fd1; --accent-fill: #4a3fd1; --accent-on: #ffffff; --accent-ink: #4a3fd1; --glow: 74, 63, 209; --glow-a: .06;
   --live: #30d158; --live-glow: 48, 209, 88;
   --ok: var(--live);
   --focus: var(--accent);
-  --glass: rgba(255, 255, 255, .55);
+  --glass: rgba(255, 253, 247, .62);
   --glass-line: rgba(255, 255, 255, .95);
-  --shadow: 0 1px 2px rgba(20, 70, 130, .06), 0 8px 24px rgba(20, 70, 130, .08);
-  --shadow-lg: 0 2px 6px rgba(20, 70, 130, .08), 0 24px 56px rgba(20, 70, 130, .16);
+  --shadow: 0 1px 2px rgba(60, 45, 20, .06), 0 8px 24px rgba(60, 45, 20, .08);
+  --shadow-lg: 0 2px 6px rgba(60, 45, 20, .08), 0 24px 56px rgba(60, 45, 20, .14);
   /* liquid glass: tint, rims, edge highlight, shadow */
-  --lg-tint: rgba(255, 255, 255, .62); --lg-rim: rgba(255, 255, 255, .95); --lg-rim-2: rgba(255, 255, 255, .4);
+  --lg-tint: rgba(255, 253, 247, .66); --lg-rim: rgba(255, 255, 255, .95); --lg-rim-2: rgba(255, 255, 255, .4);
   --lg-edge: rgba(255, 255, 255, .95); --lg-edge-2: rgba(255, 255, 255, .5);
-  --lg-shadow: 0 10px 30px -10px rgba(20, 70, 130, .35), 0 2px 6px rgba(20, 70, 130, .12);
+  --lg-shadow: 0 10px 30px -10px rgba(60, 45, 20, .28), 0 2px 6px rgba(60, 45, 20, .1);
   --ease: cubic-bezier(0.32, 0.72, 0, 1);
   --wrap: 1200px;
   --gutter: clamp(20px, 4.5vw, 64px);
@@ -48,11 +48,11 @@
   --g-arcade: linear-gradient(160deg, #1b2140 0%, #0f1426 100%);
   --g-plain: linear-gradient(160deg, #f6f6f8 0%, #ececf0 100%);
   /* a build's card: its mark's base color (--bc, set per card) mixed into paper by these amounts */
-  --wash-base: #ffffff; --wash-a: 11%; --wash-b: 22%;
+  --wash-base: #fffdf8; --wash-a: 11%; --wash-b: 22%;
   /* design-notes cards: one hue each, with an accent for the label and a darker secondary text for AA on the tint */
-  --n-ink2: #44566e;
+  --n-ink2: #5f5b53;
   --n-violet: linear-gradient(150deg, #f2eeff 0%, #e8e3fb 100%); --n-violet-a: var(--accent-ink);
-  --n-sky:    linear-gradient(150deg, #edf6ff 0%, #dfecfb 100%); --n-sky-a: var(--accent-ink);
+  --n-sky:    linear-gradient(150deg, #f6f1e6 0%, #efe8d9 100%); --n-sky-a: var(--accent-ink);
   --n-mint:   linear-gradient(150deg, #edf9f3 0%, #dcf0e6 100%); --n-mint-a: var(--accent-ink);
   --n-peach:  linear-gradient(150deg, #fff4ea 0%, #fde5d3 100%); --n-peach-a: var(--accent-ink);
   /* Builds folders: one soft tint each */
@@ -63,22 +63,22 @@
 :root:not([data-theme="dark"]) { color-scheme: light; }
 
 :root[data-theme="dark"] {
-  --accent: #6bbcff; --accent-fill: #6bbcff; --accent-on: #04111f; --accent-ink: #6bbcff; --glow: 107, 188, 255; --glow-a: .14;
-  --lg-tint: rgba(36, 38, 46, .55); --lg-rim: rgba(255, 255, 255, .2); --lg-rim-2: rgba(255, 255, 255, .06);
+  --accent: #9b86ff; --accent-fill: #9b86ff; --accent-on: #121211; --accent-ink: #9b86ff; --glow: 155, 134, 255; --glow-a: .14; --seal: #e0533f;
+  --lg-tint: rgba(40, 38, 34, .55); --lg-rim: rgba(255, 255, 255, .2); --lg-rim-2: rgba(255, 255, 255, .06);
   --lg-edge: rgba(255, 255, 255, .4); --lg-edge-2: rgba(255, 255, 255, .14);
   --lg-shadow: 0 10px 30px -10px rgba(0, 0, 0, .7), 0 2px 6px rgba(0, 0, 0, .4);
-  --bg: #0b0b0c;
-  --bg-grad: linear-gradient(180deg, #0f1a2e 0%, #0d1424 30%, #0b0e15 55%, #0b0b0c 75%);  /* night sky: deep navy fading to near-black */
-  --cloud: rgba(170, 190, 230, .10);
-  --ink: #f5f5f7;
-  --ink-2: #a1a1a6;
-  --line: rgba(255, 255, 255, 0.1);
-  --fill: rgba(255, 255, 255, 0.08);
-  --fill-2: rgba(255, 255, 255, 0.05);
-  --pill: #1c1c1e;
-  --paper: #0b0b0c;
-  --glass: rgba(255, 255, 255, 0.07);
-  --glass-line: rgba(255, 255, 255, 0.14);
+  --bg: #121211;
+  --bg-grad: linear-gradient(180deg, #1d1b18 0%, #171614 320px, #121211 760px);  /* Night Press: warm near-black */
+  --cloud: rgba(244, 239, 228, .0);
+  --ink: #f4efe4;
+  --ink-2: #a8a296;
+  --line: rgba(244, 239, 228, 0.1);
+  --fill: rgba(244, 239, 228, 0.08);
+  --fill-2: rgba(244, 239, 228, 0.05);
+  --pill: #1c1b19;
+  --paper: #121211;
+  --glass: rgba(244, 239, 228, 0.06);
+  --glass-line: rgba(244, 239, 228, 0.14);
   --shadow: 0 1px 2px rgba(0, 0, 0, .5), 0 8px 24px rgba(0, 0, 0, .4);
   --shadow-lg: 0 2px 6px rgba(0, 0, 0, .6), 0 24px 56px rgba(0, 0, 0, .55);
   --g-lucent: linear-gradient(140deg, #1d1a33 0%, #151c2e 55%, #12141b 100%);
@@ -86,11 +86,11 @@
   --g-tri: linear-gradient(150deg, #24170f 0%, #2b1a12 100%);
   --g-mirror: linear-gradient(150deg, #241f12 0%, #2a2014 100%);
   --g-mobility: linear-gradient(150deg, #0f1f18 0%, #12241f 100%);
-  --g-plain: linear-gradient(160deg, #161618 0%, #1c1c1f 100%);
-  --wash-base: #131315; --wash-a: 15%; --wash-b: 8%;
-  --n-ink2: #b3b3ba;
+  --g-plain: linear-gradient(160deg, #171614 0%, #1c1b19 100%);
+  --wash-base: #171614; --wash-a: 15%; --wash-b: 8%;
+  --n-ink2: #b3ada1;
   --n-violet: linear-gradient(150deg, #1f1b38 0%, #181630 100%);
-  --n-sky:    linear-gradient(150deg, #14202f 0%, #101a28 100%);
+  --n-sky:    linear-gradient(150deg, #1d1b18 0%, #1b1a17 100%);
   --n-mint:   linear-gradient(150deg, #112219 0%, #0f1d17 100%);
   --n-peach:  linear-gradient(150deg, #2c1b12 0%, #24160f 100%);
   --t-products: #4a3526; --t-mods: #2b3150; --t-ai-ml: #1f3a30; --t-design: #432a31; --t-archive: #38332a;
@@ -126,7 +126,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .confirm { display: none; }
 :root[data-confirm] .confirm { display: inline; background: #fff1a8; color: #5a4a00; border-radius: 4px; padding: 0 4px; font-size: .85em; }
 
-/* ---------- atmosphere: soft clouds across the top of the sky ---------- */
+/* ---------- atmosphere: soft light across the top (transparent in Stamp Ink; kept so a palette can bring it back) ---------- */
 .aurora {
   position: absolute; z-index: -1; pointer-events: none;
   top: -120px; left: 0; width: 100%; height: 640px;
@@ -277,7 +277,7 @@ img.mk-night { display: none !important; }
   display: grid; place-items: center; text-align: center; gap: 2px;
   min-width: 46%; padding: 26px 30px 22px; border-radius: 22px;
   background: var(--glass);
-  box-shadow: inset 0 1px 0 var(--glass-line), 0 0 0 1px rgba(255, 255, 255, .5), 0 20px 50px -20px rgba(30, 40, 70, .25);
+  box-shadow: inset 0 1px 0 var(--glass-line), 0 0 0 1px rgba(255, 255, 255, .5), 0 20px 50px -20px rgba(60, 45, 20, .2);
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
 }
 :root[data-theme="dark"] .glass { box-shadow: inset 0 1px 0 var(--glass-line), 0 0 0 1px rgba(255, 255, 255, .06), 0 20px 50px -20px rgba(0, 0, 0, .6); }
@@ -525,7 +525,7 @@ details.ncard[open] .ncard__more { display: none; }
 details.ncard > summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 6px; border-radius: 12px; }
 details.ncard[open] > summary { margin-bottom: 6px; }
 
-/* ---------- one accent: every section shares the sky blue ---------- */
+/* ---------- one accent: every section shares the violet ---------- */
 body[class*="sec-"] { --sec: var(--accent-ink); }
 body.sec-work { --sec-bg: var(--n-violet); }
 body.sec-builds { --sec-bg: var(--n-mint); }
@@ -721,13 +721,13 @@ html:has(.palette[open]) { overflow: hidden; }
 }
 .lg-on .lg.lg-live, .lg-on .live-btn.lg-live:hover { backdrop-filter: var(--lg-filter) blur(2px) saturate(1.7) brightness(1.05); -webkit-backdrop-filter: none; }
 
-/* links keep the sky accent on hover */
+/* links take the accent on hover */
 main a:not(.w):not(.live-btn):not([class*="notes"]):hover { color: var(--accent-ink); }
 
 /* the family: every build mark, one row per tier */
 .family { display: grid; grid-template-columns: minmax(0, 14.5rem) minmax(0, 1fr); gap: 28px 36px; align-items: center;
   padding: 26px 30px; margin: 0 0 52px; border-radius: 22px; background: var(--glass);
-  box-shadow: inset 0 1px 0 var(--glass-line), 0 0 0 1px rgba(255, 255, 255, .5), 0 20px 50px -20px rgba(30, 40, 70, .25);
+  box-shadow: inset 0 1px 0 var(--glass-line), 0 0 0 1px rgba(255, 255, 255, .5), 0 20px 50px -20px rgba(60, 45, 20, .2);
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
 :root[data-theme="dark"] .family { box-shadow: inset 0 1px 0 var(--glass-line), 0 0 0 1px rgba(255, 255, 255, .06), 0 20px 50px -20px rgba(0, 0, 0, .6); }
 .family__title { margin: 0 0 6px; font-size: 20px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; }

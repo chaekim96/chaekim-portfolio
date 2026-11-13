@@ -339,7 +339,7 @@ html:has(.lightbox[open]) { overflow: hidden; }
 @media (max-width: 640px) { .next__forward { flex-direction: row; } .next__forward > span { text-align: left; } }
 
 /* ---------- each case wears its product's color, at the top only ---------- */
-/* --pt is the product's own color from its Electric mark. The sky stays the base: the tint fades out by 460px. */
+/* --pt is the product's own color from its Electric mark. Paper stays the base: the tint fades out by 460px. */
 .tint-wash {
   position: absolute; z-index: -1; pointer-events: none; top: 0; left: 0; width: 100%; height: 460px;
   background:

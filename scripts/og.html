@@ -7,12 +7,12 @@
 <style>
   html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
   body {
-    font-family: Poppins, system-ui, sans-serif; color: #161618; -webkit-font-smoothing: antialiased;
-    background: linear-gradient(180deg, #bfdcf7 0%, #d6e9fb 40%, #eef6fe 75%, #f8fbff 100%);
+    font-family: Poppins, system-ui, sans-serif; color: #111110; -webkit-font-smoothing: antialiased;
+    background: linear-gradient(180deg, #f3ecdd 0%, #f7f2e7 45%, #fbf8f1 100%);
     position: relative;
   }
-  /* the site's sky: soft white clouds */
-  .wash { position: absolute; inset: -60px; filter: blur(26px);
+  /* Stamp Ink: the site's paper, no clouds */
+  .wash { display: none; position: absolute; inset: -60px; filter: blur(26px);
     background:
       radial-gradient(20% 16% at 16% 18%, rgba(255,255,255,.95), transparent 70%),
       radial-gradient(14% 11% at 27% 12%, rgba(255,255,255,.9), transparent 70%),
@@ -24,9 +24,9 @@
     filter: drop-shadow(0 2px 3px rgba(40, 30, 10, .08)) drop-shadow(0 24px 40px rgba(60, 40, 10, .16)); }
   .tile svg { width: 100%; height: 100%; display: block; }
   h1 { margin: 0; font-size: 92px; font-weight: 500; letter-spacing: -0.035em; line-height: 1; }
-  .line { margin: 22px 0 0; font-size: 30px; line-height: 1.35; color: #3a3a3f; max-width: 15em; }
-  .cred { margin: 20px 0 0; font-size: 18.5px; color: #6e6e73; white-space: nowrap; }
-  .url { position: absolute; left: 468px; bottom: 56px; display: flex; align-items: center; gap: 10px; font-size: 19px; color: #6e6e73; }
+  .line { margin: 22px 0 0; font-size: 30px; line-height: 1.35; color: #3b3833; max-width: 15em; }
+  .cred { margin: 20px 0 0; font-size: 18.5px; color: #5f5b53; white-space: nowrap; }
+  .url { position: absolute; left: 468px; bottom: 56px; display: flex; align-items: center; gap: 10px; font-size: 19px; color: #5f5b53; }
   .url i { width: 9px; height: 9px; border-radius: 50%; background: #30b158; box-shadow: 0 0 0 4px rgba(48, 177, 88, .18); }
 </style>
 </head>

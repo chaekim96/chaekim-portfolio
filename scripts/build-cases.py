@@ -251,7 +251,7 @@ def render(c):
     mark = build_mark(c["slug"], "case-hero__mark", 56, themed=True) if is_build else ""
     # builds use their own favicon, touch icon and share card; everything else keeps the site's 김 set
     own = build_icons(c["slug"], SITE_URL) if is_build else None
-    icons, og_image = own or (SITE_ICONS, f"{SITE_URL}/assets/img/og-sky.png")
+    icons, og_image = own or (SITE_ICONS, f"{SITE_URL}/assets/img/og-paper.png")
     prev, nxt = neighbours(c["slug"])
     _label, noun, _items = _group(c["slug"])
     fields = {
