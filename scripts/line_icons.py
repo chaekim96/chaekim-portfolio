@@ -22,7 +22,7 @@ PATHS = {
     "networking-tracker": '<circle cx="6" cy="6.5" r="2.6"/><circle cx="18" cy="6.5" r="2.6"/><path d="M9.2 6.5h5.6"/>'
                           '<rect x="7.5" y="13.5" width="9" height="7" rx="1.8"/><path d="M9.8 13.5V12a2.2 2.2 0 0 1 4.4 0v1.5"/>',
     "pacman-dqn": '<rect x="3.5" y="3.5" width="17" height="17" rx="2"/><rect x="6.5" y="10.5" width="3" height="3" rx=".6"/>',
-    "palette-generator": '<path d="M12 18 6 8M12 18V5M12 18l6-10"/>',
+    "palette-generator": '<path d="M12 3.5a8.5 8.5 0 0 0 0 17c1.3 0 1.9-.8 1.9-1.7 0-.5-.2-.9-.5-1.3-.3-.4-.5-.8-.5-1.3 0-.9.8-1.7 1.7-1.7h2.1a3.8 3.8 0 0 0 3.8-3.8c0-4-3.8-7.2-8.5-7.2z"/>',
     "parallel-prospect-brief": '<path d="M7 3.5h7.5L19 8v11a1.5 1.5 0 0 1-1.5 1.5h-10A1.5 1.5 0 0 1 6 19V5A1.5 1.5 0 0 1 7 3.5z"/>'
                                '<path d="M14.5 3.5V8H19M9 12.5h6M9 16.5h4"/>',
     "personal-wiki": '<circle cx="12" cy="12" r="2.2"/><path d="M10.4 10.4 7 7.4M13.8 10.4l3.6-3.8M13.8 13.6l3.6 2.8M10.4 13.6 8 16.8"/>'
@@ -48,5 +48,6 @@ DOTS = {
     "pacman-dqn": [(13.5, 12, 1), (17, 12, 1)],
     "token-fuel": [(12, 17, 1.4)],
     "custom-llm": [(19, 16.3, 1.3)],
+    "palette-generator": [(7.8, 11.6, 1.3), (9.8, 7.6, 1.3), (14.2, 7.4, 1.3), (17, 11, 1.3)],
     "spotify-review-triage": [],
 }

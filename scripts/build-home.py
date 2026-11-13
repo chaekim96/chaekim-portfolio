@@ -5,6 +5,7 @@ Usage:  python3 scripts/build-home.py
 Stamp is the only design: assets/css/v-stamp.css (+ case-stamp.css on project pages, arcade.css on /arcade).
 The calligraphy name mark, case-page chrome and live-preview dialog are shared via stamp_shared.py.
 """
+import colorsys
 import os
 import re
 import sys
@@ -148,7 +149,25 @@ def _cards(page):
                 .replace("%%CARDS_COLLEGE%%", "\n".join(_card(s) for s in COLLEGE)))
 
 
+# The family: every build's mark under the seal, one row per tier, each tile linking to its case study.
+FAMILY_TIERS = (("products", "Products", "product"), ("mods", "Tools", "tool"), ("ai-ml", "Studies", "study"))
+
+def _family():
+    rows = []
+    for fid, label, cls in FAMILY_TIERS:
+        tiles = "".join(f'<a class="family__tile" href="/projects/{s}" title="{_html.escape(PROJECTS[s]["title"])}" '
+                        f'aria-label="{_html.escape(PROJECTS[s]["title"])}">{build_mark(s, "family__mark", 40, themed=True)}</a>'
+                        for s in FOLDERS[fid] if build_mark(s, "x", 1))
+        rows.append(f'<div class="family__row"><p class="family__tier family__tier--{cls}">{label}</p><div class="family__tiles">{tiles}</div></div>')
+    n = sum(len(FOLDERS[f]) for f, _, _ in FAMILY_TIERS)
+    return (f'      <div class="family reveal">\n        <div class="family__id">{seal("family__seal", label=False)}'
+            f'<div><p class="family__title">{n} builds, one family.</p>'
+            '<p class="family__note">One tile, one color recipe, three kinds of build. Tap a mark to open its case study.</p>'
+            '<a class="family__more" href="/brand">How the marks work →</a></div></div>\n'
+            '        <div class="family__rows">' + "".join(rows) + '</div>\n      </div>')
+
 STAMP = _cards(STAMP)
+STAMP = STAMP.replace("%%FAMILY%%", _family())
 STAMP = re.sub(r"%%ASSET:([^%]+)%%", lambda m: asset(m.group(1)), STAMP)
 STAMP = (STAMP.replace("%%WRITING_ESSAYS%%", _writing_essays())
               .replace("%%WRITING_READING%%", _writing_reading())
@@ -179,11 +198,23 @@ STAMP = re.sub(r'(href="/(?:projects/)?([a-z0-9-]+)"[^>]*>\s*<div class="stage"(
 # Dark-tile builds keep a dark or neutral stage instead, matching their dark tiles.
 STAGE_KEEPS = field("stage")
 
+# Tier hierarchy: Products wash at full color, Tools and Studies step back, so the shelves read in order
+# instead of as one rainbow. Only the card wash is muted; the marks themselves stay true everywhere.
+TIER_SATURATION = {"mods": 0.75, "ai-ml": 0.55}
+
+def _tier_color(slug, color):
+    keep = next((TIER_SATURATION[f] for f, slugs in FOLDERS.items() if slug in slugs and f in TIER_SATURATION), 1)
+    if keep == 1:
+        return color
+    r, g, b = (int(color[i:i + 2], 16) / 255 for i in (1, 3, 5))
+    h, l, s = colorsys.rgb_to_hls(r, g, b)
+    return "#" + "".join(f"{round(c * 255):02x}" for c in colorsys.hls_to_rgb(h, l, s * keep))
+
 def _wash_stage(m):
     slug = m.group(2)
     if slug in STAGE_KEEPS:
         return m.group(1) + f'<div class="stage" style="--g: var(--g-{STAGE_KEEPS[slug]})">'
-    color = mark_color(slug)
+    color = mark_color(slug) and _tier_color(slug, mark_color(slug))
     return m.group(1) + (f'<div class="stage tint" style="--bc: {color}">' if color else m.group(3))
 
 STAMP = re.sub(r'(href="/(?:projects/)?([a-z0-9-]+)"[^>]*>\s*)(<div class="stage"(?: style="--g: var\(--g-[a-z]+\)")?>)',

@@ -33,10 +33,10 @@ GRIDS = {
         5: "BBBBBBBBBBwwBBBB", 6: "BBBdddddBBwwBBBB", 7: "BBBBBBBBBBwwBBBB",
         8: "BBBBkkkkkBwwBBBB", 9: "BBBBBBBBBBwwBBBB", 10: "BBBddddBBBwwBBBB",
     },
-    # half-ring gauge: white arc filled, faint track, needle and hub
+    # one bold half-ring gauge: white filled band, faint rest, an ink needle and hub
     "token-fuel": {
-        5: "BBBBBBwwwwBBBBBB", 6: "BBBBBwwwwweBBBBB", 7: "BBBBwwBBBBeeBBBB", 8: "BBBwwBBBBkBeeBBB",
-        9: "BBBwBBBBkBBBeBBB", 10: "BBBwBBBkkBBBeBBB", 11: "BBBBBBBkkBBBBBBB",
+        4: "BBBBBwwwwwdBBBBB", 5: "BBBwwwwwwwdddBBB", 6: "BBwwwwBBBBddddBB", 7: "BBwwwBBBBkBdddBB",
+        8: "BwwwBBBBkkBBdddB", 9: "BwwwBBBkkBBBdddB", 10: "BwwwBBkkkkBBdddB", 11: "BwwwBBkkkkBBdddB",
     },
     # a round white hub, four ink nodes, one spoke each
     "personal-wiki": {
@@ -112,16 +112,17 @@ GRIDS = {
         5: "BBBBBBBBBwwwwwwB", 6: "BdddBBkBBwwwwwwB", 7: "BdddkkkkBwwwwkwB",
         8: "BdddkkkkBwkwkwwB", 9: "BdddBBkBBwwkwwwB", 10: "BBBBBBBBBwwwwwwB",
     },
-    # a paper price tag with an ink check and a hole in the tile color
+    # one big paper tag with a bold ink check
     "review-labeler": {
-        5: "BBBpppppppBBBBBB", 6: "BBBppppppppBBBBB", 7: "BBBpppppkpppBBBB", 8: "BBBppkpkppBppBBB",
-        9: "BBBpppkpppppBBBB", 10: "BBBppppppppBBBBB", 11: "BBBpppppppBBBBBB",
+        3: "BBppppppppBBBBBB", 4: "BBpppppppppBBBBB", 5: "BBppppppppkkBBBB", 6: "BBpppppppkkppBBB",
+        7: "BBpkkppkkkppppBB", 8: "BBppkkkkkpppppBB", 9: "BBpppkkkpppppBBB", 10: "BBppppppppppBBBB",
+        11: "BBpppppppppBBBBB", 12: "BBppppppppBBBBBB",
     },
-    # a paper page, three ink lines, and a clock with its hands
+    # one paper clock face in an ink ring, two bold ink hands
     "timely": {
-        3: "BBBppppppppBBBBB", 4: "BBBppppppppBBBBB", 5: "BBBppkkkkppBBBBB", 6: "BBBppppppppBBBBB",
-        7: "BBBppkkkpppBBBBB", 8: "BBBppppppkkkkBBB", 9: "BBBpppppkpkppkBB", 10: "BBBpppppkpkkpkBB",
-        11: "BBBpppppkppppkBB", 12: "BBBpppppkppppkBB", 13: "BBBBBBBBBkkkkBBB",
+        2: "BBBBBkkkkkkBBBBB", 3: "BBBkkppppppkkBBB", 4: "BBkppppkkppppkBB", 5: "BBkppppkkppppkBB",
+        6: "BkpppppkkpppppkB", 7: "BkpppppkkkkkppkB", 8: "BkpppppkkkkkppkB", 9: "BkppppppppppppkB",
+        10: "BBkppppppppppkBB", 11: "BBkppppppppppkBB", 12: "BBBkkppppppkkBBB", 13: "BBBBBkkkkkkBBBBB",
     },
     # five rods fanned from one pivot: red, orange, yellow, green, blue
     "palette-generator": {
