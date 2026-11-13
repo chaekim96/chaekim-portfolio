@@ -149,7 +149,7 @@ def _cards(page):
                 .replace("%%CARDS_COLLEGE%%", "\n".join(_card(s) for s in COLLEGE)))
 
 
-# The family: every build's mark under the seal, one row per tier, each tile linking to its case study.
+# The family: every build's mark, one row per tier, each tile linking to its case study.
 FAMILY_TIERS = (("products", "Products", "product"), ("mods", "Tools", "tool"), ("ai-ml", "Studies", "study"))
 
 def _family():
@@ -160,10 +160,10 @@ def _family():
                         for s in FOLDERS[fid] if build_mark(s, "x", 1))
         rows.append(f'<div class="family__row"><p class="family__tier family__tier--{cls}">{label}</p><div class="family__tiles">{tiles}</div></div>')
     n = sum(len(FOLDERS[f]) for f, _, _ in FAMILY_TIERS)
-    return (f'      <div class="family reveal">\n        <div class="family__id">{seal("family__seal", label=False)}'
-            f'<div><p class="family__title">{n} builds, one family.</p>'
+    return (f'      <div class="family reveal">\n        <div class="family__id">'
+            f'<p class="family__title">{n} builds, one family.</p>'
             '<p class="family__note">One tile, one color recipe, three kinds of build. Tap a mark to open its case study.</p>'
-            '<a class="family__more" href="/brand">How the marks work →</a></div></div>\n'
+            '<a class="family__more" href="/brand">How the marks work →</a></div>\n'
             '        <div class="family__rows">' + "".join(rows) + '</div>\n      </div>')
 
 STAMP = _cards(STAMP)
