@@ -17,23 +17,23 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="theme-color" content="#bfdcf7" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0f1a2e" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f3ecdd" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1d1b18" media="(prefers-color-scheme: dark)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#ffffff; --ink:#161618; --ink-2:#6e6e73; --line:rgba(0,0,0,.10); --fill:rgba(0,0,0,.04);
-  --wash:linear-gradient(180deg,#bfdcf7 0%,#dcecfb 22%,#f2f8fe 48%,#ffffff 72%);
+  --bg:#fbf8f1; --card:#fffdf8; --ink:#111110; --ink-2:#5f5b53; --line:rgba(17,17,16,.12); --fill:rgba(17,17,16,.06);
+  --wash:linear-gradient(180deg,#f3ecdd 0%,#f7f2e7 320px,#fbf8f1 760px);
   --tbd-bg:#fff6db; --tbd-ink:#7a5400; --tbd-line:#e9c76a;
-  --ok:#30b158; --accent:#0a66d6;
+  --ok:#30b158; --accent:#4a3fd1;
   --o:#7b61ff; --c:#0a66d6; --e:#f08a24; --a:#30b158; --n:#e5484d; --t:#6e6e73;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --bg:#0b0b0c; --ink:#f5f5f7; --ink-2:#a1a1a6; --line:rgba(255,255,255,.12); --fill:rgba(255,255,255,.06);
-    --wash:linear-gradient(180deg,#0f1a2e 0%,#0b0e15 55%,#0b0b0c 75%);
-    --tbd-bg:#3a2c05; --tbd-ink:#ffd772; --tbd-line:#7a5f14; --accent:#4ea1ff;
+    --bg:#121211; --card:#1c1b19; --ink:#f4efe4; --ink-2:#a8a296; --line:rgba(244,239,228,.1); --fill:rgba(244,239,228,.06);
+    --wash:linear-gradient(180deg,#1d1b18 0%,#171614 320px,#121211 760px);
+    --tbd-bg:#3a2c05; --tbd-ink:#ffd772; --tbd-line:#7a5f14; --accent:#9b86ff;
   }
 }
 *{box-sizing:border-box}
@@ -46,7 +46,7 @@ h3{font-weight:500;font-size:15px;margin:18px 0 8px}
 p{margin:0 0 10px}
 .muted{color:var(--ink-2)}
 .mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:13px}
-.page{background:var(--bg);border:1px solid var(--line);border-radius:24px;padding:28px;margin:18px 0}
+.page{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:28px;margin:18px 0}
 .sec-h{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:18px}
 .sec-h .n{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-2)}
 .sec-h p{margin:0 0 0 auto;font-size:13px;color:var(--ink-2);text-align:right}
@@ -82,7 +82,7 @@ svg text{font-family:"IBM Plex Mono",monospace}
 @media (max-width:560px){.sec-h p{display:none}.page{padding:20px}}
 @media print{
   body{background:#fff}
-  .page{break-inside:avoid;border-radius:0;border:none;border-top:2px solid #161618;margin:0 0 12px;padding:16px 0}
+  .page{break-inside:avoid;border-radius:0;border:none;border-top:2px solid #111110;margin:0 0 12px;padding:16px 0}
   .noprint{display:none}
 }
 </style>
