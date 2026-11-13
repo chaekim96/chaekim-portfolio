@@ -109,6 +109,12 @@ DECISIONS = [
         opt("Newest first", "One list by date. Shows momentum, but mixes big and small builds."),
         opt("Three flagships, then the rest", "Large cards for the strongest three, everything else compact."),
     ]),
+    D("design", "Nov 2026", "This site", "Twenty bright build marks now sit on the sky. Keep it, or move the page to paper?", [
+        opt("Keep the sky", "Sky blue overhead and soft clouds, as chosen in October."),
+        opt("Stamp Ink", "Warm paper, ink, the seal's red and one violet accent. Night Press, a warm near-black, for dark mode.", chosen=True, rec=True),
+        opt("Field Notes", "Cream paper with forest green and clay. Editorial and bookish."),
+    ], why=["Ties the page to my seal", "Lets the marks pop", "Feels more personal"],
+       link=("/#design-notes", "Read the design notes")),
     # ---------------- this site: content ----------------
     D("content", "Oct 2026", "This site", "The site's numbers predate my resume. Which should it use?", [
         opt("Match the resume", "Update every page to the resume's figures.", chosen=True, rec=True),
