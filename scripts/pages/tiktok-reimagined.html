@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>TikTok, Reimagined: Ask, Don't Scroll · Chae Kim - Portfolio</title>
+  <meta name="description" content="A design concept: TikTok search that answers your question, built from the creators who showed it, with brands supplying facts. A thought piece on search, creators, and advertising on TikTok, with wireframes and a rollout plan.">
+  <meta property="og:title" content="TikTok, Reimagined: Ask, Don't Scroll · Chae Kim - Portfolio">
+  <meta property="og:description" content="A design concept: TikTok search that answers your question, built from the creators who showed it, with brands supplying facts.">
+  <meta property="og:type" content="article">
+  <link rel="canonical" href="%%SITE%%/projects/tiktok-reimagined">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script>try { var t = localStorage.getItem('ck-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
+  <meta name="theme-color" content="#F5F5F7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Layout follows Siri, Reimagined: full-width bands alternate light and black
+   ("theater"), content centers in a 1200px wrap. Accent is a cyan-to-red split. */
+:root {
+  --bg: #F5F5F7;
+  --card: #FFFFFF;
+  --ink: #1D1D1F;
+  --muted: #6E6E73;
+  --hair: #D2D2D7;
+  --link: #C4153C;
+  --cta: #E0244B;
+  --cta-ink: #FFFFFF;
+  --nav: rgba(245, 245, 247, .72);
+  --theater: #000000;
+  --theater-card: #1C1C1E;
+  --theater-ink: #F5F5F7;
+  --theater-muted: #8E8E93;
+  --theater-hair: #333336;
+  --c1: #25F4EE; --c2: #FE2C55;
+  --sf: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Helvetica Neue", Arial, sans-serif;
+  --sft: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #000000; --card: #1C1C1E; --ink: #F5F5F7; --muted: #8E8E93; --hair: #38383A;
+    --link: #FF5C7A; --cta: #FE2C55; --nav: rgba(22, 22, 23, .72);
+    --theater: #161617; --theater-card: #2C2C2E; --theater-hair: #3A3A3C;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #000000; --card: #1C1C1E; --ink: #F5F5F7; --muted: #8E8E93; --hair: #38383A;
+  --link: #FF5C7A; --cta: #FE2C55; --nav: rgba(22, 22, 23, .72);
+  --theater: #161617; --theater-card: #2C2C2E; --theater-hair: #3A3A3C;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.47 var(--sft); letter-spacing: -.022em; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { font-family: var(--sf); text-wrap: balance; }
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--cta); outline-offset: 3px; border-radius: 6px; }
+
+.band { background: var(--bg); color: var(--ink); }
+.band.theater { background: var(--theater); color: var(--theater-ink); }
+.wrap {
+  max-width: 1200px; margin-inline: auto; padding-block: clamp(4.5rem, 10vw, 8rem);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex; flex-direction: column; gap: clamp(2.5rem, 5vw, 4rem);
+}
+.head { display: flex; flex-direction: column; gap: 1rem; text-align: center; align-items: center; max-width: 880px; margin-inline: auto; }
+.eyebrow { font: 600 clamp(1.05rem, 2vw, 1.3rem)/1.2 var(--sf); }
+.headline { font-size: clamp(2.2rem, 5.6vw, 4.2rem); font-weight: 700; line-height: 1.05; letter-spacing: -.035em; }
+.sub { font: 500 clamp(1.15rem, 2.2vw, 1.6rem)/1.3 var(--sf); color: var(--muted); letter-spacing: -.02em; max-width: 34ch; }
+.theater .sub, .theater .muted { color: var(--theater-muted); }
+.grad { background: linear-gradient(90deg, var(--c1), #9AA8FF 50%, var(--c2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.links { display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: center; font-size: 1.15rem; }
+.theater a { color: #FF5C7A; }
+
+/* ---------- Local nav ---------- */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.localnav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9; background: var(--nav); -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid var(--hair); }
+.localnav .in { max-width: 1200px; margin-inline: auto; height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.localnav .title { font: 600 1.3rem var(--sf); color: var(--ink); white-space: nowrap; letter-spacing: -.02em; display: flex; align-items: baseline; gap: .45rem; }
+.localnav .title .home { color: var(--muted); font-weight: 500; font-size: .8em; }
+.localnav .title .slash { color: var(--hair); font-weight: 400; }
+@media (max-width: 480px) { .localnav .title .home, .localnav .title .slash { display: none; } }
+.localnav nav { display: flex; align-items: center; gap: 1.4rem; font-size: .78rem; }
+.localnav nav a { color: var(--ink); opacity: .8; }
+.pill { display: inline-flex; align-items: center; background: var(--cta); color: var(--cta-ink) !important; border-radius: 980px; padding: 5px 13px; font-size: .78rem; opacity: 1 !important; white-space: nowrap; }
+.pill:hover { text-decoration: none; filter: brightness(1.08); }
+
+/* ---------- Hero ---------- */
+.hero .wrap { padding-block: clamp(3.5rem, 8vw, 6rem) 0; gap: 2rem; overflow: hidden; }
+.hero h1 { font-size: clamp(3rem, 9vw, 6.4rem); font-weight: 700; line-height: 1; letter-spacing: -.045em; }
+.hero-phones { position: relative; display: flex; justify-content: center; align-items: flex-end; gap: clamp(1rem, 3vw, 2.5rem); padding-top: 2rem; margin-bottom: -60px; }
+.hero-phones::before { content: ""; position: absolute; inset: 15% 10% 0; background: radial-gradient(closest-side, rgba(254, 44, 85, .38), rgba(37, 244, 238, .2) 60%, transparent); filter: blur(40px); z-index: 0; }
+.hero-phones > * { position: relative; z-index: 1; }
+.hero-phones .side { transform: translateY(40px); }
+
+/* ---------- Tiles ---------- */
+.brief { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.tile { background: var(--card); border-radius: 28px; padding: clamp(1.5rem, 3vw, 2.4rem); display: flex; flex-direction: column; gap: .7rem; min-width: 0; }
+.theater .tile { background: var(--theater-card); }
+.tile .k { font: 600 .82rem var(--sft); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.tile .t { font: 600 clamp(1.3rem, 2.4vw, 1.75rem)/1.15 var(--sf); letter-spacing: -.03em; }
+.tile p { color: var(--muted); font: 500 1.1rem/1.4 var(--sf); }
+.theater .tile p, .theater .tile .k { color: var(--theater-muted); }
+.brief-note { text-align: center; color: var(--muted); font: 500 1.1rem/1.45 var(--sf); max-width: 46ch; margin-inline: auto; }
+.parts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.partcard { background: var(--card); border-radius: 28px; padding: clamp(1.75rem, 3.5vw, 2.75rem); display: flex; flex-direction: column; gap: .75rem; color: var(--ink); min-width: 0; }
+.partcard:hover { text-decoration: none; }
+.partcard:hover .go { text-decoration: underline; }
+.partcard .num { font: 600 1rem var(--sf); color: var(--muted); }
+.partcard .t { font: 700 clamp(1.8rem, 3.4vw, 2.6rem)/1.08 var(--sf); letter-spacing: -.035em; }
+.partcard p { color: var(--muted); font: 500 1.08rem/1.45 var(--sf); }
+.partcard .go { color: var(--link); font-size: 1.05rem; margin-top: auto; padding-top: .5rem; }
+.tag { align-self: flex-start; font: 600 .9rem var(--sft); color: var(--muted); border: 1px solid var(--hair); border-radius: 980px; padding: 6px 14px; }
+.theater .tag { color: var(--theater-muted); border-color: var(--theater-hair); }
+
+/* ---------- Essay ---------- */
+.essay { max-width: 700px; width: 100%; margin-inline: auto; display: flex; flex-direction: column; gap: 1.3rem; font-size: 1.2rem; line-height: 1.62; }
+.essay h2 { font: 700 clamp(2.2rem, 5vw, 3.6rem)/1.05 var(--sf); letter-spacing: -.04em; margin-bottom: .5rem; }
+.essay h3 { font: 700 clamp(1.5rem, 2.8vw, 2rem)/1.15 var(--sf); letter-spacing: -.03em; margin-top: 2.25rem; }
+.essay .first { font: 600 clamp(1.5rem, 2.8vw, 2rem)/1.25 var(--sf); letter-spacing: -.03em; }
+.essay .quote { font: 700 clamp(2rem, 5vw, 3.2rem)/1.05 var(--sf); letter-spacing: -.04em; text-align: center; padding-block: 1.5rem; }
+.essay ul { margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: .6rem; }
+.essay li::marker { color: var(--muted); }
+.essay sup a { font-size: .75em; }
+.fig { background: var(--theater); color: var(--theater-ink); border-radius: 28px; padding: clamp(1.5rem, 4vw, 2.5rem); display: flex; flex-direction: column; gap: 1.1rem; margin-block: 1rem; }
+.fig .cap2 { font-size: .85rem; color: var(--theater-muted); text-align: center; }
+.bars { display: flex; flex-direction: column; gap: .9rem; }
+.bar { display: grid; grid-template-columns: 11rem minmax(0, 1fr) 3rem; gap: .9rem; align-items: center; font-size: .95rem; }
+.bar .track { height: 14px; border-radius: 7px; background: rgba(255, 255, 255, .08); overflow: hidden; }
+.bar .track i { display: block; height: 100%; border-radius: 7px; background: linear-gradient(90deg, var(--c1), var(--c2)); }
+.bar .track i.dim { background: rgba(255, 255, 255, .35); }
+.bar b { font: 700 1.05rem var(--sf); text-align: right; }
+.pos { background: var(--card); border-left: 4px solid var(--cta); border-radius: 0 18px 18px 0; padding: 1.2rem 1.4rem; font: 500 1.15rem/1.5 var(--sf); }
+.msgs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.msgs div { background: var(--card); border-radius: 18px; padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: .35rem; font-size: 1rem; line-height: 1.45; }
+.msgs b { font: 600 .8rem var(--sft); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+
+/* ---------- FAQ ---------- */
+.faq { width: 100%; border-top: 1px solid var(--hair); margin-top: .5rem; }
+.faq details { border-bottom: 1px solid var(--hair); }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.4rem 0; font: 600 clamp(1.1rem, 2.1vw, 1.4rem)/1.25 var(--sf); letter-spacing: -.02em; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font: 300 2rem/1 var(--sf); color: var(--muted); transition: transform .25s; flex: none; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { padding: 0 3rem 1.5rem 0; color: var(--muted); font-size: 1.08rem; line-height: 1.55; }
+
+/* =====================================================================
+   Phone mockups. Device colors are literal: the hardware and the app
+   screen look the same whichever theme the page is in.
+   ===================================================================== */
+.phone { --w: 260px; width: var(--w); max-width: 100%; aspect-ratio: 71.5 / 149.6; flex: none; position: relative; border-radius: calc(var(--w) * .17); padding: calc(var(--w) * .014);
+  background: linear-gradient(135deg, #3A3A3C, #1C1C1E 30%, #48484A 55%, #1C1C1E 80%, #3A3A3C);
+  box-shadow: 0 1px 1px rgba(255, 255, 255, .2) inset, 0 30px 60px -20px rgba(0, 0, 0, .55); }
+.scr { position: relative; height: 100%; overflow: hidden; border-radius: calc(var(--w) * .152); border: calc(var(--w) * .026) solid #050505; background: #0B0B0D;
+  display: flex; flex-direction: column; gap: 8px; padding: 40px 11px 14px; font-family: var(--sft); letter-spacing: -.01em; color: #FFFFFF; text-align: left; }
+.island { position: absolute; top: 9px; left: 50%; transform: translateX(-50%); width: 31%; height: 23px; border-radius: 14px; background: #000000; z-index: 5; }
+.sb { position: absolute; top: 12px; left: 20px; right: 18px; display: flex; justify-content: space-between; font: 600 11.5px var(--sft); z-index: 4; }
+.q { display: flex; align-items: center; gap: 7px; background: #2A2A2D; border-radius: 10px; padding: 8px 10px; font: 500 11.5px var(--sft); }
+.q::before { content: ""; width: 10px; height: 10px; border: 1.6px solid #9A9AA0; border-radius: 50%; flex: none; }
+.tabs { display: flex; gap: 12px; font: 600 10.5px var(--sft); color: #8E8E93; padding: 0 2px; }
+.tabs .on { color: #FFFFFF; border-bottom: 2px solid #FFFFFF; padding-bottom: 3px; }
+.ans { position: relative; border-radius: 14px; padding: 11px 11px 10px; background: #18181B; display: flex; flex-direction: column; gap: 6px; }
+.ans::before { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1.5px; background: linear-gradient(135deg, var(--c1), var(--c2));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
+.ans .lbl { font: 600 9px var(--sft); color: #A1A1A6; letter-spacing: .04em; text-transform: uppercase; }
+.ans b { font: 600 13px/1.25 var(--sf); letter-spacing: -.015em; }
+.ans ul { margin: 0; padding-left: 13px; font: 400 10.5px/1.4 var(--sft); color: #E5E5EA; display: flex; flex-direction: column; gap: 3px; }
+.ans sup { color: var(--c1); font-weight: 700; font-size: 8px; }
+.srcs { display: flex; gap: 5px; }
+.srcs i { flex: 1; aspect-ratio: 3 / 4; border-radius: 7px; position: relative; font: 700 8px var(--sft); font-style: normal; color: #FFFFFF; display: flex; align-items: flex-end; padding: 4px; }
+.srcs i:nth-child(1) { background: linear-gradient(160deg, #F4B183, #8C4A2F); }
+.srcs i:nth-child(2) { background: linear-gradient(160deg, #9AD0C2, #2E6B5E); }
+.srcs i:nth-child(3) { background: linear-gradient(160deg, #C5B3E6, #5B4A8A); }
+.srcs i:nth-child(4) { background: linear-gradient(160deg, #F2D388, #8A6A1F); }
+.why { font: 500 9.5px var(--sft); color: #A1A1A6; display: flex; justify-content: space-between; }
+.spons { border-radius: 12px; background: #1F1F23; padding: 8px 10px; display: flex; gap: 8px; align-items: center; font: 500 10px/1.3 var(--sft); }
+.spons i { width: 26px; height: 26px; border-radius: 7px; background: linear-gradient(160deg, #FFB8A3, #E2574C); flex: none; }
+.spons em { font-style: normal; color: #A1A1A6; font-size: 8.5px; display: block; }
+.vgrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 5px; }
+.vgrid i { aspect-ratio: 3 / 4; border-radius: 8px; background: #2A2A2D; position: relative; }
+.vgrid i::after { content: ""; position: absolute; left: 6px; right: 14px; bottom: 7px; height: 5px; border-radius: 3px; background: rgba(255, 255, 255, .25); }
+.vgrid i.ad::before { content: "Sponsored"; position: absolute; top: 5px; left: 5px; font: 600 7.5px var(--sft); background: rgba(0, 0, 0, .55); padding: 2px 5px; border-radius: 4px; }
+.playing { flex: 1; border-radius: 12px; background: linear-gradient(170deg, #9AD0C2, #2E6B5E 70%, #10241F); position: relative; overflow: hidden; }
+.playing .cc { position: absolute; left: 10px; right: 30px; top: 40%; font: 600 11px/1.35 var(--sft); text-shadow: 0 1px 3px rgba(0, 0, 0, .6); }
+.playing .cc mark { background: rgba(37, 244, 238, .35); color: #FFFFFF; border-radius: 3px; padding: 0 2px; }
+.playing .who { position: absolute; left: 10px; top: 58%; font: 600 10px var(--sft); }
+.playing .scrub { position: absolute; left: 10px; right: 10px; bottom: 6px; height: 3px; border-radius: 2px; background: rgba(255, 255, 255, .3); }
+.playing .scrub i { display: block; width: 46%; height: 100%; background: #FFFFFF; border-radius: 2px; }
+.playing .jump { position: absolute; top: 10px; left: 10px; font: 600 9px var(--sft); background: rgba(0, 0, 0, .5); border-radius: 980px; padding: 4px 8px; }
+
+/* ---------- Wireframes (lo-fi, theme-aware) ---------- */
+.flowhead { display: flex; flex-direction: column; gap: .5rem; max-width: 760px; }
+.flowhead h3 { font: 700 clamp(1.6rem, 3vw, 2.2rem)/1.1 var(--sf); letter-spacing: -.035em; }
+.flowhead p { color: var(--muted); font-size: 1.1rem; line-height: 1.5; }
+.legend2 { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; font-size: .85rem; color: var(--muted); }
+.legend2 i { display: inline-block; width: 14px; height: 10px; border-radius: 3px; border: 1.5px dashed var(--cta); margin-right: 7px; }
+.wfs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2.5rem 1.5rem; }
+.wfs.c3 { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 900px; margin-inline: auto; width: 100%; }
+.wfstep { display: flex; flex-direction: column; align-items: center; gap: 1rem; text-align: center; min-width: 0; }
+.wfstep .k { font: 600 1.05rem var(--sf); letter-spacing: -.02em; }
+.wfstep .k b { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--cta); color: var(--cta-ink); font: 600 .78rem var(--sft); margin-right: 8px; vertical-align: 2px; }
+.wfstep .d { font-size: .95rem; line-height: 1.45; color: var(--muted); max-width: 26ch; }
+.wf { width: 200px; max-width: 100%; aspect-ratio: 9 / 19.5; border: 2px solid var(--ink); border-radius: 32px; background: var(--card); padding: 30px 11px 12px; position: relative; display: flex; flex-direction: column; gap: 7px; font: 500 9.5px/1.35 var(--sft); color: var(--muted); text-align: left; }
+.wf::before { content: ""; position: absolute; top: 9px; left: 50%; transform: translateX(-50%); width: 30%; height: 12px; border-radius: 8px; background: var(--ink); }
+.wf .wt { font: 700 13px var(--sf); color: var(--ink); letter-spacing: -.02em; }
+.wf .bx { border: 1.5px solid var(--hair); background: var(--bg); border-radius: 10px; padding: 7px 8px; display: flex; flex-direction: column; gap: 5px; }
+.wf .bx b { color: var(--ink); font-weight: 600; }
+.wf .bx.hl { border: 1.5px dashed var(--cta); background: transparent; color: var(--cta); }
+.wf .bx.hl b { color: var(--cta); }
+.wf .ln { display: block; height: 5px; border-radius: 3px; background: var(--hair); }
+.wf .ln.s { width: 55%; }
+.wf .row2 { display: flex; gap: 6px; }
+.wf .row2 > * { flex: 1; }
+.wf .th { aspect-ratio: 3 / 4; border-radius: 7px; border: 1.5px solid var(--hair); background: var(--bg); }
+.wf .th.hl { border: 2px solid var(--cta); }
+.wf .wb { border-radius: 980px; padding: 6px; text-align: center; background: var(--ink); color: var(--card); font-weight: 600; }
+.wf .wb.alt { background: transparent; color: var(--ink); border: 1.5px solid var(--hair); }
+.wf .wb.hl { background: var(--cta); color: var(--cta-ink); }
+.wf .sheet { margin-top: auto; border: 1.5px solid var(--ink); border-radius: 18px; padding: 10px; display: flex; flex-direction: column; gap: 7px; background: var(--card); }
+.wf .scrim { position: absolute; inset: 0; border-radius: 30px; background: var(--ink); opacity: .08; pointer-events: none; }
+.wf .field { border: 1.5px solid var(--hair); border-radius: 980px; padding: 6px 9px; color: var(--ink); }
+.wf .chips { display: flex; flex-wrap: wrap; gap: 5px; }
+.wf .chips span { border: 1.5px solid var(--hair); border-radius: 980px; padding: 3px 8px; color: var(--ink); }
+.wf .chips span.hl { border-color: var(--cta); color: var(--cta); }
+.wf .chips span.no { text-decoration: line-through; }
+.wf .fill { flex: 1; }
+.wf .big { font: 700 22px var(--sf); color: var(--ink); letter-spacing: -.03em; }
+.wf .vid { flex: 1; border-radius: 12px; border: 1.5px solid var(--hair); background: var(--bg); position: relative; }
+.wf .vid .mk { position: absolute; left: 8px; right: 8px; bottom: 14px; border: 1.5px dashed var(--cta); color: var(--cta); border-radius: 6px; padding: 4px 6px; background: var(--card); }
+
+/* ---------- Rollout ---------- */
+.rollout { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.phase { background: var(--card); border-radius: 26px; padding: 1.6rem 1.5rem 1.8rem; display: flex; flex-direction: column; gap: .7rem; min-width: 0; }
+.phase .when { font: 600 .9rem var(--sft); }
+.phase .t { font: 700 1.35rem/1.2 var(--sf); letter-spacing: -.025em; }
+.phase p { font-size: .98rem; line-height: 1.5; color: var(--muted); }
+.phase .meter { display: flex; gap: 4px; margin-top: auto; padding-top: .6rem; }
+.phase .meter i { flex: 1; height: 5px; border-radius: 3px; background: var(--hair); }
+.phase .meter i.on { background: linear-gradient(90deg, var(--c1), var(--c2)); }
+.phase .ex { font-size: .85rem; color: var(--ink); border-top: 1px solid var(--hair); padding-top: .7rem; }
+
+/* ---------- Footer ---------- */
+footer { background: var(--bg); color: var(--muted); font-size: .75rem; line-height: 1.5; }
+footer .in { max-width: 1200px; margin-inline: auto; padding-block: 2rem 3rem; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: flex; flex-direction: column; gap: .8rem; }
+footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1rem; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1080px) {
+  .wfs, .rollout { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 860px) {
+  .localnav nav a:not(.pill) { display: none; }
+  .brief, .parts, .wfs.c3, .msgs { grid-template-columns: 1fr; }
+  .hero-phones .side { display: none; }
+}
+@media (max-width: 600px) {
+  .wfs, .rollout { grid-template-columns: 1fr; }
+  .bar { grid-template-columns: minmax(0, 1fr) 3rem; }
+  .bar .track { grid-column: 1 / -1; grid-row: 2; }
+  .faq details p { padding-right: 0; }
+}
+</style>
+</head>
+<body>
+<div class="localnav">
+  <div class="in">
+    <span class="title"><a class="home" href="/#builds">Chae Kim</a><span class="slash" aria-hidden="true">/</span>TikTok, Reimagined</span>
+    <nav aria-label="Sections">
+      <a href="#essay">Thought piece</a>
+      <a href="#pitch">The pitch</a>
+      <a href="#wireframes">Wireframes</a>
+      <a href="#rollout">Rollout</a>
+      <a class="pill" href="#essay">Read it</a>
+    </nav>
+  </div>
+</div>
+
+<main>
+
+  <!-- HERO -->
+  <section class="band theater hero">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow muted">A design concept</span>
+        <h1>Don't scroll for it.<br><span class="grad">Ask for it.</span></h1>
+        <p class="sub">TikTok search that answers your question, built from the creators who showed it.</p>
+        <div class="links"><a href="#essay">Read the thought piece ›</a><a href="#wireframes">See the wireframes ›</a></div>
+      </div>
+      <div class="hero-phones">
+        <div class="phone side" style="--w:236px" role="img" aria-label="Today: a search returns a grid of videos, one of them sponsored">
+          <div class="scr"><div class="island"></div><div class="sb"><span>9:41</span><span>5G</span></div>
+            <div class="q">sunscreen for oily skin under $20</div>
+            <div class="tabs"><span class="on">Top</span><span>Videos</span><span>Users</span><span>Shop</span></div>
+            <div class="vgrid"><i></i><i class="ad"></i><i></i><i></i><i></i><i></i></div>
+          </div>
+        </div>
+        <div class="phone" style="--w:290px" role="img" aria-label="The concept: an answer card built from four creator videos, with numbered sources">
+          <div class="scr"><div class="island"></div><div class="sb"><span>9:41</span><span>5G</span></div>
+            <div class="q">sunscreen for oily skin under $20</div>
+            <div class="tabs"><span class="on">Answer</span><span>Top</span><span>Videos</span><span>Shop</span></div>
+            <div class="ans">
+              <span class="lbl">Answer · from 4 creators</span>
+              <b>Look for a gel or fluid SPF 30+ with a matte finish.</b>
+              <ul>
+                <li>Gel textures came up most for shine control<sup>1 3</sup></li>
+                <li>Two picks under $20 were tested on camera<sup>2 4</sup></li>
+                <li>Reapply over makeup with a stick or spray<sup>3</sup></li>
+              </ul>
+              <div class="srcs"><i>1</i><i>2</i><i>3</i><i>4</i></div>
+              <div class="why"><span>Why this answer?</span><span>Not sponsored</span></div>
+            </div>
+            <div class="spons"><i></i><span>Brightwell Daily Gel SPF 40<em>Sponsored · brand facts verified</em></span></div>
+          </div>
+        </div>
+        <div class="phone side" style="--w:236px" role="img" aria-label="Tapping a source plays the creator's video from the moment that supports the answer">
+          <div class="scr"><div class="island"></div><div class="sb"><span>9:41</span><span>5G</span></div>
+            <div class="playing"><span class="jump">Source 2 · jumped to 0:41</span><span class="cc">"This one doesn't <mark>pill under makeup</mark>, and it's $14."</span><span class="who">@example.creator</span><span class="scrub"><i></i></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IN BRIEF -->
+  <section class="band" id="brief">
+    <div class="wrap" style="padding-block:clamp(3.5rem,8vw,6rem) clamp(1rem,3vw,2rem)">
+      <div class="head"><h2 class="headline">The short version.</h2></div>
+      <div class="brief">
+        <div class="tile"><span class="k">The problem</span><span class="t">People search TikTok for proof, then leave to get the answer.</span><p>About half of U.S. consumers have used TikTok as a search engine, but almost none prefer it to Google. The answer is in the videos, spread across a dozen clips.</p></div>
+        <div class="tile"><span class="k">What I'd ship first</span><span class="t">An answer card on top of search, in three categories.</span><p>Beauty, food, and travel, where people want to see it work. Every line links to the creator and the second of video that backs it up. No ads in it at launch.</p></div>
+        <div class="tile"><span class="k">How I'd measure it</span><span class="t">Fewer searches again, more taps on sources.</span><p>Did people stop searching the same thing again? Did they tap a source, follow a creator, or save? Answers people trust send viewers to creators instead of away from them.</p></div>
+        <div class="tile"><span class="k">Why it fits TikTok</span><span class="t">It turns search into the brand story advertisers want.</span><p>Search Hubs, Pulse Mentions, and Symphony already exist. Answers tie them into one pitch: be the answer when people ask, not just the ad they scroll past.</p></div>
+      </div>
+      <p class="brief-note">The rule that holds it together: the answer is never for sale. Brands can pay to appear next to it, never inside it.</p>
+    </div>
+  </section>
+
+  <!-- CONTENTS -->
+  <section class="band">
+    <div class="wrap" style="padding-block:clamp(1.5rem,4vw,3rem) clamp(3rem,7vw,5rem)">
+      <div class="parts">
+        <a class="partcard" href="#essay"><span class="num">Part 1</span><span class="t">The thought piece</span><p>Why TikTok search should answer, who it's for, how it makes money, and how I'd position it to advertisers.</p><span class="go">Read it ›</span></a>
+        <a class="partcard" href="#wireframes"><span class="num">Part 2</span><span class="t">How it would play out</span><p>Wireframes for viewers, brands, and creators, and a rollout from one answer card to asking anywhere in the app.</p><span class="go">See it ›</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PART 1 ===================== -->
+  <section class="band" id="essay">
+    <div class="wrap" style="padding-top:clamp(2rem,5vw,3rem)">
+      <article class="essay">
+        <span class="tag">Part 1 · The thought piece</span>
+        <h2>Why TikTok search should answer.</h2>
+
+        <p class="first">For most of the past year, I worked on a question brands didn't use to ask.</p>
+        <p>When someone asks ChatGPT about your category, does it mention you? That was the work at <a href="https://trylucent.ai">Lucent</a>, an AI search visibility platform. Brands used to fight for the top blue link. Now they want to be the sentence an AI says out loud.</p>
+        <p>The same shift is happening inside TikTok, and it rarely gets called search. Type "sunscreen for oily skin under $20" and you get a grid of videos. The answer is in there somewhere. It's spread over a dozen clips, each forty seconds long, some of them ads, and you have to watch them all to piece it together.</p>
+        <p>TikTok has something no search engine has: real people showing the product working on camera. It just hasn't turned that proof into an answer.</p>
+        <p class="quote">"TikTok,<br><span class="grad">just tell me."</span></p>
+
+        <h3>People already search here. They just don't stay.</h3>
+        <p>Adobe's 2026 consumer survey found that 49% of U.S. consumers have used TikTok as a search engine, up from 41% in 2024. But only 4% of Gen Z said they prefer it to Google, down from 8%, and 14% of consumers said they're more likely to rely on ChatGPT than Google.<sup><a href="#fn1" id="fnref1">1</a></sup></p>
+        <div class="fig" role="img" aria-label="Bar chart: 49% of U.S. consumers used TikTok as a search engine in 2026, 41% in 2024; 4% of Gen Z prefer TikTok to Google">
+          <div class="bars">
+            <div class="bar"><span>Used TikTok to search, 2024</span><span class="track"><i class="dim" style="width:41%"></i></span><b>41%</b></div>
+            <div class="bar"><span>Used TikTok to search, 2026</span><span class="track"><i style="width:49%"></i></span><b>49%</b></div>
+            <div class="bar"><span>Gen Z who prefer it to Google</span><span class="track"><i style="width:4%"></i></span><b>4%</b></div>
+          </div>
+          <p class="cap2">Adobe Express survey of 807 U.S. consumers, January 2026. Vendor-run; treat as directional.</p>
+        </div>
+        <p>That gap is the opportunity. People come to TikTok to see it, then go somewhere else to decide. The search habit is there. The answer isn't.</p>
+
+        <h3>Where it starts: one answer card.</h3>
+        <p>Search gets a new top result: a short answer composed from creator videos. Every line carries a number, and every number opens the creator's video at the second that backs it up. If the videos disagree, the answer says so.</p>
+        <p>I'd launch in three categories where people want proof before they buy: beauty, food, and travel. No ads inside the card, and no answer at all when there aren't enough good videos. A short list of honest answers beats a long list of weak ones.</p>
+        <p>I'd judge it on three numbers: how often people stop searching the same thing again, how often they tap a source, and what they do next (follow, save, or shop). If people read the answer and leave, it's taking views from creators. If they tap through, it's sending viewers to them.</p>
+
+        <h3>Creators become the sources.</h3>
+        <p>None of this works if creators feel mined. So it's opt-in, and being cited has to pay. A cited creator gets a "Source" badge on the clip, the views that come from the answer, and a share of the revenue from searches their videos answered. Creators can see which of their clips were cited and for what questions, which is a better content brief than any trend report.</p>
+
+        <h3>Brands supply facts. Creators supply proof.</h3>
+        <p>Today a brand can buy a Search Hub, a branded page at the top of search results, announced at TikTok World in May 2026.<sup><a href="#fn2" id="fnref2">2</a></sup> It can run Pulse Mentions, which places ads next to posts where people are already talking about the brand or its category.<sup><a href="#fn3" id="fnref3">3</a></sup> Both put the brand near the answer. Neither lets the brand make sure the answer is right.</p>
+        <p>So brands get an Answer Brief in Ads Manager: approved facts like price, ingredients, and where to buy, plus claims they can't make. TikTok never writes a brand claim that the brand didn't approve or a creator didn't show. The brand's facts fix the details. The creators' videos carry the persuasion.</p>
+
+        <h3>How it makes money.</h3>
+        <p>A few ways it could pay, in the order I'd try them:</p>
+        <ul>
+          <li><strong>Search Hubs as "go deeper."</strong> The answer links to the brand's Search Hub when that brand comes up. It's already sold, so it's the easiest yes for advertisers.</li>
+          <li><strong>Sponsored slot under the answer.</strong> A clearly labeled brand card below the answer, priced like search ads. Real money, as long as it never looks like part of the answer.</li>
+          <li><strong>Shop from the answer.</strong> When the answer names a product, checkout through TikTok Shop. Commission revenue, but it should wait until people trust the answers.</li>
+        </ul>
+        <p>I'd lead with Search Hubs. It turns an existing product into a better one, and it keeps the answer itself clean, which is the whole asset.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- THE PITCH -->
+  <section class="band" id="pitch">
+    <div class="wrap" style="padding-top:0">
+      <article class="essay">
+        <h3 style="margin-top:0">The pitch to advertisers.</h3>
+        <p>Most brands still think of TikTok as the top of the funnel: you go there to get noticed, and people buy somewhere else. Answers changes the story from "reach people" to "be the answer when they ask." If I were positioning it, the statement would be:</p>
+        <p class="pos">For brands whose customers want to see it work before they buy, TikTok Answers is the only search result built from real people showing the product. Unlike AI search that summarizes web pages, every answer links to the video that proves it.</p>
+        <p>And one message for each side of the market:</p>
+        <div class="msgs">
+          <div><b>Viewers</b>Ask once. See who said it.</div>
+          <div><b>Creators</b>Your best video becomes the answer, and you get paid when it is.</div>
+          <div><b>Brands</b>Make sure the facts are right. Let creators make the case.</div>
+        </div>
+
+        <h3>Can TikTok actually do this?</h3>
+        <p>Most of the pieces exist. TikTok already sells Search Ads and Search Hubs, makes ads with its Symphony AI tools, and captions videos automatically, so it knows what's said in each clip. It has labeled AI-made content with C2PA Content Credentials since 2024.<sup><a href="#fn4" id="fnref4">4</a></sup> The answer card is a new layer on top of those.</p>
+        <p>The hard part isn't the technology. It's accuracy and trust: knowing when not to answer, and keeping paid and unpaid clearly apart.</p>
+
+        <h3>Questions I'd expect.</h3>
+        <p>If I were presenting this at TikTok, these are the questions I'd expect in the room, and how I'd answer them.</p>
+        <div class="faq">
+          <details><summary>What happens when the answer is wrong?</summary><p>Every line is tied to a source, so a wrong line can be traced and pulled. Health, money, and safety questions get no composed answer at launch, only source videos. And viewers can flag a line, which sends it back for review.</p></details>
+          <details><summary>Won't this take views away from creators?</summary><p>That's the number I'd watch most closely. The design pushes people into videos: the answer is short, and every claim is a tap away from the clip. If source taps don't hold up, the answer is too long.</p></details>
+          <details><summary>Won't brands just buy the answer?</summary><p>No. That's the one rule. Brands can pay to appear next to the answer and to make sure their facts are right, never to change what creators said or which videos get cited.</p></details>
+          <details><summary>Isn't this just Google's AI Overviews?</summary><p>AI Overviews summarize web pages. This summarizes people showing the thing on camera, and every claim opens the video. That's the part no one else can copy.</p></details>
+          <details><summary>What about AI-generated videos as sources?</summary><p>AI-labeled videos aren't eligible as sources at launch. If the proof is the point, the proof has to be real.</p></details>
+          <details><summary>How does this work with TikTok's U.S. setup?</summary><p>TikTok's U.S. joint venture, formed in January 2026, retrains the recommendation system on U.S. data under Oracle's oversight.<sup><a href="#fn5" id="fnref5">5</a></sup> An answer layer would need to be built and reviewed inside that same setup, so I'd launch it in the U.S. only after that review, and possibly in other markets first.</p></details>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===================== PART 2 ===================== -->
+  <section class="band" id="wireframes">
+    <div class="wrap">
+      <div class="head">
+        <span class="tag" style="align-self:center">Part 2 · How it would play out</span>
+        <h2 class="headline">Three sides, one answer.</h2>
+        <p class="sub" style="max-width:40ch">Viewers ask, creators get cited, brands get their facts right.</p>
+      </div>
+      <div class="legend2"><span><i></i>New in this concept</span></div>
+
+      <div class="flowhead"><h3>Ask and get an answer</h3><p>The viewer's flow. A question returns an answer first, with the videos one tap away.</p></div>
+      <div class="wfs">
+        <div class="wfstep">
+          <div class="wf"><span class="wt">Search</span><span class="field">sunscreen for oily skin under $20</span><span class="bx"><b>Suggested</b><span class="ln"></span><span class="ln s"></span></span><span class="fill"></span><span class="wb">Search</span></div>
+          <span class="k"><b>1</b>Ask in plain words</span><span class="d">The same search bar. Questions get answers, keywords still get videos.</span>
+        </div>
+        <div class="wfstep">
+          <div class="wf"><span class="field">sunscreen for oily skin…</span><span class="bx hl"><b>Answer · 4 creators</b><span class="ln"></span><span class="ln"></span><span class="ln s"></span><span class="row2"><span class="th"></span><span class="th"></span><span class="th"></span><span class="th"></span></span></span><span class="bx"><b>Sponsored</b><span class="ln s"></span></span><span class="row2"><span class="th"></span><span class="th"></span></span></div>
+          <span class="k"><b>2</b>The answer comes first</span><span class="d">A short answer, numbered sources, and the usual videos underneath.</span>
+        </div>
+        <div class="wfstep">
+          <div class="wf"><div class="vid"><span class="mk">Source 2 · from 0:41</span></div><span class="wb alt">Back to answer</span></div>
+          <span class="k"><b>3</b>Tap a source</span><span class="d">The video opens at the moment that backs up the line.</span>
+        </div>
+        <div class="wfstep">
+          <div class="wf"><span class="wt">Brightwell</span><span class="bx"><b>Search Hub</b><span class="ln"></span><span class="ln s"></span></span><span class="row2"><span class="th"></span><span class="th"></span></span><span class="bx hl"><b>Mentioned in this answer</b><span class="ln s"></span></span><span class="fill"></span><span class="wb hl">Shop</span></div>
+          <span class="k"><b>4</b>Go deeper</span><span class="d">The brand's Search Hub, then TikTok Shop, once trust is there.</span>
+        </div>
+      </div>
+
+      <div class="flowhead" style="margin-top:2rem"><h3>Brand: write an Answer Brief</h3><p>In Ads Manager. Brands set the facts and the limits, then see where they could appear.</p></div>
+      <div class="wfs c3">
+        <div class="wfstep">
+          <div class="wf"><span class="wt">Answer Brief</span><span class="bx hl"><b>Approved facts</b>Price $14 · SPF 40 · Gel</span><span class="bx"><b>Where to buy</b><span class="ln s"></span></span><span class="bx"><b>Tone</b><span class="ln"></span></span><span class="fill"></span><span class="wb">Next</span></div>
+          <span class="k"><b>1</b>Set the facts</span><span class="d">Price, ingredients, and availability. The details an answer must get right.</span>
+        </div>
+        <div class="wfstep">
+          <div class="wf"><span class="wt">Claims</span><span class="chips"><span class="hl">Matte finish</span><span class="hl">Reef-safe</span><span class="no">Cures acne</span><span class="no">Dermatologist #1</span></span><span class="bx hl"><b>Off-limits</b>Claims the brand can't make</span><span class="fill"></span><span class="wb">Next</span></div>
+          <span class="k"><b>2</b>Set the limits</span><span class="d">Claims the brand can stand behind, and ones it can't make.</span>
+        </div>
+        <div class="wfstep">
+          <div class="wf"><span class="wt">Preview</span><span class="bx"><b>Questions you match</b><span class="ln"></span><span class="ln s"></span></span><span class="bx hl"><b>Creators already citing you</b>12 videos</span><span class="fill"></span><span class="wb hl">Publish brief</span></div>
+          <span class="k"><b>3</b>See where it shows up</span><span class="d">The questions it could match, and which creators already talk about it.</span>
+        </div>
+      </div>
+
+      <div class="flowhead" style="margin-top:2rem"><h3>Creator: become a source</h3><p>Opt-in, with credit and pay. Creators see which videos answered what.</p></div>
+      <div class="wfs c3">
+        <div class="wfstep">
+          <div class="wf"><span class="scrim"></span><span class="fill"></span><div class="sheet"><b style="color:var(--ink)">Let your videos answer questions?</b><span class="ln"></span><span class="ln s"></span><span class="wb hl">Turn on</span><span class="wb alt">Not now</span></div></div>
+          <span class="k"><b>1</b>Opt in</span><span class="d">Off by default. AI-made videos aren't eligible.</span>
+        </div>
+        <div class="wfstep">
+          <div class="wf"><span class="wt">Cited</span><span class="bx hl"><b>"oily skin sunscreen"</b>Your 0:41 clip · 3.2K taps</span><span class="bx"><b>"carry-on skincare"</b><span class="ln s"></span></span><span class="bx"><b>"$20 dupes"</b><span class="ln s"></span></span></div>
+          <span class="k"><b>2</b>See what you answered</span><span class="d">The questions your videos answered, and how many people tapped through.</span>
+        </div>
+        <div class="wfstep">
+          <div class="wf"><span class="wt">Earnings</span><span class="big">$128</span><span>this month</span><span class="bx hl"><b>From cited searches</b><span class="ln"></span></span><span class="bx"><b>Creator Rewards</b><span class="ln s"></span></span><span class="fill"></span></div>
+          <span class="k"><b>3</b>Get paid for it</span><span class="d">A share of revenue from searches your videos answered.</span>
+        </div>
+      </div>
+
+      <div class="flowhead" style="margin-top:2rem"><h3>Why this answer?</h3><p>One tap shows what made the answer, so paid and unpaid never blur.</p></div>
+      <div class="wfs c3">
+        <div class="wfstep">
+          <div class="wf"><span class="bx"><b>Answer</b><span class="ln"></span><span class="ln s"></span></span><span class="bx hl"><b>Why this answer?</b></span><span class="fill"></span></div>
+          <span class="k"><b>1</b>Tap "Why this answer?"</span><span class="d">On every answer card.</span>
+        </div>
+        <div class="wfstep">
+          <div class="wf"><span class="scrim"></span><span class="fill"></span><div class="sheet"><b style="color:var(--ink)">How this was made</b><span class="bx">4 creator videos · 0 AI-made</span><span class="bx">Brand facts from 1 brief</span><span class="bx hl"><b>Paid placement: none</b></span></div></div>
+          <span class="k"><b>2</b>See the receipt</span><span class="d">The sources, any brand facts used, and whether anything was paid.</span>
+        </div>
+        <div class="wfstep">
+          <div class="wf"><span class="scrim"></span><span class="fill"></span><div class="sheet"><b style="color:var(--ink)">Something wrong?</b><span class="chips"><span>Outdated</span><span class="hl">Not what they said</span><span>Other</span></span><span class="wb">Send</span></div></div>
+          <span class="k"><b>3</b>Flag a line</span><span class="d">A flagged line goes back for review, and is pulled if it doesn't hold.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROLLOUT -->
+  <section class="band" id="rollout" style="border-top:1px solid var(--hair)">
+    <div class="wrap">
+      <div class="head"><span class="eyebrow grad">The rollout</span><h2 class="headline">Earn trust, then sell next to it.</h2></div>
+      <div class="rollout">
+        <div class="phase"><span class="when grad">Phase 1</span><span class="t">Answer cards, three categories</span><p>Beauty, food, and travel. No ads in the card. Measure repeat searches and source taps.</p><span class="meter"><i class="on"></i><i></i><i></i><i></i></span><span class="ex">"Sunscreen for oily skin under $20"</span></div>
+        <div class="phase"><span class="when grad">Phase 2</span><span class="t">Creator credit and pay</span><p>Source badges, the "Cited" dashboard, and a revenue share for answered searches.</p><span class="meter"><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="ex">Creators see which clips answered what.</span></div>
+        <div class="phase"><span class="when grad">Phase 3</span><span class="t">Answer Briefs and Search Hubs</span><p>Brands set facts in Ads Manager. Answers link to Search Hubs. Sponsored slot under the card.</p><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span class="ex">The first paid piece, kept outside the answer.</span></div>
+        <div class="phase"><span class="when grad">Phase 4</span><span class="t">Ask anywhere</span><p>Ask from comments, a video, or Shop. Checkout from the answer once trust holds up.</p><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="ex">"Where's this?" on a travel video gets an answer.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSE -->
+  <section class="band theater">
+    <div class="wrap">
+      <div class="head">
+        <h2 class="headline">Search made TikTok a place to look.<br><span class="grad">Answers make it a place to decide.</span></h2>
+        <div class="links"><a href="/projects/siri-reimagined">See Siri, Reimagined ›</a><a href="/#builds">Back to the portfolio ›</a></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="in">
+    <p id="fn1">1. Adobe Express, <a href="https://www.adobe.com/express/learn/blog/using-tiktok-as-a-search-engine">"Using TikTok as a search engine"</a> (survey of 807 U.S. consumers and 200 small business owners, January 2026). <a href="#fnref1">Back to text</a></p>
+    <p id="fn2">2. TikTok Newsroom, <a href="https://newsroom.tiktok.com/tiktok-world-26-turning-discovery-into-business-growth-with-ai-powered-innovations-vertical-experiences-and-high-impact-brand-solutions?lang=en">TikTok World '26 announcements</a> (May 13, 2026). <a href="#fnref2">Back to text</a></p>
+    <p id="fn3">3. TikTok for Business, <a href="https://ads.tiktok.com/help/article?aid=10014160">About TikTok Pulse suite</a>. <a href="#fnref3">Back to text</a></p>
+    <p id="fn4">4. TikTok Newsroom, <a href="https://newsroom.tiktok.com/partnering-with-our-industry-to-advance-ai-transparency-and-literacy?lang=en">Partnering with our industry to advance AI transparency and literacy</a> (May 9, 2024). <a href="#fnref4">Back to text</a></p>
+    <p id="fn5">5. Fortune, <a href="https://fortune.com/2025/12/19/tiktok-agrees-u-s-joint-venture-deal-with-oracle-silver-lake-and-mgx/">TikTok agrees U.S. joint venture deal with Oracle, Silver Lake and MGX</a> (December 19, 2025); The Register, <a href="https://www.theregister.com/2026/01/23/jv_announces_tiktok_us_acquisition/">JV announces TikTok U.S. acquisition</a> (January 23, 2026). <a href="#fnref5">Back to text</a></p>
+    <p>Brightwell is a fictional brand. Creator handles, prices, counts, and earnings shown on screens are examples.</p>
+    <p>Concept, writing, and design by Chae Kim. <a href="/#builds">Back to the portfolio</a>.</p>
+    <div class="rule"><span>An unofficial design concept. Not affiliated with or endorsed by TikTok or ByteDance.</span><span>TikTok, TikTok Shop, Search Hubs, Pulse, and Symphony are trademarks of their owners.</span></div>
+  </div>
+</footer>
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
