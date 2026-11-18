@@ -196,6 +196,16 @@
 
   /* a small, visible way in for people who do not know the shortcut */
   function addOpener() {
+    var own = document.querySelector('[data-palette-open]');   // the home page ships its own button
+    if (own) {
+      opener = own;
+      opener.setAttribute('aria-label', 'Search the site (' + keyLabel + ')');
+      opener.title = keyLabel;
+      opener.addEventListener('click', openPalette);
+      opener.addEventListener('pointerenter', load, { once: true });
+      opener.addEventListener('focus', load, { once: true });
+      return;
+    }
     var toggle = document.querySelector('.topnav .theme-toggle, .top .theme-toggle');
     if (!toggle) return;
     opener = el('button', 'palette-open');
