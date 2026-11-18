@@ -24,6 +24,15 @@ def seal(cls="", label=True):
 MARK_FILE = field("mark")
 # Link-preview card and touch icon per build, written by scripts/build-brand-cards.py.
 CARD_DIR = "assets/img/brand/cards"
+OG_DIR = "assets/img/og"
+
+
+def page_og(name):
+    """A page's own share card (scripts/build-page-og.py) if it has one, else the site card."""
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    if os.path.exists(os.path.join(root, OG_DIR, f"{name}.png")):
+        return f"{SITE_URL}/{OG_DIR}/{name}.png"
+    return f"{SITE_URL}/assets/img/og-sky.png"
 
 def _root():
     return os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

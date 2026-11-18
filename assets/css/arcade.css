@@ -24,7 +24,7 @@
 @media (max-width: 880px) { .break { grid-template-columns: minmax(0,1fr); } }
 .panel { border: 1px solid var(--line); border-radius: var(--radius); background: color-mix(in srgb, var(--bg-elev) 88%, transparent); backdrop-filter: blur(10px); padding: 22px; display: flex; flex-direction: column; gap: 16px; }
 .panel__head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
-.panel__title { font-size: 20px; margin-top: 4px; }
+.panel__title { font-size: 20px; font-weight: 600; margin: 4px 0 0; }
 .panel__score { display: flex; gap: 14px; font-size: 13px; color: var(--ink-3); white-space: nowrap; }
 .panel__score b { color: var(--ink); font-family: var(--font-display); }
 .panel__note { font-size: 12.5px; color: var(--ink-3); text-align: right; max-width: 20ch; }

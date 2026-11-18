@@ -22,6 +22,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 PAGE = Path(__file__).resolve().parent / "media" / "convert.html"
+# Source GIFs were removed from the repo after conversion (see git history).
 VIDEO_GIFS = ["/assets/img/home-gif/home.gif", "/assets/img/yin-yang/yin-yang.gif",
               "/assets/img/iu-study-assistant/iusa/poster.gif"]
 

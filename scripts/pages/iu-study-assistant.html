@@ -27,9 +27,9 @@
     <main id="main">
     <section class="case-hero wrap">
       <a class="case-hero__back" href="/#work">← All work</a>
-      <p class="eyebrow">Capstone · INFO-I494/495 · May 2020 – May 2021</p>
+      <p class="eyebrow">capstone · INFO-I494/495 · May 2020 to May 2021</p>
       <h1 class="case-hero__title">One place to <em>study</em>, not nine tabs.</h1>
-      <p class="lede">A year-long capstone to build a focused study platform for Indiana University students — everything related to studying, time management, and course planning, without the clutter of Canvas and One.IU.</p>
+      <p class="lede">A year-long capstone to build a focused study platform for Indiana University students: everything related to studying, time management, and course planning, without the clutter of Canvas and One.IU.</p>
       <dl class="case-meta">
         <div><dt>Role</dt><dd>PM · UX/UI · Notes feature · Database</dd></div>
         <div><dt>Team</dt><dd>5 students</dd></div>
@@ -57,30 +57,30 @@
 <p>Instead of building yet another everything-platform, we made IU Study Assistant deliberately narrow: only features related to studying, time management, and course planning. Designed for IU first (IU login, Rivet design language), architected to be portable to other universities.</p>
 
 <h2 id="research">Research</h2>
-<p>To confirm this was a real pain and not just ours, we surveyed forty peers about Canvas and One.IU, then ran interviews, a focus group, direct observation, and usability tests — each team member owned two sessions and a write-up.</p>
+<p>To confirm this was a real pain and not just ours, we surveyed forty peers about Canvas and One.IU, then ran interviews, a focus group, direct observation, and usability tests. Each team member owned two sessions and a write-up.</p>
 <div class="callout"><span class="ico">🔍</span><div><p><strong>What we heard:</strong> most students had hit issues with at least one platform, use cases were inconsistent across the student body, and nearly everyone wanted necessary services aggregated in one location. The lack of interface standardization was producing real friction.</p></div></div>
 <h3>Feature list: 12 → 9</h3>
 <p>Research let us cut. Flashcards and Professor Profiler were dropped; sharing was removed from Survey and Notes to sidestep confidentiality issues; the Messenger sub-feature came out of Tutor Classifieds because of team scheduling constraints. What remained: Login &amp; Register (IU credentials), Profile, Dashboard, Friends List, Survey, Notes, Study Groups, Tutor Classifieds, and Buy &amp; Sell Textbooks.</p>
 <figure class="contain"><img src="/assets/img/iu-study-assistant/iusa/feature-plan.png" alt="Feature development plan across sprints" loading="lazy"><figcaption>Feature development plan across sprints</figcaption></figure>
 
 <h2 id="design">Design</h2>
-<p>We adopted the <strong><span class="nb">3-click</span> rule</strong> as a design framework — not because usability equals a click count, but as a forcing function to iron out redundancy and keep navigation obvious. Wireframes were built in Figma at web dimensions using Indiana University's color palette so the product felt native alongside other IU services.</p>
+<p>We adopted the <strong><span class="nb">3-click</span> rule</strong> as a design framework. Not because usability equals a click count, but as a forcing function to iron out redundancy and keep navigation obvious. Wireframes were built in Figma at web dimensions using Indiana University's color palette so the product felt native alongside other IU services.</p>
 <div class="two">
 <figure><img src="/assets/img/iu-study-assistant/iusa/login.png" alt="Login" loading="lazy"><figcaption>Login</figcaption></figure>
 <figure><img src="/assets/img/iu-study-assistant/iusa/dashboard.jpg" alt="Dashboard" loading="lazy"><figcaption>Dashboard</figcaption></figure>
-<figure><img src="/assets/img/iu-study-assistant/iusa/notes.png" alt="Notes — the feature I built end-to-end" loading="lazy"><figcaption>Notes — the feature I built end-to-end</figcaption></figure>
+<figure><img src="/assets/img/iu-study-assistant/iusa/notes.png" alt="Notes, the feature I built end-to-end" loading="lazy"><figcaption>Notes, the feature I built end-to-end</figcaption></figure>
 <figure><img src="/assets/img/iu-study-assistant/iusa/study-spots.jpg" alt="Study Spots" loading="lazy"><figcaption>Study Spots</figcaption></figure>
 </div>
 
 <h2 id="build">Build</h2>
-<p>I designed the database and built the Notes feature. The schema accepts new data (users, note entries) while staying concrete about existing entities like users and study groups — the ERD doubled as the team's shared mental model of how data moves through the system.</p>
+<p>I designed the database and built the Notes feature. The schema accepts new data (users, note entries) while staying concrete about existing entities like users and study groups. The ERD doubled as the team's shared mental model of how data moves through the system.</p>
 <figure class="contain"><img src="/assets/img/iu-study-assistant/iusa/erd.jpg" alt="Entity-relationship diagram. Bold italics = foreign key, underline = primary key, * = multi-valued attribute." loading="lazy"><figcaption>Entity-relationship diagram. Bold italics = foreign key, underline = primary key, * = multi-valued attribute.</figcaption></figure>
 <p>Front-end was HTML, CSS, Bootstrap, and JavaScript; back-end was PHP and SQL, with LucidChart for the ERD and Mockaroo for seed data. Branding (poster, logo, promo GIF) was done in InDesign, Photoshop, and Illustrator.</p>
 <figure class="contain"><video src="/assets/img/iu-study-assistant/iusa/poster.mp4" poster="/assets/img/iu-study-assistant/iusa/poster-poster.webp" autoplay muted loop playsinline aria-label="Project poster (animated)"></video><figcaption>Project poster (animated)</figcaption></figure>
 
 <h2 id="outcome">Outcome &amp; lessons</h2>
-<p>The system shipped on IU servers with all nine features. The honest version of the story: early sprints were slowed by database setup and syncing files to IU's servers, and later sprints suffered from scheduling miscalculations that pushed styling work into the final sprint — so the Bootstrap grid and a mobile-friendly pass never made it across every feature.</p>
-<div class="callout callout--marker"><span class="ico">📌</span><div><p><strong>Teamwork accountability.</strong> Working fully remote made a flexible meeting structure possible, but when accountability slipped, the team had to confront it directly. Timed stand-ups that focus on the value delivered — not the obstacles — kept us moving.</p><p><strong><span class="nb">Self-directed</span> learning.</strong> The implementation was an exercise in problem-solving without a safety net, which is exactly what the first year on a real team feels like.</p></div></div>
+<p>The system shipped on IU servers with all nine features. The honest version of the story: early sprints were slowed by database setup and syncing files to IU's servers, and later sprints suffered from scheduling miscalculations that pushed styling work into the final sprint, so the Bootstrap grid and a mobile-friendly pass never made it across every feature.</p>
+<div class="callout callout--marker"><span class="ico">📌</span><div><p><strong>Teamwork accountability.</strong> Working fully remote made a flexible meeting structure possible, but when accountability slipped, the team had to confront it directly. Timed stand-ups that focus on the value delivered, not the obstacles, kept us moving.</p><p><strong><span class="nb">Self-directed</span> learning.</strong> The implementation was an exercise in problem-solving without a safety net, which is exactly what the first year on a real team feels like.</p></div></div>
 
       </article>
     </section>
@@ -88,7 +88,7 @@
     <section class="next wrap">
       <div class="next__grid">
         <a href="/projects/yin-yang"><small>← Previous</small><strong>Yin Yang in Motion</strong></a>
-        <a href="/projects/alab" style="text-align:right"><small>Next →</small><strong>aLab — Automatic <span class="nb">Level-Adjusting</span> Bowl</strong></a>
+        <a href="/projects/alab" style="text-align:right"><small>Next →</small><strong>aLab: Automatic <span class="nb">Level-Adjusting</span> Bowl</strong></a>
       </div>
     </section>
   </main>

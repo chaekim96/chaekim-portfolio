@@ -48,7 +48,7 @@ ARCADE = """          <div class="break">
             </div>
             <div class="panel reveal" id="music-panel">
               <div class="panel__head">
-                <div><p class="label" style="margin:0">Now playing</p><h3 class="panel__title" id="music-title">Cloud Nine</h3></div>
+                <div><p class="label" style="margin:0">Now playing</p><p class="panel__title" id="music-title">Cloud Nine</p></div>
                 <span class="panel__note">Generative lo-fi, synthesized live in your browser. Starts only when you press play.</span>
               </div>
               <canvas class="music__viz" id="music-viz" width="600" height="140" aria-hidden="true"></canvas>

@@ -43,6 +43,11 @@
       "permanent": true
     },
     {
+      "source": "/:path(.*[^.])(\\.+)",
+      "destination": "/:path",
+      "permanent": true
+    },
+    {
       "source": "/variants",
       "destination": "/",
       "permanent": true

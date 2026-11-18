@@ -2,7 +2,7 @@
 
 > Chae Kim (Chaewoon Kim) builds products and tools. MBA candidate at UC Berkeley Haas, co-founder of Lucent (an AI search console), previously at EY (AI & Data) and Tritooling. This is their portfolio.
 
-Every project page follows the same shape: the problem, what Chae did, results, what they'd do differently, and artifacts. Numbers on the site match Chae's resume.
+Most build pages follow the same shape: the problem, what Chae did, results, what they'd do differently, and artifacts. Numbers on the site match Chae's resume.
 
 ## Builds
 
@@ -28,8 +28,8 @@ Products and tools, most with a live demo.
 - [Personal Wiki](https://chaekim.vercel.app/projects/personal-wiki): A command-line study wiki that runs fully offline: a local Gemma model turns sources into linked Obsidian notes and answers questions with citations.
 - [Pac-Man DQN](https://chaekim.vercel.app/projects/pacman-dqn): A Deep Q-Network trained on Atari Ms. Pac-Man, with every number reported straight from the run's own output files.
 - [Custom LLM](https://chaekim.vercel.app/projects/custom-llm): A tiny nanoGPT model trained from scratch on a laptop CPU, with my own teaching corpus and 48 fixed language tests.
-- [Siri, Reimagined: Every App, Made by You](https://chaekim.vercel.app/projects/siri-reimagined): A design concept: Siri builds the small apps you need, starting with widgets from the apps you already have. A thought piece on the future of the App Store and app development, with iPhone mockups and wireframes.
-- [Decagon, Repositioned: Don't Close the Ticket](https://chaekim.vercel.app/projects/decagon-repositioned): A strategy concept: Decagon stops selling an AI agent that answers tickets and becomes the place regulated businesses hand real customer decisions to software. A thought piece on positioning, with six industry plays, mockups and a rollout.
+- [Siri, Reimagined: Every App, Made by You](https://chaekim.vercel.app/projects/siri-reimagined): A design concept: Siri builds the small apps you need, starting with widgets from apps you already have. A thought piece on the future of the App Store.
+- [Decagon, Repositioned: Don't Close the Ticket](https://chaekim.vercel.app/projects/decagon-repositioned): A strategy concept: Decagon becomes the place regulated businesses hand real customer decisions to software. Six industry plays, mockups and a roadmap.
 - [Home (during COVID)](https://chaekim.vercel.app/projects/home-gif): A pixel-art animated GIF depicting home during COVID, built around a Swiss Army knife as a metaphor for a perpetually growing house.
 - [Yin Yang in Motion](https://chaekim.vercel.app/projects/yin-yang): An animated GIF that turns the yin-yang into rotating clockwork: the garden of Eden on one panel, the underworld on the other.
 
@@ -41,8 +41,8 @@ Startups, consulting and operations, then earlier projects at Indiana University
 - [EY, AI & Data](https://chaekim.vercel.app/projects/ey): Program-wide risk, OKRs, and the first QBR for a $200M+ cloud migration at a Fortune 500 life sciences client, with $10M+ in realized savings.
 - [Tritooling](https://chaekim.vercel.app/projects/tritooling): Director of Operations at a family-owned precision manufacturer serving semiconductor, medical device, and industrial clients across APAC.
 - [MirrorMe](https://chaekim.vercel.app/projects/mirrorme): An icebreaker card game for people who host. 150+ pre-launch purchase commitments, sold through venue partnerships.
-- [MirrorMe tech pack](https://chaekim.vercel.app/projects/mirrorme-tech-pack): The MirrorMe card game as a tech pack: card spec, bill of materials, box dieline, costing, and a proofing checklist.
 - [Mobility devices for older adults (stealth)](https://chaekim.vercel.app/projects/mobility): Premium, design-forward mobility products that help older adults stay independent longer.
+- [PLAY 2027](https://chaekim.vercel.app/projects/play-conference): The poster, motion and brand system for Berkeley Haas DMEC’s PLAY Conference.
 - [aLab: Automatic Level-Adjusting Bowl](https://chaekim.vercel.app/projects/alab): A companion app for aLab, a conceptual height- and temperature-adjustable dog bowl, designed with human-centered computing methods.
 - [Re-envisioning Coursera](https://chaekim.vercel.app/projects/coursera): A product-management dossier proposing features that help Coursera learners turn coursework into transferable career outcomes.
 - [IU Study Assistant](https://chaekim.vercel.app/projects/iu-study-assistant): A year-long capstone building a streamlined study platform for Indiana University students: project management, UX design, and back-end development.
