@@ -5,7 +5,7 @@ Usage:  python3 scripts/build-portfolio.py
 """
 import os
 
-from stamp_shared import SITE_URL, finish, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS
+from stamp_shared import SITE_URL, page_og, finish, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -113,7 +113,7 @@ PORTFOLIO_PAGE = f"""<!DOCTYPE html>
   <meta property="og:title" content="This portfolio · Chae Kim - Portfolio">
   <meta property="og:description" content="How I built this portfolio like a product: where it started, the decisions that shaped it, what's on the backlog, and what I'm considering next.">
   <meta property="og:type" content="article">
-  <meta property="og:image" content="{SITE_URL}/assets/img/og-paper.png">
+  <meta property="og:image" content="{page_og('portfolio')}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <link rel="canonical" href="{SITE_URL}/projects/portfolio">
@@ -153,7 +153,7 @@ PORTFOLIO_PAGE = f"""<!DOCTYPE html>
         <h2 id="brief">The brief</h2>
         <p>I treat this site as a product with one user and one job.</p>
         <ul>
-          <li><b>User:</b> anyone curious about who I am, not only recruiters.</li>
+          <li><b>User:</b> anyone curious about who I am and what I make.</li>
           <li><b>Job:</b> answer "who is this person, and what do they make?"</li>
           <li><b>Proof:</b> craft. The work is the evidence: live tools, real screenshots, case studies.</li>
           <li><b>Conversion:</b> a conversation. Every page ends with "Let's chat."</li>

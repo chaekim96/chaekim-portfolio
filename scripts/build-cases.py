@@ -19,7 +19,7 @@ OUT = ROOT / "projects"
 
 # The script name has a hyphen, so it can't be imported as a package; load the sibling module by path.
 sys.path.insert(0, str(HERE))
-from stamp_shared import (SITE_URL, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, LIVE_APPS, LIVE_DIALOG, LIVE_SCRIPT,  # noqa: E402
+from stamp_shared import (SITE_URL, page_og, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, LIVE_APPS, LIVE_DIALOG, LIVE_SCRIPT,  # noqa: E402
                           live_button, build_mark, build_icons, work_mark, mark_color, finish, spark_ready, SPARK_SCRIPT)
 import importlib.util  # noqa: E402
 import palette_data  # noqa: E402
@@ -251,7 +251,7 @@ def render(c):
     mark = build_mark(c["slug"], "case-hero__mark", 56, themed=True) if is_build else ""
     # builds use their own favicon, touch icon and share card; everything else keeps the site's 김 set
     own = build_icons(c["slug"], SITE_URL) if is_build else None
-    icons, og_image = own or (SITE_ICONS, f"{SITE_URL}/assets/img/og-paper.png")
+    icons, og_image = own or (SITE_ICONS, page_og(c["slug"]))
     prev, nxt = neighbours(c["slug"])
     _label, noun, _items = _group(c["slug"])
     fields = {

@@ -13,13 +13,13 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 sys.path.insert(0, str(HERE))
-from stamp_shared import SITE_URL, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, seal, build_mark  # noqa: E402
+from stamp_shared import SITE_URL, page_og, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, seal, build_mark  # noqa: E402
 
 e = html.escape
 TITLE = "Playbook"
 HEADLINE = "How I sound, how I look, and what I never fake."
 DESC = "My brand playbook: the voice, the colors and type, the rules of truth, and the checks before anything ships."
-SHARE = f"{SITE_URL}/assets/img/og-paper.png"
+SHARE = page_og("playbook")
 UPDATED = "November 10, 2026"
 
 TOC = [("core", "Core"), ("voice", "Voice"), ("layers", "Two layers"), ("color", "Color"), ("type", "Type"),

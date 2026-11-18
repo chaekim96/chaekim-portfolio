@@ -26,10 +26,23 @@ def page_file(loc):
     return "index.html" if not path else f"{path}.html"
 
 
+def source_of(rel):
+    """The hand-edited source behind a built page, so a site-wide rebuild
+    (new asset hashes, shared header) doesn't stamp every page with today's date."""
+    slug = pathlib.Path(rel).stem
+    if rel == "index.html":
+        cands = ["scripts/home.html"]
+    else:
+        cands = [f"scripts/projects/{slug}.py", f"scripts/pages/{slug}.html"]
+    found = [c for c in cands if (ROOT / c).exists()]
+    return found or [rel]
+
+
 def lastmod(rel):
-    if git("status", "--porcelain", "--", rel):
+    rel = source_of(rel)
+    if git("status", "--porcelain", "--", *rel):
         return datetime.date.today().isoformat()
-    return git("log", "-1", "--format=%cs", "--", rel) or datetime.date.today().isoformat()
+    return git("log", "-1", "--format=%cs", "--", *rel) or datetime.date.today().isoformat()
 
 
 xml = SITEMAP.read_text(encoding="utf-8")

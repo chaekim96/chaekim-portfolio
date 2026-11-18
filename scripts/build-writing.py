@@ -16,7 +16,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 sys.path.insert(0, str(HERE))
-from stamp_shared import SITE_URL, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, finish  # noqa: E402
+from stamp_shared import SITE_URL, page_og, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, finish  # noqa: E402
 
 ESSAYS = [
     dict(
@@ -100,7 +100,7 @@ def render(e):
         "url": url,
         "mainEntityOfPage": url,
         "datePublished": e["published"],
-        "image": f"{SITE_URL}/assets/img/og-paper.png",
+        "image": page_og(e["slug"]),
         "author": {"@type": "Person", "name": "Chae Kim", "alternateName": "Chae Woon Kim", "url": f"{SITE_URL}/"},
     }
     ldj = json.dumps(ld, ensure_ascii=False, indent=2).replace("</", "<\\/")
@@ -116,7 +116,7 @@ def render(e):
   <meta property="og:title" content="{title} · Chae Kim - Portfolio">
   <meta property="og:description" content="{desc}">
   <meta property="og:type" content="article">
-  <meta property="og:image" content="{SITE_URL}/assets/img/og-paper.png">
+  <meta property="og:image" content="{page_og(e['slug'])}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <link rel="canonical" href="{url}">

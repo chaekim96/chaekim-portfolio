@@ -391,3 +391,4 @@ html:has(.lightbox[open]) { overflow: hidden; }
 .doc b { display: block; font-size: 14.5px; font-weight: 500; color: var(--ink); }
 .doc small { display: block; font-size: 12.5px; line-height: 1.45; color: var(--ink-2); }
 @media (prefers-reduced-motion: reduce) { .doc, .switcher__row a, .toc a::before, .toc__line i { transition: none; } .doc:hover, .switcher__row a:hover { transform: none; } }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
