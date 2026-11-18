@@ -14,7 +14,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 sys.path.insert(0, str(HERE))
 from writing_data import READING, ESSAYS, pub_label  # noqa: E402
-from stamp_shared import SITE_URL, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, finish  # noqa: E402
+from stamp_shared import SITE_URL, page_og, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, finish  # noqa: E402
 
 CSS = """
   .reading__lede { max-width: 60ch; color: var(--ink-2); line-height: 1.6; margin-top: 12px; }
@@ -107,7 +107,7 @@ def build():
   <meta property="og:title" content="Writing &amp; reading · Chae Kim - Portfolio">
   <meta property="og:description" content="{desc}">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="{SITE_URL}/assets/img/og-sky.png">
+  <meta property="og:image" content="{page_og('reading')}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <link rel="canonical" href="{SITE_URL}/reading">

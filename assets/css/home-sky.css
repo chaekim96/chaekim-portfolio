@@ -167,10 +167,10 @@ section.sec{padding-block:clamp(64px,9vw,128px)}
 .mini .browser__bar{padding:6px 9px}.mini .browser__bar i{width:7px;height:7px}.mini .browser__bar span{font-size:10px}
 .mini img{width:100%;aspect-ratio:960/600;object-fit:cover}
 .fillart{position:absolute;inset:0}
-.fillart img{width:100%;height:100%;object-fit:cover}
+.fillart img,.fillart video{width:100%;height:100%;object-fit:cover;display:block}
 .fillart--contain img{object-fit:contain;padding:14px}
 .fillart--top img{object-position:top}
-.fillart--pixel img{image-rendering:pixelated}
+.fillart--pixel img,.fillart--pixel video{image-rendering:pixelated}
 .fillart--mark{display:grid;place-items:center;position:absolute}
 .fillart--mark img{width:96px;height:96px;border-radius:24px;object-fit:contain}
 .fillart--term{display:grid;place-items:center}

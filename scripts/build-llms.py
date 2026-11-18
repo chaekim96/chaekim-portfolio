@@ -16,11 +16,15 @@ from writing_data import ESSAYS
 ROOT = Path(__file__).resolve().parent.parent
 SITE = SITE_URL
 
+def _listed(slug):
+    """Pages marked noindex (unfinished documents) stay out of llms.txt too."""
+    return 'name="robots" content="noindex' not in (ROOT / "projects" / f"{slug}.html").read_text(encoding="utf-8")
+
 def _with_documents(slugs):
-    return [x for s in slugs for x in (s, *DOCUMENTS.get(s, []))]
+    return [x for s in slugs for x in (s, *DOCUMENTS.get(s, [])) if _listed(x)]
 
 def _pages(slugs):
-    return [s for s in slugs if s not in SITE_PAGES and (ROOT / "projects" / f"{s}.html").exists()]
+    return [s for s in slugs if s not in SITE_PAGES and (ROOT / "projects" / f"{s}.html").exists() and _listed(s)]
 
 # Same order as the homepage tabs.
 SECTIONS = [
@@ -49,7 +53,7 @@ def _brand_desc(name="brand.html"):
 
 def main():
     listed = {s for _, _, slugs in SECTIONS for s in slugs}
-    on_disk = {p.stem for p in (ROOT / "projects").glob("*.html") if not p.stem.startswith("_")}
+    on_disk = {p.stem for p in (ROOT / "projects").glob("*.html") if not p.stem.startswith("_") and _listed(p.stem)}
     missing = sorted(on_disk - listed)
     if missing:
         raise SystemExit(f"Add these pages to scripts/projects/__init__.py or writing_data.py: {missing}")
@@ -59,7 +63,7 @@ def main():
         "",
         "> Chae Kim (Chaewoon Kim) builds products and tools. MBA candidate at UC Berkeley Haas, co-founder of Lucent (an AI search console), previously at EY (AI & Data) and Tritooling. This is their portfolio.",
         "",
-        "Every project page follows the same shape: the problem, what Chae did, results, what they'd do differently, and artifacts. Numbers on the site match Chae's resume.",
+        "Most build pages follow the same shape: the problem, what Chae did, results, what they'd do differently, and artifacts. Numbers on the site match Chae's resume.",
         "",
     ]
     for name, blurb, slugs in SECTIONS:

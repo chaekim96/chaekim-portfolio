@@ -6,7 +6,7 @@ Usage:  python3 scripts/build-pages.py
 """
 from pathlib import Path
 
-from stamp_shared import SITE_URL, prefer_webp, CASE_FOOT, CASE_HEAD_ASSETS, CASE_SCRIPTS, CASE_TOP
+from stamp_shared import SITE_URL, page_og, prefer_webp, CASE_FOOT, CASE_HEAD_ASSETS, CASE_SCRIPTS, CASE_TOP
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
@@ -16,7 +16,7 @@ TOKENS = {"%%HEAD_ASSETS%%": CASE_HEAD_ASSETS, "%%TOP%%": CASE_TOP, "%%FOOT%%": 
           "%%SCRIPTS%%": CASE_SCRIPTS, "%%SITE%%": SITE_URL}
 
 for src in sorted((HERE / "pages").glob("*.html")):
-    page = src.read_text(encoding="utf-8")
+    page = src.read_text(encoding="utf-8").replace("%%SITE%%/assets/img/og-sky.png", page_og(src.stem))
     for token, value in TOKENS.items():
         page = page.replace(token, value)
     page = prefer_webp(page)

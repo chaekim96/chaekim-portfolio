@@ -3,12 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Decagon, Repositioned: Don't Close the Ticket · Chae Kim - Portfolio</title>
-  <meta name="description" content="A strategy concept: Decagon stops selling an AI agent that answers tickets and becomes the place regulated businesses hand real customer decisions to software. A thought piece on positioning, with six industry plays, mockups and a rollout.">
-  <meta property="og:title" content="Decagon, Repositioned: Don't Close the Ticket · Chae Kim - Portfolio">
-  <meta property="og:description" content="A strategy concept: Decagon stops selling an AI agent that answers tickets and becomes the place regulated businesses hand real customer decisions to software. A thought piece on positioning, with six industry plays, mockups and a rollout.">
+  <title>Decagon, Repositioned: Don't Close the Ticket · Chae Kim</title>
+  <meta name="description" content="A strategy concept: Decagon becomes the place regulated businesses hand real customer decisions to software. Six industry plays, mockups and a roadmap.">
+  <meta property="og:title" content="Decagon, Repositioned: Don't Close the Ticket · Chae Kim">
+  <meta property="og:description" content="A strategy concept: Decagon becomes the place regulated businesses hand real customer decisions to software. Six industry plays, mockups and a roadmap.">
   <meta property="og:type" content="article">
   <meta property="og:image" content="%%SITE%%/assets/img/decagon-repositioned/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="%%SITE%%/projects/decagon-repositioned">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
@@ -293,6 +294,8 @@ sup a { color: var(--muted); }
 /* ---------- Footer ---------- */
 footer { background: var(--bg); color: var(--muted); font-size: .75rem; line-height: 1.5; }
 footer .in { max-width: 1200px; margin-inline: auto; padding-block: 2rem 3rem; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: flex; flex-direction: column; gap: .8rem; }
+footer .chat { font-size: 1rem; color: var(--ink); }
+footer .chat b { margin-right: .35rem; }
 footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1rem; }
 
 @media (max-width: 1080px) {
@@ -807,10 +810,12 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
     <p id="src2">2. <a href="https://www.bloomberg.com/news/articles/2026-01-28/ai-customer-support-startup-decagon-valued-at-4-5-billion">Bloomberg, January 28, 2026</a>: $4.5B valuation. Reports disagree on the lead investor and revenue, so only the valuation is used here.</p>
     <p id="src3">3. Third-party comparisons: <a href="https://www.dragapp.com/blog/ai-support-agents-compared/">Drag</a>, <a href="https://vantaige.io/blog/intercom-fin-vs-decagon-vs-sierra-2026">Vantaige</a>, <a href="https://quiq.com/blog/decagon-vs-intercom/">Quiq</a>. Competitor pricing, Sierra's valuation and positioning come from these pages and are not independently verified.</p>
     <p>Northbeam Bank, case numbers, policy versions and the numbers on wireframes are fictional examples. Industry plays, pricing and the roadmap are my own analysis.</p>
+    <p class="chat"><b>Let's chat.</b> <a data-user="chaewoonkim" data-domain="berkeley.edu" data-show href="#">chaewoonkim@berkeley.edu</a></p>
     <p>Concept, writing and design by Chae Kim. See also <a href="/projects/siri-reimagined">Siri, Reimagined</a>. <a href="/#builds">Back to the portfolio</a>.</p>
     <div class="rule"><span>An unofficial strategy concept. Not affiliated with or endorsed by Decagon.</span><span>Decagon and all customer and competitor names are trademarks of their respective owners.</span></div>
   </div>
 </footer>
+<script>document.querySelectorAll('[data-user][data-domain]').forEach(function (el) { var a = el.dataset.user + '@' + el.dataset.domain; el.href = 'mailto:' + a; el.textContent = a; });</script>
   <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

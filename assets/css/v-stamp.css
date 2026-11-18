@@ -298,9 +298,9 @@ a.w:hover .fan img:nth-child(1) { transform: rotate(-13deg) translateX(-6%); }
 a.w:hover .fan img:nth-child(2) { transform: rotate(11deg) translate(6%, 4%); }
 
 /* a picture that fills the stage */
-.fill img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.fill img, .fill video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .fill--contain img { inset: 10%; width: 80%; height: 80%; object-fit: contain; filter: drop-shadow(0 14px 24px rgba(0, 0, 0, .14)); }
-.fill--pixel img { image-rendering: pixelated; }
+.fill--pixel img, .fill--pixel video { image-rendering: pixelated; }
 
 /* colour swatches */
 .swatches { display: flex; width: 70%; height: 46%; border-radius: 14px; overflow: hidden; box-shadow: 0 16px 36px -14px rgba(0, 0, 0, .3); }
