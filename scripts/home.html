@@ -9,11 +9,12 @@
   <meta property="og:description" content="MBA at Berkeley Haas. Co-founded Lucent. Previously at EY and Tritooling. I like to build things.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="%%SITE%%/">
-  <meta property="og:image" content="%%SITE%%/assets/img/og-paper.png">
+  <meta property="og:image" content="%%SITE%%/assets/img/og-sky.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <link rel="canonical" href="%%SITE%%/">
-%%THEME_COLOR%%
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#bfdcf7" id="tc">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
@@ -21,9 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
-  <link rel="preload" as="image" href="/assets/img/thumbs/lucent-wide.jpg">
-  <link rel="stylesheet" href="%%ASSET:css/v-stamp.css%%">
-%%GLASS_JS%%
+  <link rel="stylesheet" href="%%ASSET:css/home-sky.css%%">
   %%BOOT%%
   <script type="application/ld+json">
   {
@@ -43,473 +42,271 @@
   }
   </script>
 </head>
-<body class="v v-stamp">
-  <a class="skip" href="#main">Skip to content</a>
-  %%INK%%
-  <div class="aurora" aria-hidden="true"></div>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="sky" aria-hidden="true"></div>
+<div class="clouds" aria-hidden="true">
+  <div class="cl" data-p=".06" style="top:6%;left:-6%"><div class="cl__d" style="--t:120s"><i class="puff" style="left:0;top:40px;width:420px;height:180px"></i><i class="puff" style="left:160px;top:0;width:360px;height:200px"></i><i class="puff" style="left:340px;top:50px;width:380px;height:160px"></i></div></div>
+  <div class="cl" data-p=".11" style="top:34%;left:48%"><div class="cl__d" style="--t:90s"><i class="puff" style="left:0;top:30px;width:340px;height:150px"></i><i class="puff" style="left:120px;top:0;width:300px;height:170px"></i><i class="puff" style="left:260px;top:36px;width:320px;height:140px"></i></div></div>
+  <div class="cl" data-p=".18" style="top:62%;left:-10%"><div class="cl__d" style="--t:100s"><i class="puff" style="left:0;top:50px;width:520px;height:210px"></i><i class="puff" style="left:240px;top:0;width:460px;height:240px"></i><i class="puff" style="left:520px;top:60px;width:440px;height:190px"></i></div></div>
+  <div class="cl" data-p=".24" style="top:18%;left:68%"><div class="cl__d" style="--t:75s"><i class="puff" style="left:0;top:20px;width:260px;height:110px"></i><i class="puff" style="left:90px;top:0;width:240px;height:120px"></i></div></div>
+</div>
+<div class="progress" aria-hidden="true"><i id="bar"></i></div>
 
-  <header class="top wrap">
-    <a class="seal" href="#work">%%SEAL%%</a>
-    <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+<header>
+  <nav class="nav" id="nav" aria-label="Sections">
+    <a class="nav__brand" href="#top" aria-label="Back to top"><svg class="brush brush--nav" viewBox="11 0 86 44" role="img" aria-label="김채운, Chae Kim's name in Korean calligraphy"><defs><mask id="n0" maskUnits="userSpaceOnUse" x="0" y="0" width="104" height="44"><rect class="wipe" style="--i:0" x="5" y="0" width="32" height="44" fill="#fff"/></mask><mask id="n1" maskUnits="userSpaceOnUse" x="0" y="0" width="104" height="44"><rect class="wipe" style="--i:1" x="36" y="0" width="32" height="44" fill="#fff"/></mask><mask id="n2" maskUnits="userSpaceOnUse" x="0" y="0" width="104" height="44"><rect class="wipe" style="--i:2" x="67" y="0" width="32" height="44" fill="#fff"/></mask></defs><g mask="url(#n0)"><path class="glyph" fill="currentColor" transform="translate(21.0 22.8) rotate(-2.0) scale(0.0310 -0.0310) translate(-274.0 -180.5)" d="M263 -191H261Q258 -191 254 -194Q251 -198 248 -198Q243 -198 235 -194Q227 -189 226 -183Q223 -186 220 -186H218Q218 -185 214 -184Q210 -182 206 -180Q201 -179 198 -178Q194 -176 194 -175Q196 -171 202 -165L200 -160L202 -154V-153Q202 -150 199 -146Q196 -141 193 -136Q190 -131 187 -126Q184 -122 184 -119Q184 -113 188 -113Q189 -113 189 -114L194 -117Q192 -115 193 -112Q194 -110 189 -104H192Q201 -104 202 -92Q202 -81 202 -67Q202 -60 208 -40Q215 -21 215 -6V0H210V1Q210 2 209 2Q208 3 207 5Q207 7 210 13Q213 19 213 21Q212 25 212 30Q212 35 214 38Q215 41 219 48Q223 55 230 68Q236 81 245 106H242Q241 107 241 107Q241 109 243 113Q245 117 250 127Q251 129 252 136Q254 142 256 149Q259 156 262 162Q265 168 269 170L274 167Q273 167 278 168Q282 168 287 170Q298 160 306 155Q314 150 320 146Q325 143 330 138Q334 134 338 125Q336 123 334 116Q333 110 331 103L327 85H329Q332 85 337 86Q342 87 345 87Q364 94 377 98Q390 101 400 104Q409 106 417 110Q425 114 433 122Q436 121 440 121Q445 121 446 123Q448 125 451 128Q454 131 460 133Q467 135 482 135Q484 135 490 134Q496 133 503 130Q510 126 517 120Q524 115 529 106Q526 105 524 98Q521 90 518 81Q516 72 514 63Q513 54 513 50Q514 46 514 39Q514 26 510 13Q505 0 500 -14Q495 -27 490 -40Q486 -52 486 -64Q486 -80 494 -85L491 -88Q485 -90 478 -98Q472 -106 469 -106H468Q466 -106 458 -106Q449 -107 438 -109Q428 -111 417 -114Q406 -117 399 -122Q376 -122 364 -128Q351 -133 343 -133Q342 -132 340 -132Q333 -132 322 -142Q310 -152 303 -152Q303 -152 298 -156Q292 -160 286 -166Q280 -173 274 -184Q269 -194 269 -207H266Q263 -204 263 -200Q263 -196 263 -191ZM131 235V241Q133 245 136 254Q138 262 140 270Q142 279 143 286Q144 293 144 295Q144 297 148 306Q152 315 156 326Q161 336 165 345Q169 354 169 356Q169 361 172 367L175 374V398Q169 398 154 396Q139 393 123 390Q107 387 94 384Q81 382 78 382Q77 381 74 381Q66 381 58 389Q51 397 43 402L31 408L25 414Q25 416 24 419Q23 422 22 425L19 432Q19 435 25 440L31 444Q35 444 45 445Q55 446 66 448Q76 449 85 450Q94 452 96 452Q100 452 116 455Q132 458 150 461Q168 464 184 467Q200 470 205 470Q210 470 216 472Q221 473 225 473Q230 473 248 468Q266 464 283 464L290 444Q288 439 286 430Q283 421 280 412Q278 402 276 393Q273 384 271 380L265 368V362Q260 355 252 336Q244 317 236 296Q228 274 220 255Q213 236 209 229L206 222Q203 216 202 210Q202 205 200 197L197 187V163L179 145H173L167 157L155 145L149 149L143 145L131 157L125 169V223ZM384 172Q384 174 386 178Q387 181 387 183Q385 186 384 191Q384 196 384 200Q383 205 381 208Q379 212 373 212Q377 217 378 222Q379 228 381 233Q384 234 386 246Q388 257 390 272Q392 288 396 304Q399 321 405 332Q405 343 403 345Q401 347 401 349Q401 350 402 351H405Q406 361 408 367Q409 373 410 378Q411 384 412 390Q413 396 413 406Q413 415 416 425Q418 435 422 446Q425 456 428 466Q430 475 430 481Q430 483 430 484Q429 484 429 486Q429 486 432 492Q434 499 437 508Q440 516 442 524Q445 532 445 534Q445 546 446 556Q447 566 458 568Q459 567 465 566Q471 566 471 563H519Q528 558 528 552Q528 547 527 538Q526 530 524 520Q523 510 520 501Q517 492 514 486H516Q509 465 505 454Q501 443 500 438Q498 434 497 433Q496 432 495 430V409Q490 409 490 406Q489 403 487 401L490 398Q486 392 484 388Q482 384 479 382Q485 381 487 377Q486 371 484 369Q481 367 481 364Q481 362 482 361H487Q483 359 482 356Q482 353 482 351L478 297Q478 296 476 288Q475 281 473 270Q471 260 470 248Q468 237 468 230Q468 223 469 222H472Q472 209 464 204L449 158Q441 160 438 161Q435 162 433 162Q431 162 429 161V169Q424 167 424 162Q423 158 421 153Q419 156 417 156Q416 156 416 156Q416 155 415 155Q413 155 406 164Q398 172 384 172ZM303 -61Q299 -66 293 -73Q287 -80 287 -90H293Q313 -90 328 -81Q344 -72 364 -72Q367 -71 376 -70Q385 -68 394 -66Q404 -65 413 -64Q422 -62 425 -61L428 -59Q429 -59 429 -58Q426 -58 424 -54Q422 -51 421 -46Q420 -40 420 -29L422 -27Q422 -25 426 -19Q430 -13 430 -11H429V-10Q429 -8 432 0Q435 8 439 18Q443 28 446 39Q449 50 449 58Q449 64 446 66Q432 60 415 52Q398 45 382 36Q365 27 352 18Q340 9 335 0V-13Q333 -13 327 -12Q321 -11 319 -11Q316 -13 316 -18Q315 -22 314 -27Q314 -32 314 -36Q313 -40 311 -40L300 -37Q294 -42 294 -50Q294 -52 295 -53L300 -48V-50Q300 -55 302 -57Q303 -59 303 -61ZM161 145Q166 145 166 139Q166 133 161 133Q156 133 156 139Q156 145 161 145ZM516 499Q514 499 514 496Q514 494 516 494Q518 494 518 496Q518 499 516 499ZM442 166 443 165Q445 165 447 169H442ZM473 297Q473 298 472 298Q469 298 469 294H470Q473 294 473 297ZM410 393Q410 390 408 390Q407 390 407 391Q408 391 408 392Q408 394 409 394ZM402 337H400L402 340Z"/></g><g mask="url(#n1)"><path class="glyph" fill="currentColor" transform="translate(52.0 21.2) rotate(1.2) scale(0.0387 -0.0387) translate(-327.5 -202.0)" d="M509 -89 503 -86Q501 -85 498 -84Q496 -83 494 -83L484 -78L479 -68V-58L473 -53L487 -6V8Q487 9 488 18Q490 26 492 36Q494 46 496 54Q497 63 497 65L501 54V80L492 74L497 90V100L507 115V125L497 119Q497 121 498 129Q499 137 500 146Q502 154 503 162Q504 169 504 171L508 212L493 210Q488 209 484 208Q481 208 479 208H443V202Q443 196 441 184Q439 171 437 158Q435 145 433 136Q431 126 431 125V115L427 110L431 100V34L427 30L422 19V9L416 4Q412 4 406 9Q400 14 396 14L391 19H381L371 30H356L345 39V95L351 115V156Q351 170 354 198Q357 226 371 281Q371 297 375 312Q379 328 384 344Q388 361 392 379Q396 397 396 418V428Q396 452 400 465Q405 478 411 484Q417 491 424 492Q431 493 436 493H441Q453 485 460 484Q466 483 471 478L476 473L478 462Q479 457 480 453Q481 449 481 447V437L478 423Q476 417 475 412Q474 406 472 402L467 387L460 341Q460 338 459 332Q458 325 457 318Q456 310 455 304Q454 298 454 296Q458 296 467 295Q476 294 486 294Q495 293 504 292Q514 291 520 291L525 296L530 326Q530 328 532 338Q535 348 538 359Q541 370 544 380Q546 390 546 392L552 407Q552 408 555 419Q558 430 562 443Q566 456 569 467Q572 478 572 480Q572 481 574 489L582 500L590 502Q593 503 596 504Q600 505 602 505H607L617 500L628 489Q640 486 640 474Q640 472 638 464L632 418Q632 407 630 394Q627 380 624 366Q622 353 620 340Q617 326 617 316Q617 302 610 284Q602 266 602 246V201Q602 199 601 194Q600 188 600 181Q599 174 598 168Q597 162 597 160V150L592 119Q592 116 590 102Q587 89 587 85L582 -6Q582 -10 580 -22Q578 -35 576 -49Q574 -63 572 -75Q570 -87 570 -89L558 -103Q553 -108 549 -108H539L524 -97L519 -83ZM61 8Q61 11 63 16Q65 22 65 27L78 55Q81 75 85 86Q89 97 94 103Q98 109 101 112Q104 115 104 120Q104 125 112 133Q120 141 120 145Q120 149 127 160Q134 171 134 175H114Q97 175 83 168Q69 160 55 160L49 163Q42 168 41 170L15 195V199L21 209L31 215H41Q42 215 52 217L60 219L76 233Q83 238 90 244Q96 250 100 254L110 264Q110 267 114 272Q117 276 120 278V288Q123 315 127 338Q131 361 134 387L140 413Q140 437 147 460Q154 483 154 502L169 512L193 506Q198 506 209 500Q220 495 223 492L229 486Q231 484 233 481Q235 478 237 475L243 467L241 461Q239 453 239 452L233 442Q231 440 230 436Q228 433 226 428L223 417V407Q223 405 222 399Q222 393 221 386Q220 378 220 372Q219 365 219 363V353Q219 351 218 344Q216 338 214 330Q212 323 210 316Q209 310 209 308V274Q209 270 206 264Q203 258 203 254L219 249Q220 249 226 248Q232 246 238 244Q245 242 250 240Q256 239 258 239L263 234V229L250 196L237 186L228 175Q228 172 220 168Q213 164 213 160Q220 155 225 150Q230 144 236 138Q241 132 248 126Q255 121 266 116L298 99Q300 97 302 94Q305 90 309 87L318 79V69L312 64L302 44H278Q274 44 264 50Q253 55 245 58L209 86L179 106H169L159 96V86L151 73Q148 68 145 63Q142 58 140 56L112 10L107 -4L102 -10H92L87 -4H77ZM126 269H135L142 288ZM494 9V-2L500 -9L499 4ZM339 74Q344 74 344 72Q344 70 339 70Q335 70 335 72Q335 74 339 74Z"/></g><g mask="url(#n2)"><path class="glyph" fill="currentColor" transform="translate(83.0 22.4) rotate(-0.6) scale(0.0323 -0.0323) translate(-268.5 -209.0)" d="M292 -62Q286 -62 281 -64Q276 -66 269 -67L259 -48L250 -53L245 -48Q241 -48 229 -43Q217 -38 217 -34L214 -21Q213 -16 212 -10Q212 -5 212 -1V27Q212 31 214 39Q217 47 217 51V64L222 74V83L212 79Q216 82 221 88Q226 94 226 97L228 112Q229 118 230 128Q232 137 235 139L231 144V149L236 163V172L240 181V200L226 195H212L198 186H184L174 181Q171 181 160 178Q150 176 146 176L118 172Q116 172 111 173Q106 174 104 176L99 181L89 186L85 190L75 195L61 214L42 223L39 231Q37 241 37 242V247L42 252L50 254Q60 256 61 256H66Q70 256 76 254Q81 252 85 252L99 247H127L137 249Q141 250 145 251Q149 252 151 252L170 256Q177 256 186 258Q195 260 203 262Q211 264 217 266Q223 268 223 268L231 270L250 280Q259 280 272 285Q284 290 298 296Q311 302 326 307Q340 312 354 313L378 314L392 327Q395 327 406 332Q416 336 420 336L439 332H453L462 327L467 322H472L481 318Q483 316 486 314Q488 313 490 311L495 308V294L500 289V285L495 280L481 275Q477 275 465 268Q453 261 448 261H443L434 256Q421 248 406 238Q390 229 378 222Q366 215 359 211Q352 207 355 209L340 195V176Q340 173 338 160Q335 148 335 144Q335 140 338 137Q340 134 340 130Q340 127 338 119Q335 111 335 107V83L332 73Q331 68 330 65Q330 62 330 60L325 56L330 37H325V9L321 -1V-20L316 -34Q316 -35 318 -43L321 -48V-53L297 -62ZM121 438Q121 441 122 448Q123 454 124 462Q126 470 127 476Q128 483 128 486Q128 488 130 496Q132 504 134 513Q137 522 139 530Q141 537 141 540Q141 554 149 568Q157 581 168 581Q173 581 185 578Q197 574 202 574L216 567L243 533L251 529Q257 526 263 526H270Q279 526 292 522Q305 519 310 516L318 513Q319 513 328 508Q337 504 346 498Q356 491 364 484Q372 477 372 472L375 461Q379 452 379 445V438Q373 432 362 418Q351 403 345 397L338 384Q338 381 335 378Q332 374 328 371L318 363Q313 358 301 350Q289 343 284 343L270 339Q264 337 258 336Q252 336 250 336H223Q210 336 195 340Q180 345 173 350L162 357L128 390L121 404ZM105 -59Q105 -37 114 -20Q124 -2 124 11Q124 17 133 26L142 30H166Q172 23 181 12Q190 0 190 -7V-26Q190 -27 188 -34Q186 -41 183 -50Q180 -60 178 -70Q176 -79 176 -83Q176 -85 175 -90Q174 -94 173 -99L171 -111H248L306 -101L355 -111Q359 -111 366 -116Q374 -121 374 -125V-144L364 -147Q347 -157 322 -160Q298 -163 275 -163H194Q168 -163 156 -156Q143 -149 138 -149Q132 -149 124 -144L114 -139L105 -130L100 -116V-78ZM216 479Q209 472 210 467Q211 462 205 452L202 445V397H216Q220 397 226 400Q233 404 239 408Q245 412 249 415Q253 418 253 418Q257 421 260 424Q263 428 263 431V438L247 458Q245 462 242 465Q239 468 236 472ZM240 83Q236 83 236 78Q236 76 238 72Q236 70 236 69Q236 64 240 64Q244 64 244 70Q244 72 242 74Q244 74 244 77Q244 83 240 83ZM236 -10V26Q235 21 233 16Q231 11 231 9V-1ZM236 60H235Q232 60 232 50Q232 40 235 40Q237 40 238 44Q239 48 239 51Q239 57 236 60ZM239 102V90L245 96V110ZM250 135Q246 135 246 130Q246 126 250 126Q254 126 254 130Q254 135 250 135ZM255 158Q251 158 251 153Q251 149 255 149Q258 149 258 153Q258 158 255 158ZM245 60Q241 60 241 58Q241 56 245 56Q249 56 249 58Q249 60 245 60Z"/></g></svg></a>
+    <div class="nav__links" id="links">
+      <span class="nav__ind" id="ind" aria-hidden="true"></span>
+      <a href="#builds">Builds</a><a href="#work">Work</a><a href="#writing">Writing</a><a href="#about">About</a><a class="nav__cta" href="#chat">Let's chat</a>
+    </div>
+    <button class="theme" id="theme" type="button" aria-label="Toggle light and dark theme">
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
     </button>
-  </header>
+  </nav>
+</header>
 
-  <main id="main" class="wrap">
-    <section class="intro" aria-label="Introduction">
-      <h1 class="name">chae kim</h1>
-      <p class="thesis">I like to build things, from startups to card games.</p>
-      <p class="cred">MBA at Berkeley Haas. Co-founded <a href="/projects/lucent">Lucent</a>. Previously at <a href="/projects/ey">EY</a> &amp; <a href="/projects/tritooling">Tritooling</a>.<br>
-        <span class="status"><i aria-hidden="true"></i><span>Lately building <a href="/projects/timely">Timely</a>, notes that add up to a realistic plan for the day.</span></span></p>
-      <p class="hello">Let's chat: <a data-user="chaewoonkim" data-domain="berkeley.edu" data-show href="#">email me</a> <button class="hello__copy" type="button" data-copy-email>Copy</button></p>
-    </section>
-
-    <div class="tabs" role="tablist" aria-label="Sections">
-      <button class="tab" role="tab" id="tab-builds" data-tab="builds" aria-controls="builds" aria-selected="true">Builds</button>
-      <button class="tab" role="tab" id="tab-work" data-tab="work" aria-controls="work" aria-selected="false" tabindex="-1">Work</button>
-      <button class="tab" role="tab" id="tab-writing" data-tab="writing" aria-controls="writing" aria-selected="false" tabindex="-1">Writing</button>
-      <button class="tab" role="tab" id="tab-about" data-tab="about" aria-controls="about" aria-selected="false" tabindex="-1">About</button>
+<main id="main">
+  <section class="hero wrap" id="top" aria-label="Introduction">
+    <div class="hero__copy">
+    <svg class="brush" viewBox="11 0 86 44" role="img" aria-label="김채운, Chae Kim's name in Korean calligraphy"><defs><mask id="h0" maskUnits="userSpaceOnUse" x="0" y="0" width="104" height="44"><rect class="wipe" style="--i:0" x="5" y="0" width="32" height="44" fill="#fff"/></mask><mask id="h1" maskUnits="userSpaceOnUse" x="0" y="0" width="104" height="44"><rect class="wipe" style="--i:1" x="36" y="0" width="32" height="44" fill="#fff"/></mask><mask id="h2" maskUnits="userSpaceOnUse" x="0" y="0" width="104" height="44"><rect class="wipe" style="--i:2" x="67" y="0" width="32" height="44" fill="#fff"/></mask></defs><g mask="url(#h0)"><path class="glyph" fill="currentColor" transform="translate(21.0 22.8) rotate(-2.0) scale(0.0310 -0.0310) translate(-274.0 -180.5)" d="M263 -191H261Q258 -191 254 -194Q251 -198 248 -198Q243 -198 235 -194Q227 -189 226 -183Q223 -186 220 -186H218Q218 -185 214 -184Q210 -182 206 -180Q201 -179 198 -178Q194 -176 194 -175Q196 -171 202 -165L200 -160L202 -154V-153Q202 -150 199 -146Q196 -141 193 -136Q190 -131 187 -126Q184 -122 184 -119Q184 -113 188 -113Q189 -113 189 -114L194 -117Q192 -115 193 -112Q194 -110 189 -104H192Q201 -104 202 -92Q202 -81 202 -67Q202 -60 208 -40Q215 -21 215 -6V0H210V1Q210 2 209 2Q208 3 207 5Q207 7 210 13Q213 19 213 21Q212 25 212 30Q212 35 214 38Q215 41 219 48Q223 55 230 68Q236 81 245 106H242Q241 107 241 107Q241 109 243 113Q245 117 250 127Q251 129 252 136Q254 142 256 149Q259 156 262 162Q265 168 269 170L274 167Q273 167 278 168Q282 168 287 170Q298 160 306 155Q314 150 320 146Q325 143 330 138Q334 134 338 125Q336 123 334 116Q333 110 331 103L327 85H329Q332 85 337 86Q342 87 345 87Q364 94 377 98Q390 101 400 104Q409 106 417 110Q425 114 433 122Q436 121 440 121Q445 121 446 123Q448 125 451 128Q454 131 460 133Q467 135 482 135Q484 135 490 134Q496 133 503 130Q510 126 517 120Q524 115 529 106Q526 105 524 98Q521 90 518 81Q516 72 514 63Q513 54 513 50Q514 46 514 39Q514 26 510 13Q505 0 500 -14Q495 -27 490 -40Q486 -52 486 -64Q486 -80 494 -85L491 -88Q485 -90 478 -98Q472 -106 469 -106H468Q466 -106 458 -106Q449 -107 438 -109Q428 -111 417 -114Q406 -117 399 -122Q376 -122 364 -128Q351 -133 343 -133Q342 -132 340 -132Q333 -132 322 -142Q310 -152 303 -152Q303 -152 298 -156Q292 -160 286 -166Q280 -173 274 -184Q269 -194 269 -207H266Q263 -204 263 -200Q263 -196 263 -191ZM131 235V241Q133 245 136 254Q138 262 140 270Q142 279 143 286Q144 293 144 295Q144 297 148 306Q152 315 156 326Q161 336 165 345Q169 354 169 356Q169 361 172 367L175 374V398Q169 398 154 396Q139 393 123 390Q107 387 94 384Q81 382 78 382Q77 381 74 381Q66 381 58 389Q51 397 43 402L31 408L25 414Q25 416 24 419Q23 422 22 425L19 432Q19 435 25 440L31 444Q35 444 45 445Q55 446 66 448Q76 449 85 450Q94 452 96 452Q100 452 116 455Q132 458 150 461Q168 464 184 467Q200 470 205 470Q210 470 216 472Q221 473 225 473Q230 473 248 468Q266 464 283 464L290 444Q288 439 286 430Q283 421 280 412Q278 402 276 393Q273 384 271 380L265 368V362Q260 355 252 336Q244 317 236 296Q228 274 220 255Q213 236 209 229L206 222Q203 216 202 210Q202 205 200 197L197 187V163L179 145H173L167 157L155 145L149 149L143 145L131 157L125 169V223ZM384 172Q384 174 386 178Q387 181 387 183Q385 186 384 191Q384 196 384 200Q383 205 381 208Q379 212 373 212Q377 217 378 222Q379 228 381 233Q384 234 386 246Q388 257 390 272Q392 288 396 304Q399 321 405 332Q405 343 403 345Q401 347 401 349Q401 350 402 351H405Q406 361 408 367Q409 373 410 378Q411 384 412 390Q413 396 413 406Q413 415 416 425Q418 435 422 446Q425 456 428 466Q430 475 430 481Q430 483 430 484Q429 484 429 486Q429 486 432 492Q434 499 437 508Q440 516 442 524Q445 532 445 534Q445 546 446 556Q447 566 458 568Q459 567 465 566Q471 566 471 563H519Q528 558 528 552Q528 547 527 538Q526 530 524 520Q523 510 520 501Q517 492 514 486H516Q509 465 505 454Q501 443 500 438Q498 434 497 433Q496 432 495 430V409Q490 409 490 406Q489 403 487 401L490 398Q486 392 484 388Q482 384 479 382Q485 381 487 377Q486 371 484 369Q481 367 481 364Q481 362 482 361H487Q483 359 482 356Q482 353 482 351L478 297Q478 296 476 288Q475 281 473 270Q471 260 470 248Q468 237 468 230Q468 223 469 222H472Q472 209 464 204L449 158Q441 160 438 161Q435 162 433 162Q431 162 429 161V169Q424 167 424 162Q423 158 421 153Q419 156 417 156Q416 156 416 156Q416 155 415 155Q413 155 406 164Q398 172 384 172ZM303 -61Q299 -66 293 -73Q287 -80 287 -90H293Q313 -90 328 -81Q344 -72 364 -72Q367 -71 376 -70Q385 -68 394 -66Q404 -65 413 -64Q422 -62 425 -61L428 -59Q429 -59 429 -58Q426 -58 424 -54Q422 -51 421 -46Q420 -40 420 -29L422 -27Q422 -25 426 -19Q430 -13 430 -11H429V-10Q429 -8 432 0Q435 8 439 18Q443 28 446 39Q449 50 449 58Q449 64 446 66Q432 60 415 52Q398 45 382 36Q365 27 352 18Q340 9 335 0V-13Q333 -13 327 -12Q321 -11 319 -11Q316 -13 316 -18Q315 -22 314 -27Q314 -32 314 -36Q313 -40 311 -40L300 -37Q294 -42 294 -50Q294 -52 295 -53L300 -48V-50Q300 -55 302 -57Q303 -59 303 -61ZM161 145Q166 145 166 139Q166 133 161 133Q156 133 156 139Q156 145 161 145ZM516 499Q514 499 514 496Q514 494 516 494Q518 494 518 496Q518 499 516 499ZM442 166 443 165Q445 165 447 169H442ZM473 297Q473 298 472 298Q469 298 469 294H470Q473 294 473 297ZM410 393Q410 390 408 390Q407 390 407 391Q408 391 408 392Q408 394 409 394ZM402 337H400L402 340Z"/></g><g mask="url(#h1)"><path class="glyph" fill="currentColor" transform="translate(52.0 21.2) rotate(1.2) scale(0.0387 -0.0387) translate(-327.5 -202.0)" d="M509 -89 503 -86Q501 -85 498 -84Q496 -83 494 -83L484 -78L479 -68V-58L473 -53L487 -6V8Q487 9 488 18Q490 26 492 36Q494 46 496 54Q497 63 497 65L501 54V80L492 74L497 90V100L507 115V125L497 119Q497 121 498 129Q499 137 500 146Q502 154 503 162Q504 169 504 171L508 212L493 210Q488 209 484 208Q481 208 479 208H443V202Q443 196 441 184Q439 171 437 158Q435 145 433 136Q431 126 431 125V115L427 110L431 100V34L427 30L422 19V9L416 4Q412 4 406 9Q400 14 396 14L391 19H381L371 30H356L345 39V95L351 115V156Q351 170 354 198Q357 226 371 281Q371 297 375 312Q379 328 384 344Q388 361 392 379Q396 397 396 418V428Q396 452 400 465Q405 478 411 484Q417 491 424 492Q431 493 436 493H441Q453 485 460 484Q466 483 471 478L476 473L478 462Q479 457 480 453Q481 449 481 447V437L478 423Q476 417 475 412Q474 406 472 402L467 387L460 341Q460 338 459 332Q458 325 457 318Q456 310 455 304Q454 298 454 296Q458 296 467 295Q476 294 486 294Q495 293 504 292Q514 291 520 291L525 296L530 326Q530 328 532 338Q535 348 538 359Q541 370 544 380Q546 390 546 392L552 407Q552 408 555 419Q558 430 562 443Q566 456 569 467Q572 478 572 480Q572 481 574 489L582 500L590 502Q593 503 596 504Q600 505 602 505H607L617 500L628 489Q640 486 640 474Q640 472 638 464L632 418Q632 407 630 394Q627 380 624 366Q622 353 620 340Q617 326 617 316Q617 302 610 284Q602 266 602 246V201Q602 199 601 194Q600 188 600 181Q599 174 598 168Q597 162 597 160V150L592 119Q592 116 590 102Q587 89 587 85L582 -6Q582 -10 580 -22Q578 -35 576 -49Q574 -63 572 -75Q570 -87 570 -89L558 -103Q553 -108 549 -108H539L524 -97L519 -83ZM61 8Q61 11 63 16Q65 22 65 27L78 55Q81 75 85 86Q89 97 94 103Q98 109 101 112Q104 115 104 120Q104 125 112 133Q120 141 120 145Q120 149 127 160Q134 171 134 175H114Q97 175 83 168Q69 160 55 160L49 163Q42 168 41 170L15 195V199L21 209L31 215H41Q42 215 52 217L60 219L76 233Q83 238 90 244Q96 250 100 254L110 264Q110 267 114 272Q117 276 120 278V288Q123 315 127 338Q131 361 134 387L140 413Q140 437 147 460Q154 483 154 502L169 512L193 506Q198 506 209 500Q220 495 223 492L229 486Q231 484 233 481Q235 478 237 475L243 467L241 461Q239 453 239 452L233 442Q231 440 230 436Q228 433 226 428L223 417V407Q223 405 222 399Q222 393 221 386Q220 378 220 372Q219 365 219 363V353Q219 351 218 344Q216 338 214 330Q212 323 210 316Q209 310 209 308V274Q209 270 206 264Q203 258 203 254L219 249Q220 249 226 248Q232 246 238 244Q245 242 250 240Q256 239 258 239L263 234V229L250 196L237 186L228 175Q228 172 220 168Q213 164 213 160Q220 155 225 150Q230 144 236 138Q241 132 248 126Q255 121 266 116L298 99Q300 97 302 94Q305 90 309 87L318 79V69L312 64L302 44H278Q274 44 264 50Q253 55 245 58L209 86L179 106H169L159 96V86L151 73Q148 68 145 63Q142 58 140 56L112 10L107 -4L102 -10H92L87 -4H77ZM126 269H135L142 288ZM494 9V-2L500 -9L499 4ZM339 74Q344 74 344 72Q344 70 339 70Q335 70 335 72Q335 74 339 74Z"/></g><g mask="url(#h2)"><path class="glyph" fill="currentColor" transform="translate(83.0 22.4) rotate(-0.6) scale(0.0323 -0.0323) translate(-268.5 -209.0)" d="M292 -62Q286 -62 281 -64Q276 -66 269 -67L259 -48L250 -53L245 -48Q241 -48 229 -43Q217 -38 217 -34L214 -21Q213 -16 212 -10Q212 -5 212 -1V27Q212 31 214 39Q217 47 217 51V64L222 74V83L212 79Q216 82 221 88Q226 94 226 97L228 112Q229 118 230 128Q232 137 235 139L231 144V149L236 163V172L240 181V200L226 195H212L198 186H184L174 181Q171 181 160 178Q150 176 146 176L118 172Q116 172 111 173Q106 174 104 176L99 181L89 186L85 190L75 195L61 214L42 223L39 231Q37 241 37 242V247L42 252L50 254Q60 256 61 256H66Q70 256 76 254Q81 252 85 252L99 247H127L137 249Q141 250 145 251Q149 252 151 252L170 256Q177 256 186 258Q195 260 203 262Q211 264 217 266Q223 268 223 268L231 270L250 280Q259 280 272 285Q284 290 298 296Q311 302 326 307Q340 312 354 313L378 314L392 327Q395 327 406 332Q416 336 420 336L439 332H453L462 327L467 322H472L481 318Q483 316 486 314Q488 313 490 311L495 308V294L500 289V285L495 280L481 275Q477 275 465 268Q453 261 448 261H443L434 256Q421 248 406 238Q390 229 378 222Q366 215 359 211Q352 207 355 209L340 195V176Q340 173 338 160Q335 148 335 144Q335 140 338 137Q340 134 340 130Q340 127 338 119Q335 111 335 107V83L332 73Q331 68 330 65Q330 62 330 60L325 56L330 37H325V9L321 -1V-20L316 -34Q316 -35 318 -43L321 -48V-53L297 -62ZM121 438Q121 441 122 448Q123 454 124 462Q126 470 127 476Q128 483 128 486Q128 488 130 496Q132 504 134 513Q137 522 139 530Q141 537 141 540Q141 554 149 568Q157 581 168 581Q173 581 185 578Q197 574 202 574L216 567L243 533L251 529Q257 526 263 526H270Q279 526 292 522Q305 519 310 516L318 513Q319 513 328 508Q337 504 346 498Q356 491 364 484Q372 477 372 472L375 461Q379 452 379 445V438Q373 432 362 418Q351 403 345 397L338 384Q338 381 335 378Q332 374 328 371L318 363Q313 358 301 350Q289 343 284 343L270 339Q264 337 258 336Q252 336 250 336H223Q210 336 195 340Q180 345 173 350L162 357L128 390L121 404ZM105 -59Q105 -37 114 -20Q124 -2 124 11Q124 17 133 26L142 30H166Q172 23 181 12Q190 0 190 -7V-26Q190 -27 188 -34Q186 -41 183 -50Q180 -60 178 -70Q176 -79 176 -83Q176 -85 175 -90Q174 -94 173 -99L171 -111H248L306 -101L355 -111Q359 -111 366 -116Q374 -121 374 -125V-144L364 -147Q347 -157 322 -160Q298 -163 275 -163H194Q168 -163 156 -156Q143 -149 138 -149Q132 -149 124 -144L114 -139L105 -130L100 -116V-78ZM216 479Q209 472 210 467Q211 462 205 452L202 445V397H216Q220 397 226 400Q233 404 239 408Q245 412 249 415Q253 418 253 418Q257 421 260 424Q263 428 263 431V438L247 458Q245 462 242 465Q239 468 236 472ZM240 83Q236 83 236 78Q236 76 238 72Q236 70 236 69Q236 64 240 64Q244 64 244 70Q244 72 242 74Q244 74 244 77Q244 83 240 83ZM236 -10V26Q235 21 233 16Q231 11 231 9V-1ZM236 60H235Q232 60 232 50Q232 40 235 40Q237 40 238 44Q239 48 239 51Q239 57 236 60ZM239 102V90L245 96V110ZM250 135Q246 135 246 130Q246 126 250 126Q254 126 254 130Q254 135 250 135ZM255 158Q251 158 251 153Q251 149 255 149Q258 149 258 153Q258 158 255 158ZM245 60Q241 60 241 58Q241 56 245 56Q249 56 249 58Q249 60 245 60Z"/></g></svg>
+    <h1><span class="vh">Chae Kim. </span><span aria-hidden="true"><span class="w"><span style="--k:0">I</span></span> <span class="w"><span style="--k:1">like</span></span> <span class="w"><span style="--k:2">to</span></span> <span class="w"><span style="--k:3">build</span></span> <span class="w"><span style="--k:4">things,</span></span><br><span class="w"><span style="--k:5"><em>seriously</em></span></span> <span class="w"><span style="--k:6">and</span></span> <span class="w"><span style="--k:7"><em>for</em></span></span> <span class="w"><span style="--k:8"><em>fun.</em></span></span></span><span class="vh">I like to build things, seriously and for fun.</span></h1>
+    <p class="cred">MBA at Berkeley Haas. Co-founded&nbsp;<a href="/projects/lucent">Lucent</a>. Previously at <a href="/projects/ey">EY</a> and&nbsp;<a href="/projects/tritooling">Tritooling</a>.</p>
+    <div class="livenow" role="group" aria-labelledby="livenow-k">
+      <span class="livenow__k" id="livenow-k"><i class="dot" aria-hidden="true"></i>Live now</span>
+      <ul class="livenow__l">
+        <li><a class="chip" href="https://chaekim-ai-visibility.vercel.app" target="_blank" rel="noopener" style="--bc:#7c5cff"><img class="mk mk-lit" src="/assets/img/brand/ai-visibility-checker.svg" alt="" width="20" height="20"><img class="mk mk-night" src="/assets/img/brand/dark/ai-visibility-checker.svg" alt="" width="20" height="20">AI Visibility Checker<span class="chip__go" aria-hidden="true">&#8599;</span><span class="vh"> (opens in a new tab)</span></a></li>
+        <li><a class="chip" href="https://tally-lake-seven.vercel.app" target="_blank" rel="noopener" style="--bc:#ff3b30"><img class="mk mk-lit" src="/assets/img/brand/tally.svg" alt="" width="20" height="20"><img class="mk mk-night" src="/assets/img/brand/dark/tally.svg" alt="" width="20" height="20">Tally<span class="chip__go" aria-hidden="true">&#8599;</span><span class="vh"> (opens in a new tab)</span></a></li>
+        <li><a class="chip" href="https://typerace.typerace.workers.dev" target="_blank" rel="noopener" style="--bc:#0a84ff"><img class="mk mk-lit" src="/assets/img/brand/typerace.svg" alt="" width="20" height="20"><img class="mk mk-night" src="/assets/img/brand/dark/typerace.svg" alt="" width="20" height="20">TypeRace<span class="chip__go" aria-hidden="true">&#8599;</span><span class="vh"> (opens in a new tab)</span></a></li>
+      </ul>
     </div>
-
-    <!-- ============ BUILDS ============ -->
-    <section class="panel" id="builds" role="tabpanel" aria-labelledby="tab-builds">
-%%FAMILY%%
-      <h2 class="sub-h">Three to try first</h2>
-      <div class="feat" data-play>
-%%CARDS_FEATURED%%
-      </div>
-
-      <h2 class="sub-h">Browse by folder</h2>
-      <nav class="folders" aria-label="Project folders">
-        <a class="fold reveal" href="#products" data-folder="products" aria-controls="products" aria-expanded="false">
-          <span class="fold__art" style="--tint: var(--t-products)" aria-hidden="true"><span class="fold__back"></span><span class="fold__peek"><img src="/assets/img/brand/palette-generator-2.svg" alt="" width="64" height="64" loading="lazy"><img src="/assets/img/brand/networking-tracker.svg" alt="" width="64" height="64" loading="lazy"><img src="/assets/img/brand/web-anatomy-2.svg" alt="" width="64" height="64" loading="lazy"></span><span class="fold__front">%%COUNT_PRODUCTS%% items</span></span>
-          <span class="fold__nm">Products<span>%%COUNT_PRODUCTS%%</span></span>
-          <span class="fold__ds">Web apps you can try live</span>
-        </a>
-        <a class="fold reveal" href="#mods" data-folder="mods" aria-controls="mods" aria-expanded="false">
-          <span class="fold__art" style="--tint: var(--t-mods)" aria-hidden="true"><span class="fold__back"></span><span class="fold__peek"><img src="/assets/img/brand/smartmodel.svg" alt="" width="64" height="64" loading="lazy"><img src="/assets/img/brand/token-fuel.svg" alt="" width="64" height="64" loading="lazy"><img src="/assets/img/brand/code-improver.svg" alt="" width="64" height="64" loading="lazy"></span><span class="fold__front">%%COUNT_MODS%% items</span></span>
-          <span class="fold__nm">Claude Code mods<span>%%COUNT_MODS%%</span></span>
-          <span class="fold__ds">Hooks, gauges, subagents</span>
-        </a>
-        <a class="fold reveal" href="#ai-ml" data-folder="ai-ml" aria-controls="ai-ml" aria-expanded="false">
-          <span class="fold__art" style="--tint: var(--t-ai-ml)" aria-hidden="true"><span class="fold__back"></span><span class="fold__peek"><img src="/assets/img/brand/spotify-review-triage.svg" alt="" width="64" height="64" loading="lazy"><img src="/assets/img/brand/personal-wiki.svg" alt="" width="64" height="64" loading="lazy"><img src="/assets/img/brand/pacman-dqn-2.svg" alt="" width="64" height="64" loading="lazy"></span><span class="fold__front">%%COUNT_AI_ML%% items</span></span>
-          <span class="fold__nm">AI and ML coursework<span>%%COUNT_AI_ML%%</span></span>
-          <span class="fold__ds">LLMs, RL, retrieval</span>
-        </a>
-        <a class="fold reveal" href="#design" data-folder="design" aria-controls="design" aria-expanded="false">
-          <span class="fold__art" style="--tint: var(--t-design)" aria-hidden="true"><span class="fold__back"></span><span class="fold__peek"><img src="/assets/img/folders/siri.jpg" alt="" width="64" height="64" loading="lazy"><img src="/favicon.svg" alt="" width="64" height="64" loading="lazy"><img src="/assets/img/brand/typerace.svg" alt="" width="64" height="64" loading="lazy"></span><span class="fold__front">%%COUNT_DESIGN%% items</span></span>
-          <span class="fold__nm">Design &amp; brand<span>%%COUNT_DESIGN%%</span></span>
-          <span class="fold__ds">Concepts, brand, this site</span>
-        </a>
-        <a class="fold reveal" href="#archive" data-folder="archive" aria-controls="archive" aria-expanded="false">
-          <span class="fold__art" style="--tint: var(--t-archive)" aria-hidden="true"><span class="fold__back"></span><span class="fold__peek"><img src="/assets/img/brand/arcade-2.svg" alt="" width="64" height="64" loading="lazy"><img src="/assets/img/folders/home.jpg" alt="" width="64" height="64" loading="lazy"><img src="/assets/img/folders/yin-yang.jpg" alt="" width="64" height="64" loading="lazy"></span><span class="fold__front">%%COUNT_ARCHIVE%% items</span></span>
-          <span class="fold__nm">Fun &amp; archive<span>%%COUNT_ARCHIVE%%</span></span>
-          <span class="fold__ds">Games, art, 2019 to 2020 projects</span>
-        </a>
-      </nav>
-      <script>document.documentElement.classList.add('js-folders')</script>
-      <div class="trays">
-      <section class="tray" id="products" aria-label="Products">
-        <div class="tray__h"><h3>Products <span>· %%COUNT_PRODUCTS%%</span></h3><a class="tray__close" href="#builds" data-fold-close>Close ✕</a></div>
-        <div class="grid grid--shelf">
-%%CARDS_PRODUCTS%%
-        </div>
-      </section>
-      <section class="tray" id="mods" aria-label="Claude Code mods">
-        <div class="tray__h"><h3>Claude Code mods <span>· %%COUNT_MODS%%</span></h3><a class="tray__close" href="#builds" data-fold-close>Close ✕</a></div>
-        <div class="grid grid--shelf">
-%%CARDS_MODS%%
-        </div>
-      </section>
-      <section class="tray" id="ai-ml" aria-label="AI and ML coursework">
-        <div class="tray__h"><h3>AI and ML coursework <span>· %%COUNT_AI_ML%%</span></h3><a class="tray__close" href="#builds" data-fold-close>Close ✕</a></div>
-        <div class="grid grid--shelf">
-%%CARDS_AI_ML%%
-        </div>
-      </section>
-      <section class="tray" id="design" aria-label="Design &amp; brand">
-        <div class="tray__h"><h3>Design &amp; brand <span>· %%COUNT_DESIGN%%</span></h3><a class="tray__close" href="#builds" data-fold-close>Close ✕</a></div>
-        <div class="grid grid--shelf">
-%%CARDS_DESIGN%%
-        </div>
-      </section>
-      <section class="tray" id="archive" aria-label="Fun &amp; archive">
-        <div class="tray__h"><h3>Fun &amp; archive <span>· %%COUNT_ARCHIVE%%</span></h3><a class="tray__close" href="#builds" data-fold-close>Close ✕</a></div>
-        <div class="grid grid--shelf">
-%%CARDS_ARCHIVE%%
-        </div>
-      </section>
-      </div>
-    </section>
-
-    <!-- ============ WRITING ============ -->
-    <section class="panel" id="writing" role="tabpanel" aria-labelledby="tab-writing">
-      <h2 class="sub-h">Essays</h2>
-%%WRITING_ESSAYS%%
-
-      <h2 class="sub-h">Case-study write-ups</h2>
-      <div class="grid grid--3">
-        <a class="w reveal" href="/projects/decisions">
-          <div class="stage" style="--g: var(--g-mobility)"><div class="art"><div class="glass"><b>Options</b><span>and the pick</span></div></div><span class="pill">How I decide <em>2026</em></span></div>
-          <p class="meta">The options I laid out for each call on this site and my projects, which one I picked, and why.</p>
-        </a>
-        <a class="w reveal" href="/projects/portfolio">
-          <div class="stage" style="--g: var(--g-lucent)"><div class="art"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>chaekim.vercel.app</span></div><img src="/assets/img/builds/portfolio-card.jpg" alt="This site's homepage" width="960" height="600" loading="lazy"></div></div><span class="pill">This portfolio <em>2026</em></span></div>
-          <p class="meta">How this site got built: the decisions, the backlog, and what's next.</p>
-        </a>
-        <a class="w reveal" href="/projects/personal-brand">
-          <div class="stage" style="--g: var(--g-plain)"><div class="art"><div class="brandart">%%BRANDSEAL%%<span class="brandart__sw"><i style="background:#C8372D"></i><i style="background:#FF5A1F"></i><i style="background:#B07A4F"></i><i style="background:#0066CC"></i><i style="background:#123B2E"></i></span></div></div><span class="pill">Personal brand <em>2026</em></span></div>
-          <p class="meta">How I chose a brand: five directions, two built finalists, and why Stamp won.</p>
-        </a>
-      </div>
-
-      <h2 class="sub-h">Reading list</h2>
-%%WRITING_READING%%
-      <p class="wl-more">The same list, with topic filters, is on its own page: <a href="/reading">Writing &amp; reading</a>.</p>
-    </section>
-
-    <!-- ============ WORK ============ -->
-    <section class="panel" id="work" role="tabpanel" aria-labelledby="tab-work">
-      <h2 class="visually-hidden">Work</h2>
-      <div class="grid">
-%%CARDS_WORK%%
-      </div>
-
-      <h2 class="sub-h">Earlier, at Indiana University (2019 to 2021)</h2>
-      <div class="grid grid--5">
-%%CARDS_COLLEGE%%
-      </div>
-    </section>
-
-    <!-- ============ ABOUT ============ -->
-    <section class="panel" id="about" role="tabpanel" aria-labelledby="tab-about">
-      <div class="about">
-        <nav class="toc" aria-label="About sections">
-          <a href="#hi">Hi!</a><a href="#experience">Experience</a><a href="#off-the-clock">Off the clock</a><a href="#elsewhere">Elsewhere</a>
-        </nav>
-        <div class="about__body">
-          <section id="hi">
-            <h2>Hi, I'm Chae.</h2>
-            <div class="facts">
-              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Berkeley, CA</span>
-              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg>MBA, Berkeley Haas '27</span>
-              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg>B.S. Informatics, Indiana University</span>
-            </div>
-            <p>Thirteen years growing up overseas made me curious by default. I'm happiest making things: a wireframe, a 3D print, a card game.</p>
-            <p>I've founded an NSF I-Corps AI startup, led Fortune 500 cloud programs, and run a precision manufacturer's operations. These days I build tools I'd actually use. If you're making something too, I'd love to hear about it.</p>
-            <p>I'm also writing a memoir, <em>The Treaded Path</em>, and essays on <a href="https://medium.com/@chaewoonkim" target="_blank" rel="noopener">Medium ↗</a>. My essays and the articles that helped are on the <a href="#writing">Writing tab</a>.</p>
-          </section>
-
-          <section id="experience">
-            <h3>Experience</h3>
-            <ul class="xp">
-              <li><b>UC Berkeley Haas</b><small>2025–27</small><span><em>MBA Candidate.</em> Merit Scholarship. Co-President, Asian Business Club (300+ members).</span></li>
-              <li><b>Lucent</b><small>2025–26</small><span><em>Co-founder &amp; CEO.</em> First paying pilot. 5 LOIs in 30 days. 100+ customer interviews. NSF I-Corps backed.</span></li>
-              <li><b>Tritooling Precision Corporation</b><small>Jul 2024–Jul 2025</small><span><em>Director of Operations, Philippines.</em> On-time delivery +15%, defects −30%. ERP make-vs-buy case approved, $100K in annual savings. Board approval to launch in Japan, a $300K+ revenue opportunity.</span></li>
-              <li><b>EY</b><small>Aug 2021–Jul 2024</small><span><em>Senior Technology Consultant, AI &amp; Data Strategy, New York.</em> Redirected $3M to priority initiatives after launching a Fortune 500 client's first QBR. $10M+ in realized savings over 2 years. −30% escalations on a $200M+ program. 90% tool adoption across 4,000 users.</span></li>
-              <li><b>Indiana University Bloomington</b><small>Class of 2021</small><span><em>B.S. Informatics, minors in HCI &amp; Entrepreneurship.</em> Dean's List. GPA 3.74.</span></li>
-              <li><b>Republic of Korea Army, Gangwon</b><small>2017–19</small><span><em>Sergeant, 2nd Artillery Brigade.</em> Ran 15 high-stakes artillery operations, leading 10 soldiers and interpreting for ROK and U.S. commanders.</span></li>
-            </ul>
-          </section>
-
-          <section id="off-the-clock">
-            <h3>Off the clock</h3>
-            <ul class="likes">
-              <li><b>3D printing</b>, design and prototyping</li>
-              <li><b>Competitive tennis</b> and latte art</li>
-              <li><b>Big Brothers Big Sisters</b> mentor, 4+ year match</li>
-            </ul>
-            <div class="photos">
-              <figure><img src="/assets/img/profile.jpg" alt="Chae waving next to an elephant in Phuket" width="1200" height="1600" loading="lazy"></figure>
-              <figure><img src="/assets/img/travel-1.jpg" alt="A pink coconut by a pool in Bali" width="900" height="1200" loading="lazy"></figure>
-              <figure><img src="/assets/img/travel-3.jpg" alt="Limestone cliffs over green water in Ha Long Bay" width="900" height="1200" loading="lazy"></figure>
-              <figure><img src="/assets/img/travel-2.jpg" alt="A boat at sunset" width="900" height="1200" loading="lazy"></figure>
-            </div>
-          </section>
-
-          <section id="elsewhere">
-            <h3>Elsewhere</h3>
-            <div class="links">
-              <a data-user="chaewoonkim" data-domain="berkeley.edu" href="#">Email</a>
-              <a href="https://www.linkedin.com/in/chaekim/" target="_blank" rel="noopener">LinkedIn ↗</a>
-              <a href="https://medium.com/@chaewoonkim" target="_blank" rel="noopener">Medium ↗</a>
-              <a href="https://github.com/chaekim96" target="_blank" rel="noopener">GitHub ↗</a>
-              <a href="/assets/pdf/chae-kim-resume.pdf">Resume (PDF)</a>
-            </div>
-          </section>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ DESIGN NOTES ============ -->
-    <section class="notes" id="design-notes" aria-labelledby="notes-h">
-      <h2 id="notes-h">How this page is put together</h2>
-      <p class="notes__lede">Quiet, Poppins for words, real work as the picture.</p>
-
-      <div class="notes__grid">
-        <details class="ncard ncard--color">
-          <summary><p class="ncard__k"><i aria-hidden="true"></i>Color</p>
-          <h3>Color follows the content, so the page stays neutral</h3><span class="ncard__more" aria-hidden="true">Read more</span></summary>
-          <p class="notes__cap">Light, then dark. Tokens from <code>v-stamp.css</code>.</p>
-          <ul class="swl">
-            <li><span class="sw"><i style="background:#111110"></i><i style="background:#f4efe4"></i></span><span class="swl__t"><b>ink</b> text</span><span class="swl__h"><code>#111110</code> / <code>#f4efe4</code></span></li>
-            <li><span class="sw"><i style="background:#5f5b53"></i><i style="background:#a8a296"></i></span><span class="swl__t"><b>ink-2</b> secondary text</span><span class="swl__h"><code>#5f5b53</code> / <code>#a8a296</code></span></li>
-            <li><span class="sw"><i style="background:#fbf8f1"></i><i style="background:#121211"></i></span><span class="swl__t"><b>paper</b> the page</span><span class="swl__h"><code>#fbf8f1</code> / <code>#121211</code></span></li>
-            <li><span class="sw"><i style="background:rgba(17,17,16,.12)"></i><i style="background:rgba(244,239,228,.10)"></i></span><span class="swl__t"><b>line</b> hairlines</span><span class="swl__h"><code>rgba(17,17,16,.12)</code> / <code>rgba(244,239,228,.10)</code></span></li>
-            <li><span class="sw"><i style="background:#4a3fd1"></i><i style="background:#9b86ff"></i></span><span class="swl__t"><b>accent</b> links, active tab, focus ring</span><span class="swl__h"><code>#4a3fd1</code> / <code>#9b86ff</code></span></li>
-            <li><span class="sw"><i style="background:#c63d2f"></i><i style="background:#e0533f"></i></span><span class="swl__t"><b>seal</b> the endorsement square</span><span class="swl__h"><code>#c63d2f</code> / <code>#e0533f</code></span></li>
-            <li><span class="sw"><i style="background:#30d158"></i><i style="background:#30d158"></i></span><span class="swl__t"><b>live</b> status dot, nothing else</span><span class="swl__h"><code>#30d158</code> / <code>#30d158</code></span></li>
-          </ul>
-          <div class="grads">
-            <div><i style="background:linear-gradient(180deg,#f3ecdd 0%,#f7f2e7 42%,#fbf8f1 100%)"></i><span>Stamp Ink, light: <code>#f3ecdd</code> to <code>#f7f2e7</code> to <code>#fbf8f1</code>, a faint warm wash settling into paper</span></div>
-            <div><i style="background:linear-gradient(180deg,#1d1b18 0%,#171614 42%,#121211 100%)"></i><span>Night Press, dark: <code>#1d1b18</code> to <code>#121211</code>, warm near-black</span></div>
-          </div>
-          <p>Each project sits on its own soft gradient stage, tinted from its build mark, so the work supplies the color. Everything else stays neutral: warm paper, ink, and the same seal red as my name stamp, so the page and the stamp read as one hand.</p>
-          <p>One accent does the rest of the work. A deep violet marks links, back arrows, the active tab and focus rings. Green appears in one place only: the dot that means something is live. Text and links clear 4.5:1 on paper and on every card tint.</p>
-        </details>
-
-        <details class="ncard ncard--type">
-          <summary><p class="ncard__k"><i aria-hidden="true"></i>Type</p>
-          <h3>Poppins for words, a plain monospace for facts</h3><span class="ncard__more" aria-hidden="true">Read more</span></summary>
-          <p class="notes__cap">400, 500 and 600 are loaded. I kept Poppins instead of switching to the SF system font. Its round, geometric letters feel friendly, not corporate. One family for every word keeps the focus on the work, and it has carried every version of this site.</p>
-          <div class="spec">
-            <p class="spec__a">chae kim</p>
-            <p class="spec__b">Making small businesses visible in AI search.</p>
-            <p class="spec__c">Product, strategy, operations, and the occasional 3D print.</p>
-            <p class="spec__d">Aa Bb Cc 0123456789</p>
-          </div>
-          <table class="scale">
-            <tr><td>Name</td><td>500 · 28 to 34px · -0.025em</td></tr>
-            <tr><td>Section title</td><td>500 · 22px · -0.02em</td></tr>
-            <tr><td>Project headline</td><td>500 · 17px</td></tr>
-            <tr><td>Body</td><td>400 · 16px / 1.55</td></tr>
-            <tr><td>Notes</td><td>400 · 14px</td></tr>
-            <tr><td>Case page facts</td><td>400 · 13.5px · system monospace</td></tr>
-          </table>
-          <p>The one exception to Poppins is the role, team and dates line on a case page. It is set in the system monospace, so facts read differently from the story around them. It costs no font download. The only other letters are the 김채운 strip at the top, brushed with East Sea Dokdo outlines drawn inline.</p>
-        </details>
-
-        <details class="ncard ncard--pages">
-          <summary><p class="ncard__k"><i aria-hidden="true"></i>Structure</p>
-          <h3>Pages you explore, with the work as the picture</h3><span class="ncard__more" aria-hidden="true">Read more</span></summary>
-          <ul class="bul">
-            <li>Pill tabs for Builds, Work, Writing and About, routed by the URL hash. Builds opens first.</li>
-            <li>Builds shows three projects to try, then five folders. Each opens in a tray, so the page stays short.</li>
-            <li>Every project is a framed artifact: a real screenshot, a card, a gauge.</li>
-            <li>A live Berkeley clock and a day or night icon in the footer.</li>
-            <li>Light and dark themes, saved in the browser.</li>
-            <li>Press ⌘K (Ctrl K on Windows) to jump to any build, tab or page.</li>
-            <li>Every build page has a row of build marks to hop between builds, and a contents list that follows your scroll.</li>
-          </ul>
-          <p class="notes__cap" style="margin-top:18px">Shapes and motion</p>
-          <ul class="bul">
-            <li>Cards 24px radius. Content width 1200px.</li>
-            <li>Hover easing <code>cubic-bezier(.32, .72, 0, 1)</code>.</li>
-            <li>Frosted blur on small tiles only. Everything else is a plain surface with a hairline.</li>
-            <li>Motion is slow and soft, plays once, and switches off when your device asks for less motion.</li>
-          </ul>
-        </details>
-
-        <details class="ncard ncard--path">
-          <summary><p class="ncard__k"><i aria-hidden="true"></i>History</p>
-          <h3>How I got here</h3><span class="ncard__more" aria-hidden="true">Read more</span></summary>
-          <ol class="path">
-            <li><b>2021</b><span>An IU portfolio built for class.</span></li>
-            <li><b>Sept 2026</b><span>Rebuilt as a macOS desktop, inspired by renee.wiki. Then an Apple HIG layer, with Poppins kept over SF.</span></li>
-            <li><b>Oct 4</b><span>A quiet, artifact-first page inspired by liumichelle.com. That became Stamp.</span></li>
-            <li><b>Oct 8 to 9</b><span>A brand exploration: five directions, narrowed to two built finalists. Ink was monochrome with brush calligraphy. Desktop Craft was Apple polish. <a href="/projects/personal-brand">Read the brand decision log</a>.</span></li>
-            <li><b>Oct 12</b><span>Stamp became the whole site. The other designs were retired. Stamp is quieter, and you can find the work in one scroll instead of opening windows.</span></li>
-          </ol>
-          <p class="notes__cap" style="margin-top:14px"><a href="/projects/portfolio">Read the full decision log: how this site was built</a><br><a href="/projects/decisions">See the options behind each call</a></p>
-        </details>
-      </div>
-    </section>
-  </main>
-
-  <footer class="foot wrap">
-    <div>
-      <a class="foot__id" href="#builds">%%SEAL_SMALL%%chae kim</a>
-      <p class="clock">
-        <svg id="clock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <g class="sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g>
-          <g class="moon"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></g>
-        </svg>
-        <time id="clock"></time><span>Berkeley, CA</span>
-      </p>
     </div>
-    <nav aria-label="Footer">
-      <a href="#builds">Builds</a><a href="#work">Work</a><a href="#writing">Writing</a><a href="#about">About</a><a href="/assets/pdf/chae-kim-resume.pdf">Resume</a>
-    </nav>
-    <div class="foot__cta">
-      <b>Let's chat.</b>
-      <a data-user="chaewoonkim" data-domain="berkeley.edu" data-show href="#">chaewoonkim@berkeley.edu</a>
-      <div class="foot__small">
-        <span><a href="/projects/portfolio">Built by hand in plain HTML</a>, between latte art attempts.</span>
-        <div class="changelog" aria-labelledby="changelog-h">
-          <p class="changelog__k" id="changelog-h">Latest changes to this site</p>
-          <ul>%%CHANGELOG%%</ul>
-          <a href="https://github.com/chaekim96/chaekim-portfolio/commits/main" target="_blank" rel="noopener">All changes ↗</a>
+    <div class="board" id="board">
+      <p class="board__h"><span>Everything I've built</span><span class="board__k"><i class="dot" aria-hidden="true"></i>live</span></p>
+      <div class="board__g"><div class="bg" role="group" aria-label="Products, 11 builds" style="--n:6"><p class="bg__h" aria-hidden="true">Products <span>11</span></p><ul class="bg__l"><li style="--i:0"><a class="bt is-live" href="/projects/ai-visibility-checker" style="--bc:#7c5cff" data-cap="Knowing whether AI assistants can find, read and cite your site." aria-label="AI Visibility Checker. Live. Knowing whether AI assistants can find, read and cite your site."><span class="bt__a"><img class="mk mk-lit" src="/assets/img/brand/ai-visibility-checker.svg" alt="" width="44" height="44" decoding="async"><img class="mk mk-night" src="/assets/img/brand/dark/ai-visibility-checker.svg" alt="" width="44" height="44" decoding="async"></span><span class="bt__n" aria-hidden="true">AI Visibility Checker</span></a></li><li style="--i:1"><a class="bt is-live" href="/projects/tally" style="--bc:#ff3b30" data-cap="Knowing how long your to-do list will actually take." aria-label="Tally. Live. Knowing how long your to-do list will actually take."><span class="bt__a"><img class="mk mk-lit" src="/assets/img/brand/tally.svg" alt="" width="44" height="44" decoding="async"><img class="mk mk-night" src="/assets/img/brand/dark/tally.svg" alt="" width="44" height="44" decoding="async"></span><span class="bt__n" aria-hidden="true">Tally</span></a></li><li style="--i:2"><a class="bt is-live" href="/projects/typerace" style="--bc:#0a84ff" data-cap="Settling who types fastest, with one link and no sign-up." aria-label="TypeRace. Live. Settling who types fastest, with one link and no sign-up."><span class="bt__a"><img class="mk mk-lit" src="/assets/img/brand/typerace.svg" alt="" width="44" height="44" decoding="async"><img class="mk mk-night" src="/assets/img/brand/dark/typerace.svg" alt="" width="44" height="44" decoding="async"></span><span class="bt__n" aria-hidden="true">TypeRace</span></a></li><li style="--i:3"><a class="bt is-live" href="/projects/relay" style="--bc:#0b63b8" data-cap="Turning a saved playlist into something you can do." aria-label="Relay. Live. Turning a saved playlist into something you can do."><span class="bt__a"><img class="mk mk-lit" src="/assets/img/brand/relay.svg" alt="" width="44" height="44" decoding="async"><img class="mk mk-night" src="/assets/img/brand/dark/relay.svg" alt="" width="44" height="44" decoding="async"></span><span class="bt__n" aria-hidden="true">Relay</span></a></li><li style="--i:4"><a class="bt is-live" href="/projects/palette-generator" style="--bc:#0b63b8" data-cap="Brand colors and fonts for founders who aren&#x27;t designers." aria-label="Palette Generator. Live. Brand colors and fonts for founders who aren&#x27;t designers."><span class="bt__a"><img class="mk" src="/assets/img/brand/palette-generator-2.svg" alt="" width="44" height="44" decoding="async"></span><span class="bt__n" aria-hidden="true">Palette Generator</span></a></li><li style="--i:5"><a class="bt is-live" href="/projects/networking-tracker" style="--bc:#00c7be" data-cap="Keeping track of every coffee chat, without sharing a thing." aria-label="Networking Tracker. Live. Keeping track of every coffee chat, without sharing a thing."><span class="bt__a"><img class="mk mk-lit" src="/assets/img/brand/networking-tracker.svg" alt="" width="44" height="44" decoding="async"><img class="mk mk-night" src="/assets/img/brand/dark/networking-tracker.svg" alt="" width="44" height="44" decoding="async"></span><span class="bt__n" aria-hidden="true">Networking Tracker</span></a></li><li style="--i:6"><a class="bt is-live" href="/projects/web-anatomy" style="--bc:#0b63b8" data-cap="Showing how a website works, from the DNS lookup to the AI answer." aria-label="Anatomy of a Website. Live. Showing how a website works, from the DNS lookup to the AI answer."><span class="bt__a"><img class="mk" src="/assets/img/brand/web-anatomy-2.svg" alt="" width="44" height="44" decoding="async"></span><span class="bt__n" aria-hidden="true">Anatomy of a Website</span></a></li><li style="--i:7"><a class="bt" href="/projects/timely" style="--bc:#6f9a77" data-cap="Turning a messy note into a realistic plan for the day." aria-label="Timely. Turning a messy note into a realistic plan for the day."><span class="bt__a"><img class="mk mk-lit" src="/assets/img/brand/timely.svg" alt="" width="44" height="44" decoding="async"><img class="mk mk-night" src="/assets/img/brand/dark/timely.svg" alt="" width="44" height="44" decoding="async"></span><span class="bt__n" aria-hidden="true">Timely</span></a></li><li style="--i:8"><a class="bt" href="/projects/voiceprompter" style="--bc:#ff2d92" data-cap="Reading your notes on a call without anyone seeing them." aria-label="VoicePrompter. Reading your notes on a call without anyone seeing them."><span class="bt__a"><img class="mk mk-lit" src="/assets/img/brand/voiceprompter.svg" alt="" width="44" height="44" decoding="async"><img class="mk mk-night" src="/assets/img/brand/dark/voiceprompter.svg" alt="" width="44" height="44" decoding="async"></span><span class="bt__n" aria-hidden="true">Voice<wbr>Prompter</span></a></li><li style="--i:9"><a class="bt" href="/projects/parallel-prospect-brief" style="--bc:#f7b200" data-cap="Walking into a first sales call with every claim sourced." aria-label="Parallel Prospect Brief. Walking into a first sales call with every claim sourced."><span class="bt__a"><img class="mk mk-lit" src="/assets/img/brand/parallel-prospect-brief.svg" alt="" width="44" height="44" decoding="async"><img class="mk mk-night" src="/assets/img/brand/dark/parallel-prospect-brief.svg" alt="" width="44" height="44" decoding="async"></span><span class="bt__n" aria-hidden="true">Parallel Prospect Brief</span></a></li><li style="--i:10"><a class="bt" href="/projects/product-blueprint" style="--bc:#ac8e68" data-cap="One way to build every product, with a test at each step." aria-label="Product Blueprint. One way to build every product, with a test at each step."><span class="bt__a"><img class="mk mk-lit" src="/assets/img/brand/product-blueprint.svg" alt="" width="44" height="44" decoding="async"><img class="mk mk-night" src="/assets/img/brand/dark/product-blueprint.svg" alt="" width="44" height="44" decoding="async"></span><span class="bt__n" aria-hidden="true">Product Blueprint</span></a></li></ul></div><div class="bg" role="group" aria-label="Claude Code mods, 4 builds" style="--n:4"><p class="bg__h" aria-hidden="true">Claude Code mods <span>4</span></p><ul class="bg__l"><li style="--i:11"><a class="bt" href="/projects/smartmodel" style="--bc:#32ade6" data-cap="Matching each prompt to the right model, so easy work costs less." aria-label="SmartModel. Matching each prompt to the right model, so easy work costs less."><span class="bt__a"><img class="mk mk-lit" src="/assets/img/brand/smartmodel.svg" alt="" width="44" height="44" decoding="async"><img class="mk mk-night" src="/assets/img/brand/dark/smartmodel.svg" alt="" width="44" height="44" decoding="async"></span><span class="bt__n" aria-hidden="true">SmartModel</span></a></li><li style="--i:12"><a class="bt" href="/projects/token-fuel" style="--bc:#0b63b8" data-cap="Seeing how much context is left before a session runs out." aria-label="Token-Fuel. Seeing how much context is left before a session runs out."><span class="bt__a"><img class="mk mk-lit" src="/assets/img/brand/token-fuel.svg" alt="" width="44" height="44" decoding="async"><img class="mk mk-night" src="/assets/img/brand/dark/token-fuel.svg" alt="" width="44" height="44" decoding="async"></span><span class="bt__n" aria-hidden="true">Token-Fuel</span></a></li><li style="--i:13"><a class="bt" href="/projects/code-improver" style="--bc:#99cd0b" data-cap="A second reviewer that reads every file I touch." aria-label="Code Improver. A second reviewer that reads every file I touch."><span class="bt__a"><img class="mk mk-lit" src="/assets/img/brand/code-improver.svg" alt="" width="44" height="44" decoding="async"><img class="mk mk-night" src="/assets/img/brand/dark/code-improver.svg" alt="" width="44" height="44" decoding="async"></span><span class="bt__n" aria-hidden="true">Code Improver</span></a></li><li style="--i:14"><a class="bt" href="/projects/task-progress" style="--bc:#3d5afe" data-cap="Seeing how far along a task is, right above the prompt." aria-label="task-progress. Seeing how far along a task is, right above the prompt."><span class="bt__a"><img class="mk mk-lit" src="/assets/img/brand/task-progress.svg" alt="" width="44" height="44" decoding="async"><img class="mk mk-night" src="/assets/img/brand/dark/task-progress.svg" alt="" width="44" height="44" decoding="async"></span><span class="bt__n" aria-hidden="true">task-progress</span></a></li></ul></div><div class="bg" role="group" aria-label="AI and ML coursework, 5 builds" style="--n:5"><p class="bg__h" aria-hidden="true">AI and ML coursework <span>5</span></p><ul class="bg__l"><li style="--i:15"><a class="bt is-live" href="/projects/spotify-review-triage" style="--bc:#ff6a00" data-cap="Turning a flood of app reviews into one clear product priority." aria-label="Spotify Review Triage. Live. Turning a flood of app reviews into one clear product priority."><span class="bt__a"><img class="mk mk-lit" src="/assets/img/brand/spotify-review-triage.svg" alt="" width="44" height="44" decoding="async"><img class="mk mk-night" src="/assets/img/brand/dark/spotify-review-triage.svg" alt="" width="44" height="44" decoding="async"></span><span class="bt__n" aria-hidden="true">Spotify Review Triage</span></a></li><li style="--i:16"><a class="bt" href="/projects/review-labeler" style="--bc:#b03a64" data-cap="Finding out when a small fine-tuned model is good enough." aria-label="Review Labeler. Finding out when a small fine-tuned model is good enough."><span class="bt__a"><img class="mk mk-lit" src="/assets/img/brand/review-labeler.svg" alt="" width="44" height="44" decoding="async"><img class="mk mk-night" src="/assets/img/brand/dark/review-labeler.svg" alt="" width="44" height="44" decoding="async"></span><span class="bt__n" aria-hidden="true">Review Labeler</span></a></li><li style="--i:17"><a class="bt" href="/projects/personal-wiki" style="--bc:#bf5af2" data-cap="Asking my own notes questions, with no internet." aria-label="Personal Wiki. Asking my own notes questions, with no internet."><span class="bt__a"><img class="mk mk-lit" src="/assets/img/brand/personal-wiki.svg" alt="" width="44" height="44" decoding="async"><img class="mk mk-night" src="/assets/img/brand/dark/personal-wiki.svg" alt="" width="44" height="44" decoding="async"></span><span class="bt__n" aria-hidden="true">Personal Wiki</span></a></li><li style="--i:18"><a class="bt" href="/projects/pacman-dqn" style="--bc:#b5ad00" data-cap="Teaching an agent to play Ms. Pac-Man by trial and error." aria-label="Pac-Man DQN. Teaching an agent to play Ms. Pac-Man by trial and error."><span class="bt__a"><img class="mk" src="/assets/img/brand/pacman-dqn-2.svg" alt="" width="44" height="44" decoding="async"></span><span class="bt__n" aria-hidden="true">Pac-Man DQN</span></a></li><li style="--i:19"><a class="bt" href="/projects/custom-llm" style="--bc:#d62fd0" data-cap="Seeing how language models learn by training a tiny one." aria-label="Custom LLM. Seeing how language models learn by training a tiny one."><span class="bt__a"><img class="mk" src="/assets/img/brand/custom-llm-2.svg" alt="" width="44" height="44" decoding="async"></span><span class="bt__n" aria-hidden="true">Custom LLM</span></a></li></ul></div><div class="bg" role="group" aria-label="Design and brand, 6 builds" style="--n:6"><p class="bg__h" aria-hidden="true">Design &amp; brand <span>6</span></p><ul class="bg__l"><li style="--i:20"><a class="bt" href="/projects/siri-reimagined" style="--bc:#0b63b8" data-cap="A design concept: an iPhone that ships with five apps, and a Siri that builds the rest." aria-label="Siri, Reimagined. A design concept: an iPhone that ships with five apps, and a Siri that builds the rest."><span class="bt__a"><img class="mk bt__t" src="/assets/img/siri-reimagined/siri-reimagined-card.webp" alt="" width="44" height="44" decoding="async"></span><span class="bt__n" aria-hidden="true">Siri, Reimagined</span></a></li><li style="--i:21"><a class="bt" href="/projects/decagon-repositioned" style="--bc:#0b63b8" data-cap="A strategy concept: Decagon stops answering tickets and starts making governed customer decisions." aria-label="Decagon, Repositioned. A strategy concept: Decagon stops answering tickets and starts making governed customer decisions."><span class="bt__a"><img class="mk bt__t" src="/assets/img/decagon-repositioned/decagon-repositioned-card.webp" alt="" width="44" height="44" decoding="async"></span><span class="bt__n" aria-hidden="true">Decagon, Reposi&shy;tioned</span></a></li><li style="--i:22"><a class="bt" href="/projects/portfolio" style="--bc:#0b63b8" data-cap="How this site got built: the decisions, the backlog, and what&#x27;s next." aria-label="This portfolio. How this site got built: the decisions, the backlog, and what&#x27;s next."><span class="bt__a"><img class="mk bt__t" src="/assets/img/builds/portfolio-card.webp" alt="" width="44" height="44" decoding="async"></span><span class="bt__n" aria-hidden="true">This portfolio</span></a></li><li style="--i:23"><a class="bt" href="/projects/personal-brand" style="--bc:#0b63b8" data-cap="How I chose a brand: five directions, two built finalists, and why Stamp won." aria-label="Personal brand. How I chose a brand: five directions, two built finalists, and why Stamp won."><span class="bt__a"><b class="bt__l bt__l--2" aria-hidden="true">PB</b></span><span class="bt__n" aria-hidden="true">Personal brand</span></a></li><li style="--i:24"><a class="bt" href="/projects/build-marks" style="--bc:#0b63b8" data-cap="Giving sixteen builds one family of logos." aria-label="Build marks. Giving sixteen builds one family of logos."><span class="bt__a"><b class="bt__l bt__l--2" aria-hidden="true">BM</b></span><span class="bt__n" aria-hidden="true">Build marks</span></a></li><li style="--i:25"><a class="bt" href="/brand" style="--bc:#0b63b8" data-cap="The two-minute brand book: one tile, one recipe, one endorsement line." aria-label="Brand. The two-minute brand book: one tile, one recipe, one endorsement line."><span class="bt__a"><b class="bt__l bt__l--2" aria-hidden="true">BR</b></span><span class="bt__n" aria-hidden="true">Brand</span></a></li></ul></div><div class="bg" role="group" aria-label="Fun and archive, 6 builds" style="--n:6"><p class="bg__h" aria-hidden="true">Fun &amp; archive <span>6</span></p><ul class="bg__l"><li style="--i:26"><a class="bt" href="/arcade" style="--bc:#0b63b8" data-cap="Snake and Galaga, rebuilt from memory, plus a generative lo-fi radio." aria-label="Arcade. Snake and Galaga, rebuilt from memory, plus a generative lo-fi radio."><span class="bt__a"><img class="mk" src="/assets/img/brand/arcade-2.svg" alt="" width="44" height="44" decoding="async"></span><span class="bt__n" aria-hidden="true">Arcade</span></a></li><li style="--i:27"><a class="bt" href="/projects/home-gif" style="--bc:#0b63b8" data-cap="A pixel-art GIF, made during COVID." aria-label="Home. A pixel-art GIF, made during COVID."><span class="bt__a"><img class="mk bt__t" src="/assets/img/home-gif/home.gif" alt="" width="44" height="44" decoding="async"></span><span class="bt__n" aria-hidden="true">Home</span></a></li><li style="--i:28"><a class="bt" href="/projects/yin-yang" style="--bc:#0b63b8" data-cap="An animated illustration." aria-label="Yin Yang. An animated illustration."><span class="bt__a"><img class="mk bt__t" src="/assets/img/yin-yang/yin-yang.gif" alt="" width="44" height="44" decoding="async"></span><span class="bt__n" aria-hidden="true">Yin Yang</span></a></li><li style="--i:29"><a class="bt" href="/assets/pdf/I308-Lime-Scooter-Poster.pdf" style="--bc:#0b63b8" data-cap="A media literacy poster." aria-label="Poster. A media literacy poster."><span class="bt__a"><img class="mk bt__t" src="/assets/img/lime-poster/fake-news.webp" alt="" width="44" height="44" decoding="async"></span><span class="bt__n" aria-hidden="true">Poster</span></a></li><li style="--i:30"><a class="bt" href="/assets/pdf/WMCS-Weight-Machine-Cross-Sync.pdf" style="--bc:#4a6fd8" data-cap="Weight Machine Cross Sync: log gym sets over NFC." aria-label="WMCS. Weight Machine Cross Sync: log gym sets over NFC."><span class="bt__a"><b class="bt__l" aria-hidden="true">W</b></span><span class="bt__n" aria-hidden="true">WMCS</span></a></li><li style="--i:31"><a class="bt" href="/assets/pdf/AAV-Auto-Adjusting-Volume.pdf" style="--bc:#3aa6a0" data-cap="Auto-Adjusting Volume: noise-aware volume." aria-label="AAV. Auto-Adjusting Volume: noise-aware volume."><span class="bt__a"><b class="bt__l" aria-hidden="true">A</b></span><span class="bt__n" aria-hidden="true">AAV</span></a></li></ul></div></div>
+      <p class="board__cap" id="boardcap" aria-hidden="true">&nbsp;</p>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="builds" aria-labelledby="builds-h" data-spy>
+    <div class="sec__h reveal"><h2 id="builds-h">Builds</h2><p>Three to try first, then everything else on the shelf.</p></div>
+    
+<div class="featset reveal" id="featset">
+  <div class="ftabs" role="tablist" aria-label="Three to try first"><button class="ftab" type="button" role="tab" id="ft-0" aria-controls="fp-0" aria-selected="true" tabindex="0" style="--bc:#7c5cff"><img class="mk mk-lit" src="/assets/img/brand/ai-visibility-checker.svg" alt="" width="22" height="22"><img class="mk mk-night" src="/assets/img/brand/dark/ai-visibility-checker.svg" alt="" width="22" height="22"><span>AI Visibility Checker</span><i class="dot" aria-hidden="true"></i></button><button class="ftab" type="button" role="tab" id="ft-1" aria-controls="fp-1" aria-selected="false" tabindex="-1" style="--bc:#ff3b30"><img class="mk mk-lit" src="/assets/img/brand/tally.svg" alt="" width="22" height="22"><img class="mk mk-night" src="/assets/img/brand/dark/tally.svg" alt="" width="22" height="22"><span>Tally</span><i class="dot" aria-hidden="true"></i></button><button class="ftab" type="button" role="tab" id="ft-2" aria-controls="fp-2" aria-selected="false" tabindex="-1" style="--bc:#0a84ff"><img class="mk mk-lit" src="/assets/img/brand/typerace.svg" alt="" width="22" height="22"><img class="mk mk-night" src="/assets/img/brand/dark/typerace.svg" alt="" width="22" height="22"><span>TypeRace</span><i class="dot" aria-hidden="true"></i></button></div>
+<article class="feat" id="fp-0" data-fp style="--bc:#7c5cff" aria-labelledby="f-ai-visibility-checker">
+  <div class="feat__media" data-frames>
+    <div class="tilt" data-tilt>
+      <div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>ai visibility checker</span></div>
+        <div class="browser__shot"><img class="shot is-on" src="/assets/img/ai-visibility-checker/ai-visibility-checker-card-2.webp" alt="The AI Visibility Checker report for chaekim.vercel.app, ready for AI answers" width="960" height="600" loading="eager" decoding="async"><img class="shot" src="/assets/img/ai-visibility-checker/avc-crawlers-2.webp" alt="Which crawlers robots.txt lets in, split into search and live fetching versus model training." width="960" height="600" loading="lazy" decoding="async"><img class="shot" src="/assets/img/ai-visibility-checker/ai-visibility-checker-2.webp" alt="The checker report for chaekim.vercel.app, ready for AI answers, with the fixes worth the most listed first" width="960" height="600" loading="lazy" decoding="async"></div></div>
+      <span class="glare" aria-hidden="true"></span>
+    </div>
+    <div class="thumbs" role="group" aria-label="AI Visibility Checker screenshots"><button type="button" class="thumb is-on" data-frame="0" aria-label="Show screenshot 1 of 3: The AI Visibility Checker report for chaekim.vercel.app, ready for AI answers" aria-pressed="true"><img src="/assets/img/ai-visibility-checker/ai-visibility-checker-card-2.webp" alt="" width="960" height="600" loading="lazy" decoding="async"></button><button type="button" class="thumb" data-frame="1" aria-label="Show screenshot 2 of 3: Which crawlers robots.txt lets in, split into search and live fetching versus model training." aria-pressed="false"><img src="/assets/img/ai-visibility-checker/avc-crawlers-2.webp" alt="" width="960" height="600" loading="lazy" decoding="async"></button><button type="button" class="thumb" data-frame="2" aria-label="Show screenshot 3 of 3: The checker report for chaekim.vercel.app, ready for AI answers, with the fixes worth the most listed first" aria-pressed="false"><img src="/assets/img/ai-visibility-checker/ai-visibility-checker-2.webp" alt="" width="960" height="600" loading="lazy" decoding="async"></button></div>
+  </div>
+  <div class="feat__copy">
+    <p class="pill"><img class="mk mk-lit" src="/assets/img/brand/ai-visibility-checker.svg" alt="" width="20" height="20" loading="lazy"><img class="mk mk-night" src="/assets/img/brand/dark/ai-visibility-checker.svg" alt="" width="20" height="20" loading="lazy"><span>AI Visibility Checker</span><em>2026</em></p>
+    <h3 id="f-ai-visibility-checker">Knowing whether AI assistants can find, read and cite your site.</h3>
+    <p class="meta">Paste a URL: crawler rules, llms.txt, structured data, and text that&#x27;s there without JavaScript.</p>
+    <p class="acts"><a class="btn btn--live" href="https://chaekim-ai-visibility.vercel.app" target="_blank" rel="noopener" aria-label="Try AI Visibility Checker live"><i class="dot" aria-hidden="true"></i>Try it live</a><a class="btn btn--ghost" href="/projects/ai-visibility-checker">Read the case study <span aria-hidden="true">&rarr;</span></a></p>
+  </div>
+</article>
+<article class="feat" id="fp-1" data-fp style="--bc:#ff3b30" aria-labelledby="f-tally">
+  <div class="feat__media" data-frames>
+    <div class="tilt" data-tilt>
+      <div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>tally</span></div>
+        <div class="browser__shot"><img class="shot is-on" src="/assets/img/tally/tally.webp" alt="Tally estimating a week of to-dos: an hour for the case memo, 30 minutes for bug reports, 3h45 in all" width="960" height="600" loading="lazy" decoding="async"><img class="shot" src="/assets/img/tally/tally-day.webp" alt="The Day view: a capacity meter, the Unscheduled tray, and blocks on the calendar." width="960" height="600" loading="lazy" decoding="async"><img class="shot" src="/assets/img/tally/tally-summary.webp" alt="The Summary: what&#x27;s left, the finish-by time, and where the time goes." width="960" height="600" loading="lazy" decoding="async"></div></div>
+      <span class="glare" aria-hidden="true"></span>
+    </div>
+    <div class="thumbs" role="group" aria-label="Tally screenshots"><button type="button" class="thumb is-on" data-frame="0" aria-label="Show screenshot 1 of 3: Tally estimating a week of to-dos: an hour for the case memo, 30 minutes for bug reports, 3h45 in all" aria-pressed="true"><img src="/assets/img/tally/tally.webp" alt="" width="960" height="600" loading="lazy" decoding="async"></button><button type="button" class="thumb" data-frame="1" aria-label="Show screenshot 2 of 3: The Day view: a capacity meter, the Unscheduled tray, and blocks on the calendar." aria-pressed="false"><img src="/assets/img/tally/tally-day.webp" alt="" width="960" height="600" loading="lazy" decoding="async"></button><button type="button" class="thumb" data-frame="2" aria-label="Show screenshot 3 of 3: The Summary: what&#x27;s left, the finish-by time, and where the time goes." aria-pressed="false"><img src="/assets/img/tally/tally-summary.webp" alt="" width="960" height="600" loading="lazy" decoding="async"></button></div>
+  </div>
+  <div class="feat__copy">
+    <p class="pill"><img class="mk mk-lit" src="/assets/img/brand/tally.svg" alt="" width="20" height="20" loading="lazy"><img class="mk mk-night" src="/assets/img/brand/dark/tally.svg" alt="" width="20" height="20" loading="lazy"><span>Tally</span><em>2026</em></p>
+    <h3 id="f-tally">Knowing how long your to-do list will actually take.</h3>
+    <p class="meta">A note-taker where every line gets a Claude time estimate, totaled in a ledger column.</p>
+    <p class="acts"><a class="btn btn--live" href="https://tally-lake-seven.vercel.app" target="_blank" rel="noopener" aria-label="Try Tally live"><i class="dot" aria-hidden="true"></i>Try it live</a><a class="btn btn--ghost" href="/projects/tally">Read the case study <span aria-hidden="true">&rarr;</span></a></p>
+  </div>
+</article>
+<article class="feat" id="fp-2" data-fp style="--bc:#0a84ff" aria-labelledby="f-typerace">
+  <div class="feat__media" data-frames>
+    <div class="tilt" data-tilt>
+      <div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>typerace</span></div>
+        <div class="browser__shot"><img class="shot is-on" src="/assets/img/typerace/typerace-2.webp" alt="A TypeRace race in progress at 70 WPM, ink on near-white, the progress bar halfway across" width="960" height="600" loading="lazy" decoding="async"><img class="shot" src="/assets/img/typerace/typerace-results-2.webp" alt="Results from a test race on my own server: finishing order, WPM, accuracy, and a WPM chart." width="960" height="600" loading="lazy" decoding="async"></div></div>
+      <span class="glare" aria-hidden="true"></span>
+    </div>
+    <div class="thumbs" role="group" aria-label="TypeRace screenshots"><button type="button" class="thumb is-on" data-frame="0" aria-label="Show screenshot 1 of 2: A TypeRace race in progress at 70 WPM, ink on near-white, the progress bar halfway across" aria-pressed="true"><img src="/assets/img/typerace/typerace-2.webp" alt="" width="960" height="600" loading="lazy" decoding="async"></button><button type="button" class="thumb" data-frame="1" aria-label="Show screenshot 2 of 2: Results from a test race on my own server: finishing order, WPM, accuracy, and a WPM chart." aria-pressed="false"><img src="/assets/img/typerace/typerace-results-2.webp" alt="" width="960" height="600" loading="lazy" decoding="async"></button></div>
+  </div>
+  <div class="feat__copy">
+    <p class="pill"><img class="mk mk-lit" src="/assets/img/brand/typerace.svg" alt="" width="20" height="20" loading="lazy"><img class="mk mk-night" src="/assets/img/brand/dark/typerace.svg" alt="" width="20" height="20" loading="lazy"><span>TypeRace</span><em>2026</em></p>
+    <h3 id="f-typerace">Settling who types fastest, with one link and no sign-up.</h3>
+    <p class="meta">Live races for classmates: share a code, type the same story, first to finish wins.</p>
+    <p class="acts"><a class="btn btn--live" href="https://typerace.typerace.workers.dev" target="_blank" rel="noopener" aria-label="Try TypeRace live"><i class="dot" aria-hidden="true"></i>Try it live</a><a class="btn btn--ghost" href="/projects/typerace">Read the case study <span aria-hidden="true">&rarr;</span></a></p>
+  </div>
+</article>
+</div>
+
+    <div class="shelf" id="shelf">
+      <h3 class="sub-h reveal">Browse the rest</h3>
+      <div class="filters reveal" role="group" aria-label="Filter builds">
+        <button class="fbtn" type="button" data-f="all" aria-pressed="true">All</button>
+        <button class="fbtn" type="button" data-f="products" aria-pressed="false">Products</button>
+        <button class="fbtn" type="button" data-f="mods" aria-pressed="false">Claude Code mods</button>
+        <button class="fbtn" type="button" data-f="ai" aria-pressed="false">AI and ML coursework</button>
+        <button class="fbtn" type="button" data-f="design" aria-pressed="false">Design &amp; brand</button>
+        <button class="fbtn" type="button" data-f="archive" aria-pressed="false">Fun &amp; archive</button>
+      </div>
+      <ul class="grid" id="grid">
+<li class="tile" data-cat="products" style="--bc:#0b63b8"><div class="stage"><div class="fillart "><img src="/assets/img/relay/relay-cover.svg" alt="Relay connects a video learning path to practical tasks and a final project" width="1200" height="750" loading="lazy" decoding="async"></div><span class="stage__tint" aria-hidden="true"></span></div><div class="tile__body"><p class="pill pill--s"><img class="mk mk-lit" src="/assets/img/brand/relay.svg" alt="" width="20" height="20" loading="lazy"><img class="mk mk-night" src="/assets/img/brand/dark/relay.svg" alt="" width="20" height="20" loading="lazy"><span>Relay</span><em>interactive concept</em></p><h3 class="t-head"><a class="t-link" href="/projects/relay">Turning a saved playlist into something you can do.</a></h3><p class="meta">A YouTube-to-action learning concept: a plan, practical tasks, and a project to show.</p><a class="live-link" href="/demos/relay/index.html" target="_blank" rel="noopener" aria-label="Try Relay live"><i class="dot" aria-hidden="true"></i>Try it live</a></div></li>
+<li class="tile" data-cat="products" style="--bc:#6f9a77"><div class="stage"><div class="mini"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>timely</span></div><img src="/assets/img/timely/timely-card.webp" alt="Timely with sample notes: six lines, each with a category tag and an estimate, totaling 4h 5m" width="960" height="600" loading="lazy" decoding="async"></div></div><span class="stage__tint" aria-hidden="true"></span></div><div class="tile__body"><p class="pill pill--s"><img class="mk mk-lit" src="/assets/img/brand/timely.svg" alt="" width="20" height="20" loading="lazy"><img class="mk mk-night" src="/assets/img/brand/dark/timely.svg" alt="" width="20" height="20" loading="lazy"><span>Timely</span><em>2026</em></p><h3 class="t-head"><a class="t-link" href="/projects/timely">Turning a messy note into a realistic plan for the day.</a></h3><p class="meta">A note-taker built in Google AI Studio, where Gemini sizes and sorts every line.</p></div></li>
+<li class="tile" data-cat="products" style="--bc:#0b63b8"><div class="stage"><div class="mini"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>palette</span></div><img src="/assets/img/palette-generator/palette.webp" alt="Palette Generator turning &#x27;coffee subscription, warm and earthy&#x27; into five roles of color and a font pairing" width="960" height="600" loading="lazy" decoding="async"></div></div><span class="stage__tint" aria-hidden="true"></span></div><div class="tile__body"><p class="pill pill--s"><img class="mk mk-lit" src="/assets/img/brand/palette-generator-2.svg" alt="" width="20" height="20" loading="lazy"><span>Palette Generator</span><em>2026</em></p><h3 class="t-head"><a class="t-link" href="/projects/palette-generator">Brand colors and fonts for founders who aren&#x27;t designers.</a></h3><p class="meta">Palettes that pass accessibility checks, font pairings, and what real startups use right now.</p><a class="live-link" href="https://color-palette-generator-three-sand.vercel.app" target="_blank" rel="noopener" aria-label="Try Palette Generator live"><i class="dot" aria-hidden="true"></i>Try it live</a></div></li>
+<li class="tile" data-cat="products" style="--bc:#00c7be"><div class="stage"><div class="mini"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>networking tracker</span></div><img src="/assets/img/networking-tracker/networking-tracker.webp" alt="Networking Tracker filtered to high-priority contacts, with demo data" width="960" height="600" loading="lazy" decoding="async"></div></div><span class="stage__tint" aria-hidden="true"></span></div><div class="tile__body"><p class="pill pill--s"><img class="mk mk-lit" src="/assets/img/brand/networking-tracker.svg" alt="" width="20" height="20" loading="lazy"><img class="mk mk-night" src="/assets/img/brand/dark/networking-tracker.svg" alt="" width="20" height="20" loading="lazy"><span>Networking Tracker</span><em>2026</em></p><h3 class="t-head"><a class="t-link" href="/projects/networking-tracker">Keeping track of every coffee chat, without sharing a thing.</a></h3><p class="meta">A contact tracker where Postgres row-level security keeps each person&#x27;s data their own.</p><a class="live-link" href="https://networking-tracker-five-sage.vercel.app" target="_blank" rel="noopener" aria-label="Try Networking Tracker live"><i class="dot" aria-hidden="true"></i>Try it live</a></div></li>
+<li class="tile" data-cat="products" style="--bc:#0b63b8"><div class="stage"><div class="mini"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>webanatomy</span></div><img src="/assets/img/web-anatomy/web-anatomy.webp" alt="The Anatomy of a Website home page: the title, the line SEO and GEO start with the website, and the start of the journey of a request" width="960" height="600" loading="lazy" decoding="async"></div></div><span class="stage__tint" aria-hidden="true"></span></div><div class="tile__body"><p class="pill pill--s"><img class="mk mk-lit" src="/assets/img/brand/web-anatomy-2.svg" alt="" width="20" height="20" loading="lazy"><span>Anatomy of a Website</span><em>2026</em></p><h3 class="t-head"><a class="t-link" href="/projects/web-anatomy">Showing how a website works, from the DNS lookup to the AI answer.</a></h3><p class="meta">An illustrated encyclopedia on one idea: SEO and GEO start with the website.</p><a class="live-link" href="https://webanatomy.vercel.app" target="_blank" rel="noopener" aria-label="Try Anatomy of a Website live"><i class="dot" aria-hidden="true"></i>Try it live</a></div></li>
+<li class="tile" data-cat="products" style="--bc:#ff2d92"><div class="stage"><div class="fillart "><img src="/assets/img/voiceprompter/voiceprompter.webp" alt="VoicePrompter listening at word 108 of 139, with the prompter highlighting the spoken word" width="800" height="600" loading="lazy" decoding="async"></div><span class="stage__tint" aria-hidden="true"></span></div><div class="tile__body"><p class="pill pill--s"><img class="mk mk-lit" src="/assets/img/brand/voiceprompter.svg" alt="" width="20" height="20" loading="lazy"><img class="mk mk-night" src="/assets/img/brand/dark/voiceprompter.svg" alt="" width="20" height="20" loading="lazy"><span>VoicePrompter</span><em>macOS</em></p><h3 class="t-head"><a class="t-link" href="/projects/voiceprompter">Reading your notes on a call without anyone seeing them.</a></h3><p class="meta">A teleprompter that scrolls as you speak and stays out of Zoom, Meet, and screenshots.</p></div></li>
+<li class="tile" data-cat="products" style="--bc:#f7b200"><div class="stage"><div class="fillart "><img src="/assets/img/parallel-prospect-brief/parallel-prospect-brief-card.webp" alt="An illustrative prospect brief for an invented company: what they do, products, agent signal, and best-fit API, with sources" width="800" height="600" loading="lazy" decoding="async"></div><span class="stage__tint" aria-hidden="true"></span></div><div class="tile__body"><p class="pill pill--s"><img class="mk mk-lit" src="/assets/img/brand/parallel-prospect-brief.svg" alt="" width="20" height="20" loading="lazy"><img class="mk mk-night" src="/assets/img/brand/dark/parallel-prospect-brief.svg" alt="" width="20" height="20" loading="lazy"><span>Parallel Prospect Brief</span><em>CLI</em></p><h3 class="t-head"><a class="t-link" href="/projects/parallel-prospect-brief">Walking into a first sales call with every claim sourced.</a></h3><p class="meta">A CLI that turns a company name into a cited one-page sales brief, built on Parallel&#x27;s Task API.</p></div></li>
+<li class="tile" data-cat="products" style="--bc:#ac8e68"><div class="stage"><div class="fillart "><img src="/assets/img/product-blueprint/product-blueprint-card.webp" alt="The build loop: six stages from Discover to Ship, each with the gate it has to pass" width="800" height="600" loading="lazy" decoding="async"></div><span class="stage__tint" aria-hidden="true"></span></div><div class="tile__body"><p class="pill pill--s"><img class="mk mk-lit" src="/assets/img/brand/product-blueprint.svg" alt="" width="20" height="20" loading="lazy"><img class="mk mk-night" src="/assets/img/brand/dark/product-blueprint.svg" alt="" width="20" height="20" loading="lazy"><span>Product Blueprint</span><em>playbook</em></p><h3 class="t-head"><a class="t-link" href="/projects/product-blueprint">One way to build every product, with a test at each step.</a></h3><p class="meta">A six-stage build loop, a design system, and 22 prompts that each come with their own evals.</p></div></li>
+<li class="tile" data-cat="mods" style="--bc:#32ade6"><div class="stage"><div class="fillart fillart--term"><div class="term" aria-hidden="true"><p>SmartModel rates this medium-effort.</p><p>Which model should run it?</p><ul><li class="on">Sonnet (recommended)</li><li>Haiku</li><li>Opus</li><li>Fable</li></ul></div></div><span class="stage__tint" aria-hidden="true"></span></div><div class="tile__body"><p class="pill pill--s"><img class="mk mk-lit" src="/assets/img/brand/smartmodel.svg" alt="" width="20" height="20" loading="lazy"><img class="mk mk-night" src="/assets/img/brand/dark/smartmodel.svg" alt="" width="20" height="20" loading="lazy"><span>SmartModel</span><em>Claude Code</em></p><h3 class="t-head"><a class="t-link" href="/projects/smartmodel">Matching each prompt to the right model, so easy work costs less.</a></h3><p class="meta">A hook that scores how hard a prompt is and recommends Haiku, Sonnet, Opus, or Fable. Runs in ask, auto, or block mode.</p></div></li>
+<li class="tile" data-cat="mods" style="--bc:#0b63b8"><div class="stage"><div class="fillart "><img src="/assets/img/token-fuel/token-fuel.webp" alt="Token-Fuel in the menu bar at 67%, and its floating window: Good, 668.5k of 1M left, about 46 turns" width="800" height="600" loading="lazy" decoding="async"></div><span class="stage__tint" aria-hidden="true"></span></div><div class="tile__body"><p class="pill pill--s"><img class="mk mk-lit" src="/assets/img/brand/token-fuel.svg" alt="" width="20" height="20" loading="lazy"><img class="mk mk-night" src="/assets/img/brand/dark/token-fuel.svg" alt="" width="20" height="20" loading="lazy"><span>Token-Fuel</span><em>macOS</em></p><h3 class="t-head"><a class="t-link" href="/projects/token-fuel">Seeing how much context is left before a session runs out.</a></h3><p class="meta">A floating gauge on the Claude window and a CLI status line for Claude Code and Codex.</p></div></li>
+<li class="tile" data-cat="mods" style="--bc:#99cd0b"><div class="stage"><div class="fillart "><img src="/assets/img/code-improver/code-improver.webp" alt="Code Improver reviewing build-cases.py: 14 findings ordered by severity, starting with a template page that was publicly served" width="800" height="600" loading="lazy" decoding="async"></div><span class="stage__tint" aria-hidden="true"></span></div><div class="tile__body"><p class="pill pill--s"><img class="mk mk-lit" src="/assets/img/brand/code-improver.svg" alt="" width="20" height="20" loading="lazy"><img class="mk mk-night" src="/assets/img/brand/dark/code-improver.svg" alt="" width="20" height="20" loading="lazy"><span>Code Improver</span><em>subagent</em></p><h3 class="t-head"><a class="t-link" href="/projects/code-improver">A second reviewer that reads every file I touch.</a></h3><p class="meta">A custom Claude Code subagent that suggests readability, performance, and best-practice fixes.</p></div></li>
+<li class="tile" data-cat="mods" style="--bc:#3d5afe"><div class="stage"><div class="fillart "><img src="/assets/img/task-progress/task-progress.webp" alt="The /task-progress pane at 3 of 6: three steps done, one in progress, two pending" width="800" height="600" loading="lazy" decoding="async"></div><span class="stage__tint" aria-hidden="true"></span></div><div class="tile__body"><p class="pill pill--s"><img class="mk mk-lit" src="/assets/img/brand/task-progress.svg" alt="" width="20" height="20" loading="lazy"><img class="mk mk-night" src="/assets/img/brand/dark/task-progress.svg" alt="" width="20" height="20" loading="lazy"><span>task-progress</span><em>Claude Code</em></p><h3 class="t-head"><a class="t-link" href="/projects/task-progress">Seeing how far along a task is, right above the prompt.</a></h3><p class="meta">A mod that turns Claude&#x27;s own task checklist into a calm progress band, with time left, a stuck warning and a context bar.</p></div></li>
+<li class="tile" data-cat="ai" style="--bc:#ff6a00"><div class="stage"><div class="mini"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>spotify-review-triage</span></div><img src="/assets/img/spotify-review-triage/spotify-review-triage-card.webp" alt="The Spotify Review Triage dashboard: 660,622 reviews, $4.36 spend, and the recommendation" width="960" height="600" loading="lazy" decoding="async"></div></div><span class="stage__tint" aria-hidden="true"></span></div><div class="tile__body"><p class="pill pill--s"><img class="mk mk-lit" src="/assets/img/brand/spotify-review-triage.svg" alt="" width="20" height="20" loading="lazy"><img class="mk mk-night" src="/assets/img/brand/dark/spotify-review-triage.svg" alt="" width="20" height="20" loading="lazy"><span>Spotify Review Triage</span><em>2026</em></p><h3 class="t-head"><a class="t-link" href="/projects/spotify-review-triage">Turning a flood of app reviews into one clear product priority.</a></h3><p class="meta">A multi-agent LLM pipeline over 660,622 reviews, with an independent checker and a live dashboard.</p><a class="live-link" href="https://spotify-review-triage.vercel.app" target="_blank" rel="noopener" aria-label="Try Spotify Review Triage live"><i class="dot" aria-hidden="true"></i>Try it live</a></div></li>
+<li class="tile" data-cat="ai" style="--bc:#b03a64"><div class="stage"><div class="fillart "><img src="/assets/img/review-labeler/review-labeler-card.webp" alt="The labeling sheet: one review labeled billing, praise, severity 1, with the guide&#x27;s rules beside it" width="800" height="600" loading="lazy" decoding="async"></div><span class="stage__tint" aria-hidden="true"></span></div><div class="tile__body"><p class="pill pill--s"><img class="mk mk-lit" src="/assets/img/brand/review-labeler.svg" alt="" width="20" height="20" loading="lazy"><img class="mk mk-night" src="/assets/img/brand/dark/review-labeler.svg" alt="" width="20" height="20" loading="lazy"><span>Review Labeler</span><em>in progress</em></p><h3 class="t-head"><a class="t-link" href="/projects/review-labeler">Finding out when a small fine-tuned model is good enough.</a></h3><p class="meta">Testing fine-tuned vs. prompted models on app reviews. So far: a rewritten label guide and a labeling sheet.</p></div></li>
+<li class="tile" data-cat="ai" style="--bc:#bf5af2"><div class="stage"><div class="fillart "><img src="/assets/img/personal-wiki/personal-wiki.webp" alt="Obsidian graph of the wiki&#x27;s linked notes" width="900" height="646" loading="lazy" decoding="async"></div><span class="stage__tint" aria-hidden="true"></span></div><div class="tile__body"><p class="pill pill--s"><img class="mk mk-lit" src="/assets/img/brand/personal-wiki.svg" alt="" width="20" height="20" loading="lazy"><img class="mk mk-night" src="/assets/img/brand/dark/personal-wiki.svg" alt="" width="20" height="20" loading="lazy"><span>Personal Wiki</span><em>2026</em></p><h3 class="t-head"><a class="t-link" href="/projects/personal-wiki">Asking my own notes questions, with no internet.</a></h3><p class="meta">Local Gemma via Ollama, plus hybrid retrieval over a course wiki. Runs fully offline.</p></div></li>
+<li class="tile" data-cat="ai" style="--bc:#b5ad00"><div class="stage"><div class="fillart fillart--contain fillart--pixel"><img src="/assets/img/pacman-dqn/pacman-dqn.gif" alt="The trained agent playing Ms. Pac-Man" width="160" height="210" loading="lazy" decoding="async"></div><span class="stage__tint" aria-hidden="true"></span></div><div class="tile__body"><p class="pill pill--s"><img class="mk mk-lit" src="/assets/img/brand/pacman-dqn-2.svg" alt="" width="20" height="20" loading="lazy"><span>Pac-Man DQN</span><em>2026</em></p><h3 class="t-head"><a class="t-link" href="/projects/pacman-dqn">Teaching an agent to play Ms. Pac-Man by trial and error.</a></h3><p class="meta">A DQN agent that raised its mean evaluation score from 492 to 680.</p></div></li>
+<li class="tile" data-cat="ai" style="--bc:#d62fd0"><div class="stage"><div class="fillart fillart--top"><img src="/assets/img/custom-llm/custom-llm.webp" alt="Terminal chat with the tiny model and its odd replies" width="768" height="474" loading="lazy" decoding="async"></div><span class="stage__tint" aria-hidden="true"></span></div><div class="tile__body"><p class="pill pill--s"><img class="mk mk-lit" src="/assets/img/brand/custom-llm-2.svg" alt="" width="20" height="20" loading="lazy"><span>Custom LLM</span><em>2026</em></p><h3 class="t-head"><a class="t-link" href="/projects/custom-llm">Seeing how language models learn by training a tiny one.</a></h3><p class="meta">A nanoGPT fork trained on a laptop CPU with my own teaching corpus, scored on 48 test prompts.</p></div></li>
+<li class="tile" data-cat="design" style="--bc:#0b63b8"><div class="stage"><div class="mini"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>siri, reimagined</span></div><img src="/assets/img/siri-reimagined/siri-reimagined-card.webp" alt="Siri, Reimagined: the headline Every app. Made by you., above three iPhones with Liquid Glass screens" width="960" height="600" loading="lazy" decoding="async"></div></div><span class="stage__tint" aria-hidden="true"></span></div><div class="tile__body"><p class="pill pill--s"><span>Siri, Reimagined</span><em>concept</em></p><h3 class="t-head"><a class="t-link" href="/projects/siri-reimagined">A design concept: an iPhone that ships with five apps, and a Siri that builds the rest.</a></h3></div></li>
+<li class="tile" data-cat="design" style="--bc:#0b63b8"><div class="stage"><div class="mini"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>decagon, repositioned</span></div><img src="/assets/img/decagon-repositioned/decagon-repositioned-card.webp" alt="Decagon, Repositioned: the headline Don&#x27;t close the ticket. Make the decision., above three phone mockups of an AI agent resolving a card dispute" width="960" height="600" loading="lazy" decoding="async"></div></div><span class="stage__tint" aria-hidden="true"></span></div><div class="tile__body"><p class="pill pill--s"><span>Decagon, Repositioned</span><em>concept</em></p><h3 class="t-head"><a class="t-link" href="/projects/decagon-repositioned">A strategy concept: Decagon stops answering tickets and starts making governed customer decisions.</a></h3></div></li>
+<li class="tile" data-cat="design" style="--bc:#0b63b8"><div class="stage"><div class="mini"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>chaekim.vercel.app</span></div><img src="/assets/img/builds/portfolio-card.webp" alt="This site&#x27;s homepage" width="960" height="600" loading="lazy" decoding="async"></div></div><span class="stage__tint" aria-hidden="true"></span></div><div class="tile__body"><p class="pill pill--s"><span>This portfolio</span><em>2026</em></p><h3 class="t-head"><a class="t-link" href="/projects/portfolio">How this site got built: the decisions, the backlog, and what&#x27;s next.</a></h3></div></li>
+<li class="tile" data-cat="design" style="--bc:#0b63b8"><div class="stage"><div class="swatches" aria-hidden="true"><span class="brushmini"><svg class="brush brush--mini" viewBox="11 0 86 44" role="img" aria-label="김채운, Chae Kim's name in Korean calligraphy"><defs><mask id="pb0" maskUnits="userSpaceOnUse" x="0" y="0" width="104" height="44"><rect class="wipe" style="--i:0" x="5" y="0" width="32" height="44" fill="#fff"/></mask><mask id="pb1" maskUnits="userSpaceOnUse" x="0" y="0" width="104" height="44"><rect class="wipe" style="--i:1" x="36" y="0" width="32" height="44" fill="#fff"/></mask><mask id="pb2" maskUnits="userSpaceOnUse" x="0" y="0" width="104" height="44"><rect class="wipe" style="--i:2" x="67" y="0" width="32" height="44" fill="#fff"/></mask></defs><g mask="url(#pb0)"><path class="glyph" fill="currentColor" transform="translate(21.0 22.8) rotate(-2.0) scale(0.0310 -0.0310) translate(-274.0 -180.5)" d="M263 -191H261Q258 -191 254 -194Q251 -198 248 -198Q243 -198 235 -194Q227 -189 226 -183Q223 -186 220 -186H218Q218 -185 214 -184Q210 -182 206 -180Q201 -179 198 -178Q194 -176 194 -175Q196 -171 202 -165L200 -160L202 -154V-153Q202 -150 199 -146Q196 -141 193 -136Q190 -131 187 -126Q184 -122 184 -119Q184 -113 188 -113Q189 -113 189 -114L194 -117Q192 -115 193 -112Q194 -110 189 -104H192Q201 -104 202 -92Q202 -81 202 -67Q202 -60 208 -40Q215 -21 215 -6V0H210V1Q210 2 209 2Q208 3 207 5Q207 7 210 13Q213 19 213 21Q212 25 212 30Q212 35 214 38Q215 41 219 48Q223 55 230 68Q236 81 245 106H242Q241 107 241 107Q241 109 243 113Q245 117 250 127Q251 129 252 136Q254 142 256 149Q259 156 262 162Q265 168 269 170L274 167Q273 167 278 168Q282 168 287 170Q298 160 306 155Q314 150 320 146Q325 143 330 138Q334 134 338 125Q336 123 334 116Q333 110 331 103L327 85H329Q332 85 337 86Q342 87 345 87Q364 94 377 98Q390 101 400 104Q409 106 417 110Q425 114 433 122Q436 121 440 121Q445 121 446 123Q448 125 451 128Q454 131 460 133Q467 135 482 135Q484 135 490 134Q496 133 503 130Q510 126 517 120Q524 115 529 106Q526 105 524 98Q521 90 518 81Q516 72 514 63Q513 54 513 50Q514 46 514 39Q514 26 510 13Q505 0 500 -14Q495 -27 490 -40Q486 -52 486 -64Q486 -80 494 -85L491 -88Q485 -90 478 -98Q472 -106 469 -106H468Q466 -106 458 -106Q449 -107 438 -109Q428 -111 417 -114Q406 -117 399 -122Q376 -122 364 -128Q351 -133 343 -133Q342 -132 340 -132Q333 -132 322 -142Q310 -152 303 -152Q303 -152 298 -156Q292 -160 286 -166Q280 -173 274 -184Q269 -194 269 -207H266Q263 -204 263 -200Q263 -196 263 -191ZM131 235V241Q133 245 136 254Q138 262 140 270Q142 279 143 286Q144 293 144 295Q144 297 148 306Q152 315 156 326Q161 336 165 345Q169 354 169 356Q169 361 172 367L175 374V398Q169 398 154 396Q139 393 123 390Q107 387 94 384Q81 382 78 382Q77 381 74 381Q66 381 58 389Q51 397 43 402L31 408L25 414Q25 416 24 419Q23 422 22 425L19 432Q19 435 25 440L31 444Q35 444 45 445Q55 446 66 448Q76 449 85 450Q94 452 96 452Q100 452 116 455Q132 458 150 461Q168 464 184 467Q200 470 205 470Q210 470 216 472Q221 473 225 473Q230 473 248 468Q266 464 283 464L290 444Q288 439 286 430Q283 421 280 412Q278 402 276 393Q273 384 271 380L265 368V362Q260 355 252 336Q244 317 236 296Q228 274 220 255Q213 236 209 229L206 222Q203 216 202 210Q202 205 200 197L197 187V163L179 145H173L167 157L155 145L149 149L143 145L131 157L125 169V223ZM384 172Q384 174 386 178Q387 181 387 183Q385 186 384 191Q384 196 384 200Q383 205 381 208Q379 212 373 212Q377 217 378 222Q379 228 381 233Q384 234 386 246Q388 257 390 272Q392 288 396 304Q399 321 405 332Q405 343 403 345Q401 347 401 349Q401 350 402 351H405Q406 361 408 367Q409 373 410 378Q411 384 412 390Q413 396 413 406Q413 415 416 425Q418 435 422 446Q425 456 428 466Q430 475 430 481Q430 483 430 484Q429 484 429 486Q429 486 432 492Q434 499 437 508Q440 516 442 524Q445 532 445 534Q445 546 446 556Q447 566 458 568Q459 567 465 566Q471 566 471 563H519Q528 558 528 552Q528 547 527 538Q526 530 524 520Q523 510 520 501Q517 492 514 486H516Q509 465 505 454Q501 443 500 438Q498 434 497 433Q496 432 495 430V409Q490 409 490 406Q489 403 487 401L490 398Q486 392 484 388Q482 384 479 382Q485 381 487 377Q486 371 484 369Q481 367 481 364Q481 362 482 361H487Q483 359 482 356Q482 353 482 351L478 297Q478 296 476 288Q475 281 473 270Q471 260 470 248Q468 237 468 230Q468 223 469 222H472Q472 209 464 204L449 158Q441 160 438 161Q435 162 433 162Q431 162 429 161V169Q424 167 424 162Q423 158 421 153Q419 156 417 156Q416 156 416 156Q416 155 415 155Q413 155 406 164Q398 172 384 172ZM303 -61Q299 -66 293 -73Q287 -80 287 -90H293Q313 -90 328 -81Q344 -72 364 -72Q367 -71 376 -70Q385 -68 394 -66Q404 -65 413 -64Q422 -62 425 -61L428 -59Q429 -59 429 -58Q426 -58 424 -54Q422 -51 421 -46Q420 -40 420 -29L422 -27Q422 -25 426 -19Q430 -13 430 -11H429V-10Q429 -8 432 0Q435 8 439 18Q443 28 446 39Q449 50 449 58Q449 64 446 66Q432 60 415 52Q398 45 382 36Q365 27 352 18Q340 9 335 0V-13Q333 -13 327 -12Q321 -11 319 -11Q316 -13 316 -18Q315 -22 314 -27Q314 -32 314 -36Q313 -40 311 -40L300 -37Q294 -42 294 -50Q294 -52 295 -53L300 -48V-50Q300 -55 302 -57Q303 -59 303 -61ZM161 145Q166 145 166 139Q166 133 161 133Q156 133 156 139Q156 145 161 145ZM516 499Q514 499 514 496Q514 494 516 494Q518 494 518 496Q518 499 516 499ZM442 166 443 165Q445 165 447 169H442ZM473 297Q473 298 472 298Q469 298 469 294H470Q473 294 473 297ZM410 393Q410 390 408 390Q407 390 407 391Q408 391 408 392Q408 394 409 394ZM402 337H400L402 340Z"/></g><g mask="url(#pb1)"><path class="glyph" fill="currentColor" transform="translate(52.0 21.2) rotate(1.2) scale(0.0387 -0.0387) translate(-327.5 -202.0)" d="M509 -89 503 -86Q501 -85 498 -84Q496 -83 494 -83L484 -78L479 -68V-58L473 -53L487 -6V8Q487 9 488 18Q490 26 492 36Q494 46 496 54Q497 63 497 65L501 54V80L492 74L497 90V100L507 115V125L497 119Q497 121 498 129Q499 137 500 146Q502 154 503 162Q504 169 504 171L508 212L493 210Q488 209 484 208Q481 208 479 208H443V202Q443 196 441 184Q439 171 437 158Q435 145 433 136Q431 126 431 125V115L427 110L431 100V34L427 30L422 19V9L416 4Q412 4 406 9Q400 14 396 14L391 19H381L371 30H356L345 39V95L351 115V156Q351 170 354 198Q357 226 371 281Q371 297 375 312Q379 328 384 344Q388 361 392 379Q396 397 396 418V428Q396 452 400 465Q405 478 411 484Q417 491 424 492Q431 493 436 493H441Q453 485 460 484Q466 483 471 478L476 473L478 462Q479 457 480 453Q481 449 481 447V437L478 423Q476 417 475 412Q474 406 472 402L467 387L460 341Q460 338 459 332Q458 325 457 318Q456 310 455 304Q454 298 454 296Q458 296 467 295Q476 294 486 294Q495 293 504 292Q514 291 520 291L525 296L530 326Q530 328 532 338Q535 348 538 359Q541 370 544 380Q546 390 546 392L552 407Q552 408 555 419Q558 430 562 443Q566 456 569 467Q572 478 572 480Q572 481 574 489L582 500L590 502Q593 503 596 504Q600 505 602 505H607L617 500L628 489Q640 486 640 474Q640 472 638 464L632 418Q632 407 630 394Q627 380 624 366Q622 353 620 340Q617 326 617 316Q617 302 610 284Q602 266 602 246V201Q602 199 601 194Q600 188 600 181Q599 174 598 168Q597 162 597 160V150L592 119Q592 116 590 102Q587 89 587 85L582 -6Q582 -10 580 -22Q578 -35 576 -49Q574 -63 572 -75Q570 -87 570 -89L558 -103Q553 -108 549 -108H539L524 -97L519 -83ZM61 8Q61 11 63 16Q65 22 65 27L78 55Q81 75 85 86Q89 97 94 103Q98 109 101 112Q104 115 104 120Q104 125 112 133Q120 141 120 145Q120 149 127 160Q134 171 134 175H114Q97 175 83 168Q69 160 55 160L49 163Q42 168 41 170L15 195V199L21 209L31 215H41Q42 215 52 217L60 219L76 233Q83 238 90 244Q96 250 100 254L110 264Q110 267 114 272Q117 276 120 278V288Q123 315 127 338Q131 361 134 387L140 413Q140 437 147 460Q154 483 154 502L169 512L193 506Q198 506 209 500Q220 495 223 492L229 486Q231 484 233 481Q235 478 237 475L243 467L241 461Q239 453 239 452L233 442Q231 440 230 436Q228 433 226 428L223 417V407Q223 405 222 399Q222 393 221 386Q220 378 220 372Q219 365 219 363V353Q219 351 218 344Q216 338 214 330Q212 323 210 316Q209 310 209 308V274Q209 270 206 264Q203 258 203 254L219 249Q220 249 226 248Q232 246 238 244Q245 242 250 240Q256 239 258 239L263 234V229L250 196L237 186L228 175Q228 172 220 168Q213 164 213 160Q220 155 225 150Q230 144 236 138Q241 132 248 126Q255 121 266 116L298 99Q300 97 302 94Q305 90 309 87L318 79V69L312 64L302 44H278Q274 44 264 50Q253 55 245 58L209 86L179 106H169L159 96V86L151 73Q148 68 145 63Q142 58 140 56L112 10L107 -4L102 -10H92L87 -4H77ZM126 269H135L142 288ZM494 9V-2L500 -9L499 4ZM339 74Q344 74 344 72Q344 70 339 70Q335 70 335 72Q335 74 339 74Z"/></g><g mask="url(#pb2)"><path class="glyph" fill="currentColor" transform="translate(83.0 22.4) rotate(-0.6) scale(0.0323 -0.0323) translate(-268.5 -209.0)" d="M292 -62Q286 -62 281 -64Q276 -66 269 -67L259 -48L250 -53L245 -48Q241 -48 229 -43Q217 -38 217 -34L214 -21Q213 -16 212 -10Q212 -5 212 -1V27Q212 31 214 39Q217 47 217 51V64L222 74V83L212 79Q216 82 221 88Q226 94 226 97L228 112Q229 118 230 128Q232 137 235 139L231 144V149L236 163V172L240 181V200L226 195H212L198 186H184L174 181Q171 181 160 178Q150 176 146 176L118 172Q116 172 111 173Q106 174 104 176L99 181L89 186L85 190L75 195L61 214L42 223L39 231Q37 241 37 242V247L42 252L50 254Q60 256 61 256H66Q70 256 76 254Q81 252 85 252L99 247H127L137 249Q141 250 145 251Q149 252 151 252L170 256Q177 256 186 258Q195 260 203 262Q211 264 217 266Q223 268 223 268L231 270L250 280Q259 280 272 285Q284 290 298 296Q311 302 326 307Q340 312 354 313L378 314L392 327Q395 327 406 332Q416 336 420 336L439 332H453L462 327L467 322H472L481 318Q483 316 486 314Q488 313 490 311L495 308V294L500 289V285L495 280L481 275Q477 275 465 268Q453 261 448 261H443L434 256Q421 248 406 238Q390 229 378 222Q366 215 359 211Q352 207 355 209L340 195V176Q340 173 338 160Q335 148 335 144Q335 140 338 137Q340 134 340 130Q340 127 338 119Q335 111 335 107V83L332 73Q331 68 330 65Q330 62 330 60L325 56L330 37H325V9L321 -1V-20L316 -34Q316 -35 318 -43L321 -48V-53L297 -62ZM121 438Q121 441 122 448Q123 454 124 462Q126 470 127 476Q128 483 128 486Q128 488 130 496Q132 504 134 513Q137 522 139 530Q141 537 141 540Q141 554 149 568Q157 581 168 581Q173 581 185 578Q197 574 202 574L216 567L243 533L251 529Q257 526 263 526H270Q279 526 292 522Q305 519 310 516L318 513Q319 513 328 508Q337 504 346 498Q356 491 364 484Q372 477 372 472L375 461Q379 452 379 445V438Q373 432 362 418Q351 403 345 397L338 384Q338 381 335 378Q332 374 328 371L318 363Q313 358 301 350Q289 343 284 343L270 339Q264 337 258 336Q252 336 250 336H223Q210 336 195 340Q180 345 173 350L162 357L128 390L121 404ZM105 -59Q105 -37 114 -20Q124 -2 124 11Q124 17 133 26L142 30H166Q172 23 181 12Q190 0 190 -7V-26Q190 -27 188 -34Q186 -41 183 -50Q180 -60 178 -70Q176 -79 176 -83Q176 -85 175 -90Q174 -94 173 -99L171 -111H248L306 -101L355 -111Q359 -111 366 -116Q374 -121 374 -125V-144L364 -147Q347 -157 322 -160Q298 -163 275 -163H194Q168 -163 156 -156Q143 -149 138 -149Q132 -149 124 -144L114 -139L105 -130L100 -116V-78ZM216 479Q209 472 210 467Q211 462 205 452L202 445V397H216Q220 397 226 400Q233 404 239 408Q245 412 249 415Q253 418 253 418Q257 421 260 424Q263 428 263 431V438L247 458Q245 462 242 465Q239 468 236 472ZM240 83Q236 83 236 78Q236 76 238 72Q236 70 236 69Q236 64 240 64Q244 64 244 70Q244 72 242 74Q244 74 244 77Q244 83 240 83ZM236 -10V26Q235 21 233 16Q231 11 231 9V-1ZM236 60H235Q232 60 232 50Q232 40 235 40Q237 40 238 44Q239 48 239 51Q239 57 236 60ZM239 102V90L245 96V110ZM250 135Q246 135 246 130Q246 126 250 126Q254 126 254 130Q254 135 250 135ZM255 158Q251 158 251 153Q251 149 255 149Q258 149 258 153Q258 158 255 158ZM245 60Q241 60 241 58Q241 56 245 56Q249 56 249 58Q249 60 245 60Z"/></g></svg></span><span class="sw5"><i style="background:#C8372D"></i><i style="background:#FF5A1F"></i><i style="background:#B07A4F"></i><i style="background:#0066CC"></i><i style="background:#123B2E"></i></span></div><span class="stage__tint" aria-hidden="true"></span></div><div class="tile__body"><p class="pill pill--s"><span>Personal brand</span><em>2026</em></p><h3 class="t-head"><a class="t-link" href="/projects/personal-brand">How I chose a brand: five directions, two built finalists, and why Stamp won.</a></h3></div></li>
+<li class="tile" data-cat="design" style="--bc:#0b63b8"><div class="stage"><div class="mosaic" aria-hidden="true"><img src="/assets/img/brand/tally.svg" alt="" width="52" height="52" loading="lazy"><img src="/assets/img/brand/token-fuel.svg" alt="" width="52" height="52" loading="lazy"><img src="/assets/img/brand/typerace.svg" alt="" width="52" height="52" loading="lazy"><img src="/assets/img/brand/smartmodel.svg" alt="" width="52" height="52" loading="lazy"><img src="/assets/img/brand/spotify-review-triage.svg" alt="" width="52" height="52" loading="lazy"><img src="/assets/img/brand/ai-visibility-checker.svg" alt="" width="52" height="52" loading="lazy"></div><span class="stage__tint" aria-hidden="true"></span></div><div class="tile__body"><p class="pill pill--s"><span>Build marks</span><em>2026</em></p><h3 class="t-head"><a class="t-link" href="/projects/build-marks">Giving sixteen builds one family of logos.</a></h3></div></li>
+<li class="tile" data-cat="design" style="--bc:#0b63b8"><div class="stage"><div class="mosaic" aria-hidden="true"><img src="/assets/img/brand/ai-visibility-checker.svg" alt="" width="52" height="52" loading="lazy"><img src="/assets/img/brand/tally.svg" alt="" width="52" height="52" loading="lazy"><img src="/assets/img/brand/token-fuel.svg" alt="" width="52" height="52" loading="lazy"><img src="/assets/img/brand/personal-wiki.svg" alt="" width="52" height="52" loading="lazy"><img src="/assets/img/brand/voiceprompter.svg" alt="" width="52" height="52" loading="lazy"><img src="/assets/img/brand/typerace.svg" alt="" width="52" height="52" loading="lazy"></div><span class="stage__tint" aria-hidden="true"></span></div><div class="tile__body"><p class="pill pill--s"><span>Brand</span><em>2026</em></p><h3 class="t-head"><a class="t-link" href="/brand">The two-minute brand book: one tile, one recipe, one endorsement line.</a></h3></div></li>
+<li class="tile" data-cat="archive" style="--bc:#0b63b8"><div class="stage"><div class="fillart fillart--mark"><img src="/assets/img/brand/arcade-2.svg" alt="" width="52" height="52" loading="lazy" decoding="async"></div><span class="stage__tint" aria-hidden="true"></span></div><div class="tile__body"><p class="pill pill--s"><img class="mk mk-lit" src="/assets/img/brand/arcade-2.svg" alt="" width="20" height="20" loading="lazy"><span>Arcade</span><em>play</em></p><h3 class="t-head"><a class="t-link" href="/arcade">Snake and Galaga, rebuilt from memory, plus a generative lo-fi radio.</a></h3></div></li>
+<li class="tile" data-cat="archive" style="--bc:#0b63b8"><div class="stage"><div class="fillart fillart--pixel"><img src="/assets/img/home-gif/home.gif" alt="Pixel-art house at dusk" width="1067" height="600" loading="lazy" decoding="async"></div><span class="stage__tint" aria-hidden="true"></span></div><div class="tile__body"><p class="pill pill--s"><span>Home</span><em>2020</em></p><h3 class="t-head"><a class="t-link" href="/projects/home-gif">A pixel-art GIF, made during COVID.</a></h3></div></li>
+<li class="tile" data-cat="archive" style="--bc:#0b63b8"><div class="stage"><div class="fillart "><img src="/assets/img/yin-yang/yin-yang.gif" alt="Animated yin yang over a framed painting" width="1067" height="600" loading="lazy" decoding="async"></div><span class="stage__tint" aria-hidden="true"></span></div><div class="tile__body"><p class="pill pill--s"><span>Yin Yang</span><em>2020</em></p><h3 class="t-head"><a class="t-link" href="/projects/yin-yang">An animated illustration.</a></h3></div></li>
+<li class="tile" data-cat="archive" style="--bc:#0b63b8"><div class="stage"><div class="fillart fillart--contain"><img src="/assets/img/lime-poster/fake-news.webp" alt="A phone showing a news app, held over a scooter" width="489" height="601" loading="lazy" decoding="async"></div><span class="stage__tint" aria-hidden="true"></span></div><div class="tile__body"><p class="pill pill--s"><span>Poster</span><em>2020</em></p><h3 class="t-head"><a class="t-link" href="/assets/pdf/I308-Lime-Scooter-Poster.pdf" target=_blank rel=noopener>A media literacy poster.</a></h3></div></li>
+<li class="tile" data-cat="archive" style="--bc:#4a6fd8"><div class="stage"><div class="glass"><b>NFC</b><span>gym sets, synced</span></div><span class="stage__tint" aria-hidden="true"></span></div><div class="tile__body"><p class="pill pill--s"><span>WMCS</span><em>2019</em></p><h3 class="t-head"><a class="t-link" href="/assets/pdf/WMCS-Weight-Machine-Cross-Sync.pdf" target=_blank rel=noopener>Weight Machine Cross Sync: log gym sets over NFC.</a></h3></div></li>
+<li class="tile" data-cat="archive" style="--bc:#3aa6a0"><div class="stage"><div class="glass"><b>dB</b><span>auto volume</span></div><span class="stage__tint" aria-hidden="true"></span></div><div class="tile__body"><p class="pill pill--s"><span>AAV</span><em>2019</em></p><h3 class="t-head"><a class="t-link" href="/assets/pdf/AAV-Auto-Adjusting-Volume.pdf" target=_blank rel=noopener>Auto-Adjusting Volume: noise-aware volume.</a></h3></div></li>
+      </ul>
+      <p class="more" id="morewrap" hidden><button class="btn btn--ghost" id="more" type="button" aria-expanded="false" aria-controls="grid"><span id="moren">Show all</span> <span id="morea" aria-hidden="true">&darr;</span></button></p>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="work" aria-labelledby="work-h" data-spy>
+    <div class="sec__h reveal"><h2 id="work-h">Work</h2><p>Startups, consulting and operations.</p></div>
+    <div class="work-grid">
+      <a class="wcard wcard--wide reveal" href="/projects/lucent" style="--bc:#0b63b8">
+  <div class="wcard__art"><div class="mini mini--big"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>trylucent.ai</span></div><img src="/assets/img/thumbs/lucent-wide.webp" alt="Lucent&#x27;s homepage: The AI Search Console" width="1440" height="810" loading="lazy" decoding="async"></div></div></div>
+  <div class="wcard__copy"><p class="pill"><img class="mk" src="/assets/img/brand/work-startup.svg" alt="" width="20" height="20" loading="lazy"><span>Lucent</span><em>2025&ndash;26</em></p>
+  <h3>Making small businesses visible in AI search.</h3><p class="meta">AI search visibility platform with GEO and SEO advisory. <b>First paying pilot, 5 LOIs in 30 days.</b></p></div></a>
+      <a class="wcard reveal" href="/projects/ey" style="--bc:#2e6fd8"><div class="wcard__art"><div class="glass"><b>Cloud</b><span>migration program</span></div></div><div class="wcard__copy"><p class="pill"><img class="mk" src="/assets/img/brand/work-consulting.svg" alt="" width="20" height="20" loading="lazy"><span>EY</span><em>2021&ndash;24</em></p><h3>Giving leaders one clear view of a sprawling cloud migration.</h3><p class="meta">Risk, OKRs, and the first executive QBR for a $200M+ cloud migration. <b>&minus;30% executive escalations.</b></p></div></a><a class="wcard reveal" href="/projects/tritooling" style="--bc:#3aa6a0"><div class="wcard__art"><div class="glass"><b>Factory</b><span>operations</span></div></div><div class="wcard__copy"><p class="pill"><img class="mk" src="/assets/img/brand/work-ops.svg" alt="" width="20" height="20" loading="lazy"><span>Tritooling</span><em>2024&ndash;25</em></p><h3>Fixing late deliveries and defects at a precision manufacturer.</h3><p class="meta">A year running operations at a precision manufacturer. <b>&minus;30% defects.</b></p></div></a><a class="wcard reveal" href="/projects/mirrorme" style="--bc:#ff5fa2"><div class="wcard__art"><div class="fan"><img src="/assets/img/mirrorme/mirrorme/card-category.webp" alt="MirrorMe card: Openness to experience, pink" width="714" height="1000" loading="lazy" decoding="async"><img src="/assets/img/mirrorme/mirrorme/card-alt.webp" alt="MirrorMe card: Openness to experience, orange" width="733" height="1000" loading="lazy" decoding="async"></div></div><div class="wcard__copy"><p class="pill"><img class="mk" src="/assets/img/brand/work-product.svg" alt="" width="20" height="20" loading="lazy"><span>MirrorMe</span><em>2024&ndash;25</em></p><h3>Icebreakers that go deeper without getting awkward.</h3><p class="meta">An icebreaker card game for hosts. <b>200+ playtests, 150+ pre-orders.</b></p></div></a><a class="wcard reveal" href="/projects/mobility" style="--bc:#7c5cff"><div class="wcard__art"><div class="glass"><b>Stealth</b><span>in progress</span></div></div><div class="wcard__copy"><p class="pill"><img class="mk" src="/assets/img/brand/work-hardware.svg" alt="" width="20" height="20" loading="lazy"><span>Mobility</span><em>now</em></p><h3>Mobility aids people aren't embarrassed to use.</h3><p class="meta">Design-forward mobility products that keep older adults independent longer.</p></div></a>
+    </div>
+    <div class="earlier">
+      <h3 class="sub-h reveal">Earlier, at Indiana University (2019 to 2021)</h3>
+      <ul><li class="reveal"><a class="ecard" href="/projects/iu-study-assistant"><div class="ecard__art"><div class="fillart "><img src="/assets/img/iu-study-assistant/iusa/home.webp" alt="IU Study Assistant home screen" width="1400" height="720" loading="lazy" decoding="async"></div></div><p class="pill pill--s"><img class="mk" src="/assets/img/brand/work-software.svg" alt="" width="20" height="20" loading="lazy"><span>Study Assistant</span></p><p class="meta">One place to study, not nine tabs.</p></a></li><li class="reveal"><a class="ecard" href="/projects/alab"><div class="ecard__art"><div class="fillart fillart--contain"><img src="/assets/img/alab/alab/cover-intro.webp" alt="aLab app login screen" width="418" height="823" loading="lazy" decoding="async"></div></div><p class="pill pill--s"><img class="mk" src="/assets/img/brand/work-hardware.svg" alt="" width="20" height="20" loading="lazy"><span>aLab</span></p><p class="meta">A dog bowl that rises to meet a recovering pup.</p></a></li><li class="reveal"><a class="ecard" href="/projects/luc"><div class="ecard__art"><div class="fillart "><img src="/assets/img/luc/luc/mockup.webp" alt="Pencil schematic of LUC&#x27;s luggage wheels" width="1400" height="1208" loading="lazy" decoding="async"></div></div><p class="pill pill--s"><img class="mk" src="/assets/img/brand/work-hardware.svg" alt="" width="20" height="20" loading="lazy"><span>LUC</span></p><p class="meta">Luggage that weighs itself before the check-in counter does.</p></a></li><li class="reveal"><a class="ecard" href="/projects/ptm"><div class="ecard__art"><div class="fillart "><img src="/assets/img/ptm/ptm/mockup.webp" alt="Pencil schematic of the PTM sleep mask" width="1400" height="614" loading="lazy" decoding="async"></div></div><p class="pill pill--s"><img class="mk" src="/assets/img/brand/work-hardware.svg" alt="" width="20" height="20" loading="lazy"><span>PTM</span></p><p class="meta">A sleep mask that notices your fever before you do.</p></a></li><li class="reveal"><a class="ecard" href="/projects/coursera"><div class="ecard__art"><div class="fillart fillart--contain"><img src="/assets/img/coursera/coursera-cover.webp" alt="Cover of the Coursera PM dossier" width="464" height="600" loading="lazy" decoding="async"></div></div><p class="pill pill--s"><img class="mk" src="/assets/img/brand/work-research.svg" alt="" width="20" height="20" loading="lazy"><span>Coursera</span></p><p class="meta">Making online learning transferable to real careers.</p></a></li></ul>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="writing" aria-labelledby="writing-h" data-spy>
+    <div class="sec__h reveal"><h2 id="writing-h">Writing</h2><p>Essays, and the articles that helped.</p></div>
+    <ul class="wlist">
+      <li class="reveal"><div class="wl-art" aria-hidden="true"><img src="/assets/img/siri-reimagined/siri-reimagined-card.webp" alt="" width="960" height="600" loading="lazy" decoding="async"></div><h3><a href="/projects/preinstalled-apps">What&rsquo;s the Point of Preinstalled Apps?</a></h3><p class="wl-by">On this site &middot; October 2026</p><p class="meta">What if a new iPhone greeted you with Siri instead of pages of apps? On Siri becoming the operating system, and what that means for apps, Apple, and the App Store.</p></li>
+      <li class="reveal"><h3><a href="https://chaewoonkim.medium.com/2025-2026-reflections-onwards-2bc4a878e448" target="_blank" rel="noopener">2025&ndash;2026 Reflections: Onwards &nearr;</a></h3><p class="wl-by">Medium &middot; January 15, 2026</p><p class="meta">A personal essay reflecting on the last couple of years and what comes next.</p></li>
+      <li class="reveal"><h3><a href="https://chaewoonkim.medium.com/a-story-about-money-afedd3e1ee00" target="_blank" rel="noopener">A Story About Money &nearr;</a></h3><p class="wl-by">Medium &middot; July 22, 2025</p><p class="meta">A personal essay on money.</p></li>
+    </ul>
+    <p class="wl-more reveal">The reading list, with topic filters, is on its own page: <a href="/reading">Writing &amp; reading</a>.</p>
+  </section>
+
+  <section class="sec wrap" id="about" aria-labelledby="about-h" data-spy>
+    <div class="sec__h reveal"><h2 id="about-h">About</h2></div>
+    <div class="about">
+      <div class="about__lede reveal">
+        <h3 class="vh">Hi, I'm Chae.</h3>
+        <div class="facts"><span>Berkeley, CA</span><span>MBA, Berkeley Haas '27</span><span>B.S. Informatics, Indiana University</span></div>
+        <p><b class="hi">Hi, I'm Chae.</b> Thirteen years growing up overseas made me curious by default. I'm happiest making things: a wireframe, a 3D print, a card game.</p>
+        <p>I've led Fortune 500 cloud programs and run a precision manufacturer's operations. These days I build tools I'd actually use. If you're making something too, I'd love to hear about it.</p>
+    <div class="photos">
+      <figure><img src="/assets/img/profile.webp" alt="Chae waving next to an elephant in Phuket" width="1200" height="1600" loading="lazy" decoding="async"><figcaption aria-hidden="true">Phuket</figcaption></figure>
+      <figure><img src="/assets/img/travel-1.webp" alt="A pink coconut by a pool in Bali" width="900" height="1200" loading="lazy" decoding="async"><figcaption aria-hidden="true">Bali</figcaption></figure>
+      <figure><img src="/assets/img/travel-3.webp" alt="Limestone cliffs over green water in Ha Long Bay" width="900" height="1200" loading="lazy" decoding="async"><figcaption aria-hidden="true">Ha Long Bay</figcaption></figure>
+      <figure><img src="/assets/img/travel-2.webp" alt="A boat at sunset" width="900" height="1200" loading="lazy" decoding="async"><figcaption aria-hidden="true">Sunset</figcaption></figure>
+    </div>
+    <div class="about__sub" id="elsewhere">
+      <h3>Elsewhere</h3>
+      <div class="links"><a data-user="chaewoonkim" data-domain="berkeley.edu" href="#elsewhere">Email</a><a href="https://www.linkedin.com/in/chaekim/" target="_blank" rel="noopener">LinkedIn &nearr;</a><a href="https://medium.com/@chaewoonkim" target="_blank" rel="noopener">Medium &nearr;</a><a href="https://github.com/chaekim96" target="_blank" rel="noopener">GitHub &nearr;</a><a href="/assets/pdf/chae-kim-resume.pdf">Resume (PDF)</a></div>
+    </div>
+      </div>
+      <div>
+        <h3 class="reveal">Experience</h3>
+        <ul class="xp" id="xp">
+          <li class="reveal"><b>UC Berkeley Haas<small>2025&ndash;27</small></b><span><em>MBA Candidate.</em> Merit Scholarship. Co-President, Asian Business Club (300+ members).</span></li>
+          <li class="reveal"><b>Lucent<small>2025&ndash;26</small></b><span><em>Co-founder &amp; CEO.</em> First paying pilot. 5 LOIs in 30 days. 100+ customer interviews.</span></li>
+          <li class="reveal"><b>Tritooling Precision Corporation<small>Jul 2024&ndash;Jul 2025</small></b><span><em>Director of Operations, Philippines.</em> On-time delivery +15%, defects &minus;30%. ERP make-vs-buy case approved, $100K in annual savings.</span></li>
+          <li class="reveal"><b>EY<small>Aug 2021&ndash;Jul 2024</small></b><span><em>Senior Technology Consultant, AI &amp; Data Strategy, New York.</em> $10M+ in realized savings over 2 years. &minus;30% escalations on a $200M+ program. 90% tool adoption across 4,000 users.</span></li>
+          <li class="reveal"><b>Indiana University Bloomington<small>Class of 2021</small></b><span><em>B.S. Informatics, minors in HCI &amp; Entrepreneurship.</em> Dean's List. GPA 3.74.</span></li>
+          <li class="reveal"><b>Republic of Korea Army, Gangwon<small>2017&ndash;19</small></b><span><em>Sergeant, 2nd Artillery Brigade.</em></span></li>
+        </ul>
+        <div class="about__sub about__off">
+          <h3>Off the clock</h3>
+          <ul class="likes"><li><b>3D printing</b>, design and prototyping</li><li><b>Competitive tennis</b> and latte art</li><li><b>Big Brothers Big Sisters</b> mentor, 4+ year match</li></ul>
         </div>
       </div>
     </div>
-  </footer>
+  </section>
 
-%%LIVE_DIALOG%%
-  <script src="%%ASSET:js/main.js%%"></script>
-  <script src="%%ASSET:js/play.js%%" defer></script>
-%%PALETTE_SCRIPT%%
-%%LIVE_SCRIPT%%
-  <script>
-  (function () {
-    var THESIS = {
-      'builds': 'I like to build things, from startups to card games.',
-      'work': 'I run the operations behind the idea.',
-      'writing': 'Essays, how I decide, and what I read.',
-      'about': 'Product, strategy, operations, and the occasional 3D print.'
-    };
-    var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var tabs = [].slice.call(document.querySelectorAll('.tab'));
-    var panels = [].slice.call(document.querySelectorAll('.panel'));
-    var thesis = document.querySelector('.thesis');
-    var current = null;
+  <section class="chat wrap" id="chat" aria-labelledby="chat-h" data-spy>
+    <h2 id="chat-h" class="split" data-split>Let's chat.</h2>
+    <p class="sub reveal">If you're making something too, I'd love to hear about it.</p>
+    <div class="chat__row reveal">
+      <span class="mag" data-mag><button class="mag__btn" type="button" data-copy aria-describedby="copied"><span class="mag__lbl"><span class="mag__idle">Copy email</span><span class="mag__done" aria-hidden="true">Copied</span></span>
+        <svg class="ico-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg><svg class="ico-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button></span>
+      <span class="mail"><a data-user="chaewoonkim" data-domain="berkeley.edu" data-show href="#elsewhere">Email me</a></span>
+    </div>
+    <span class="copied" id="copied" role="status" aria-live="polite"></span>
+  </section>
 
-    function show(id, opts) {
-      opts = opts || {};
-      if (!THESIS[id]) id = 'builds';
-      tabs.forEach(function (t) {
-        var on = t.dataset.tab === id;
-        t.setAttribute('aria-selected', on);
-        t.tabIndex = on ? 0 : -1;
-        if (on && opts.focus) t.focus();
-      });
-      panels.forEach(function (p) { p.hidden = p.id !== id; });
-      if (current && current !== id && !reduce) {
-        thesis.classList.add('is-swapping');
-        setTimeout(function () { thesis.textContent = THESIS[id]; thesis.classList.remove('is-swapping'); }, 180);
-      } else {
-        thesis.textContent = THESIS[id];
-      }
-      current = id;
-      if (opts.scroll) document.querySelector('.tabs').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
-    }
-    function go(id, opts) { show(id, opts); history.replaceState(null, '', '#' + id); }
+  <section class="notes wrap" id="design-notes" aria-labelledby="notes-h">
+    <h2 class="sub-h reveal" id="notes-h">How this page is put together</h2>
+    <p class="meta reveal">Quiet, Poppins for words, real work as the picture.</p>
+    <div class="notes__grid">
+      <details class="ncard reveal">
+        <summary><p class="ncard__k">Color</p><h3>Color follows the content, so the page stays neutral</h3><span class="ncard__more">Read more</span></summary>
+        <ul class="swl" aria-label="Color tokens, light value then dark value">
+          <li class="swl__k" aria-hidden="true"><span class="sw"><em>light</em><em>dark</em></span></li>
+          <li><span class="sw" aria-hidden="true"><i style="background:#0d1b2e"></i><i style="background:#f2f5fa"></i></span><span><b>ink</b> text</span></li>
+          <li><span class="sw" aria-hidden="true"><i style="background:#44566e"></i><i style="background:#a8b5c8"></i></span><span><b>ink-2</b> secondary text</span></li>
+          <li><span class="sw" aria-hidden="true"><i style="background:#eef7fe"></i><i style="background:#080c14"></i></span><span><b>bg</b> page, under the sky</span></li>
+          <li><span class="sw" aria-hidden="true"><i style="background:#0b63b8"></i><i style="background:#6bbcff"></i></span><span><b>sky fill</b> active tab, focus ring</span></li>
+          <li><span class="sw" aria-hidden="true"><i style="background:#30d158"></i><i style="background:#30d158"></i></span><span><b>live</b> status dot, nothing else</span></li>
+        </ul>
+        <p>Each project sits on its own soft gradient stage, tinted from its build mark, so the work supplies the color. Everything else stays neutral. Green appears in one place only: the dot that means something is live.</p>
+      </details>
+      <details class="ncard reveal">
+        <summary><p class="ncard__k">Type</p><h3>Poppins for words, a plain monospace for facts</h3><span class="ncard__more">Read more</span></summary>
+        <p class="spec__a">chae kim</p>
+        <p class="spec__w" aria-label="Weights loaded: 400, 500 and 600"><span style="font-weight:400">400 Regular</span><span style="font-weight:500">500 Medium</span><span style="font-weight:600">600 Semibold</span></p>
+        <p>400, 500 and 600 are loaded. I kept Poppins instead of switching to the SF system font. Its round, geometric letters feel friendly, not corporate. One family for every word keeps the focus on the work. The only other letters are the 김채운 strip, brushed with East Sea Dokdo outlines drawn inline.</p>
+      </details>
+      <details class="ncard reveal">
+        <summary><p class="ncard__k">Structure</p><h3>Pages you explore, with the work as the picture</h3><span class="ncard__more">Read more</span></summary>
+        <p>Builds shows three projects to try, then the rest of the shelf. Every project is a framed artifact: a real screenshot, a card, a gauge. Light and dark themes. Motion switches off when your device asks for less motion.</p>
+        <p><a class="ncard__go" href="/projects/portfolio">Read the full decision log: how this site was built <span aria-hidden="true">&rarr;</span></a></p>
+      </details>
+    </div>
+  </section>
+</main>
 
-    tabs.forEach(function (t, i) {
-      t.addEventListener('click', function () { go(t.dataset.tab); });
-      t.addEventListener('keydown', function (e) {
-        var j = { ArrowRight: (i + 1) % tabs.length, ArrowLeft: (i - 1 + tabs.length) % tabs.length, Home: 0, End: tabs.length - 1 }[e.key];
-        if (j === undefined) return;
-        e.preventDefault(); go(tabs[j].dataset.tab, { focus: true });
-      });
-    });
+<footer class="foot wrap">
+  <div class="foot__me">
+    <a class="foot__id" href="#top">chae kim</a>
+    <p class="clock"><time id="clock"></time> <span>Berkeley, CA</span></p>
+  </div>
+  <nav aria-label="Footer"><a href="#builds">Builds</a><a href="#work">Work</a><a href="#writing">Writing</a><a href="#about">About</a><a href="/assets/pdf/chae-kim-resume.pdf">Resume <span class="foot__x" aria-hidden="true">&nearr;</span></a></nav>
+  <div class="foot__base">
+    <p><a href="/projects/portfolio">Built by hand in plain HTML</a>, between latte art attempts.</p>
+    <a class="foot__top" href="#top">Back to top <span aria-hidden="true">&uarr;</span></a>
+  </div>
+</footer>
 
-    // in-page links to a tab (footer, seal) switch tabs instead of jumping
-    document.addEventListener('click', function (e) {
-      var a = e.target.closest('a[href^="#"]');
-      if (!a) return;
-      var id = a.getAttribute('href').slice(1);
-      if (THESIS[id]) { e.preventDefault(); go(id, { scroll: true }); }
-    });
 
-    // Builds folders: one open at a time. The open tray moves into the folder grid right after
-    // the row holding its folder, so on a phone it opens under the folder you tapped.
-    // Without JS every tray stays visible below the folders and the folder links jump to it.
-    var folds = [].slice.call(document.querySelectorAll('.fold'));
-    var trays = [].slice.call(document.querySelectorAll('.tray'));
-    var shelf = document.querySelector('.folders');
-    function placeTray(tray) {
-      var cols = getComputedStyle(shelf).gridTemplateColumns.split(' ').length || 1;
-      var i = folds.findIndex(function (f) { return f.dataset.folder === tray.id; });
-      var last = folds[Math.min(Math.ceil((i + 1) / cols) * cols, folds.length) - 1];
-      if (last.nextElementSibling !== tray) last.after(tray);
-    }
-    function openFolder(id, opts) {
-      opts = opts || {};
-      var tray = null, fold = null;
-      trays.forEach(function (t) { t.classList.remove('is-open'); if (t.id === id) tray = t; });
-      folds.forEach(function (f) { var on = f.dataset.folder === id; f.setAttribute('aria-expanded', String(on)); if (on) fold = f; });
-      if (!tray) return;
-      placeTray(tray);
-      tray.classList.add('is-open');
-      // Bring the folder to the top of the screen when its tray would start low or off screen.
-      if (opts.scroll) requestAnimationFrame(function () {
-        var r = fold.getBoundingClientRect(), t = tray.getBoundingClientRect();
-        if (r.top < 0 || t.top > innerHeight * 0.6) scrollTo({ top: scrollY + r.top - 80, behavior: reduce ? 'auto' : 'smooth' });
-      });
-    }
-    // Column count changes with the screen width, so re-place the open tray on resize.
-    var resizing = 0;
-    addEventListener('resize', function () {
-      cancelAnimationFrame(resizing);
-      resizing = requestAnimationFrame(function () { var t = document.querySelector('.tray.is-open'); if (t) placeTray(t); });
-    });
-    folds.forEach(function (f) {
-      f.addEventListener('click', function (e) {
-        e.preventDefault();
-        var id = f.getAttribute('aria-expanded') === 'true' ? null : f.dataset.folder;
-        openFolder(id, { scroll: true });
-        history.replaceState(null, '', '#' + (id || 'builds'));
-      });
-    });
-    document.querySelectorAll('[data-fold-close]').forEach(function (a) {
-      a.addEventListener('click', function (e) {
-        e.preventDefault(); e.stopPropagation();
-        var id = a.closest('.tray').id;
-        openFolder(null);
-        history.replaceState(null, '', '#builds');
-        var f = document.querySelector('.fold[data-folder="' + id + '"]');
-        if (f) f.focus({ preventScroll: true });
-      });
-    });
-
-    // deep links: #builds (default), #work, #about, a Builds folder such as #mods, or a section inside About such as #experience
-    function fromHash() {
-      var h = location.hash.slice(1);
-      if (h === 'contact') h = 'elsewhere'; // old desktop-page links
-      var el = h && document.getElementById(h);
-      if (THESIS[h]) show(h);
-      else if (el && el.classList.contains('tray')) { show('builds'); openFolder(h, { scroll: true }); }
-      else if (el && el.closest('#about')) { show('about'); requestAnimationFrame(function () { el.scrollIntoView(); }); }
-      else show('builds');
-    }
-    addEventListener('hashchange', fromHash);
-    fromHash();
-
-    // local time in Berkeley, with a sun or a moon
-    var clock = document.getElementById('clock'), icon = document.getElementById('clock-icon');
-    var fmt = new Intl.DateTimeFormat('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'America/Los_Angeles' });
-    var hr = new Intl.DateTimeFormat('en-US', { hour: 'numeric', hourCycle: 'h23', timeZone: 'America/Los_Angeles' });
-    function tick() {
-      var d = new Date(), h = parseInt(hr.format(d), 10);
-      clock.textContent = fmt.format(d);
-      clock.dateTime = d.toISOString();
-      icon.dataset.night = String(h < 6 || h >= 19);
-    }
-    tick(); setInterval(tick, 30000);
-
-    // About: highlight the section in view
-    var links = [].slice.call(document.querySelectorAll('.toc a'));
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (es) {
-        es.forEach(function (en) {
-          if (!en.isIntersecting) return;
-          links.forEach(function (a) { a.classList.toggle('is-active', a.getAttribute('href') === '#' + en.target.id); });
-        });
-      }, { rootMargin: '-15% 0px -70% 0px' });
-      links.forEach(function (a) { var s = document.querySelector(a.getAttribute('href')); if (s) io.observe(s); });
-    }
-  })();
-  </script>
-  <script>
-    // "Let's chat" copy button: copies the address main.js assembled
-    document.querySelectorAll('[data-copy-email]').forEach(function (b) {
-      b.addEventListener('click', function () {
-        var a = b.parentElement.querySelector('[data-user][data-domain]'), addr = a.dataset.user + '@' + a.dataset.domain;
-        if (!navigator.clipboard) return;
-        navigator.clipboard.writeText(addr).then(function () { b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy'; }, 1600); });
-      });
-    });
-  </script>
-  <script defer src="/_vercel/insights/script.js"></script>
+<script src="%%ASSET:js/home-sky.js%%"></script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

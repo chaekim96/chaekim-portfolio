@@ -109,12 +109,6 @@ DECISIONS = [
         opt("Newest first", "One list by date. Shows momentum, but mixes big and small builds."),
         opt("Three flagships, then the rest", "Large cards for the strongest three, everything else compact."),
     ]),
-    D("design", "Nov 2026", "This site", "Twenty bright build marks now sit on the sky. Keep it, or move the page to paper?", [
-        opt("Keep the sky", "Sky blue overhead and soft clouds, as chosen in October."),
-        opt("Stamp Ink", "Warm paper, ink, the seal's red and one violet accent. Night Press, a warm near-black, for dark mode.", chosen=True, rec=True),
-        opt("Field Notes", "Cream paper with forest green and clay. Editorial and bookish."),
-    ], why=["Ties the page to my seal", "Lets the marks pop", "Feels more personal"],
-       link=("/#design-notes", "Read the design notes")),
     # ---------------- this site: content ----------------
     D("content", "Oct 2026", "This site", "The site's numbers predate my resume. Which should it use?", [
         opt("Match the resume", "Update every page to the resume's figures.", chosen=True, rec=True),
@@ -335,7 +329,7 @@ def page():
   <meta property="og:title" content="How I decide · Chae Kim - Portfolio">
   <meta property="og:description" content="{desc}">
   <meta property="og:type" content="article">
-  <meta property="og:image" content="{SITE_URL}/assets/img/og-paper.png">
+  <meta property="og:image" content="{SITE_URL}/assets/img/og-sky.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <link rel="canonical" href="{SITE_URL}/projects/decisions">
