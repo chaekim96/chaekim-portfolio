@@ -20,7 +20,7 @@ TITLE = "Playbook"
 HEADLINE = "How I sound, how I look, and what I never fake."
 DESC = "My brand playbook: the voice, the colors and type, the rules of truth, and the checks before anything ships."
 SHARE = page_og("playbook")
-UPDATED = "November 10, 2026"
+UPDATED = "November 18, 2026"
 
 TOC = [("core", "Core"), ("voice", "Voice"), ("layers", "Two layers"), ("color", "Color"), ("type", "Type"),
        ("name", "The name"), ("imagery", "Imagery and motion"), ("truth", "Rules of truth"),
@@ -75,18 +75,19 @@ def section_layers():
 
 
 def section_color():
-    sw = [("Ink", "#111110", "Headlines and body text."),
-          ("Ink 2", "#5f5b53", "Captions and secondary text."),
-          ("Accent", "#4a3fd1", "Active tab, links and focus. At night: #9b86ff."),
+    sw = [("Ink", "#0d1b2e", "Headlines and body text. At night: #f5f5f7."),
+          ("Ink 2", "#44566e", "Captions and secondary text. At night: #a1a1a6."),
+          ("Sky accent", "#0b63b8", "Active tab, links and focus. Links use #064e8c. At night: #6bbcff."),
           ("Live", "#30d158", "Only for “this is live.” Never decoration."),
           ("Seal", "#c63d2f", "Only the endorsement square."),
-          ("Paper", "#fbf8f1", "The page. At night: #121211.")]
+          ("Sky", "#eef7fe", "The page, under the blue. At night: #0b0b0c."),
+          ("Paper", "#f4faff", "Quiet panels on the sky.")]
     cells = "".join(f'<div class="pb-sw"><i style="background:{h}"></i><b>{n}</b><code>{h}</code><span>{u}</span></div>' for n, h, u in sw)
     return f'''
         <h2 id="color">Color follows the content, so the page stays neutral.</h2>
-        <p>That line is the real design-notes header. The page stays paper and ink, so screenshots and build marks carry the color.</p>
-        <div class="pb-grad" role="img" aria-label="Paper wash from warm cream to paper"></div>
-        <p class="pb-cap">Stamp Ink: #f3ecdd, #f7f2e7, then paper #fbf8f1. At night (Night Press): #1d1b18 into #121211.</p>
+        <p>That line is the real design-notes header. The page stays sky blue and ink, so screenshots and build marks carry the color.</p>
+        <div class="pb-grad" role="img" aria-label="Sky wash from blue overhead to a pale blue page"></div>
+        <p class="pb-cap">Sky wash: #74bff0, #a8d7f7, #d6ecfc, then the page at #eef7fe. At night: navy #0f1a2e into #0b0b0c.</p>
         <div class="pb-swatches">{cells}</div>
         {rules([("Check dark mode every time.", "Every color has a night value, and the site has a theme toggle.")])}'''
 
@@ -180,7 +181,7 @@ CSS = """
     .pb-tile { display: block; border-radius: 22%; }
     .pb-endorse { display: inline-flex; align-items: center; gap: 12px; font: 500 13px/1 Poppins, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); }
     .pb-endorse i { width: 13px; height: 13px; background: #C63D2F; display: block; }
-    .pb-grad { height: 44px; border-radius: 12px; box-shadow: inset 0 0 0 1px var(--line); background: linear-gradient(90deg, #f3ecdd, #f7f2e7 45%, #fbf8f1); margin-top: 14px; }
+    .pb-grad { height: 44px; border-radius: 12px; box-shadow: inset 0 0 0 1px var(--line); background: linear-gradient(90deg, #74bff0, #a8d7f7 30%, #d6ecfc 65%, #eef7fe); margin-top: 14px; }
     .pb-cap { font: 400 12px/1.5 'JetBrains Mono', ui-monospace, monospace; color: var(--ink-2); margin-top: 6px; }
     .pb-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); gap: 14px; margin: 16px 0; }
     .pb-sw { display: grid; grid-template-columns: 44px 1fr; column-gap: 12px; row-gap: 1px; align-items: center; }
