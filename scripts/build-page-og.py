@@ -25,7 +25,7 @@ _spec.loader.exec_module(cards)
 
 SITE = SITE_URL.split("://", 1)[1]
 SKIP = {"index", "404", "mirrorme-tech-pack"}  # home keeps the site card; the others aren't meant to be shared
-PAPER = "/assets/img/og-paper.png"
+PAPER = "/assets/img/og-sky.png"
 # A work page's eyebrow says where it sits on the home page; on a card it just reads as work.
 LABEL = {"featured": "work", "more work": "work", "in progress": "work", "reading": "writing & reading"}
 

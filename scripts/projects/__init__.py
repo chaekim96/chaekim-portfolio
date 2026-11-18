@@ -34,8 +34,8 @@ FOLDERS = {
 BUILDS = FOLDERS["products"] + FOLDERS["mods"] + FOLDERS["ai-ml"]
 
 # The Work tab, in order, and the order the Work case pages step through.
-WORK = ["lucent", "ey", "tritooling", "mirrorme", "mobility"]
-WORK_CASES = ["lucent", "mobility", "ey", "mirrorme", "tritooling"]
+WORK = ["lucent", "ey", "tritooling", "mirrorme", "mobility", "play-conference"]
+WORK_CASES = ["lucent", "mobility", "ey", "mirrorme", "tritooling", "play-conference"]
 COLLEGE = ["iu-study-assistant", "alab", "luc", "ptm", "coursera"]
 
 # Pages with no card of their own. DOCUMENTS follow the page they belong to in llms.txt.

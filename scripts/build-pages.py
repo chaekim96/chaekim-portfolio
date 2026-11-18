@@ -16,7 +16,7 @@ TOKENS = {"%%HEAD_ASSETS%%": CASE_HEAD_ASSETS, "%%TOP%%": CASE_TOP, "%%FOOT%%": 
           "%%SCRIPTS%%": CASE_SCRIPTS, "%%SITE%%": SITE_URL}
 
 for src in sorted((HERE / "pages").glob("*.html")):
-    page = src.read_text(encoding="utf-8").replace("%%SITE%%/assets/img/og-paper.png", page_og(src.stem))
+    page = src.read_text(encoding="utf-8").replace("%%SITE%%/assets/img/og-sky.png", page_og(src.stem))
     for token, value in TOKENS.items():
         page = page.replace(token, value)
     page = prefer_webp(page)

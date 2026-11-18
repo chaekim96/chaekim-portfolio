@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
-"""Builds the Stamp homepage (index.html) and the arcade page (arcade.html).
+"""Builds the homepage (index.html) and the arcade page (arcade.html).
 
 Usage:  python3 scripts/build-home.py
-Stamp is the only design: assets/css/v-stamp.css (+ case-stamp.css on project pages, arcade.css on /arcade).
-The calligraphy name mark, case-page chrome and live-preview dialog are shared via stamp_shared.py.
+The home page is scripts/home.html with its own stylesheet and script (home-sky.css, home-sky.js).
+Arcade uses the project-page chrome from stamp_shared.py, with arcade.css on top.
 """
-import colorsys
 import os
 import re
 import sys
@@ -66,159 +65,29 @@ ARCADE = """          <div class="break">
 
 
 # ----------------------------------------------------------------------------
-# Stamp: quiet, gallery-like, artifact-first. The page is scripts/home.html, with %%TOKENS%% filled in below.
+# Home: the sky page. scripts/home.html is the whole page, written by hand, with its own stylesheet
+# (assets/css/home-sky.css) and script (assets/js/home-sky.js). Only %%TOKENS%% are filled in here.
 # ----------------------------------------------------------------------------
 
-from stamp_shared import SITE_URL, asset, BOOT_SCRIPT, PALETTE_SCRIPT, finish, changelog_strip, INK_DEFS, seal, live_button, LIVE_DIALOG, LIVE_SCRIPT, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, THEME_COLOR, GLASS_JS, build_mark, build_icons, mark_color, work_mark, LIVE_APPS
-from projects import COLLEGE, FEATURED, FOLDERS, PROJECTS, WORK, field
+from stamp_shared import SITE_URL, asset, BOOT_SCRIPT, finish, CASE_HEAD_ASSETS, CASE_TOP, CASE_FOOT, CASE_SCRIPTS, build_mark, build_icons
+from projects import COLLEGE, FOLDERS, PROJECTS, WORK
+from writing_data import ESSAYS
 
+HOME = open(os.path.join(HERE, "home.html"), encoding="utf-8").read()
+HOME = re.sub(r"%%ASSET:([^%]+)%%", lambda m: asset(m.group(1)), HOME)
+HOME = HOME.replace("%%SITE%%", SITE_URL).replace("%%BOOT%%", BOOT_SCRIPT)
+assert "%%" not in HOME, "unreplaced token"
 
-def _snake():
-    body = [(2,6),(3,6),(4,6),(5,6),(5,5),(5,4),(6,4),(7,4),(8,4),(9,4),(9,5),(10,5)]
-    cell = lambda c, r, fill: f'<rect x="{c*10+1}" y="{r*10+1}" width="8" height="8" rx="1.6" fill="{fill}"/>'
-    return ('<svg class="snake-art" viewBox="0 0 160 100" aria-hidden="true">'
-            '<defs><pattern id="px" width="10" height="10" patternUnits="userSpaceOnUse">'
-            '<path d="M10 0H0V10" fill="none" stroke="rgba(255,255,255,.07)"/></pattern></defs>'
-            '<rect width="160" height="100" fill="url(#px)"/>'
-            + "".join(cell(c, r, "#58cf86") for c, r in body)
-            + cell(11, 5, "#a6f0bf") + cell(13, 5, "#ffd60a") + '</svg>')
-
-STAMP = open(os.path.join(HERE, "home.html"), encoding="utf-8").read()
-
-# ----------------------------------------------------------------------------
-# Writing tab: essays and the reading list come from writing_data.py (shared with /reading)
-# ----------------------------------------------------------------------------
-import html as _html
-from writing_data import ESSAYS, READING, pub_label
-
-
-def _writing_essays():
-    rows = []
-    for e in ESSAYS:
-        internal = e.get("internal")
-        ext = "" if internal else ' target="_blank" rel="noopener"'
-        arrow = "" if internal else " ↗"
-        date = f' · {pub_label(e["published"])}' if e["published"] else ""
-        rows.append(f'        <li class="reveal"><h3><a href="{_html.escape(e["url"], quote=True)}"{ext}>{_html.escape(e["title"])}{arrow}</a></h3>'
-                    f'<p class="wl-by">{"On this site" if internal else "Medium"}{date}</p>'
-                    f'<p class="wl-sum">{_html.escape(e["description"])}</p></li>')
-    return '      <ul class="wlist">\n' + "\n".join(rows) + "\n      </ul>"
-
-
-def _writing_reading():
-    rows = []
-    for a in READING:
-        summary = f'<p class="wl-sum">{_html.escape(a["summary"])}</p>' if a["summary"] else ""
-        note = f'<p class="wl-sum"><b>My notes:</b> {_html.escape(a["note"])}</p>' if a["note"] else ""
-        tags = "".join(f"<span>{_html.escape(t)}</span>" for t in a["topics"])
-        rows.append(f'        <li class="reveal"><h3><a href="{_html.escape(a["url"], quote=True)}" target="_blank" rel="noopener">{_html.escape(a["title"])} ↗</a></h3>'
-                    f'<p class="wl-by">{_html.escape(a["author"])} · {_html.escape(a["source"])} · added {a["added"]}</p>'
-                    f'{summary}{note}<div class="wl-tags">{tags}</div></li>')
-    return '      <ul class="wlist">\n' + "\n".join(rows) + "\n      </ul>"
-
-
-# Builds folders: count each tray's cards so the numbers on the folders never go stale.
-def _card_open(p, cls):
-    href = p.get("card_href", f"/projects/{p['slug']}")
-    return f'<a class="{cls}" href="{href}"{p.get("card_attrs", "")}>'
-
-def _card(slug):
-    """A home card. Live apps wrap the link so the "Try it live" button can sit beside it."""
+# The cards are typed into home.html, so a project or essay added elsewhere has to be added there too.
+def _on_home(slug):
     p = PROJECTS[slug]
-    body = p["card"].strip("\n")
-    if slug in FEATURED:
-        return (f'        <article class="feat__card reveal">\n        {_card_open(p, "w feat__w")}\n{body}\n        </a>\n'
-                f'        <div class="feat__strip">{live_button(slug)}<a class="feat__case" href="/projects/{slug}">Read the case study →</a></div>\n'
-                '        </article>')
-    if slug in LIVE_APPS:
-        return (f'        <div class="live-card reveal">\n        {_card_open(p, "w")}\n{body}\n        </a>\n'
-                f'        {live_button(slug)}\n        </div>')
-    if p.get("card_href", "") is None:
-        return f'        <div class="w reveal">\n{body}\n        </div>'
-    wide = " w--wide" if p.get("card_wide") else ""
-    return f'        {_card_open(p, f"w{wide} reveal")}\n{body}\n        </a>'
+    if "card_href" in p and p["card_href"] is None:
+        return True  # a card with no page of its own has nothing to link to
+    return f'href="{p.get("card_href", f"/projects/{slug}")}"' in HOME
 
-def _cards(page):
-    page = page.replace("%%CARDS_FEATURED%%", "\n".join(_card(s) for s in FEATURED))
-    for fid, slugs in FOLDERS.items():
-        shelf = [s for s in slugs if s not in FEATURED]
-        key = fid.upper().replace("-", "_")
-        page = (page.replace(f"%%CARDS_{key}%%", "\n".join(_card(s) for s in shelf))
-                    .replace(f"%%COUNT_{key}%%", str(len(shelf))))
-    return (page.replace("%%CARDS_WORK%%", "\n\n".join(_card(s) for s in WORK))
-                .replace("%%CARDS_COLLEGE%%", "\n".join(_card(s) for s in COLLEGE)))
-
-
-# The family: every build's mark, one row per tier, each tile linking to its case study.
-FAMILY_TIERS = (("products", "Products", "product"), ("mods", "Tools", "tool"), ("ai-ml", "Studies", "study"))
-
-def _family():
-    rows = []
-    for fid, label, cls in FAMILY_TIERS:
-        tiles = "".join(f'<a class="family__tile" href="/projects/{s}" title="{_html.escape(PROJECTS[s]["title"])}" '
-                        f'aria-label="{_html.escape(PROJECTS[s]["title"])}">{build_mark(s, "family__mark", 40, themed=True)}</a>'
-                        for s in FOLDERS[fid] if build_mark(s, "x", 1))
-        rows.append(f'<div class="family__row"><p class="family__tier family__tier--{cls}">{label}</p><div class="family__tiles">{tiles}</div></div>')
-    n = sum(len(FOLDERS[f]) for f, _, _ in FAMILY_TIERS)
-    return (f'      <div class="family reveal">\n        <div class="family__id">'
-            f'<p class="family__title">{n} builds, one family.</p>'
-            '<p class="family__note">One tile, one color recipe, three kinds of build. Tap a mark to open its case study.</p>'
-            '<a class="family__more" href="/brand">How the marks work →</a></div>\n'
-            '        <div class="family__rows">' + "".join(rows) + '</div>\n      </div>')
-
-STAMP = _cards(STAMP)
-STAMP = STAMP.replace("%%FAMILY%%", _family())
-STAMP = re.sub(r"%%ASSET:([^%]+)%%", lambda m: asset(m.group(1)), STAMP)
-STAMP = (STAMP.replace("%%WRITING_ESSAYS%%", _writing_essays())
-              .replace("%%WRITING_READING%%", _writing_reading())
-              .replace("%%GLASS_JS%%", GLASS_JS)
-              .replace("%%SITE%%", SITE_URL)
-              .replace("%%INK%%", INK_DEFS)
-              .replace("%%BRANDSEAL%%", seal("cal--card", label=False))
-              .replace("%%SEAL%%", seal())
-              .replace("%%SEAL_SMALL%%", seal(label=False))
-              .replace("%%SNAKE%%", _snake())
-              .replace("%%CHANGELOG%%", changelog_strip("index.html"))
-              .replace("%%BOOT%%", BOOT_SCRIPT).replace("%%PALETTE_SCRIPT%%", PALETTE_SCRIPT)
-              .replace("%%THEME_COLOR%%", THEME_COLOR)
-              .replace("%%LIVE_DIALOG%%", LIVE_DIALOG)
-              .replace("%%LIVE_SCRIPT%%", LIVE_SCRIPT))
-assert "%%" not in STAMP, "unreplaced token"
-
-# Each card's pill leads with the build's color-seal mark, found from the page the card links to.
-# The name gets its own span so it can truncate on narrow cards instead of being clipped.
-def _pill_mark(m):
-    mark = build_mark(m.group(2), "pill__mark", 18, themed=True) or work_mark(m.group(2), "pill__mark", 18)
-    return m.group(1) + (f'{mark}<span class="pill__name">{m.group(3)}</span>' if mark else m.group(3))
-
-STAMP = re.sub(r'(href="/(?:projects/)?([a-z0-9-]+)"[^>]*>\s*<div class="stage"(?:(?!</a>).)*?<span class="pill">)([^<]*?)(?=\s*<em>|</span>)',
-               _pill_mark, STAMP, flags=re.S)
-
-# Each build's card washes with its mark's base color (the .tint rule in v-stamp.css mixes it into paper or night).
-# Dark-tile builds keep a dark or neutral stage instead, matching their dark tiles.
-STAGE_KEEPS = field("stage")
-
-# Tier hierarchy: Products wash at full color, Tools and Studies step back, so the shelves read in order
-# instead of as one rainbow. Only the card wash is muted; the marks themselves stay true everywhere.
-TIER_SATURATION = {"mods": 0.75, "ai-ml": 0.55}
-
-def _tier_color(slug, color):
-    keep = next((TIER_SATURATION[f] for f, slugs in FOLDERS.items() if slug in slugs and f in TIER_SATURATION), 1)
-    if keep == 1:
-        return color
-    r, g, b = (int(color[i:i + 2], 16) / 255 for i in (1, 3, 5))
-    h, l, s = colorsys.rgb_to_hls(r, g, b)
-    return "#" + "".join(f"{round(c * 255):02x}" for c in colorsys.hls_to_rgb(h, l, s * keep))
-
-def _wash_stage(m):
-    slug = m.group(2)
-    if slug in STAGE_KEEPS:
-        return m.group(1) + f'<div class="stage" style="--g: var(--g-{STAGE_KEEPS[slug]})">'
-    color = mark_color(slug) and _tier_color(slug, mark_color(slug))
-    return m.group(1) + (f'<div class="stage tint" style="--bc: {color}">' if color else m.group(3))
-
-STAMP = re.sub(r'(href="/(?:projects/)?([a-z0-9-]+)"[^>]*>\s*)(<div class="stage"(?: style="--g: var\(--g-[a-z]+\)")?>)',
-               _wash_stage, STAMP)
+_missing = [s for s in (*(s for slugs in FOLDERS.values() for s in slugs), *WORK, *COLLEGE) if not _on_home(s)]
+_missing += [e["title"] for e in ESSAYS if f'href="{e["url"]}"' not in HOME]
+assert not _missing, f"add these to scripts/home.html: {_missing}"
 
 # ----------------------------------------------------------------------------
 # Arcade page, in the same chrome as the project pages
@@ -276,7 +145,7 @@ ARCADE_PAGE = f"""<!DOCTYPE html>
 </body>
 </html>
 """
-for name, page in (("index.html", STAMP), ("arcade.html", ARCADE_PAGE)):
+for name, page in (("index.html", HOME), ("arcade.html", ARCADE_PAGE)):
     with open(os.path.join(ROOT, name), "w", encoding="utf-8", newline="\n") as f:
         f.write(finish(page))
     print("wrote", name)

@@ -28,11 +28,11 @@ OG_DIR = "assets/img/og"
 
 
 def page_og(name):
-    """A page's own share card (scripts/build-page-og.py) if it has one, else the site's paper card."""
+    """A page's own share card (scripts/build-page-og.py) if it has one, else the site card."""
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     if os.path.exists(os.path.join(root, OG_DIR, f"{name}.png")):
         return f"{SITE_URL}/{OG_DIR}/{name}.png"
-    return f"{SITE_URL}/assets/img/og-paper.png"
+    return f"{SITE_URL}/assets/img/og-sky.png"
 
 def _root():
     return os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -162,9 +162,9 @@ BOOT_SCRIPT = ("<script>try { var t = localStorage.getItem('ck-theme'); if (t) d
                "document.documentElement.classList.add('js'); "
                "try { if (!sessionStorage.getItem('ck-seal')) { sessionStorage.setItem('ck-seal', '1'); document.documentElement.classList.add('seal-stamp'); } } catch (e) {}</script>")
 
-# Phone browser bar matches the top of the page: warm paper in light mode, warm near-black in dark.
-THEME_COLOR = ('  <meta name="theme-color" content="#f3ecdd" media="(prefers-color-scheme: light)">\n'
-               '  <meta name="theme-color" content="#1d1b18" media="(prefers-color-scheme: dark)">')
+# Phone browser bar matches the page: sky blue in light mode, night navy in dark.
+THEME_COLOR = ('  <meta name="theme-color" content="#74bff0" media="(prefers-color-scheme: light)">\n'
+               '  <meta name="theme-color" content="#0f1a2e" media="(prefers-color-scheme: dark)">')
 
 CASE_HEAD_ASSETS = (
     THEME_COLOR + "\n"
