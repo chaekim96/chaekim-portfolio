@@ -43,6 +43,7 @@ Startups, consulting and operations, then earlier projects at Indiana University
 - [MirrorMe](https://chaekim.vercel.app/projects/mirrorme): An icebreaker card game for people who host. 150+ pre-launch purchase commitments, sold through venue partnerships.
 - [MirrorMe tech pack](https://chaekim.vercel.app/projects/mirrorme-tech-pack): The MirrorMe card game as a tech pack: card spec, bill of materials, box dieline, costing, and a proofing checklist.
 - [Mobility devices for older adults (stealth)](https://chaekim.vercel.app/projects/mobility): Premium, design-forward mobility products that help older adults stay independent longer.
+- [PLAY 2027](https://chaekim.vercel.app/projects/play-conference): The poster, motion and brand system for Berkeley Haas DMEC’s PLAY Conference.
 - [aLab: Automatic Level-Adjusting Bowl](https://chaekim.vercel.app/projects/alab): A companion app for aLab, a conceptual height- and temperature-adjustable dog bowl, designed with human-centered computing methods.
 - [Re-envisioning Coursera](https://chaekim.vercel.app/projects/coursera): A product-management dossier proposing features that help Coursera learners turn coursework into transferable career outcomes.
 - [IU Study Assistant](https://chaekim.vercel.app/projects/iu-study-assistant): A year-long capstone building a streamlined study platform for Indiana University students: project management, UX design, and back-end development.
