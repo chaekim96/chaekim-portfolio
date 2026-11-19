@@ -20,16 +20,16 @@ PAGE = """<!DOCTYPE html><html><head><meta charset="utf-8">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=JetBrains+Mono:wght@500&display=block">
 <style>
   html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
-  body { background: #f9f9f7; font-family: Poppins, system-ui, sans-serif; color: #111110; -webkit-font-smoothing: antialiased; position: relative; }
-  .label { position: absolute; left: 80px; top: 66px; font-size: 20px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: #6b6b66; }
+  body { background: linear-gradient(180deg, #bfdcf7 0%, #dcecfb 38%, #f2f8fe 74%, #fff 100%); font-family: Poppins, system-ui, sans-serif; color: #0d1b2e; -webkit-font-smoothing: antialiased; position: relative; }
+  .label { position: absolute; left: 80px; top: 66px; font-size: 20px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: #44566e; }
   h1 { position: absolute; left: 80px; top: 98px; margin: 0; font-size: 88px; line-height: 1.1; white-space: nowrap; font-weight: 600; letter-spacing: -.04em; }
-  .desc { position: absolute; left: 80px; top: 226px; width: 1060px; font-size: 32px; line-height: 1.3; color: #3a3a38; }
-  .grid { position: absolute; left: 80px; top: 330px; display: grid; grid-template-columns: repeat(10, 80px); gap: 24px 20px; }
+  .desc { position: absolute; left: 80px; top: 226px; width: 1060px; font-size: 30px; line-height: 1.3; color: #1f3047; }
+  .grid { position: absolute; left: 80px; top: 330px; display: grid; grid-template-columns: repeat(11, 80px); gap: 24px 16px; }
   .grid svg { width: 80px; height: 80px; display: block; }
   .foot { position: absolute; left: 80px; right: 80px; bottom: 44px; display: flex; justify-content: space-between; align-items: center; }
-  .by { font-size: 20px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: #6b6b66; display: flex; align-items: center; gap: 14px; }
+  .by { font-size: 20px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: #44566e; display: flex; align-items: center; gap: 14px; }
   .by i { width: 14px; height: 14px; background: #c63d2f; display: block; }
-  .url { font: 500 20px "JetBrains Mono", ui-monospace, monospace; color: #6b6b66; }
+  .url { font: 500 20px "JetBrains Mono", ui-monospace, monospace; color: #44566e; }
 </style></head><body>
 <div class="label">Brand</div><h1>Marks for every build</h1>
 <div class="desc">One tile, one color recipe, three type tiers and one endorsement line.</div>

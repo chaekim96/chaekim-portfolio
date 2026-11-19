@@ -62,17 +62,17 @@ CARD = """<!DOCTYPE html><html><head><meta charset="utf-8">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=block">
 <style>
   html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
-  body { background: #f9f9f7; font-family: Poppins, system-ui, sans-serif; color: #111110; -webkit-font-smoothing: antialiased; position: relative; }
+  body { background: linear-gradient(180deg, #bfdcf7 0%, #dcecfb 38%, #f2f8fe 74%, #fff 100%); font-family: Poppins, system-ui, sans-serif; color: #0d1b2e; -webkit-font-smoothing: antialiased; position: relative; }
   .mark { position: absolute; left: 80px; top: 72px; width: 150px; height: 150px; }
   .mark svg { width: 100%; height: 100%; display: block; }
   .head { position: absolute; left: 266px; top: 72px; width: 854px; height: 150px; display: flex; flex-direction: column; justify-content: center; }
-  .label { font-size: 20px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: #6b6b66; margin-bottom: 2px; }
+  .label { font-size: 20px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: #44566e; margin-bottom: 2px; }
   h1 { margin: 0; font-size: 88px; line-height: 1.12; font-weight: 600; letter-spacing: -.035em; white-space: nowrap; align-self: flex-start; }
-  .desc { position: absolute; left: 80px; top: 300px; width: 1040px; height: 180px; font-size: 40px; line-height: 1.3; color: #3a3a38; }
+  .desc { position: absolute; left: 80px; top: 300px; width: 1040px; height: 180px; font-size: 40px; line-height: 1.3; color: #1f3047; }
   .foot { position: absolute; left: 80px; right: 80px; bottom: 62px; display: flex; justify-content: space-between; align-items: center; }
-  .by { font-size: 20px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: #6b6b66; display: flex; align-items: center; gap: 14px; }
+  .by { font-size: 20px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: #44566e; display: flex; align-items: center; gap: 14px; }
   .by i { width: 14px; height: 14px; background: #c63d2f; display: block; }
-  .url { font: 500 20px "JetBrains Mono", ui-monospace, monospace; color: #6b6b66; }
+  .url { font: 500 20px "JetBrains Mono", ui-monospace, monospace; color: #44566e; }
   .bar { position: absolute; left: 0; right: 0; bottom: 0; height: 12px; display: flex; }
   .bar i { flex: 1; display: block; }
 </style></head><body>
