@@ -541,7 +541,7 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
     <div class="wrap" style="padding-block:clamp(3.5rem,8vw,6rem) clamp(1rem,3vw,2rem)">
       <div class="head"><h2 class="headline" style="font-size:clamp(2.2rem,5vw,3.6rem)">The short version.</h2></div>
       <div class="brief">
-        <div class="tile"><span class="k">The problem</span><span class="t">The small tool you need doesn't exist yet.</span><p>People open about nine apps a day but keep dozens. When they need something small, they search, compare, and pay for apps built for someone else.</p></div>
+        <div class="tile"><span class="k">The problem</span><span class="t">The small tool you need doesn't exist yet.</span><p>People use about seven apps a day but keep dozens. When they need something small, they search, compare, and pay for apps built for someone else.</p></div>
         <div class="tile"><span class="k">What I'd ship first</span><span class="t">Siri builds widgets from apps you already have.</span><p>Using the App Intents apps already offer: "Make me a widget for my rent split." Nothing new to download, and nothing taken away from developers.</p></div>
         <div class="tile"><span class="k">How I'd measure it</span><span class="t">Kept, still used, and changed.</span><p>The share of people who keep a widget Siri built in week one, still use it after 30 days, and keep changing it. Made and abandoned is a novelty. Kept and changed is adoption.</p></div>
         <div class="tile"><span class="k">Why it fits Apple</span><span class="t">It grows the platform.</span><p>Built on App Intents, run on device and on Private Cloud Compute, inside Apple's design system and privacy rules. Developers' apps get more useful because Siri can combine them.</p></div>
@@ -578,15 +578,15 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
         <p class="note">I first wrote about this idea in a short essay, <a href="/projects/preinstalled-apps">What's the Point of Preinstalled Apps?</a> This is the longer version: the full argument, then what it could look like.</p>
 
         <h3>We don't need more apps.</h3>
-        <p>Our phones are full of apps we downloaded once and forgot. A 2017 App Annie study found that people open about nine apps a day and about thirty a month, out of the dozens on their phones.<sup><a href="#fn1" id="fnref1">1</a></sup></p>
+        <p>Our phones are full of apps we downloaded once and forgot. Sensor Tower's State of Mobile 2025 found that in 2024, people used seven unique apps a day and twenty-six a month.<sup><a href="#fn1" id="fnref1">1</a></sup></p>
         <div class="fig">
-          <div class="usage" id="usage" aria-label="Grid of 80 apps: 9 opened daily, 21 more opened this month, 50 rarely opened"></div>
+          <div class="usage" id="usage" aria-label="Grid of 80 apps: 7 used daily, 19 more used this month, 54 rarely used"></div>
           <div class="legend">
             <span><i style="background:linear-gradient(135deg,#FF8A3D,#FF4FA3,#A15CFF)"></i>Opened daily</span>
-            <span><i style="box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.55)"></i>Opened this month</span>
+            <span><i style="box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.55)"></i>Used this month</span>
             <span><i style="background:rgba(255,255,255,.12)"></i>Rarely opened</span>
           </div>
-          <p class="cap2">80 installed apps, illustrative. About 9 opened daily and 30 monthly, per App Annie (2017).</p>
+          <p class="cap2">80 installed apps, illustrative. 7 unique apps a day and 26 a month, per Sensor Tower (2024).</p>
         </div>
         <p>Each app is a whole product designed for millions of people. Each of us only needs a slice of it. The rest is clutter we scroll past, pay for, and update.</p>
         <p>People have been quietly pushing back for years. Apple has let us delete most built-in apps since 2016, and in the EU you can now remove even Safari, the App Store, and Messages. We're already subtracting. The operating system just hasn't caught up.</p>
@@ -850,7 +850,7 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
 
 <footer>
   <div class="in">
-    <p id="fn1">1. App Annie, Spotlight on Consumer App Usage (2017), as reported in <a href="https://techcrunch.com/2017/05/04/report-smartphone-owners-are-using-9-apps-per-day-30-per-month/">TechCrunch, "Report: Smartphone owners are using 9 apps per day, 30 per month"</a>. The counts include built-in apps. The 80-app grid is illustrative. <a href="#fnref1">Back to text</a></p>
+    <p id="fn1">1. Sensor Tower, <a href="https://elements.visualcapitalist.com/wp-content/uploads/2025/01/sensor_tower__state_of_mobile_2025__en.pdf">State of Mobile 2025</a> (PDF), "Mobile Landscape at a Glance." In 2024, across 60+ markets on iOS and Android, excluding China, the average user used 7 unique apps a day and 26 apps a month. The report page is <a href="https://sensortower.com/state-of-mobile-2025">sensortower.com/state-of-mobile-2025</a>. The 80-app grid is illustrative. <a href="#fnref1">Back to text</a></p>
     <p>Juniper Coffee is a fictional brand. App names, people, and amounts shown on screens are examples.</p>
     <p class="chat"><b>Let's chat.</b> <a data-user="chaewoonkim" data-domain="berkeley.edu" data-show href="#">chaewoonkim@berkeley.edu</a></p>
     <p>Concept, writing, and design by Chae Kim. Read the short essay, <a href="/projects/preinstalled-apps">What’s the Point of Preinstalled Apps?</a> <a href="/#builds">Back to the portfolio</a>.</p>
@@ -940,8 +940,8 @@ footer .rule { border-top: 1px solid var(--hair); padding-top: 1rem; display: fl
 
   var grid80 = document.getElementById('usage');
   if (grid80) {
-    var day = [3, 17, 22, 36, 41, 50, 58, 64, 71];
-    var month = [1, 6, 9, 12, 19, 25, 28, 31, 39, 44, 47, 53, 55, 60, 62, 67, 69, 73, 75, 77, 79];
+    var day = [3, 17, 22, 36, 41, 50, 58];
+    var month = [1, 6, 9, 12, 19, 25, 28, 31, 39, 44, 47, 53, 55, 60, 62, 67, 69, 73, 75];
     for (var i = 0; i < 80; i++) {
       var sq = document.createElement('span');
       if (day.indexOf(i) > -1) sq.className = 'day';
